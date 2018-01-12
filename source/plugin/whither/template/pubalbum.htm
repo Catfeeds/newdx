@@ -1,0 +1,117 @@
+{subtemplate common/header_8264_new}
+    <div class="tm_c" fwin="mods" style="width:320px; overflow:hidden;">
+        <h3 class="flb"><em fwin="mods">选择相应的景区</em> <span><a title="关闭" onclick="hideWindow('pubalbum')" class="flbc" href="javascript:;">关闭</a></span></h3>
+        <form onsubmit="return false;" action="" autocomplete="off" method="post" fwin="mods" id="pubalbum_form">
+            <div class="c">
+                <div class="tplw" style="padding-top:10px;overflow:hidden;width:310px;">
+                    <span class="ftid">
+						<label for="area_radio_1">
+							<input type="radio" name="area_radio" id="area_radio_1" value="1" checked="checked" /> 国内
+						</label>
+						<label for="area_radio_2">
+							<input type="radio" name="area_radio" id="area_radio_2" value="2" /> 国外
+						</label>
+					</span>
+					<span class="ftid">
+						<select name="areaSelect" id="areaSelect" width="38" class="ps" style="display:none;">
+						</select>
+					</span>
+					<span class="ftid">
+						<select name="scapeareaSelect" id="scapeareaSelect" width="38" class="ps" style="display:none;">
+						</select>
+					</span>
+                </div>
+                <p class="error" style="color:#f00; display:none;">请选择您要推到的地区或景区</p>
+            </div>
+
+            <p class="o pns" style="text-align:center;">
+                <button type="button" value="提交" class="pn pnc" name="modsubmit" fwin="mods" style="margin:0;" onclick="javascript:submit_pubalbum_form();return false;"><span>提交</span></button>
+            </p>
+        </form>
+        <script type="text/javascript">
+		<!--{eval $mudidi_region_data = $forumoption_mudidi->getAreaData();}-->
+		<!--{eval $mudidi_region_jsondata = json_encode($mudidi_region_data)}-->
+		var mudidi_region_data = eval({$mudidi_region_jsondata});
+		;(function($){
+			$('#area_radio_1').change(function(){
+				$('#scapeareaSelect').empty().hide();
+				$('#areaSelect').empty().show();
+				$('<option>', {
+					value: 0,
+					text: "请选择"
+				}).appendTo('#areaSelect');
+				for (var i in mudidi_region_data[0]) {
+					$('<option>', {
+						value: i,
+						text: mudidi_region_data[0][i]['name']
+					}).appendTo('#areaSelect');
+				}
+			});
+
+			$('#area_radio_2').change(function(){
+				$('#scapeareaSelect').empty().hide();
+				$('#areaSelect').empty().show();
+				$('<option>', {
+					value: 0,
+					text: "请选择"
+				}).appendTo('#areaSelect');
+				for (var i in mudidi_region_data[1]) {
+					$('<option>', {
+						value: i,
+						text: mudidi_region_data[1][i]['name']
+					}).appendTo('#areaSelect');
+				}
+			});
+			$('#area_radio_1').change();
+
+			$('#areaSelect').change(function(){
+				if ($(this).val() == 0) {
+					$('#scapeareaSelect').empty().hide();
+					return;
+				}
+
+				area_num = $('#area_radio_1:checked').size() ? 0 : 1;
+				sn_num = $(this).val();
+
+				$('#scapeareaSelect').empty().show();
+				$('<option>', {
+					value: 0,
+					text: "无"
+				}).appendTo('#scapeareaSelect');
+				for (var i in mudidi_region_data[area_num][sn_num]['child']) {
+					$('<option>', {
+						value: i,
+						text: mudidi_region_data[area_num][sn_num]['child'][i]['name']
+					}).appendTo('#scapeareaSelect');
+				}
+			});
+		})(jQuery);
+
+
+        function submit_pubalbum_form() {
+            if (jQuery('#areaSelect').val() == 0 || jQuery('#areaSelect').val() == null) {
+                jQuery('#pubalbum_form .error').show();
+                return false;
+            }
+            jQuery('#pubalbum_form .error').hide();
+            params = jQuery('#pubalbum_form').serialize();
+            jQuery.ajax({
+                type: 'post',
+                url: '/plugin.php?id=whither:pubalbumajax&albumid={$_GET["albumid"]}',
+                data: params,
+                success: function(html){
+                    if (html == '1') {
+						hideWindow('pubalbum');
+						showPrompt(null , null, '<span style="color:#fff;">推荐成功</span>', 1500);
+					} else {
+						hideWindow('pubalbum');
+						showPrompt(null , null, '<span style="color:#fff;">推荐失败, 请稍后再试</span>', 1500);
+					}
+                }
+            });
+            return false;
+        }
+        </script>
+    </div>
+
+{subtemplate common/footer_8264_new}

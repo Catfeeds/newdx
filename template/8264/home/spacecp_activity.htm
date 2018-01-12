@@ -1,0 +1,27 @@
+<!--{template common/header}-->
+
+<!--{if $_GET[op] == 'delete'}-->
+<form method="post" autocomplete="off" action="forum.php?mod=misc&action=activityapplies&tid=$tid&is_uc=1" onsubmit="ajaxpost(this.id, 'return_$_G[gp_handlekey]');" id="activitynoshowform_{$tid}">
+	<div class="popbox w450 textcenter">
+		<div class="dhinfo">
+			<span>确认删除这个活动？删除后将不再显示！</span>
+			<em></em>
+		</div>
+		<div>
+			<button type="submit" name="btnsubmit" value="true" class="button_cancel"><strong>{lang determine}</strong></button>
+			<!--{if $_G[inajax]}--><input class="button_confirm" onclick="hideWindow('$_G[gp_handlekey]');" value="取消" type="button"/><!--{/if}-->
+		</div>
+	</div>
+	<input type="hidden" name="referer" value="$_G[referer]" />
+	<input type="hidden" name="activitynoshow" value="true" />
+	<input type="hidden" name="formhash" value="{FORMHASH}" />
+	<input type="hidden" name="handlekey" value="$_G[gp_handlekey]" />
+	<span id="return_$_G[gp_handlekey]" style="display:none;"></span>		
+</form>
+<script type="text/javascript">
+	function succeedhandle_$_G['gp_handlekey'] (url, message, values) {
+		jQuery('#acitivity_{$tid}').remove();
+	}
+</script>
+<!--{/if}-->
+<!--{template common/footer}-->

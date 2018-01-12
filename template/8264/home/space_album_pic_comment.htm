@@ -1,0 +1,23 @@
+{if $list}
+<ul>
+    <!--{loop $list $v}-->	
+     <li id="comments_{$v['cid']}">
+        <div class="reply-misc-main">
+            <a href="home.php?mod=space&uid={$v['authorid']}" class="author-face">		
+                {avatar($v[authorid],small)}
+                {$v['author']}
+            </a>
+            <span class="reply-cont">{$v['message']}</span>
+        </div>
+     </li>
+	<!--{/loop}-->
+</ul>
+{$multi}
+{/if}
+<script type="text/javascript">
+jQuery(document).ready(function($) {	
+	//·ÖÒ³
+	jQuery("#commentsList .pg").addClass("gallery-reply-pager");
+});
+</script>
+<!--{eval output();}-->

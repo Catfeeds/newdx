@@ -1,0 +1,134 @@
+<!--{subtemplate common/header_8264}-->
+<link rel="stylesheet" type="text/css" href="/template/8264/css/common/reset.css" />
+<link rel="stylesheet" type="text/css" href="/template/8264/css/common/new_common.css" />
+<link rel="stylesheet" href="/source/plugin/skiing/css/style.css?v=1" />
+<!--{if $_G['forum']['ismoderator']}-->
+<script type="text/javascript" src="{$_G[setting][jspath]}forum_moderate.js?{VERHASH}"></script>
+<!--{/if}-->
+<!--新版头-->
+<!--{subtemplate common/nav_8264_top}-->
+<!--{subtemplate common/nav_8264_jian}-->
+<!--新版头-->
+<style type="text/css">
+.px { margin-top:4px;}
+/* 搜索修正 */
+.fl .star {
+overflow: hidden;
+display: inline;
+}
+.fl .star .redstar {
+background: url(/static/images/star-1.png) no-repeat;
+width: 16px;
+height: 14px;
+display: inline-block;
+overflow: hidden;
+float:left;
+margin-top:3px;
+}
+.fl .star .graystar {
+background: url(/static/images/star-1.png) -17px 0 no-repeat;
+width: 16px;
+height: 14px;
+display: inline-block;
+overflow: hidden;
+float:left;
+margin-top:3px;
+}
+</style>
+<div class="wap_960">
+<div class="hx_nav clearfix">
+<div class="fl"><h1><a href="{$_G[config][web][portal]}forum.php?mod=dianpinglist&fid=473">滑雪场</a></h1></div>
+<div class="fl"><span>全国滑雪场信息查询、口碑点评</span></div>
+<div class="fr"><a href="{$_G[config][web][portal]}xuechang-public" class="tianjia"></a></div>
+<div class="fr clearfix">
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=0" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->
+</div>
+</div>
+<div class="city yuanjiao clearfix">
+<b>省份：</b>
+<a href="{$myurl}&fmod=showlist" {if empty($_G['gp_pro'])}class="on"{/if}>全国</a>
+<!--{if $regions}-->
+<!--{loop $regions $k $v}-->
+<a href="{$myurl}&fmod=showlist&pro={$v[pro]}" {if $_G['gp_pro']==$v['pro']}class="on"{/if}>$v['name']<!--{if $v['count'] > 0}-->($v['count'])<!--{/if}--></a>
+<!--{/loop}-->
+<!--{/if}-->
+</div>
+<!--{if $_GET['pro']==''||$_GET['pro']=='0'}-->
+<!--广告开始-->
+<div class="clearfix" style="margin:10px 0;">
+<div class="fl yuanjiao"><!--{ad/custom_172}--></div>
+<div class="fr yuanjiao"><!--{ad/custom_173}--></div>
+</div>
+<!--广告结束-->
+<!--{/if}-->
+<div class="paix_sous clearfix">
+	<div class="fl">
+		<div class="paixu">
+			<a style="border-left:0 none; _vertical-align: 2px;">排序</a>
+			<a href="{$url}&fmod=showlist&order=heats" class="px {if $order==heats}px1{/if}">热&nbsp;度</a>
+			<a href="{$url}&fmod=showlist&order=dateline" class="px {if $order==dateline}px1{/if}">最&nbsp;新</a>
+			<a href="{$url}&fmod=showlist&order=views" class="px {if $order==views}px1{/if}">浏&nbsp;览</a>
+			<a href="{$url}&fmod=showlist&order=score" class="px {if $order==score}px1{/if}">评&nbsp;分</a>
+		</div>
+	</div>
+<div class="fr">
+<div class="sous">
+<form action="{$_G[config][web][portal]}forum.php" method="get">
+<input name="mod" type="hidden" value="dianping" />
+<input name="fmod" type="hidden" value="showlist"/>
+<input name="fid" type="hidden" value="{$_G[fid]}" />
+<input name="key" type="text"  class="sous_txt" value="{eval echo urldecode($_G['gp_key'])}"/>
+<input name="order" type="hidden"  value="heats"/>
+<input name="sub" type="submit"  class="sous_bn" value=""/>
+</form>
+</div>
+</div>
+</div>
+</div>
+<div class="wap_960 clearfix" style="width:980px;">
+<!--店铺列表循环开始-->
+<!--{if $list}-->
+<!--{loop $list $ski}-->
+<div class="hx_box yuanjiao fl">
+<h2><a href="{$myurl}&fmod=showview&tid={$ski[tid]}" target="_blank" title="$ski[name]">$ski[name]</a></h2>
+<div class="clearfix xinxin">
+<div class="fl" style=" width:85px;">
+{eval $star = $ski['score'];}
+{if $star}
+<span class="star">
+{eval for ($i = 0; $i < 5; $i++):}
+{if $i < $star/2}<span class="redstar"></span>{else}<span class="graystar"></span>{/if}
+{eval endfor;}
+</span>
+{/if}
+</div>
+<div class="fl">评论：$ski['replies']</div>
+<div class="fl">浏览：$ski['views']</div>
+</div>
+<a href="{$myurl}&fmod=showview&tid={$ski[tid]}" target="_blank"><img src="$ski['pic'].thumb400.jpg" /></a>
+<p>地址：$ski[address]</p>
+</div>
+<!--{/loop}-->
+<!--{else}-->
+<div class="std_dplb_m" style="margin-left: 12px;">
+暂没有滑雪场信息
+</div>
+<!--{/if}-->
+</div>
+<div class="wap_960 listPageBox clearfix" style="text-align:center;">$multipage</div>
+<!--{subtemplate common/float_guide}-->
+<!--{subtemplate common/footer_8264lw}-->

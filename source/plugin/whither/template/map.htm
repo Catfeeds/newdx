@@ -1,0 +1,127 @@
+{subtemplate common/header_8264_new}
+<script type="text/javascript" src="http://www.8264.com/static/js/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+</script>
+<link rel="stylesheet" href="/source/plugin/whither/css/main.css?3" />
+<div style="padding-bottom:5px;height:35px;overflow:hidden;width:100%;">
+	<div class="z" style="line-height:30px;">
+		<!--{eval echo $forumoption_mudidi->getBreadcrumbNavByTid($tid);}--> <em>&rsaquo;</em> 地图
+	</div>
+</div>
+
+<div id="ct" class="ct2_a wp cl">
+	<div class="container">
+			<div class="mudidi_view_top"></div>
+			<div class="map_show">
+				<div id="map" style="width:100%;height:400px;"></div>
+			</div>
+
+			<!--{eval $mapData = $forumoption_mudidi->getMapBySn($ralate['sn'], 4);}-->
+			<!--{if $mapData}-->
+			<style type="text/css">
+				.mla li{ padding:0 13px; height:195px;}
+			</style>
+			<div class="bm vw pl guide_list">
+				<div class="bm_h cl">
+					<h2>
+						<a href="/whither-maplist-{$tid}-1.html" class="more">查看更多</a>
+						{$mudidi_data['subject']}相册地图
+					</h2>
+				</div>
+				<div class="bm_c" style="overflow:hidden;">
+					<ul class="ml mla cl">
+						<!--{loop $mapData $mapid $map}-->
+						<!--{eval $imgPath = "http://image.8264.com/mudidi/".$map['filepath'].($map['thumb']?".thumb.jpg":"")}-->
+						<li>
+							<div class="c"><a href="/whither-mapview-{$map['id']}.html"><img src="{$imgPath}" alt="$map['subject']" /></a></div>
+							<p class="ptm"><a href="/whither-mapview-{$map['id']}.html">$map['subject']</a></p>
+						</li>
+						<!--{/loop}-->
+					</ul>
+				</div>
+			</div>
+			<!--{/if}-->
+
+			<!--{if $ralate['type']==2 && $tid}-->
+			<!--{eval $guideData = $forumoption_mudidi->getGuideByTid($tid, 5);}-->
+			<!--{/if}-->
+			<!--{if $guideData}-->
+			<div class="bm vw pl guide_list">
+				<div class="bm_h cl">
+					<h2>
+						<a href="/plugin.php?id=whither:guidelist&tid={$tid}" class="more">更多攻略</a>
+						{$mudidi_data['subject']}攻略大全
+						<span class="pub_guide">
+							<a href="http://bbs.8264.com/forum-post-action-newthread-fid-52.html?mtid={$tid}">发布攻略</a>
+						</span>
+					</h2>
+				</div>
+				<div class="bm_c">
+					<!--{loop $guideData $guideid $guide}-->
+						<!--{if $guide['type'] == 1}-->
+							<!--{eval $link = "/thread-".$guide['typeid']."-1-1.html";}-->
+						<!--{elseif $guide['type'] == 2}-->
+							<!--{eval $link = "http://u.8264.com/home-space-uid-".$guide['uid']."-do-blog-id-".$guide['typeid'].".html";}-->
+						<!--{/if}-->
+					<div class="row">
+						<div class="detail">
+							<h5>
+								<span class="status">
+									<img src="http://bbs.8264.com/source/plugin/whither/css/images/icon1.png" title="回复" />
+									<a href="$link" title="回复" target="_blank">$guide['replies']</a>
+									<img src="http://bbs.8264.com/source/plugin/whither/css/images/icon2.png" title="查看" class="icon2" />
+									<a href="$link" title="查看" target="_blank">$guide['views']</a>
+								</span>
+								<a href="$link" target="_blank">$guide['subject']</a>
+							</h5>
+							<div class="author_info">
+								<div class="author">
+									<a href="http://u.8264.com/home-space-uid-{$guide['authorid']}-do-profile.html">
+										<!--{eval echo avatar($guide['authorid'], 'small');}-->
+									</a>
+									作者: <a href="http://u.8264.com/home-space-uid-{$guide['authorid']}-do-profile.html">{$guide['author']}</a>
+								</div>
+								<div class="lastposter">
+									<a href="http://u.8264.com/home-space-uid-{$guide['lastposterid']}-do-profile.html">
+										<!--{eval echo avatar($guide['lastposterid'], 'small');}-->
+									</a>
+									回复: <a href="http://u.8264.com/home-space-uid-{$guide['lastposterid']}-do-profile.html">{$guide['lastposter']}</a>
+									<span class="gray"><!--{eval echo dgmdate($guide['lastpost'], 'u');}--></span>
+								</div>
+							</div>
+							<div class="content">
+								<!--{if $guide['firstPicture'] != NULL}-->
+									<div class="image">
+										<a href="$link" target="_blank">
+											<img src="{$guide['firstPicture']}" alt="" />
+										</a>
+									</div>
+								<!--{/if}-->
+								<!--{eval echo messagecutstr($guide['message'], 200);}-->
+							</div>
+						</div>
+					</div>
+					<!--{/loop}-->
+				</div>
+			</div>
+			<!--{/if}-->
+	</div>
+
+	<!--{eval include DISCUZ_ROOT.'./source/plugin/whither/template/_sidebar.php';}-->
+</div>
+<div style="display:none;">
+	<script src="http://s84.cnzz.com/stat.php?id=3496107&web_id=3496107&show=pic1" language="JavaScript"></script>
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2&services=true"></script>
+<script type="text/javascript">
+var map = new BMap.Map("map");
+var point = new BMap.Point({$mudidi_data['long']}, {$mudidi_data['lat']});
+map.centerAndZoom(point, {eval echo $ralate['type'] == 3 ? 5 : 7});
+map.addControl(new BMap.NavigationControl());
+var marker = new BMap.Marker(point);  // 创建标注
+map.addOverlay(marker);              // 将标注添加到地图中
+</script>
+
+
+{subtemplate common/footer_8264_new}

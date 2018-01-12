@@ -1,0 +1,1097 @@
+<!--{subtemplate common/header_8264_new}-->
+
+<div class="header">
+<div class="layout">
+<div class="icoHill">&nbsp;</div>
+<div class="headerL">
+<h1><span class="country">店铺</span></h1>
+<div class="site">
+<a href="http://www.8264.com/">首页</a>
+			
+&gt; <a href="http://www.8264.com/dianpu">店铺</a>
+</div>
+</div>
+<div class="headerR">
+<div class="colNameList"><a href="http://www.8264.com/xuechang">滑雪场</a>
+<a href="http://www.8264.com/zhuangbei" >装备</a>
+<a href="http://www.8264.com/pinpai">品牌点评系统</a>
+<a target="_blank" href="http://www.8264.com/dianpu" class="nowmod">店铺</a>
+</div>
+</div>
+</div>
+</div>
+
+<!--{if $_G[gp_action] == 'edit'}--><!--{eval $editor[value] = $postinfo[message];}--><!--{else}--><!--{eval $editor[value] = $message;}--><!--{/if}-->
+
+<link href="/source/plugin/outshop/css/postshop.css" rel="stylesheet" type="text/css">
+<!--[if IE 6]>
+<script src="/source/plugin/outshop/js/DD_belatedPNG_0.0.8a.js"></script>
+<script src="/source/plugin/outshop/js/DD_belatedPNG_css.js"></script>
+<![endif]-->
+<script type="text/javascript">
+jQuery.noConflict();
+function shop_validate(theform) {		
+	<!--{if $_G[gp_action] != 'edit'}-->	
+	if(($('postsubmit').name != 'replysubmit' && !($('postsubmit').name == 'editsubmit' && !isfirstpost) && theform.subject.value == "")) {		
+		showDialog('请填写店铺名称');	
+		return false;		
+	} else if(mb_strlen(theform.subject.value) > 80) {
+		showDialog('您的店铺名称超过 80 个字符的限制');
+		return false;
+	} else if(trim(theform.subject.value) == ""){
+		showDialog('请填写店铺名称');	
+		return false;
+	}	
+	if (!theform.upfile.value) {
+		showDialog('请上传店铺图片');		
+		return false;
+	}
+	if(!/\.(jpg|jpeg|png|JPG|JPEG|PNG)$/.test(theform.upfile.value)){
+		showDialog('您上传的图片格式不正确');		
+		return false;
+	}
+	if (theform.province.value=="0") {
+		showDialog('请选择店铺所在地区');		
+		return false;
+	}
+	if (theform.region.value=="0") {
+		showDialog('请选择店铺地区所在区(市)');		
+		return false;
+	}
+	if (trim(theform.address.value)==""||theform.address.value=="不需要重复填写省、市地区") {
+		showDialog('请填写店铺详细地址');		
+		return false;
+	}
+	
+	if (!theform.type2.checked&&!theform.type1.checked) {
+		showDialog('请选择店铺类型');		
+		return false;
+	}
+	
+	if (theform.type1.checked) {
+		if (trim(theform.market.value)=="") {
+			showDialog('请填写店铺所在商场名称');		
+			return false;
+		}
+	}
+	if (!theform.integrated.checked&&!theform.stores.checked) {
+		showDialog('请选择品牌组合');		
+		return false;
+	}
+	if (theform.stores.checked) {
+		if (trim(theform.brand.value)=="") {
+			showDialog('请填写店铺专营品牌');		
+			return false;
+		}
+	}
+	if (theform.chain.checked) {
+		if (trim(theform.chainbrand.value)=="") {
+			showDialog('请填写店铺连锁名称');		
+			return false;
+		}
+	}
+	if (trim(theform.link.value)==""||theform.link.value=="58585678") {
+		showDialog('请填写联系电话');		
+		return false;
+	}
+	var p1 =/^\d{7,8}$/;   
+	if (!p1.test(theform.link.value)){
+		showDialog('您输入的电话号码有错误');	   
+		return false;    
+	} 
+	if (trim(theform.message.value)==""||theform.message.value=="可介绍如店铺面积、主要经营范围或品牌、店铺硬件及软件条件等信息，字数50~500字内") {
+		showDialog('请填写店铺简介');		
+		return false;
+	}
+	if (mb_strlen(theform.message.value)<100){
+		showDialog('店铺简介字数不少于50字');
+		return false;    
+	}
+	
+	<!--{if $_G[gp_action] != 'edit' && checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
+	if (trim(theform.captcha.value)=="") {
+		showDialog('验证码不能为空');		
+		return false;
+	}
+	if (theform.yzm.value=='0') {
+		showDialog('验证码输入错误');
+		return false;
+	}
+	<!--{/if}-->
+	
+	<!--{/if}-->	
+	<!--{if $_G[gp_action] == 'edit'}-->	
+	if(($('postsubmit').name != 'replysubmit' && !($('postsubmit').name == 'editsubmit' && !isfirstpost) && theform.subject.value == "")) {		
+		showDialog('请填写店铺名称');	
+		return false;		
+	} else if(mb_strlen(theform.subject.value) > 80) {
+		showDialog('您的店铺名称超过 80 个字符的限制');
+		return false;
+	}
+	if (theform.province.value=="0") {
+		showDialog('请选择店铺所在地区');		
+		return false;
+	}
+	if (theform.region.value=="0") {
+		showDialog('请选择店铺地区所在区(市)');		
+		return false;
+	}
+	if (trim(theform.address.value)=="") {
+		showDialog('请填写店铺详细地址');		
+		return false;
+	}
+	if (!theform.type2.checked&&!theform.type1.checked) {
+		showDialog('请选择店铺类型');		
+		return false;
+	}
+	if (theform.type1.checked) {
+		if (trim(theform.market.value)=="") {
+			showDialog('请填写店铺所在商场名称');		
+			return false;
+		}
+	}
+	if (!theform.integrated.checked&&!theform.stores.checked) {
+		showDialog('请选择店铺经营类型');		
+		return false;
+	}
+	if (theform.stores.checked) {
+		if (trim(theform.brand.value)=="") {
+			showDialog('请填写店铺专营品牌');		
+			return false;
+		}
+	}
+	if (theform.chain.checked) {
+		if (trim(theform.chainbrand.value)=="") {
+			showDialog('请填写店铺连锁名称');		
+			return false;
+		}
+	}
+	if (theform.link.value=="") {
+		showDialog('请填写联系电话');		
+		return false;
+	}
+	var p1 =/^\d{7,8}$/;   
+	if (!p1.test(theform.link.value)){
+		showDialog('您输入的电话号码有错误');	   
+		return false;    
+	} 		
+	if (theform.message.value=="") {
+		showDialog('请填写店铺简介');		
+		return false;
+	}
+	if (mb_strlen(theform.message.value)<100){
+		showDialog('店铺简介字数不少于50字');
+		return false;    
+	} 
+	<!--{/if}-->	
+	if($('postsubmit').name == 'editsubmit') {	
+		return true;
+	}else if(in_array($('postsubmit').name, ['topicsubmit', 'replysubmit','postsubmit'])) {		
+		postsubmit(theform);		
+	}	
+	return false;
+}
+</script>
+<!--{block actiontitle}-->
+	<!--{if $_G['gp_action'] == 'newthread'}-->
+		<!--{if $special == 0}-->{lang post_newthread}
+		<!--{elseif $special == 1}-->{lang post_newthreadpoll}
+		<!--{elseif $special == 2}-->{lang post_newthreadtrade}
+		<!--{elseif $special == 3}-->{lang post_newthreadreward}
+		<!--{elseif $special == 4}-->{lang post_newthreadactivity}
+		<!--{elseif $special == 5}-->{lang post_newthreaddebate}
+		<!--{elseif $specialextra}-->{$_G['setting']['threadplugins'][$specialextra][name]}
+		<!--{/if}-->
+	<!--{elseif $_G['gp_action'] == 'reply' && !empty($_G['gp_addtrade'])}-->
+		{lang trade_add_post}
+	<!--{elseif $_G['gp_action'] == 'reply'}-->
+		{lang join_thread}
+	<!--{elseif $_G['gp_action'] == 'edit'}-->
+		<!--{if $special == 2}-->{lang edit_trade}<!--{else}-->{lang edit_thread}<!--{/if}-->
+	<!--{/if}-->
+<!--{/block}-->
+<!--{if $_G['gp_action'] != 'newthread'}-->
+	<!--{eval $subjectcut = cutstr($thread[subject], 30);}-->
+<!--{/if}-->
+<!--{block actionsubject}-->
+	<!--{if $_G['gp_action'] == 'reply'}-->
+		<em>&rsaquo;</em><a href="forum.php?mod=viewthread&tid=$thread[tid]">$subjectcut</a>
+	<!--{elseif $_G['gp_action'] == 'edit'}-->
+		<em>&rsaquo;</em><a href="forum.php?mod=redirect&goto=findpost&ptid=$thread[tid]&pid=$pid">$subjectcut</a>
+	<!--{/if}-->
+<!--{/block}-->
+
+
+<!--//店铺单独头 开始 //-->
+	<div class="wap dianpu_nav clearfix">
+
+        <div class="fr std_sous">
+        	<form action="http://www.8264.com/dianpu" method="get">
+            	<input name="key" type="text"  class="std_sous_txt" value="{eval echo urldecode($_GET['key'])}"/>
+				<input name="filter" type="hidden"  value="score"/>
+                <input name="sub" type="submit"  class="std_sous_bn" value="搜&nbsp;&nbsp;索"/>
+                <div class="clear"></div>
+            </form>
+        </div>
+    </div>
+<!--//店铺单独头 开始 //-->
+
+<div class="wrapper">
+	<div class="bbsShopMain">
+		<h1 class="shopTit">店铺申请<span class="ico"></span></h1>
+		<div class="shopCont">
+			<dl id="shopSelMenu">
+				<dd class="selected1"><a class="first" style="cursor:pointer;">实体店</a></dd>
+				
+			</dl>			
+			<form method="post" autocomplete="off" id="postform" 
+			{if $_G[gp_action] == 'newthread'}action="forum.php?mod=post&action={if $special != 2}newthread{else}newtrade{/if}&fid=$_G[fid]&extra=$extra&topicsubmit=yes"
+			{elseif $_G[gp_action] == 'reply'}action="forum.php?mod=post&action=reply&fid=$_G[fid]&tid=$_G[tid]&extra=$extra&replysubmit=yes"
+			{elseif $_G[gp_action] == 'edit'}action="forum.php?mod=post&action=edit&extra=$extra&editsubmit=yes" 
+			{/if} onsubmit="return shop_validate(this);return false;" enctype="multipart/form-data">						
+			<!--{if ($_G[gp_action]=='newthread'&&$isfirstpost)}-->
+			<div class="shopSelCont">								
+				<div class="tab_lw selected1">
+					<!--{if !empty($_G['gp_modthreadkey'])}--><input type="hidden" name="modthreadkey" id="modthreadkey" value="$_G['gp_modthreadkey']" /><!--{/if}-->
+					<input type="hidden" name="wysiwyg" id="{$editorid}_mode" value="$editormode" />
+					<input type="hidden" name="formhash" id="formhash" value="{FORMHASH}" />
+					<input type="hidden" name="posttime" id="posttime" value="{TIMESTAMP}" />
+					<table class="applyList">
+						<tr>
+							<td class="titleShop"><span class="tit">店铺名称:</span></td>
+						</tr>
+						<tr>
+							<td class="titleShop"><input type="text" class="inputTxtShort borderEmbellish" name="subject" id="subject"> <b class="redStarIco"></b>&nbsp;&nbsp;&nbsp;<span id="subjectError"></span></td>
+						</tr>
+						<tr>
+							<td class="titleShop"><span class="tit">店铺图片:</span></td>
+						</tr>
+						<tr>
+							<td class="titleShop"><input type="file" name="upfile" id="upfile" class="upFile">
+								<span class="remarks">图片尺寸不小于300px*180px，最佳宽高比为5:3(支持jpg,jpeg,png)</span> <b class="redStarIco"></b></td>
+						</tr>
+						<tr>
+							<td class="titleShop"><span class="tit">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区:</span></td>
+						</tr>
+						<tr>
+							<td>
+								<select class="" name="province" id="province">
+									<!--{eval $regionData = ForumOptionShop::getRegionData();}-->
+									<!--{eval require_once libfile('function/misc');}-->	
+									<!--{eval $ip = $discuz->_get_client_ip();}-->			
+									<!--{eval $yj = $forumOption->getStateByIp($ip);}-->
+									<!--{eval $ej = convertip($ip);}-->
+									<!--{eval $full = str_replace('-','',$ej);}-->
+									<!--{eval $ejj = str_replace($yj,'',$full);}-->
+									<!--{if $regionData}-->
+									<option value="0" selected="selected">请选择</option>
+									<!--{loop $regionData $type}-->
+									<!--{if $type['upid'] == 0}-->  
+									<option value="{$type['catid']}" <!--{if $type['name']==$yj}-->selected="selected"<!--{/if}--> >$type['name']</option>
+									<!--{/if}-->    
+									<!--{/loop}-->
+									<!--{/if}-->   
+								</select>								
+								<select class="" name="region" id="region" style="display: none;">							 
+								</select><b class="redStarIco"></b>
+								 <input type="hidden" name="erji" id="erji" value="$ejj"/>
+							</td>					  
+						</tr>
+						<tr>
+							<td class="titleShop"><span class="tit">详细地址:</span></td>
+						</tr>
+						<tr>
+							<td><span id="xq"></span><input type="text" class="inputTxtMid borderEmbellish"  name="address" id="address" value="不需要重复填写省、市地区">
+								<span class="remarks"></span>&nbsp;&nbsp;&nbsp;&nbsp;<b class="blueBallIco"></b><span class="blueText">在地图上标注</span>&nbsp;&nbsp;<b class="redStarIco"></b></td>
+						</tr>
+						<tr>
+							<td>
+							<br>
+							<span id="map" style="display: none;">
+							<div style="width:500px;height:320px;border:1px solid gray" id="container"></div>
+							<input type="hidden" value="" id="longitude" name="longitude">
+							<input type="hidden" value="" id="latitude" name="latitude">
+							</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="titleShop"><span class="tit">店铺类型:</span>
+								<input type="radio" name="shoptype" value="0" id="type2" class="ml10">
+								<label for="street">街边店</label>
+								<input type="radio" name="shoptype" value="1" id="type1" class="">
+								<label for="market">商场店</label> <b class="redStarIco"></b></td>
+						</tr>
+						<tr class="shoptype" style="display: none;">
+							<td class="titleShop"><span class="tit">商场名称:</span>
+								<input type="text" class="inputTxtLong ml10 borderEmbellish" name="market" id="market" disabled="true"></td>
+						</tr>
+						<tr class="shoptype" style="display: none;">
+							<td><div id="tp" class="marketSelBox"></div></td>
+						</tr>
+						<tr>
+							<td class="titleShop"><span class="tit">品牌组合:</span>
+								<input type="radio" class="ml10" name="types" value="0" id="integrated">
+								<label for="comprehensive">综合</label>
+								<input type="radio" class="" name="types" value="1" id="stores">
+								<label for="monopoly">专卖</label> <b class="redStarIco"></b></td>
+						</tr>
+						<tr class="jingying" style="display: none;">
+							<td class="titleShop"><span class="tit">专营品牌:</span>
+								<input type="text" class="inputTxtLong ml10 borderEmbellish" name="brand" id="brand" size="40" disabled="true"></td>
+						</tr>
+						<tr class="jingying" style="display: none;">
+							<td>
+								
+							<div class="marketSelBox clearfix" id="jy" style="height: 22px;width: 640px; overflow: hidden;">
+                                <!--{eval $sbrand = ForumOptionShop::getsbrand();}-->
+                                <!--{if $sbrand}-->	
+                                <div class="clearfix" style="float:left; width:610px;">						
+                                    <!--{loop $sbrand $sb}-->					
+                                    <span class="market">$sb['brand']</span>							
+                                    <!--{/loop}-->
+                                </div>
+                                <!--{/if}-->							
+                                <div class="clearfix" style="float:right;"><span id="more" style="cursor: pointer;color: #2D7ECF;">更多</span></div>
+							</div>
+							
+							</td>
+						</tr>
+						<tr>
+							<td class="titleShop"><span class="tit">是否连锁:</span>
+								<input type="checkbox" class="ml10" name="chain" id="chain" value="1"></td>
+						</tr>
+						<tr class="ischain" style="display: none;">
+							<td class="titleShop"><span class="tit">连锁名称:</span>
+								<input type="text" class="inputTxtLong ml10 borderEmbellish" name="chainbrand" id="chainbrand" size="40" disabled="true"></td>
+						</tr>
+						<tr class="ischain" style="display: none;">
+							<td>
+								<div class="marketSelBox clearfix" id="ischain"  style="height: 22px;width: 640px; overflow: hidden;">
+                                    <!--{eval $chain = ForumOptionShop::getchain();}-->
+                                    <!--{if $chain}-->
+                                    <div class="clearfix" style="float:left; width:610px;">								
+                                        <!--{loop $chain $ch}-->				
+                                        <span class="market">$ch['cbrandid']</span>								
+                                        <!--{/loop}-->
+                                    </div>
+                                    <!--{/if}-->								
+                                    <div class="clearfix" style="float:right;"><span id="cbmore" style="cursor: pointer;color: #2D7ECF;">更多</span></div>								
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="titleShop"><span class="tit">联系电话:</span>
+								<b id="dh" style="padding-left: 5px;display: none;"></b><input style="padding-left: 1px;" type="text" class="inputTxtShort ml10 borderEmbellish" name="link" id="link" size="30" value="58585678">
+								<b class="redStarIco"></b></td>
+						</tr>
+						<tr>
+							<td class="titleShop"><span class="tit">店铺简介:</span> <b class="redStarIco"></b></td>
+						</tr>
+						<tr>
+							<td><textarea onkeyup="strLenCalc(this, 'checklen', 1000);" class="shopTextareaText borderEmbellish" name="message" id="message">{if $editor[value]==""}可介绍如店铺面积、主要经营范围或品牌、店铺硬件及软件条件等信息，字数50~500字内<!--{else}-->$editor[value]<!--{/if}--></textarea></td>
+						</tr>
+						
+						
+						<!--{if $_G[gp_action] != 'edit' && checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
+						<tr>
+							<td class="titleShop"><span class="tit">验证码:</span> <b class="redStarIco"></b></td>
+						</tr>
+						<tr>
+							<td>
+							<input type="text" name="captcha" id="captcha" class="text" style="width:50px;vertical-align: top;" />
+                            <a href="#" id="refreshCaptcha" title="点击刷新图片">
+                            <img src="/plugin.php?id=dailypicture:captcha" alt="点击刷新图片" />
+                            </a>
+							<input type="hidden" value="" id="yzm" name="yzm">
+							<span id="jg"></span>
+							</td>
+						</tr>
+						<!--{/if}-->
+						
+						<tr>
+							<td class="titleShop"><input type="submit" name="postsubmit" id="postsubmit" class="submit" value=""></td>
+						</tr>
+					</table>
+					<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2&services=true"></script>
+					<script type="text/javascript">							
+					;(function($){						
+						$('#refreshCaptcha').click(function() {
+							$(this).children('img').attr('src', '/plugin.php?id=dailypicture:captcha&_='+(new Date().getTime()));
+							$('#jg').html("");
+							return false;
+						});
+					
+						$('#captcha').blur(function(){
+							 validate_captcha();
+							 
+						});		
+					
+						function validate_captcha() {					
+							$.ajax({
+								async: false,
+								type: 'get',
+								url: '/plugin.php?id=dailypicture:validatecaptcha&captcha='+$('#captcha').val(),
+								success : function(data) {
+									if (data==1) {
+										$('#jg').html("");
+										$('#jg').append('<img width="16" height="16" class="vm" src="static/image/common/check_right.gif">');
+										$('#yzm').val('1');
+									}else{
+										$('#jg').html("");
+										$('#jg').append('<img width="16" height="16" class="vm" src="static/image/common/check_error.gif">');
+										$('#yzm').val('0');										
+									}
+								}
+							});						
+						};
+						
+						var pro=$("#province").val();
+						var erji = trim($("#erji").val());						
+						$.getJSON("/plugin.php?id=outshop:ajax_getmarket",{parentId:pro},function(json){							
+								var smallname = $("#region"); 
+								$("option",smallname).remove(); //清空原有的选项										
+								if(json==null){
+									$('#region').hide();return;
+								}else{											
+									//$("#region").append("<option value='0' selected='selected'>请选择</option>");
+									$.each(json,function(index,array){											
+										if(array['name']==erji){
+											var select = 'selected=selected';
+										}else{
+											var select ='';
+										}											
+										var option = "<option "+select+" value='"+array['catid']+"'>"+array['name']+"</option>"; 
+										smallname.append(option);												
+									});
+									$('#region').show();
+									var xxdq = $("#region option:selected").text();									
+									if(xxdq=='请选择'){
+											$("#xq").html('');
+										}else{
+											$("#xq").html(xxdq+'-');
+									}
+									$('#dh').html("").hide();								
+									var reg=$("#region").val();
+									$.getJSON("/plugin.php?id=outshop:ajax_getmarket",{sreg:reg},function(json){
+										if(json!=0){
+											$('#dh').html(json+' -').show();											
+										}							
+									});		
+								}										
+						});
+						//验证店铺是否有重复数据						
+						$("#subject").keyup(function(){
+							var sub = $("#subject").val();								
+							$.ajax({'type': 'GET',
+								'url': '/plugin.php?id=outshop:ajax_getmarket',
+								'data': {'sub': sub},
+								'success': function(html){
+										   switch (html) {
+													case 'repeat':
+														jQuery('#subjectError').text('您输入的店铺名称己经存在').css({'color': '#db0000'}).show();
+														break;
+													case 'norepeat':
+														jQuery('#subjectError').text('').show();								
+														break;
+													default:
+														break;
+											}
+								}
+							});								
+						});
+						$("#more").click(function(){							
+							if($("#jy").css("height")!='22px'){
+								$("#jy").css("height",'22px');
+								$("#more").text("更多");
+							}else{
+								$("#more").text("收起");
+								$("#jy").css("height","auto");									
+							}												
+						});						
+						$("#cbmore").click(function(){							
+							if($("#ischain").css("height")!='22px'){
+								$("#ischain").css("height",'22px');
+								$("#cbmore").text("更多");
+							}else{
+								$("#cbmore").text("收起");
+								$("#ischain").css("height","auto");									
+							}												
+						});						
+						//处理省份的的下拉框
+						$("#province").change(function(){ //当第一个下拉列表变动内容时第二个下拉列表将会显示
+							$("#type1").attr("checked",false);
+							$(".shoptype").hide();
+							$("#region option").hide();							
+							$("#market").val("");
+							$("#address").val("");
+							$("#xq").html("");
+							$('#dh').html("");
+							$("#map").css("display","none");
+							$("#market").attr("disabled","true");							
+							var parentId=$("#province").val();
+							if(parentId==0){
+								$("#region").hide(); 
+							}else{								
+								$.getJSON("/plugin.php?id=outshop:ajax_getmarket",{parentId:parentId},function(json){
+									var smallname = $("#region"); 
+									$("option",smallname).remove(); //清空原有的选项
+									$("#region").append("<option value='0' selected='selected'>请选择</option>");
+									$.each(json,function(index,array){ 			 
+										 var option = "<option value='"+array['catid']+"'>"+array['name']+"</option>"; 
+										 smallname.append(option);												
+									});
+									$('#region').show();	
+								});	
+								/*$("#region").append("<option value='0' selected='selected'>请选择</option>");
+								var reg = "reg_"+parentId;								
+								$("#region option").css("display","none");
+								$("."+reg).css("display","");
+								$("#region").show();*/									
+							}
+						});
+						//处理地区信息
+						$("#region").change(function(){
+							$("#type1").attr("checked",false);
+							$(".shoptype").hide();													
+							$("#market").val("");
+							$("#address").val("");
+							var xxdq = $("#region option:selected").text();
+							if(xxdq=='请选择'){
+								$("#xq").html('');
+							}else{
+								$("#xq").html(xxdq+'-');
+							}
+							$('#dh').html("").hide();						
+							var reg=$("#region").val();
+							$.getJSON("/plugin.php?id=outshop:ajax_getmarket",{sreg:reg},function(json){
+								if(json!=0){
+									$('#dh').html(json+' -').show();									
+								}							
+							});								
+							$("#map").css("display","none");
+							$("#market").attr("disabled","true");	
+						});
+						//单选店铺类型					
+						$("#type1").change(function(){
+							var province = $("#province option:selected").val();
+							var region = $("#region option:selected").val();							
+							if(province=="0"){
+								showDialog("请选择地区！");
+								$("#type1").attr("checked",false);
+								return;
+							}
+							if(region=="0"){
+								showDialog("请把地区信息选择完整！");
+								$("#type1").attr("checked",false);
+								return;
+							}							
+							$.getJSON("/plugin.php?id=outshop:ajax_getmarket",{reg:region},function(json){
+								$("#tp").html("");
+								if(json){
+									$.each(json,function(index,array){									  
+									   var option = "<span class='market'>"+array['marketid']+"</span>";									   
+									   $("#tp").append(option); 						
+									}); 
+								}															
+							});								
+							$("#market").removeAttr("disabled").focus();							
+							$(".shoptype").show();							
+						});											
+						$("#type2").change(function(){
+							$("#market").val("");
+							$("#market").attr("disabled","true");
+							$(".shoptype").hide();
+						});						
+						$("#tp .market").click(function(){
+							var market = $(this).text();
+							$("#market").val('');
+							$("#market").val(market);
+						});			
+						//处理经营类型
+						$("#integrated").change(function(){
+							$("#brand").val("");
+							$("#brand").attr("disabled","true");
+							$(".jingying").hide();
+						});
+						$("#stores").change(function(){									
+							$("#brand").removeAttr("disabled").focus();							
+							$(".jingying").show();							
+						});
+						$("#jy .market").click(function(){
+							var brand = $(this).text();
+							brand =trim(brand);
+							$("#brand").val('');
+							$("#brand").val(brand);
+						});								
+						//处理连锁复选框
+						$("#chain").click(function(){																		
+							if($("#chain").attr("checked")=="checked"){
+								$("#chainbrand").removeAttr("disabled");
+								$("#chainbrand").focus();
+								$(".ischain").show();
+							}else{
+								$("#chainbrand").val("");
+								$("#chainbrand").attr("disabled","true");
+								$(".ischain").hide();
+							}
+						});
+						$("#ischain .market").click(function(){
+							var chain = trim($(this).text());
+							$("#chainbrand").val('');
+							$("#chainbrand").val(chain);
+						});
+						//加载地图信息
+					   $(".blueText").click(function(){						
+							var province = $("#province option:selected").text();
+							var region = $("#region option:selected").text();
+							var address = $("#address").val();
+							if(province=="请选择"){
+								showDialog("请选择地区！");
+								return;
+							}
+							if(region=="请选择"){
+								showDialog("请把地区信息选择完整！");
+								return;
+							}
+							if(address=="不需要重复填写省、市地区"){
+								showDialog("请填写详细地址！");
+								$("#address").select();
+								$("#address").focus();
+								return;
+							}
+							if(address==""){
+								showDialog("请填写详细地址！");
+								$("#address").select();
+								$("#address").focus();
+								return;
+							}
+							var map = new BMap.Map("container");            // 创建Map实例
+							var point = new BMap.Point(116.383, 39.973);
+							var opt = {type: BMAP_NAVIGATION_CONTROL_SMALL}
+							map.addControl(new BMap.NavigationControl(opt));  
+							//map.centerAndZoom(point, 13);										
+							//创建地址解析器实例  
+							var myGeo = new BMap.Geocoder();  
+							//将地址解析结果显示在地图上，并调整地图视野  
+							myGeo.getPoint(address, function(point){  
+								if (point) {  
+									map.centerAndZoom(point, 16);
+									var marker = new BMap.Marker(point);  // 创建标注
+									map.addOverlay(marker);
+									marker.enableDragging(true); // 设置标注可拖拽
+									var opts = {
+										width : 110,     // 信息窗口宽度
+										height: 50,     // 信息窗口高度
+										title : "提示信息"  // 信息窗口标题
+									}
+									jQuery("#longitude").val(point['lng']);
+									jQuery("#latitude").val(point['lat']);												
+									var infoWindow = new BMap.InfoWindow("拖动此标注更改店铺默认位置", opts);  // 创建信息窗口对象
+									marker.addEventListener("mouseup", function(){
+										var position = marker.getPosition();
+										var s = confirm("是否将新位置设置为此店铺的默认位置？");
+										if(s==true){
+											jQuery("#longitude").val(position['lng']);
+											jQuery("#latitude").val(position['lat']);											
+											marker.disableDragging(true); // 设置标注不可拖拽
+											marker.removeEventListener("mouseup"); 
+										}else{
+											jQuery("#longitude").val(point['lng']);
+											jQuery("#latitude").val(point['lat']);	
+										}													
+									});								
+									marker.openInfoWindow(infoWindow);
+									$("#map").css("display","");
+								}else{
+									alert("地图数据加载失败！");
+								} 
+							}, region);							
+							return false;
+					})
+					//提示信息
+					$(".borderEmbellish").focus(function(){
+						$(this).select();						
+					});						
+					})(jQuery);
+					</script> 		
+				</div>
+                
+				<div class="tab_lw hide">
+					<table class="applyList">
+						<tr>
+							<td class="titleShop"><span class="tit">卖家昵称:</span>
+								<input type="text" class="inputTxtLong ml10" id="nc">
+								<input type="hidden" class="inputTxtLong ml10" id="uid" value="{$_G['uid']}">
+								<input type="hidden" class="inputTxtLong ml10" id="uname" value="{$_G['username']}">
+								<b class="redStarIco"></b></td>
+						</tr>
+						<tr>
+							<td><input type="button" class="submit submitDiv" value="" id="sub"></td>
+						</tr>
+					</table>
+					<div class="sqxz">
+                        <b>申请须知：</b>
+                        <p>1、申请的淘宝店铺，必须在淘宝店铺首页banner上有 </p><p style="padding-left:20px;">"8264驴友推荐店铺"字样</p>
+                        <p>2、店铺必须3钻以上</p>
+                        <p>3、申请事宜有疑问，可联系：</p>
+                        <p style="padding-left:20px;"> 论坛ID：mboutside2011（彬彬）<br />
+                           QQ：2229115492</p>
+                    </div>
+				</div>
+                
+				<script type="text/javascript">							
+				;(function($){					
+					 $('#sub').click(function(){
+						var nc = $('#nc').val();
+						if(nc==""){
+							showDialog("卖家昵称不能为空","notice");
+							return false;
+						}						
+						var uid = $('#uid').val();
+						var username = $('#uname').val();						
+						var str_url = 'plugin.php?id=outshop:ajax_shoptaobao&nc='+nc+'&uid='+uid+'&username='+username;
+						jQuery.ajax({           
+							url: str_url,
+							type: 'get',						
+							success: function(msg){
+								if(msg=='success'){
+									showDialog("您的数据进入审核状态,请耐心等待！","notice");
+								}else if(msg=='repeat'){
+									showDialog("您的数据已添加，请不要重复添加！","notice");
+								}else{
+									showDialog(msg,"notice");
+								}								
+								$('#nc').val('');					
+							},
+							error: function(){
+								//请求出错处理
+								showDialog("程序错误,数据添加失败！","notice");	
+							}
+						});    
+					 })
+				})(jQuery);
+				</script> 		
+			</div>
+			<!--{elseif ($_G[gp_action]=='edit'&&$isfirstpost)}-->			
+			<input type="hidden" name="fid" id="fid" value="$_G[fid]" />
+			<input type="hidden" name="tid" value="$_G[tid]" />
+			<input type="hidden" name="pid" value="$pid" />
+			<input type="hidden" name="page" value="$_G[gp_page]" />				
+			<!--{eval $edit = ForumOptionShop::getEditShopByTid($_GET['tid']);}-->				
+			<div class="shopSelCont">								
+				<div id="shopTabsFirst">
+					<input type="hidden" name="formhash" id="formhash" value="{FORMHASH}" />
+					<input type="hidden" name="posttime" id="posttime" value="{TIMESTAMP}" />
+					<table class="applyList">
+						<tr>
+							<td class="titleShop"><span class="tit">店铺名称:</span></td>
+						</tr>
+						<tr>
+							<td><input type="text" class="inputTxtShort borderEmbellish" name="subject" id="subject" value="$edit['sName']"> <b class="redStarIco"></b></td>
+						</tr>
+						<tr>
+							<td class="titleShop"><span class="tit">店铺图片:</span></td>
+						</tr>
+						<tr>
+							<td><input type="file" name="upfile" id="upfile" class="upFile">
+								<span class="remarks">图片尺寸不小于300px*180px，最佳宽高比为5:3(支持jpg,jpeg,png)</span> <b class="redStarIco"></b></td>
+						</tr>
+						<tr>
+							<td class="titleShop"><span class="tit">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区:</span></td>
+						</tr>
+						<tr>
+							<td>
+								<select class="" name="province" id="province">
+									<!--{eval $regionData = ForumOptionShop::getRegionData();}-->									
+									<!--{if $regionData}-->									
+									<!--{loop $regionData $type}-->
+									<!--{if $type['upid'] == 0}-->									
+									<option value="{$type['catid']}" <!--{if $type['catid']==$edit['provinceid']}--> selected="selected" <!--{/if}--> >$type['name']</option>																		
+									<!--{/if}-->    
+									<!--{/loop}-->
+									<!--{/if}-->   
+								</select>
+								 <!--{eval $data = ForumOptionShop::getRegionData($edit['provinceid']);}--> 
+								<select class="" name="region" id="region">
+									<!--{if $data}-->  
+									<!--{loop $data $type}-->									
+									<option class="reg_{$type['upid']}" value="{$type['catid']}" <!--{if $type['catid']==$edit['regionid']}-->selected="selected"<!--{/if}-->>$type['name']</option>									
+									<!--{/loop}-->
+									<!--{/if}-->  
+								</select>
+                                
+                          		<b class="redStarIco"></b></td>
+						</tr>
+						<tr>
+							<td class="titleShop"><span class="tit">详细地址:</span></td>
+						</tr>
+						<tr>
+							<td><span id="xq"></span><input type="text" class="inputTxtMid borderEmbellish"  name="address" id="address" value="$edit['addr']">
+								<span class="remarks"></span>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td>
+							<br>
+							<span id="map" style="display: none;">
+							<div style="width:500px;height:320px;border:1px solid gray" id="container"></div>
+							<input type="hidden" value="" id="longitude" name="longitude">
+							<input type="hidden" value="" id="latitude" name="latitude">
+							</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="titleShop"><span class="tit">店铺类型:</span>
+								<input type="radio" name="shoptype" value="0" id="type2" class="ml10" <!--{if $edit['marketid']==0}-->checked<!--{/if}-->>
+								<label for="street">街边</label>
+								<input type="radio" name="shoptype" value="1" id="type1" class="" <!--{if $edit['marketid']}-->checked<!--{/if}-->>
+								<label for="market">商场</label> <b class="redStarIco"></b></td>
+						</tr>
+						<tr class="shoptype">
+							<td class="titleShop"><span class="tit">商场名称:</span>
+								<input type="text" class="inputTxtLong ml10 borderEmbellish" name="market" id="market" <!--{if $edit['marketid']}-->value="$edit['marketid']"<!--{/if}-->></td>
+						</tr>
+						<tr class="shoptype">
+							<td><div id="tp" class="marketSelBox"></div></td>
+						</tr>
+						<tr>
+							<td class="titleShop"><span class="tit">经营类型:</span>
+								<input type="radio" class="ml10" name="types" value="0" id="integrated" <!--{if $edit['sbrandid']==0}-->checked<!--{/if}-->>
+								<label for="comprehensive">综合</label>
+								<input type="radio" class="" name="types" value="1" id="stores" <!--{if $edit['sbrandid']}-->checked<!--{/if}-->>
+								<label for="monopoly">专卖</label> <b class="redStarIco"></b></td>
+						</tr>
+						<tr class="jingying">
+							<td class="titleShop"><span class="tit">主营品牌:</span>
+								<input type="text" class="inputTxtLong ml10 borderEmbellish" name="brand" id="brand" size="40" <!--{if $edit['sbrandid']}-->value="$edit['sbrandid']"<!--{/if}-->></td>
+						</tr>
+						<tr class="jingying">
+							<td><div class="marketSelBox" id="jy">
+							<!--{eval $sbrand = ForumOptionShop::getsbrand();}-->
+							<!--{if $sbrand}-->
+							<!--{eval $i=0;}--> 
+							<!--{loop $sbrand $sb}-->
+							<!--{if $i==5}-->
+							<!--{eval break;}--> 
+							<!--{/if}--> 
+							<span class="market">$sb['brand']</span>
+							<!--{eval $i++;}--> 
+							<!--{/loop}-->
+							<!--{/if}--> 
+							</div></td>
+						</tr>
+						<tr>
+							<td class="titleShop"><span class="tit">是否连锁:</span>
+								<input type="checkbox" class="ml10" name="chain" id="chain" value="1" <!--{if $edit['cbrandid']}-->checked<!--{/if}-->></td>
+						</tr>
+						<tr class="ischain">
+							<td class="titleShop"><span class="tit">连锁名称:</span>
+								<input type="text" class="inputTxtLong ml10 borderEmbellish" name="chainbrand" id="chainbrand" size="40" <!--{if $edit['cbrandid']}-->value="$edit['cbrandid']"<!--{/if}-->></td>
+						</tr>
+						<tr class="ischain">
+							<td>
+								<div class="marketSelBox" id="ischain">
+								<!--{eval $chain = ForumOptionShop::getchain();}-->
+								<!--{if $chain}-->
+								<!--{eval $i=0;}--> 
+								<!--{loop $chain $ch}-->
+								<!--{if $i==5}-->
+								<!--{eval break;}--> 
+								<!--{/if}--> 
+								<span class="market">$ch['cbrandid']</span>
+								<!--{eval $i++;}--> 
+								<!--{/loop}-->
+								<!--{/if}--> 
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="titleShop"><span class="tit">联系电话:</span>
+								<b id="dh" style="padding-left: 5px;"></b><input type="text" class="inputTxtShort ml10 borderEmbellish" name="link" id="link" size="30" value="$edit['link']">
+								<b class="redStarIco"></b></td>
+						</tr>
+						<tr>
+							<td class="titleShop"><span class="tit">店铺简介:</span> <b class="redStarIco"></b></td>
+						</tr>
+						<tr>
+							<td><textarea onkeyup="strLenCalc(this, 'checklen', 1000);" class="shopTextareaText borderEmbellish" name="message" id="message">{if $editor[value]==""}请填写店铺简介,字数不少于50个字<!--{else}-->$editor[value]<!--{/if}--></textarea></td>
+						</tr>
+						<tr>
+							<td class="titleShop"><input type="submit" name="postsubmit" id="postsubmit" class="submit" value=""></td>
+						</tr>
+					</table>					
+					<script type="text/javascript">							
+					;(function($){						
+						var parentId=$("#province").val();
+						var reg = "reg_"+parentId;
+							$("#region option").hide();
+							$("."+reg).show();
+							$("#region").show();									
+							<!--{if $edit['marketid']}-->
+							$(".shoptype").show();
+							<!--{else}-->
+							$(".shoptype").hide();
+							<!--{/if}-->				
+							<!--{if $edit['sbrandid']}-->
+							$(".jingying").show();
+							<!--{else}-->
+							$(".jingying").hide();
+							<!--{/if}-->							
+							<!--{if $edit['cbrandid']}-->
+							$(".ischain").show();
+							<!--{else}-->
+							$(".ischain").hide();
+							<!--{/if}-->							
+							var xxdq = $("#region option:selected").text();									
+								if(xxdq=='请选择'){
+										$("#xq").html('');
+									}else{
+										$("#xq").html(xxdq+'-');
+								}							
+								$('#dh').html("").hide();								
+								var reg=$("#region").val();
+								$.getJSON("/plugin.php?id=outshop:ajax_getmarket",{sreg:reg},function(json){
+									if(json!=0){
+										$('#dh').html(json+' -').show();									
+									}							
+								});							
+						//处理省份的的下拉框
+						$("#province").change(function(){ //当第一个下拉列表变动内容时第二个下拉列表将会显示
+							$("#type1").attr("checked",false);
+							$(".shoptype").hide();
+							$("#region option").hide();							
+							$("#market").val("");
+							$("#market").attr("disabled","true");							
+							var parentId=$("#province").val();
+							if(parentId==0){
+								$("#region").hide(); 
+							}else{
+								$.getJSON("/plugin.php?id=outshop:ajax_getmarket",{parentId:parentId},function(json){
+										var smallname = $("#region"); 
+										$("option",smallname).remove(); //清空原有的选项
+										$("#region").append("<option value='0' selected='selected'>请选择</option>");
+										$.each(json,function(index,array){ 			 
+											 var option = "<option value='"+array['catid']+"'>"+array['name']+"</option>"; 
+											 smallname.append(option);													
+										});
+										$('#region').show();
+								});									
+							}
+						});
+						//处理地区信息
+						$("#region").change(function(){
+							$("#type1").attr("checked",false);
+							$(".shoptype").hide();													
+							$("#market").val("");
+							var xxdq = $("#region option:selected").text();
+							if(xxdq=='请选择'){
+								$("#xq").html('');
+							}else{
+								$("#xq").html(xxdq+'-');
+							}
+							$('#dh').html("").hide();						
+							var reg=$("#region").val();
+							$.getJSON("/plugin.php?id=outshop:ajax_getmarket",{sreg:reg},function(json){
+								if(json!=0){
+									$('#dh').html(json+' -').show();									
+								}							
+							});		
+							$("#market").attr("disabled","true");	
+						});
+						//单选店铺类型					
+						$("#type1").change(function(){
+							var province = $("#province option:selected").val();
+							var region = $("#region option:selected").val();							
+							if(province=="0"){
+								showDialog("请选择地区！");
+								$("#type1").attr("checked",false);
+								return;
+							}
+							if(region=="0"){
+								showDialog("请把地区信息选择完整！");
+								$("#type1").attr("checked",false);
+								return;
+							}							
+							$.getJSON("/plugin.php?id=outshop:ajax_getmarket",{reg:region},function(json){
+								$("#tp").html("");
+								if(json){
+									$.each(json,function(index,array){									  
+									   var option = "<span class='market'>"+array['marketid']+"</span>";									   
+									   $("#tp").append(option); 						
+									}); 
+								}															
+							});								
+							$("#market").removeAttr("disabled").focus();							
+							$(".shoptype").show();							
+						});											
+						$("#type2").change(function(){
+							$("#market").val("");
+							$("#market").attr("disabled","true");
+							$(".shoptype").hide();
+						});						
+						$("#tp .market").live("click",function(){
+							var market = $(this).text();
+							$("#market").val('');
+							$("#market").val(market);
+						});					
+						//处理经营类型
+						$("#integrated").change(function(){
+							$("#brand").val("");
+							$("#brand").attr("disabled","true");
+							$(".jingying").hide();
+						});
+						$("#stores").change(function(){									
+							$("#brand").removeAttr("disabled");
+							$("#brand").focus();
+							$(".jingying").show();							
+						});
+						$("#jy .market").click(function(){
+							var brand = trim($(this).text());						
+							$("#brand").val('');
+							$("#brand").val(brand);
+						});								
+						//处理连锁复选框
+						$("#chain").click(function(){																		
+							if($("#chain").attr("checked")=="checked"){
+								$("#chainbrand").removeAttr("disabled");
+								$("#chainbrand").focus();
+								$(".ischain").show();
+							}else{
+								$("#chainbrand").val("");
+								$("#chainbrand").attr("disabled","true");
+								$(".ischain").hide();
+							}
+						});
+						$("#ischain .market").click(function(){
+							var chain = trim($(this).text());
+							$("#chainbrand").val('');
+							$("#chainbrand").val(chain);
+						});						
+						//提示信息
+						$(".borderEmbellish").focus(function(){
+							$(this).select();						
+						});						
+						})(jQuery);
+					</script> 		
+				</div>				
+			</div>		
+			<!--{/if}-->			
+			</form>						
+		</div>
+	</div>
+	<!-- bbsShopMain End --> 
+</div>
+<!-- wrapper End -->
+<script type="text/javascript">
+;(function($){
+	$("#shopSelMenu dd").click(function(){
+		$(this).addClass("selected1")
+				.siblings().removeClass("selected1");
+		var index=$("#shopSelMenu dd").index(this);
+		$("div.shopSelCont div.tab_lw").eq(index).show().siblings().hide();
+		
+	})
+})(jQuery);
+</script>
+<script type="text/javascript" src="template/8264/js/common.js"></script> 
+<!--{subtemplate common/footer_8264_new}-->
+

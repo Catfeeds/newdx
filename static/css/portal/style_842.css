@@ -1,0 +1,53 @@
+/* CSS Document */
+body { margin: 0 0 0 0; font-size: 12px; color: #333; font-family: ËÎÌå, Arial, Helvetica, sans-serif; }
+ul { list-style: none; margin: auto 0px; letter-spacing: 0; word-spacing: 0; padding: 0; }
+a { text-decoration: none; color: #333; font-size: 12px; }
+a:hover { text-decoration: underline; color: #ff6600; font-size: 12px; }
+form { padding: 0 0 0 0; margin: 0 0 0 0; }
+em { font-style: normal; }
+img { border: 0; }
+.clearfix:after { clear: both; content: " "; display: block; font-size: 0; height: 0; line-height: 0; visibility: hidden; width: 0; }
+/* top */
+.warpten { width: 980px; margin: 0 auto; }
+.st { width: 310px; float: left; margin: 0px 8px 0px 8px; display: inline; }
+.mmtitle { width: 980px; margin: auto; }
+.mmtitle h2 { font: bold 20px Î¢ÈíÑÅºÚ; margin: 0px; padding: 20px 0px 5px 8px; }
+.titSmall { font-size: 13px; padding: 0px 0px 10px 0px; display:block; }
+/* ËµÃ÷ */
+.sm { width: 980px; margin:10px auto 10px auto; border-bottom: #fff solid 1px; }
+.sm_n { position: relative; margin: auto; border-top: #fff solid 1px; border-bottom: #D9E0D5 solid 1px; line-height: 1.5; font-size: 13px; padding: 10px 0px 10px 10px; font-family: Î¢ÈíÑÅºÚ, Arial, Helvetica, sans-serif; }
+.baiduShare { float: left;}
+.sm_n p { width: 100%; }
+.sm_n .signUp { position: absolute; top:135px; right: 10px; width: 95px; height: auto; }
+/* µ¥ÌõÒ»¸ö */
+.mmone { width: 310px; border: #d6d6d6 solid 1px; box-shadow: 0px 0px 5px #CCC; background: #fff; margin: 10px 0px 0px 0px; border-radius: 5px; }
+.imgone { padding: 15px 0px 0px 0px; text-align: center; }
+.imgone img { width: 280px; }
+.imgname { width: 290px; height: 40px; overflow: hidden; text-align: left; line-height: 2; padding: 10px 10px 20px 10px; margin: auto; background: #fff; }
+.imgname a { font-size: 15px; font-family: Î¢ÈíÑÅºÚ, Arial, Helvetica, sans-serif; font-weight: bold; color: #2A6FBC; }
+.imgname h2 { }
+.imgname p { }
+
+.xh { width: 210px; padding:6px 50px 6px 50px; text-align: center; font-size: 12px; background: #F0F0F0; }
+
+.xh em { float: left; height: 23px; color: #fff; padding:6px 0px 0px 20px; color: #be921b; text-align: center; background: url(http://static.8264.com/static/images/moban/mryt/images/online_moderator.gif) no-repeat left 7px }
+.xh span { float: right; height: 23px; color: #fff; padding: 5px 0px 0px 20px; color: #2A6FBC; text-align: center; background: url(http://static.8264.com/static/images/moban/mryt/images/icon1.gif) no-repeat left 7px; }
+.pinglun_w { border-top: #D9E0D5 solid 1px; }
+.pinglun_n { border-top: #fff solid 1px; text-align: center; padding: 10px 0px; width: 290px; margin: auto; line-height: 1.9; text-align: left; padding: 5px 10px 5px 10px; color: #666; }
+.tou img { width: 32px; height: 32px; border: #ccc solid 1px; float: left; border: #ccc solid 1px; }
+.tou dd { float: right; margin: 0px; padding: 0; width: 250px; padding: 2px 0px 0px 0px; }
+.pinglun_n a { color: #2A6FBC; }
+.pinglun_n p { padding: 0px 0px 0px 0px; margin: 0px; }
+/* ¼ò½é */
+.intro { line-height: 1.8; border-top: 1px solid #D9E0D5; padding: 5px 10px; }
+/* ÓÑÇéÁ´½Ó */
+.yl { width: 980px; margin: 10px auto; }
+.ylcon { width: 980px; border-top: #D9E0D5 solid 1px; }
+.ylcon_nei { width: 980px; background: #F0F0F0; padding: 10px 0px 0px 0px; border-top: #fff solid 1px; }
+.ylcon_nei a { float: left; display: inline; white-space: nowrap; margin: 4px 5px 4px 10px; }
+/* ·ÖÒ³ Start */
+.listPageBox { }
+.listPageBox .pg { margin: 0 15px 10px; }
+.listPageBox .pg a, .listPageBox .pg strong { float: left; display: block; font-size: 15px; font-weight: 400; color: #999999; height: 24px; padding: 6px 7px 4px; margin-left: 5px; font-family: "Microsoft YaHei"; background:none; border:0; }
+.listPageBox .pg a:hover, .listPageBox .pg strong { border:0;border-bottom: 2px solid #00A6FC; color: #141414; text-decoration: none; background:none; }
+/*·ÖÒ³ End */

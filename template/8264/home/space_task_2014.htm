@@ -1,0 +1,20 @@
+<!--{template common/header_8264_new}-->
+<link href="http://static.8264.com/static/css/home/notice.css?{VERHASH}" rel="stylesheet" type="text/css">
+<link href="http://static.8264.com/static/css/common/bootstrap.min.css?{VERHASH}" rel="stylesheet" type="text/css">
+
+<div class="w980">
+	<div class="clear_b module user-setting-wrap"><!--去除任务展示对未登陆用户的控制-->
+		<!--{if !empty($_G['uid'])}--><!--{subtemplate home/space_left_2014}--><!--{/if}-->
+		<div <!--{if !empty($_G['uid'])}-->class="r_760"<!--{/if}-->>
+			<!--{if empty($do)}-->
+				<!--{subtemplate home/space_task_list}-->
+			<!--{elseif $do == 'view'}-->
+				<!--{subtemplate home/space_task_detail}-->
+			<!--{/if}-->
+			<div class="fheight"></div>
+		</div>
+	</div>
+</div>
+<!--{subtemplate home/space_footer_2014}-->
+
+<!--{subtemplate common/footer_8264_new}-->

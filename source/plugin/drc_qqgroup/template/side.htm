@@ -1,0 +1,52 @@
+<div class="sd">
+    <div class="bm">
+    	<div class="bm_h cl">
+			<h2>{lang drc_qqgroup:side_3}</h2>
+            </div>
+            <div class="bm_c">
+				<ul class="xl">
+			<li><a href="plugin.php?id=drc_qqgroup:main&mod=add" onclick="showWindow('add', this.href);return false;">{lang drc_qqgroup:side_4}</a></li>
+            </ul>
+            </div>
+	</div>	
+	
+	<div class="bm">
+    	<div class="bm_h cl">
+			<h2>{lang drc_qqgroup:side_2}</h2>
+            </div>
+            <div class="bm_c" style="overflow: hidden;">
+				<ul class="xl" style="line-height:25px; float:left; ">
+                <!--{loop $side_lists $side_list}-->
+			<li style="float:left; text-align: center; width: 45px; height: 20px; line-height: 20px; padding:1px 2px 1px 2px;"><a href="plugin.php?id=drc_qqgroup:main&qtid=$side_list[id]">$side_list[typename]</a></li>
+            <!--{/loop}-->
+            </ul>
+				<div style="clear:both;"></div>
+            </div>
+	</div>
+	
+	<div class="bm">
+    <div class="bm_h cl">
+		<h2>{lang drc_qqgroup:side_1}</h2>
+        </div>
+        <div class="bm_c">
+				<ul class="xl" style="line-height:25px;">
+			<li>$notice</li>
+        </ul>
+        </div>
+	</div>		
+	<!--{if in_array($_G['uid'], $admins)}-->	
+    <div class="bm">
+    	<div class="bm_h cl">
+			<h2>{lang drc_qqgroup:side_5}</h2>
+            </div>
+            <div class="bm_c">
+				<ul class="xl" style="line-height:25px;">
+                <li><a href="plugin.php?id=drc_qqgroup:main&mod=cpanel&action=typeadd" onclick="showWindow('typeadd', this.href);return false;">{lang drc_qqgroup:side_6}</a></li>
+			<li><a href="plugin.php?id=drc_qqgroup:main&mod=cpanel&action=type">{lang drc_qqgroup:side_7}</a></li>
+			<li><a href="plugin.php?id=drc_qqgroup:main&mod=cpanel&action=check">{lang drc_qqgroup:side_8}</a></li>
+			<li><a href="plugin.php?id=drc_qqgroup:main&mod=cpanel&action=qcp">{lang drc_qqgroup:side_9}</a></li>
+            </ul>
+            </div>
+	</div>
+    <!--{/if}-->
+	</div>

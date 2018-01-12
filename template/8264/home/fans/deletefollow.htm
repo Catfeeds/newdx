@@ -1,0 +1,24 @@
+<!--{template common/header_8264_new}-->
+<form id="deletefollowform_{$uid}" name="deletefollowform_{$uid}" method="post" autocomplete="off" action="home.php?mod=spacecp&ac=friend&op=ucignore&uid=$uid&is_uc=1" {if $_G[inajax]}onsubmit="ajaxpost(this.id, 'return_$_G[gp_handlekey]');"{/if}>		
+	<div class="popbox w450 textcenter">			
+		<div class="dhinfo">
+			<span>确认取消关注{$tospace[username]}吗?</span>
+			<em></em>
+		</div>
+		<div>
+			<button type="submit" name="deletefollowsubmit" value="true" class="button_cancel"><strong>{lang determine}</strong></button>
+			<!--{if $_G[inajax]}--><input class="button_confirm" onclick="hideWindow('$_G[gp_handlekey]');" value="取消" type="button"/><!--{/if}-->
+		</div>			
+	</div>	
+	<input type="hidden" name="referer" value="$_G[referer]" />
+	<input type="hidden" name="deletefollowsubmit" value="true" />
+	<input type="hidden" name="formhash" value="{FORMHASH}" />
+	<!--{if $_G[inajax]}--><input type="hidden" name="handlekey" value="$_G[gp_handlekey]" /><!--{/if}-->
+	<div id="return_$_G[gp_handlekey]" style="display:none;"></div>		
+</form>
+<script type="text/javascript">
+function succeedhandle_{$_G['gp_handlekey']}(url, msg, values) {
+	location.reload();
+}
+</script>
+<!--{template common/footer_8264_new}-->

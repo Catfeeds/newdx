@@ -1,0 +1,76 @@
+{subtemplate common/header}
+<style type="text/css">
+.tplw{margin-bottom:0px;}    
+.showeditmap{clear: both;height: 220px;margin: 0 auto;}
+.bz{cursor: pointer;display: inline-block;height: 20px;margin-right: 5px;overflow: hidden;color: #336699;}
+.add{float: left;margin-bottom: 5px;width: auto;}
+.sh{margin-bottom: 5px;float: left;clear: both;}
+.mark .zs{color: #999999;margin-top: 10px;text-align: right;}
+#edmap{height: 448px;}
+#edmap1{height: 448px;}
+
+.textarea_470_180{ width:470px; height:180px; }
+.input270_25{ width:270px; height:25px; line-height:25px;}
+.button85_25{ background:url(http://www.8264.com/source/plugin/outshop/css/../image/bg.png) 0 -232px no-repeat; border:0; width:100px; height:30px; color:#367ac3; font-weight:bold; cursor:pointer; display:block;}
+
+
+</style>
+
+<div class="tm_c" fwin="mods" style="width:500px;padding: 0 10px;">
+    <h3 class="flb"><em fwin="mods">举报不实内容</em>
+        <span><a title="关闭" onclick="hideWindow('jb')" class="flbc" href="javascript:;">关闭</a></span></h3>        
+        <div class="c">
+            <div class="tplw">	              
+              			
+            </div>
+			<div class="sh">标题：<input type="text" name="title" id="title" size="40" class="input270_25"/>&nbsp;&nbsp;</div>
+            <div class="showeditmap">
+                <input type="hidden" value="$_G['uid']" id="uid" name="uid">
+				<input type="hidden" value="$_G['username']" id="uname" name="uname">		
+                <div id="edmap">
+				内容：<textarea name="content" id="content" cols="" rows="" class="textarea_470_180"></textarea>
+				</div>				
+            </div>
+            <div class="mark">
+             <button type="button" id="search" class="button85_25 ">提交</button>
+            </div>            
+        </div>        
+</div>
+<script type="text/javascript">
+jQuery.noConflict();
+</script>
+<script type="text/javascript">
+;(function($){
+	$('#search').click(function(){    
+		var title = jQuery("#title").val();
+		var uid = jQuery("#uid").val();
+		var uname = jQuery("#uname").val();
+		var content = jQuery("#content").val();		
+		if(title==''){
+		    showDialog("请填写举报标题！","error");
+		    return false;
+		}
+		if(content==''){
+		    showDialog("请填写举报内容！","error");
+		    return false;
+		}		
+		var str_url = 'plugin.php?id=outshop:ajax_addjb&tid='+tid;
+		jQuery.ajax({           
+		    url: str_url,
+		    type: 'post',
+		    data:{title: title, uid: uid, uname: uname, content: content},
+		    success: function(msg){	
+			    if(msg=='success'){				
+				showDialog("您的举报信息已提交,我们会尽快处理，感谢您的支持！","notice");					
+				hideWindow('jb');
+			    }else{
+				showDialog("数据提交错误，请联系管理员！","notice");					
+				hideWindow('jb');
+			    }			   
+		    }
+		});         
+		return false;
+	})
+})(jQuery);
+</script>
+{subtemplate common/footer}

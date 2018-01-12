@@ -1,0 +1,37 @@
+<div>
+<!--{if $list}-->
+<ul>
+	<li style="font-weight:bold;float:left;">
+		<div class="tmp_100">模板名称</div>
+		<div class="tmp_100">模块名称</div>
+		<div class="tmp_100">模板类型</div>
+		<div class="tmp_200">模板文件</div>
+		<div class="tmp_200">创建时间</div>
+		<div class="tmp_100">当前版本</div>
+		<div class="tmp_200">最后更新时间</div>
+		<div class="tmp_150">操作</div>
+		<div class="clear:both;"></div>
+	</li>
+	<!--{loop $list $lt}-->
+	<li style="float:left;">
+		<div class="tmp_100">{$lt[name]}</div>
+		<div class="tmp_100">{$lt[modname]}</div>
+		<div class="tmp_100">{$lt[typename]}</div>
+		<div class="tmp_200">{$lt[template]}</div>
+		<div class="tmp_200">{$lt[createtime]}</div>
+		<div class="tmp_100 header blue">{$lt[version]}</div>
+		<div class="tmp_200">{$lt[lastupdate]}</div>
+		<div class="tmp_150">
+			<a class="blue header" href="/admin.php?ctl=templateadmin&act=editemplate&tmpid={$lt[tmpid]}" onclick="showWindow('edittemplate', this.href, 'get');return false;">[编辑]</a>&nbsp;
+			<a class="red header" href="/admin.php?ctl=templateadmin&act=deltemplate&tmpid={$lt[tmpid]}" onclick="cortaltemplate(this,'ajaxreturn');return false;">[删除]</a></div>
+		<div class="clear:both;"></div>
+	</li>
+	<!--{/loop}-->
+</ul>
+<!--{else}-->
+<p>暂时没有任何模板</p>
+<!--{/if}-->
+</div>
+<!--{if $tips}-->
+<script>showtips('{$tips}', '{$color}');</script>
+<!--{/if}-->

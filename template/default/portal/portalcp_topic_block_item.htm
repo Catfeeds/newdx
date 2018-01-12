@@ -1,0 +1,165 @@
+<!--{template common/header}-->
+	<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/portal/portal_portalcp.css?{VERHASH}" />
+<script type="text/javascript" src="http://static.8264.com/static/js/newswfobject.js?{VERHASH}"></script>
+<script type="text/javascript" src="http://static.8264.com/static/js/jquery-1.9.1.min.js?{VERHASH}"></script>
+<style type="text/css">
+.parentcat {}
+.cat { margin-left: 20px; }
+.lastchildcat, .childcat { margin-left: 40px; }
+</style>
+
+<div id="pt" class="bm cl">
+	<!--{subtemplate common/simplesearchform}-->
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> <em>&rsaquo;</em>
+		<a href="portal.php">{lang portal}</a> <em>&rsaquo;</em>
+		<a href="portal.php?mod=portalcp">{lang portal_manage}</a> <em>&rsaquo;</em>
+		{lang category_management}
+	</div>
+</div>
+
+<div id="ct" class="ct2_a wp cl">
+	<div class="mn">
+	<!--{if $op=='list'}-->
+		<h1 class="mt">模块内容</h1>[<a href="portal.php?mod=portalcp&ac=topic_block_item&op=add&topicid=$topicid&bid=$bid">添加</a>]
+		<div class="bm bw0">
+			<table class="dt">
+				<tr>
+					<th>条目</th>
+					<th width="80"></th>
+					<th width="120">{lang article_operation}</th>
+				</tr>
+				<!--{if $topic_block_item}-->
+				<!--{loop $topic_block_item $block_item}-->
+				<tr>
+					<td><div class="parentcat"><a href="$block_item[url]" target="_blank">$block_item[title]</a></div></td>
+					<td></td>
+					<td><a href="portal.php?mod=portalcp&ac=topic_block_item&op=edit&topicid=$topicid&bid=$block_item[bid]&itemid=$block_item[itemid]">编辑</a>
+					<a href="portal.php?mod=portalcp&ac=topic_block_item&op=del&topicid=$topicid&bid=$block_item[bid]&itemid=$block_item[itemid]" onclick="return confirm('确认删除？删除后不可恢复，慎重操作！');">删除</a></td>
+				</tr>
+				<!--{/loop}-->
+				<!--{else}-->
+				<tr>
+					<td colspan="3">暂无数据，请先<a href="portal.php?mod=portalcp&ac=topic_block_item&op=add&topicid=$topicid&bid=$bid">添加</a></td>
+				</tr>
+				<!--{/if}-->
+			</table>
+		</div>
+	<!--{elseif $op=='add'}-->
+	<div class="bm bw0">
+		<div id="block_selection">
+			<ul class="tb cl">
+				<li id="li_setting" class="a">模块内容</li>
+			</ul>
+			<form id="blockformsetting" name="blockformsetting" method="post" autocomplete="off" action="portal.php?mod=portalcp&amp;ac=topic_block_item&amp;op=add&amp;topicid=$topicid&amp;bid=$bid" enctype="multipart/form-data" onsubmit="return checkblockname(this);" class="fdiy">
+				<div class="c diywin">
+					<div id="block_setting">
+						<table class="tfm mbm">
+							<tr>
+								<th width="80">标题</th>
+								<td><input type="text" name="title" value="" class="px" /></td>
+							</tr>
+							<tr>
+								<th width="80">链接</th>
+								<td><input type="text" name="url" value="" class="px" /></td>
+							</tr>
+							<tr>
+								<th width="80">展示图</th>
+								<td>
+									<input type="file" name="newimg" />
+								</td>
+								</tr>
+							<tbody id="tbody_setting">
+								<tr class="vt">
+									<th>描述</th>
+									<td><textarea rows="4" name="description" cols="50" class="pt"></textarea></td>
+								</tr>
+							</tbody>
+							<tr>
+								<th width="80">显示日期</th>
+								<td><input type="text" name="showdate" value="" class="px" /></td>
+							</tr>
+							<tr>
+								<th width="80">显示顺序</th>
+								<td><input type="text" name="displayorder" value="0" class="px" /> 越小越靠前</td>
+							</tr>
+							<tbody id="tbody_thumbsetting"></tbody>
+						</table>
+					</div>
+				</div>
+				<div class="o pns">
+					<input type="hidden" name="addsubmit" value="true" />
+					<input type="hidden" name="bid" value="$bid" />
+					<input type="hidden" name="topicid" value="$topicid" />
+					<input type="hidden" name="formhash" value="{FORMHASH}" />
+					<button type="submit" class="pn pnc"><strong>确定</strong></button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!--{elseif $op='edit'}-->
+	<div class="bm bw0">
+		<div id="block_selection">
+			<ul class="tb cl">
+				<li id="li_setting" class="a">模块内容</li>
+			</ul>
+			<form id="blockformsetting" name="blockformsetting" method="post" autocomplete="off" action="portal.php?mod=portalcp&amp;ac=topic_block_item&amp;op=edit&amp;topicid=$topicid&amp;bid=$bid" enctype="multipart/form-data" onsubmit="return checkblockname(this);" class="fdiy">
+				<div class="c diywin">
+					<div id="block_setting">
+						<table class="tfm mbm">
+							<tr>
+								<th width="80">标题</th>
+								<td><input type="text" name="title" value="$block_item['title']" class="px" /></td>
+							</tr>
+							<tr>
+								<th width="80">链接</th>
+								<td><input type="text" name="url" value="$block_item['url']" class="px" /></td>
+							</tr>
+							<tr>
+								<th width="80">展示图</th>
+								<td>
+									<input type="file" name="newimg" />
+									{if $block_item['showimage']}
+									<input type="hidden" name="oldimg" value="$block_item['showimg']" />
+									<input type="hidden" name="dir" value="$block_item['dir']" />
+									<input type="hidden" name="serverid" value="$block_item['serverid']" />
+									<span><img src="$block_item['showimage']"></span>
+									{/if}
+								</td>
+							</tr>
+							<tbody id="tbody_setting">
+								<tr class="vt">
+									<th>描述</th>
+									<td><textarea rows="4" name="description" cols="50" class="pt">$block_item['description']</textarea></td>
+								</tr>
+							</tbody>
+							<tr>
+								<th width="80">显示日期</th>
+								<td><input type="text" name="showdate" value="$block_item['showdate']" class="px" /></td>
+							</tr>
+							<tr>
+								<th width="80">显示顺序</th>
+								<td><input type="text" name="displayorder" value="$block_item['displayorder']" class="px" /> 越小越靠前</td>
+							</tr>
+							<tbody id="tbody_thumbsetting"></tbody>
+						</table>
+					</div>
+				</div>
+				<div class="o pns">
+					<input type="hidden" name="editsubmit" value="true" />
+					<input type="hidden" name="bid" value="$bid" />
+					<input type="hidden" name="topicid" value="$topicid" />
+					<input type="hidden" name="itemid" value="$block_item['itemid']" />
+					<input type="hidden" name="formhash" value="{FORMHASH}" />
+					<button type="submit" class="pn pnc"><strong>确定</strong></button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!--{/if}-->
+	</div>
+	<div class="appl">
+		<!--{subtemplate portal/portalcp_nav}-->
+	</div>
+</div>
+<!--{template common/footer}-->

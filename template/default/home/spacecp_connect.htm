@@ -1,0 +1,111 @@
+<!--{template common/header}-->
+<link href="http://static.8264.com/static/css/home/home_spacecp.css?{VERHASH}" rel="stylesheet" type="text/css">
+<!--{subtemplate home/spacecp_header}-->
+			<!--{if $_G['member']['conisbind']}-->
+				<p class="pbm bbda xi1">{lang connect_config_bindinfo}</p>
+				<form action="connect.php?mod=config" method="post" autocomplete="off" class="mbw bbda">
+					<input type="hidden" name="formhash" value="{FORMHASH}">
+					<table cellspacing="0" cellpadding="0" class="tfm">
+						<tr>
+							<th>{lang connect_config_bind_setting}</th>
+							<td>
+								<label for="ispublishfeed"><input type="checkbox" id="ispublishfeed" name="ispublishfeed" class="pc" value="1" {if $_G[member][conispublishfeed]}checked="checked"{/if} /> {lang connect_config_default_pulish_feed_title}</label>
+							</td>
+						</tr>
+						<tr>
+							<th></th>
+							<td>
+								<label for="ispublisht"><input type="checkbox" id="ispublisht" name="ispublisht" class="pc" value="1" {if $_G[member][conispublisht]}checked="checked"{/if} /> {lang connect_config_default_pulish_t_title}</label>
+							</td>
+						</tr>
+						<tr>
+							<th></th>
+							<td>
+								<input type="hidden" name="op" value="config"/>
+								<button type="submit" name="connectsubmit" value="yes" class="pn pnp"><strong>{lang connect_config_save}</strong></button>
+							</td>
+						</tr>
+					</table>
+				</form>
+
+				<!--{if $_G[member][conisregister]}--><h2><a href="home.php?mod=spacecp&ac=profile&op=password" class="xi2">{lang connect_config_newpassword}</a></h2><br /><!--{/if}-->
+				
+				<h2><a href="javascript:;" onclick="display('unbind');{if $_G[member][conisregister]}$('newpassword1').focus();{/if}" class="xi2">{lang connect_config_unbind}</a></h2>
+
+				<!--{if !$_G['cookie']['client_token']}-->
+					<div id="unbind" class="ptm pbm" style="display:none;">
+						<p>{lang connect_config_unbind_desc4}</p>
+						<p>{lang connect_config_unbind_desc5}</p>
+					</div>
+				<!--{elseif $_G[member][conisregister]}-->
+					<div id="unbind" style="display:none;">
+						<form action="connect.php?mod=config" method="post" autocomplete="off">
+							<input type="hidden" name="formhash" value="{FORMHASH}">
+							<div class="ptm pbm">
+								<p>{lang connect_config_unbind_desc1}</p>
+								<p>{lang connect_config_unbind_desc2}</p>
+							</div>
+							<div class="password">
+								<table cellspacing="0" cellpadding="0" class="tfm">
+									<tr>
+										<th>{lang new_password}</th>
+										<td><input type="password" size="25" name="newpassword1" id="newpassword1" class="px" value="" onkeypress="detectCapsLock(event, this, 'px')" /><em class="d">{lang connect_config_password_comment}</em></td>
+									</tr>
+									<tr>
+										<th>{lang new_password_confirm}</th>
+										<td><input type="password" size="25" name="newpassword2" id="newpassword2" class="px" value="" onkeypress="detectCapsLock(event, this, 'px')" /></td>
+									</tr>
+									<tr>
+										<th></th>
+										<td>
+											<input type="hidden" name="op" value="unbind"/>
+											<button type="submit" name="connectsubmit" value="yes" class="pn pnp"><strong>{lang connect_config_bind_confirm}</strong></button>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</form>
+					</div>
+				<!--{else}-->
+					<div id="unbind" style="display:none;">
+						<form action="connect.php?mod=config" method="post" autocomplete="off">
+							<input type="hidden" name="formhash" value="{FORMHASH}">
+							<p class="mtm mbm">
+								{lang connect_config_unbind_desc3}
+							</p>
+							<div>
+								<input type="hidden" name="op" value="unbind"/>
+								<button type="submit" name="connectsubmit" value="yes" class="pn pnp"><strong>{lang connect_config_bind_confirm}</strong></button>
+							</div>
+						</form>
+					</div>
+				<!--{/if}-->
+
+			<!--{else}-->
+				<hr class="da" style="margin-left: 0; margin-right: 0;" />
+				<div class="mtw bm2 cl">
+					<div class="bm2_b bw0 hm" style="padding-top: 70px;">
+						<a href="{$_G['connect']['loginbind_url']}"><img src="http://static.8264.com/static/image/common/qq_bind.gif" /></a>
+						<p class="mtn xg1">{lang connect_config_bind}</p>
+					</div>
+					<div class="bm2_b bm2_b_y bw0">
+						<dl class="xld">
+							<h2 class="xi1 xs2">{lang connect_config_title}</h2>
+							<dt>{lang connect_config_desc_title1}</dt>
+							<dd class="xg1">{lang connect_config_desc_content1}</dd>
+							<dt>{lang connect_config_desc_title2}</dt>
+							<dd class="xg1">{lang connect_config_desc_content2}</dd>
+							<dt>{lang connect_config_desc_title3}</dt>
+							<dd class="xg1">{lang connect_config_desc_content3}</dd>
+						</dl>
+					</div>
+				</div>
+			<!--{/if}-->
+
+			</div>
+		</div>
+		<div class="appl">
+			<!--{subtemplate home/spacecp_footer}-->
+		</div>
+	</div>
+<!--{template common/footer}-->

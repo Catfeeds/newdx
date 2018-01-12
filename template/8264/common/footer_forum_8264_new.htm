@@ -1,0 +1,45 @@
+<div class="clearfix"></div>
+<div class="footer">
+	<div class="layout" style="padding: 26px 0px 26px 0px; position:relative;">
+		<div class="topHill">顶部小山</div>
+		<!-- 精选 -->
+		<div class="choiceness">
+				<!--{block/6905}-->
+		</div>
+	</div>
+
+<!--{if empty($gid) && empty($_G['fid']) && ($_G['cache']['forumlinks']['forum']['index'][0] || $_G['cache']['forumlinks']['forum']['index'][1] || $_G['cache']['forumlinks']['forum']['index'][2])}-->
+<div class="friendLink">
+	<div class="layout">
+		<ul>
+		<!--{if $_G['cache']['forumlinks']['forum']['index'][0]}-->
+		$_G['cache']['forumlinks']['forum']['index'][0]
+		<!--{/if}-->
+		<!--{if $_G['cache']['forumlinks']['forum']['index'][1]}-->
+		$_G['cache']['forumlinks']['forum']['index'][1]
+		<!--{/if}-->
+		<!--{if $_G['cache']['forumlinks']['forum']['index'][2]}-->
+		$_G['cache']['forumlinks']['forum']['index'][2]
+		<!--{/if}-->
+		</ul>
+	</div>
+</div>
+<!--{/if}-->
+<!--{if $_G['fid'] && ($_G['cache']['forumlinks']['forum'][$_G['fid']][0] || $_G['cache']['forumlinks']['forum'][$_G['fid']][1] || $_G['cache']['forumlinks']['forum'][$_G['fid']][2])}-->
+<div class="friendLink">
+	<div class="layout">
+		<ul>
+		<!--{if $_G['cache']['forumlinks']['forum'][$_G['fid']][0]}-->
+		$_G['cache']['forumlinks']['forum'][$_G['fid']][0]
+		<!--{/if}-->
+		<!--{if $_G['cache']['forumlinks']['forum'][$_G['fid']][1]}-->
+		$_G['cache']['forumlinks']['forum'][$_G['fid']][1]
+		<!--{/if}-->
+		<!--{if $_G['cache']['forumlinks']['forum'][$_G['fid']][2]}-->
+		$_G['cache']['forumlinks']['forum'][$_G['fid']][2]
+		<!--{/if}-->
+		</ul>
+	</div>
+</div>
+<!--{/if}-->
+<!--{subtemplate common/footer_8264_new}-->

@@ -1,0 +1,43 @@
+/* CSS Document */
+.clear_b:after{content: ""; display: block; clear: both; visibility: hidden;}
+.clear_b{ zoom: 1;}
+a:hover{ text-decoration:none;}
+.header .headerR{ top:10px;}
+.warpten{ width:980px; margin:0 auto;}
+.mt15{ margin-top:15px;}
+.bignewsbox{ position:relative; width:662px; height:340px; overflow:hidden; float:left;}
+.bignews{ width:662px; height:340px; overflow:hidden;}
+.bignewsimg{ width:662px; height:340px; overflow:hidden;}
+.bignewsimg img{ width:662px; height:340px;}
+.shuzi{ position:absolute; right:0px; top:325px; left:0px; font-size:0px; text-align:center;}
+.shuzi span{ display:inline-block; width:35px; height:4px; background:#fff; margin:0px 2px; cursor:pointer;}
+.shuzi span.tsshuzi{ background:#1e6d9b;}
+.hotact{ width:296px; height:338px; border:#eaeff9 solid 1px; float:right;}
+.hotacttitle{ height:34px; font-size:16px; color:#8da1ad; padding:24px 0px 0px 16px;}
+.hotactlist{ padding:0px 0px 0px 20px;}
+.hotactlist li{ background:url(http://static.8264.com/static/images/portal/actplat/hoticon.jpg) left center no-repeat; height:30px; line-height:30px; overflow:hidden;}
+.hotactlist li a{ font-size:14px; color:#323232; padding:0px 0px 0px 15px;}
+.hotactlist li a:hover{ text-decoration:none;}
+.fbact{ width:260px; height:60px; line-height:60px; background: url(http://static.8264.com/static/images/portal/actplat/fbicon.png) 73px 23px no-repeat #43a6df; border-bottom:#3697cf solid 4px; border-radius:3px; color:#fff; font-size:18px; display:inline-block; text-indent:103px; margin:12px 0px 0px 20px;}
+.adbp{ color:#43a6df; font-size:14px; text-align:center; padding:14px 0px 0px 0px;}
+.actlisttw{ width:980px; margin:0 auto;}
+.actlistone{ border:#eaeff9 solid 1px; }
+.actlist_l{ float:left; width:640px; padding:20px 20px 20px 20px;}
+.actlist_l p{ font-size:14px; color:#666; padding:8px 0px 0px 0px; line-height:1.7; overflow:hidden; height:48px;}
+.actlist_link{ font-size:22px; color:#323232; display:block; overflow:hidden; height:33px;}
+.simglist{ overflow:hidden; height:112px; padding:18px 0px 0px 0px; font-size:0px;}
+.simglist img{ width:150px; height:112px; margin:0px 10px 0px 0px;}
+.actlist_r{ float:right; width:298px; padding:44px 0px 0px 0px; background:#f8fafe; height:224px;}
+.timelist{ height:24px; line-height:24px; color:#666666; font-size:12px; border:#dbe4f5 dashed 1px; border-radius:20px; margin:0px 53px 9px 53px; padding:6px 10px;}
+.timelist i{ margin-right:9px;}
+.ksicon{ width:24px; height:24px; background:url(http://static.8264.com/static/images/portal/actplat/ksicon.png) left top no-repeat; float:left;}
+.endicon{ width:24px; height:24px; background:url(http://static.8264.com/static/images/portal/actplat/endicon.png) left top no-repeat; float:left;}
+.gongicon{ width:24px; height:24px; background:url(http://static.8264.com/static/images/portal/actplat/gongicon.png) left top no-repeat; float:left;}
+.addcj{ height:42px; line-height:42px; color:#43a6df; font-size:14px; border:#43a6df solid 1px; border-radius:20px; margin:0px 53px 9px 53px; display:block; background:url(http://static.8264.com/static/images/portal/actplat/addcj.png) 52px 14px no-repeat; text-indent:75px;}
+.pgbox{ width:980px; margin:29px auto 50px auto; }
+.pg {}
+.pg a,
+.pg strong { float: left; display: block; font-size: 15px; font-weight: 400; color: #999999; height: 24px; padding: 6px 7px 4px; margin-left: 5px; font-family: "Microsoft YaHei"; background: none; border: 0; }
+.pg a:hover,
+.pg strong { border: 0; border-bottom: 2px solid #00A6FC; color: #141414; text-decoration: none; background: none; }
+.pg a.nxt { background: none; padding-right:0px; padding-left:6px; padding-top:6px;}

@@ -1,0 +1,37 @@
+<?php if(!defined('IN_DISCUZ')) exit('Access Denied'); ?>
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>JEEP 为探险而生</title>
+</head>
+
+<body>
+<style>
+body { margin:0 0 0 0; font-size:12px; color:#585858; font-family: "Microsoft YaHei",Tahoma,Helvetica,SimSun,sans-serif; background:#fffefd; line-height:1.5;}
+img{ border:0;}
+.con1{ background:url(http://static.8264.com/oldcms/moban/zt/201609jeep/images/con1.jpg) top center no-repeat; height:727px;}
+.con2{ background:url(http://static.8264.com/oldcms/moban/zt/201609jeep/images/con2.jpg) top center no-repeat; height:393px;}
+.con3{ background:url(http://static.8264.com/oldcms/moban/zt/201609jeep/images/con3.jpg) top center no-repeat; height:1350px;}
+.con4{ background:url(http://static.8264.com/oldcms/moban/zt/201609jeep/images/con4.jpg) top center no-repeat; height:573px;}
+.con5{ background:url(http://static.8264.com/oldcms/moban/zt/201609jeep/images/con5.jpg) top center no-repeat; height:591px;}
+.con6{ background:url(http://static.8264.com/oldcms/moban/zt/201609jeep/images/con6.jpg) top center no-repeat; height:491px;}
+.con7{ background:url(http://static.8264.com/oldcms/moban/zt/201609jeep/images/con7.jpg) top center no-repeat; height:427px;}
+.con8{ background:url(http://static.8264.com/oldcms/moban/zt/201609jeep/images/con8.jpg) top center no-repeat; height:541px;}
+.con9{ background:url(http://static.8264.com/oldcms/moban/zt/201609jeep/images/con9.jpg) top center no-repeat; height:577px;}
+.con10{ background:url(http://static.8264.com/oldcms/moban/zt/201609jeep/images/con10.jpg) top center no-repeat; height:682px;}
+.con11{ background:url(http://static.8264.com/oldcms/moban/zt/201609jeep/images/con11.jpg) top center no-repeat; height:866px;}
+</style>
+<div class="con1"></div>
+<div class="con2"></div>
+<div class="con3"></div>
+<div class="con4"></div>
+<div class="con5"></div>
+<div class="con6"></div>
+<div class="con7"></div>
+<div class="con8"></div>
+<div class="con9"></div>
+<div class="con10"></div>
+<div class="con11"></div>
+</body>
+</html>

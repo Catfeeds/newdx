@@ -1,0 +1,41 @@
+<div class="post-content article-info">
+	<div class="hd">
+		<div class="list-tit rate_$v[tid]">
+			<span class="icon-c post-icon">Ìû×Ó</span>
+			<a href="forum.php?mod=viewthread&tid=$v[tid]" class="c-tx" title="{$v[subject]}" target="_blank">
+				{echo cutstr($v[subject], 64, '...')}
+			</a>
+			<span class="post-cate" title="$forums[$v[fid]][name]">$forums[$v[fid]][name]</span>
+			{if $v['stamp'] == 0 && $v['rate'] > 0}<span class="icon-m icon-coin-m" title="¼Ó±Ò"></span>{/if}
+		</div>
+	</div>
+	<div class="bd">
+		<div class="txt-details-info" {if $v[message][message]}style="margin-top:10px;"{/if}>
+			{if $v[message][message]}
+			<p {if $v[message][imgList]}style="line-height:1.8;margin-bottom:5px;"{/if}>{$v[message][message]}</p>
+			{/if}
+			{if $v[message][imgList]}
+			<p style="height:90px;" class="realimgContainer">
+			{loop $v[message][imgList] $src}
+			<img src="{$src}" alt="" style="width:auto;height:auto;display:none;" class="realimg">
+			{/loop}
+			</p>
+			{/if}
+		</div>
+	</div>
+	<div class="ft">
+		<div class="list-op-bar">
+			<span class="list-op-item">
+				<i class="icon-m icon-view-m"></i>
+				<em class="views_$v[tid]">{$v[views]}</em>
+			</span>
+			<span class="list-op-item">
+				<i class="icon-m icon-comment-m"></i>
+				<em class="replies_$v[tid]">{$v[replies]}</em>
+			</span>
+			<span class="list-op-item list-op-item-time">
+				<em>{eval echo date('Y-m-d', $v[dateline])}</em>
+			</span>
+		</div>
+	</div>
+</div>

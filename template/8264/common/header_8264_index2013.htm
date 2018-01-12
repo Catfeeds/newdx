@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset={CHARSET}" />
+	<meta property="qc:admins" content="4625612577602646375" />
+	<title>
+		<!--{if !empty($topic['title'])}-->
+		$topic['title']
+		<!--{/if}-->
+		<!--{if !empty($navtitle)}-->
+		$navtitle -
+		<!--{/if}-->
+		<!--{if $_G['setting']['bbname']}-->
+		$_G['setting']['bbname']
+		<!--{/if}-->
+	</title> 
+	<meta name="keywords" content="{if !empty($metakeywords)}{echo htmlspecialchars($metakeywords)}{/if}" />
+	<meta name="description" content="{if !empty($metadescription)}{echo htmlspecialchars($metadescription)} {/if},$_G['setting']['bbname']" />
+	<meta name="apple-itunes-app" content="app-id=492167976">
+	<meta name="baidu-site-verification" content="obcBt8jtOX" />
+	<link href="http://www.8264.com/template/8264/css/common/reset.css" rel="stylesheet" type="text/css" />
+	<base href="$_G['siteurl']" />
+	<!--{csstemplate}-->
+	<script type="text/javascript">
+	var STYLEID = '{STYLEID}',
+		STATICURL = '{STATICURL}',
+		IMGDIR = '{IMGDIR}',
+		VERHASH = '{VERHASH}',
+		charset = '{CHARSET}',
+		discuz_uid = '$_G[uid]',
+		cookiepre = '{$_G[config][cookie][cookiepre]}',
+		cookiedomain = '{$_G[config][cookie][cookiedomain]}',
+		cookiepath = '{$_G[config][cookie][cookiepath]}',
+		showusercard = '{$_G[setting][showusercard]}',
+		attackevasive = '{$_G[config][security][attackevasive]}',
+		disallowfloat = '{$_G[setting][disallowfloat]}',
+		creditnotice = '<!--{if $_G['
+		setting ']['
+		creditnotice ']}-->$_G['
+		setting ']['
+		creditnames ']<!--{/if}-->', 
+		defaultstyle = '$_G[style][defaultextstyle]', 
+		REPORTURL = '$_G[currenturl_encode]', 
+		SITEURL = '$_G[siteurl]';
+	</script>
+	<!--{if $_GET[diy] == 'yes' && ($_G[mod] == 'topic' || $_G[group][allowdiy]) && !empty($_G['style']['tplfile'])}-->
+	<link rel="stylesheet" type="text/css" href="data/cache/style_{STYLEID}_css_diy.css?{VERHASH}" />
+	<!--{/if}-->
+	<link href="http://www.8264.com/template/8264/css/common/new_common.css" rel="stylesheet" type="text/css" />
+	<link href="http://www.8264.com/template/8264/css/common/index_2013.css" rel="stylesheet" type="text/css" />
+	<!--[if IE 6]>
+	<script src="http://www.8264.com/template/8264/js/DD_belatedPNG_0.0.8a.js"></script>
+	<script src="http://www.8264.com/template/8264/js/DD_belatedPNG_css.js"></script>
+	<![endif]-->	
+    <script type="text/javascript" src="static/js/jquery-1.6.1.min.js"></script>
+</head>
+<body id="nv_{$_G[basescript]}" class="pg_{CURMODULE}" onkeydown="if(event.keyCode==27) return false;">
+	<!--{if ($_G[mod]!='topic' && $_G[group][allowdiy] && !empty($_G['style']['tplfile'])) || (!empty($_G['style']['tplfile']) && $_G[mod]=='topic' && (($_G['group']['allowaddtopic'] && $topic[uid]==$_G[uid]) || $_G[group][allowmanagetopic]))}-->
+	<a id="diy-tg" href="javascript:openDiy();" title="{lang open_diy}">
+		<img src="http://static.8264.com/static/image/diy/panel-toggle.png" alt="DIY" />
+	</a>
+	<!--{/if}-->
+	<div id="append_parent"></div>
+	<div id="ajaxwaitid"></div>
+	<!--{if $_GET['diy'] == 'yes' && (CURMODULE == 'topic' || $_G[group][allowdiy]) && !empty($_G['style']['tplfile'])}-->
+	<!--{template common/header_diy}-->
+	<!--{/if}-->
+	<!--{if empty($topic) || $topic[useheader]}-->
+	<!--{ad/headerbanner/wp a_h}-->
+	<!--{hook/global_header}-->
+	<!--{/if}-->

@@ -1,0 +1,66 @@
+{subtemplate common/header}
+<div class="tm_c" fwin="mods" style="width:250px;">
+   <h3 class="flb"><em fwin="mods">选择了一条装备记录</em>
+			<span><a title="关闭" onclick="hideWindow('rankpanel')" class="flbc" href="javascript:;">关闭</a></span></h3>        
+			<form onsubmit="return false;" action="" autocomplete="off" method="post" fwin="mods" id="product_select_form">
+			<div class="c">
+				<div class="tplw">					   
+					<ul style="margin-top: 3px;">						   
+					   <li style="border-bottom: 1px solid #CDCDCD;">该装备当前分值是：<span id="fz">$pro['rank']</span></li>			
+					</ul>
+					<br />
+					<label style="vertical-align:top;">您可以在当前分值基础上</label>														
+					<br />
+					<select name="oper" class="ps"><option value="+">增加</option><option value="-">减少</option>
+					</select>	
+					<input id="zbrank" class="px" size="8" name="zbrank" style="margin-top: 3px;height: 17px;"/> 分值 <a id="record" onclick="getRecord();" style="float: right; margin-right: 15px; margin-top: 7px;cursor: pointer;" title="查看操作记录">+</a><br>
+					<span id="tip" style="display: none;color: red;"></span>
+					<div id="oprecord" style="width: 228px;margin-top: 5px;margin-bottom: 3px;display: none;">
+					 <table>
+						<tr><td>操作者</td><td>时间</td><td>操作</td><td>分值</td></tr>
+						<tbody>
+						   <!--{loop $record $rd}-->
+						   <tr>
+						   <td>$rd['username']</td><td>$rd['dateline']</td><td>$rd['action']</td><td>$rd['score']</td>
+						   </tr>
+						   <!--{/loop}-->
+						</tbody>
+					 </table>					 
+					</div>
+				</div>					
+			</div>			
+			<p class="o pns" style="text-align:right;">
+			<button type="button" value="提交" class="pn pnc" name="modsubmit" fwin="mods" style="margin:0;" onclick="javascript:submit_product_select_form();return false;"><span>提交</span></button>
+			</p>
+		   </form>
+		   <script type="text/javascript">
+	        function getRecord(){
+			   jQuery('#oprecord').toggle(1000);
+			}
+			function submit_product_select_form() {			   
+			   var zb = jQuery('#zbrank').val();
+			   if(zb==""){
+				  jQuery('#tip').html("分值不能为空！").show();
+				  return false;
+			   }else if(isNaN(zb)||zb < 0){
+				  jQuery('#tip').html("分值必须为数字且不小于零！").show();
+				  return false;
+			   }				   
+			   params = jQuery('#product_select_form').serialize();		
+			   jQuery.ajax({				
+				   type: 'post',
+				   url: '/plugin.php?id=produce:ajax_updaterank&tid={$tid}&uid={$uid}',
+				   data: params,
+				   success: function(html) {																											
+					   if(html=='success'){
+						  showDialog('更改成功');
+						  location.reload();
+					   }else{
+						  showDialog('更改失败');
+					   }
+					}
+			   });
+		   }
+		  </script>
+</div>
+{subtemplate common/footer}

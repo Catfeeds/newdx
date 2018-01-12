@@ -1,0 +1,59 @@
+<!--{template common/header2014}-->
+<!--[name]攻略下载模版[/name]-->
+<link href="template/8264/css/channel/style_881.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+.list_boxBtn{position:relative}
+.list_boxBtn .code-content{position:absolute;padding:12px 12px 8px;width:118px;background-color:#4e5b64;display:none;bottom:52px;left:50%;margin-left:-74px;z-index:999}
+.list_boxBtn .code-content:before{position:absolute;border-left:6px solid transparent;border-right:6px solid transparent;border-top:6px solid #4e5b64;content:'\20';bottom:-6px;left:50%;margin-left:-3px}
+.list_boxBtn .code-content p{font-size:12px;color:#fff;margin-top:6px;line-height:18px;text-align:center}
+</style>
+<style id="diy_style" type="text/css"></style>
+<div class="wap_960" style="color: #585858; font-size: 12px; padding:16px 0px 4px 0px; display:none;">徒步线路攻略招撰稿人，联系QQ：616690627</div>
+<div class="wap_960" style="padding:5px 0px 20px 0px;">
+	<div class="mian_list clearfix">
+		<!--//循环开始//-->
+		<!--{loop $array $item}-->
+		<div class="list_box">
+			<div class="list_boxImg">
+				<a href="$item['url']" target="_blank">
+					<img src="$item['pic']" />
+				</a>
+			</div>
+			<div class="list_boxTxt">
+				8264户外线路推荐之
+				<a href="$item['url']" target="_blank">$item['title']</a>
+			</div>
+			<div class="list_boxBtn">
+				<a href="$item['url']" target="_blank"></a>
+				<div class="code-content">
+	                <img src="http://static.8264.com/aboutus/images/code3.jpg" alt="" width="118">
+	                <p>微信扫一扫，关注8264公众号</p>
+	            </div>
+			</div>
+			<div class="list_boxShu">
+				<span>$item['viewnum']</span>
+				人访问
+				<span style="margin-left:10px;">$item['downnum']</span>
+				人下载
+			</div>
+		</div>
+		<!--{/loop}-->
+		<!--//循环结束//-->
+	</div>
+	<!--//分页//-->
+	{eval $count = DB::result_first("SELECT COUNT(*) FROM ".DB::table('portal_article_title')." WHERE catid IN (881) AND pic<>''");}
+	{eval $ppp = 100;}	{eval $multi = multi($count, $ppp, $page, 'portal.php?mod=list&catid=881');}
+	<!--{if $multi}-->
+	<div class="listPageBox clearfix" style="display:none">{$multi}</div>
+	<!--{/if}-->
+</div>
+<script type="text/javascript">
+	jQuery(".list_boxBtn").hover(function() {
+        jQuery(".code-content", this).show();
+    }, function() {
+        jQuery(".code-content", this).hide();
+    });
+</script>
+<!--{subtemplate common/float_guide}-->
+<!--{subtemplate common/ewm_l}-->
+<!--{subtemplate common/footer_8264_new}-->

@@ -1,0 +1,201 @@
+body {
+      background-color : #E5E5E5; font-family: Tahoma,MS Shell Dlg,??; font-size : 12px; SCROLLBAR-BASE-COLOR:  #E5E5E5; SCROLLBAR-ARROW-COLOR: #FFFFFF;
+}
+
+
+
+a:link,a:visited {
+        text-decoration: none; color : #000000;
+}
+a:active {
+        COLOR: #FF0000;
+}
+
+A:hover {
+        COLOR: #FF0000; text-decoration: underline;
+}
+
+#navigate {
+	FLOAT: left; WIDTH: 632px; HEIGHT: 30px
+}
+#navigate UL {
+	CLEAR: left; PADDING-RIGHT: 0px; DISPLAY: inline; PADDING-LEFT: 0px; FLOAT: right; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none; TEXT-ALIGN: center
+}
+#navigate UL LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 90px; LINE-HEIGHT: 30px; PADDING-TOP: 0px; TEXT-ALIGN: center
+}
+#navigate LI A {
+	PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 100%; COLOR: #000; PADDING-TOP: 0px; TEXT-DECORATION: none
+}
+
+#cat a:link,#cat a:active,#cat a:visited {
+        text-decoration: none; color : #FFFFFF;
+}
+
+#cat a:hover {
+        COLOR: #FF9900;
+}
+
+td {
+        font-family : Tahoma,MS Shell Dlg,??; font-size :12px;
+}
+
+input,textarea {
+        color : #000000;  font-family : Tahoma,MS Shell Dlg,??;   font-size : 9pt; font-weight : normal;   background-color : #E0E0E0; VERTICAL-ALIGN: middle;
+}
+
+
+.option_sort {
+        color : #FFFFFF;  background-color : #666666;
+}
+
+
+.custom {
+        color : #0099CC;  font-family : Tahoma,MS Shell Dlg,??;   font-size : 9pt; font-weight : normal;   background-color : #CCCCCC; VERTICAL-ALIGN: middle;
+}
+
+input.order {
+        height:18 px; width: 18 px; font-size : 11px; background-color : #FFFFFF;  color: #000000;
+}
+
+.bginput {
+	color: #FFFFFF;
+	background-color : #006699;
+	font-weight: bold;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-bottom-color: #FFFFFF;
+	border-left-color: #FFFFFF;
+	background-repeat: no-repeat;
+	border-right-color: #FFFFFF;
+	border-top-color: #FFFFFF;
+	border-top-style: solid;
+	border-top-width: 1px;
+}
+
+.text {
+        background-color : #E0E0E0;
+}
+
+select {
+        color : #000000; font-family : ??; font-size : 9pt; font-weight : normal; background-color : #E0E0E0;
+}
+
+.firstalt {
+        BACKGROUND-COLOR: #FFFFFF; color:#000000; height:22px;
+}
+.firstalt td{
+    BACKGROUND-COLOR: #E5E5E5; color:#000000; 
+	border-bottom: 1px;
+	border-bottom-color: #CCCCCC;
+	border-bottom-style: solid;
+}
+.secondalt {
+        BACKGROUND-COLOR: #f1f1f1; height:22px;
+}
+.secondalt td{
+	border-bottom: 1px;
+	border-bottom-color: #CCCCCC;
+	border-bottom-style: solid;
+}
+
+.bigfont {
+
+        font-family : Tahoma,MS Shell Dlg,??; font-size: 14px;
+}
+
+.normalfont {
+        font-family : Tahoma,MS Shell Dlg,??; font-size: 12px;
+}
+
+
+.middlefont {
+        font-family : Tahoma,MS Shell Dlg,??; font-size: 12px;
+}
+
+
+.smallfont {
+        font-family : Tahoma,MS Shell Dlg,??;
+        font-size: 9px;
+}
+
+.tableoutline {
+        background-color: #FFFFFF;  border-top: 1px solid #333;  border-left: 1px solid #333;  border-bottom: 1px solid #333;  border-right: 1px solid #333; 
+}
+
+.tbhead {
+        font-weight: bold; color: #FFFFff; background:url(/images/manager/bg_list.gif)  }
+
+.tbcat {
+        font-weight: bold; color: #FFFFFF; background-color: #333;
+}
+
+.tbnav {
+        font-weight: bold; color: #000; background-color: #e0e0e0; height : 24px;
+}
+.tbnav td{
+	border-bottom: 1px;
+	border-bottom-color: #999;
+	border-bottom-style: solid;
+	border-top: 1px;
+	border-top-color: #999;
+	border-top-style: solid;
+}
+
+
+.tbnav2 {
+        background-color: #FFFFFF
+}
+
+.cattitle {
+        font-weight: bold; font-size: 12px ; color : #FFFFFF;
+}
+
+.butClass  {
+        padding: 0; margin: 0; padding-bottom:1; padding-top:1;
+}
+
+.tdClass  {
+        padding-left: 3px; padding-top:3px;
+}
+
+.pAb {
+        cursor: hand;  border-top: 1px solid buttonface;  border-left: 1px solid buttonface;  border-bottom: 1px solid buttonface;  border-right: 1px solid buttonface;
+}
+
+.ButtonOn {
+        border-top: 1px solid buttonhighlight; border-left: 1px solid buttonhighlight;  border-bottom: 1px solid buttonshadow; border-right: 1px solid buttonshadow;
+}
+
+.ButtonDown {
+        border-top: 1px solid buttonshadow;  border-left: 1px solid buttonshadow; border-bottom: 1px solid buttonhighlight;  border-right: 1px solid buttonhighlight;
+}
+
+.ButtonOff {
+        border-top: 1px solid buttonface; border-left: 1px solid buttonface;  border-bottom: 1px solid buttonface; border-right: 1px solid buttonface;
+}
+
+.ButtonUp {
+        border-top: 1px solid buttonhighlight; border-left: 1px solid buttonhighlight; border-bottom: 1px solid buttonshadow; border-right: 1px solid buttonshadow;
+}.pading {
+	margin: 1px;
+}
+.board {
+	border: 1px solid #FFFFFF;
+}
+.setLabel {
+	font-family: "ËÎÌו";
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: bold;
+	color: #FFFFFF;
+	cursor: hand;
+	text-transform: uppercase;
+}
+#article table{
+
+}

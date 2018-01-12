@@ -1,0 +1,63 @@
+<div class="bm vw pl guide_list">
+	<div class="bm_h cl">
+		<h2>
+			{$guide_title}
+			<span class="pub_guide">
+				<a href="{$pub_guide_link}">发布攻略</a>
+			</span>
+		</h2>
+	</div>
+	<div class="bm_c">
+		{if count($guideData) > 0}
+			<!--{loop $guideData $guideid $guide}-->
+				<!--{if $guide['type'] == 1}-->
+					<!--{eval $link = "/thread-".$guide['typeid']."-1-1.html";}-->
+				<!--{elseif $guide['type'] == 2}-->
+					<!--{eval $link = "http://u.8264.com/home-space-uid-".$guide['uid']."-do-blog-id-".$guide['typeid'].".html";}-->
+				<!--{/if}-->
+			<div class="row">
+				<div class="detail">
+					<h5>
+						<span class="status">
+							<img src="http://bbs.8264.com/source/plugin/whither/css/images/icon1.png" title="回复" />
+							<a href="$link" title="回复" target="_blank">$guide['replies']</a>
+							<img src="http://bbs.8264.com/source/plugin/whither/css/images/icon2.png" title="查看" class="icon2" />
+							<a href="$link" title="查看" target="_blank">$guide['views']</a>
+						</span>
+						<a href="$link" target="_blank">$guide['subject']</a>
+					</h5>
+					<div class="author_info">
+						<div class="author">
+							<a href="http://u.8264.com/home-space-uid-{$guide['authorid']}-do-profile.html">
+								<!--{eval echo avatar($guide['authorid'], 'small');}-->
+							</a>
+							作者: <a href="http://u.8264.com/home-space-uid-{$guide['authorid']}-do-profile.html">{$guide['author']}</a>
+						</div>
+						<div class="lastposter">
+							<a href="http://u.8264.com/home-space-uid-{$guide['lastposterid']}-do-profile.html">
+								<!--{eval echo avatar($guide['lastposterid'], 'small');}-->
+							</a>
+							回复: <a href="http://u.8264.com/home-space-uid-{$guide['lastposterid']}-do-profile.html">{$guide['lastposter']}</a>
+							<span class="gray"><!--{eval echo dgmdate($guide['lastpost'], 'u');}--></span>
+						</div>
+					</div>
+					<div class="content">
+						<!--{if $guide['firstPicture'] != NULL}-->
+							<div class="image">
+								<a href="$link" target="_blank">
+									<img src="{$guide['firstPicture']}" alt="" />
+								</a>
+							</div>
+						<!--{/if}-->
+						<!--{eval echo messagecutstr($guide['message'], 200);}-->
+					</div>
+				</div>
+			</div>
+			<!--{/loop}-->
+		{else}
+			<div class="empty_info">
+				<a href="{$pub_guide_link}" class="pub_button">点击发布攻略</a>
+			</div>
+		{/if}
+	</div>
+</div>

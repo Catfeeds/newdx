@@ -1,0 +1,203 @@
+<!--{subtemplate common/header_8264}-->
+<link rel="stylesheet" type="text/css" href="/template/8264/css/common/reset.css" />
+<link rel="stylesheet" type="text/css" href="/template/8264/css/common/new_common.css" />
+<!--{if $modmenu['thread'] || $modmenu['post']}-->
+<script type="text/javascript" src="{$_G['setting']['jspath']}forum_moderate.js?{VERHASH}"></script><!--{/if}-->
+<!--新版头-->
+<!--{subtemplate common/nav_8264_top}-->
+<!--{subtemplate common/nav_8264_jian}-->
+<!--新版头-->
+
+<!--{if $_G['forum']['ismoderator']}-->
+<script type="text/javascript" src="{$_G[setting][jspath]}forum_moderate.js?{VERHASH}"></script>
+<!--{/if}-->
+
+<link rel="stylesheet" href="/source/plugin/brand/css/style.css" />
+
+<div class="wrapper">
+	<div class="layout mt20">
+		<div class="brandHeadTit">
+			<h2><a href="{PORTAL_HOST}pinpai">户外品牌俱乐部</a></h2>
+			<a href="{PORTAL_HOST}pinpai-public" class="publishBtn" target="_blank">发布新品牌</a> </div>
+		<div class="recruiting">
+			<div class="hd">
+				<h2 style="">品牌招商</h2>
+				<div class="tips"><span class="cOrange">招商联系QQ:80636446</span></div>
+			</div>
+			<div class="bd">
+				<ul class="brandBox limit">			
+					<!--{eval $zslist = ForumOptionBrand::getZsInfoatIndex();}--> 
+					<!--{if $zslist}--> 
+					<!--{loop $zslist $val}-->
+					<li> <a href="{PORTAL_HOST}pinpai-$val[tid]" target="_blank" class="pic"><img src="{$val[showimg]}" /></a> <a href="{PORTAL_HOST}pinpai-$val[tid]" target="_blank" class="num">$val[views] / $val[replies]</a>
+						<p><a href="{PORTAL_HOST}pinpai-$val[tid]" target="_blank">$val['ename']<br>$val['cname']</a></p>
+						</li>
+					<!--{/loop}--> 
+					<!--{/if}-->
+					<li> <a href="#" target="_blank" class="pic"><img src="http://bbs.8264.com/source/plugin/brand/css/images/nopic.jpg" /></a> <a href="#" class="num">品牌招商</a>
+						<p><a href="#" target="_blank">期待您的加入</a></p></li>
+					<li> <a href="#" target="_blank" class="pic"><img src="http://bbs.8264.com/source/plugin/brand/css/images/nopic.jpg" /></a> <a href="#" class="num">品牌招商</a>
+						<p><a href="#" target="_blank">期待您的加入</a></p></li>
+					<li> <a href="#" target="_blank" class="pic"><img src="http://bbs.8264.com/source/plugin/brand/css/images/nopic.jpg" /></a> <a href="#" class="num">品牌招商</a>
+						<p><a href="#" target="_blank">期待您的加入</a></p></li>
+					<li> <a href="#" target="_blank" class="pic"><img src="http://bbs.8264.com/source/plugin/brand/css/images/nopic.jpg" /></a> <a href="#" class="num">品牌招商</a>
+						<p><a href="#" target="_blank">期待您的加入</a></p></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="layout"> 
+		<!--{eval $_GET['let']=$_GET['let']? $_GET['let']: 0;}--> 
+		<!--{eval $_GET['nat']=$_GET['nat']? $_GET['nat']: 0;}--> 
+		<!--{eval $_GET['cp']=$_GET['cp']? $_GET['cp']: 0;}--> 
+		<!--{eval $_GET['filter']=$_GET['filter']? $_GET['filter']: 'heats';}-->		
+		{if ($_GET['filter']=='heats')}
+			{eval $filter = 2;}
+		{/if}
+		{if ($_GET['filter']=='dateline')}
+			{eval $filter = 1;}
+		{/if}		
+		<!--{eval if($_GET['filter']=='heats')}-->
+		<div class="brandSift"> 
+			<!-- dl+short 为隐藏; span+select 为选中; more+moreHover 为选中更多; -->
+			<dl class="letter">
+				<dt>按<span class="cOrange">品牌首字母</span>浏览：</dt>
+				<dd> 
+					<!--{eval $letterlist = ForumOptionBrand::getLetterbyIndex();}--> 
+					<!--{if $letterlist}--> 
+					<span class="all"><a href="{PORTAL_HOST}pinpai-0-{$_GET[nat]}-{$_GET[cp]}-{$filter}-1" <!--{if $_GET['let']=='0'}-->class="select"<!--{/if}-->>全部</a></span> 
+					<!--{loop $letterlist $key $letter}--> 
+					<span><a href="{PORTAL_HOST}pinpai-{$key}-{$_GET[nat]}-{$_GET[cp]}-{$filter}-1" <!--{if $key=={$_GET[let]}}-->class="select"<!--{/if}-->>$letter</a></span> 
+					<!--{/loop}--> 
+					<!--{/if}--> 
+					
+				</dd>
+			</dl>
+			<dl class="area">
+				<dt>按<span class="cOrange">品牌国籍</span>浏览：</dt>
+				<dd> 
+					<!--{eval $nations= ForumOptionBrand::getBrandNationAtIndex();}--> 
+					<!--{if $nations}--> 
+					<span><a href="{PORTAL_HOST}pinpai-{$_GET[let]}-0-{$_GET[cp]}-{$filter}-1" <!--{if $_GET[nat]=='0'}-->class="select"<!--{/if}-->>全部</a></span> 
+					<!--{loop $nations $value}--> 
+					<span><a href="{PORTAL_HOST}pinpai-{$_GET[let]}-{$value[rid]}-{$_GET[cp]}-{$filter}-1" <!--{if $value[rid]=={$_GET[nat]}}-->class="select"<!--{/if}-->>{$value[area]}</a></span> 
+					<!--{/loop}--> 
+					<!--{/if}--> 
+					
+				</dd>
+				<b class="more" style="display: none">更多</b>
+			</dl>
+			<dl class="type" id="tp">
+				<dt>按<span class="cOrange">排行榜</span>浏览：</dt>
+				<dd id="cnt" style="overflow: hidden;height: 127px;"> 
+					<!--{eval $prolist= ForumOptionBrand::getProduceAtIndex();}-->
+					<!--{eval $ct = count($prolist);}-->
+					<!--{if $prolist}--> 
+					<span><a href="{PORTAL_HOST}pinpai-{$_GET[let]}-{$_GET[nat]}-0-$filter-1" <!--{if $_GET[cp]=='0'}-->class="select"<!--{/if}-->>全部</a></span> 
+					<!--{loop $prolist $value}--> 
+					<span><a href="{PORTAL_HOST}pinpai-{$_GET[let]}-{$_GET[nat]}-{$value[id]}-$filter-1" <!--{if $value[id]=={$_GET[cp]}}-->class="select"<!--{/if}-->>$value['produce']</a></span>
+					<!--{/loop}--> 
+					<!--{/if}--> 
+				</dd>
+				<b id="mr" class="more moreHover" <!--{if $ct<14}-->style="display: none"<!--{/if}-->>更多</b>
+				<script type="text/javascript">
+				;(function($){
+					$("#mr").click(function(){
+						if($("#tp").css("height")=='127px'){
+							$("#tp").css("height","auto");
+							$("#cnt").css("height","auto");
+							$("#mr").addClass("moreHover");
+						}else{
+							$("#cnt").css("height","127px");
+							$("#tp").css("height","127px");
+							$("#mr").removeClass("moreHover");
+						}											
+					});
+					$("#tp").css("height","127px","overflow","hidden");
+					$("#mr").removeClass("moreHover"); 
+				})(jQuery);
+				</script>
+			</dl>
+		</div>
+	</div>
+	<div class="layout mt10">
+		<div class="brandIndexList">
+			<div class="hd"> 
+				<!--{if $_GET['let']||$_GET['nat']||$_GET['cp']}-->
+				<h2 class="selectItem floatL"><span class="tit">您当前的选择：</span> 
+					<!--{if $_GET['let']}--> 
+					<!--{eval $let= ForumOptionBrand::getLetterbyIndex();}--> 
+					<span class="select"> $let[$_GET[let]]</span>
+					<!--{/if}--> 
+					
+					<!--{if $_GET['nat']}--> 
+					<!--{eval $nat= ForumOptionBrand::getBrandNationAtIndex($_GET['nat']);}--> 
+					<span class="select"> $nat['area']</span>
+					<!--{/if}--> 
+					
+					<!--{if $_GET['cp']}--> 
+					<!--{eval $cp= ForumOptionBrand::getProduceAtIndex($_GET['cp']);}--> 
+					<span class="select"> $cp['produce']</span>
+					<!--{/if}--> 
+					
+					 </h2>
+				<!--{/if}-->
+				<div class="sort floatR"><span class="newIco"></span><span><a href="{PORTAL_HOST}pinpai-{$_GET[let]}-{$_GET[nat]}-{$_GET[cp]}-1-$_G['gp_page']" <!--{if $_GET['filter']=='dateline'}-->class="select"<!--{/if}-->>最新</a></span><span class="hotIco"></span><span><a href="{PORTAL_HOST}pinpai-{$_GET[let]}-{$_GET[nat]}-{$_GET[cp]}-2-$_G['gp_page']"  <!--{if $_GET['filter']=='heats'}-->class="select"<!--{/if}-->>热门</a></span></div>
+			</div>
+			<div class="bd mt10">
+				{eval $_G['page'] = max(1, intval($_G['gp_page']));}
+				{eval $condition = array();}
+				{if !empty($_GET['let'])}
+				{eval $condition['let'] = $_GET['let'];}
+				{/if}
+				{if !empty($_GET['nat'])}
+				{eval $condition['nat'] = $_GET['nat'];}
+				{/if}
+				{if !empty($_GET['cp'])}
+				{eval $condition['cp'] = $_GET['cp'];}
+				{/if}
+				{if !empty($_GET['key'])}
+				{eval $condition['tj'] = $_GET['key'];}
+				{/if}
+				{if ($_GET['filter'])}				
+				{eval $_G['gp_orderby']='t.'.$_GET['filter'];}				
+				{/if} 
+				<!--{eval $brandlist= ForumOptionBrand::getBrandList($condition,$_G['gp_orderby']." DESC",(($_G['page']-1)*35).',35');}--> 
+				<!--{if $brandlist}-->
+			
+				<ul class="brandBox">
+					<!--{loop $brandlist $thread}-->
+					<li><a href="{PORTAL_HOST}pinpai-{$thread[tid]}" class="pic" target="_blank"><img src="{$thread[showimg]}" alt="{$thread[subject]}" /></a><a class="num" href="{PORTAL_HOST}pinpai-{$thread[tid]}#comment" target="_blank">$thread[replies] / <!--{if $thread['isgroup'] != 1}-->$thread[views]<!--{else}-->{$groupnames[$thread[tid]][views]}<!--{/if}--></a>
+						<span class="starCom">							
+							{eval $star = $thread['score'];}
+							{if $star}
+							<span class="star">
+							    {eval for ($i = 0; $i < 5; $i++):}
+							    {if $i < $star/2}<span class="redstar"></span>{else}<span class="graystar"></span>{/if}
+							    {eval endfor;}
+							</span>
+							 {/if}
+							 <span class="cOrange">$thread['score']</span>
+						</span>
+						<p><a href="{PORTAL_HOST}pinpai-{$thread[tid]}" target="_blank">{echo cutstr($thread[ename],20,'')}<br>$thread[cmame]</a></p>
+						<!--{if $thread['displayorder']==1}-->
+						<span class="top">Top</span>
+						 <!--{/if}-->
+					</li>
+					<!--{/loop}-->
+				</ul>
+				<!--{else}-->
+				<p class="emp">本版块或指定的范围内尚无主题。</p>
+				<!--{/if}-->
+				<div class="listPageBox mt15">
+					$multipage
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- wrapper End -->
+
+<!--{subtemplate common/float_guide}-->
+
+<!--{subtemplate common/footer_8264lw}--> 

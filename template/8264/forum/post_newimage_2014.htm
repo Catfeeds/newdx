@@ -1,0 +1,1220 @@
+<!--{subtemplate common/header_8264_new}-->
+<link href="http://static.8264.com/static/css/forum/forum_post.css?{VERHASH}" rel="stylesheet" type="text/css">
+
+<!--{if $_G[gp_action] == 'edit'}--><!--{eval $editor[value] = $postinfo[message];}--><!--{else}--><!--{eval $editor[value] = $message;}--><!--{/if}-->
+<div class="header">
+	<div class="layout">
+		<div class="icoHill">山</div>
+		<div class="headerL">
+			<!--{if $_G['forum']['extra']['localname']}-->
+			<div class="whereIs" style="display: none;">{$_G['forum']['extra']['localname']}</div>
+			<!--{/if}-->
+			<h1><span class="country"><a href="{$returnurl}">{$_G['forum']['name']}</a></span></h1>
+			<div class="site">
+				<a href="{$_G['config']['web']['portal']}" title="{lang homepage}" id="fjump"{if $_G['setting']['forumjump'] == 1} onmouseover="showMenu({'ctrlid':this.id})"{/if}>{lang homepage}</a>
+				$navigation
+			</div>
+		</div>
+		<div class="headerR">
+			<div class="bbsNumCount">
+				<div class="numBox">
+					<p class="num">{$_G['forum']['threads']}</p>
+					<p class="day">主题</p>
+				</div>
+				<div class="numBox">
+					<p class="num">{$_G['forum']['todayposts']}</p>
+					<p class="day">今日</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="http://static.8264.com/static/js/forum_post.js?{VERHASH}"></script>
+<!--<script type="text/javascript" src="http://static.8264.com/static/js/jquery.md5.js"></script>
+<script type="text/javascript" src="http://static.8264.com/static/js/jquery.base64.js"></script>-->
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/forum/fu.css?{VERHASH}" />
+<script type="text/javascript">
+function addAttach(){}
+function switchImagebutton(){}
+function getimagethumbbyauto(width, height, type, filepath){
+	/*var returnurl = '';
+	jQuery.noConflict();
+	;(function($){
+		var md5str = $.md5(filepath);
+		var base64code = $.base64.btoa(filepath, false);
+		returnurl = 'thumbimg/' + md5str[0] + '/' + md5str[3] + '/' + parseInt(width).toString() + '/' + parseInt(height).toString() + '/' + parseInt(type).toString() + '/' + base64code + '.auto.jpg';
+	})(jQuery);
+	return returnurl;*/
+}
+var attachserver = "{if empty($_G[config][web][attachauto])}{$_G[config][web][attach]}{else}{$_G[config][web][attachauto]}{/if}";
+var attachserver_image = "http://<!--{$_G['config']['cdn']['images']['cdnurl']}-->";
+var posonshow = false;
+function uploadsuccess(type, returndata) {
+	eval('var nattach = ' + returndata + ';');
+	jQuery.noConflict();
+	;(function($){
+		if(nattach.nowcount < 50 || type != 3){
+			if(document.getElementById('image_td_' + nattach.fileid) == null){
+				$('#imagetemp').clone().attr('id', 'image_td_' + nattach.fileid).attr('title', nattach.filename).appendTo('#uploadimagelist').show();
+				if(! posonshow){
+					var attachobj = $('#image_td_' + nattach.fileid);
+					var show_Windows = $('#uploadimagelist').parent();
+					var show_WindowsPos = {top: show_Windows.offset().top, bottom: show_Windows.offset().top + show_Windows.height()};
+					var attachPos = {top: attachobj.offset().top, bottom: attachobj.offset().top + attachobj.height()};
+					var nowScroll = show_Windows.scrollTop();
+					/*if(show_WindowsPos.top > attachPos.top){
+						posonshow = true;
+						show_Windows.scrollTop(nowScroll - show_WindowsPos.top + attachPos.top)
+					}else*/ if(show_WindowsPos.bottom < attachPos.bottom){
+						posonshow = true;
+						show_Windows.scrollTop(nowScroll + attachPos.bottom - show_WindowsPos.bottom)
+					}
+				}
+			}
+		}
+		if(isUndefined(nattach.bigthumbpic) || nattach.bigthumbpic == ''){
+			//nattach.bigthumbpic = attachserver + getimagethumbbyauto(300, 300, 1, nattach.type + "/" + nattach.pic);
+			if(nattach.thumbpic.match(/t2w\d+h\d+/) != null){
+				nattach.bigthumbpic = nattach.thumbpic.replace(/t2w\d+h\d+/, "t1w300h300");
+			}else{
+				nattach.bigthumbpic = nattach.thumbpic.replace(/\/\d\d+\/\d\d+\/2\//, "/300/300/1/");
+			}
+		}
+		var attachobj = $('#image_td_' + nattach.fileid);
+		var show_Windows = $('#uploadimagelist').parent();
+		var show_WindowsPos = {top: show_Windows.offset().top, bottom: show_Windows.offset().top + show_Windows.height()};
+		var attachPos = {top: attachobj.offset().top, bottom: attachobj.offset().top + attachobj.height()};
+		var nowScroll = show_Windows.scrollTop();
+		switch(type){
+			case 1:
+			case 2:
+				posonshow = false;
+				attachobj.find('.temppercent').remove();
+				attachobj.find('img').attr('id', 'image_' + nattach.aid).attr('aid', nattach.aid).attr('src', nattach.thumbpic).attr('bigthumb', nattach.bigthumbpic).click(function(){
+					if(! $(this).parent().hasClass('imgdeleted')){
+						insertAttachimgTag(nattach.aid);
+						$('#{$editorid}_iframe').contents().trigger('keyup');
+					}
+				}).one('error', function(){
+					$(this).attr('src', ' ');
+					$(this).attr('src', nattach.thumbpic);
+				}).show();
+				nattach.rename_id_fun = function(){
+					attachobj.attr('id', 'image_td_' + nattach.aid);
+				}
+				attachobj.find('a.close14_14_24w').click(function(){
+					delImgAttach(nattach.aid);
+				});
+				attachobj.find('input.description').attr('name', 'attachnew[' + nattach.aid + '][description]').attr('id', 'image_desc_' + nattach.aid).end().show();
+				$('#uploadimagediv').show().prev().hide();
+				setTimeout(nattach.rename_id_fun, 2000);
+				break;
+			case 3:
+				var percent = Math.floor((nattach.nowcount * 100) / nattach.maxcount);
+				if(percent > 100){
+					percent = 100;
+				}
+				attachobj.find('.temppercent').children('h5').text(nattach.text).end().find('b').text(percent + ' %');
+				$('#uploadimagediv').show().prev().hide();
+
+				break;
+		}
+		attachobj.find('input.albumabout').val(nattach.aid);
+		if($('#selectsavealbum input[name=insertall]').is(':checked')){
+			attachobj.find('input.albumabout').removeAttr('disabled');
+		}
+	})(jQuery);
+}
+</script>
+<script type="text/javascript">
+function validateextra(theform){
+	if(in_array($('postsubmit').name, ['topicsubmit', 'editsubmit'])) {
+		if(theform.typeid && theform.typeid.value == 0 && typerequired) {
+			showDialog('请选择主题对应的分类');
+			return false;
+		}
+		if(theform.sortid && theform.sortid.value == 0 && sortrequired) {
+			showDialog('请选择主题对应的分类信息');
+			return false;
+		}
+	}
+	if(jQuery('#selectsavealbum input.inputfx[name=insertall]').is(':checked')){
+		if(jQuery('#selectsavealbum input[name=uploadalbum]').val() == 0 && jQuery('#createnewalbum input.cjxctext[name=newalbum]').val().length < 3){
+			showDialog('您选择了将图片保存到相册，但并未选择保存相册名或未输入新相册名');
+			return false;
+		}
+	}
+	return true;
+}
+</script>
+<script type="text/javascript">
+function addattachlist(returndata){
+	eval('var nattach = ' + returndata + ';');
+	jQuery.noConflict();
+	;(function($){
+		var extpos = nattach.filename.lastIndexOf('.');
+		nattach.fileext = extpos == -1 ? '' : nattach.filename.substr(extpos + 1, nattach.filename.length).toLowerCase();
+		var objcontent = nattach.old == 1 ? '#attachlist_old' : '#attachlist';
+		$('#attachlisttmp').clone().attr('id', 'newattach_id_' + nattach.aid).prependTo(objcontent);
+		var obj_attachlt = $('#newattach_id_' + nattach.aid);
+		obj_attachlt.find('a.linkicon').click(function(){
+			insertText('attach://' + nattach.aid + '.' + nattach.fileext );
+			$('#{$editorid}_iframe').contents().trigger('keyup');
+		});
+		obj_attachlt.find('input.description').attr('name', 'attachnew[' + nattach.aid + '][description]');
+		obj_attachlt.find('a.nameicon').text(nattach.filename).attr('title', nattach.filename + "\n上传日期: " + nattach.uploadtime).click(function(){
+			insertAttachTag(nattach.aid);
+			$('#{$editorid}_iframe').contents().trigger('keyup');
+		});
+		{if $_G['group']['allowsetattachperm'] && ($_G[gp_action] == 'newthread' || ($_G[gp_action] == 'edit' && $isfirstpost))}
+		obj_attachlt.children('.readpowercon').css('z-index', 100).children('input.readperm').attr('name', 'attachnew[' + nattach.aid + '][readperm]');
+		obj_attachlt.find('.readtext_out').attr('id', nattach.aid + '_readperm_menu').attr('faid', nattach.aid).hide().appendTo('#append_parent');
+		obj_attachlt.find('.readtext').attr('mid', nattach.aid + '_readperm_menu');
+		if(nattach.readperm > 0){
+			obj_attachlt.find('>.readpowercon>input.readperm').val(nattach.readperm);
+		}
+		{/if}
+		{if $_G[gp_action] == 'edit'}
+		if(nattach.old == 0){
+			obj_attachlt.find('a.updateattachlink').click(function(){
+				var myname = $(this).siblings('a.nameicon');
+				uploadWindow(function(aid, url, name){
+					if(document.getElementById("attachupdate" + nattach.aid) == null){
+						obj_attachlt.append("<input name='attachupdate[" + nattach.aid + "]' type='hidden' id='attachupdate" + nattach.aid + "' />");
+					}
+					$('#attachupdate' + nattach.aid).val(aid);
+					myname.attr('title', '').html(name);
+				}, 'file');
+			}).show();
+		}
+		{/if}
+		obj_attachlt.find('span.del').click(function(event){
+			$('#listofattach').append("<input type='hidden' name='attachdel[]' value='" + nattach.aid + "'/>");
+			$(this).parent('li').remove();
+		});
+		if(nattach.descr != null){
+			obj_attachlt.find('>.miaoshu>input.description').val(nattach.descr);
+		}
+		obj_attachlt.show();
+		$('#noattachtips').appendTo('#alltemplateobj');
+		//$('.fujiancon>.fujian_list.listattach').show();
+		if($('#listofattach').find('li').length > 6){
+			$('#listofattach').css({'overflow-y':'scroll',height:'300px'});
+		}else{
+			$('#listofattach').css('height', 'auto');
+		}
+		$('#{$editorid}_attachn').show();
+	})(jQuery);
+}
+</script>
+<!--{if in_array($_G['groupid'], array(1,2,3)) || $_G['groupid'] >= 13}-->
+<!-- @提醒 -->
+<script type="text/javascript">
+	function atlist_hide() {
+		jQuery(".atpop").hide();
+	}
+
+	function atlist_get(inputchar) {
+		var atList = document.getElementById("atlist");
+		var dom_li = '<li class="list-title">\u9009\u62e9\u6700\u8fd1@\u7684\u4eba\u6216\u5728\u4e0a\u65b9\u67e5\u8be2</li>';
+		var followlist = function(inputchar){
+			jQuery.getJSON(SITEURL+'forum.php', {mod:"misc", action:"followlist", username:inputchar}, function(followlist){
+				if(followlist.length > 0) {
+					for (var i = 0,len = followlist.length; i < len; i++) {
+						dom_li += '<li class="list-content">'+ followlist[i]+'</li>';
+					};
+					atList.innerHTML = dom_li;
+					atList.style.display = 'block';
+				} else {
+					atList.style.display = 'none';
+				}
+
+				var listClick = atList.getElementsByTagName("li");
+				for (var i = 1,len = listClick.length; i < len; i++) {
+					listClick[i].onmouseover = (function(i) {
+						return function() {
+							for (var l = 1; l < len; l++) {
+								listClick[l].className = 'list-content';
+							};
+							listClick[i].className = 'list-content list-active';
+						}
+					})(i);
+
+					listClick[i].onclick = (function(i) {
+						return function() {
+							insertText('@' + listClick[i].innerHTML + ' ', false);
+							atlist_hide();
+						}
+					})(i);
+				};
+
+			});
+		}
+		followlist(inputchar);
+	}
+
+	function atlist_show() {
+		atlist_get();
+		jQuery(".atpop").show();
+	}
+</script>
+<!-- //@提醒 -->
+<!--{/if}-->
+<div id="alltemplateobj" class="templist" style="display: none;visibility: hidden;">
+	<div style="display: none;visibility: hidden;">
+		<span id="{$editorid}_font"></span>
+		<span id="{$editorid}_size"></span>
+		<span id="{$editorid}_simple"></span>
+		<span id="{$editorid}_adv_s1"></span>
+		<span id="{$editorid}_adv_s2"></span>
+		<span id="{$editorid}_svdsecond" href="javascript:;"></span>
+	</div>
+	<ul><li id="imagetemp" style="display: none;"><img cwidth="112" style="display: none;" /><div class="temppercent"><h5></h5><p><b></b></p></div><a href="javascript:;" class="close14_14_24w closepostion"></a><input type="hidden" name="" class="description"/><input type="hidden" class="albumabout" name="albumaid[]" disabled="true" /></li></ul>
+	<div id="attachbtnhiddentmp" style="display:none"><span><form name="attachform" id="attachform" method="post" autocomplete="off" action="misc.php?mod=swfupload&operation=upload&simple=1&newjq=1" target="attachframe" $enctype><input type="hidden" name="uid" value="$_G['uid']" /><input type="hidden" name="hash" value="{echo md5(substr(md5($_G['config']['security']['authkey']), 8).$_G['uid'])}" /><input type="file" name="Filedata" size="45" class="fldt" /></form></span></div>
+	<ul><li id="attachbodyhiddentmp" style="display: none;"><span></span><em></em><input type="hidden" name="localid[]" /></li></ul>
+	<ul><li id="attachlisttmp" class="fujian_list_td clboth" style="display: none;">
+		<span class="filename">
+		<a href="javascript:void(0);" class="nameicon">1375868390680</a>
+		<a href="javascript:void(0);" title="添加附件地址" class="linkicon"></a>
+		<a href="javascript:void(0);" title="更新附件地址" class="updateattachlink" style="display: none;">更新</a>
+		</span>
+		<span class="readpowercon">
+			{if $_G['group']['allowsetattachperm'] && ($_G[gp_action] == 'newthread' || ($_G[gp_action] == 'edit' && $isfirstpost))}
+			<em class="readtext">不限</em>
+			<input type="hidden" class="readperm" name="" value="$attach[readperm]"/>
+			<em class="readtext_out">
+			<!--{if $_G[gp_action] == 'newthread' || $_G[gp_action] == 'edit' && $isfirstpost}-->
+				<!--{loop $_G['cache']['groupreadaccess'] $val}-->
+				<a href="javascript:void(0);" readperm="$val[readaccess]" title="{lang readperm}: $val[readaccess]">$val[grouptitle]</a>
+				<!--{/loop}-->
+			<!--{/if}-->
+			</em>
+			{/if}
+		</span>
+		<span class="miaoshu"><input class="description" name="" type="text" /></span>
+		<span class="del"></span>
+	</li>
+	</ul>
+</div>
+<!--{block actiontitle}-->
+	<!--{if $_G['gp_action'] == 'newthread'}-->
+		<!--{if $special == 0}-->{lang post_newthread}
+		<!--{elseif $special == 1}-->{lang post_newthreadpoll}
+		<!--{elseif $special == 2}-->{lang post_newthreadtrade}
+		<!--{elseif $special == 3}-->{lang post_newthreadreward}
+		<!--{elseif $special == 4}-->{lang post_newthreadactivity}
+		<!--{elseif $special == 5}-->{lang post_newthreaddebate}
+		<!--{elseif $specialextra}-->{$_G['setting']['threadplugins'][$specialextra][name]}
+		<!--{/if}-->
+	<!--{elseif $_G['gp_action'] == 'reply' && !empty($_G['gp_addtrade'])}-->
+		{lang trade_add_post}
+	<!--{elseif $_G['gp_action'] == 'reply'}-->
+		{lang join_thread}
+	<!--{elseif $_G['gp_action'] == 'edit'}-->
+		<!--{if $special == 2}-->{lang edit_trade}<!--{else}-->{lang edit_thread}<!--{/if}-->
+	<!--{/if}-->
+<!--{/block}-->
+
+<!--{block icon}-->
+	<!--{if $special == 1}-->poll
+	<!--{elseif $special == 2}-->trade
+	<!--{elseif $special == 3}-->reward
+	<!--{elseif $special == 4}-->activity
+	<!--{elseif $special == 5}-->debate
+	<!--{elseif $isfirstpost && $sortid}-->sort
+	<!--{/if}-->
+<!--{/block}-->
+
+<!--{if $_G['gp_action'] != 'newthread'}-->
+	<!--{eval $subjectcut = cutstr($thread[subject], 30);}-->
+<!--{/if}-->
+<!--{block actionsubject}-->
+	<!--{if $_G['gp_action'] == 'reply'}-->
+		<em>&rsaquo;</em><a href="forum.php?mod=viewthread&tid=$thread[tid]">$subjectcut</a>
+	<!--{elseif $_G['gp_action'] == 'edit'}-->
+		<em>&rsaquo;</em><a href="forum.php?mod=redirect&goto=findpost&ptid=$thread[tid]&pid=$pid">$subjectcut</a>
+	<!--{/if}-->
+<!--{/block}-->
+
+<!--{eval $adveditor = $isfirstpost && $special || $special == 2 && ($_G['gp_action'] == 'newthread' || $_G['gp_action'] == 'reply' && !empty($_G['gp_addtrade']) || $_G['gp_action'] == 'edit' && $thread['special'] == 2);}-->
+<!--{eval $advmore = !$showthreadsorts && !$special || $_G['gp_action'] == 'reply' && empty($_G['gp_addtrade']) || $_G['gp_action'] == 'edit' && !$isfirstpost && ($thread['special'] == 2 && !$special || $thread['special'] != 2);}-->
+<div class="layout fu">
+	<div class="mn">
+		<form method="post" autocomplete="off" onsubmit="check_subject();return validate(this);" id="postform"
+			{if $_G[gp_action] == 'newthread'}action="forum.php?mod=post&action={if $special != 2}newthread{else}newtrade{/if}&fid=$_G[fid]&extra=$extra&topicsubmit=yes"
+			{elseif $_G[gp_action] == 'reply'}action="forum.php?mod=post&action=reply&fid=$_G[fid]&tid=$_G[tid]&pid=$_G[gp_repquote]&postid=$_G[gp_postid]&page=$_G[page]&way=$_G[gp_way]&cid=$_G[gp_cid]&extra=$extra&replysubmit=yes"
+			{elseif $_G[gp_action] == 'edit'}action="forum.php?mod=post&action=edit&extra=$extra&editsubmit=yes" $enctype
+			{/if}
+			>
+			<input type="hidden" name="formhash" id="formhash" value="{FORMHASH}" />
+			<input type="hidden" name="posttime" id="posttime" value="{TIMESTAMP}" />
+			<input style="display: none;" type="checkbox" id="allowimgcode" class="pc" disabled="disabled"{if $_G['forum']['allowimgcode']} checked="checked"{/if} />
+			<input type="hidden" name="usesig" id="usesig" class="pc" value="1" {if !$_G['group']['maxsigsize']}disabled {else}$usesigcheck {/if}/>
+			<!--{if !empty($_G['gp_modthreadkey'])}--><input type="hidden" name="modthreadkey" id="modthreadkey" value="$_G['gp_modthreadkey']" /><!--{/if}-->
+			<input type="hidden" name="wysiwyg" id="{$editorid}_mode" value="$editormode" />
+			<!--{if $_G[gp_action] == 'reply'}-->
+				<input type="hidden" name="noticeauthor" value="$noticeauthor" />
+				<input type="hidden" name="noticetrimstr" value="$noticetrimstr" />
+				<input type="hidden" name="noticeauthormsg" value="$noticeauthormsg" />
+				<!--{if $_G[gp_reppost]}-->
+					<input type="hidden" name="reppost" value="$_G[gp_reppost]" />
+				<!--{elseif $_G[gp_repquote]}-->
+					<input type="hidden" name="reppost" value="$_G[gp_repquote]" />
+				<!--{/if}-->
+			<!--{/if}-->
+			<!--{if $_G[gp_action] == 'newthread' || $_G[gp_action] == 'edit'}-->
+				<input type="hidden" name="allownoticeauthor" value="1" />
+			<!--{/if}-->
+			<!--{if $_G[gp_action] == 'edit'}-->
+				<input type="hidden" name="fid" id="fid" value="$_G[fid]" />
+				<input type="hidden" name="tid" value="$_G[tid]" />
+				<input type="hidden" name="pid" value="$pid" />
+				<input type="hidden" name="page" value="$_G[gp_page]" />
+			<!--{/if}-->
+			<!--{if $special}-->
+				<input type="hidden" name="special" value="$special" />
+			<!--{/if}-->
+			<!--{if $specialextra}-->
+				<input type="hidden" name="specialextra" value="$specialextra" />
+			<!--{/if}-->
+			<div class="bm bw0 cl"{if !$showthreadsorts && !$adveditor} id="editorbox"{/if}>
+				<h3 class="futitle" style="position:relative;">
+					<span id="returnmessage" style="display: inline-block; padding: 6px 0px 0px;">
+						$actiontitle
+						<!--{if $showthreadsorts}--> $_G['forum'][threadsorts][types][$sortid]<!--{/if}-->
+						<!--{if $_G[gp_action] == 'newthread' && $modnewthreads}--><span class="xg1">({lang approve})</span><!--{/if}-->
+						<!--{if $_G[gp_action] == 'reply' && $modnewreplies}--><span class="xg1">({lang approve})</span><!--{/if}-->
+						<!--{if $_G[gp_action] == 'edit' && $isfirstpost && $thread['displayorder'] == -4}--><span class="xg1">({lang draft})</span><!--{/if}-->
+					</span>
+					<!--{if $special==4}--><a href="http://bbs.8264.com/thread-5422622-1-1.html" target="_blank" style="position: absolute; left: 110px; top: 12px; font-size: 14px;">长期征集各地俱乐部团队户外活动作业（图文并茂） 8264帮你宣传俱乐部</a><!--{/if}-->
+				</h3>
+				<div id="postbox">
+					<!--{hook/post_top}-->
+					<div class="pbt clboth">
+						<!--{if !$special && ($threadsorts = $_G['forum']['threadsorts']) && ($_G[gp_action] == 'newthread' || $_G[gp_action] == 'edit' && $isfirstpost && !$thread['sortid'])}-->
+						<div class="pbt_select needdown">
+							<div class="pbt_select_option_box showdowndiv">
+							<!--{loop $threadsorts[types] $tsortid $name}-->
+								<!--{if $sortid == $tsortid}-->
+								<!--{eval $nowselect_sortid = array('sorid' => $tsortid, 'name' => strip_tags($name));}-->
+								<!--{/if}-->
+								<a hid="$tsortid" href="javascript:;"><!--{echo strip_tags($name);}--></a>
+							<!--{/loop}-->
+							</div>
+							<span>
+								<!--{if $nowselect_sortid}-->
+									<input type="hidden" name="sortid" value="{$nowselect_sortid[sorid]}" /><span>{$nowselect_sortid[name]}</span>
+								<!--{else}-->
+									<input type="hidden"  name="sortid" value="0"/><span>{lang select_category_info}</span>
+								<!--{/if}-->
+							</span>
+						</div>
+						<!--{/if}-->
+						<!--{if $_G[gp_action] == 'edit' && $isfirstpost && $sortid}-->
+							<input type="hidden" name="sortid" value="$sortid" />
+						<!--{/if}-->
+
+						<!--{if $isfirstpost && !empty($_G['forum'][threadtypes][types]) && $special != 4}-->
+						<div class="pbt_select needdown">
+							<div class="pbt_select_option_box showdowndiv">
+							<!--{loop $_G['forum'][threadtypes][types] $typeid $name}-->
+								<!--{if $thread['typeid'] == $typeid || $_G['gp_typeid'] == $typeid}-->
+								<!--{eval $nowselect_typeid = array('typeid' => $typeid, 'name' => strip_tags($name));}-->
+								<!--{/if}-->
+								<a hid="$typeid" href="javascript:;"><!--{echo strip_tags($name);}--></a>
+							<!--{/loop}-->
+							</div>
+							<span>
+								<!--{if $nowselect_typeid}-->
+									<input type="hidden" name="typeid" value="{$nowselect_typeid[typeid]}" /><span>{$nowselect_typeid[name]}</span>
+								<!--{else}-->
+									<input type="hidden"  name="typeid" value="0"/><span>{lang select_category_info}</span>
+								<!--{/if}-->
+							</span>
+						</div>
+						<!--{/if}-->
+
+						<!--{if !$isfirstpost && $thread[special] == 5 && empty($firststand) && $_G[gp_action] != 'edit'}-->
+						<div class="pbt_select needdown">
+							<div class="pbt_select_option_box showdowndiv">
+								<a hid="0">{lang debate_neutral}</a>
+								<a hid="1"{if $stand == 1} selected="selected"{/if}>{lang debate_square}</a>
+								<a hid="2"{if $stand == 2} selected="selected"{/if}>{lang debate_opponent}</a>
+							</div>
+							<span>
+								<!--{if $stand > 0}-->
+									<input type="hidden" name="stand" value="$stand"/><span>{if $stand == 1}{lang debate_square}{else}{lang debate_opponent}{/if}</span>
+								<!--{elseif $stand == 0}-->
+									<input type="hidden" name="stand" value="$stand"/><span>{lang debate_neutral}</span>
+								<!--{else}-->
+									<input type="hidden" name="stand" value=""/><span>{lang debate_viewpoint}</span>
+								<!--{/if}-->
+							</span>
+						</div>
+						<!--{/if}-->
+
+						{if !($special == 4 && $isfirstpost)}
+						<div class="pbt_title">
+							<!--{if $_G[gp_action] == 'reply' && !empty($_G['gp_addtrade']) || $_G[gp_action] == 'edit' && $thread['special'] == 2 && !$postinfo['first']}-->
+								<input name="subject" type="hidden" value="" />
+							<!--{else}-->
+								<!--{if $_G[gp_action] == 'reply' || ($_G[gp_action] == 'edit' && ! $isfirstpost)}-->
+									<span id="subjecthide" style="overflow: hidden;" class="z">RE: $thread[subject] <span style="display: none;">[<a href="javascript:;" onclick="display('subjecthide');display('subjectbox');$('subject').value='RE: {echo htmlspecialchars(str_replace('\'', '\\\'', $thread[subject]))}';display('subjectchk');strLenCalc($('subject'), 'checklen', 80);">{lang modify}</a>]</span></span>
+									<span id="subjectbox" style="display:none"><input type="text" name="subject" id="subject" class="px" value="" onkeyup="strLenCalc(this, 'checklen', 80);" tabindex="1" /></span>
+								<!--{else}-->
+									<span><input type="text" name="subject" id="subject" class="px" value="$postinfo[subject]" onkeyup="strLenCalc(this, 'checklen', 80);" tabindex="1" /></span>
+								<!--{/if}-->
+							<!--{/if}-->
+							<input class="subject_tips" type="hidden" disabled="true" value="标题严禁使用【】等异形符号，违者删帖"/>
+						</div>
+						<span id="subjectchk" class="pbt_title_note" {if $_G[gp_action] == 'reply'} style="display:none"{/if}>{lang comment_message1} <strong id="checklen">80</strong> {lang comment_message2}</span>
+						{/if}
+						<!--图片分楼按钮-->
+						{if $_G[fid] != 53 && $special != 4}
+						<!--{hook/post_tpfl_return}-->
+						{/if}
+						<!--图片分楼按钮 end-->
+					</div>
+			<!--{if $showthreadsorts}-->
+				<div class="exfm cl" id="threadsorts">
+					<span id="threadsortswait"></span>
+				</div>
+			<!--{elseif $adveditor}-->
+				<!--{if $special == 1}--><!--{template forum/post_poll}-->
+				<!--{elseif $special == 2 && ($_G[gp_action] != 'edit' || ($_G[gp_action] == 'edit' && ($thread['authorid'] == $_G['uid'] && $_G['group']['allowposttrade'] || $_G['group']['allowedittrade'])))}--><p class="xg1">{lang post_message1}</p><!--{template forum/post_trade}-->
+				<!--{elseif $special == 3}--><!--{template forum/post_reward}-->
+				<!--{elseif $special == 4}--><!--{template forum/post_activity}-->
+				<!--{elseif $special == 5}--><!--{template forum/post_debate}-->
+				<!--{elseif $specialextra}--><div class="specialpost s_clear">$threadplughtml</div>
+				<!--{/if}-->
+			<!--{/if}-->
+			<!--{if $_G[gp_action] == 'reply' && $quotemessage}-->
+				<div class="pbt cl">$quotemessage</div>
+			<!--{/if}-->
+			<div id="rstnotice" style="display:none"></div>
+			<!--{if $_G[gp_action] == 'edit' && $isorigauthor && ($isfirstpost && $thread['replies'] < 1 || !$isfirstpost) && !$rushreply && $_G['setting']['editperdel']}-->
+				<div class="xzgl clboth"><input type="checkbox" name="delete" id="delete" value="1" title="{lang post_delpost}{if $thread[special] == 3}{lang reward_price_back}{/if}" /><label for="delete"><span>勾选后，提交"保存"，即可删除本条帖子，删除后无法恢复。</span></label></div>
+			<!--{/if}-->
+
+			<!--编辑器-->
+			{if !($adveditor && $special == 4)}
+			<!--{subtemplate forum/post_newimage_2014_editor}-->
+			{/if}
+			<!--编辑器 end-->
+			<!--{hook/post_middle}-->
+			<!--AA相约版的联系方式-->
+			{if $_G[fid] == 161 && !$pid}
+			<div class="pbt clboth">
+				<div class="pbt_title">
+					<span><input type="text" name="contact" id="contact" class="px" value="" /></span>
+					<input class="subject_tips" type="hidden" disabled="true" value="联系方式"/>
+				</div>
+				<span id="subjectchk" class="pbt_title_note">为保护您的隐私，联系方式回帖可见。</span>
+			</div>
+			{/if}
+			<!--AA相约版的联系方式 end-->
+
+			<!--{if $_G['group']['maxprice'] && ($_G[gp_action] == 'newthread' || $_G[gp_action] == 'edit' && $isfirstpost)}-->
+				<div class="mtm">
+					<!--{if $_G['setting']['maxincperthread']}--><img src="http://static.8264.com/static/image/common/arrow_right.gif" />{lang post_price_income_comment}<!--{/if}-->
+					<!--{if $_G['setting']['maxchargespan']}--><img src="http://static.8264.com/static/image/common/arrow_right.gif" />{lang post_price_charge_comment}<!--{if $_G[gp_action] == 'edit' && $freechargehours}-->{lang post_price_free_chargehours}<!--{/if}--><!--{/if}-->
+				</div>
+			<!--{/if}-->
+
+			<!--{if $_G[gp_action] != 'edit' && checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
+				<!--{block sectpl}--><sec> <span id="sec<hash>" class="<classname>"><sec><i id="sec<hash>_menu" class="yzmimg" style="display:none"><sec></i></span><!--{/block}-->
+				<div class="twyzm clboth"><!--{template common/seccheck}--></div>
+			<!--{/if}-->
+
+			<div class="tijiaobutton">
+				<!--{if $_G[gp_action] == 'newthread' && $_G['setting']['sitemessage'][newthread] || $_G[gp_action] == 'reply' && $_G['setting']['sitemessage'][reply]}-->
+					<span id="custominfo" class="y" style="cursor:pointer">&nbsp;<img src="http://static.8264.com/static/image/common/info_small.gif" alt="{lang faq}" /></span>
+				<!--{/if}-->
+				<!--{if $_G[gp_action] == 'newthread'}-->
+					<!--{if in_array($special, array(0, 1, 3))}-->
+						<button type="submit" id="postsubmit" class="pn pnc{if $special == 0} ft{elseif $special == 1} tp{elseif $special == 3} xs{/if}" value="true" name="topicsubmit"></button>
+					<!--{elseif $special == 4}-->
+					<!--{else}-->
+						<button type="submit" id="postsubmit" class="pn pnc nopic" value="true" name="{if $_G[gp_action] == 'newthread'}topicsubmit{elseif $_G[gp_action] == 'reply'}replysubmit{elseif $_G[gp_action] == 'edit'}editsubmit{/if}">
+							<!--{if $special == 2}--><span>{lang post_newthreadtrade}</span>
+							<!--{elseif $special == 5}--><span>{lang post_newthreaddebate}</span>
+							<!--{elseif $special == 127}-->
+								<span><!--{if $buttontext}-->$buttontext<!--{else}-->{lang post_newthread}<!--{/if}--></span>
+							<!--{/if}-->
+						</button>
+					<!--{/if}-->
+				<!--{elseif $_G[gp_action] == 'reply'}-->
+					<!--{if !empty($_G['gp_addtrade'])}-->
+						<button type="submit" id="postsubmit" class="pn pnc nopic" value="true" name="replysubmit"><span>{lang trade_add_post}</span></button>
+					<!--{else}-->
+						<button type="submit" id="postsubmit" class="pn pnc cy" value="true" name="replysubmit"></button>
+					<!--{/if}-->
+				<!--{elseif $_G[gp_action] == 'edit'}-->
+					<!--{if $special == 4}-->
+						{if !$isfirstpost}
+						<button type="submit" id="postsubmit" class="pn pnc save" value="true" name="editsubmit"></button>
+						{/if}
+					<!--{elseif $isfirstpost && $thread['displayorder'] == -4}-->
+						<button type="submit" id="postsubmit" class="pn pnc ft" value="true" name="editsubmit"></button>
+					<!--{else}-->
+						<button type="submit" id="postsubmit" class="pn pnc save" value="true" name="editsubmit"></button>
+					<!--{/if}-->
+				<!--{/if}-->
+				<!--{if $_G['uid']}-->
+					<input type="hidden" id="postsave" name="save" value="" />
+					<!--{if $_G[gp_action] == 'newthread' && !$modnewthreads || $_G[gp_action] == 'edit' && $isfirstpost && !$modnewreplies && $thread['displayorder'] == -4}-->
+						<button  style="display:none;" type="button" id="postsubmit" class="pn" value="true" onclick="$('postsave').value = 1;$('postsubmit').click();" tabindex="4"><em>{lang save_draft}</em></button>
+					<!--{/if}-->
+				<!--{/if}-->
+				<span style="color:#999; padding:0 5px;vertical-align:middle;display: none;">每个贴子最多只能上传50张图片</span>
+				<!--{if $special == 2}--><label><input type="checkbox" name="continueadd" value="yes" class="pc" /> {lang post_message2}</label><!--{/if}-->
+			</div>
+
+			<!--{if $_G[gp_action] == 'newthread' && $savethreads}-->
+				<div class="bm bmn mtm">
+					<div class="mbn pbn bbda">
+						<a href="home.php?mod=space&uid=$_G['uid']&do=thread&view=me&type=thread&from=&filter=save" class="y xi2">{lang post_message3} &rsaquo;</a>
+						<h2>{lang post_message4}<span class="xi1"> $savethreadcount </span>{lang post_message5} <span class="xw0">{lang post_message6}<em class="qsv">&nbsp;</em>{lang post_message7}</span></h2>
+					</div>
+					<ul>
+					<!--{loop $savethreads $savethread}-->
+						<li class="mtn"><em class="qsv" title="{lang reply_quote}" onclick="insertsave($savethread[pid])">&nbsp;</em> <a href="forum.php?mod=post&action=edit&fid=$savethread[fid]&tid=$savethread[tid]&pid=$savethread[pid]" class="xi2" target="_blank">$savethread[subject]</a> <span class="xg1">$savethread[dateline]</span></li>
+					<!--{/loop}-->
+					</ul>
+				</div>
+			<!--{/if}-->
+
+			<!--{if $_G[gp_action] == 'newthread' && $savethreadothers}-->
+				<div class="bm bmn mtm">
+					<div class="mbn pbn bbda">
+						<a href="home.php?mod=space&uid=$_G['uid']&do=thread&view=me&type=thread&from=&filter=save" class="y xi2">{lang post_message3} &rsaquo;</a>
+						<h2>{lang post_message4}<span class="xi1"> $savethreadothercount </span>{lang post_message5} <span class="xw0">{lang post_message6}<em class="qsv">&nbsp;</em>{lang post_message7}</span></h2>
+					</div>
+					<ul>
+						<!--{loop $savethreadothers $savethread}-->
+						<li class="mtn"><em class="qsv" title="{lang reply_quote}" onclick="insertsave($savethread[pid])">&nbsp;</em> <a href="forum.php?mod=post&action=edit&fid=$savethread[fid]&tid=$savethread[tid]&pid=$savethread[pid]" class="xi2" target="_blank">$savethread[subject]</a> <span class="xg1">$savethread[dateline]</span></li>
+						<!--{/loop}-->
+					</ul>
+				</div>
+			<!--{/if}-->
+
+			<!--{if !empty($_G['setting']['pluginhooks']['post_sync_method'])}-->
+				<span>
+					{lang post_sync_method}:
+					<!--{hook/post_sync_method}-->
+				</span>
+			<!--{/if}-->
+
+			<!--{hook/post_bottom}-->
+		</div>
+		</div>
+	<!--{hook/post_side_bottom}-->
+</form>
+</div>
+</div>
+<!--{if $special}-->
+<script type="text/javascript" src="http://static.8264.com/static/js/calendar.js?{VERHASH}"></script>
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/forum/forum_calendar.css?{VERHASH}" />
+<!--{/if}-->
+
+<!--编辑器-->
+<div id="{$editorid}_menus" class="editorrow" style="overflow: hidden; margin-top: -5px; height: 0; border: none; background: transparent;">
+	<!--{subtemplate forum/editor_menu_forum_newimage}-->
+</div>
+<div id="showbigpic" style="display: none;"><div id="tempimg"><img onload="thumbMyImg(this);" /></div></div>
+<div id="hiddenobj" style="visibility: hidden; display:none; width:0px;height:0px;"></div>
+<script type="text/javascript" src="http://static.8264.com/static/js/jquery.form.js"></script>
+<script type="text/javascript">
+	var editorsubmit = $('postsubmit');
+	var editorform = $('postform');
+	var allowpostattach = parseInt('{$_G['group']['allowpostattach']}');
+	var allowpostimg = parseInt('$allowpostimg');
+	var pid = parseInt('$pid');
+	var extensions = '{eval echo str_replace(array('jpeg,','gif,','jpg,','png,') ,'' ,$_G['group']['attachextensions'])}';
+	var imgexts = '$imgexts';
+	var postminchars = parseInt('$_G['setting']['minpostsize']');
+	var postmaxchars = parseInt('$_G['setting']['maxpostsize']');
+	var disablepostctrl = parseInt('{$_G['group']['disablepostctrl']}');
+	var seccodecheck = parseInt('<!--{if checkperm('seccode') && $seccodecheck}-->1<!--{else}-->0<!--{/if}-->');
+	var secqaacheck = parseInt('<!--{if checkperm('seccode') && $secqaacheck}-->1<!--{else}-->0<!--{/if}-->');
+	var typerequired = parseInt('{$_G[forum][threadtypes][required]}');
+	var sortrequired = parseInt('{$_G[forum][threadsorts][required]}');
+	var special = parseInt('$special');
+	var isfirstpost = <!--{if $isfirstpost}-->1<!--{else}-->0<!--{/if}-->;
+	var allowposttrade = parseInt('{$_G['group']['allowposttrade']}');
+	var allowpostreward = parseInt('{$_G['group']['allowpostreward']}');
+	var allowpostactivity = parseInt('{$_G['group']['allowpostactivity']}');
+	var sortid = parseInt('$sortid');
+	var fid = $_G['fid'];
+	<!--{if $isfirstpost && !empty($_G[forum][threadtypes][types])}-->
+		//simulateSelect('typeid');
+	<!--{/if}-->
+	<!--{if !$isfirstpost && $thread['special'] == 5 && empty($firststand) && $_G[gp_action] != 'edit'}-->
+		//simulateSelect('stand');
+	<!--{/if}-->
+	<!--{if !$special && $_G[forum][threadsorts] && ($_G[gp_action] == 'newthread' || $_G[gp_action] == 'edit' && $isfirstpost && !$thread[sortid])}-->
+		//simulateSelect('sortid');
+		function switchsort() {
+			if($('sortid').value) {
+				saveData(1);
+				<!--{if $isfirstpost && $sortid}-->
+					ajaxget('forum.php?mod=post&action=threadsorts&sortid=' + $('sortid').value + '&fid=$_G[fid]<!--{if !empty($modelid)}-->&modelid=$modelid<!--{/if}--><!--{if !empty($_G[gp_modthreadkey])}-->&modthreadkey=$_G[gp_modthreadkey]<!--{/if}-->', 'threadsorts', 'threadsortswait', null, null, function () { seteditorcontrolpos(); });
+				<!--{else}-->
+					location.href = 'forum.php?mod=post&action=$_G[gp_action]&fid=$_G[fid]<!--{if !empty($_G[tid])}-->&tid=$_G[tid]<!--{/if}--><!--{if !empty($pid)}-->&pid=$pid<!--{/if}--><!--{if !empty($modelid)}-->&modelid=$modelid<!--{/if}-->&extra=$extra<!--{if !$sortid}-->&cedit=yes<!--{/if}-->&sortid=' + $('sortid').value;
+				<!--{/if}-->
+				Editorwin = 0;
+			}
+		}
+	<!--{/if}-->
+	<!--{if $isfirstpost}-->
+		<!--{if $sortid}-->
+			ajaxget('forum.php?mod=post&action=threadsorts&sortid=$sortid&fid=$_G[fid]<!--{if !empty($_G[tid])}-->&tid=$_G[tid]<!--{/if}-->&inajax=1<!--{if !empty($_G[gp_modthreadkey])}-->&modthreadkey=$_G[gp_modthreadkey]<!--{/if}-->', 'threadsorts', 'threadsortswait', null, null, function () { seteditorcontrolpos(); });
+		<!--{elseif $_G['forum']['threadsorts']['required'] && !$special}-->
+			<!--{eval $threadsortids = array_keys($threadsorts[types]);}-->
+			ajaxget('forum.php?mod=post&action=threadsorts&sortid={$threadsortids[0]}&fid=$_G[fid]<!--{if !empty($_G[tid])}-->&tid=$_G[tid]<!--{/if}-->&inajax=1<!--{if !empty($_G[gp_modthreadkey])}-->&modthreadkey=$_G[gp_modthreadkey]<!--{/if}-->', 'threadsorts', 'threadsortswait', null, null, function () { seteditorcontrolpos(); });
+		<!--{/if}-->
+	<!--{/if}-->
+
+	<!--{if $_G[gp_action] == 'newthread' && $_G['setting']['sitemessage'][newthread] || $_G[gp_action] == 'reply' && $_G['setting']['sitemessage'][reply]}-->
+		showPrompt('custominfo', 'mouseover', '<!--{if $_G[gp_action] == 'newthread'}--><!--{echo trim($_G['setting']['sitemessage'][newthread][array_rand($_G['setting']['sitemessage'][newthread])])}--><!--{elseif $_G[gp_action] == 'reply'}--><!--{echo trim($_G['setting']['sitemessage'][reply][array_rand($_G['setting']['sitemessage'][reply])])}--><!--{/if}-->', $_G['setting']['sitemessage'][time]);
+	<!--{/if}-->
+	<!--{if $_G['setting']['swfupload'] != 1 && $_G['group']['allowpostattach']}-->addAttach();<!--{/if}-->
+	<!--{if $_G['setting']['swfupload'] != 1 && $allowpostimg}-->addAttach('img');<!--{/if}-->
+	if($('subjectbox')) {
+		var tmp_obj = $('{$editorid}_textarea');
+		if(tmp_obj && tmp_obj.style.display == '') {
+			tmp_obj.focus();
+		}
+	} else if($('subject')) {
+		$('subject').focus();
+	}
+</script>
+<script>
+jQuery.noConflict();
+;(function($){
+	function newAttachFile(num){
+		$('#attachbtnhiddentmp').clone().attr('id', 'attachform_' + num).find('input[type=file]').attr('attnum', num).end().appendTo('#attachbtn').show();
+	}
+	newAttachFile(1);
+	$('.imgfbbox').on('click', '.imgfbtitle>span', function(event){
+		if(! $(this).hasClass('zhong')){
+			var myclassid = $(this).attr('class');
+			if(BROWSER.ie > 0 && BROWSER.ie <= 7){
+				$(this).addClass('zhong').siblings().removeClass('zhong').end().parent().siblings('.' + myclassid + 'show').show().siblings().not('.imgfbtitle').hide();
+			}else{
+				$(this).addClass('zhong').siblings().removeClass('zhong').end().parent().siblings('.' + myclassid + 'show').show().css({height:'auto', 'overflow' : ''}).siblings().not('.imgfbtitle').css({height:'0px', 'overflow' : 'hidden'});
+			}
+		}
+	});
+
+	$('.usealbumshow .xzxcout>a').on('click', function(event){
+		$(this).parent().siblings('span').text($(this).text());
+		var select_albumid = $(this).attr('albumid');
+		ajaxget('forum.php?mod=post&perpage=4&showpage=4&action=albumphoto&aid=' + select_albumid , 'albumphoto');
+		$(this).parent().hide();
+	});
+	$('#insertallimage').click(function(event){
+		var imagelistobj = $('#uploadimagelist>li:not(.imgdeleted) img');
+		var maximagepic = 50;
+		if(imagelistobj.length > maximagepic){
+			showDialog('你列表中的文件超过50张，超过50张的图片将会保存在列表内，您可以再次发帖时使用！');
+		}
+		var i = 0;
+		imagelistobj.each(function(){
+			i++;
+			if(i <= maximagepic){$(this).click();}
+
+		});
+	});
+	$('#savetoalbum').click(function(event){
+		$('#selectsavealbum').show();
+	});
+	$('.bcxcout_selectout>.bcxcout_selectoutclose>.close14_14_24w.closepostion').click(function(event){
+		$(this).parents('.bcxcout_selectout').hide();
+	});
+	$('#selectsavealbum>.xcgx.clboth>input[name=insertall]').click(function(event){
+		if($(this).is(':checked')){
+			$('#uploadimagelist>li>input.albumabout').removeAttr('disabled');
+		}else{
+			$('#uploadimagelist>li>input.albumabout').attr('disabled', true);
+		}
+	});
+	$('#selectsavealbum>.xcselect>.xcselectout>a').click(function(event){
+		$(this).parent().siblings('span').text($(this).text()).end().siblings('input[name=uploadalbum]').val($(this).attr('albumid')).end().hide();
+		if($(this).attr('albumid') == 0){
+			$('#createnewalbum').show();
+		}
+	});
+	$('#createnewalbum .cjxcbutton>input.cjbutton').click(function(event){
+		if($('#createnewalbum>div.cjxcinput>input.cjxctext').val().length < 3){
+			showDialog('您选择创建的新相册名不能为空或太短！');
+		}else{
+			$('#selectsavealbum').find('>div.xcselect>span').text($('#createnewalbum>div.cjxcinput>input.cjxctext').val());
+			$('#createnewalbum').hide();
+		}
+	})
+	$('#createnewalbum .cjxcbutton>input.qxbutton').click(function(event){
+		$('#createnewalbum').hide();
+		if($('#createnewalbum>div.cjxcinput>input.cjxctext').val().length > 0){$('#selectsavealbum').children('span').text('请选择相册').end().show();}
+	});
+	$('#{$editorid}_controls>.fjicon>div>div .weblink input').bind('focus blur', function(event){
+		switch(event.type){
+			case 'focus':
+				$(this).next('em').hide();break;
+			case 'blur':
+				if($(this).val().length == 0){$(this).next('em').show();}break;
+		}
+	});
+var sel, selection;
+	$('#{$editorid}_controls>.fjicon>a').on('click', function(event){
+		var mycate = $(this).attr('cate');
+		var mycateout = $(this).siblings('.' + mycate + 'out');
+		if(mycateout.is(':hidden')){
+			checkFocus();
+			var str = '';
+			var pos = [0, 0];
+			var opentag = '[' + mycate + ']';
+			var closetag = '[/' + mycate + ']';
+			if(BROWSER.ie) {
+				sel = wysiwyg ? editdoc.selection.createRange() : document.selection.createRange();
+				pos = getCaret();
+			}
+			selection = sel ? (wysiwyg ? sel.htmlText : sel.text) : getSel();
+			if(mycate == 'link'){
+				if(selection){
+					mycateout.find('.weblink:eq(1)').hide();
+				}else{
+					mycateout.find('.weblink:eq(1)').show();
+				}
+			}
+			$(this).addClass(mycate + 'icon_hover').siblings('div').hide().end().siblings('a').each(function(){
+				$(this).removeClass($(this).attr('cate') + 'icon_hover');
+			}).end().siblings('.' + mycate + 'out').show();
+			function click_function_handle(){
+				if($(this).hasClass('tjbutton')){
+					switch(mycate){
+						case 'link':
+							var href = mycateout.find('input[type=text]:first').val();
+							href = (isEmail(href) ? 'mailto:' : '') + href;
+							if(href != '') {
+								var v = selection ? selection : (mycateout.find('input[type=text]:eq(1)').val() ? mycateout.find('input[type=text]:eq(1)').val() : href);
+								str = wysiwyg ? ('<a href="' + href + '">' + v + '</a>') : '[url=' + href + ']' + v + '[/url]';
+								if(wysiwyg) insertText(str, str.length - v.length, 0, (selection ? true : false), sel);
+								else insertText(str, str.length - v.length - 6, 6, (selection ? true : false), sel);
+							}
+							break;
+						case 'shipin':
+							var mediaUrl = mycateout.find('input[type=text]:first').val();
+							var auto = '';
+							var ext = mediaUrl.lastIndexOf('.') == -1 ? '' : mediaUrl.substr(mediaUrl.lastIndexOf('.') + 1, mb_strlen(mediaUrl)).toLowerCase();
+							ext = in_array(ext, ['mp3', 'wma', 'ra', 'rm', 'ram', 'mid', 'asx', 'wmv', 'avi', 'mpg', 'mpeg', 'rmvb', 'asf', 'mov', 'flv', 'swf']) ? ext : 'x';
+							if(ext == 'x') {
+								if(/^mms:\/\//.test(mediaUrl)) {
+									ext = 'mms';
+								} else if(/^(rtsp|pnm):\/\//.test(mediaUrl)) {
+									ext = 'rtsp';
+								}
+							}
+							var auto = mycateout.find('input[type=checkbox]:first').is(':checked') ? ',1' : '';
+							var str = '[media=' + ext + ',' + mycateout.find('input[type=text]:eq(1)').val() + ',' + mycateout.find('input[type=text]:eq(2)').val() + auto +']' + mediaUrl + '[/media]';
+							insertText(str, str.length, 0, false, sel);
+							break;
+					}
+					mycateout.find('input[type=text]').each(function(){
+						if(($(this)).next('em').text().length > 0){
+							$(this).val('').next('em').show();
+						}
+					}).end().find('input:checked').removeAttr('checked');
+				}
+				$(this).parent().parent().find('.close14_14_24w.closepostion').click();
+			}
+			mycateout.find('.tjqx>input[type=button]').bind('click', null, click_function_handle);
+		}else{
+			$(this).removeClass(mycate + 'icon_hover').siblings('.' + mycate + 'out').hide();
+		}
+	});
+	$('#{$editorid}_controls>.fjicon>div[class$=out] .close14_14_24w.closepostion').click(function(event){
+		var divshow = $(this).parent().parent();
+		divshow.hide().siblings('.' + divshow.attr('cate') + 'icon').removeClass(divshow.attr('cate') + 'icon_hover');
+	});
+	$('#{$editorid}_controls>.fjicon>div[class$=out] .weblink').mouseover(function(event){
+		$(this).children('input[type=text]').focus();
+	});
+	$('#{$editorid}_attach_menu').on('click', '>.bqtitle>a', function(event){
+		var cate = $(this).attr('cate');
+		$(this).addClass('zhong').siblings().removeClass('zhong').end().parent().next('.fujiancon').children('.' + cate + ':first').show().siblings().hide();
+	});
+	$('#attachbtn').on('change', 'input[type=file]', function(event){
+		var path = $(this).val();
+		var haveselect = false;
+		if($('#attachbtn>div:hidden>span>form').length >= 3){
+			showDialog('对不起，最多只能上传三个附件！');
+			haveselect = true;
+		}
+		if(! haveselect){
+			var extpos = path.lastIndexOf('.');
+			var ext = extpos == -1 ? '' : path.substr(extpos + 1, path.length).toLowerCase();
+			var re = new RegExp("(^|\\s|,)" + ext + "($|\\s|,)", "ig");
+			if(extensions != '' && (re.exec(extensions) == null || ext == '')) {
+				showDialog('对不起，不支持上传此类扩展名的附件。如果您需要上传图片，请使用右侧的图片上传。');
+				haveselect = true;
+			}
+		}
+		if(! haveselect){
+			$('#attachbtn>div:hidden>span>form>input[type=file]').each(function(){
+				if($(this).val() == path){
+					haveselect = true;
+					showDialog('您选择的附件文件刚刚已经选择过了');
+				}
+			});
+		}
+		if(haveselect){
+			$(this).val('');
+			return;
+		}else{
+			var file_form_num = $(this).attr('attnum');
+			$('#attachbodyhiddentmp').clone().attr('id', 'wattingupload_' + file_form_num).find('input[type=hidden]').val(file_form_num).end().find('>span').text(path).end().appendTo('#attach_upload_body').show();
+			$("#attachform_" + file_form_num).hide();
+			newAttachFile(parseInt(file_form_num) + 1);
+		}
+	});
+	$('#attach_upload_body').on('click', '>li>em', function(event){
+		var file_form_num = $(this).siblings('input[type=hidden]').val();
+		$("#wattingupload_" + file_form_num).remove();
+		$("#attachform_" + file_form_num).remove();
+	});
+	$('#uploadbtn').on('click', '>input[type=button]', function(event){
+		if($(this).hasClass('qxbutton')){
+			$('#{$editorid}_attach_menu>.bqtitle>.close14_14_24w.closepostion').click();
+		}else if($(this).hasClass('tjbutton')){
+			var _errorcount = 0;
+			var _successcount = 0;
+			var _errormessage = '';
+			var _uploadfunction = function(){
+				$('#attachbtn>div:hidden>span>form:first').ajaxSubmit({type:'post', success: successAjaxHandle, error: errorAjaxHandle});
+			}
+			var _uploadcomplete = function(){
+				if($('#attachbtn>div:hidden>span>form').length > 0){
+					setTimeout(_uploadfunction, 500);
+				}else{
+					$('#uploadingtips').hide();
+					$('#attach_upload_body li').remove();
+					showDialog('文件上传完毕，共上传 ' + (_errorcount + _successcount) + ' 个文件，成功 ' + _successcount + ' 个，失败 ' + _errorcount + ' 个。' + (_errorcount > 0 ? _errormessage : ''));
+					$('#{$editorid}_attach_menu .bqtitle a:first').click();
+				}
+			}
+			var successAjaxHandle = function(data){
+				var re = new RegExp("^DISCUZUPLOAD\|\d\|\d+\|\d$", "i");
+				if(data != '' && re.test(data)){
+					var attnum = $('#attachbtn>div:hidden>span>form:first input[type=file]').attr('attnum');
+					var result = data.split('|');
+					var aid = result[2];
+					var errormsg = result[1];
+					var filename = $('#attachbtn>div:hidden>span>form:first input[type=file]').val();
+					var filearr = filename.split('\\');
+					filename = filearr[filearr.length - 1];
+					if(errormsg != 0){
+						_errorcount++;
+						var _error = filename + '上传失败，原因：' + STATUSMSG[errormsg];
+						_errormessage += " \n" + _error;
+						$('#wattingupload_' + attnum).addClass('uploadattacherror').attr('title', _error);
+					}else{
+						_successcount++;
+						var d = new Date();
+						var v_Year = d.getFullYear();
+						var v_Mon = d.getMonth() + 1;
+						var v_Day = d.getDate();
+						var v_h = d.getHours();
+						var v_m = d.getMinutes();
+						var v_time = v_Year + '-' + v_Mon + '-' + v_Day + ' ' + v_h + ':' + v_m;
+						addattachlist("{aid: " + aid + ", filename:'" + filename + "', uploadtime:'" + v_time + "', descr: '', readperm: 0}");
+						$('#wattingupload_' + attnum).addClass('uploadattachok');
+					}
+					$('#attachform_' + attnum).remove();
+					_uploadcomplete();
+				}else{
+					showDialog('文件' + filename + '上传失败，原因：内部错误。');
+				}
+			}
+			var errorAjaxHandle = function(data){
+				_errorcount++;
+				var attnum = $('#attachbtn>div:hidden>span>form:first input[type=file]').attr('attnum');
+				var _error = $('#attachbtn>div:hidden>span>form:first input[type=file]').val() + '上传失败，原因：' + '文件过大或通讯错误';
+				_errormessage += " \n" + _error;
+				$('#wattingupload_' + attnum).addClass('uploadattacherror').attr('title', _error);
+				$('#attachform_' + attnum).remove();
+				_uploadcomplete();
+			}
+			if($('#attachbtn>div:hidden>span>form').length > 0){
+				$('#uploadingtips').show();
+				_uploadfunction();
+			}else{
+				showDialog('请选择通过上访浏览文件，选择需要上传的文件。');
+			}
+		}
+	})
+	$('#{$editorid}_attach_menu').on('click', '>.fujiancon>.fujian_list.listattach>ul>li.fujian_list_td.clboth>span.del', function(event){
+		$(this).parents('li.fujian_list_td.clboth').remove();
+	});
+	{if $_G['group']['allowsetattachperm'] && ($_G[gp_action] == 'newthread' || ($_G[gp_action] == 'edit' && $isfirstpost))}
+	$('#listofattach').on('click mouseleave', '.readtext', function(event){
+		var mid = $(this).attr('mid');
+		var listHeight = document.getElementById('listofattach').offsetHeight;
+		var jiange_cha = $(this).parents('li').offset().top + 45 - $('#listofattach').offset().top - listHeight + 15;
+		if(jiange_cha > 0){
+			var c_top = $(this).offset().top - 102;
+			$('#' + mid).css({borderTopWidth : '1px', borderBottomWidth : '0px'});
+		}else{
+			var c_top = $(this).offset().top + 23;
+			$('#' + mid).css({borderTopWidth : '0px', borderBottomWidth : '1px'});
+		}
+		var c_left = $(this).offset().left;
+		$('#' + mid).css({top:c_top, left:c_left});
+		switch(event.type){
+			case 'click' :
+				$('#append_parent .readtext_out:visible').hide();
+				$('#' + mid).show();
+				break;
+			case 'mouseleave':
+				$('#' + mid).hide();break;
+		}
+	}).on('scroll', function(event){
+		$('#append_parent .readtext_out:visible').each(function(){
+			var fatobj = $('#newattach_id_' + $(this).attr('faid')).find('.readtext');
+			$(this).css({top: fatobj.offset().top + 23, left: fatobj.offset().left});
+		});
+	});
+	$('#append_parent .readtext_out').on('mouseenter mouseleave', function(event){
+		switch(event.type){
+			case 'mouseenter' :
+				$(this).show();break;
+			case 'mouseleave' :
+				$(this).hide();break;
+		}
+	}).on('click', 'a', function(event){
+		$(this).parent().hide();
+		$('#newattach_id_' + $(this).parent().attr('faid')).children('.readpowercon').children('.readtext').text($(this).text()).end().children('input.readperm').val($(this).attr('readperm'));
+	});
+	{/if}
+	$('#noattachtips input.imgfjbutton').click(function(event){
+		$('#{$editorid}_attach_menu>.bqtitle>a:eq(1)').click();
+	});
+	$('#uploadimagelist').on('mouseover mouseout mousemove', '>li>img', function(event){
+		var objclass = $(this).attr('aid');
+		switch(event.type){
+			case 'mouseover':
+				if($('#showbigpic_' + objclass).find('img').width() > 300 || $('#showbigpic_' + objclass).find('img').height() > 300){
+					$('#showbigpic_' + objclass).find('img').hide();
+					thumbMyImg($($('#showbigpic_' + objclass).find('img')));
+				}
+				if(document.getElementById('showbigpic_' + objclass) == null){
+					$('#tempimg').clone().attr('id', 'showbigpic_' + objclass).appendTo('#showbigpic');
+					$('#showbigpic_' + objclass).find('img').attr('src', $(this).attr('bigthumb'))
+				}
+				$('#showbigpic_' + objclass).siblings().hide().end().parent().css({top : event.pageY - 320, left : event.pageX - 320}).show().end().show();
+				break;
+			case 'mouseout':
+				$('#showbigpic_' + objclass).hide();
+				$('#showbigpic').hide();
+				break;
+			case 'mousemove':
+				if($('#showbigpic_' + objclass).find('img').width() > 300 || $('#showbigpic_' + objclass).find('img').height() > 300){
+					$('#showbigpic_' + objclass).find('img').hide();
+					thumbMyImg($($('#showbigpic_' + objclass).find('img')));
+				}
+				if(document.getElementById('showbigpic_' + objclass) == null){
+					$('#tempimg').clone().attr('id', 'showbigpic_' + objclass).appendTo('#showbigpic');
+					$('#showbigpic_' + objclass).find('img').attr('src', $(this).attr('bigthumb'))
+				}
+				var thumbpic = {width: $('#showbigpic_' + objclass + ' img:first').width(), height: $('#showbigpic_' + objclass + ' img:first').height()};
+				$('#showbigpic').css({top : event.pageY - thumbpic.height - 20, left : event.pageX - thumbpic.width - 20}).show();
+				break;
+		}
+	});
+	{if $_G[gp_action] != 'edit' && checkperm('seccode') && ($secqaacheck || $seccodecheck)}
+	$('#postbox>.twyzm.clboth>span').hover(function(event){
+		$('#' + this.id + '_menu').show();
+	}, function(event){
+		$('#' + this.id + '_menu').hide();
+	});
+	$(document).on('blur focusin focusout', '#postbox>.twyzm.clboth>span>input[type=text]', function(event){
+		switch(event.type){
+			case 'focusin':
+				$('#' + $(this).parent().attr('id') + '_menu').show();break;
+			case 'blur':
+			case 'focusout':
+				$('#' + $(this).parent().attr('id') + '_menu').hide();break;
+		}
+	})
+	{/if}
+	$('#unusedform .deletepic').click(function(event){
+		var m_attach_id = $(this).attr('attachid');
+		if(m_attach_id > 0){
+			ajaxget('forum.php?mod=ajax&action=deletepic&picid=' + m_attach_id, "hiddenobj");
+		}
+	});
+	$('#unusedform>.o.pns.cl>button').click(function(event){
+		var ver_p = $(this).hasClass('pnc');
+		var ver_d = $(this).hasClass('deletepic');
+		$('#unusedform>div>p').find('input[type=checkbox]').each(function(){
+			if(ver_p && $(this).is(':checked')){
+				return;
+			}
+			if($(this).is(':checked')){
+				if(ver_d){
+					$(this).parents('p').find('a.deletepic').click();
+				}
+				$('#newattach_id_' + $(this).val()).remove();
+				$('#image_td_' + $(this).val()).remove();
+			}
+		});
+		if($('#listofattach>ul').children('li').length == 0){
+			$('#noattachtips').prependTo('#{$editorid}_attach_menu>.fujiancon').next('.fujian_list').hide();
+			$('#{$editorid}_attachn').hide();
+  		}else if($('#attachlist_old').children('li').length == 0){
+  			$('#attachlist_old').prev('.tsupfujian').hide();
+  		}
+
+  		if($('#listofattach').find('li').length <= 6){
+  			$('#listofattach').height('auto');
+  			$('#listofattach').css('overflow-y', 'auto');
+  		}
+  		if($('#uploadimagelist').children('li').length == 0){
+			$('#uploadimagediv').hide().prev('.imgmoreup').show();
+  		}
+  		hideMenu('fwin_dialog', 'dialog');
+	});
+	$('#{$editorid}_iframe').css('overflow-y', 'hidden').contents().bind('keyup', function(){
+		if(BROWSER.ie){
+			return;
+		}
+		$(this).find('body').css({'overflow-y' : 'hidden'});
+		$(this).find('body').height('auto');
+		var cont_s = $('#{$editorid}_iframe').contents().find('body').height();
+		var hex_s = $('#{$editorid}_iframe').height() - cont_s;
+		var pagehex = $(document).scrollTop();
+		if(hex_s < 30){
+			$('.edt.areatext').height(cont_s + 50);
+			editorsize('+', cont_s + 50);
+			if(pagehex > 0){
+				$(document).scrollTop(pagehex - hex_s + 50);
+			}
+		}else  if(hex_s > 50){
+			cont_s += 30;
+			cont_s = cont_s <= 400 ? 400 : cont_s;
+			$('.edt.areatext').height(cont_s);
+			editorsize('-', cont_s);
+		}else{
+			$('#{$editorid}_iframe').contents().find('body').height($('#{$editorid}_iframe').height());
+		}
+	});
+	$('#{$editorid}_controls .font_size>a').click(function(){
+		$(this).addClass('zhong').siblings().removeClass('zhong');
+	});
+	$('#albumphoto').on('click', 'ul li img', function(){
+		$('#{$editorid}_iframe').contents().trigger('keyup');
+	});
+
+	$(document).scroll(function(){
+		var tools_bar = $('#right_tools');
+		if($(document).scrollTop() > editorcontroltop && editorcurrentheight > 400) {
+			tools_bar.css({position: 'fixed', top: '0px', width: '262px'});
+		} else {
+			tools_bar.css({position: '', top: '', width: ''});
+		}
+	});
+	if($('#attachlist_old>li').length > 4){$('#listofattach').css({'overflow-y':'scroll',height:'300px'});}
+	if($('.usealbumshow .xzxc>.xzxcout>a').length > 7){$('.usealbumshow .xzxc>.xzxcout').css({height:'190px', 'overflow-y':'scroll'});}
+	$('#{$editorid}_svdsecond').prependTo('div.aretzt.clboth>span.ri');
+	setTimeout(function(){
+		$('#{$editorid}_iframe').contents().trigger('keyup');
+	}, 1000);
+})(jQuery);
+</script>
+<style>
+.edierbar #{$editorid}_bold{ width:24px; height:23px; background-position: 0px -301px; margin-left:4px;}
+.edierbar #{$editorid}_bold:hover,
+.edierbar #{$editorid}_bold.hover{ width:24px; height:23px; background-position: -25px -301px;}
+#{$editorid}_button{display:none;}
+<!--{if ! $_G[forum][ismoderator]}-->
+#{$editorid}_switcher{display:none;}
+<!--{else}-->
+#{$editorid}_switcher{margin-right:10px;height:23px;line-height:23px;}
+<!--{/if}-->
+.text_align #{$editorid}_justifyleft{ background-position:-53px -301px;}
+.text_align #{$editorid}_justifyleft:hover,
+.text_align #{$editorid}_justifyleft.hover{ background-position:-86px -301px;}
+.text_align #{$editorid}_justifycenter{  background-position:-119px -301px;}
+.text_align #{$editorid}_justifycenter:hover,
+.text_align #{$editorid}_justifycenter.hover{  background-position:-152px -301px;}
+#{$editorid}_attachn{display:block;left:auto; width:10px; height:10px; background:url(http://static.8264.com/static/images/common/tanhao.png)  no-repeat; position:absolute; top:-4px; right:-4px;}
+</style>
+<script type="text/javascript">
+function thumbMyImg(objimg){
+	jQuery.noConflict();
+	;(function($){
+		var myobj = {width : $(objimg).width(), height : $(objimg).height()};
+		if(myobj.width > 300 || myobj.height > 300){
+			if(myobj.width > myobj.height){
+				var scale = myobj.height / myobj.width;
+				myobj.width = 300;
+				myobj.height = parseInt(300 * scale);
+			}else{
+				var scale = myobj.width / myobj.height;
+				myobj.height = 300;
+				myobj.width = parseInt(300 * scale);
+			}
+			$(objimg).width(myobj.width).height(myobj.height);
+		}
+		$(objimg).show();
+	})(jQuery);
+}
+<!--{if $_G[forum][ismoderator]}-->
+$('{$editorid}_switcher').style.display = '';
+<!--{/if}-->
+</script>
+<!--编辑器 end-->
+
+<script type="text/javascript">
+jQuery(function(){
+	jQuery('.needdown').hover(function(event){
+		jQuery(this).children('.showdowndiv').show();
+	}, function(event){
+		jQuery(this).children('.showdowndiv').hide();
+	});
+	jQuery('.pbt_select_option_box>a').click(function(event){
+		jQuery(this).parent().next('span').children('input[type=hidden]').val(jQuery(this).attr('hid')).siblings('span').text(jQuery(this).text());
+		jQuery(this).parent().hide();
+	});
+	if(jQuery('.pbt_select_option_box').height() > 500){jQuery('.pbt_select_option_box').height('500px');}
+
+	jQuery('.pbt_title input[type=text]').blur(function(){
+		var tempSubjecttips = jQuery(this).parents('.pbt_title').find('.subject_tips');
+		if(jQuery(this).val().length == 0){
+			jQuery(this).val(tempSubjecttips.val()).css('color', '#949494');
+		}
+	}).focus(function(){
+		var tempSubjecttips = jQuery(this).parents('.pbt_title').find('.subject_tips');
+		if(jQuery(this).val() == tempSubjecttips.val()){
+			jQuery(this).val('').css('color', '');
+		}
+	}).blur();
+});
+
+function check_subject(){
+	jQuery.noConflict();
+	;(function($){
+		$('.pbt_title').each(function(){
+			var tempSubject 	= jQuery(this).find('input[type=text]');
+			var tempSubjecttips = jQuery(this).find('.subject_tips');
+			if(tempSubject.val() == tempSubjecttips.val()){
+				tempSubject.val('');
+				setTimeout(function(){
+					tempSubject.val(tempSubjecttips.val());
+				},1000);
+			}
+		});
+	})(jQuery);
+}
+</script>
+<!--{subtemplate common/footer_8264_new}-->

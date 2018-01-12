@@ -1,0 +1,41 @@
+.td {
+	font-family: "宋体";
+	font-size: 9pt;
+	line-height: 18px;
+	color: #333333;
+}
+a:link {
+	font-family: "宋体";
+	font-size: 9pt;
+	line-height: 18px;
+	color: #333333;
+	text-decoration: none;
+}
+a:visited {
+	font-family: "宋体";
+	font-size: 9pt;
+	line-height: 18px;
+	color: #5B5944;
+	text-decoration: none;
+}
+a:hover {
+	font-family: "宋体";
+	font-size: 9pt;
+	line-height: 18px;
+	color: #FF0000;
+	text-decoration: underline;
+}
+a:active {
+	font-family: "宋体";
+	font-size: 9pt;
+	line-height: 18px;
+	color: #FF0000;
+	text-decoration: underline;
+}
+.f14BWW {
+	FONT-SIZE: 14px; COLOR: #000000; LINE-HEIGHT: 160%
+}
+.f14t1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ffffff; LINE-HEIGHT: 160%
+}
+.style14 {FONT-WEIGHT: bold; font-size: 14px; color: #000000; }

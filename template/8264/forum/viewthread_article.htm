@@ -1,0 +1,500 @@
+<!--{subtemplate common/header_8264}-->
+<style id="diy_style" type="text/css"></style>
+
+<script type="text/javascript" src="http://static.8264.com/static/forum_viewthread.js?{VERHASH}"></script>
+<script type="text/javascript">zoomstatus = parseInt($_G['setting']['zoomstatus']), imagemaxwidth = '{IMAGEMAXWIDTH}', aimgcount = new Array();</script>
+
+<link href="http://static.8264.com/static/css/forum/newsview.css" rel="stylesheet" type="text/css"/>
+<div class="warpper">
+	<!--//导航条//-->
+	<!--{subtemplate common/nav_8264}-->
+    <!--//广告//-->
+	<div class="ad">
+    	<div style="float:left; width:776px;"><!--{ad/custom_21}--></div>
+        <div style="float:right; width:176px;"><iframe style="display:block" src="template/8264/iframe/todaynews.htm" frameBorder=0  scrolling="no" height="80" width="176" marginheight="0" marginwidth="0"></iframe></div>
+        <div style="clear:both;"></div>
+    </div>
+    <div class="weizhiall">
+    	<div class="weizhi"><a href="./" title="{lang homepage}">{lang homepage}</a>$navigation<em>&nbsp;&#8250;&nbsp;</em> {lang user_threads}</div>
+        <div class="search">
+        	<!--{subtemplate common/simplesearchform}-->
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+    <div class="mid">
+    	<div class="l" id="left_8264">
+        <div style="background:#FFFFFF;">
+        	<div class="l1">
+                <div class="ad1"><!--{ad/custom_13}--></div>
+                <div class="newstitle">$_G[forum_thread][subject]</div>
+                <div class="newstitlecon">
+                	<!--//旧文章页面作者时间头像地方开始//-->
+                  	<table border="0" align="center" cellpadding="0" cellspacing="0" style="margin:0 auto;">
+                        <tr>
+                            <td align="center" valign="middle">
+                              <div style="line-height:1.8; text-align:center;">添加时间：<!--{date($_G[forum_thread][dateline])}-->&nbsp;来源：<a href="forum.php?mod=viewthread&tid=$_G[tid]" target="_blank">驴友论坛</a>&nbsp;作者：<!--{if $_G[forum_thread][author] && $_G[forum_thread][authorid]}-->
+					<a href="home.php?mod=space&uid=$_G[forum_thread][authorid]">$_G[forum_thread][author]</a>
+					<!--{else}-->
+						<!--{if $_G['forum']['ismoderator']}-->
+							<a href="home.php?mod=space&uid=$_G[forum_thread][authorid]">{lang anonymous}</a>
+						<!--{else}-->
+							{lang anonymous}
+						<!--{/if}-->
+					<!--{/if}-->
+                    <br />
+                    <a href="http://www.8264.com">8264(www.8264.com)</a>&nbsp;共有驴友评论<!--{if $_G[forum_thread][replies] > 0}--><font color="RED">&nbsp;<span id="commentCountDiv">$_G[forum_thread][replies]</span></font>&nbsp;条&nbsp;<!--{else}--><font color="RED">&nbsp;<span id="commentCountDiv">0</span></font>&nbsp;条&nbsp;<!--{/if}--><a href="$common_url" style="color:#0099cc;">查看评论</a>&nbsp;</div>
+                            </td>
+                        </tr>
+                </table>
+                <!--//旧文章页面作者时间头像地方结束//-->
+                </div>
+                <div style="text-align:center;">
+                    <div id="content_left_ad2_top"><!--{ad/custom_16}--></div>
+                    <div id="content_left_ad2_bottom">
+                        <div class="content_left_ad2_bottom_l"><!--{ad/custom_22}--></div>
+                        <div class="content_left_ad2_bottom_r"><!--{ad/custom_23}--></div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="newstext">
+    			<!--{if empty($_G['gp_page']) || $_G['gp_page'] < 2}-->
+                <div>
+                    <table cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td>
+                                <!--{subtemplate forum/viewthread_node_body}-->
+    
+                                <!--{if $post['first'] && !$_G['forum_thread']['archiveid']}-->
+                                    <!--{if !empty($lastmod['modaction'])}--><div class="modact xs1"><a href="forum.php?mod=misc&action=viewthreadmod&tid=$_G[tid]" title="{lang thread_mod}" onclick="showWindow('viewthreadmod', this.href)">{lang thread_mod_by}</a></div><!--{/if}-->
+                                    <div class="xs1 uo{if $_G['group']['allowrecommend'] && $_G['setting']['recommendthread'][status]} nrate{/if}">
+                                        <!--{if $post['invisible'] == 0}-->
+                                            <!--{if $_G['group']['raterange'] && $post['authorid']}-->
+                                                <a id="k_rate" href="javascript:;" onclick="showWindow('rate', 'forum.php?mod=misc&action=rate&tid=$_G[tid]&pid=$post[pid]', 'get', -1);return false;" title="{echo count($postlist[$post[pid]][totalrate]);} {lang people_score}">{lang rate}</a>
+                                            <!--{/if}-->
+                                            <a href="home.php?mod=spacecp&ac=favorite&type=thread&id=$_G[tid]" id="k_favorite" onclick="showWindow(this.id, this.href, 'get', 0);" onmouseover="this.title = $('favoritenumber').innerHTML + ' {lang activity_member_unit}{lang thread_favorite}'">{lang thread_favorite}<span id="favoritenumber">{$_G['forum_thread']['favtimes']}</span></a>
+                                            <a href="home.php?mod=spacecp&ac=share&type=thread&id=$_G[tid]" id="k_share" onclick="showWindow(this.id, this.href, 'get', 0);" onmouseover="this.title = $('sharenumber').innerHTML + ' {lang activity_member_unit}{lang thread_share}'">{lang thread_share}<span id="sharenumber">{$_G['forum_thread']['sharetimes']}</span></a>
+                                            <!--{if $_G['perm']['allowrecommend'] && $_G['setting']['recommendthread']['status']}-->
+                                                <a id="recommend_add" href="forum.php?mod=misc&action=recommend&do=add&tid=$_G[tid]" {if $_G['uid']}onclick="ajaxmenu(this, 3000, 1, 0, '43', 'recommendupdate({$_G['group']['allowrecommend']})');return false;"{else} onclick="showWindow('login', this.href)"{/if} onmouseover="this.title = $('recommendv_add').innerHTML + ' {lang activity_member_unit}$_G[setting][recommendthread][addtext]'">$_G['setting']['recommendthread'][addtext]<span id="recommendv_add">$_G[forum_thread][recommend_add]</span></a>
+                                                <a id="recommend_subtract" href="forum.php?mod=misc&action=recommend&do=subtract&tid=$_G[tid]" {if $_G['uid']}onclick="ajaxmenu(this, 3000, 1, 0, '43', 'recommendupdate(-{$_G['group']['allowrecommend']})');return false;"{else} onclick="showWindow('login', this.href)"{/if} onmouseover="this.title = $('recommendv_subtract').innerHTML + ' {lang activity_member_unit}$_G[setting][recommendthread][subtracttext]'">$_G['setting']['recommendthread'][subtracttext]<span id="recommendv_subtract">$_G[forum_thread][recommend_sub]</span></a>
+                                            <!--{/if}-->
+                                        <!--{/if}-->
+                                        <!--{hook/viewthread_useraction}-->
+                                    </div>
+                                <!--{/if}-->
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!--{/if}-->
+                <!--{if !empty($aimgs[$post[pid]])}-->
+                <script type="text/javascript" reload="1">aimgcount[{$post[pid]}] = [<!--{echo implode(',', $aimgs[$post[pid]]);}-->];attachimgshow($post[pid]);</script>
+                <!--{/if}-->
+                </div>
+                <!--{if $multi}-->
+				<table border="0" cellspacing="0" cellpadding="0" style="margin:0 auto 20px auto;">
+					<tr>
+						<td>$multi</td>
+					</tr>
+				</table>	
+				<!--{/if}-->
+                                
+                <div class="kanfa">
+					<div class="share-wrap">
+						<span>分享到：</span>
+					<a class="sina-share" href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f='http://v.t.sina.com.cn/share/share.php?appkey=4275329323',u=z||d.location,p=['&amp;url=',e(u),'&amp;title=',e(t||d.title),'&amp;source=',e(r),'&amp;sourceUrl=',e(l),'&amp;content=',c||'gb2312','&amp;pic=',e(p||'')].join('');function%20a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=440,height=430,left=',(s.width-440)/2,',top=',(s.height-430)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,'','','','','',''));"><img border="0" title="分享到新浪微博" alt="分享到新浪微博" src="template/8264/image/sina-share-icon.gif"></a>
+					<a title="分享到搜狐微博" href="javascript:void((function(s,d,e,r,l,p,t,z,c){var f='http://t.sohu.com/third/post.jsp?',u=z||d.location,p=['&url=',e(u),'&title=',e(t||d.title),'&content=',c||'gb2312','&pic=',e(p||'')].join('');function%20a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=660,height=470,left=',(s.width-660)/2,',top=',(s.height-470)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,'','','','','','utf-8'));"><img src="template/8264/image/sohu-share-icon.gif" border="0" alt="分享到搜狐微博" /></a>
+					<a href="javascript:void(0)" onclick="postToWb();" class="tmblog" title="分享到腾讯微薄"><img src="http://v.t.qq.com/share/images/s/weiboicon16.png"></a><script type="text/javascript">
+	function postToWb(){
+		var _t = encodeURI(document.title);
+		var _url = encodeURIComponent(document.location);
+		var _appkey = encodeURI("7f2c792ed1904c6aac0193dff1451720");
+		var _pic = encodeURI('');
+		var _site = 'bbs.8264.com';
+		var _u = 'http://v.t.qq.com/share/share.php?url='+_url+'&appkey='+_appkey+'&site='+_site+'&pic='+_pic+'&title='+_t;
+		window.open( _u,'', 'width=700, height=680, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, location=yes, resizable=no, status=no' );
+	}
+</script>
+					</div>
+					<div class="kanfa-wrap">
+						已有<b>$_G[forum_thread][replies]</b>位网友发表了看法，点击查看。
+					</div>
+					<div style="clear:both;"></div>
+				</div>
+                
+                <div class="xiangguanall">
+                    <!--{if $article['related']}-->
+                	<div class="xiangguantitle">您可能感兴趣的文章</div>
+                    <div class="xiangguancon">               	
+                    	<ul>
+                        	<!--{loop $article['related'] $value}-->
+                        	<li><a href="portal.php?mod=view&aid=$value[aid]" title="$value[title]" target="_blank">$value[title]</a></li>
+                            <!--{/loop}-->
+                        </ul>
+                    </div>
+                    <!--{/if}-->
+                    <div style="text-align:center; padding:0px 0px 5px 0px;"><!--{ad/custom_24}--></div>
+                </div>
+            </div>
+           <style>
+			.city_bbs_yy{ width:580px; border:#f2dca8 solid 1px; margin:10px 0px;}
+			.city_bbs_con{ width:100%; background:#fffcf1;}
+			.city_bbs_title{ height:19px; padding:6px 0px 0px 10px; background:#fff8de; border-bottom:#f2dca8 solid 1px; font-size:12px; font-weight:bold;}
+			.city_bbs_con li{ width:40px; float:left; margin:5px 0px 5px 10px;}
+			
+			.tuwenall_yy{ width:580px; border:#ccc solid 1px; margin-top:10px;}
+			.twwen_title{ height:19px; padding:6px 0px 0px 10px; background:#f2f2f2; border-bottom:#c2d5e3 solid 1px; font-size:12px; font-weight:bold;}
+			.tuwen_con{ width:100%;}
+			.tuwenone{ width:128px; float:left; margin:10px 7px 5px 9px!important;  margin:10px 6px 5px 7px; }
+			.tuwenone img{ width:120px; height:83px; border:#ccc solid 1px; padding:3px;}
+			.tuwenname{ width:100%; height:30px; line-height:1.3; overflow:hidden; text-align:left; margin-top:5px;}
+			
+			</style>
+            <div class="city_bbs_yy">
+            	<div class="city_bbs_title">地区论坛</div>
+                <div class="city_bbs_con">
+                    <ul>
+                    <li><a href="http://bj.8264.com" target="_blank" style="color:#ff6600;">北京</a></li>
+                    <li><a href="http://sh.8264.com" target="_blank">上海</a></li>
+                    <li><a href="http://tj.8264.com" target="_blank">天津</a></li>
+                    <li><a href="http://cq.8264.com" target="_blank">重庆</a></li>
+                    <li><a href="http://ah.8264.com" target="_blank">安徽</a></li>
+                    <li><a href="http://fj.8264.com" target="_blank">福建</a></li>
+                    <li><a href="http://gs.8264.com" target="_blank">甘肃</a></li>
+                    <li><a href="http://gd.8264.com" target="_blank">广东</a></li>
+                    <li><a href="http://gx.8264.com" target="_blank">广西</a></li>
+                    <li><a href="http://gz.8264.com" target="_blank">贵州</a></li>
+                    <li><a href="http://hainan.8264.com" target="_blank">海南</a></li>
+                    <li><a href="http://hb.8264.com" target="_blank">河北</a></li>
+                    <li><a href="http://hn.8264.com" target="_blank">河南</a></li>
+                    <li><a href="http://hubei.8264.com" target="_blank">湖北</a></li>
+                    <li><a href="http://hunan.8264.com" target="_blank">湖南</a></li>
+                    <li><a href="http://jl.8264.com" target="_blank">吉林</a></li>
+                    <li><a href="http://js.8264.com" target="_blank">江苏</a></li>
+                    <li><a href="http://jx.8264.com" target="_blank">江西</a></li>
+                    <li><a href="http://ln.8264.com" target="_blank">辽宁</a></li>
+                    <li><a href="http://nx.8264.com" target="_blank">宁夏</a></li>
+                    <li><a href="http://qh.8264.com" target="_blank">青海</a></li>
+                    <li><a href="http://sd.8264.com" target="_blank">山东</a></li>
+                    <li><a href="http://sx.8264.com" target="_blank">山西</a></li>
+                    <li><a href="http://shanxi.8264.com" target="_blank">陕西</a></li>
+                    <li><a href="http://sc.8264.com" target="_blank">四川</a></li>
+                    <li><a href="http://xz.8264.com" target="_blank">西藏</a></li>
+                    <li><a href="http://xj.8264.com" target="_blank">新疆</a></li>
+                    <li><a href="http://yn.8264.com" target="_blank">云南</a></li>
+                    <li><a href="http://zj.8264.com" target="_blank">浙江</a></li>
+                    <li><a href="http://hlj.8264.com" target="_blank">黑龙江</a></li>
+                    <li><a href="http://nmg.8264.com" target="_blank">内蒙古</a></li>
+                    </ul>
+                	<div style="clear:both;"></div>
+                </div>
+            </div>
+            <div class="bm vw pl" id="comment">
+			<div class="bm_h cl">
+				<h2>{lang latest_comments}</h2>
+			</div>
+			<div class="bm_c">
+			<!--{loop $postlist $postid $post}-->
+				<!--{if $postid && !$post['first']}-->
+				<div id="post_$post[pid]" class="xld xlda mbm">
+					<!--{subtemplate forum/viewthread_from_node}-->
+				</div>
+				<!--{/if}-->
+			<!--{/loop}-->
+			<div id="postlistreply" class="xld xlda mbm"><div id="post_new" class="viewthread_table" style="display: none"></div></div>
+			<!--{if $multipage}-->
+			<div class="pgs cl">$multipage</div>
+			<!--{/if}-->
+			</div>
+
+			<!--{if $_G['setting']['fastpost'] && $allowpostreply && !$_G['forum_thread']['archiveid']}-->
+			<div class="bm_c">
+				<!--{subtemplate forum/viewthread_fastpost}-->
+			</div>
+			<!--{/if}-->
+		</div>
+            
+            <div class="lpaihangall">
+                <div class="lpaihang">
+                    <ul class="sheqian2">
+                        <li><a id="ri1" href="javascript:void(0)" class="active">评论日排行</a></li>
+                        <li><a id="zhou1" href="javascript:void(0)">评论周排行</a></li>
+                        <li><a id="yue1" href="javascript:void(0)">评论月排行</a></li>
+                    </ul>
+                    <div class="lpaihangother"></div>
+                    <div style="clear:both"></div>
+                </div>
+                <div class="sheqianbody">
+                    <div class="lpaihangcon neirong" id="sq-zhou1">
+                        <!--[diy=zhou1list]--><div id="zhou1list" class="area"></div><!--[/diy]-->
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="lpaihangcon neirong" id="sq-yue1">
+                      	<!--[diy=yue1list]--><div id="yue1list" class="area"></div><!--[/diy]-->
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="lpaihangcon neirong active" id="sq-ri1">
+                        <!--[diy=ri1list]--><div id="ri1list" class="area"></div><!--[/diy]-->
+                        <div style="clear:both;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pinglunall" style="display:none;">
+				<div class="zstitle"><span style="float:left;">招商信息</span><span style="float:right; margin:2px 5px 0px 0px;"><a href="http://8.8264.com/" target="_blank">更多</a></span></div>
+                <div class="zs">
+                    <div id="bbs_imgs" style="text-align:center; margin-top:5px;"><iframe name="guestbook" src="template/8264/iframe/cms/html/franchise3.html" scrolling=no width="580px"  frameborder=no  style="margin:0px; padding:0px; height:155px"></iframe></div>
+                    <!--//招商信息列表暂时无法调取 <ul><li>循环//-->
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+            
+            <div class="tuwenall_yy">
+                <div class="twwen_title">推荐图文</div>
+                <div class="tuwen_con">
+                    <!--//推荐图文 8条 //-->
+                	<!--[diy=tuijiantwlist]--><div id="tuijiantwlist" class="area"></div><!--[/diy]-->
+                    <div style="clear:both"></div>
+                </div>
+            </div>
+            
+            
+        </div>
+        </div>
+        
+        <div class="r" id="right_8264">
+        <div style="background:#FFFFFF;">
+        	<div class="rad1"><!--{ad/custom_12}--></div>
+            <div class="baoxiangall">
+			  <!--
+              <div class="baoxiangalltitle"><b>出行在线预订箱</b>
+                <div style="clear: both;"></div>
+              </div>
+			  -->
+              <div class="baoxiangcon">
+                <ul>
+                    <li><img height="16" width="16" border="0" src="template/8264/image/ju.png"><a target="_blank" href="http://ju.8264.com/">【聚便宜】精品装备折扣店</a></li>
+                    <li><img height="16" width="16" border="0" src="template/8264/image/shop.png"><a target="_blank" href="http://www.lvyoumall.com/">【驴友商城】装备大卖场</a></li>
+                    <li><img height="16" width="16" border="0" src="template/8264/image/ty.png"><a target="_blank" href="http://bbs.8264.com/forum-378-1.html">【体验】口碑造市场</a></li>
+              <li><img height="16" width="16" border="0" src="template/8264/image/tuan.png"><a target="_blank" href="http://tuan.8264.com/">【团购】团结就是力量</a></li>
+
+			<div style="clear:both;"></div>
+                </ul>
+             </div>
+           </div>
+		   			<!--//罕止广告位开始//-->
+            <div class="rad2"><!--{ad/custom_3}--></div>
+			<!--//罕止广告位结束//-->
+            <div class="rcon">
+            	<div class="rtitle">编辑推荐文章</div>
+                <div class="wenzhang">
+                	<!--//编辑推荐文章 10条 标题长度46//-->
+                	<!--[diy=tuijian1]--><div id="tuijian1" class="area"></div><!--[/diy]-->
+                </div>
+            </div>
+            <div class="rad2"><!--{ad/custom_18}--></div>
+            <div class="rad2"><!--{ad/custom_25}--></div>
+            <div class="bl">
+                <div class="bltitle">
+                    <ul class="sheqian2">
+                        <li><a id="bx" href="javascript:void(0)" class="active">户外保险</a></li>
+                        <li><a id="lj" href="javascript:void(0)">客栈预定</a></li>
+                        <li><a id="jd" href="javascript:void(0)">酒店预定</a></li>
+                    </ul>
+                    <div style="clear:both"></div>
+                </div>
+                <div class="sheqianbody">
+                    <div class="blcon neirong active" id="sq-bx">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <form id="insureform" name="insureform" method="post" action="" target="_blank">
+                        <tr>
+                        <td valign="middle">
+                        在线保险选购：
+                        <select id="insuretype" name="insuretype">
+                            <option value="http://bx.8264.com/?act=quote&code=21040">拉磨无忧 旅行保障计划</option>
+                            <option value="http://bx.8264.com/?act=quote&code=20934">畅游神州 境内旅行保障</option>
+                            <option value="http://bx.8264.com/?act=quote&code=46114">安途团体险 含领队责任</option>
+                            <option value="http://bx.8264.com/?act=quote&code=46116">安途领队全年保障计划</option>
+                            <option value="http://bx.8264.com/?act=quote&code=20933">万国游踪 国际旅行保障</option>
+                            <option value="http://bx.8264.com/?act=quote&code=20932">乐悠游 海外旅行保障</option>
+                        </select>
+                        <input type="submit" value="我要投保" onclick="insurego(event);return false;" class="submit"/>
+                        </td>
+                        </tr>
+                        <tr>
+                        <td valign="middle">&#8226;&nbsp;<a href="http://bx.8264.com/?act=faq" target="_blank">保险常见问题</a>&nbsp;&nbsp;<span style="color:#ff6600;">&#8226;&nbsp;</span><a href="http://bx.8264.com/?act=query" target="_blank" style="color:#ff6600;">电子保单查询</a>&nbsp;&nbsp;&#8226;&nbsp;<a href="http://bx.8264.com/?act=faq&cid=61000" target="_blank">保险理赔</a>&nbsp;&nbsp;&#8226;&nbsp;<a href="http://bx.8264.com/?act=faq&cid=31000" target="_blank">买险前必读</a></td>
+                        </tr>
+                        <tr>
+                        <td valign="middle" align="center">三分钟完成购买，网上投保就这么简单！</td>
+                        </tr>
+                        </form>
+                        </table>
+                    </div>
+                    <div class="blcon neirong" id="sq-lj">
+                    	<!-- 替换开始 -->
+                    	<script src="http://www.8264.com/mudidi/source/script_common.js" type="text/javascript" charset="gb2312"></script>
+		               	<script src="http://www.8264.com/mudidi/source/script_city.js" type="text/javascript" charset="gb2312"></script>
+		                <form method="get" action="http://www.8264.com/mudidi/hostel.php" target="_blank">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                        <td valign="middle" width="50%" id="citybox">
+                        省份：<script type="text/javascript">
+							showprovince('province', 'city', '$_GET[province]', 'citybox');
+						</script>
+                        </td>
+                        <td valign="middle" width="50%" id="subcitybox">
+                        城市：<script type="text/javascript">
+							showcity('city', '$_GET[city]', 'province', 'subcitybox');
+						</script>
+                        </td>
+                        </tr>
+                        <tr>
+                        <td valign="middle">
+                        价格：<select name="minprice" id="minprice">
+                            <option value="">请选择</option>
+                            <option value="500" <!--{if $_GET[minprice] == '500'}-->selected<!--{/if}-->>低于500</option>
+                            <option value="300" <!--{if $_GET[minprice] == '300'}-->selected<!--{/if}-->>低于300</option>
+                            <option value="100" <!--{if $_GET[minprice] == '100'}-->selected<!--{/if}-->>低于100</option>
+                            <option value="50" <!--{if $_GET[minprice] == '50'}-->selected<!--{/if}-->>低于50</option>
+                            </select>
+                        </td>
+                        <td valign="middle">
+                        酒店：<input type="text" name="hostelname" id="hostelname" class="textlj" />
+                        </td>
+                        </tr>
+                        <tr>
+                        <td colspan="2" valign="middle" align="center">
+                        <input type="submit" value="寻找客栈"  class="submit" />
+                        </td>
+                        </tr>
+                        </table>
+                        <input type="hidden" name="view" id="view" value="search" />
+						<input type="hidden" name="do" id="do" value="list" />
+                        </form>
+                        <!-- 替换结束 -->
+                	</div>
+                    <div class="blcon neirong" id="sq-jd">
+					
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            <div class="rad2"><script type="text/javascript"><!--
+google_ad_client = "pub-1295541823364623";
+/* 336x280, 创建于 07-11-19 */
+google_ad_slot = "9115650348";
+google_ad_width = 336;
+google_ad_height = 280;
+//-->
+</script><script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<script src="http://www.8264.com/javascript/18.js" type="text/javascript"></script>
+</div>
+            
+            <div class="rcon">
+            	<div class="rtitle"><span style="float:left;">专题推荐</span><span style="font-size:12px; font-weight:normal; float:right;"><a href="/topic_list/" target="_blank">更多</a>&nbsp;&nbsp;</span></div>
+                <div class="wenzhang">
+                    <!--[diy=zhantituijian]--><div id="zhantituijian" class="area"></div><!--[/diy]-->
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+            
+            <div class="rpaihangall">
+            	<div class="rpaihang">
+                    <ul class="sheqian2">                      
+                        <li><a id="ri" href="javascript:void(0)" class="active">点击日排行</a></li>                    
+                        <li><a id="zhou" href="javascript:void(0)">点击周排行</a></li>      
+                        <li><a id="yue" href="javascript:void(0)">点击月排行</a></li>
+                    </ul>
+                    <div class="rpaihangother"></div>
+					<div style="clear:both"></div>
+				</div>
+                <div class="sheqianbody">
+                	<div class="rpaihangcon neirong" id="sq-zhou">
+                    	<!--[diy=zhou2list]--><div id="zhou2list" class="area"></div><!--[/diy]-->
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="rpaihangcon neirong" id="sq-yue">
+                    	<!--[diy=yue2list]--><div id="yue2list" class="area"></div><!--[/diy]-->
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="rpaihangcon neirong active" id="sq-ri">
+                    	<!--[diy=ri2list]--><div id="ri2list" class="area"></div><!--[/diy]-->
+                        <div style="clear:both;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="rad2">
+           	  <div style="width:170px; float:left; padding-left:5px;"><!--{ad/custom_26}--></div>
+                <div style="width:170px; float:right; padding-right:5px;"><!--{ad/custom_27}--></div>
+                <div style="clear:both; height:0px; font-size:0px"></div>
+			</div>
+            <div class="rcon">
+            	<div class="rtitle"><span style="float:left;">推荐博客</span><span style="font-size:12px; font-weight:normal; float:right;">评论数&nbsp;&nbsp;</span></div>
+                <div class="boke">
+                	<!--//博客推荐10条 标题长度46//-->
+                    <!--[diy=bloglist]--><div id="bloglist" class="area"></div><!--[/diy]-->
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+            
+            <div class="rcon">
+            	<div class="rtitle"><span style="float:left;">品牌空间</span><div style="clear:both;"></div></div>
+                <div>
+               		<!--[diy=ppkj]--><div id="ppkj" class="area"></div><!--[/diy]-->
+                	<div style="clear:both;"></div>
+                </div>
+            </div>
+            
+            <div class="rcon">
+            	<div class="rtitle"><span style="float:left;">论坛推荐热贴</span></div>
+                <div class="boke">
+                    <!--//论坛10条 精华 标题长度40//-->
+                    <!--[diy=bbsjh]--><div id="bbsjh" class="area"></div><!--[/diy]-->
+                </div>
+            </div>
+            
+        </div>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+    
+    <div id="bbs_imgs" style="text-align:center; margin-top:10px;"><iframe src="http://bbs.8264.com/template/8264/iframe/zhaopian.html
+" frameBorder=0  scrolling="no" height="214" width="960" marginheight="0" marginwidth="0"></iframe></div>
+    
+</div>
+<!--div两栏页面左右高度自适应 S-->
+<script language="javascript" >
+function addLoadEvent(func) {
+  var oldonload = window.onload;
+  if (typeof window.onload != 'function') {
+    window.onload = func;
+  } else {
+    window.onload = function() {
+      if (oldonload) {
+        oldonload();
+      }
+      func();
+    }
+  }
+}
+function pageStyle(){
+	var   a=document.getElementById("left_8264");
+  	var   b=document.getElementById("right_8264");
+	var   c=document.getElementById("page_content");
+	if(a.clientHeight<b.clientHeight)
+  		{
+  			a.style.height=b.clientHeight+"px"
+  		}
+  		else
+		{
+  			b.style.height=a.clientHeight+"px";
+  		}
+}
+addLoadEvent(pageStyle);
+</script>
+<!--div两栏页面左右高度自适应 E-->
+<script type="text/javascript" src="template/8264/js/common.js"></script>
+<!--{subtemplate common/footer_8264}-->
+

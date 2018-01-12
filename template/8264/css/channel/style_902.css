@@ -1,0 +1,106 @@
+/* Global Start */
+body {  color: #555; font-size: 12px; font-family: Tahoma, Helvetica, SimSun, sans-serif; }
+a { text-decoration: none; color: #555; }
+a:hover { text-decoration: none; }
+em { font-style: normal; }
+input,
+textarea,
+select { font-size: 12px; color: #333; }
+/* Global  End */
+
+/* Clear Start */
+.clear { clear: both; display: block; overflow: hidden; visibility: hidden; width: 0; height: 0; }
+.clearfix:before,
+.clearfix:after { content: '.'; display: block; overflow: hidden; visibility: hidden; font-size: 0; line-height: 0; width: 0; height: 0; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+/* Clear End */
+
+/* ClearFix Start*/
+.layout:after,
+.hd:after,
+.bd:after,
+.ft:after,
+.layoutLeft:after,
+.layoutRight:after,
+.dateList:after,
+.blueBox:after { content: ""; display: block; clear: both; visibility: hidden; }
+.layout,
+.hd,
+.bd,
+.ft,
+.layoutLeft,
+.layoutRight,
+.dateList,
+.blueBox { zoom: 1; }
+/* ClearFix End */
+
+/* public Start */
+.floatL,
+.layout .floatL { float: left; display: inline; }
+.floatR,
+.layout .floatR { float: right; display: inline; }
+/* public End */
+
+/* 数据栏目 Start */
+.layout { width: 960px; margin: 0 auto; }
+.layoutLeft { float: left; display: inline; width: 470px; }
+.layoutRight { float: right; display: inline; width: 470px; }
+/* */
+.topHead { background:#fbfbfb; border-bottom:1px solid #ebebeb; padding:15px 0px; margin-bottom:20px;}
+
+
+
+.titLeft { float: left; display: inline; width: 400px; height: 55px; padding-left: 70px; background: url(/template/8264/css/moban/channel_902/images/sprite_data.png) no-repeat -413px -80px; overflow: hidden; }
+.titLeft h2 { font: 700 28px/40px "Microsoft YaHei"; color: #404040; }
+.titLeft h3 { font: 100 12px/14px "Microsoft YaHei"; color: #656565; }
+.shareRight { float: right; padding-top: 7px; }
+/* */
+.dateList { width: 100%; background: #FFF; margin-bottom: 20px; }
+.dateList dd.pic {}
+.dateList dd.pic img { opacity: 0.9; width: 470px;}
+.dateList dd.pic img:hover { opacity: 1; }
+.dateList dt { position: relative; height: 64px; font: 16px/60px "Microsoft YaHei"; background: url(/template/8264/css/moban/channel_902/images/sprite_data.png) no-repeat 0 0; text-align: center; color: #FFF; }
+.dateList dt a { color: #EEE; }
+.dateList dt a:hover { color: #FFF; }
+.dateList dt .line { position: absolute; top: -30px; right: 0; display: block; width: 2px; height: 120px; font-size: 0; background: #000; z-index: 20; }
+.dateList dd.text { padding: 20px 30px; font: 14px/1.5 "Microsoft YaHei"; color: #656565; }
+/* */
+.layoutRight .dateList dt .line { position: absolute; top: -30px; left: 0; display: block; width: 2px; height: 120px; font-size: 0; background: #000; }
+/* */
+.firstList dt { z-index: 10;}
+.firstList dd.pic { position: relative; top: -5px; z-index: 1; }
+/* 文章列表分页 Start */
+.listPageBox { float: left; width: 100%; }
+.listPageBox .pg { float: right; margin: 0 15px 20px; }
+.listPageBox .pg a,
+.listPageBox .pg strong { float: left; display: block; font-size: 15px; font-weight: 400; color: #999999; height: 24px; padding: 6px 7px 4px; margin-left: 5px; font-family: "Microsoft YaHei"; background: none; border: 0; }
+.listPageBox .pg a:hover,
+.listPageBox .pg strong { border: 0; border-bottom: 2px solid #00A6FC; color: #141414; text-decoration: none; background: none; }
+/* 文章列表分页 End */
+/* */
+#bluebox { margin-bottom: 20px; }
+.blueBox { width: 462px; padding: 3px; border: 1px solid #69a6c4; background: #7ecef4; }
+.blueBox a { display: block; width: 100%; background: #8bd3f5; color: #FFF; text-align: right; }
+.blueBox a:hover { color: #FFF; background: #3399cc; }
+.blueBox a b { font: 12px/14px "Microsoft YaHei"; }
+.blueBox .row1 { float: left; display: inline; width: 150px; }
+.blueBox .row2 { float: left; display: inline; width: 176px; margin-left: 3px; }
+.blueBox .row3 { float: right; display: inline; width: 130px; }
+.blueBox .fs14 { font: 14px/16px "Microsoft YaHei"; }
+.blueBox .fs16 { font: 16px/18px "Microsoft YaHei"; }
+.blueBox .fs18 { font: 18px/20px "Microsoft YaHei"; }
+.blueBox .fs20 { font: 20px/22px "Microsoft YaHei"; }
+.blueBox .fs22 { font: 22px/24px "Microsoft YaHei"; }
+.blueBox .fs24 { font: 24px/26px "Microsoft YaHei"; }
+.blueBox .fs26 { font: 26px/28px "Microsoft YaHei"; }
+.blueBox .fs28 { font: 28px/30px "Microsoft YaHei"; }
+.blueBox a.a1 { width: 130px; padding: 18px 20px 18px 0; margin-bottom: 3px; }
+.blueBox a.a2 { width: 130px; padding: 26px 20px 26px 0; }
+.blueBox a.a3 { width: 156px; padding: 27px 20px 27px 0; margin-bottom: 3px; }
+.blueBox a.a4 { width: 156px; padding: 15px 20px 15px 0; }
+.blueBox a.a5 { width: 120px; padding: 12px 10px 12px 0; margin-bottom: 3px; }
+.blueBox a.a6 { width: 120px; padding: 33px 10px 33px 0; }
+/* 数据栏目 End */
+
+.w980{ width:980px; margin:0 auto;}

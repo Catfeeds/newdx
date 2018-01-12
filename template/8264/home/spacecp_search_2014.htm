@@ -1,0 +1,99 @@
+<!--{template common/header_8264_new}-->
+<link href="http://static.8264.com/static/css/home/fan.css?{VERHASH}" rel="stylesheet" type="text/css">
+
+<div class="w980">
+	<div class="t_980">好友</div>
+	<div class="clear_b">
+		<!--{subtemplate home/fans/leftnav}-->
+		<div style="float:right; width:760px;" >
+
+			<!--{if !empty($_GET['searchsubmit'])}-->
+				<!--{if empty($list)}-->
+					<div class="emp">{lang no_search_friend}<a href="home.php?mod=spacecp&ac=search">{lang change_search}</a></div>
+				<!--{else}-->
+					<div class="tbmu">{lang search_member_list_message}</div>
+					<!--{template home/space_list}-->
+				<!--{/if}-->
+			<!--{else}-->
+			
+			<div class="b_bg pt35">
+				<form action="home.php" method="get">
+				<ul class="bdlist">
+					<li>
+						<span class="name">用户名：</span>
+						<span class="r_600"><input name="username" type="text" class="input_g w215" /></span>
+					</li>
+					<li>
+						<span class="name">用户UID：</span>
+						<span class="r_600"><input name="uid" type="text" class="input_g w215" /></span>
+					</li>
+					<li>
+						<span class="name">性别：</span>
+						<span class="r_600 pt5">
+							<select id="gender" name="gender" class="select_g">
+								<option value="0">{lang random}</option>
+								<option value="1">{lang male}</option>
+								<option value="2">{lang female}</option>
+							</select>
+						</span>
+					</li>
+					<li>
+						<span class="name">年龄段：</span>
+						<span class="r_600 pt5">
+							<input name="startage" type="text" class="input_g w90" /> -
+							<input name="endage" type="text" class="input_g w90" />
+						</span>
+					</li>
+					<li>
+						<span class="name">上传头像：</span>
+						<span class="r_600 pt3"><input name="avatarstatus" type="checkbox" value="1" class="fxk"/>已经上传头像</span>
+					</li>
+					<li>
+						<span class="name">居住地：</span>
+						<span class="r_600 pt5" id="residecitybox">$residecityhtml</span>
+					</li>
+					<li>
+						<span class="name">出生地：</span>
+						<span class="r_600 pt5" id="birthcitybox">$birthcityhtml</span>
+					</li>
+					<li>
+						<span class="name">生日：</span>
+						<span class="r_600 pt5">
+							<select id="birthyear" name="birthyear" onchange="showbirthday();" class="select_g">
+								<option value="0">年</option>
+								$birthyeayhtml
+							</select>
+							<select id="birthmonth" name="birthmonth" onchange="showbirthday();" class="select_g">
+								<option value="0">月</option>
+								$birthmonthhtml
+							</select>
+							<select id="birthday" name="birthday" class="select_g">
+								<option value="0">日</option>
+								$birthdayhtml
+							</select>
+						</span>
+					</li>
+					<!--{loop $fields $fkey $fvalue}-->
+					<li>
+						<span class="name">{$fvalue[title]}：</span>
+						<span class="r_600">{$fvalue[html]}</span>
+					</li>
+					<!--{/loop}-->
+					<li>
+						<input type="hidden" name="searchsubmit" value="true" />
+						<button type="submit" class="czbutton"></button>
+					</li>
+				</ul>
+				<input type="hidden" name="op" value="$_G[gp_op]" />
+				<input type="hidden" name="mod" value="spacecp" />
+				<input type="hidden" name="ac" value="search" />
+				<input type="hidden" name="type" value="all" />
+				</form>
+			</div>
+			<!--{/if}-->
+		</div>
+	</div>
+</div>
+<!--{subtemplate home/space_footer_2014}-->
+
+<!--{template common/footer_8264_new}-->

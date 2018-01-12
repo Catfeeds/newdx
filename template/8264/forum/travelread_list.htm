@@ -1,0 +1,215 @@
+<!--{subtemplate common/header_8264_1170_new}-->
+<link rel="stylesheet" href="http://static.8264.com/static/css/common/common_head_bottom.css">
+<link rel="stylesheet" href="http://static.8264.com/static/css/forum/readmodel.css?v=4.0">
+<style type="text/css">
+.newswarpten {display:none!important;}
+.site a.gt {
+    background: rgba(0, 0, 0, 0) url("http://static.8264.com/dianping/images/icon/data/crumb_bg.gif") no-repeat scroll 100% 50%;
+    margin-right: 4px;
+    padding-right: 12px;
+}
+</style>
+<!--[if IE 6]>
+<![endif]-->
+<!--[if lt ie 9]>
+	<style type="text/css">
+	</style>
+<![endif]-->
+<!--[if ie 7]>
+	<style type="text/css">
+	</style>
+<![endif]-->
+<div class="header">
+	<div class="layout">
+		<style type="text/css">
+			.dsad{position:absolute;right:230px;top:18px}
+		</style>
+		<div class="dsad"><!--{ad/custom_290}--></div>
+		<div class="icoHill">山</div>
+		<style type="text/css">.headerL{position:relative}.travel-notes__button{position:absolute;left:120px;top:12px;width:88px;height:32px;background-color:#ff5e33;box-shadow:0 4px 10px rgba(255, 94, 51, .4);border-radius:16px;text-align:center}.travel-notes__button--primary{display:block;height:100%;line-height:32px;color:#fff!important;font-size:14px;background:url(http://static.8264.com/static/images/jia.png) no-repeat 16px 10px;padding:0 16px 0 30px}</style>
+		<div class="headerL">
+			<h5>
+				<span class="country">
+					<a href="$titleUrl">{$placename}游记攻略</a>
+				</span>
+			</h5>
+			<div class="site">
+				<a href="http://www.8264.com/" class="gt">首页</a>
+			 	<a href="$allUrl" {if $level >= 1}class="gt"{/if}>游记攻略</a>
+			 	{if $level >= 1&&$areaData[nationShow][alias]}<a href="$areaData[nationShow][url]" {if $level > 1}class="gt"{/if}>$areaData[nationShow][alias]</a>{/if}
+			 	{if $level >= 2&&$areaData[provinceShow][alias]}<a href="$areaData[provinceShow][url]" {if $level > 2}class="gt"{/if}>$areaData[provinceShow][alias]</a>{/if}
+			 	{if $level >= 3&&$areaData[cityShow][alias]}<a href="$areaData[cityShow][url]" {if $level > 3}class="gt"{/if}>$areaData[cityShow][alias]</a>{/if}
+			 	{if $level >= 4&&$areaData[areaShow][alias]}<a href="$areaData[areaShow][url]" {if $level > 4}class="gt"{/if}>$areaData[areaShow][alias]</a>{/if}
+			 	{if $level >= 5&&$areaData[poiShow][alias]}<a href="$areaData[poiShow][url]">$areaData[poiShow][alias]</a>{/if}
+			</div>
+			<div class="travel-notes__button">
+				<a href="http://bbs.8264.com/forum-post-action-newthread-fid-52.html" class="travel-notes__button--primary"><i class="icon-jia"></i>写游记</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="layout w980">
+	<div class="strgy-list-wrap">
+		{loop $travelList $v}
+		{eval $tempThread = $threadList[$v[tid]];}
+		{eval $tempPlace  = $placeList[$v[tid]];}
+		<!--一个游记-->
+		<div class="strgy-item">
+			<div class="module-face">
+				<a href="home.php?mod=space&uid={$v[authorid]}" target="_blank">
+					{avatar($v[authorid], middle)}
+				</a>
+			</div>
+			<div class="module-title">
+				<h3>
+					<a href="{$_G[config][web][portal]}youji/$v[tid].html" target="_blank">$v[subject]</a>
+				</h3>
+			</div>
+			<div class="module-line">
+				<a href="home.php?mod=space&uid={$v[authorid]}" target="_blank" class="user-name">$v[author]</a>
+				<!-- <span class="dt-date">{echo date('m-d', $tempThread[dateline]);}</span> -->
+				{loop $tempPlace $val}
+				{eval $val[placeid] = ''.$val[placeid];}
+				<span class="rg-tags"><a href="{$val[url]}" target="_blank">{$val[name]}</a></span>
+				{/loop}
+			</div>
+			<div class="module-body">
+				<p>{$v[summary][text]}</p>
+			</div>
+			<div class="module-pic">
+				{loop $v[summary][img] $val}
+				<a href="{$_G[config][web][portal]}youji/$v[tid].html" target="_blank" class="pic-item">
+
+					<img src="{$val}{if strpos($val, 'image1.8264.com') !== false}!t2w400h300{/if}">
+				</a>
+				{/loop}
+			</div>
+			<div class="module-attent">
+				<div class="art-attentList">
+					<div class="attentList-content">
+						<div class="attentList-inner">
+							<span class="attent-num"><em>{$tempThread[views]}</em>人关注</span>
+							{loop $v[viewsuids] $val}
+							<a href="home.php?mod=space&uid={$val}" target="_blank" class="avatar-img">
+								{avatar($val, small)}
+							</a>
+							{/loop}
+							<a href="javascript:void(0);" class="more-link" style="cursor:auto;">更多</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--一个游记 end-->
+		{/loop}
+	</div>
+	<div class="strgy-page">
+		{if $multi}$multi{/if}
+	</div>
+</div>
+
+<div id="J-MuiCatebar" class="mui-mbar-outer">
+	<div class="close-menu">
+		<a href="javascript:void(0);" class="close-button">展开</a>
+	</div>
+	<div class="mui-mbar-standard">
+		<div class="mui-mbar-tab mui-mbar-tab-hot">
+			<div class="mui-mbar-tab-title">热门旅行地<a href="$allUrl" title="查看全部热门旅行地" class="all-link">全部</a></div>
+			<ul class="card-label-list">
+				{loop $hotList $v}
+				<li>
+					<h3 class="art-tit"><a href="$v[url]">$v[name]</a></h3>
+					<p class="art-count">$v[actnum]篇</p>
+					<span class="pipe-line"></span>
+					<div class="usr-list">
+						{loop $v[viewsuids] $val}
+						<a href="home.php?mod=space&uid={$val}" target="_blank">
+							{avatar($val, small)}
+						</a>
+						{/loop}
+					</div>
+				</li>
+				{/loop}
+			</ul>
+		</div>
+		<div class="mui-mbar-tab mui-mbar-tab-domestic">
+			<div class="mui-mbar-tab-title">国内旅行地</div>
+			<div class="label-list">
+				{loop $domesticList $v}
+				<a href="$v[url]" {if $placeid==$v[placeid] && $level==$v[level]}class="active"{/if}>$v[name]</a>
+				{/loop}
+			</div>
+		</div>
+		<div class="mui-mbar-tab mui-mbar-tab-abroad">
+			<div class="mui-mbar-tab-title">国外旅行地</div>
+			<div class="label-list">
+				{loop $abroadList $v}
+				<a href="$v[url]" {if $placeid==$v[placeid] && $level==$v[level]}class="active"{/if}>$v[name]</a>
+				{/loop}
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	//顶部导航下拉
+	$(".headerNav .nav li").hover(function() {
+		$(this).children("dl").show().end().children('a').css('background', '#344654').end().siblings().each(function(){
+			$(this).children('dl').hide().end().children('a').removeAttr('style');
+		});
+	}, function(){
+		$(this).children("dl").hide().end().children('a').removeAttr('style');
+	});
+	$('.head_login_info>li:not(.notHover)').hover(function(){
+		// if(timer_showmsg){clearTimeout(timer_showmsg);}
+		$(this).children('div').slideDown(200).end().children('a').addClass('head_login_icon24_24_zhong').end().siblings().each(function(){
+			$(this).children('div').stop(true,true).hide().end().children('a').removeClass('head_login_icon24_24_zhong');
+		});
+	}, function(){
+		$(this).children('div').stop(true,true).slideUp(300, function(){
+			$(this).siblings('a').removeClass('head_login_icon24_24_zhong');
+		});
+	});
+	// 头部搜索框提示
+	$('#searchText').focus(function(){
+		$('#searchTips').hide();
+	}).blur(function(){
+		if(!$(this).val()) {
+			$('#searchTips').show();
+		}
+	});
+	$('.module-pic .pic-item').each(function(index, el) {
+		var img_src = $(this).find('img').attr("src").indexOf("!t2w400h300");
+		var img_h = $(this).find('img').height();
+		if(img_src<0){
+			$(this).find('img').css({
+				"margin-top": -(img_h/2),
+				"position": "relative",
+				"top": "50%"
+			});
+		}
+	});
+});
+
+jQuery(document).ready(function($) {
+	$("#J-MuiCatebar").mouseover(function() {
+		$(this).find(".close-button").html("收起").end().css("right", "0");
+	}).mouseleave(function() {
+		$(this).find(".close-button").html("展开").end().css("right", "-452px");
+	});
+});
+jQuery(function(){
+	var ua = navigator.userAgent.toLowerCase();
+	var isIE6 = ua.indexOf('msie 6.0') > -1;
+	if(!isIE6){
+	var wh = jQuery(window).height();
+	var ch = jQuery('.strgy-list-wrap').height();
+	var calch = wh - 195 - ch;
+	if(ch < (wh-195)){
+	jQuery('.strgy-list-wrap').css("margin-bottom", calch);
+	}
+	}
+});
+</script>
+<!--{subtemplate common/footer_8264_1170_new}-->

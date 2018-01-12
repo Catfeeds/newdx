@@ -1,0 +1,425 @@
+<?php if(!defined('IN_DISCUZ')) exit('Access Denied'); ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>极星梦想计划&mdash;&mdash;骑车去伦敦看奥运</title>
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/style/style1.css"/>
+<link href="2012-06-05jixin/style/style1.css" rel="stylesheet" type="text/css" />
+</head>
+<script type="text/javascript">
+var myFocus={
+//Design By Koen @ 2010.7.x
+//http://hi.baidu.com/koen_li
+//koen_lee@qq.com
+$:function(id){return document.getElementById(id);},
+$$:function(tag,obj){return (typeof obj=='object'?obj:this.$(obj)).getElementsByTagName(tag);},
+linear:function(t,b,c,d){return c*t/d + b;},
+easeIn:function(t,b,c,d){return c*(t/=d)*t*t*t + b;},
+easeOut:function(t,b,c,d){return -c*((t=t/d-1)*t*t*t - 1) + b;},
+opa:function(obj,v){
+if(v!=undefined) {v=v>100?100:(v<0?0:v); obj.style.filter = "alpha(opacity=" + v + ")"; obj.style.opacity = (v / 100);}
+else return (document.all)?((obj.filters.alpha)?obj.filters.alpha.opacity:100):((obj.style.opacity)?obj.style.opacity*100:100);
+},
+move:function(obj,dir,val,type,spd,fn){
+var t=0,b=parseInt(obj.style[dir])||0,c=val-b,d=spd||50,st=type||'linear',m=c>0?'ceil':'floor';
+if(obj[dir+'timer']) clearInterval(obj[dir+'timer']);
+obj[dir+'timer']=setInterval(function(){
+if(t<d){obj.style[dir]=Math[m](myFocus[st](t++,b,c,d))+'px';}
+else {clearInterval(obj[dir+'timer']);fn&&fn.call(myFocus);}
+},10);return this;
+},
+fade:function(obj,type,spd,fn){
+var o=this.opa(obj),m=spd||5;
+if(o==0) obj.style.display='';
+if(type=='out') m=-m;
+if(obj.fadeTimer) clearInterval(obj.fadeTimer);
+obj.fadeTimer=setInterval(function(){
+o+=m;myFocus.opa(obj,o);
+if(o<=0) obj.style.display='none';
+if(o>=100||o<=0){clearInterval(obj.fadeTimer);fn&&fn.call(myFocus);}
+},10);return this;
+},
+addList:function(obj,cla,arr){
+var s=[],n=this.$$('li',this.$$('ul',obj)[0]).length,num=cla.length;
+for(var j=0;j<num;j++){
+s.push('<ul class='+cla[j]+'>');
+for(var i=0;i<n;i++){s.push('<li>'+(cla[j]=='num'?(i+1):(cla[j]=='txt'?this.$$('li',obj)[i].innerHTML.replace(/\<img.*?\>/i,this.$$('img',obj)[i].alt):''))+'<span></span></li>')};
+s.push('</ul>');
+}; obj.innerHTML+=s.join('');
+},
+setting:function(par){//设置DOM/文档加载就绪后执行的任务
+if(window.attachEvent){window.attachEvent('onload',function(){myFocus[par.style](par)});}
+　　		else{window.addEventListener('load',function(){myFocus[par.style](par)},false);}
+},
+mF_expo2010:function(par){
+var box=this.$(par.id),t=par.time*1000;
+this.addList(box,['txt-bg','txt','num-bg','num']);
+var pic=this.$$('ul',box)[0],txt=this.$$('ul',box)[2],num=this.$$('ul',box)[4],img=this.$$('li',pic),tip=this.$$('li',txt);
+var H=tip[0].clientHeight+60;
+var n=img.length;
+var index=0;
+for(var i=0;i<img.length;i++){this.opa(img[i],0); img[i].style.display='none'; tip[i].style.bottom=-H+'px'}
+box.removeChild(this.$$('div',box)[0]);
+this.fade(img[index],'in');
+this.move(tip[index],'bottom',0,'easeOut',40)
+this.$$('li',num)[index].className='current';
+var run=function(idx){
+myFocus.fade(img[index],'out');
+myFocus.move(tip[index],'bottom',-H,'easeIn',10);
+myFocus.$$('li',num)[index].className='';
+if(index==n-1) index=-1;
+var N=idx!=undefined?idx:index+1;
+myFocus.fade(img[N],'in');
+myFocus.move(tip[N],'bottom',0,'easeOut',40);
+myFocus.$$('li',num)[N].className='current';
+index=N;
+}
+var auto=setInterval(function(){run()},t);
+for (var j=0;j<n;j++){
+this.$$('li',num)[j].j=j;
+this.$$('li',num)[j].onclick=function(){run(this.j)}
+this.$$('li',num)[j].onmouseover=function(){if(!this.className) this.className = 'hover';}
+this.$$('li',num)[j].onmouseout=function(){if(this.className=='hover') this.className ='';}
+}
+box.onmouseover=function(){clearInterval(auto);}
+    	box.onmouseout=function(){auto=setInterval(function(){run()},t);}
+}
+}
+myFocus.setting({style:'mF_expo2010',id:'myFocus',time:2});//style为风格样式，id为焦点图ID，time为每帧间隔时间(秒) 
+</script>
+<body>
+<div class="banner0">
+            <a href="http://www.qitianxia.com/portal.php" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/qitianxia.jpg" /></a>
+            </div>
+    <div class="banner">
+            <a href="http://www.shehe.com.cn/zhanti1.aspx?s_id=94" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/jix.png" /></a>
+            <a href="http://www.8264.com/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/8264.png" /></a>
+            <div class="clear"></div> 
+
+        </div>
+        
+    <div class="wai">
+    
+        <div class="min980">
+            <div class="min1">
+            	<div class="min1l">
+                	<div class="lunbo">
+                          <div id="focus_turn">
+                              <ul id="focus_pic">
+                                  <li class="current1"><a href="http://bbs.8264.com/thread-1289750-1-2.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/t61.jpg" /></a></li>
+                                  <li class="current"><a href="http://bbs.8264.com/forum-redirect-goto-findpost-ptid-1289750-pid-20382057.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/t11.jpg" /></a></li>
+                                  <li class="normal"><a href="http://bbs.8264.com/forum-redirect-goto-findpost-ptid-1289750-pid-20302908.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/t21.jpg" /></a></li>
+                                  <li class="normal1"><a href="http://bbs.8264.com/forum-redirect-goto-findpost-ptid-1289750-pid-20266726.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/t31.jpg" /></a></li>                                 
+                                  <li class="normal3"><a href="http://bbs.8264.com/forum-redirect-goto-findpost-ptid-1289750-pid-20230156.html " target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/t51.jpg" /></a></li>                              
+
+                              </ul>
+                        <div id="focus_opacity"></div>
+                              <ul id="focus_tx">
+                              <li class="current1"><a href="#" target="_blank"></a></li>
+                              <li class="current"><a href="#" target="_blank"></a></li>
+                              <li class="normal"><a href="#" target="_blank"></a></li>
+                              <li class="normal1"><a href="#" target="_blank"></a></li>
+                              <li class="normal3"><a href="#" target="_blank"></a></li>
+                              
+
+                              </ul>
+                        </div>
+            </div>
+                	
+                </div>
+                <div class="min1r">
+                	<h3>2012极星梦想计划——骑车去伦敦看奥运</h3>
+                    
+                    <p>继北京奥运、广州亚运和深圳大运之后，齐天下再次携手极星梦想计划，并联合社会各界开展骑行中国、骑行欧洲活动，意在通过一群中国新青年携手北京奥运火炬，通过一种平凡的方式去宣传奥林匹克、低碳环保、文化交流等精神理念。</p>
+                    <ul>
+                        <li>&#8226;&nbsp;<a href="http://bbs.8264.com/thread-1289750-1-2.html" target="_blank"><span style="color:#00559a">【Shehe梦想计划】</span><span style="color:#F00">滚动车轮，追逐梦想，骑车去伦敦看奥运!</span></a></li>
+                        <li>&#8226;&nbsp;<a href="http://www.8264.com/viewnews-78477-page-1.html" target="_blank"><span style="color:#00559a">【Shehe梦想计划】</span>&nbsp;<span style="color:#F00">new!</span>&nbsp;骑车去伦敦看奥运八大回顾</a></li>
+                    <li>&#8226;&nbsp;<a href="http://u.8264.com/home-space-uid-6111-do-blog-id-406898.html" target="_blank" ><span style="color:#00559a">【Shehe梦想计划】</span>骑车去伦敦看奥运——走进伦敦 靠近奥运</a></li>
+                        <li>&#8226;&nbsp;<a href="http://www.8264.com/viewnews-77921-page-1.html" target="_blank" ><span style="color:#00559a">【Shehe梦想计划】</span>骑车去伦敦看奥运 跨越两洲抵达欧洲第一城</a></li>
+                        <li>&#8226;&nbsp;<a href="http://www.8264.com/portal.php?mod=view&amp;aid=77894" target="_blank" ><span style="color:#00559a">【Shehe梦想计划】</span>当万里骑行车队偶遇百年环法自行车赛</a></li>
+                    	<li>&#8226;&nbsp;<a href="http://www.8264.com/portal.php?mod=view&amp;aid=77727" target="_blank" ><span style="color:#00559a">【Shehe梦想计划】</span>齐天下车队抵达欧洲第一站——罗马</a></li>
+
+                  </ul>
+                    <h4><a href="#message">更多…</a>&nbsp;&nbsp;</h4>
+                </div>
+                <div class="clear"></div>
+            </div>
+            
+            <div class="nav"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/nav1.jpg" /></div>
+            <div class="min2">
+            	<div class="min2_1">
+                	<div id="myFocus" class="mF_expo2010">
+                       <div class="loading"><span></span></div>
+                        <!--载入画面-->
+                        	<ul class="pic">
+                        		<!--内容列表-->
+                        		<li><a href="http://www.8264.com/portal.php?mod=view&amp;aid=76739" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/pic1.jpg" /></a></li>
+                        		     <!--alt的内容为标题-->
+                        		<li> <a href="http://www.8264.com/portal.php?mod=view&amp;aid=76744"target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/pic0.jpg"/></a></li>
+
+                      		</ul>
+                </div>
+                </div>
+                <div class="min2_2">
+                	<h3>2012极星梦想计划——齐天下骑行安排
+
+ </h3>
+                    <p>
+在此次梦想计划的国内部分，将有近百场知名大学演讲和同城低碳骑行等大型公关活动开展，我们的骑行队伍将会收集有代表性的书画、陶瓷和工艺品；在沿途走访将要参赛伦敦奥运的中国相关代表队。
+</p>
+                    <p>在欧洲，骑行队伍将国内收集的书画、陶瓷和工艺品赠送给沿途国家的文化组织、孔子学院、华侨组织等；同时将会开展数十场大型的演讲和骑行活动，邀请沿途国家大学生一名骑行到伦敦，和走访将要参赛伦敦奥运的国家相关代表队。</p>
+                </div>
+                <div class="min2_3">
+                	<ul>
+                    	<li><a href="http://www.8264.com/viewnews-76736-page-1.html" target="_blank">· 关于极星梦想计划和齐天下 </a></li>
+                        <li><a href="http://www.8264.com/portal.php?mod=view&amp;aid=76740" target="_blank">· 2011 低碳大运火炬中国行 </a></li>
+                        <li><a href="http://www.8264.com/portal.php?mod=view&amp;aid=76742" target="_blank">· 2010 亚运心 民族情 </a></li>
+                        <li><a href="http://www.8264.com/portal.php?mod=view&amp;aid=76743" target="_blank">· 2008 心系奥运 心动亚运 </a></li>
+                        <li><a href="http://www.8264.com/portal.php?mod=view&amp;aid=76744" target="_blank">· 2004-2007 自行车环中国行梦想 </a></li>
+                
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+            
+            <div class="nav"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/nav21.jpg" border="0" usemap="#Map" />
+              <map name="Map" id="Map">
+                <area shape="rect" coords="890,9,971,29" href="http://www.8264.com/portal.php?mod=view&amp;aid=76749" target="_blank" />
+              </map>
+</div>
+            
+            <div class="min3">
+            	<div class="min3_1">
+                	<div class="pic_box"><a href="http://bbs.8264.com/thread-1289750-1-2.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/pic-.jpg" /></a></div>
+                    <div class="pic_jies">
+                    	<h3>江剑芳</h3>
+                        <p>齐天下元老之一，骑车去伦敦看奥运欧洲段队长。</p>
+                        <p>08年单骑京杭大运河，09年、10年全程参加团队亚运志愿信使团在东南亚和中国的骑行活动。</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="min3_1">
+                	<div class="pic_box"><a href="http://bbs.8264.com/thread-1289750-1-2.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/pic2-.jpg" /></a></div>
+                  <div class="pic_jies">
+                    	<h3>周铭梅</h3>
+                    <p>队长助理。她是九命猫，温和中带着犀利，低调里搀杂不羁。</p>
+                      <p>她不屑巾帼英豪，只淡做猫样女子，来成就最好的自己。</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="min3_1">
+                	<div class="pic_box"><a href="http://www.qitianxia.com/thread-1385-1-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/pic3-.jpg" /></a></div>
+                    <div class="pic_jies">
+                    	<h3>黄惠琼</h3>
+                       <p>文字稿件撰写。63岁的琼姨骑行过海南岛，翻越过川西、广西百色地区。</p>
+                        <p>05年穿越新疆戈壁滩，06年畅骑内蒙大草原。07年遗憾半途滇藏线。</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="min3_1">
+                	<div class="pic_box"><a href="http://bbs.8264.com/thread-1289750-1-2.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/pic4-.jpg" /></a></div>
+                    <div class="pic_jies">
+                    	<h3>张红</h3>
+                        <p>财务，有自己的会计师事务所，梦想《ON THE WAY》，体验不一样的人生。</p>  
+                        <p>一直未曾放弃心中梦想的妈妈级车手，让生命更精彩。</p>                        
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="min3_1">
+                	<div class="pic_box"><a href="http://bbs.8264.com/thread-1289750-1-2.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/pic5-.jpg" /></a></div>
+                    <div class="pic_jies">
+                    	<h3>郭道宁</h3>
+                        <p>人称"郭老"，是骑车去伦敦看奥运队伍中年纪最大的队员。</p>
+                        <p>无论骑行路上遇到什么困阻，一直以乐观的心态去面对，淡定从容。</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="min3_1">
+                	<div class="pic_box"><a href="http://bbs.8264.com/thread-1289750-1-2.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/pic6-.jpg" /></a></div>
+                    <div class="pic_jies">
+                    	<h3>张武</h3>
+                        <p>摄影师，人称"宝哥"，06年参加"青岛啤酒－我是冠军"全民急速大挑战广州赛区复赛，徒步31小时128公里；9年徒步四姑娘山；11年穿越丹霞山。</p>
+                        
+                  </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="min3_1">
+                	<div class="pic_box"><a href="http://bbs.8264.com/thread-1253317-1-1.html " target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/pic7.jpg" /></a></div>
+                    <div class="pic_jies">
+                    	<h3>周才秀</h3>
+                        <p>中南大学12届研究生毕业，09年接触自行车旅游，10年1月环海南岛骑行，10年7-8月骑行滇藏线，12年义无反顾放弃签约工作加入环球骑行之旅。</p>
+                        
+                  </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="min3_1">
+                	<div class="pic_box"><a href="http://bbs.8264.com/thread-1289750-1-2.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/pic8.jpg" /></a></div>
+                    <div class="pic_jies">
+                    	<h3>王瑞</h3>
+                        <p>"副队长"，负责后勤保障及维修。郑渊洁是他成长路途上的精神导师，凡尔纳激起他环游世界的梦想。运动、探险、旅游乐在其中，阅读、艺术、音乐常伴左右。</p>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="nav"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/nav31.jpg" border="0" usemap="#Map2" />
+              <map name="Map2" id="Map2">
+                <area shape="rect" coords="892,10,967,27" href="http://u.8264.com/home-space-uid-6111-do-album-id-162331.html" target="_blank" />
+              </map>
+</div>
+            <a name="message" id="message"></a>
+<div class="min4">
+<div class="min4_1">
+                	<div class="pic_box1">
+                    	<a href="http://u.8264.com/home-space-uid-6111-do-album-picid-4320585.html#pic_block" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/tuwen11.jpg" /></a>
+                        <p><a>在罗马·问路于修女</a></p>
+                    </div>
+                    
+                </div>
+                <div class="min4_1">
+                	<div class="pic_box1">
+                    	<a href="http://u.8264.com/home-space-uid-6111-do-album-picid-4320588.html#pic_block" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/tuwen21.jpg" /></a>
+                        <p><a>佛罗伦萨-费拉拉 路上</a></p>
+                    </div>
+                    
+                </div>
+                <div class="min4_1">
+                	<div class="pic_box1">
+                    	<a href="http://u.8264.com/home-space-uid-6111-do-album-picid-4320590.html#pic_block" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/tuwen31.jpg" /></a>
+                        <p><a>费拉拉FERRARA·扎营</a></p>
+                    </div>
+                    
+                </div>
+                <div class="min4_1">
+                	<div class="pic_box1">
+                    	<a href="http://u.8264.com/home-space-uid-6111-do-album-picid-4320591.html#pic_block" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/tuwen41.jpg" /></a>
+                        <p><a>在帕多瓦·滚动车轮，舞动人生</a></p>
+                    </div>
+                    
+                </div>
+                <div class="min4_1">
+                	<div class="pic_box1">
+                    	<a href="http://u.8264.com/home-space-uid-6111-do-album-picid-4320594.html#pic_block" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/tuwen51.jpg" /></a>
+                        <p><a>在罗维戈·酒店老板送我们一程</a></p>
+                    </div>
+                    
+                </div>
+                <div class="min4_1">
+                	<div class="pic_box1">
+                    	<a href="http://u.8264.com/home-space-uid-6111-do-album-picid-4320597.html#pic_block" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/tuwen61.jpg" /></a>
+                        <p><a>从拉齐塞到布雷西尔</a></p>
+                    </div>
+                    
+                </div>
+                <div class="min4_1">
+                	<div class="pic_box1">
+                    	<a href="http://u.8264.com/home-space-uid-6111-do-album-picid-4320598.html#pic_block" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/tuwen71.jpg" /></a>
+                        <p><a>从拉齐塞到布雷西尔</a></p>
+                    </div>
+                    
+                </div>
+                <div class="min4_1">
+                	<div class="pic_box1">
+                    	<a href="http://u.8264.com/home-space-uid-6111-do-album-picid-4320600.html#pic_block" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/tuwen81.jpg" /></a>
+                        <p><a>布雷西亚-米兰·腾飞奥运</a></p>
+                    </div>
+                    
+                </div>
+                <div class="min4_1">
+                	<div class="pic_box1">
+                    	<a href="http://u.8264.com/home-space-uid-6111-do-album-picid-4320602.html#pic_block" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/tuwen91.jpg" /></a>
+                        <p><a>在米兰·米兰大教堂</a></p>
+                    </div>
+                    
+                </div>
+                <div class="min4_1">
+                	<div class="pic_box1">
+                    	<a href="http://u.8264.com/home-space-uid-6111-do-album-picid-4320603.html#pic_block" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/tuwen101.jpg" /></a>
+                        <p><a>在法国观看赛车赛</a></p>
+                    </div>
+                    
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="min4">
+            <div class="zixunleft">
+              <ul>
+                  <li><a href="http://www.8264.com/portal.php?mod=view&amp;aid=77727" target="_blank">【极星梦想计划】齐天下车队抵达欧洲第一站——罗马</a></li>     
+                  <li><a href="http://www.8264.com/portal.php?mod=view&amp;aid=77815" target="_blank">【极星梦想计划】羊城11名骑友骑车去伦敦看奥运 绿城骑友热情欢迎</a></li>
+                  <li><a href="http://www.8264.com/portal.php?mod=view&amp;aid=77825" target="_blank">【极星梦想计划】"骑车去伦敦看奥运"游学团走进南京青奥组委</a></li> 
+                  <li><a href="http://www.8264.com/viewnews-76155-page-1.html" target="_blank">【极星梦想计划】"骑车去伦敦看奥运"宁波海曙站正式启动</a></li>
+                  <li><a href="http://www.8264.com/portal.php?mod=view&amp;aid=77775" target="_blank">【极星梦想计划】广州6旬阿姨到武汉 决心骑到伦敦看奥运</a></li>
+                  <li><a href="http://www.8264.com/portal.php?mod=view&amp;aid=77762" target="_blank">【极星梦想计划】骑车去伦敦看奥运 不料在长沙遭窃贼</a></li>
+                  <li><a href="http://www.8264.com/viewnews-76947-page-1.html" target="_blank">【极星梦想计划】梦想出发 骑车去伦敦看奥运</a></li>
+                  <li><a href="http://www.8264.com/portal.php?mod=view&amp;aid=77811" target="_blank">【极星梦想计划】广州66岁老将再战江湖 欲骑车去伦敦看奥运</a></li>
+                  <li><a href="http://www.8264.com/portal.php?mod=view&amp;aid=77721" target="_blank">【极星梦想计划】2012骑车去伦敦看奥运 启动仪式暨新闻发布会</a></li>
+                     
+              </ul>
+            </div>
+            <div class="zixunright">
+              <ul>
+                 <li><a href="http://u.8264.com/home-space-uid-6111-do-blog-id-405263.html" target="_blank">【极星梦想计划】骑车去伦敦看奥运 陷入窘境又越一坎</a></li>
+                 <li><a href="http://bbs.8264.com/thread-1253317-1-1.html" target="_blank">【极星梦想计划】80后单身女生,一路"滚"向欧洲</a></li>
+                 <li><a href="http://bbs.8264.com/thread-1233698-1-1.html" target="_blank">【极星梦想计划】直播2012齐天下骑车去伦敦看奥运——中原队</a></li>
+                 <li><a href="http://www.qitianxia.com/thread-1385-1-1.html" target="_blank">【极星梦想计划】63岁阿姨也跟我们去伦敦</a></li>
+                 <li><a href="http://www.qitianxia.com/thread-1323-2-1.html" target="_blank">【极星梦想计划】爱、梦想、骑行，让花儿的笑容继续绽放</a></li>
+                 <li><a href="http://www.qitianxia.com/thread-1371-1-1.html" target="_blank">【极星梦想计划】纪念我的大学生活之毕业旅行---10000km单车骑行 </a></li>
+                 <li><a href="http://www.8264.com/portal.php?mod=view&amp;aid=77894" target="_blank">【极星梦想计划】当万里骑行车队偶遇百年环法自行车赛 </a></li>
+                 <li><a href="http://www.8264.com/viewnews-77921-page-1.html" target="_blank">【极星梦想计划】骑车去伦敦看奥运 跨越两洲抵达欧洲第一城</a></li>
+                 <li><a href="http://u.8264.com/home-space-uid-6111-do-blog-id-406898.html" target="_blank">【极星梦想计划】骑车去伦敦看奥运——走进伦敦 靠近奥运</a></li>
+                 
+              </ul>
+            </div>
+              <div class="clear"></div>
+      </div>
+            
+            <div class="nav"><img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/nav4.jpg" />
+                <div class="bltitle">
+                    <ul class="sheqian2">
+                    <li><a id="guon" href="#" target="_blank" class="active">国内</a></li>
+                    <li style="margin-left:10px;"><a id="guow" href="#" target="_blank">国外</a></li>
+                    </ul>
+                    <div style="clear:both"></div>
+                </div>      
+            </div>
+            
+            <div class="min5">
+            	<div class="sheqianbody">
+                        <div class="neirong active" id="sq-guon">
+<img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/ditu1.jpg" />
+                        </div>
+                    	<div class="neirong" id="sq-guow">
+                        	<img src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/images/ditu21.jpg" />
+                        </div>
+                    </div>
+            </div>
+            
+            <div class="bottom">
+<a href="http://www.8264.com/template/8264/about/aboutus.htm" target="_blank">8264简介</a>
+&nbsp;|&nbsp;
+<a href="http://www.8264.com/template/8264/about/ggservice/index.html" target="_blank" >广告服务</a>
+&nbsp;|&nbsp;
+<a href="http://www.8264.com/zhuanti" target="_blank">户外热点</a>
+&nbsp;|&nbsp;
+<a href="http://www.8264.com/template/8264/about/aboutus.htm" target="_blank">联系方式</a>
+&nbsp;|&nbsp;
+<a href="http://bbs.8264.com/plugin.php?id=drc_qqgroup:main" target="_blank" >QQ群联盟</a>
+&nbsp;|&nbsp;
+<a href="http://www.8264.com/link/" target="_blank">户外网址大全</a>
+<br>
+服务热线：022-23708264&nbsp;|&nbsp;传真：022-23857291&nbsp;|&nbsp;地址：天津市华苑产业园区鑫茂科技园C2座6层AB单元<br>
+<a href="http://bx.8264.com" target="_blank">户外活动有风险，8264提醒您购买</a>
+<a href="http://bx.8264.com">户外保险</a>
+<br>
+除了脚印什么都不留下 除了摄影什么都不带走，欢迎各种媒体转载我们的原创作品[转载请注明出处]。8264&nbsp;版权所有
+<a href="http://www.miibeian.gov.cn/" target="_blank">津ICP备05004140号-10</a>
+&nbsp;&nbsp;&nbsp;
+<a href="http://www.8264.com/template/8264/image/icp.jpg" target="_blank">ICP证 津B2-20110106</a>
+</div>
+        </div>
+        
+    </div>
+    
+</body>
+</html>
+<script src="http://static.8264.com/oldcms/moban/zt/2012-06-05jixin/js/common.js" type="text/javascript"></script>

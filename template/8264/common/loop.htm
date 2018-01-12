@@ -1,0 +1,16 @@
+<!--{template common/header_8264_new}-->
+<form action="#" method="get">
+	<input type="button" id="clearTimer" value="点我停止更新" />
+</form>
+<script type="text/javascript">
+function make_request() {
+	jQuery.get('http://www.8264.com/cron.php?action=status', '', function(data) {
+			if(data == 'finished') {
+				setTimeout('make_request()', 5000);
+			}
+	});
+}
+jQuery(document).ready(function() {
+	make_request();
+});
+</script>

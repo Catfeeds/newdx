@@ -1,0 +1,348 @@
+<!--{subtemplate common/header_8264_new}-->
+<!--{subtemplate home/space_header_uc}-->
+<div class="main-content layout-page">
+	<div class="layout-app">
+		<div class="col-main">
+			<div class="main-wrap">
+				{if $_G[gp_op] == 'base'}
+				<!--我的积分-->
+				<div class="basic-panel" id="basic_info">
+					<div class="basic-info-tit">
+						<h3 class="tit">{if $space[self]}我{else}$space[username]{/if}的积分</h3>
+					</div>				
+					<div class="basic-msg-panel">
+						<style type="text/css">
+							.score-pannel th{
+								font-weight: normal;
+								width: 60px;
+							}
+							.score-pannel th, .score-pannel td {
+								padding: 10px 2px;
+								vertical-align: middle;
+							}
+							.score-pannel a:hover{
+								text-decoration: underline;
+							}
+							.sel-ps{
+								border: 1px solid #b8d0da;
+								height: 26px;
+								vertical-align: middle;
+								padding:0 5px;
+							}
+							.input-px{
+								border: 1px solid #b8d0da;
+								height: 20px;
+								_height: 20px;
+								line-height: 20px;
+								padding: 2px 4px;
+								_padding: 0 4px;
+							}
+							.pn-org{
+								background-color: #fe8161;
+								border: 0 none;
+								color: #fff;
+								text-align: center;
+								width: 60px;
+								height: 26px;
+								line-height: 26px;
+								vertical-align: middle;
+								-webkit-border-radius: 3px;
+								-moz-border-radius: 3px;
+								border-radius: 3px;
+								margin-left: 5px;
+							}
+						</style>
+						<table cellspacing="0" cellpadding="0" class="score-pannel">
+							<tr>
+								<th>驴币</th>
+								<td>{$space[extcredits2]}</td>
+							</tr>
+							<tr>
+								<th>8264币</th>
+								<td>{$space[extcredits5]} 枚&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://bbs.8264.com/forum-483-1.html" target="_blank" style="color: red;">上限40枚，超过40系统自动扣除，请及时兑换礼品</a></td>
+							</tr>
+							<tr>
+								<th>{lang credits}</th>
+								<td>{$space[credits]} ( $_G['setting']['creditsformulaexp'] )</td>
+							</tr>
+						</table>
+						{if ($_G[setting][exchangestatus] || $_G[setting][transferstatus] || $_G[setting][ec_ratio]) && $space[self]}
+							<!--8264币兑换驴币-->
+							<!--{if $_G[setting][exchangestatus] && ($_G[setting][extcredits] || $_CACHE['creditsettings'])}-->
+							<form id="exchangeform" name="exchangeform" method="post" class="ptm pbm" autocomplete="off" action="home.php?mod=spacecp&ac=credit&op=base&exchangesubmit=yes&handlekey=credit" onsubmit="showWindow('credit', 'exchangeform', 'post');">
+								<input type="hidden" name="formhash" value="{FORMHASH}" />
+								<input type="hidden" name="operation" value="exchange" />
+								<input type="hidden" name="outi" value="" />								
+								
+								<table cellspacing="0" cellpadding="0" class="score-pannel">
+									<tr>
+										<th>{lang memcp_credits_exchange}</th>
+										<td>
+											<input type="text" size="5" name="exchangeamount" class="input-px" style="width: auto;" id="exchangeamount" value="0" onkeyup="exchangecalcredit()" />
+											<select name="tocredits" id="tocredits" class="sel-ps" onChange="exchangecalcredit()">
+											<!--{loop $_G[setting][extcredits] $id $ecredits}-->
+												<!--{if $ecredits[allowexchangein] && $ecredits[ratio]}-->
+													<option value="$id" unit="$ecredits[unit]" title="$ecredits[title]" ratio="$ecredits[ratio]">$ecredits[title]</option>
+												<!--{/if}-->
+											<!--{/loop}-->
+											<!--{eval $i=0;}-->
+			
+											<!--{loop $_CACHE['creditsettings'] $id $data}--><!--{eval $i++;}-->
+												<!--{if $data[title]}-->
+												<option value="$id" outi="$i">$data[title]</option>
+												<!--{/if}-->
+											<!--{/loop}-->
+											</select>
+											&nbsp;{lang credits_need}&nbsp;
+											<input type="text" size="5" id="exchangedesamount" class="input-px" style="width: auto;" value="0" disabled="disabled" />
+											<select name="fromcredits" id="fromcredits_0"class="sel-ps"  style="display: none" onChange="exchangecalcredit();">
+											<!--{loop $_G[setting][extcredits] $id $credit}-->
+												<!--{if $credit[allowexchangeout] && $credit[ratio]}-->
+													<option value="$id" unit="$credit[unit]" title="$credit[title]" ratio="$credit[ratio]">$credit[title]</option>
+												<!--{/if}-->
+											<!--{/loop}-->
+											</select>
+											<!--{eval $i=0;}-->
+											<!--{loop $_CACHE['creditsettings'] $id $data}--><!--{eval $i++;}-->
+												<select name="fromcredits_$i" class="sel-ps" id="fromcredits_$i" style="display: none" onChange="exchangecalcredit()">
+												<!--{loop $data[creditsrc] $id $ratio}-->
+													<option value="$id" unit="$_G['setting']['extcredits'][$id][unit]" title="$_G['setting']['extcredits'][$id][title]" ratiosrc="$data[ratiosrc][$id]" ratiodesc="$data[ratiodesc][$id]">$_G['setting']['extcredits'][$id][title]</option>
+												<!--{/loop}-->
+												</select>
+											<!--{/loop}-->
+											<script type="text/javascript">
+												var tocredits = $('tocredits');
+												var fromcredits = $('fromcredits_0');
+												if(fromcredits.length > 1 && tocredits.value == fromcredits.value) {
+													fromcredits.selectedIndex = tocredits.selectedIndex + 1;
+												}
+											</script>
+											<button type="submit" name="exchangesubmit" class="pn-org" id="exchangesubmit" value="true" tabindex="2"><em>{lang memcp_credits_exchange}</em></button>
+										</td>
+										<td class="d">
+											<!--{if $_G[setting][exchangemincredits]}-->
+												{lang memcp_credits_exchange_min_balance} $_G[setting][exchangemincredits]<br />
+											<!--{/if}-->
+											<span id="taxpercent">
+											<!--{if intval($taxpercent) > 0}-->
+												{lang credits_tax} $taxpercent
+											<!--{/if}-->
+											</span>
+										</td>
+									</tr>
+								</table>
+							</form>
+							<script type="text/javascript">
+								function exchangecalcredit() {
+									with($('exchangeform')) {
+										tocredit = tocredits[tocredits.selectedIndex];
+										if(!tocredit) {
+											return;
+										}
+										<!--{eval $i=0;}-->
+										<!--{loop $_CACHE['creditsettings'] $id $data}--><!--{eval $i++;}-->
+											$('fromcredits_$i').style.display = 'none';
+										<!--{/loop}-->
+										if(tocredit.getAttribute('outi')) {
+											outi.value = tocredit.getAttribute('outi');
+											fromcredit = $('fromcredits_' + tocredit.getAttribute('outi'));
+											$('taxpercent').style.display = $('fromcredits_0').style.display = 'none';
+											fromcredit.style.display = '';
+											fromcredit = fromcredit[fromcredit.selectedIndex];
+											$('exchangeamount').value = $('exchangeamount').value.toInt();
+											if($('exchangeamount').value != 0) {
+												$('exchangedesamount').value = Math.floor( fromcredit.getAttribute('ratiosrc') / fromcredit.getAttribute('ratiodesc') * $('exchangeamount').value);
+											} else {
+												$('exchangedesamount').value = '';
+											}
+										} else {
+											outi.value = 0;
+											$('taxpercent').style.display = $('fromcredits_0').style.display = '';
+											fromcredit = fromcredits[fromcredits.selectedIndex];
+											$('exchangeamount').value = $('exchangeamount').value.toInt();
+											if(fromcredit.getAttribute('title') != tocredit.getAttribute('title') && $('exchangeamount').value != 0) {
+												if(tocredit.getAttribute('ratio') < fromcredit.getAttribute('ratio')) {
+													$('exchangedesamount').value = Math.ceil( tocredit.getAttribute('ratio') / fromcredit.getAttribute('ratio') * $('exchangeamount').value * (1 + $_G[setting][creditstax]));
+												} else {
+													$('exchangedesamount').value = Math.floor( tocredit.getAttribute('ratio') / fromcredit.getAttribute('ratio') * $('exchangeamount').value * (1 + $_G[setting][creditstax]));
+												}
+											} else {
+												$('exchangedesamount').value = '';
+											}
+										}
+									}
+								}
+								String.prototype.toInt = function() {
+									var s = parseInt(this);
+									return isNaN(s) ? 0 : s;
+								}
+								exchangecalcredit();
+								
+								jQuery(function(){
+									//对弹出框样式变更
+									setInterval(function(){
+										if (jQuery('.dhinfo').length <= 0 && jQuery('#confirmform').length <= 0) {
+											jQuery('.altw').addClass('dhinfo plr');
+											jQuery('.alert_info').addClass('erroricon').removeClass('alert_info');
+											jQuery('.alert_error').addClass('erroricon').removeClass('alert_error');
+											var tempmsg = jQuery('.erroricon p').html();
+											if (tempmsg != undefined) {
+												if (tempmsg.indexOf('积分操作成功') > -1) {
+													jQuery('.erroricon').addClass('successicon').removeClass('erroricon');
+													jQuery('.dhinfo').append('<a href="javascript:void(0);" onclick="hideWindow(\'dialog\')" class="closebtn"></a>');
+												}	
+											} else {
+												jQuery('.dhinfo').append('<a href="javascript:void(0);" onclick="hideWindow(\'credit\')" class="closebtn"></a>');
+											}										
+											jQuery('.flb').hide();
+											jQuery('.pns').hide();
+											
+										}
+									},10);
+								});								
+							</script>
+							<!--{/if}-->
+							<!--8264币兑换驴币 end-->
+						{/if}
+					</div>
+				</div>
+				<!--我的积分 end-->	
+				{elseif $_G[gp_op] == 'rule'}
+				<!--积分规则-->
+				<div class="basic-panel" id="basic_info">
+					<div class="basic-info-tit">
+						<h3 class="tit">积分规则</h3>
+					</div>				
+					<div class="basic-msg-panel">
+						{eval
+							$_TPL['cycletype'] = array(
+								'0' => '{lang one_time}',
+								'1' => '{lang everyday}',
+								'2' => '{lang the_time}',
+								'3' => '{lang interval_minutes}',
+								'4' => '{lang open_cycle}'
+							);
+						}
+						<style type="text/css">
+							.rule-pannel{
+								width: 100%;
+								border: 1px solid #f4f4f4;
+								border-top: 0 none;
+							}
+							.rule-pannel th, .rule-pannel td{
+								text-align: center;
+							}
+							.rule-pannel th{
+								padding: 10px 4px;
+								background-color: #f4f4f4
+							}
+							.rule-pannel td{
+								padding: 12px 4px;
+								border-bottom: 1px solid #f4f4f4;
+							}
+							.rule-pannel a:hover{
+								text-decoration: underline;
+							}
+						</style>
+						<table cellspacing="0" cellpadding="0" class="rule-pannel">
+							<tr>
+								<th>{lang action_name}</th>
+								<th>{lang cycle_range}</th>
+								<th>{lang max_award_per_week}</th>
+								{loop $_G['setting']['extcredits'] $key $value}
+								<th>$value[title]</th>
+								{/loop}
+							</tr>
+							{loop $list $key $value}
+							<tr>
+								<td>$value[rulename]</td>
+								<td>$_TPL[cycletype][$value[cycletype]]</td>
+								<td>{if $value[rewardnum]}$value[rewardnum]{else}{lang unlimited_time}{/if}</td>
+								{loop $_G['setting']['extcredits'] $key $credit}
+								{eval $creditkey  = 'extcredits'.$key;}
+								{eval $creditUnit = $key == 2 ? '' : '枚';}
+								<td>{if $value[$creditkey] > 0}+$value[$creditkey]{$creditUnit}{elseif $value[$creditkey] < 0}$value[$creditkey]{$creditUnit}{else}&nbsp;{/if}</td>
+								{/loop}
+							</tr>						
+							{/loop}
+							<tr>
+								<td><a href="forum.php?mod=viewthread&tid=1641700" class="t a" target="_blank">发优秀帖</a></td>
+								<td>{lang open_cycle}</td>
+								<td>{lang unlimited_time}</td>
+								<td></td>
+								<td>1枚</td>
+							</tr>
+							<tr>
+								<td><a href="forum.php?mod=viewthread&tid=1641700" class="t a" target="_blank">组织活动</a></td>
+								<td>{lang open_cycle}</td>
+								<td>{lang unlimited_time}</td>
+								<td></td>
+								<td>1枚</td>
+							</tr>							
+							<tr>
+								<td><a href="forum.php?mod=viewthread&tid=1641700" class="t a" target="_blank">优秀点评</a></td>
+								<td>{lang open_cycle}</td>
+								<td>{lang unlimited_time}</td>
+								<td></td>
+								<td>1枚</td>
+							</tr>
+							<tr>
+								<td><a href="forum.php?mod=viewthread&tid=1641700" class="t a" target="_blank">介绍新人</a></td>
+								<td>{lang open_cycle}</td>
+								<td>{lang unlimited_time}</td>
+								<td></td>
+								<td>1枚</td>
+							</tr>
+							<tr>
+								<td><a href="forum.php?mod=viewthread&tid=1641700" class="t a" target="_blank">悬挂8264旗帜</a></td>
+								<td>{lang open_cycle}</td>
+								<td>{lang unlimited_time}</td>
+								<td></td>
+								<td>2枚</td>
+							</tr>
+							<tr>
+								<td><a href="forum.php?mod=viewthread&tid=1641700" class="t a" target="_blank">投稿8264每日一图并发布</a></td>
+								<td>{lang open_cycle}</td>
+								<td>{lang unlimited_time}</td>
+								<td></td>
+								<td>10枚</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<!--积分规则 end-->
+				{/if}				
+			</div>
+		</div>
+		<div class="col-sub">
+			<div class="category-nav-container mod-wrap">
+				<div class="category-menu-nav">
+					<ul class="menu-nav-tree">
+						<li class="menu-nav {if $_G[gp_op] == 'base'}menu-nav-current{/if}">
+							<a href="home.php?mod=spacecp&ac=credit&uid={$space[uid]}&op=base">
+								<i class="menu-nav-icon icon-basic"></i>
+								<em>{if $space[self]}我{else}$space[username]{/if}的积分</em>
+							</a>
+						</li>
+						<li class="menu-nav {if $_G[gp_op] == 'rule'}menu-nav-current{/if}">
+							<a href="home.php?mod=spacecp&ac=credit&uid={$space[uid]}&op=rule">
+								<i class="menu-nav-icon icon-situ"></i>
+								<em>积分规则</em>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+jQuery(function(){
+	jQuery('.menu-nav').click(function(){
+		jQuery('.menu-nav').removeClass('menu-nav-current');
+		jQuery(this).addClass('menu-nav-current');
+	});
+});
+</script>
+<!--{subtemplate home/space_footer_uc}-->
+<!--{subtemplate common/footer_8264_new}-->

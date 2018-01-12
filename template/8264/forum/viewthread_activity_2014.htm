@@ -1,0 +1,436 @@
+<style type="text/css">
+.activitymessage{position: relative;overflow:hidden;}
+.activitymessage h3{width: 125px;float: left;font-size: 18px;color: #585858;}
+.activitymessage .ui-title-icon {width: 26px;height: 26px;float: left;margin-right: 10px;background: url(http://static.8264.com/static/images/forum/activity/mXTxKl-26-289.png) no-repeat;}
+.activitymessage .ui-tInfo-icon {background-position: 0 -70px;}
+.activitymessage .ui-tTrip-icon {background-position: 0 -111px;}
+.activitymessage .ui-tPrice-icon {background-position: 0 -152px;}
+.activitymessage .ui-tEquip-icon {background-position: 0 -193px;}
+.activitymessage .ui-tNotice-icon {background-position: 0 -234px;}
+.activitymessage .dotted-line{display: inline-block;width: 700px;height: 2px;background: url(http://static.8264.com/static/images/forum/activity/dotted-icon.png) repeat-x;vertical-align: middle;}
+.activitymessage .message{clear:both;margin:20px 0 40px;}
+</style>
+<div class="clboth mb16">
+	<div class="actionimg">
+		<div class="actionimgcon">
+			<!--{if $activity['thumb']}-->
+			<a href="javascript:;"><img src="$activity['thumb']" onclick="zoom(this, '$activity[attachurl]')" /></a>
+			<!--{else}-->
+			<img src="http://static.8264.com/static/image/common/nophoto.gif" />
+			<!--{/if}-->
+		</div>
+		<div class="adbx"><a href="http://bx.8264.com/?bbsbxnewcon" target="_blank" title="8264户外保险频道"><img src="http://image1.8264.com/guanggao/bbs/2013/08/bx.jpg" alt="8264户外保险频道" /></a></div>
+	</div>
+	<div class="actioncon">
+		<h3>{$activity['class']}
+			<!--{if $post['invisible'] == 0 && ($_G['forum_thread']['authorid'] == $_G['uid'] || (in_array($_G['group']['radminid'], array(1, 2)) && $_G['group']['alloweditactivity']) || ( $_G['group']['radminid'] == 3 && $_G['forum']['ismoderator'] && $_G['group']['alloweditactivity']))}-->
+				<a href="misc.php?mod=invite&action=thread&id=$_G[tid]" onclick="showWindow('invite', this.href, 'get', 0);">{lang invite}</a>
+                <!--{if ($_G[uid] != $activity[uid]) && ((in_array($_G['group']['radminid'], array(1, 2)) && $_G['group']['alloweditactivity']) || ( $_G['group']['radminid'] == 3 && $_G['forum']['ismoderator'] && $_G['group']['alloweditactivity']))}-->
+                <a href="forum.php?mod=misc&action=activityapplylist&tid=$_G[tid]&pid=$post[pid]{if $_G['gp_from']}&from=$_G['gp_from']{/if}" onclick="showWindow('activity', this.href, 'get', 0)" title="{lang manage}">{lang manage}</a>
+                <!--{else}-->
+				<a href="http://hd.8264.com/index.php?app=my_manage&act=bbshd&mhash={$manageauth}" title="{lang manage}" target="_blank">{lang manage}</a>
+                <!--{/if}-->
+                <a href="forum.php?mod=misc&action=activityexport&tid=$_G[tid]" title="{lang pm_archive}">{lang pm_archive}</a>
+			<!--{/if}-->
+		</h3>
+		<!--{if $activity['cost']}--><b class="jg">￥{$activity['cost']}/<span>人</span></b><!--{/if}-->
+		<ul class="actioninfo">
+			<li><span>开始时间：</span><em><!--{if $activity['starttimeto']}-->{lang activity_start_between}<!--{else}-->$activity[starttimefrom]<!--{/if}--></em></li>
+			<li><span>活动地点：</span><em>{$activity['place']}</em></li>
+			<li><span>集合地点：</span><em>{$activity[collectplace]}</em></li>
+			<li style="display: none;">
+				<span>性<span style="visibility:hidden;">性别</span>别：</span>
+				<em><!--{if $activity['gender'] == 1}-->{lang male}<!--{elseif $activity['gender'] == 2}-->{lang female}<!--{else}-->{lang unlimited}<!--{/if}--></em>
+			</li>
+			<li>
+				<span>活动性质：</span>
+				<em style="margin-left: -7px;"><!--{if $activity['nature'] == 1}-->{lang activiy_nature_1}<!--{elseif $activity['nature'] == 2}-->{lang activiy_nature_2}<!--{else}-->未选择<!--{/if}--></em>
+			</li>
+			<!--{if $activity['expiration']}-->
+			<li><span>报名截止：</span><em>{$activity['expiration']}</em></li>
+			<!--{/if}-->
+		</ul>
+	
+		<!--{if !$_G['forum_thread']['is_archived']}-->
+		<div class="bmnum">
+			<!--{if $activity['number'] || $allapplynum != 0}-->
+			<span class="bm">
+				<b>{$allapplynum}</b>
+				<em>报名人数</em>
+			</span>
+			<!--{/if}-->
+			<!--{if $activity['number']}-->
+			<span class="sy">
+				<b>{$aboutmembers}</b>
+				<em>剩余名额</em>
+			</span>
+			<!--{/if}-->
+		</div>
+
+		<div class="clboth"></div>
+		<div class="option-wrap">
+		<a href="javascript:;" class="goverbutton159_43"></a>
+			<!--{if $post['invisible'] == 0}-->
+				<!--{if $applied && $isverified < 2}-->
+					<!--{if !$activityclose}-->
+					<a href="javascript:;" class="qxbmbutton159_43" onclick="showDialog($('activityjoincancel').innerHTML, 'info', '{lang activity_join_cancel}')"></a>
+					<!--{/if}-->
+					<p class="xg1 xs1" style="padding: 10px 0px;"><!--{if !$isverified}-->{lang activity_wait}<!--{else}-->{lang activity_join_audit}<!--{/if}--></p>
+				<!--{elseif !$activityclose}-->
+					<!--{if $isverified != 2}-->
+						<!--{if !$activity['number'] || $aboutmembers > 0}-->
+						<a href="javascript:;" class="bmbutton159_43" onclick="{if $_G['uid']}showDialog($('activityjoin').innerHTML, 'info', '{lang activity_join}'){else}showWindow('login', 'member.php?mod=logging&action=login&guestmessage=yes'){/if}"></a>
+						<!--{/if}-->
+					<!--{else}-->
+						<a href="javascript:;" onclick="showDialog($('activityjoin').innerHTML, 'info', '{lang complete_data}')" class="wszlbutton159_43"></a>
+					<!--{/if}-->
+				<!--{/if}-->
+			<!--{/if}-->
+			<!-- <a href="#" class="bmbutton159_43"></a> -->
+
+			<!--{/if}-->
+			
+			<!--{if $activity['mobile']&&!$activityclose}-->
+			<a href="javascript:void(0);" class="cons-link">立即咨询</a>
+			<!--{/if}-->
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		function checkform(theform) {
+			if (theform.message.value.length > 200) {
+				alert('{lang activiy_guest_more}');
+				theform.message.focus();
+				return false;
+			}
+			return true;
+		}
+	</script>	
+</div>
+
+<style type="text/css">
+.option-wrap{position: relative;}
+.cons-link{position:absolute;left:185px;top:12px;color:#2679aa;font-size:14px;text-decoration:underline!important;font-family:"微软雅黑"}
+.modal-backdrop{background-color:#000;bottom:0;left:0;position:fixed;right:0;top:0;z-index:1030}
+.modal-backdrop.in{opacity:.7;filter:alpha(opacity=70)}
+.modal-tpl{position:fixed;_position:absolute;top:0;right:0;bottom:0;left:0;outline:0 none;overflow-x:hidden;overflow-y:auto;font-family:"微软雅黑";display:none;z-index:1040}
+.modal-tpl .modal-dialog{width:582px;background-color:#fff;margin:50px auto;padding:0 0 35px;border-radius:3px;}
+.dialog-header{position:relative;height:26px;line-height:26px;padding:10px 0;background-color:#f4f4f4;border-radius:3px 3px 0 0;}
+.dialog-header .dialog-close{position:absolute;text-indent:-999em;width:15px;height:15px;background:url(http://static.8264.com/static/images/tps/v1/close-x.png) no-repeat;right:20px;top:16px;}
+.dh-title{font-size:16px;color:#949494;float:left;padding-left:20px;font-weight:normal;}
+.check-form{margin-top:30px}
+.check-form .form-group{margin-bottom:13px}
+.check-form .form-group .control-label{width:155px;text-align:right;padding-right:14px;font-weight:normal;color:#666;float:left;line-height:34px;font-size:14px;}
+.check-form .form-group input[type="text"]{border:1px solid #dfdfdf;box-shadow:0 2px 2px rgba(0, 0, 0, .03) inset;padding:6px 8px;width:280px;height:20px;font-size:14px;}
+.check-action{padding-left:169px;margin-top:20px}
+.check-action .check-submit{background-color:#f87354;color:#fff;display:block;font-size:14px;height:38px;line-height:38px;position:relative;text-align:center;width:102px;border-radius:3px}
+.controls-option{height:36px;}
+.controls-option label{margin:0;float:left;}
+.controls-option .radio-box{font-weight:normal;display:block;font-size:14px;margin-right:9px;position:relative;vertical-align:middle;border:1px solid #cfcfcf;height:34px;color:#333;outline:0 none;border-radius:1px;line-height:34px;width:54px;text-align:center;}
+.controls-option .selected .radio-box{background:#fff;border:2px solid #58b1e5;color:#333;height:32px;line-height:32px;width:52px;}
+.controls-option .radio-box .icon-check{height:18px;line-height:14px;width:20px;background:url(http://static.8264.com/static/images/tps/v1/element.png) no-repeat;position:absolute;right:0;top:0;display:none;}
+.controls-option .selected .icon-check{display:block;}
+</style>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$("#mode-select-list label").click(function() {
+			$(this).addClass("selected").siblings().removeClass("selected");
+			var text = $(this).find(".radio-box").text();
+			var node = $(this).parents(".form-group").next();
+			node.find(".control-label").text(text);
+			node.find("input").attr({placeholder: "请输入"+text+"号"});
+			var type = $(this).find(".radio-box").attr('type');
+			$("#contacts_mobile").attr("name",type);
+		});
+		$(".cons-link").click(function() {
+			J_openCheckForm();
+		});
+		jQuery("#J_closeCheckForm").click(function() {
+			J_closeCheckForm();
+		});
+		function J_openCheckForm(){
+			jQuery("body").css({"padding-right":"16px","overflow":"hidden"});
+			jQuery("body").append("<div class='modal-backdrop in'></div>");
+			var _mgAuto = (jQuery(window).height() - 470) / 2;
+			_mgAuto < 0 ? _mgAuto=100 : _mgAuto;
+			jQuery(".modal-dialog").css({"margin-top": _mgAuto,"margin-bottom": _mgAuto});
+			jQuery("#J_checkForm").show();
+		}
+		function J_closeCheckForm(){
+			jQuery("body").removeAttr("style");
+			jQuery("body").find(".modal-backdrop").remove();
+			jQuery("#J_checkForm").hide();
+		}
+		
+	});
+</script>
+<div id="J_checkForm" class="modal-tpl">
+	<div class="modal-dialog">
+		<div class="dialog-header">
+			<h3 class="dh-title">我要咨询</h3>
+			<a href="javascript:void(0);" id="J_closeCheckForm" class="dialog-close">关闭</a>
+		</div>
+		<div class="dialog-content">
+			<form method="post" id="order_form" autocomplete="off" action="forum.php?mod=misc&action=activityconsults&fid=$_G[fid]&tid=$_G[tid]&pid=$post[pid]{if $_G['gp_from']}&from=$_G['gp_from']{/if}">
+				<input type="hidden" name="formhash" value="{FORMHASH}" />
+				<input type="hidden" name="handlekey" value="activityconsults" />
+				<div class="check-form">
+					<div class="form-group">
+						<span class="control-label">联系</span>
+						<div id="mode-select-list" class="controls-option">
+							<label class="selected">
+								<a href="javascript:void(0);" class="radio-box" type="contacts_mobile">手机<i class="icon-check"></i></a>
+							</label>
+							<label>
+								<a href="javascript:void(0);" class="radio-box" type="wechat_no">微信<i class="icon-check"></i></a>
+							</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<span class="control-label">手机</span>
+						<input type="text" id="contacts_mobile" name="contacts_mobile" class="phone-num" placeholder="请输入手机号">
+					</div>
+					<div class="form-group">
+						<span class="control-label">备注</span>
+						<input type="text" id="other" name="other" class="remark" placeholder="请输入您的需求">
+					</div>
+					<div class="check-action">
+						<div id="_J_PopupSubmit">
+							<a href="javascript:void(0);" onclick="check_order_form()"  class="check-submit" id="activityask_sub">咨询</a>
+							<span id='signmessages' style='color:orange;'>&nbsp;</span>
+						</div>
+					</div>
+				</div>
+			</form>
+			<script>
+				function check_order_form(){
+					var activitymobilemode = /^0?1[3|4|5|8][0-9]\d{8}$/;
+					var contacts_type =jQuery("#contacts_mobile").attr("name");
+					var contacts_val = jQuery.trim(jQuery("#contacts_mobile").val());
+					if(contacts_type == 'contacts_mobile'){
+						if(contacts_val ==''){
+							jQuery("#signmessages").html('请填写手机号');
+							return false;
+						}
+						if(!activitymobilemode.test(contacts_val)){
+							jQuery("#signmessages").html('请填写正确手机号');
+							return false;
+						}
+					}else if(contacts_type == 'wechat_no'){
+						if(contacts_val ==''){
+							jQuery("#signmessages").html('请填写微信号');
+							return false;
+						}
+					}
+					
+					jQuery("#order_form").submit();
+				}
+				
+				jQuery(document).ready(function($) {
+					$("#contacts_mobile").focus(function(){
+						jQuery("#signmessages").html('&nbsp;');
+					  });
+				});
+			</script>
+		</div>
+	</div>
+</div>
+
+<!--{if $applylistverified }-->
+<div class="clboth mt16" id="ratelog_8264_$post[pid]">
+	<div class="pftitle clboth">
+		<span class="peopleicon17_17"></span>
+		<span class="peoplenum">$noverifiednum 人</span>
+		<span class="pfzi">未通过</span>
+		<span class="pficon6_11"></span>
+		<a href="forum.php?mod=misc&action=activenopass&tid=$_G[tid]&pid=$post[pid]&nopassnum=$noverifiednum" onclick="showWindow('activepass', this.href)">查看未通过人员</a>
+	</div>
+	<div class="clboth pftoulist">
+		<ul>
+			<!--{loop $applylistverified $apply}-->
+			<li>
+				{if empty($apply['picUrl'])}
+					<div id="rate_8264_{$post[pid]}_{$apply[uid]}_menu" class="attp" style="display: none;">
+					    <p class="crly">$apply[message] &nbsp;&nbsp;
+					       <em>{lang activity_payment}：<!--{if $apply[payment] >= 0}-->$apply[payment] {lang payment_unit}<!--{else}-->{lang activity_self}<!--{/if}--></em>
+					       <span>{lang activity_jointime}：$apply[dateline]</span>
+							<!--{if $apply[num]>=2}--><br/><span>报名人数: $apply[num]人</span><!--{/if}-->
+					    </p>
+					    <p class="mncr"></p>
+					</div>
+				{else}
+				<div id="rate_8264_{$post[pid]}_{$apply[appuserid]}_menu" class="attp" style="display: none;">
+					    <p class="crly">$apply[message] &nbsp;&nbsp;
+					       <em>{lang activity_payment}：<!--{if $apply[payment] >= 0}-->$apply[payment] {lang payment_unit}<!--{else}-->{lang activity_self}<!--{/if}--></em>
+					       <span>{lang activity_jointime}：$apply[dateline]</span>
+							<!--{if $apply[num]>=2}--><br/><span>报名人数: $apply[num]人</span><!--{/if}-->
+					    </p>
+					    <p class="mncr"></p>
+					</div>
+				{/if}
+				{if empty($apply['picUrl'])}	
+					<p id="rate_8264_{$post[pid]}_{$apply[uid]}" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" class="tx">					
+						<a href="home.php?mod=space&uid=$apply[uid]" target="_blank" c="1"><!--{echo avatar($apply[uid], 'small');}--></a>
+					</p>	
+					<a href="home.php?mod=space&uid=$apply[uid]" target="_blank" class="name">{$apply['username']}</a>
+				{else}
+					<p id="rate_8264_{$post[pid]}_{$apply[appuserid]}" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" class="tx">					
+						<a href="javascript:void(0);" c="1"><img src="{$apply['picUrl']}"/></a>
+					</p>	
+					<a href="javascript:void(0);" class="name">{$apply['appusername']}</a>
+				{/if}
+			</li>
+			<!--{/loop}-->
+			<div style="clear:both;"></div>
+		</ul>
+	</div>
+</div>
+<!--{/if}-->
+
+<!--{if $applylist}-->
+<div class="clboth mt16" id="ratelog_8264_$post[pid]">
+	<div class="pftitle clboth">
+		<span class="peopleicon17_17"></span>
+		<span class="peoplenum">$applynumbers 人</span>
+		<span class="pfzi">通过</span>
+		<span class="pficon6_11"></span>
+		<a href="forum.php?mod=misc&action=activepass&tid=$_G[tid]&pid=$post[pid]&passnum=$applynumbers" onclick="showWindow('activepass', this.href)">查看通过人员</a>
+	</div>
+	<div class="clboth pftoulist">
+		<div id="post_rate_8264_$post[pid]"></div>
+		<ul>
+			<!--{loop $applylist $apply}-->
+			<li>
+				{if empty($apply['picUrl'])}
+					<div id="rate_8264_{$post[pid]}_{$apply[uid]}_menu" class="attp" style="display: none;">
+					    <p class="crly">$apply[message] &nbsp;&nbsp;
+					       <em>{lang activity_payment}：<!--{if $apply[payment] >= 0}-->$apply[payment] {lang payment_unit}<!--{else}-->{lang activity_self}<!--{/if}--></em>
+					       <span>{lang activity_jointime}：$apply[dateline]</span>
+							<!--{if $apply[num]>=2}--><br/><span>报名人数: $apply[num]人</span><!--{/if}-->
+					    </p>
+					    <p class="mncr"></p>
+					</div>
+				{else}
+					<div id="rate_8264_{$post[pid]}_{$apply[appuserid]}_menu" class="attp" style="display: none;">
+					    <p class="crly">$apply[message] &nbsp;&nbsp;
+					       <em>{lang activity_payment}：<!--{if $apply[payment] >= 0}-->$apply[payment] {lang payment_unit}<!--{else}-->{lang activity_self}<!--{/if}--></em>
+					       <span>{lang activity_jointime}：$apply[dateline]</span>
+							<!--{if $apply[num]>=2}--><br/><span>报名人数: $apply[num]人</span><!--{/if}-->
+					    </p>
+					    <p class="mncr"></p>
+					</div>
+				{/if}
+				{if empty($apply['picUrl'])}
+					<p id="rate_8264_{$post[pid]}_{$apply[uid]}" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" class="tx">
+						<a href="home.php?mod=space&uid=$apply[uid]" target="_blank" c="1"><!--{echo avatar($apply[uid], 'small');}--></a>
+					</p>
+					<a href="home.php?mod=space&uid=$apply[uid]" target="_blank" class="name">{$apply['username']}</a>
+				{else}
+					<p id="rate_8264_{$post[pid]}_{$apply[appuserid]}" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" class="tx">
+						<a href="javascript:void(0);" c="1"><img src="{$apply['picUrl']}"/></a>
+					</p>
+					<a href="javascript:void(0);" class="name">{$apply['appusername']}</a>
+				{/if}
+				
+			</li>
+			<!--{/loop}-->
+			<div style="clear:both;"></div>
+		</ul>
+	</div>
+</div>
+<!--{/if}-->
+
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_$post[pid]">$post[message]</td></tr></table>
+
+<!--{if $_G['uid'] && !$activityclose && (!$applied || $isverified == 2)}-->
+	<div id="activityjoin" style="display:none">
+		<!--{if $_G['forum']['status'] == 3 && $isgroupuser != 'isgroupuser'}-->
+			<div class="c">
+				<p>{lang activity_no_member}</p>
+				<p><a href="forum.php?mod=group&action=join&fid=$_G[fid]" class="xi2">{lang activity_join_group}</a></p>
+			</div>
+		<!--{else}-->
+		<form name="activity" id="activity" method="post" autocomplete="off" action="forum.php?mod=misc&action=activityapplies&fid=$_G[fid]&tid=$_G[tid]&pid=$post[pid]{if $_G['gp_from']}&from=$_G['gp_from']{/if}" >
+			<input type="hidden" name="formhash" value="{FORMHASH}" />
+			<input type="hidden" name="handlekey" value="activityapplies" />
+			<div class="c">
+				<!--{if $_G['setting']['activitycredit'] && $activity['credit'] && !$applied}--><p class="xi1">{lang activity_need_credit} $activity[credit] {$_G['setting']['extcredits'][$_G['setting']['activitycredit']][title]}</p><!--{/if}-->
+				<div class="actfm">
+					<table summary="{lang activity_join}" cellpadding="0" cellspacing="0" class="actl">
+					<!--{if $activity['cost']}-->
+						<!--<tr>
+							<th>{lang activity_paytype}</th>
+							<td>
+								<p class="mbn"><input class="pr" type="radio" value="0" name="payment" id="payment_0" checked="checked" /> <label for="payment_0">{lang activity_pay_myself}</label></p>
+								<p><input class="pr" type="radio" value="1" name="payment" id="payment_1" /> <label for="payment_1">{lang activity_would_payment}</label> <input name="payvalue" size="3" class="px pxs vm" onfocus="$('payment_1').checked = true;" /> {lang payment_unit}</p>
+							</td>
+						</tr>-->						
+					<!--{/if}-->
+
+					<!--{if !empty($activity['ufield']['userfield'])}-->
+						<!--{loop $activity['ufield']['userfield'] $fieldid}-->						
+						<!--{if $settings[$fieldid][available]}-->
+							<tr>
+								<th id="th_$fieldid"><!--{if $settings[$fieldid][required]}--><strong class="rq y">*</strong><!--{/if}-->$settings[$fieldid][title]</th>
+								<td id="td_$fieldid">									
+									<!--{if $fieldid=='field3'}-->	
+									<input type="text" class="px" name="field3" tabindex="1" size="4" value="$ufielddata[userfield][field3]" onkeyup="value=this.value.replace(/\D+/g,'')">人&nbsp;&nbsp;&nbsp;<span style="color: #F26C4F;">(只能填数字)</span>
+									<!--{else}-->
+									$htmls[$fieldid]
+									<!--{/if}-->
+								</td>
+							</tr>
+						<!--{/if}-->
+						<!--{/loop}-->
+					<!--{/if}-->
+					<!--{if !empty($activity['ufield']['extfield'])}-->
+						<!--{loop $activity['ufield']['extfield'] $extname}-->
+							<tr>
+								<th>$extname</th>
+								<td><input type="text" name="$extname" maxlength="200" class="px" value="{if !empty($ufielddata)}$ufielddata[extfield][$extname]{/if}" /></td>
+							</tr>
+						<!--{/loop}-->
+					<!--{/if}-->
+                    <!--{if !$activity['formid']}-->
+						<tr>
+							<th>{lang leaveword}</th>
+							<td><textarea name="message" maxlength="200" cols="28" class="pt">$applyinfo[message]</textarea></td>
+						</tr>
+                    <!--{/if}-->
+					</table>
+				</div>
+			</div>
+			<div class="o pns">
+				<!--{if $_G['setting']['activitycredit'] && $activity['credit'] && checklowerlimit(array('extcredits'.$_G['setting']['activitycredit'] => '-'.$activity['credit']), $_G['uid'], 1, 0, 1) !== true}-->
+					<p class="xi1">{$_G['setting']['extcredits'][$_G['setting']['activitycredit']][title]} {lang not_enough}$activity['credit']</p>
+				<!--{else}-->
+					<input type="hidden" name="activitysubmit" value="true">
+					<em class="xi1" id="return_activityapplies"></em>
+					<button type="submit" class="pn pnc"><span>{lang submit}</span></button>
+				<!--{/if}-->
+			</div>
+		</form>
+		
+		<script type="text/javascript">
+			function succeedhandle_activityapplies(locationhref, message) {
+				showDialog(message, 'notice', '', 'location.href="' + locationhref + '"');
+			}
+		</script>
+	<!--{/if}-->
+	</div>
+<!--{elseif $_G['uid'] && !$activityclose && $applied}-->
+	<div id="activityjoincancel" style="display:none">
+		<form name="activity" method="post" autocomplete="off" action="forum.php?mod=misc&action=activityapplies&fid=$_G[fid]&tid=$_G[tid]&pid=$post[pid]{if $_G['gp_from']}&from=$_G['gp_from']{/if}">
+			<input type="hidden" name="formhash" value="{FORMHASH}" />
+			<div class="c">
+				<table summary="{lang activity_join}" cellpadding="0" cellspacing="0" class="actl">
+					<tr>
+						<th>{lang leaveword}</th>
+						<td><input type="text" name="message" maxlength="200" class="px" value="" /></td>
+					</tr>
+				</table>
+			</div>
+			<div class="o pns"><button type="submit" name="activitycancel" class="pn pnc" value="true"><span>{lang submit}</span></button></div>
+		</form>
+	</div>
+<!--{/if}-->

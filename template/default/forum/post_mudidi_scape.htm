@@ -1,0 +1,308 @@
+<script type="text/javascript" src="http://www.8264.com/static/js/jquery-1.6.1.min.js"></script>
+<div class="exfm cl">
+	<div class="sinf sppoll z" style="width:780px; border:none;">
+		<dl>
+			<dt><label for="mudidi_traffic">相关景区:</label></dt>
+			<dd style="width:320px;">
+				<span class="ftid">
+					<label for="area_radio_1">
+						<input type="radio" name="area_radio" id="area_radio_1" value="1" checked="checked" {if $_G['gp_action'] == 'edit'} disabled="disabled"{/if} />国内
+					</label>
+					<label for="area_radio_2">
+						<input type="radio" name="area_radio" id="area_radio_2" value="2" {if $_G['gp_action'] == 'edit'} disabled="disabled"{/if} />国外
+					</label>
+				</span>
+				<span class="ftid">
+					<select name="areaSelect" id="areaSelect" width="38" class="ps" style="display:none;" {if $_G['gp_action'] == 'edit'} disabled="disabled"{/if}>
+					</select>
+				</span>
+				<span class="ftid">
+					<select name="scapeareaSelect" id="scapeareaSelect" width="38" class="ps" style="display:none;" {if $_G['gp_action'] == 'edit'} disabled="disabled"{/if}>
+					</select>
+				</span>
+			</dd>
+			<dt><label for="mudidi_ename">英文名:</label></dt>
+			<dd><input type="text" name="mudidi_ename" id="mudidi_ename" value="{$mudidi_editdata['ename']}" /></dd>
+			<dt style="margin-bottom:8px;"><label for="mudidi_type">坐标:</label></dt>
+			<dd style="width:695px;">
+				<div id="mapContainer" style="width:693px;height:350px;overflow:hidden;border:1px solid #ccc;"></div>
+				<input type="hidden" name="mudidi_longitude" id="mudidi_longitude" value="{$mudidi_editdata['long']}" />
+				<input type="hidden" name="mudidi_latitude" id="mudidi_latitude" value="{$mudidi_editdata['lat']}" />
+			</dd>
+			<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2&services=true"></script>
+			<script type="text/javascript">
+			;(function(){
+				{if $mudidi_editdata['long'] && $mudidi_editdata['lat']}
+					var long = {$mudidi_editdata['long']};
+					var lat = {$mudidi_editdata['lat']};
+					var zoom = 7;
+				{else}
+					var long = 107.145113;
+					var lat = 34.8858465;
+					var zoom = 5;
+				{/if}
+				
+				var map = new BMap.Map("mapContainer");
+				var point = new BMap.Point(long, lat);
+				map.centerAndZoom(point, zoom);
+				map.addControl(new BMap.NavigationControl());
+				var marker = new BMap.Marker(point);  // 创建标注
+				map.addOverlay(marker);              // 将标注添加到地图中
+				marker.enableDragging(true); // 设置标注可拖拽
+				marker.addEventListener("mouseup", function(){
+					var position = marker.getPosition();
+					jQuery("#mudidi_longitude").val(position['lng']);
+					jQuery("#mudidi_latitude").val(position['lat']);
+				});
+			})();
+			</script>
+			
+			<dt><label for="mudidi_type">类型:</label></dt>
+			<dd style="width:695px;">
+				<label for="mudidi_type_0"><input type="radio" id="mudidi_type_0" name="mudidi_type" value="0" {if $mudidi_editdata['type']==0} checked="checked"{/if} />无</label>&nbsp;
+				{loop $scapetypes $scapetype}
+				<label for="mudidi_type_{$scapetype['id']}"><input type="radio" id="mudidi_type_{$scapetype['id']}" name="mudidi_type" value="{$scapetype['id']}" {if $mudidi_editdata['type']==$scapetype['id']} checked="checked"{/if} />{$scapetype['name']}</label>&nbsp;
+				{/loop}
+			</dd>
+		</dl>
+	</div>
+</div>
+
+<script type="text/javascript" reload="1">
+jQuery.noConflict();
+<!--{eval $mudidi_region_data = ForumOptionMudidi::getAreaData();}-->
+<!--{eval $mudidi_region_jsondata = json_encode($mudidi_region_data)}-->
+var mudidi_region_data = eval({$mudidi_region_jsondata});
+
+;(function($){
+	
+	$('#area_radio_1').change(function(){
+		$('#scapeareaSelect').empty().hide();
+		$('#areaSelect').empty().show();
+		$('<option>', {
+			value: 0,
+			text: "请选择"
+		}).appendTo('#areaSelect');
+		for (var i in mudidi_region_data[0]) {
+			$('<option>', {
+				value: i,
+				text: mudidi_region_data[0][i]['name']
+			}).appendTo('#areaSelect');
+		}
+	});
+	
+	$('#area_radio_2').change(function(){
+		$('#scapeareaSelect').empty().hide();
+		$('#areaSelect').empty().show();
+		$('<option>', {
+			value: 0,
+			text: "请选择"
+		}).appendTo('#areaSelect');
+		for (var i in mudidi_region_data[1]) {
+			$('<option>', {
+				value: i,
+				text: mudidi_region_data[1][i]['name']
+			}).appendTo('#areaSelect');
+		}
+	});
+
+	$('#areaSelect').change(function(){
+		if ($(this).val() == 0) {
+			$('#scapeareaSelect').empty().hide();
+			return;
+		}
+		
+		area_num = $('#area_radio_1:checked').size() ? 0 : 1;
+		sn_num = $(this).val();
+		
+		$('#scapeareaSelect').empty().show();
+		$('<option>', {
+			value: 0,
+			text: "请选择"
+		}).appendTo('#scapeareaSelect');
+		for (var i in mudidi_region_data[area_num][sn_num]['child']) {
+			$('<option>', {
+				value: i,
+				text: mudidi_region_data[area_num][sn_num]['child'][i]['name']
+			}).appendTo('#scapeareaSelect');
+		}
+	});
+	
+	<!--{if $_G['gp_tid']}-->
+		<!--{eval $jsAreaSelect = ForumOptionMudidi::getJsAreaSelectByTid($_G['gp_tid']);}-->
+		<!--{if $jsAreaSelect}-->
+			<!--{if $jsAreaSelect[0] !== NULL}-->
+				<!--{eval $areaNum = $jsAreaSelect[0] + 1;}-->
+				$('#area_radio_{$areaNum}').attr('checked', 'checked').change();
+			<!--{/if}-->
+			<!--{if $jsAreaSelect[1] !== NULL}-->
+				$('#areaSelect option[value="{$jsAreaSelect[1]}"]').attr('selected', 'selected');
+				$('#areaSelect').change();
+			<!--{/if}-->
+			<!--{if $jsAreaSelect[2] !== NULL}-->
+				$('#scapeareaSelect option[value="{$jsAreaSelect[2]}"]').attr('selected', 'selected');
+				$('#scapeareaSelect').change();
+			<!--{/if}-->
+		<!--{/if}-->
+	<!--{else}-->
+		$('#area_radio_1').change();
+	<!--{/if}-->
+})(jQuery);
+
+// 检查subject是否重复
+function checkSubject() {
+	if (curSubject == jQuery('#subject').val()) {
+		jQuery('#subjectchk').show();
+		jQuery('#subjectError').hide();
+		nameRepeat = false;
+		return;
+	}
+	if (jQuery('#subject').val() && jQuery('#scapeareaSelect').val()) {
+		jQuery.ajax({
+			'type': 'POST',
+			'url': '/plugin.php?id=whither:ajaxcheckname',
+			'data': {
+				'subject': jQuery('#subject').val(),
+				'typesn': jQuery('#scapeareaSelect').val(),
+				'type': 'scape'
+			},
+			'success': function(html){
+				switch (html) {
+					case 'repeat':
+						jQuery('#subjectchk').hide();
+						jQuery('#subjectError').text('您输入的标题己经存在').css({'color': '#db0000'}).show();
+						nameRepeat = true;
+						break;
+					case 'norepeat':
+						jQuery('#subjectchk').show();
+						jQuery('#subjectError').hide();
+						nameRepeat = false;
+						break;
+					case 'like':
+						jQuery('#subjectchk').hide();
+						jQuery('#subjectError').text('您输入的标题己存在相似的标题').css({'color': '#0e9600'}).show();
+						nameRepeat = false;
+						break;
+					default:
+						break;
+				}
+			}
+		});
+	} else {
+		nameRepeat = false;
+	}
+}
+var nameRepeat = false;
+var curSubject = jQuery('#subject').val();
+jQuery('#subjectchk').after('<span style="display:none;" id="subjectError"></span>');
+jQuery('#subject').focusout(checkSubject);
+jQuery('#scapeareaSelect').change(checkSubject);
+
+function mudidi_validate(theform) {
+	var message = wysiwyg ? html2bbcode(getEditorContents()) : (!theform.parseurloff.checked ? parseurl(theform.message.value) : theform.message.value);
+	
+	if(($('postsubmit').name != 'replysubmit' && !($('postsubmit').name == 'editsubmit' && !isfirstpost) && theform.subject.value == "") || !sortid && !special && trim(message) == "") {
+		showDialog('请完成标题或内容栏');
+		return false;
+	} else if(mb_strlen(theform.subject.value) > 80) {
+		showDialog('您的标题超过 80 个字符的限制');
+		return false;
+	}
+	
+	if (nameRepeat) {
+		showDialog('您输入的标题己经存在');
+		return false;
+	}
+	
+	<!--{if $_G['gp_action'] != 'edit'}-->
+	if (!theform.scapeareaSelect || !theform.scapeareaSelect.value || theform.scapeareaSelect.value === '0') {
+		showDialog('请选择相关景区');
+		return false;
+	}
+	<!--{/if}-->
+	
+	var pattern = /\[img/g;
+	var n = 0;
+	var result;
+	while (result = pattern.exec(message)) {
+		if (++n > 3) {
+			showDialog('您最多只能发表3张图片');
+			return false;
+		}
+	}
+	
+	if(in_array($('postsubmit').name, ['topicsubmit', 'editsubmit'])) {
+		if(theform.typeid && (theform.typeid.options && theform.typeid.options[theform.typeid.selectedIndex].value == 0) && typerequired) {
+			showDialog('请选择主题对应的分类');
+			return false;
+		}
+		if(theform.sortid && (theform.sortid.options && theform.sortid.options[theform.sortid.selectedIndex].value == 0) && sortrequired) {
+			showDialog('请选择主题对应的分类信息');
+			return false;
+		}
+	}
+	if(typeof validateextra == 'function') {
+		var v = validateextra();
+		if(!v) {
+			return false;
+		}
+	}
+
+	if(!disablepostctrl && !sortid && !special && ((postminchars != 0 && mb_strlen(message) < postminchars) || (postmaxchars != 0 && mb_strlen(message) > postmaxchars))) {
+		showDialog('您的帖子长度不符合要求。\n\n当前长度: ' + mb_strlen(message) + ' 字节\n系统限制: ' + postminchars + ' 到 ' + postmaxchars + ' 字节');
+		return false;
+	}
+	if(UPLOADSTATUS == 0) {
+		if(!confirm('您有等待上传的附件，确认不上传这些附件吗？')) {
+			return false;
+		}
+	} else if(UPLOADSTATUS == 1) {
+		showDialog('您有正在上传的附件，请稍候，上传完成后帖子将会自动发表...', 'notice');
+		AUTOPOST = 1;
+		return false;
+	}
+	if($(editorid + '_attachlist')) {
+		$('postbox').appendChild($(editorid + '_attachlist'));
+		$(editorid + '_attachlist').style.display = 'none';
+	}
+	if($(editorid + '_imgattachlist')) {
+		$('postbox').appendChild($(editorid + '_imgattachlist'));
+		$(editorid + '_imgattachlist').style.display = 'none';
+	}
+	hideMenu();
+	theform.message.value = message;
+	if($('postsubmit').name == 'editsubmit') {
+		return true;
+	} else if(in_array($('postsubmit').name, ['topicsubmit', 'replysubmit'])) {
+		if(seccodecheck || secqaacheck) {
+			var chk = 1, chkv = '';
+			if(secqaacheck) {
+				chkv = $('checksecqaaverify_' + theform.sechash.value).innerHTML;
+				if(chkv.indexOf('loading') != -1) {
+					showDialog('验证问答校验中，请稍后');
+					chk = 0;
+				} else if(chkv.indexOf('check_right') == -1) {
+					showDialog('验证问答错误，请重新填写');
+					chk = 0;
+				}
+			}
+			if(seccodecheck) {
+				chkv = $('checkseccodeverify_' + theform.sechash.value).innerHTML;
+				if(chkv.indexOf('loading') != -1) {
+					showDialog('验证码校验中，请稍后');
+					chk = 0;
+				} else if(chkv.indexOf('check_right') == -1) {
+					showDialog('验证码错误，请重新填写');
+					chk = 0;
+				}
+			}
+			if(chk) {
+				postsubmit(theform);
+			}
+		} else {
+			postsubmit(theform);
+		}
+		return false;
+	}
+}
+</script>

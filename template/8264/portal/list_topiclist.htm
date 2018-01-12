@@ -1,0 +1,74 @@
+<!--{subtemplate common/header_8264_new}-->
+<!--[name]8264专题列表模板[/name]-->
+<!--{eval $list = array();}-->
+<!--{eval $list = topic_get_list($cat, $type, $page);}-->
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/common/reset.css" />
+<link href="http://static.8264.com/static/css/portal/list8264_style.css" rel="stylesheet" type="text/css">
+<div class="header">
+	<div class="layout">
+		<div class="icoHill">&nbsp;</div>
+		<div class="headerL">
+			<h1><span class="country">8264专题</span></h1>
+			<div class="site">
+				<a href="$_G[config][web][portal]">首页</a>
+				> <a href="http://www.8264.com/topic_list/">专题</a>
+			</div>
+		</div>
+		<div class="headerR">
+			<div class="colNameList">
+				<a href="http://www.8264.com/topic_list/" {if !isset($type)}class="nowmod"{/if}>全部</a>
+				<a href="portal.php?mod=list&catid=849&type=0&page=1" {if isset($type) && $type==0}class="nowmod"{/if}>专题</a>
+				<a href="portal.php?mod=list&catid=849&type=1&page=1" {if $type==1}class="nowmod"{/if}>活动</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="warpper">
+	<!--//导航条//-->
+	<div class="warpten clearfix" style="width:980px; margin:10px auto;">
+
+        <!--通栏8264产品广告-->
+        <div style="margin: 0 auto 10px auto; width:980px">
+
+        <div style="display:none;"><!--{eval $bottom_ads = array('416', '409', '417'); $bottom_ad = rand(0, 2); $bottom_ad_id = $bottom_ads[$bottom_ad]; }-->
+<!--{ad/custom_$bottom_ad_id}--></div>
+		<!-- 值得买 -->
+        <!--{eval include(DISCUZ_ROOT.'./source/plugin/skiing/hd_zw.php');}-->
+        <!--{eval $zhidemai_list = ForumOptionHuoDong::pianyi_sidebar(6, 'top', 'jiu', '10027');}-->
+        <!--{if $zhidemai_list}-->
+        <div>
+        <style>
+            .zhidemaiwidth{ width:980px;}
+            .zhidemaibox .zhidemailist_new li{width:144px; overflow:hidden;}
+            .zhidemaibox .zhidemailist_new li img{ width:144px;}
+        </style>
+        <!--{subtemplate common/zhidemai}-->
+        </div>
+        <!--{/if}-->
+        <!-- //值得买 -->
+
+        </div>
+
+		<div class="ztall clearfix" style="width:980px;">
+			<!--{if $list['list']}-->
+			<!--{loop $list['list'] $value}-->
+			<div class="imgone">
+				<div class="ztimgone">
+					<a href="portal.php?mod=topic&topicid=$value[topicid]" target="_blank">
+						<img src="$value[pic]?1"/>
+					</a>
+				</div>
+				<div class="ztnewname">
+					<a href="portal.php?mod=topic&topicid=$value[topicid]" target="_blank" title="$value[title]"{if $type == 1} {if $value['endtime'] > $_G['timestamp']} class="zting"{elseif $value['endtime'] < $_G['timestamp'] && $value['endtime'] != 0} class="ztend"{/if}{/if}>$value[title]</a>
+				</div>
+			</div>
+			<!--{/loop}-->
+		</div>
+		<!--{if $list['multi']}-->
+		<div class="listPageBox">{$list['multi']}</div>
+		<!--{/if}-->
+		<!--{/if}-->
+	</div>
+</div>
+<!--{subtemplate common/weixin_share_bottom}-->
+<!--{subtemplate common/footer_8264_new}-->

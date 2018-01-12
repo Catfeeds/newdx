@@ -1,0 +1,47 @@
+<!--{template common/header}-->
+
+<div class="mn" style="width:500px;">
+    <div class="bm bw0">
+		<div class="bm bw0">
+			<h3 class="flb">
+				<em>编辑关键字</em>
+				<!--{if $_G[inajax]}--><span><a href="javascript:;" onclick="hideWindow('$_G[gp_handlekey]');" class="flbc" title="{lang close}">{lang close}</a></span><!--{/if}-->
+			</h3>
+			<form method="post" autocomplete="off" id="addform" name="addform" action="plugin.php?id=searchindex:adminsearch&operation=edit&editsubmit=true" >
+				<input type="hidden" name="searchid" value="$keysinfo['searchid']">
+				<div class="c">
+		        	<table border="0" cellspacing="0" cellpadding="0">
+						<tr>
+		    				<td height="40" width="70">关键字</td>
+		    				<td><input type="text" name="keywords" class="px" value="$keysinfo['keywords']" style="width:250px;"> *</td>
+		                </tr>
+		                <tr>
+		    				<td height="40" width="70">搜索规则</td>
+		    				<td><input type="text" name="rule" class="px" value="$keysinfo['rule']" style="width:250px;"> (短语##短语)&&短语 “##”代表或关系 “&&”代表并关系</td>
+		                </tr>
+		                <tr>
+		    				<td height="40" width="70">门户id设置</td>
+		    				<td><input type="text" name="portalids" class="px" value="$keysinfo['portalids']" style="width:250px;"> (未开放)使用,隔开</td>
+		                </tr>
+		                <tr>
+		    				<td height="40" width="70">论坛id设置</td>
+		    				<td><input type="text" name="forumids" class="px" value="$keysinfo['forumids']" style="width:250px;"> (未开放)id设置会优先于搜索规则</td>
+		                </tr>
+		                <tr>
+		    				<td height="40" width="70">日志id设置</td>
+		    				<td><input type="text" name="blogids" class="px" value="$keysinfo['blogids']" style="width:250px;"> (未开放)</td>
+		                </tr>
+		                <tr>
+		    				<td height="40" width="70">是否开通</td>
+		    				<td><input type="radio" name="state" class="pr" <!--{if $keysinfo['state']==1}-->checked="checked"<!--{/if}--> value="1"/> <label>是</label> <input type="radio" name="state" class="px pxs vm" <!--{if $keysinfo['state']==0}-->checked="checked"<!--{/if}--> value="0"/> <label>否</label> </td>
+		                </tr>
+		            </table>
+				</div>
+				<p class="o pns" id="one_btn" style="text-align:center; <!--{if !$_G[inajax]}-->margin-top:20px;<!--{/if}-->">
+					<button type="submit" name="editsubmit" id="editsubmit" class="pn pnc" value="true"><strong style="font-weight:normal;">提交</strong></button>
+				</p>
+			</form>
+		</div>
+	</div>
+</div>
+<!--{template common/footer}-->

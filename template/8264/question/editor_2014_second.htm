@@ -1,0 +1,78 @@
+<div id="alltemplateobj" class="templist" style="display: none;visibility: hidden;">
+	<div style="display: none;visibility: hidden;">
+		<span id="{$editorid}_font"></span>
+		<span id="{$editorid}_size"></span>
+		<span id="{$editorid}_simple"></span>
+		<span id="{$editorid}_adv_s1"></span>
+		<span id="{$editorid}_adv_s2"></span>
+		<span id="{$editorid}_svdsecond" href="javascript:;"></span>
+	</div>
+	<ul><li id="imagetemp" style="display: none;"><img cwidth="112" style="display: none;" /><div class="temppercent"><h5></h5><p><b></b></p></div><a href="javascript:;" class="close14_14_24w closepostion"></a><input type="hidden" name="" class="description"/><input type="hidden" class="albumabout" name="albumaid[]" disabled="true" /></li></ul>
+	<div id="attachbtnhiddentmp" style="display:none"><span><form name="attachform" id="attachform" method="post" autocomplete="off" action="misc.php?mod=swfupload&operation=upload&simple=1&newjq=1" target="attachframe" $enctype><input type="hidden" name="uid" value="$_G['uid']" /><input type="hidden" name="hash" value="{echo md5(substr(md5($_G['config']['security']['authkey']), 8).$_G['uid'])}" /><input type="file" name="Filedata" size="45" class="fldt" /></form></span></div>
+	<ul><li id="attachbodyhiddentmp" style="display: none;"><span></span><em></em><input type="hidden" name="localid[]" /></li></ul>
+	<ul><li id="attachlisttmp" class="fujian_list_td clboth" style="display: none;">
+		<span class="filename">
+		<a href="javascript:void(0);" class="nameicon">1375868390680_zcool.com.cn....</a>
+		<a href="javascript:void(0);" title="添加附件地址" class="linkicon"></a>
+		<a href="javascript:void(0);" title="更新附件地址" class="updateattachlink" style="display: none;">更新</a>
+		</span>
+		<span class="readpowercon">
+			{if $_G['group']['allowsetattachperm'] && ($_G[gp_action] == 'newthread' || ($_G[gp_action] == 'edit' && $isfirstpost))}
+			<em class="readtext">不限</em>
+			<input type="hidden" class="readperm" name="" value="$attach[readperm]"/>
+			<em class="readtext_out">
+			<!--{if $_G[gp_action] == 'newthread' || $_G[gp_action] == 'edit' && $isfirstpost}-->
+				<!--{loop $_G['cache']['groupreadaccess'] $val}-->
+				<a href="javascript:void(0);" readperm="$val[readaccess]" title="{lang readperm}: $val[readaccess]">$val[grouptitle]</a>
+				<!--{/loop}-->
+			<!--{/if}-->
+			</em>
+			{/if}
+		</span>
+		<span class="miaoshu"><input class="description" name="" type="text" /></span>
+		<span class="del"></span>
+	</li>
+	</ul>
+</div>
+<!--{block actiontitle}-->
+	<!--{if $_G['gp_action'] == 'newthread'}-->
+		<!--{if $special == 0}-->{lang post_newthread}
+		<!--{elseif $special == 1}-->{lang post_newthreadpoll}
+		<!--{elseif $special == 2}-->{lang post_newthreadtrade}
+		<!--{elseif $special == 3}-->{lang post_newthreadreward}
+		<!--{elseif $special == 4}-->{lang post_newthreadactivity}
+		<!--{elseif $special == 5}-->{lang post_newthreaddebate}
+		<!--{elseif $specialextra}-->{$_G['setting']['threadplugins'][$specialextra][name]}
+		<!--{/if}-->
+	<!--{elseif $_G['gp_action'] == 'reply' && !empty($_G['gp_addtrade'])}-->
+		{lang trade_add_post}
+	<!--{elseif $_G['gp_action'] == 'reply'}-->
+		{lang join_thread}
+	<!--{elseif $_G['gp_action'] == 'edit'}-->
+		<!--{if $special == 2}-->{lang edit_trade}<!--{else}-->{lang edit_thread}<!--{/if}-->
+	<!--{/if}-->
+<!--{/block}-->
+
+<!--{block icon}-->
+	<!--{if $special == 1}-->poll
+	<!--{elseif $special == 2}-->trade
+	<!--{elseif $special == 3}-->reward
+	<!--{elseif $special == 4}-->activity
+	<!--{elseif $special == 5}-->debate
+	<!--{elseif $isfirstpost && $sortid}-->sort
+	<!--{/if}-->
+<!--{/block}-->
+
+<!--{if $_G['gp_action'] != 'newthread'}-->
+	<!--{eval $subjectcut = cutstr($thread[subject], 30);}-->
+<!--{/if}-->
+<!--{block actionsubject}-->
+	<!--{if $_G['gp_action'] == 'reply'}-->
+		<em>&rsaquo;</em><a href="forum.php?mod=viewthread&tid=$thread[tid]">$subjectcut</a>
+	<!--{elseif $_G['gp_action'] == 'edit'}-->
+		<em>&rsaquo;</em><a href="forum.php?mod=redirect&goto=findpost&ptid=$thread[tid]&pid=$pid">$subjectcut</a>
+	<!--{/if}-->
+<!--{/block}-->
+
+<!--{eval $adveditor = $isfirstpost && $special || $special == 2 && ($_G['gp_action'] == 'newthread' || $_G['gp_action'] == 'reply' && !empty($_G['gp_addtrade']) || $_G['gp_action'] == 'edit' && $thread['special'] == 2);}-->
+<!--{eval $advmore = !$showthreadsorts && !$special || $_G['gp_action'] == 'reply' && empty($_G['gp_addtrade']) || $_G['gp_action'] == 'edit' && !$isfirstpost && ($thread['special'] == 2 && !$special || $thread['special'] != 2);}-->

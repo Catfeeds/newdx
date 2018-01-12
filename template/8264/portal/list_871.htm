@@ -1,0 +1,80 @@
+<!--{template common/header2014}-->
+<!--[name]论坛精彩推荐[/name]-->
+<link href="http://static.8264.com/static/css/portal/style_837.css" rel="stylesheet" type="text/css">
+<style id="diy_style" type="text/css"></style>
+<style>
+.bbsnavgray{ width:980px; height:39px; background: url(http://static.8264.com/static/images/moban/1024newslw/images/graybg.png) top left repeat-x; margin:15px auto 15px auto; border-radius:5px; font-family:微软雅黑,Arial,Helvetica,sans-serif;}
+.bbsnavgray li{ float:left; font-size:0;}
+.bbsnavgray ul{  display:block;}
+.bbsnavgray li a{ padding:0px 14px 0px 14px; line-height:38px; color:#fff; font-size:14px; display:inline-block; *display:inline; *zoom:1;  border-radius:3px; }
+.bbsnavgray li a:hover{ line-height:38px; background:#2c2f37; color:#fff; font-size:14px; border-radius:3px;}
+.bbsnavzhong{ background:#e75040; border-radius:3px;}
+.bbslistwarpten:after,.bbsnavgray:after{ content: ""; display: block; clear: both; visibility: hidden; }
+.bbslistwarpten,.bbsnavgray{ zoom: 1; }
+.bbslistwarpten{ width:980px; margin:auto; border-left:#ddd solid 1px; border-bottom:#ddd solid 1px;}
+.bbslistone{ width:205px; float:left; display:inline; padding:20px 19px 10px 20px; border-top:#ddd solid 1px; border-right:#ddd solid 1px;}
+.bbslistone img{ width:200px; height:150px; }
+.bbslistone_name{ }
+.bbslistone_name a{ font-size:14px; text-decoration:none; color:#333; display:block; height:40px; line-height:40px; overflow: hidden; text-align:left; font-family:微软雅黑,Arial,Helvetica,sans-serif; }
+.bbslistone_name a:hover{ font-size:14px; text-decoration:none; color:#11639d;}
+</style>
+<div class="warpper" style="padding:0px 0px 20px 0px;">
+	<!--//导航条//-->
+	<div class="wap_960">
+		<div class="bbsnavgray">
+			<ul>
+				<li <!--{if $_GET['catid']==871}-->
+					class="bbsnavzhong"
+					<!--{/if}-->
+					>
+					<a href="http://www.8264.com/list/871">全部</a>
+				</li>
+				<!--{eval $cats = getCatbyupid(871);}-->
+				<!--{if $cats}-->
+				<!--{loop $cats $cat}-->
+				<li <!--{if $_GET['catid']==$cat['catid']}-->
+					class="bbsnavzhong"
+					<!--{/if}-->
+					>
+					<a href="http://www.8264.com/list/$cat['catid']">$cat['catname']</a>
+				</li>
+				<!--{/loop}-->
+				<!--{/if}-->
+			</ul>
+		</div>
+		<div class="bbslistwarpten">
+			<!--单条开始-->
+			<!--{loop $array $k $item}-->
+			<div class="bbslistone">
+				<a href="$item['url']" target="_blank">
+					<img src="$item['pic']"/>
+				</a>
+				<div class="bbslistone_name">
+					<a href="$item['url']" target="_blank">$item['title']</a>
+				</div>
+			</div>
+			<!--{/loop}-->
+			<!--单条结束-->
+		</div>
+		<!--{eval $arr = array("886", "887", "888", "889", "890", "891", "892", "893", "894", "895", "896", "897","898","899","900","901");}-->
+		<!--{if in_array($_GET['catid'],$arr)}-->
+		{eval $cid = $_GET['catid'];}
+		{eval $count = DB::result_first("SELECT COUNT(*) FROM ".DB::table('portal_article_title')." WHERE catid IN ($cid) AND pic<>''");}
+		{eval $ppp = 40;}
+		{eval $multi = multi($count, $ppp, $page, 'portal.php?mod=list&catid='.$cid);}
+		<!--{if $multi}-->
+		<div class="listPageBox clearfix page">{$multi}</div>
+		<!--{/if}-->
+		<!--{else}-->
+		{eval $count = DB::result_first("SELECT COUNT(*) FROM ".DB::table('portal_article_title')." WHERE catid IN (871,886,887,888,889,890,891,892,893,894,895,896,897,898,899,900,901) AND pic<>''");}
+		{eval $ppp = 40;}
+		{eval $multi = multi($count, $ppp, $page, 'portal.php?mod=list&catid=871');}
+		<!--{if $multi}-->
+		<div class="listPageBox clearfix page">{$multi}</div>
+		<!--{/if}-->
+		<!--{/if}-->
+	</div>
+</div>
+<!--{subtemplate common/float_guide}-->
+<!--{subtemplate common/ewm_l}-->
+<!--{subtemplate common/footer_8264_new}-->

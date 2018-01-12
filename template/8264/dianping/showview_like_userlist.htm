@@ -1,0 +1,25 @@
+<div class="brand-userList-wrapper">
+	<div class="ui-block ui-block-title">
+		<div class="ui-title">
+			<h4>喜欢{$detail['subject']}品牌的用户<span class="num">$likenum</span>人</h4>
+		</div>
+	</div>
+	<div class="ui-block ui-block-content">
+		<ul class="u-item-list" >
+			<li id="like_users" style="display:none;">
+				<a href="home.php?mod=space&uid={$_G['uid']}" rel="nofollow" target="_brank">
+					<!--{avatar($_G['uid'], small)}-->
+					{echo cutstr($_G[username],7,'')}
+				</a>
+			</li>
+			<!--{loop $like_users $value}-->
+			<li>
+				<a href="home.php?mod=space&uid={$value['uid']}" rel="nofollow" target="_brank">
+					<!--{avatar($value['uid'], small)}-->
+					{echo cutstr($value[username],7,'')}
+				</a>
+			</li>
+			<!--{/loop}-->
+		</ul>
+	</div>
+</div>

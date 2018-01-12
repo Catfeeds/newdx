@@ -1,0 +1,432 @@
+@charset "gb2312";
+/* Andes 2012-12-06 */
+/* Global 全局样式 Start */
+body { background-color: #f6f6f6; background-image: none; color: #666; font-size: 12px; font-family: "Microsoft YaHei", Tahoma, Helvetica, SimSun, sans-serif; }
+a { text-decoration: none; color: #666; }
+a:hover { text-decoration: none; color: #2a85e8; }
+em { font-style: normal; }
+li { list-style: none outside none; }
+input,
+textarea,
+select { font-size: 12px; color: #7b7b7b; }
+.itemRadio input { vertical-align: middle; margin-top: -2px; margin-bottom: 1px; }
+.itemSubmit input { background: #4D90FE; border: 1px solid #4D90BB; color: #FFF; font-family: Arial, sans-serif, Tahoma; font-size: 12px; height: 25px; line-height: 15px; overflow: visible; padding: 0 0.5em; }
+/* Global 全局样式 End */
+
+/* Clear Start */
+.clear { clear: both; display: block; overflow: hidden; visibility: hidden; width: 0; height: 0; }
+.clearfix:before,
+.clearfix:after { content: '.'; display: block; overflow: hidden; visibility: hidden; font-size: 0; line-height: 0; width: 0; height: 0; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+/* Clear End */
+
+/* 清除浮动 Start*/
+/* 首页 Start */
+.layout:after,
+.hd:after,
+.bd:after,
+.ft:after,
+.layoutLeft:after,
+.layoutRight:after,
+.leftAreaContent:after,
+.rightAreaContent:after,
+.brandHeadTit:after,
+.recruiting:after,
+.listPageBox:after,
+.brandSift dl:after,
+.publishDl:after,
+.brandTop:after,
+.commentListDl:after,
+.searchR:after,
+.brandTextBox .grade:after,
+.brandUserLike:after,
+.brandBox li .starCom:after { content: ""; display: block; clear: both; visibility: hidden; }
+
+.layout,
+.hd,
+.bd,
+.ft,
+.layoutLeft,
+.layoutRight,
+.leftAreaContent,
+.rightAreaContent,
+.brandHeadTit,
+.recruiting,
+.listPageBox,
+.brandSift dl,
+.publishDl,
+.brandTop,
+.commentListDl,
+.searchR,
+.brandTextBox .grade,
+.brandUserLike,
+.brandBox li .starCom { zoom: 1; }
+/* 首页 End */
+/* 清除浮动 End */
+
+/* 公共样式 Start */
+.undis { display: none; }
+.dis { display: block; }
+.ind { text-indent: 2em; }
+.ind10 { text-indent: 10px; }
+.noborder { border: 0 none; }
+.Q-red a,
+a.Q-red { color: #BD0A01 !important; }
+.Q-black a,
+a.Q-black { color: #000 !important; }
+.Q-bold { font-weight: 700 !important; }
+.floatL,
+.layout .floatL { float: left; display: inline; }
+.floatR,
+.layout .floatR { float: right; display: inline; }
+.fn { font-weight: 400; }
+.pieCss { behavior: url(http://www.8264.com/template/default/common/pie.htc); } /* css3插件 */
+.shadowBlack { box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2); behavior: url(http://www.8264.com/template/default/common/pie.htc); } /* 阴影 */
+.bRadius2px { border-radius: 2px; behavior: url(http://www.8264.com/template/default/common/pie.htc); } /* 圆角 */
+.minHeightTuan { min-height: 680px; _height: 680px; }
+.wp { width: auto; }
+.nav960 { margin: auto; width: 960px; }
+/* 公共样式 End */
+
+/* 品牌 Start */
+/* 公共样式 Start */
+.layout { margin: 0 auto; width: 960px; }
+.layoutLeft { float: left; display: inline; width: 650px; overflow: hidden; }
+.leftAreaContent { border: 1px solid #d4d4d4; box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2); background: #FFF; }
+.leftAreaContent .hd { }
+.leftAreaContent .bd { }
+/* */
+.artList12 li {
+color:; float: left; font-size: 12px; height: 22px; line-height: 22px; overflow: hidden; text-indent: 10px; width: 100%; }
+.artList14 li {
+color:; float: left; font-size: 14px; height: 24px; line-height: 24px; overflow: hidden; text-indent: 11px; width: 100%; }
+.artListIndex14 li {
+color:; float: left; font-size: 14px; height: 24px; line-height: 24px; overflow: hidden; text-indent: 11px; width: 360px; }
+/* */
+.layoutRight { float: right; display: inline; width: 300px; overflow: hidden; }
+.layoutRightCont { width: 375px; }
+.rightArea { }
+.rightAreaAll { border: 1px solid #d4d4d4; box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2); background: #FFF; }
+.rightAreaContent { border: 1px solid #d4d4d4; box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2); background: #FFF; }
+.rightAreaContent .hd { height: 30px; }
+.rightAreaContent .bd { }
+.adRightAll { float: left; display: inline; border: 1px solid #d4d4d4; font-size: 0; }
+/* */
+.blueLeftAreaCol { }
+.blueLeftAreaCol .hd { height: 25px; line-height: 25px; background: #6e8fb5; color: #FFF; }
+.blueLeftAreaCol .hd h2 { text-indent: 30px; background: url("http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png") no-repeat scroll -165px -1847px transparent; }
+.blueLeftAreaCol .hd h2 a { color: #FFF; }
+.blueLeftAreaCol .ft { padding-top: 7px; padding-bottom: 7px; }
+.blueLeftAreaCol .ft .artList12 { width: 175px; }
+/* */
+.blueLeftAreaTab { }
+.blueLeftAreaTab .hd { background: #6e8fb5; padding-top: 5px; padding-left: 5px; height: 20px; line-height: 20px; }
+.blueLeftAreaTab .hd h2 { text-indent: 0; }
+.blueLeftAreaTab .hd h2 a { float: left; display: inline; padding-right: 20px; padding-left: 10px; color: #2d435d; background: #6e8fb5 url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat right -123px; }
+.blueLeftAreaTab .hd h2 a.active { background: #FFF url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat right -83px; color: #184e8a; }
+.blueLeftAreaTab .ft { padding-top: 7px; padding-bottom: 7px; }
+.blueLeftAreaTab .ft li { width: 175px; }
+/* */
+.greyCol { }
+.greyCol .hd { height: 35px; line-height: 30px; background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) repeat-x 0 -490px; }
+.greyCol .hd h2 { background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat scroll -168px -641px transparent; text-indent: 35px; }
+.greyCol .hd h2 a { color: #323232; }
+.greyCol .ft { padding-top: 3px; padding-bottom: 7px; }
+/* */
+.greyTabs { }
+.greyTabs .hd { height: 35px; line-height: 30px; background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) repeat-x 0 -490px; }
+.greyTabs .hd h2 { }
+.greyTabs .hd h2 a { float: left; display: inline; width: 93px; height: 35px; line-height: 30px; text-align: center; background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -5px -390px; color: #323232; }
+.greyTabs .hd h2 a:hover,
+.greyTabs .hd h2 a.active { background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -5px -440px; color: #5e5e5e; }
+.greyTabs .hd h2 a.last { width: 90px; }
+.greyTabs .ft { padding-top: 3px; padding-bottom: 7px; }
+.greyTabs h3.topNewTit { height: 38px; line-height: 38px; font-size: 16px; font-weight: 700; color: #000; text-align: center; overflow: hidden; }
+.greyTabs h3.topNewTit a { color: #000; }
+.greyTabs h3.topNewTit a:hover { color: #F00; }
+.greyTabs .theFirstUl { border-bottom: 1px dashed #d4d4d4; padding-bottom: 7px; margin-bottom: 5px; }
+/* */
+.layoutThreeCont { border: 1px solid #d4d4d4; box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2); background: #FFF; }
+.layoutThreeCont .hd { height: 30px; }
+.layoutThreeCont .bd { }
+.layoutThreeCont .ft { padding-top: 2px; padding-bottom: 7px; }
+.layoutThreeCont .ft li { }
+/* */
+.threeColIndex { width: 310px; }
+.threeColIndex .hd { height: 35px; line-height: 30px; background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) repeat-x 0 -490px; }
+.threeColIndex .hd h2 { text-indent: 35px; background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -168px -641px; }
+/* 三角 前标 */
+.ft .triangleIndex li { background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -184px -153px; text-indent: 15px; }
+/* */
+.imgTxtArea { padding: 15px 0; }
+.imgArea { float: left; height: 90px; width: 150px; }
+.imgArea img { height: 90px; width: 150px; border: 1px solid #CCCCCC; }
+.txtArea { float: right; }
+.txtArea dt { font-size: 14px; font-weight: bold; height: 16px; line-height: 16px; margin-bottom: 2px; width: 100%; overflow: hidden; }
+.txtArea dt a { color: #2a85e8; }
+.txtArea dd { line-height: 18px; width: 100%; }
+.txtArea dd a { color: #3B639F; }
+.txtArea dd a:hover { color: #CD0200; }
+/* */
+.mt8 { margin-top: 8px; }
+.mt10 { margin-top: 10px; }
+.mt12 { margin-top: 12px; }
+.mt15 { margin-top: 15px; }
+.mt20 { margin-top: 20px; }
+.mb10 { margin-bottom: 10px; }
+.mb15 { margin-bottom: 15px; }
+.mb20 { margin-bottom: 20px; }
+.ml13 { margin-left: 13px; }
+.pd15 { padding: 0 15px; }
+.adBox { border: 1px solid #d4d4d4; box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2); font-size: 0; }
+.ad960 { border: 1px solid #d4d4d4; box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2); font-size: 0; }
+/* 蛇签 */
+.sheqian2 a { }
+.sheqian2 a.active { }
+.sheqianbody .hide { display: none; }
+.sheqianbody .active { display: block; }
+/* */
+dl.picArt150 { margin: 0 15px; }
+dl.picArt150 dd { padding-bottom: 5px; }
+dl.picArt150 .txtArea { width: 180px; }
+/* */
+.colLRIndex { margin: 5px 15px 5px; padding-bottom: 7px; border-bottom: 1px dashed #d4d4d4; }
+.colLRIndex .lArea { float: left; display: inline; width: 112px; }
+.colLRIndex .lArea p { line-height: 18px; height: 36px; overflow: hidden; }
+.colLRIndex .lArea img { width: 110px; height: 65px; border: 1px solid #CCC; margin-bottom: 5px; }
+.colLRIndex .rArea { float: right; display: inline; width: 230px; }
+/* 公共样式 End */
+
+/* 头部标题 */
+.brandHeadTit { position: relative; padding-bottom: 25px; }
+.brandHeadTit h2 { float: left; display: inline; font: 700 22px/22px "Microsoft YaHei"; color: #333; }
+.brandHeadTit .publishBtn { position: absolute; top: 0; right: 0; display: block; width: 160px; height: 40px; background: url(images/icobg_brand.png) no-repeat 0 -50px; text-indent: -9999px; overflow: hidden; }
+/* 品牌招商 */
+.recruiting { }
+.recruiting .hd h2 { float: left; display: inline; width: 140px; font: 700 14px/25px "Microsoft YaHei"; background: url(images/icobg_brand.png) no-repeat 0 0; text-align: center; text-indent: -10px; color: #FFF; }
+.recruiting .hd .tips { float: right; line-height: 25px; }
+.cOrange { color: #f88b29; }
+.recruiting .brandBox { background: #FFF; }
+.recruiting .limit { position: relative; height: 151px; overflow: hidden; }
+/* 招商模块儿 */
+.brandBox { border-top: 1px solid #e2e2e2; border-left: 1px solid #e2e2e2; text-align: center; width: 959px; overflow: hidden; }
+.brandBox li { float: left; display: inline; position: relative; width: 136px; height: 175px; border-right: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; overflow: hidden; }
+.brandBox li .pic img { display: block; margin: 25px auto 0; width: 100px; height: 50px; }
+.brandBox li .num { display: block; margin: 0 auto; width: 100px; line-height: 18px; font-size: 10px; color: #5c5c5c; background: #e2e2e2; }
+.brandBox li .num:hover, .brandBox li:hover .num { color: #FFF; background: #f48725; }
+.brandBox li p { width: 100px; margin: 5px auto 0; height: 38px; line-height: 19px; overflow: hidden; }
+.brandBox li .top { position: absolute; top: 0; left: 49px; width: 41px; height: 25px; background: url(images/icobg_brand.png) no-repeat 0 -150px; text-indent: -9999px; overflow: hidden; }
+.brandBox li .starCom { display: block; width: 100px; margin: 5px auto 0; text-align: left; }
+.starCom .star {overflow: hidden;display: inline;}
+.starCom .star .redstar {background: url(http://www.8264.com/static/images/star-2.png) no-repeat;width: 11px;
+height: 11px;display: inline-block;overflow: hidden;}
+.starCom .star .graystar {background: url(http://www.8264.com/static/images/star-2.png) -13px 0 no-repeat;width: 11px;height: 11px;
+display: inline-block;overflow: hidden;}
+.starCom .cOrange { margin-left: 5px; font-weight: 700; }
+/* 筛选*/
+.brandSift { line-height: 25px; }
+.brandSift dl { border-bottom: 1px solid #CCC; padding: 10px 0; }
+.brandSift dl dt { float: left; display: inline; width: 120px; color: #b6b5b5; text-align: right; }
+.brandSift dl dd { float: right; display: inline; width: 830px; }
+.brandSift dl dd span a { float: left; display: inline; cursor: pointer; }
+.brandSift dl dd span.all a { font-size: 12px; }
+.brandSift .letter { }
+.brandSift .letter dd span a { font-size: 18px; line-height: 25px; padding: 0 7px; background: #e2e2e2; margin-right: 4px; }
+.brandSift .area,
+.brandSift .type { }
+.brandSift .short dd,
+.brandSift .short dd { height: 50px; overflow: hidden; }
+.brandSift .area dd,
+.brandSift .type dd { width: 770px; margin-right: 60px; }
+.brandSift .area dd span a,
+.brandSift .type dd span a { padding: 0 7px; margin-right: 4px; margin-bottom: 1px; display: block; height: 25px; overflow: hidden; }
+.brandSift .letter dd span a:hover,
+.brandSift .letter dd span a.select,
+.brandSift .area dd span a:hover,
+.brandSift .type dd span a:hover,
+.brandSift .area dd span a.select,
+.brandSift .type dd span a.select { color: #FFF; background: #F88B29; }
+.brandSift .area .more,
+.brandSift .type .more { position: absolute; top: 10px; right: 10px; width: 16px; height: 16px; background: url(images/icobg_brand.png) no-repeat 0 -110px; text-indent: -9999px; overflow: hidden; cursor: pointer; }
+.brandSift .area .moreHover,
+.brandSift .type .moreHover { background-position: -30px -110px; }
+/* 当前所选分类 */
+.brandIndexList { }
+.brandIndexList .hd h2 { font: 100 14px/30px "Microsoft YaHei"; color: #bebebe; }
+.brandIndexList .hd .select { color: #333; }
+.brandIndexList .selectItem .tit { float: left; margin-right: 10px; line-height: 24px; }
+.brandIndexList .selectItem .select { border: 1px solid #CCCCCC; border-radius: 3px 3px 3px 3px; box-shadow: 0 0 4px #DEDEDE; color: #858585; display: inline; float: left; font-size: 12px; line-height: 22px; padding: 0 10px; margin-right: 10px; cursor: pointer; }
+.brandIndexList .hd .sort { width: 170px; height: 30px; border: 1px solid #CCC; background: #f2f2f2; border-radius: 3px; font: 100 14px/30px "Microsoft YaHei"; }
+.brandIndexList .hd .sort span { float: left; display: block; height: 30px; padding: 0 10px; border-left: 1px solid #CCC; cursor: pointer; }
+.brandIndexList .hd .sort .newIco { width: 15px; border-left: 0 none; background: url(images/icobg_brand.png) no-repeat -48px -102px; }
+.brandIndexList .hd .sort .hotIco { width: 15px; background: url(images/icobg_brand.png) no-repeat -77px -102px; }
+.brandIndexList .hd .sort .select { color: #2A85E8; }
+/* 分页 */
+.listPageBox { }
+.listPageBox .pg { float: right; margin: 0 15px 20px; height: 30px; }
+.listPageBox .pg a,
+.listPageBox .pg strong { float: left; display: block; font-size: 15px; font-weight: 400; color: #999; height: 24px; padding: 6px 7px 4px; margin-left: 5px; font-family: "Microsoft YaHei"; background: none; border: 0; }
+.listPageBox .pg a:hover,
+.listPageBox .pg strong,
+.listPageBox .pg a.select { border: 0; border-bottom: 2px solid #00A6FC; color: #141414; text-decoration: none; background: none; }
+/* 发布页 */
+.publishLayout { border: 1px solid #CCC; border-top: 2px solid #f48725; background: #FFF; }
+.publishLayout .hd h2 { width: 250px; margin: 0 auto 30px; text-align: center; font: 100 18px/35px "Microsoft YaHei"; background: url(images/icobg_brand.png) no-repeat 0 -200px; color: #FFF; }
+.publishLayout .hd .newtitle { width: 450px; margin: 0 auto 30px; text-align: center; font: 100 18px/35px "Microsoft YaHei"; background: #f48725; color: #FFF; }
+
+.publishDl { line-height: 30px; margin-bottom: 15px; }
+.publishDl dt { float: left; display: inline; width: 110px; text-align: right; color: #000; }
+.publishDl dd { float: left; display: inline; margin-left: 10px; }
+.publishDl .w330 { float: left; width: 320px; height: 30px; line-height: 30px; padding: 0 10px; border-radius: 3px; border: 1px solid #CCC; background: url(images/icobg_brand.png) repeat-x 0 -260px; }
+.publishDl .tips { float: left; color: #757575; padding-left: 10px; }
+.publishDl .logoUp { margin-top: 3px; }
+.letterDl { border-top: 1px dashed #CCC; border-bottom: 1px dashed #CCC; background: #fff7e5; padding: 10px 0; }
+.letterDl dt { }
+.letterDl dd { width: 665px; }
+.letterDl dd label { margin-right: 5px; }
+.letterDl dd input { vertical-align: middle; font-size: 12px; margin-top: -2px; margin-bottom: 1px; }
+/* 详细页 */
+/* 左侧 */
+.brandContL { background: none repeat scroll 0 0 #FFFFFF; border: 1px solid #CCC; box-shadow: 0 0 4px rgba(0, 0, 0, 0.2); }
+.brandTop { padding: 30px; min-height: 245px; }
+/* */
+.brandLogoBox { float: left; position: relative; border: 1px solid #c8c8c8; background: #fff7e5; width: 230px; text-align: center; box-shadow: 4px 4px 2px #E4E4E4; color: #545454; }
+.brandLogoBox .topTips { position: absolute; top: -10px; left: 15px; width: 200px; height: 30px; background: url(images/icobg_brand.png) no-repeat 0 -320px; text-align: center; color: #FFF; font: 700 14px/30px "Microsoft YaHei"; }
+.brandLogoBox .logo { margin: 35px auto 0; width: 110px; border: 1px solid #f48725; }
+.brandLogoBox .logo .pic img { width: 100px; height: 50px; border: 5px solid #FFF; }
+.brandLogoBox .logo .address { line-height: 25px; background: #f48725; color: #FFF; }
+.brandLogoBox .info { margin: 10px auto; padding-left: 45px; text-align: left; line-height: 20px; }
+.brandLogoBox .bottom { height: 22px; background: url(images/icobg_brand.png) repeat-x 0 -370px; border-top: 0 none; }
+.brandLogoBox .count { position: absolute; left: 0; bottom: -30px; width: 230px; }
+.brandTextBox { position: relative; float: right; width: 330px; line-height: 2; }
+.brandTextBox h1 { font: 100 20px/24px "Microsoft YaHei"; color: #000; }
+.brandTextBox .web { font: 100 14px/24px "Microsoft YaHei"; color: #000; }
+.brandTextBox .grade { padding-bottom: 10px; border-bottom: 1px solid #EEE; margin: 10px auto; min-height: 140px; line-height: 1.5; }
+.brandTextBox .cGrey { color: #b5b5b5; }
+/* */
+.brandIntro { margin: 0 15px; padding: 0 10px 10px; background: #f6f6f6; }
+.brandIntro .hd { line-height: 40px; border-bottom: 1px solid #e6e6e6; }
+.brandIntro .hd h2 { float: left; display: inline; font: 700 16px/40px "Microsoft YaHei"; color: #000; }
+.brandIntro .pronounce { height: 30px; }
+.brandIntro .hd .more { float: right; color: #3366cc; cursor: pointer; }
+.brandIntro .bd { padding: 10px; line-height: 2; background: #FFF; }
+/* */
+.brandUserLike { min-height: 120px; }
+.brandUserLike .brandUsers_button a .text { width: 70px; border: 0 none; background: url(images/icobg_brand.png) no-repeat -70px -150px; color: #FFF; }
+.brandUserLike .brandUsers_button a .pillar .pillar_inner { background: #CCC; }
+/* */
+.brandUserList { margin: 0 20px 0 30px; }
+.brandUserList .hd { }
+.brandUserList .hd h2 { font: 14px/24px "Microsoft YaHei"; margin-bottom: 10px; }
+/* */
+.userList48 { }
+.userList48 li { float: left; display: inline; width: 55px; margin-right: 10px; }
+.userList48 li .pic img { width: 48px; height: 48px; padding: 2px; border: 1px solid #CCC; }
+.userList48 li p { height: 30px; line-height: 30px; overflow: hidden; text-align: center; }
+/* */
+.brandComment { margin: 0 15px; }
+.brandComment .hd h2 { font: 16px/45px "Microsoft YaHei"; color: #000; }
+.brandComment .hd { border-bottom: 1px solid #CCC; }
+/* */
+.commentListDl { padding: 10px 0; border-bottom: 1px dashed #CCC; }
+.commentListDl .face { float: left; display: inline; margin-left: 10px; }
+.commentListDl .face img { width: 48px; height: 48px; padding: 2px; border: 1px solid #CCC; }
+.commentListDl dt,
+.commentListDl .cont,
+.commentListDl .control { float: right; width: 530px; _width: 500px; margin-right: 10px; color: #3366CC; }
+.commentListDl dt { margin-bottom: 7px; }
+.commentListDl dt .name { float: left; display: inline; font-size: 14px; color: #000; font-weight: 700; }
+.commentListDl dt .date { float: right; color: #c2c2c2; margin-right: 20px; }
+.commentListDl .cont { line-height: 2; color: #7c7c7c; margin-bottom: 20px; }
+.commentListDl .star { float: left; margin: 1px 0 0 10px; }
+.commentListDl .star .redstar { background: url(http://www.8264.com/static/images/star-1.png) no-repeat 0 0; float: left; height: 14px; overflow: hidden; width: 16px; }
+.commentListDl .star .graystar { background: url(http://www.8264.com/static/images/star-1.png) no-repeat -17px 0; float: left; height: 14px; overflow: hidden; width: 16px; }
+.commentListDl .control { text-align: right; }
+.commentListDl .control a { color: #3366cc; }
+/* */
+.listPageBox { }
+.listPageBox .pg { margin: 15px 15px 20px; }
+.listPageBox .pg a,
+.listPageBox .pg strong { float: left; display: block; font-size: 15px; font-weight: 400; color: #999999; height: 24px; padding: 6px 7px 4px; margin-left: 5px; font-family: "Microsoft YaHei"; }
+.listPageBox .pg a:hover,
+.listPageBox .pg strong { border-bottom: 2px solid #00A6FC; color: #141414; text-decoration: none; }
+/* */
+.brandGrade { margin-bottom: 50px; }
+.brandGrade .hd { margin-bottom: 15px; }
+.brandGrade .commentEdHd { border-bottom: 0 none; margin-bottom: 0; }
+.brandGrade .grade { padding: 0 15px 15px; }
+.brandGrade .area { margin-left: 15px; _margin-left: 0; padding: 5px; width: 570px; height: 50px; border: 1px solid #CCC; border-radius: 5px; background: url(images/bg_x_brand.png) repeat-x 0 0; line-height: 1.5; overflow: hidden; }
+.brandGrade .tips { margin-left: 15px; line-height: 35px; }
+.brandGrade .subBtn { float: right; width: 115px; margin-right: 18px; color: #3366cc; background: url(images/icobg_brand.png) no-repeat 0 -410px; }
+.brandGrade .subBtn:hover { color: #101010; }
+.btnBrand { border: 0 none; cursor: pointer; display: inline-block; float: left; font-size: 14px; font-weight: 700; height: 30px; line-height: 30px; outline: 0 none; padding: 0; text-align: center; vertical-align: baseline; }
+/* */
+.brandRCol { border: 1px solid #e2e2e2; overflow: hidden; }
+.brandRCol .hd { line-height: 35px; border-bottom: 2px solid #f48725; background: #fafafa; }
+.brandRCol .hd h2 { float: left; display: inline; font: 16px/35px "Microsoft YaHei"; color: #000; text-indent: 10px; }
+.hd .more { float: right; margin-right: 10px; }
+.brandRCol .bd { background: #FFF; }
+.cBlue { color: #3366cc; }
+.brandRCol .more input { _margin: 7px 0; _vertical-align: middle; }
+/* */
+.imgTextLR { }
+.imgTextLR li { float: left; display: inline; width: 100%; padding: 12px 0; border-bottom: 1px dashed #CCC; overflow: hidden; }
+.imgTextLR li .pic img { float: left; width: 48px; height: 48px; margin-left: 2px; margin-right: 10px; padding: 2px; border: 1px solid #CCC; }
+.imgTextLR li.last { border-bottom: 0 none; }
+/* */
+.imgTextLR70 { margin: 0 10px; }
+.imgTextLR70 li { float: left; display: inline; position: relative; width: 100%; padding: 12px 0; border-bottom: 1px dashed #CCC; overflow: hidden; }
+.imgTextLR70 li .pic img { float: left; width: 68px; height: 47px; margin-left: 2px; margin-right: 10px; padding: 2px; border: 1px solid #CCC; }
+.imgTextLR70 li.last { border-bottom: 0 none; }
+.imgTextLR70 li .date { color: #CCC; }
+.imgTextLR70 li .more { position: absolute; right: 5px; bottom: 15px; display: block; line-height: 19px; padding: 0 5px; background: #666; color: #FFF; border-radius: 3px; }
+.imgTextLR70 li .more:hover { background: #F60; color: #FFF; }
+
+/* */
+.equiCol { }
+.equiCol .imgTextLR { margin: 5px auto; }
+.equiCol .imgTextLR li { margin-left: 17px; width: 260px; }
+/* */
+.imgTextTB { text-align: center; }
+.imgTextTB li { float: left; display: inline; width: 100%; padding: 20px 0 15px; border-bottom: 1px solid #CCC; overflow: hidden; }
+.imgTextTB li .pic img { width: 220px; height: 110px; }
+.imgTextTB li p { margin-top: 10px; }
+.imgTextTB li.last { border-bottom: 0 none; }
+/* */
+.specialCol .bd { background: none; }
+/* */
+.artListOrange { width: 285px; }
+.artListOrange li { float: left; width: 100%; height: 24px; line-height: 24px; text-indent: 30px; background: url(images/icobg_brand.png) no-repeat -228px 8px; overflow: hidden; }
+/* */
+.spaceCol .bd { padding: 10px 0; }
+/* */
+.searchR { padding: 10px 15px; border: 1px solid #e2e2e2; background: #FFF; }
+.searchR .searchtext { float: left; width: 185px; height: 24px; line-height: 24px; padding: 0 5px; border-top: 1px solid #737373; border-right: 0 none; border-bottom: 1px solid #cecece; border-left: 1px solid #737373; }
+.searchR .searchbuttom { float: left; display: block; margin-left: -1px; width: 67px; height: 26px; border: 0 none; background: url(images/icobg_brand.png) no-repeat 0 -460px; }
+/* 管理 */
+.brandManage { position: absolute; top: 60px; right: 10px; z-index: 10000; }
+.brandManage .manageBtn { display: block; width: 65px; height: 15px; background: url(images/icobg_brand.png) no-repeat -190px -40px; text-indent: -9999px; overflow: hidden; cursor: pointer; }
+.brandManage .manageBtn:hover { background: url(images/icobg_brand.png) no-repeat -190px -70px; text-indent: -9999px; }
+.manageList { width: 60px; border: 1px solid #CCC; text-align: center; padding: 5px 0; }
+.manageList li { line-height: 20px; }
+/* */
+.sharePic { background: #f6f6f6; margin: 15px 15px 0; padding-bottom: 10px; }
+.sharePic .hd { line-height: 36px; font-size: 14px; }
+.sharePic .hd h2 { padding-left: 10px; font-weight: 100; color: #000; }
+.sharePic .hd .shareMore { position: relative; float: right; margin-right: 10px; }
+.sharePic .hd .shareMore .cBlue { font-size: 12px; }
+.sharePic .hd .shareIco { position: absolute; right: 10px; bottom: -33px; display: block; width: 90px; height: 25px; background: url(images/icobg_brand.png) no-repeat -150px -150px; text-indent: -9999px; overflow: hidden; }
+.piclist { height: 340px; overflow: hidden; margin: 0 10px; background: #FFF; }
+.piclist .share_item { display: none; }
+.piclist .pic { display: inline; float: left; width: 185px; margin: 10px 0 10px 10px; }
+.piclist .pic td { text-align: center; vertical-align: middle; }
+.piclist .share_item .pic .image { border: 1px solid #ccc; margin: 0 auto; overflow: hidden; width: 185px; vertical-align: middle; text-align: center; }
+.piclist .on .pic .txt { height: 38px; line-height: 19px; padding: 3px 10px; overflow: hidden; text-align: center; width: 165px; background: #f6f6f6; border-right: 1px solid #DDD; border-bottom: 1px solid #DDD; border-left: 1px solid #DDD; }
+.piclist .on .pic .txt a { color: #666666; font-size: 12px; font-weight: bold; text-decoration: none; }
+.piclist .on { display: block; }
+#fxbtn { border-top: 1px solid #e6e6e6; margin: 0 10px; padding: 13px 5px; height: 12px; }
+#fxbtn div { width: 10px; height: 10px; float: left; margin-right: 7px; font-size: 0; line-height: 0; overflow: hidden; background-image: url(http://bbs.8264.com/source/plugin/produce/css/images/dot.gif); cursor: pointer; }
+#fxbtn div.on { background-position: 0 -10px; }
+.cBlue { color: #3366cc;}
+/* 品牌 End */

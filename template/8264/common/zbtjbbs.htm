@@ -1,0 +1,89 @@
+	<style type="text/css">
+/* 装备推荐底部 Start */
+.layout:after { content: ""; display: block; clear: both; visibility: hidden; }
+.layout { zoom: 1; }
+.floatL { float: left; display: inline; }
+.floatR { float: right; display: inline; }
+.layout { margin: 0 auto; width: 960px; }
+.mt10 { margin-top: 10px; }
+/* */
+.gearLayout { height: 310px; overflow: hidden; text-align: center; border: 1px solid #DDD; border-radius: 5px 5px 0 0; background: #F3F3F3 url(http://www.8264.com/template/8264/css/moban/gear/bg_gearlayout.png) no-repeat 80px 0px; color: #555; font-size: 12px; }
+.gearLayout a { text-decoration: none; color: #555; }
+.gearLayout a:hover { text-decoration: none; color: #2a85e8; }
+.gearLayout .tips { padding-left: 10px; color: #666; font-weight: 100; font-size: 12px; }
+.gearLayout h2 { text-align: left; padding-left: 8px; font: 700 14px/38px "microsoft yahei"; color: #333; }
+.gearLayout h2 a{ float:right; margin:0px 15px 0px 0px;}
+.gearLayout li { float: left; display: inline; margin-left: 10px; margin-bottom: 10px; width: 177px; height: 260px; border: 1px solid #DDD; background: #FFF; }
+.gearLayout li .p-tit { line-height: 30px; border-bottom: 1px dotted #CCC; }
+.gearLayout li .p-img { padding: 10px 0; }
+.gearLayout li .p-img img { width: 155px; height: 155px; }
+.gearLayout li .p-name { line-height: 20px; border-top: 1px dotted #CCC; padding: 5px 0; }
+/* 装备推荐底部  End */
+</style>
+<script type="text/javascript" charset="utf-8">
+	// 调取商城商品数据
+	jQuery(function ($) {
+		$.ajax({
+			url: 'plugin.php?id=api:lymgoods',
+			data: {'location': '1'},
+			dataType: 'json',
+			type: 'get',
+			success: function (data) {
+				if (!data.err) {
+					var mall = data.mall;
+					var tuan = data.tuan;
+					var container = $('.gearLayout');
+					container.append('<h2>驴友商城装备推荐</h2>');
+					$.each(data.tuan, function(k, i) {
+						var content = '<li><p class="p-tit"AK>' + i.goods_name + '</p>' + 
+										'<p class="p-img"><a href="http://www.lvyoumall.com/tuan/goods-' + i.goods_id + '" target="_blank"><img src="' + i.image_url + '"></a></p>' +
+										'<p class="p-name">团购价：' + i.price + '元</p></li>';
+						container.append(content);
+					});
+					$.each(data.mall, function(k, i) {
+						var content = '<li><p class="p-tit"AK>' + i.goods_name + '</p>' + 
+										'<p class="p-img"><a href="http://www.lvyoumall.com/goods/' + i.goods_id + '" target="_blank"><img src="' + i.image_url + '"></a></p>' +
+										'<p class="p-name">会员价：' + i.price + '元</p></li>';
+						container.append(content);
+					});
+				} else {
+					$('.mt10').empty();
+				}
+			},
+			error: function (data) {
+				$('.mt10').empty();
+			}
+		})
+	});
+</script>
+<div class="mt10">
+	<ul class="gearLayout">
+		
+	</ul>
+</div>
+<script type="text/javascript">
+;(function($){
+    function resize_style() {
+        var width = 177;
+        var max_width = $('.gearLayout').width()-2;
+        var item_num = parseInt(max_width / width);
+        var item_margin = parseInt((max_width % width) / (item_num + 2) / 2);
+        var padding_left = item_margin;
+        $('.gearLayout li').css({'margin-left': (2*padding_left)+'px'});
+        $('.gearLayout li > div').css({'margin-left':item_margin+'px', 'margin-right':item_margin+'px'});
+    }	
+    $(window).resize(resize_style);
+    $("#wh").live("mouseleave",function(){		
+        resize_style();
+	});
+	$("#wh").live("click",function(){		
+        resize_style();
+	});
+	$("#wh").live("mouseenter",function(){
+        resize_style();
+    });
+	setTimeout(function(){
+        resize_style();
+    }, 200)
+})(jQuery);
+</script>

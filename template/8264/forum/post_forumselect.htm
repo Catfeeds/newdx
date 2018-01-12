@@ -1,0 +1,112 @@
+<!--{template common/header}-->
+<div class="popbox w570" style="display:none;">
+        <!--新的论坛首页点击发布帖子，弹出对话框，判断是否显示“进入论坛首页的界面”-->
+	<div class="flb">
+	<div class="popbox_title clearfix">
+		<span>选择版块</span>
+		<a href="$_G[config][web][forum]" style="{if $_G['gp_action'] == 'navnew'}display:none;{/if}">进入论坛首页>></a>
+		<em onclick="hideWindow('nav')"></em>	
+		<span style="display:none;" id="selectFid">0</span>	
+	</div>
+	</div>
+	<div class="tagtitle">
+		{if $commonlist}
+		<span class="hover">常用版块</span>
+		{/if}
+		{eval $index = 0;}
+		{loop $grouplist $v}
+		<span {if !$commonlist && $index == 0}class="hover"{/if}>{$v[name]}</span>
+		{eval $index++;}
+		{/loop}
+	</div>
+	<div id="bbsbox">
+		{if $commonlist}
+		<div>
+			<div class="popwarpten pl20 clearfix">
+				<ul class="popbbslist w165">					
+					{loop $commonlist $v}
+					<li onclick="selectFid('$v[fid]')" class="li_$v[fid]">
+						{eval $forumfieldlist[$v[fid]][icon] = str_replace('62x62', '34x34', $forumfieldlist[$v[fid]][icon]);}
+						<a href="javascript:void(0);" class="iconbox">{if $v[fup] == 76}{$v['extra']['localname']}{else}<img width="34" height="34" src="{$forumfieldlist[$v[fid]][icon]}">{/if}</a>
+						<p>
+							<a href="javascript:void(0);" class="titlename">{$v[name]}</a>
+						</p>
+					</li>
+					{/loop}
+				</ul>
+			</div>
+			<div class="buttonbox">
+				<button class="button_confirm" onclick="locationPost()">发新帖</button>
+				<span class="msg_tip">请选择板块</span>
+			</div>
+		</div>
+		{/if}
+		
+		{if $forumlist}
+		{loop $forumlist $key $val}
+                
+		<div style="display:none;">
+			<div class="popwarpten pl20 clearfix">
+				<ul class="popbbslist {if $key != 76}w165{/if}">					
+					{loop $val $v}
+                                        
+					<li onclick="selectFid('$v[fid]')" class="li_$v[fid]">
+						{eval $forumfieldlist[$v[fid]][icon] = str_replace('62x62', '34x34', $forumfieldlist[$v[fid]][icon]);}
+						<a href="javascript:void(0);" class="iconbox">{if $v[fup] == 76}{$v['extra']['localname']}{else}<img width="34" height="34" src="{$forumfieldlist[$v[fid]][icon]}">{/if}</a>
+						<p>
+							<a href="javascript:void(0);" class="titlename">{$v[name]}</a>
+						</p>
+					</li>	
+					{/loop}				
+				</ul>
+			</div>
+			<div class="buttonbox">
+				<button class="button_confirm" onclick="locationPost()">发新帖</button>
+				<span class="msg_tip">请选择板块</span>
+			</div>
+		</div>
+		{/loop}
+		{/if}		
+	</div>
+</div>
+<script>
+jQuery(function(){
+	//板块大类切换
+	jQuery(".tagtitle span").mouseover(function(){
+		jQuery(this).addClass("hover").siblings().removeClass("hover");
+		var index = jQuery(".tagtitle span").index(this);
+		jQuery("#bbsbox > div").eq(index).show().siblings().hide();
+	});
+	
+	jQuery("#bbsbox > div").eq(0).show().siblings().hide();
+	
+	//弹出框位置调整
+	var forumselecthandle = setInterval(function(){																								
+		if (jQuery('.fwinmask').length > 0) {
+			var offsetleft = (jQuery('body').width() - jQuery('.fwinmask .popbox').width()) / 2;			
+			jQuery('.fwinmask').css({'top':'120px', 'left':offsetleft+'px'});
+			jQuery('.fwinmask .popbox').show();
+			clearInterval(forumselecthandle);
+		}
+	},10);
+});
+
+function selectFid(fid) {
+	jQuery('#selectFid').html(fid);
+	jQuery('.popbbslist li').removeClass('active');
+	jQuery('.li_'+fid).addClass('active');
+	jQuery('.msg_tip').hide();
+}
+
+function locationPost() {
+	var fid = jQuery('#selectFid').html();
+	fid = parseInt(fid, 10);
+	if (fid > 0) {
+		hideWindow('nav');
+		window.open('{$_G[config][web][forum]}forum-post-action-newthread-fid-'+fid+'.html');
+	} else {
+		jQuery('.msg_tip').show();
+	}
+}
+</script>
+<!--{template common/footer}-->

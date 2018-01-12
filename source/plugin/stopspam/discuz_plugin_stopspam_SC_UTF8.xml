@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Version"><![CDATA[X1.5]]></item>
+	<item id="Time"><![CDATA[2011-05-30 16:53]]></item>
+	<item id="From"><![CDATA[Discuz! Board]]></item>
+	<item id="Data">
+		<item id="plugin">
+			<item id="available"><![CDATA[1]]></item>
+			<item id="adminid"><![CDATA[1]]></item>
+			<item id="name"><![CDATA[防灌水帖]]></item>
+			<item id="identifier"><![CDATA[stopspam]]></item>
+			<item id="description"><![CDATA[针对最近论坛出现许多广告贴灌水帖，特开发此插件，禁止发布重复的广告贴灌水帖，还论坛良好的交流环境。]]></item>
+			<item id="datatables"><![CDATA[]]></item>
+			<item id="directory"><![CDATA[stopspam/]]></item>
+			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
+			<item id="version"><![CDATA[1.1]]></item>
+			<item id="__modules">
+				<item id="0">
+					<item id="name"><![CDATA[stopspam]]></item>
+					<item id="menu"><![CDATA[]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[11]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="1">
+					<item id="name"><![CDATA[adminuer]]></item>
+					<item id="menu"><![CDATA[违规用户管理]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[2]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+			</item>
+		</item>
+		<item id="version"><![CDATA[X1.5]]></item>
+		<item id="var">
+			<item id="0">
+				<item id="displayorder"><![CDATA[1]]></item>
+				<item id="title"><![CDATA[过滤用户组]]></item>
+				<item id="description"><![CDATA[选择过滤的用户组]]></item>
+				<item id="variable"><![CDATA[ingroups]]></item>
+				<item id="type"><![CDATA[groups]]></item>
+				<item id="__value">
+					<item id="0"><![CDATA[10]]></item>
+				</item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="1">
+				<item id="displayorder"><![CDATA[2]]></item>
+				<item id="title"><![CDATA[过滤版块]]></item>
+				<item id="description"><![CDATA[选择过滤的版块]]></item>
+				<item id="variable"><![CDATA[inforums]]></item>
+				<item id="type"><![CDATA[forums]]></item>
+				<item id="__value">
+					<item id="0"><![CDATA[]]></item>
+				</item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="2">
+				<item id="displayorder"><![CDATA[3]]></item>
+				<item id="title"><![CDATA[单位时间]]></item>
+				<item id="description"><![CDATA[当判定该用户有灌水嫌疑时，检查此时间内该用户所有发布的主题。]]></item>
+				<item id="variable"><![CDATA[time]]></item>
+				<item id="type"><![CDATA[select]]></item>
+				<item id="value"><![CDATA[3600]]></item>
+				<item id="extra"><![CDATA[60=1分钟内
+180=3分钟内
+1800=30分钟内
+3600=1小时内
+86400=1天内
+604800=1周内
+2592000=1个月内]]></item>
+			</item>
+			<item id="3">
+				<item id="displayorder"><![CDATA[4]]></item>
+				<item id="title"><![CDATA[单位时间发表主题]]></item>
+				<item id="description"><![CDATA[当判定用户有灌水嫌疑时，统计在上一个选项设置的时间内该用户的发布的主题数，超过该值，则检查此时间内该用户所有发布的主题。]]></item>
+				<item id="variable"><![CDATA[threadnumberpertime]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[5]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="4">
+				<item id="displayorder"><![CDATA[5]]></item>
+				<item id="title"><![CDATA[内容相似比]]></item>
+				<item id="description"><![CDATA[当判定用户有灌水嫌疑时，统计在上一个选项设置的时间内该用户的发布的主题标题的相似程度，超过该值，则认定为灌水帖。]]></item>
+				<item id="variable"><![CDATA[percent]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[60]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>	
+			<item id="5">
+				<item id="displayorder"><![CDATA[6]]></item>
+				<item id="title"><![CDATA[灌水主题]]></item>
+				<item id="description"><![CDATA[对认定为灌水的主题执行的操作。]]></item>
+				<item id="variable"><![CDATA[dispose]]></item>
+				<item id="type"><![CDATA[select]]></item>
+				<item id="value"><![CDATA[1]]></item>
+				<item id="extra"><![CDATA[1=移动到审核区
+0=移动到回收站]]></item>
+			</item>
+			<item id="6">
+				<item id="displayorder"><![CDATA[7]]></item>
+				<item id="title"><![CDATA[灌水用户]]></item>
+				<item id="description"><![CDATA[对认定为灌水的用户执行的操作。]]></item>
+				<item id="variable"><![CDATA[bannedtype]]></item>
+				<item id="type"><![CDATA[select]]></item>
+				<item id="value"><![CDATA[1]]></item>
+				<item id="extra"><![CDATA[1=禁止发言
+2=禁止访问]]></item>
+			</item>
+			<item id="7">
+				<item id="displayorder"><![CDATA[8]]></item>
+				<item id="title"><![CDATA[禁止时限]]></item>
+				<item id="description"><![CDATA[对认定为灌水的用户执行操作的时限。]]></item>
+				<item id="variable"><![CDATA[bannedtime]]></item>
+				<item id="type"><![CDATA[select]]></item>
+				<item id="value"><![CDATA[259200]]></item>
+				<item id="extra"><![CDATA[86400=一天
+259200=三天
+604800=一周
+2592000=一个月
+0=永久]]></item>
+			</item>
+			<item id="8">
+				<item id="displayorder"><![CDATA[0]]></item>
+				<item id="title"><![CDATA[启用时段]]></item>
+				<item id="description"><![CDATA[工作日为周一至周五的9:00 - 18:00，其余时段均为休息时段]]></item>
+				<item id="variable"><![CDATA[allowtime]]></item>
+				<item id="type"><![CDATA[select]]></item>
+				<item id="value"><![CDATA[1]]></item>
+				<item id="extra"><![CDATA[1=工作时段
+2=休息时段
+3=始终开启
+0=始终关闭]]></item>
+			</item>
+            <item id="9">
+				<item id="displayorder"><![CDATA[9]]></item>
+				<item id="title"><![CDATA[过滤unicode字符]]></item>
+				<item id="description"><![CDATA[禁止用户发布的标题中带有unicode字符]]></item>
+				<item id="variable"><![CDATA[filterunicode]]></item>
+				<item id="type"><![CDATA[radio]]></item>
+				<item id="value"><![CDATA[]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+		</item>
+		<item id="installfile"><![CDATA[install.php]]></item>
+		<item id="uninstallfile"><![CDATA[uninstall.php]]></item>
+        <item id="upgradefile"><![CDATA[update.php]]></item>
+		<item id="language">
+			<item id="scriptlang">
+				<item id="post_failed"><![CDATA[你的账户有发灌水帖的嫌疑，将被禁言三天，如有疑问，请联系管理员。]]></item>
+                <item id="post_unicode"><![CDATA[您发表的内容中含有不良字符，请重新编辑后发表]]></item>
+				<item id="userid"><![CDATA[用户ID]]></item>
+				<item id="username"><![CDATA[用户名]]></item>
+				<item id="state"><![CDATA[状态]]></item>
+                <item id="lastsubject"><![CDATA[违规主题标题]]></item>
+				<item id="bandate"><![CDATA[禁止时间]]></item>                
+				<item id="banexpiry"><![CDATA[到期时间]]></item>
+				<item id="dispose"><![CDATA[操作]]></item>
+				<item id="banedpost"><![CDATA[禁止发帖]]></item>
+				<item id="banedlogin"><![CDATA[禁止登录]]></item>
+				<item id="normal"><![CDATA[正常访问]]></item>
+				<item id="chkpost"><![CDATA[查看帖子]]></item>	
+				<item id="delete_success"><![CDATA[删除成功]]></item>
+				<item id="permanent"><![CDATA[永久]]></item>	
+				<item id="recover"><![CDATA[恢复帖子]]></item>	
+				<item id="recover_success"><![CDATA[已还原该用户帖子]]></item>
+				<item id="recover_failed"><![CDATA[未知操作，请检查操作链接]]></item>
+                <item id="threadlist"><![CDATA[违规主题列表]]></item>
+                <item id="subject"><![CDATA[标题]]></item>
+                <item id="forum"><![CDATA[版块]]></item>
+                <item id="author"><![CDATA[作者]]></item>
+                <item id="status"><![CDATA[主题状态]]></item>
+                <item id="posttime"><![CDATA[发表时间]]></item>
+                <item id="recycle"><![CDATA[回收站]]></item>
+                <item id="verify"><![CDATA[审核区]]></item>
+                <item id="isreoveruser"><![CDATA[恢复主题同时恢复用户]]></item>
+                <item id="userlist"><![CDATA[违规用户列表]]></item>
+                <item id="all_user"><![CDATA[全部违规用户]]></item>
+                <item id="day_user"><![CDATA[最近一天内被禁用户]]></item>
+                <item id="week_user"><![CDATA[最近一周内被禁用户]]></item>
+                <item id="month_user"><![CDATA[最近一个月内被禁用户]]></item>
+                <item id="reason"><![CDATA[防灌水插件过滤]]></item>						
+			</item>
+		</item>
+	</item>
+</root>

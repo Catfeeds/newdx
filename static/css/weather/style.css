@@ -1,0 +1,92 @@
+/* CSS Document */
+body { margin:0 0 0 0; font-size:12px; color:#fff; font-family: "Microsoft YaHei",Tahoma,Helvetica,SimSun,sans-serif; background:url(../images/forecast_bg.png) fixed top center;}
+li,ul{ list-style:none; margin:0px; letter-spacing:0; word-spacing:0; padding:0;}
+a{text-decoration:none; color:#fff; font-size:12px;}
+a:hover{text-decoration:none; color:#fff; font-size:12px;}
+em,i{ font-style:normal;}
+img{ border:0;}
+.clear_b:after{content: ""; display: block; clear: both; visibility: hidden;}
+.clear_b{ zoom: 1;}
+/*天气公用头部开始*/
+.hearder{ background:#fdfdfd;}
+.logo{ float:left;}
+.localweather{ float:right; font-size:14px; color:#767d89; padding-top:25px;}
+.localweather a{ color:#767d89; font-size:14px; margin:0px 20px 0px 0px;}
+.localweather span{  margin:0px 20px 0px 0px; }
+.w1170{ width:1170px; margin:0 auto;}
+.w860{ width:860px; float:left;}
+.w240{ width:240px; float:right;}
+.navigation{ height:34px; line-height:34px; background: url(../images/weather_home.gif) no-repeat 20px center #5199c8; padding:0px 0px 0px 50px; font-size:14px; color:#fff; border-radius:3px; margin:20px 0px 0px 0px;}
+.navigation h3{ float:left; font-size:14px; margin:0px; padding:0px; font-weight:normal;}
+.navigation a{ color:#fff; font-size:14px;}
+.changecity{ height:34px; float:right; cursor:pointer; margin:0px 20px 0px 0px;}
+.changecity span{ height:34px; overflow:hidden; float:left;}
+.changecity .selectbox{ height:34px; width:130px; float:left; background:url(../images/arrowdown.png) right 16px no-repeat; margin:0px 10px 0px 0px; padding:0px 15px 0px 10px; position:relative; margin:0px 0px 0px 10px;}
+.popbox{ background:#fff; width:155px; position:absolute; top:34px; left:0px; height:300px; overflow-x:hidden; overflow-y:scroll;}
+.popbox a{ color:#5199c8; display:block; padding:0px 10px 0px 10px; height:25px; line-height:25px;}
+.btitle{ font-size:24px; padding:20px 0px; color:#fff;}
+.btitle h1{ float:left; font-size:24px; margin:0px; padding:0px; font-weight:normal;}
+.btitle div{ float:right;}
+.btitle div a{ color:#fff; font-size:12px; margin:0px 0px 0px 10px;}
+.detail_day_list{}
+.detail_day_list ul{ width:1200px;}
+.detail_day_list li{ width:108px; float:left; background:url(../images/day_bg.png); margin:0px 10px 0px 0px; padding:20px 0px; height:309px;}
+.detail_day_list.w121{ float:left; margin-left:10px;}
+.detail_day_list.w121 ul{ width:800px;}
+.detail_day_list.w121 li{ width:121px;}
+.detail_day_list.w129 ul{ width:1200px;}
+.detail_day_list.w129 li{ width:150px; margin:0px 20px 0px 0px;}
+.detail_day_list li span{ display:block; color:#fff; font-size:18px; text-align:center;}
+.detail_day_list li .date{ height: 45px; line-height: 45px;}
+.detail_day_list li .week {font-size: 14px;height: 35px;line-height: 35px;}
+.detail_day_list li .wicon { height: 60px; line-height: 60px;  margin-top: 15px;}
+.detail_day_list li .wdesc { font-size: 16px; height: 40px; line-height: 40px;}
+.detail_day_list li .temp {  font-size: 16px;  height: 40px;  line-height: 40px;}
+.detail_day_list li .direct { font-size: 16px; height: 40px; line-height: 40px;}
+.detail_day_list li .wind { font-size: 16px; height: 40px; line-height: 40px;}
+.citylist{}
+.citylist a{ float:left; width:195px; font-size:14px; color:#fff; margin-bottom:10px;}
+.historylist{}
+.historyzs{}
+.historyzs span{ padding:0px 20px 0px 0px;}
+.historylistcon{ text-align:center; margin:30px 0px 0px 0px;}
+.historylistcon div:last-child{ border-bottom:0 none;}
+.historytitle{ height:52px; line-height:52px; background:#4c90b8; font-size:14px; border-bottom:#aad4eb solid 1px; font-size:18px;}
+.historytitle span{ display:block; float:left;}
+.historyone{ height:41px; line-height:41px; background:#65b6e6; font-size:14px; border-bottom:#aad4eb solid 1px;}
+.historyone span{ display:block; float:left;}
+.w300{ width:300px;}
+.w174{ width:174px;}
+.today_detail{ width:382px; height:346px; background:url(../images/today.png); float:left; border:1px solid #aad4eb;}
+.dateweek{ font-size:14px; padding:24px 0px 0px 0px;}
+.todaycon{}
+.todaycon .left{ float:left; width:50%; text-align:center;}
+.todaycon .left b{ font-size:30px; font-weight:normal; display:block;}
+.todaycon .left span{ display:block; padding:10px 0px 0px 0px; font-size:12px; }
+.todaycon .right{ float:right; width:50%; text-align:center;}
+.todaycon .right span{ display:block; padding:12px 0px 0px 0px;}
+.todaycon .right em{ display:block; padding:12px 0px 0px 0px;}
+.wdescdatail{ padding:0px 30px;}
+.wdescdatail a{ width:50%; float:left; font-size:14px; margin:0px 0px 10px 0px;}
+.wdescdatail span{ width:50%; float:left; font-size:14px; margin:0px 0px 15px 0px;}
+.pt30{ padding:30px 0px;}
+
+
+/*切换城市列表开始*/
+.citylistbox{ width:900px; background:#fbfbfb; position: fixed; right:0px; top:0px; bottom:0px; overflow:hidden; opacity:0; z-index:-1;}
+.minicity_content{ padding:0 50px; color:#555; font-size:14px; overflow-x:hidden; overflow-y:scroll;}
+.minicity_content a{ color:#555; font-size:14px; margin:0px 0px 0px 0px;}
+.citytitle{ height:70px; line-height:70px; font-size:24px; background:#5199c8 ;}
+.citytitle span{ float:left; height:70px; padding:0px 0px 0px 40px;}
+
+.citytitle i{ float:right; height:70px; width:70px; background:#ff6600;}
+
+.loacdcity{ border-bottom:1px solid #dddddd; padding:15px 0px 15px 0px;  overflow:hidden;}
+.loacdcity dt{ float:left; margin:0px; padding:0px; width:75px;}
+.loacdcity dd{ float:left; margin:0px; width:645px;}
+.loacdcity dd a{ font-size:14px; margin:0px 12px 8px 0px; display: inline; white-space: nowrap; float:left;}
+.loacdcity.othercity dt a{ font-size:20px; color:#c8c8c8;}
+
+
+
+

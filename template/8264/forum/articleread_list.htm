@@ -1,0 +1,116 @@
+<!--{subtemplate common/header_8264_1170_new}-->
+<link rel="stylesheet" href="http://static.8264.com/static/css/common/common_head_bottom.css">
+<link rel="stylesheet" href="http://static.8264.com/static/css/forum/readmodel.css">
+<style type="text/css">
+.newswarpten {display:none!important;}
+.site a.gt {
+    background: rgba(0, 0, 0, 0) url("http://static.8264.com/dianping/images/icon/data/crumb_bg.gif") no-repeat scroll 100% 50%;
+    margin-right: 4px;
+    padding-right: 12px;
+}
+</style>
+<!--[if IE 6]>
+<![endif]-->
+<!--[if lt ie 9]>
+	<style type="text/css">
+	</style>
+<![endif]-->
+<!--[if ie 7]>
+	<style type="text/css">
+	</style>
+<![endif]-->
+<div class="header">
+	<div class="layout">
+				<style type="text/css">
+					.dsad{position:absolute;right:230px;top:18px}
+				</style>
+				<div class="dsad"><!--{ad/custom_290}--></div>
+				<div class="icoHill"></div>
+				<div class="headerL">
+					<h5>
+						<span class="country">
+							<a href="$_G['siteurl']wenzhang/">文章阅读</a>
+						</span>
+					</h5>
+					<div class="site">
+						<a href="http://www.8264.com/" title="首页" id="fjump">首页</a> <em>&rsaquo;</em>
+						<a class="xlsj" href="$_G['siteurl']wenzhang/">文章阅读</a>
+					</div>
+				</div>
+				<div class="headerR">
+
+				</div>
+			</div>
+		</div>
+
+</div>
+
+<div id="content">
+			<div class="main-rect">
+				<div class="col-main">
+					<div class="forumList-container">
+						<div class="main-feed-con">
+							<div class="forum-feed-list">
+
+								{loop $articlelList $v}
+								{eval $tempThread = $threadList[$v[tid]];}
+								<!--一个文章-->
+								<div class="feed-item">
+									<div class="feed-item-inner">
+										<div class="pic">
+											<a href="{$_G[config][web][portal]}wenzhang/$v[tid].html" class="item-link-img" target="_blank">
+												<img src="{$v[pic]}{if strpos($v[pic], 'image1.8264.com') !== false}!t2w450h300{/if}" class="item-img">
+											</a>
+										</div>
+										<div class="feed-main">
+											<div class="content">
+												<h3>
+													<a href="{$_G[config][web][portal]}wenzhang/$v[tid].html" class="post-link" target="_blank">$v[subject]</a>
+												</h3>
+												<div class="feed-detail-item">
+													<p>{echo cutstr($v[summary][text],240,'...')}</p>
+												</div>
+												<div class="feed-meta">
+													<a href="javascript:void(0);" class="feed-item-author">$v[author]</a>
+													<span class="mfc-line">|</span>
+													<span class="time">{echo date('Y-m-d', $tempThread[dateline]);}</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--一个文章 end-->
+								{/loop}
+
+							</div>
+						</div>
+					</div>
+					<div class="strgy-page">
+						{if $multi}$multi{/if}
+					</div>
+				</div>
+			</div>
+			<div class="main-extra-v3">
+				<div class="col-sub">
+					<div class="subImg-list w8h6-list" style="padding-top: 0;">
+						<h3 class="sub-title">推荐文章</h3>
+						<ul>
+							{loop $tjArticlelList $v}
+							<li>
+								<a href="{$_G[config][web][portal]}wenzhang/$v[tid].html" target="_blank" class="targ-img">
+									<img src="{$v[pic]}{if strpos($v[pic], 'image1.8264.com') !== false}!t2w450h300{/if}">
+								</a>
+								<p>
+									<a href="{$_G[config][web][portal]}wenzhang/$v[tid].html" target="_blank">{echo cutstr($v[subject],60,'...')}</a>
+								</p>
+								<span class="lp-time">{echo date('Y-m-d', $v[dateline]);}</span>
+							</li>
+							{/loop}
+
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+<!--{subtemplate common/footer_8264_1170_new}-->

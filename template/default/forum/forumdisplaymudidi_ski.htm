@@ -1,0 +1,363 @@
+<!--{subtemplate common/header}-->
+<!--{eval $skiData = $forumoption_mudidi->getAllSkiData();}-->
+<link rel="stylesheet" href="/source/plugin/whither/css/main.css?3" />
+<script type="text/javascript" src="http://www.8264.com/static/js/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+</script>
+<!--{if $_G['forum']['ismoderator']}-->
+	<script type="text/javascript" src="{$_G[setting][jspath]}forum_moderate.js?{VERHASH}"></script>
+<!--{/if}-->
+
+<style id="diy_style" type="text/css"></style>
+<div class="wp">
+	<!--[diy=diy1]--><div id="diy1" class="area"></div><!--[/diy]-->
+</div>
+<div id="ct" class="wp cl{if $_G['forum']['allowside']} ct2{/if}">
+	<div class="mn">
+
+		<!--{hook/forumdisplay_top}-->
+
+		<!--{if $subexists && $_G['page'] == 1}--><!--{template forum/forumdisplay_subforum}--><!--{/if}-->
+
+		<div class="drag">
+			<!--[diy=diy4]--><div id="diy4" class="area"></div><!--[/diy]-->
+		</div>
+
+		<!--{if !empty($_G['forum']['recommendlist'])}-->
+			<div class="bm bmw">
+				<div class="bm_h cl">
+					<h2>{lang forum_recommend}</h2>
+				</div>
+				<div class="bm_c cl">
+					<!--{subtemplate forum/recommend}-->
+				</div>
+			</div>
+		<!--{/if}-->
+
+		<!--{hook/forumdisplay_middle}-->
+
+		<!--{if !$subforumonly}-->
+
+			<!--{if $recommendgroups && !$_G['forum']['allowside']}-->
+			<div class="bm">
+				<div class="bm_h cl">
+					<h2>{lang recommended_groups}</h2>
+				</div>
+				<div class="bm_c">
+					<ul class="ml mls cl">
+					<!--{loop $recommendgroups $key $group}-->
+						<li>
+							<a href="forum.php?mod=group&fid=$group[fid]" title="$group[name]" target="_blank" class="avt"><img src="$group[icon]" alt="$group[name]"></a>
+							<p><a href="forum.php?mod=group&fid=$group[fid]" target="_blank">$group[name]</a></p>
+						</li>
+					<!--{/loop}-->
+					</ul>
+				</div>
+			</div>
+			<!--{/if}-->
+
+			<!--{if $threadmodcount}--><div class="bm bmn hm xi2"><strong>{lang forum_moderate_unhandled}</strong></div><!--{/if}-->
+			<div class="mudidi_index">
+				<div class="mudidi_index_section">
+					<div class="section_left" style="width:710px; border:1px solid #5197ff; background:#eee;">
+						<div id="map" style="width:710px;height:473px;"></div>
+					</div>
+					<div class="section_right" style="width:240px;">
+						<div class="ski_thread_list">
+							<h5><a href="http://huaxue.8264.com/" target="_blank" style="color:#fff">ª¨—©∞Ê»»Ã˘</a></h5>
+							<ul>
+								{eval $ski_threads = $forumoption_mudidi->getThreadByFid(186, '0,12');}
+								{loop $ski_threads $thread}
+								<li>
+									<em>°§</em>
+									<a href="http://bbs.8264.com/thread-{$thread['tid']}-1-1.html" title="{$thread['subject']}" target="_blank">$thread['subject']</a>
+								</li>
+								{/loop}
+                                
+                                <div style="margin-top:10px;">
+									<!--{ad/custom_165}-->
+								</div>
+								<div style="margin-top:10px;">
+									<!--{ad/custom_150}-->
+								</div>
+							</ul>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="mudidi_scapenav" style="padding:10px 0 0;border:none;">
+					<div class="ski_list">
+					<!--{eval $orderskiData = $forumoption_mudidi->assignSkiData($skiData);}-->
+					<!--{eval $orderskiDataCount = count($orderskiData);}-->
+					<!--{loop $orderskiData $i $skiGroup}-->
+						<dl class="item {eval echo $i%2==0?'odd':'even';}{eval echo $orderskiDataCount-$i==1?' last':'';}">
+							<!--{loop $skiGroup $skiArea}-->
+							<dt>{$skiArea['data']['name']}ª¨—©≥°</dt>
+							<dd>
+								<ul>
+								<!--{loop $skiArea['child'] $ski}-->
+								<!--{if strlen($ski['name']) > 18}-->
+									<!--{eval $ski['name'] = str_replace('ª¨—©≥°', '', $ski['name']);}-->
+									<!--{eval $ski['name'] = str_replace('—©≥°', '', $ski['name']);}-->
+								<!--{/if}-->
+								<li><a href="/thread-{$ski['tid']}-1-1.html" title="{$ski['name']}">$ski['name']</a></li>
+								<!--{/loop}-->
+								</ul>
+							</dd>
+							<!--{/loop}-->
+						</dl>
+					<!--{/loop}-->
+					</div>
+					
+				</div>
+			</div>
+			
+		<!--{/if}-->
+
+		<!--{hook/forumdisplay_bottom}-->
+		<!--[diy=diyforumdisplaybottom]--><div id="diyforumdisplaybottom" class="area"></div><!--[/diy]-->
+</div>
+
+<!--{if $_G['forum']['allowside']}-->
+	<div class="sd">
+		<!--{if !$subforumonly}-->
+			<div class="bm">
+				<div class="bm_h">
+					<h2>{lang their}: <!--{eval echo cutstr($_G['cache']['forums'][$_G['forum']['fup']]['name'], 22, '')}--></h2>
+				</div>
+				<div class="bm_c">
+					<ul class="xl xl2 cl">
+					<!--{loop $_G['cache']['forums'] $bforum}-->
+						<!--{if $bforum['fup'] == $_G['forum']['fup'] && $bforum['status']}-->
+							<li><a href="forum.php?mod=forumdisplay&fid=$bforum[fid]">$bforum['name']</a></li>
+						<!--{/if}-->
+					<!--{/loop}-->
+					</ul>
+				</div>
+			</div>
+
+			<!--{if $recommendgroups}-->
+			<div class="bm">
+				<div class="bm_h cl">
+					<h2>{lang recommended_groups}</h2>
+				</div>
+				<div class="bm_c cl">
+					<ul class="ml mls cl">
+					<!--{loop $recommendgroups $key $group}-->
+						<li>
+						<a href="forum.php?mod=group&fid=$group[fid]" title="$group[name]" target="_blank" class="avt"><img src="$group[icon]" alt="$group[name]"></a>
+						<p><a href="forum.php?mod=group&fid=$group[fid]" target="_blank">$group[name]</a></p>
+						</li>
+					<!--{/loop}-->
+					</ul>
+				</div>
+			</div>
+			<!--{/if}-->
+
+			<!--{if !($_G['forum']['simple'] & 1) && $_G[setting][whosonlinestatus]}-->
+				<div class="bm">
+					<!--{if $detailstatus}-->
+					<div class="bm_h cl">
+						<span class="o y"><a href="forum.php?mod=forumdisplay&fid=$_G[fid]&page=$page&showoldetails=no#online"><img src="{IMGDIR}/collapsed_no.gif" alt="" /></a></span>
+						<h2>{lang forum_activeusers} ($onlinenum)</h2>
+					</div>
+					<div class="bm_c">
+						<ul class="ml mls cl">
+						<!--{loop $whosonline $key $online}-->
+							<li>
+							<a href="home.php?mod=space&uid=$online[uid]" class="avt"><!--{avatar($online[uid],small)}--></a>
+							<!--{if $online['uid']}-->
+								<p><a href="home.php?mod=space&uid=$online[uid]">$online[username]</a></p>
+							<!--{else}-->
+								<p>$online[username]</p>
+							<!--{/if}-->
+							<span>$online[lastactivity]{LF}</span>
+							</li>
+						<!--{/loop}-->
+						</ul>
+					</div>
+					<!--{else}-->
+					<div class="bm_h cl">
+						<span class="o y"><a href="forum.php?mod=forumdisplay&fid=$_G[fid]&page=$page&showoldetails=yes#online" class="nobdr"><img src="{IMGDIR}/collapsed_yes.gif" alt="" /></a></span>
+						<h2>{lang forum_activeusers} ($onlinenum)</h2>
+					</div>
+					<!--{/if}-->
+				</div>
+			<!--{/if}-->
+		<!--{/if}-->
+		<div class="drag">
+			<!--[diy=diy2]--><div id="diy2" class="area"></div><!--[/diy]-->
+		</div>
+		<!--{hook/forumdisplay_side_bottom}-->
+	</div>
+<!--{/if}-->
+</div>
+<!--{if $_G['group']['allowpost'] && ($_G['group']['allowposttrade'] || $_G['group']['allowpostpoll'] || $_G['group']['allowpostreward'] || $_G['group']['allowpostactivity'] || $_G['group']['allowpostdebate'] || $_G['setting']['threadplugins'] || $_G['forum']['threadsorts'])}-->
+	<ul class="p_pop" id="newspecial_menu" style="display: none">
+		<!--{if !$_G['forum']['allowspecialonly']}--><li><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]">{lang post_newthread}</a></li><!--{/if}-->
+		<!--{if $_G['group']['allowpostpoll']}--><li class="poll"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=1">{lang post_newthreadpoll}</a></li><!--{/if}-->
+		<!--{if $_G['group']['allowpostreward']}--><li class="reward"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=3">{lang post_newthreadreward}</a></li><!--{/if}-->
+		<!--{if $_G['group']['allowpostdebate']}--><li class="debate"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=5">{lang post_newthreaddebate}</a></li><!--{/if}-->
+		<!--{if $_G['group']['allowpostactivity']}--><li class="activity"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=4">{lang post_newthreadactivity}</a></li><!--{/if}-->
+		<!--{if $_G['group']['allowposttrade']}--><li class="trade"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=2">{lang post_newthreadtrade}</a></li><!--{/if}-->
+		<!--{if $_G['setting']['threadplugins']}-->
+			<!--{loop $_G['forum']['threadplugin'] $tpid}-->
+				<!--{if array_key_exists($tpid, $_G['setting']['threadplugins']) && @in_array($tpid, $_G['group']['allowthreadplugin'])}-->
+					<li class="popupmenu_option"{if $_G['setting']['threadplugins'][$tpid][icon]} style="background-image:url($_G[setting][threadplugins][$tpid][icon])"{/if}><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&specialextra=$tpid">{$_G[setting][threadplugins][$tpid][name]}</a></li>
+				<!--{/if}-->
+			<!--{/loop}-->
+		<!--{/if}-->
+		<!--{if $_G['forum']['threadsorts'] && !$_G['forum']['allowspecialonly']}-->
+			<!--{loop $_G['forum']['threadsorts']['types'] $id $threadsorts}-->
+				<!--{if $_G['forum']['threadsorts']['show'][$id]}-->
+					<li class="popupmenu_option"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&extra=$extra&sortid=$id">$threadsorts</a></li>
+				<!--{/if}-->
+			<!--{/loop}-->
+		<!--{/if}-->
+	</ul>
+<!--{/if}-->
+
+<!--{if $_G['setting']['visitedforums'] || $oldthreads}-->
+	<div id="visitedforums_menu" class="{if $oldthreads}visited_w {/if}p_pop blk cl" style="display: none;">
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<!--{if $_G['setting']['visitedforums']}-->
+					<td id="v_forums">
+						<h3 class="mbn pbn bbda xg1">{lang viewed_forums}</h3>
+						<ul>
+							$_G['setting']['visitedforums']
+						</ul>
+					</td>
+				<!--{/if}-->
+				<!--{if $oldthreads}-->
+					<td id="v_threads">
+						<h3 class="mbn pbn bbda xg1">{lang viewd_threads}</h3>
+						<ul class="xl">
+						<!--{loop $oldthreads $oldtid $oldsubject}-->
+							<li><a href="forum.php?mod=viewthread&tid=$oldtid">$oldsubject</a></li>
+						<!--{/loop}-->
+						</ul>
+					</td>
+				<!--{/if}-->
+			</tr>
+		</table>
+	</div>
+<!--{/if}-->
+
+<!--{if $_G['setting']['forumjump']}-->
+	<div class="p_pop" id="fjump_menu" style="display: none">
+	$forummenu
+	</div>
+<!--{/if}-->
+
+<!--{if $_G['setting']['threadmaxpages'] > 1 && $page && !$subforumonly}-->
+	<script type="text/javascript">document.onkeyup = function(e){keyPageScroll(e, <!--{if $page > 1}-->1<!--{else}-->0<!--{/if}-->, <!--{if $page < $_G['setting']['threadmaxpages'] && $page < $_G['page_next']}-->1<!--{else}-->0<!--{/if}-->, 'forum.php?mod=forumdisplay&fid={$_G[fid]}&filter={$filter}&orderby={$_G[gp_orderby]}{$forumdisplayadd[page]}&{$multipage_archive}', $page);}</script>
+<!--{/if}-->
+
+<div class="wp mtn">
+	<!--[diy=diy3]--><div id="diy3" class="area"></div><!--[/diy]-->
+</div>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&region=ZH"></script>
+<script type="text/javascript" src="/static/js/richmarker.js"></script>
+<script type="text/javascript">
+	window.onload = function initialize() {
+		var myLatlng = new google.maps.LatLng(35.861660, 110.195397);
+		var myOptions = {
+			zoom: 4,
+			center: myLatlng,
+			mapTypeId: google.maps.MapTypeId.TERRAIN,
+			draggable: true,
+			disableDefaultUI: true,
+			disableDoubleClickZoom: true,
+			scrollwheel: false
+		};
+		var map = new google.maps.Map(document.getElementById('map'),
+			myOptions);
+		
+		{loop $skiData $i $ski}
+			var content = '<div class="ski_item" onmouseover="ski_item_mouseover(this);" onmouseout="ski_item_mouseout(this);">{$ski['data']['name']}</div>'+
+			'<div class="ski_dropdown" onmouseover="ski_dropdown_mouseover(this);" onmouseout="ski_dropdown_mouseout(this);"><h5>{$ski['data']['name']}—©≥°</h5><div class="ski_list">'+
+			{loop $ski['child'] $childid $child}
+				<!--{eval $color = ($childid % 2) ? 'even' : 'odd';}-->
+				'<div class="{$color} row"><a href="/thread-{$child['tid']}-1-1.html">{$child['name']}</a></div>'+
+			{/loop}
+			'</div></div>';
+			
+			marker = new RichMarker({
+				position: new google.maps.LatLng($ski['data']['lat'], $ski['data']['long']),
+				map: map,
+				draggable: false,
+				content: content
+			});
+		{/loop}
+	}
+	
+	var intervalTime = 500;
+	var interval;
+	var oldDropDown;
+	var mapWidth = jQuery('#map').width();
+	var mapHeight = jQuery('#map').height();
+	
+	function ski_item_mouseover(_this) {
+		var $ = jQuery;
+		$(_this).parent('div').parent('div').css("z-index", 2).siblings().css("z-index", 1);
+		
+		if (oldDropDown && oldDropDown.children('h5').text() != $(_this).next('.ski_dropdown').children('h5').text()) {
+			clearInterval(interval);
+			oldDropDown.stop(1, 1).hide(200);
+		}
+		
+		oldDropDown = $(_this).next('.ski_dropdown');
+		
+		clearInterval(interval);
+		oldDropDown.stop(1, 1).fadeIn(200);
+		
+		if (oldDropDown.find('.ski_list').height() > 180) {
+			oldDropDown.children('.ski_list').height(180);
+		}
+		
+		if (parseFloat(oldDropDown.parent().parent().css('left')) > mapWidth - oldDropDown.width()) {
+			oldDropDown.css('right', '0');
+		}
+		
+		if (parseFloat(oldDropDown.parent().parent().css('top')) > mapHeight - oldDropDown.height() - 30) {
+			oldDropDown.css('bottom', '0');
+		}
+	}
+	
+	function ski_item_mouseout(_this) {
+		var $ = jQuery;
+		
+		clearInterval(interval);
+		interval = setInterval(function(){
+			oldDropDown.stop(1, 1).fadeOut(200);
+			oldDropDown.parent('div').parent('div').css("z-index", 1);
+		}, intervalTime);
+	}
+	
+	function ski_dropdown_mouseover(_this) {
+		var $ = jQuery;
+
+		if (oldDropDown && oldDropDown.children('h5').text() != $(_this).children('h5').text()) {
+			clearInterval(interval);
+			oldDropDown.stop(1, 1).hide(200);
+		}
+		clearInterval(interval);
+		oldDropDown.stop(1, 1).fadeIn();
+	}
+	
+	function ski_dropdown_mouseout(_this) {
+		var $ = jQuery;
+		
+		clearInterval(interval);
+		interval = setInterval(function(){
+			oldDropDown.stop(1, 1).fadeOut(200);
+			oldDropDown.parent('div').parent('div').css("z-index", 1);
+		}, intervalTime);
+	}
+</script>
+<div style="display:none;">
+	<script src="http://s84.cnzz.com/stat.php?id=3496107&web_id=3496107&show=pic1" language="JavaScript"></script>
+</div>
+<!--{subtemplate common/footer}-->

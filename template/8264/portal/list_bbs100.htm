@@ -1,0 +1,125 @@
+<!--{subtemplate common/header}-->
+<link href="template/8264/css/channel/channel_bbs100.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://www.8264.com/static/js/jquery-1.6.1.min.js"></script>
+<div class="warpten">
+	<div class="navcon">
+		$subject <b>($tm)</b>
+	</div>
+	<div class="l">
+		<!--单条循环开始-->
+		<!--{if $bbs}-->
+		<!--{loop $bbs $thread}-->
+		<div class="bbsoneall">
+			<h2>
+				<!--{if $thread['name']}--> <em>[
+					<a href="http://bbs.8264.com/forum-forumdisplay-fid-{$thread['fid']}-filter-typeid-typeid-{$thread['typeid']}.html">{$thread['name']}</a>
+					]</em> 
+				&nbsp;
+				<!--{/if}-->
+				<a href="http://bbs.8264.com/thread-{$thread['tid']}-1-1.html" target="_blank">{$thread['subject']}</a>
+			</h2>
+			<div class="bbsoneh1down">
+				<span>发帖时间：{$thread['dateline']}</span>
+				<span>最后回复时间：{$thread['lastpost']}</span>
+				<span>回复数：{$thread['replies']}</span>
+				<span>总浏览数：{$thread['views']}</span>
+				<span>热度值：{$thread['heats']}</span>
+			</div>
+			<div class="bbsone">
+				<div class="touimgall">
+					<a href="home.php?mod=space&uid={$thread['authorid']}" target="_blank">{$thread['avatar']}</a>
+					<div class="touname">
+						<a href="home.php?mod=space&uid={$thread['authorid']}" target="_blank">{$thread['author']}</a>
+					</div>
+				</div>
+				$thread['message']
+				<div class="clear"></div>
+			</div>
+		</div>
+		<!--{/loop}-->
+		<!--{else}-->
+		暂无数据排名
+		<!--{/if}-->
+		<!--单条循环结束-->
+	</div>
+	<div class="r">
+		<div class="r1" id="rl">
+			<!--单条开始-->
+			<div class="menu">
+				<div class="rtitle">论坛热度排行</div>
+				<ul>
+					<li>
+						<a href="http://www.8264.com/portal.php?mod=list&catid=874&filter=heats&dateline=7">7天内排行</a>
+					</li>
+					<li>
+						<a href="http://www.8264.com/portal.php?mod=list&catid=874&filter=heats&dateline=30">30天内排行</a>
+					</li>
+					<li>
+						<a href="http://www.8264.com/portal.php?mod=list&catid=874&filter=heats&dateline=all">总排行</a>
+					</li>
+				</ul>
+			</div>
+			<!--单条结束-->
+			<div class="menu">
+				<div class="rtitle">论坛点击排行</div>
+				<ul>
+					<li>
+						<a href="http://www.8264.com/portal.php?mod=list&catid=874&filter=views&dateline=7">7天内排行</a>
+					</li>
+					<li>
+						<a href="http://www.8264.com/portal.php?mod=list&catid=874&filter=views&dateline=30">30天内排行</a>
+					</li>
+					<li>
+						<a href="http://www.8264.com/portal.php?mod=list&catid=874&filter=views&dateline=all">总排行</a>
+					</li>
+				</ul>
+			</div>
+			<div class="menu">
+				<div class="rtitle">论坛回帖排行</div>
+				<ul>
+					<li>
+						<a href="http://www.8264.com/portal.php?mod=list&catid=874&filter=replies&dateline=7">7天内排行</a>
+					</li>
+					<li>
+						<a href="http://www.8264.com/portal.php?mod=list&catid=874&filter=replies&dateline=30">30天内排行</a>
+					</li>
+					<li>
+						<a href="http://www.8264.com/portal.php?mod=list&catid=874&filter=replies&dateline=all">总排行</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<script type="text/javascript">
+jQuery.noConflict();	
+;(function($) {
+	var btns_top = $('#rl').offset().top;			
+	$(window).scroll(function() {				
+		if ($(document).scrollTop()>= btns_top) {
+			if ($.browser.msie && $.browser.version == '6.0') {
+				var top = ($(document).scrollTop() + 5) + 'px';
+				$('#rl').css({
+					'position': 'absolute',
+					'top': top
+				});
+			} else {
+				$('#rl').css({
+					'position': 'fixed',
+					'top': '5px'
+				});
+			}
+			$('#rl').show();
+		}else{
+			var top = $('.navcon').offset().top;
+			$('#rl').css({
+					'position': 'relative',
+					'top': '0px'
+			});
+		}
+	})
+})(jQuery);	
+</script>
+<!--{block/4594}-->
+<!--{subtemplate common/footer}-->

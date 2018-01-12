@@ -1,0 +1,1120 @@
+<link href="http://static.8264.com/static/css/forum/a.min.css?{VERHASH}" rel="stylesheet" type="text/css">
+<style>
+.futitle {margin-bottom:20px;}
+.base-panel {padding-top:0;margin-top:-20px;}
+.form-group {clear:both;}
+.dq {height:36px;background-position:150px -381px;width:184px;z-index: 1200;margin-right: 10px;}
+.dq .js {height:36px;width:140px;padding-left:10px;}
+.comb-btn {cursor:pointer;}
+.auto_down {-moz-border-bottom-colors: none;-moz-border-left-colors: none;-moz-border-right-colors: none;-moz-border-top-colors: none;background: #fff none repeat scroll 0 0;border-color: -moz-use-text-color #d6d6d6 #d6d6d6;border-image: none;border-style: none solid solid;border-width: 0 1px 1px;display: none;height: 249px;left: 0px;overflow-x: hidden;overflow-y: auto;padding-top: 2px;position: absolute;top: 30px;z-index: 9999 !important;}
+.auto_down a {padding-left:10px;margin:5px 0;display:block;}
+.auto_down span {padding-left:10px;margin:5px 0;display:block;color:#43a6df;}
+.auto_down a:hover {background-color:#CAE1FF;}
+.dq_down {width:184px;z-index:1290;margin-top:2px!important;}
+.dq_down a:hover {background-color:#CAE1FF;}
+.actioninput {font-size:14px;}
+.typeselect {z-index:196;}
+.typeselect .showdowndiv {margin-top:-6px;}
+.typeselect .showdowndiv a:hover {background-color:#CAE1FF;}
+.place_down {background:#fff;display:none;height:auto;left:0;overflow-x:hidden;overflow-y:auto;padding-top:2px;position:absolute;top:37px;z-index:9999!important;width:494px;border:1px solid #dfdfdf;border-top:0 none;}
+.place_down a {padding-left:10px;margin:5px 0;display:block;}
+.place_down span {padding-left:10px;margin:5px 0;display:block;color:#43a6df;}
+.place_down a:hover {background-color:#CAE1FF;}
+#result1 {background:#fff;display:none;height:auto;left:0;overflow-x:hidden;overflow-y:auto;padding-top:2px;position:absolute;top:37px;z-index:9999!important;width:494px;border:1px solid #dfdfdf;border-top:0 none;}
+.result1 div {padding-left:10px!important;margin:5px 0!important;}
+#result {background:#fff;display:none;height:auto;left:0;overflow-x:hidden;overflow-y:auto;padding-top:2px;position:absolute;top:37px;z-index:9999!important;width:494px;border:1px solid #dfdfdf;border-top:0 none;}
+.result div {padding-left:10px!important;margin:5px 0!important;}
+.placerow {position:relative;}
+#e_body {height:0;overflow:hidden;position:relative;}
+#append_parent {display:none;}
+#activityattach_image img {margin-top:10px;}
+.op-btn{float:left;height:30px;line-height:30px;color:#58b1e5;text-align:center;border-radius:3px;margin-top:4px;}
+.bg-c1{background-color:#58b1e5;color:#fff;padding:0 22px;}
+.captions-box {position: relative;border: 1px solid #a9ccf0;box-shadow: 0 0 2px rgba(187,210,232,.3);width: 500px;margin-top: 10px;padding: 6px 12px 6px 26px;background-color: #eff6fc;display: none; color: #585858;}
+.captions-box .tips-icon {position: absolute;width: 12px;height: 12px;left: 8px;top: 10px;background: url(http://static.8264.com/hd/pc/images/tps/v1/tipsicon.png)}
+.captions-box p {font-size: 12px;line-height: 20px}
+
+.webuploader-container {
+	position: relative;
+}
+.webuploader-element-invisible {
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+	clip: rect(1px,1px,1px,1px);
+}
+.webuploader-pick {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	background: #58b1e5;
+	font-size: 14px;
+	color: #fff;
+	text-align: center;
+        padding: 3px;
+	width: 140px;
+        height:28px;
+	border-radius: 4px;
+	overflow: hidden;
+}
+.webuploader-pick-hover {
+	background: #00a2d4;
+}
+
+.webuploader-pick-disable {
+	opacity: 0.6;
+	pointer-events:none;
+}
+</style>
+
+{eval
+	$arrPlace = $activity[place] ? explode('，', $activity[place]) : array();
+	$activity[place] = str_replace('，', '-', $activity[place]);
+}
+
+<!--第一步-->
+<div class="base-panel step" style="overflow:hidden;">
+	<div class="main-content">
+		<div class="form-group" style="height:38px;z-index:160;*zoom:1">
+			<label class="control-label">活动标题：</label>
+			<div class="combobox-input">
+				{if $isfirstpost && !empty($_G['forum'][threadtypes][types])}
+				<div class="pbt_select needdown typeselect" style="height:36px;">
+					<div class="pbt_select_option_box showdowndiv" style="height:140px!important;">
+					<!--{loop $_G['forum'][threadtypes][types] $typeid $name}-->
+						<!--{if $thread['typeid'] == $typeid || $_G['gp_typeid'] == $typeid}-->
+						<!--{eval $nowselect_typeid = array('typeid' => $typeid, 'name' => strip_tags($name));}-->
+						<!--{/if}-->
+						<a hid="$typeid" href="javascript:void(0);"><!--{echo strip_tags($name);}--></a>
+					<!--{/loop}-->
+					</div>
+					<span>
+						<!--{if $nowselect_typeid}-->
+							<input type="hidden" name="typeid" id="typeid" value="{$nowselect_typeid[typeid]}" /><span>{$nowselect_typeid[name]}</span>
+						<!--{else}-->
+							<input type="hidden" name="typeid" id="typeid" value="0"/><span style="color:#a5a5a5;">{lang select_category_info}</span>
+						<!--{/if}-->
+					</span>
+				</div>
+				{/if}
+				<input type="text" value="$thread[subject]" id="subject" name="subject" class="form-control" style="width:320px;" placeholder="标题严禁使用【】等异形符号，违者删帖">
+			</div>
+		</div>
+		<div class="form-group" style="z-index:159;*zoom:1;">
+			<label class="control-label">活动地点：</label>
+			<div class="combobox-input">
+				<div class="place-multiLine" {if $arrPlace}style="display:block;"{/if}>
+					{if $arrPlace}
+					{loop $arrPlace $v}
+					<div class="place-component-block">
+						<strong class="place-name">$v</strong>
+						<a href="javascript:void(0);" title="删除活动地点" class="place-menu-link delete-row">
+							<b class="icon-delete"></b>
+						</a>
+						<input type="hidden" name="activityplace[]" value="$v">
+					</div>
+					{/loop}
+					{/if}
+				</div>
+				<div style="position:relative;">
+					<input type="text" placeholder="请输入省，市，活动地点" id="scenicSpots" class="form-control w470 activityplace js">
+					<div class="place_down"></div>
+				</div>
+			</div>
+		</div>
+		<div style="clear:both;height:0;line-height:0;font-size:0;"></div>
+		<div class="form-group" style="z-index:158;*zoom:1;">
+			<label class="control-label">集合地点：</label>
+			<div class="combobox-input" style="position:relative;z-index:900">
+				<input type="text" placeholder="请输入地址" name="collectplace" id="collectplace" class="form-control w470" value="$activity[collectplace]">
+				<div id="result1" name="result1"></div>
+				<div id="result" name="result"></div>
+				<span id='collectprovince' style="display:none;"></span>
+			</div>
+			<div style="clear:both;height:0;line-height:0;font-size:0;"></div>
+			<div class="siteMap-box">
+				<div id="container" style="width:504px;height:200px;"></div>
+				<input type="hidden" name="lng" id="lng" autocomplete="off" readonly value="$activity[lng]" />
+	            <input type="hidden" name="lat" id="lat" autocomplete="off" readonly value="$activity[lat]" />
+			</div>
+		</div>
+		<div class="form-group" style="z-index:157;*zoom:1">
+			<label class="control-label">活动时间：</label>
+			<div class="combobox-input">
+				<div class="calendar-picker">
+					<input type="text" name="starttimefrom[1]" id="starttimefrom_1" onclick="showcalendar(event, this, true, false, false, 39)" autocomplete="off" value="$activity[starttimefrom]" class="calendar-input inittanchu">
+					<span class="calendar-icon"></span>
+				</div>
+				<span class="split">---</span>
+				<div class="calendar-picker">
+					<input type="text" onclick="showcalendar(event, this, true, false, false, 39)" autocomplete="off" id="starttimeto" name="starttimeto" value="$activity[starttimeto]" class="calendar-input inittanchu">
+					<span class="calendar-icon"></span>
+				</div>
+				<input type="hidden" id="starttimefrom_1_tag" value="$activity[starttimefrom]"/>
+				<input type="hidden" id="starttimeto_tag" value="$activity[starttimeto]"/>
+			</div>
+		</div>
+		<div class="form-group" style="z-index:157;*zoom:1">
+			<label class="control-label">报名截止时间：</label>
+			<div class="combobox-input">
+				<div class="calendar-picker">
+					<input type="text" name="activityexpiration" id="activityexpiration"  onclick="showcalendar(event, this, true, false, false, 39)" autocomplete="off" value="$activity[expiration]" class="calendar-input inittanchu" />
+					<span class="calendar-icon"></span>
+				</div>
+			</div>
+		</div>
+		<div class="form-group" style="z-index:156;*zoom:1">
+			<label class="control-label">活动玩法：</label>
+			<div class="combobox-input">
+				<div class="dq needdown">
+					<input type="text" id="activityclass" name="activityclass" value="$activity[class]" readonly class="actioninput js" <!--{if $activitytypelist}--> onfocus="showselect(this, 'activityclass', 'activitytypelist');" <!--{/if}--> placeholder="选择活动玩法" />
+					<!--{if $activitytypelist}-->
+					<div class="dq_down" id="activitytypelist">
+						<!--{loop $activitytypelist $type}-->
+						<a href="javascript:void(0);">{$type}</a>
+						<!--{/loop}-->
+					</div>
+					<!--{/if}-->
+				</div>
+			</div>
+		</div>
+		<div class="form-group div-adjust" style="z-index:155;*zoom:1">
+			<label class="control-label">活动性质：</label>
+			<div class="combobox-input" style="height:86px;">
+				<div class="activity-nature">
+					<div class="nature-item sy-nature {if $activity['nature'] == 2 || !$activity['nature']}nature-selected{/if}">
+						<h3>商业</h3>
+						<p>组织者以盈利为目的或组织者不参与AA。</p>
+					</div>
+					<div class="nature-item aa-nature {if $activity['nature'] == 1}nature-selected{/if}">
+						<h3>AA</h3>
+						<p>表示全体人员包括领队组织者均摊费用，多退少补。</p>
+					</div>
+				</div>
+				<input type="hidden" name="activitynature" id="activitynature" value="{if !$activity['nature']}2{else}{$activity[nature]}{/if}" />
+			</div>
+		</div>
+		<div class="form-group" style="z-index:154;*zoom:1">
+			<label class="control-label">俱乐部简称：</label>
+			<div class="combobox-input" style="position:relative;z-index:197;">
+				<input type="text" name="clubname" id="clubname" class="form-control w150 js" value="$activity[clubname]">
+				<input type="hidden" name="clubid" id="clubid" value="$activity[clubid]" />
+				<div class="auto_down" style="width:184px;">
+					<span>限8个字。</span>
+					{loop $activityClubList $v}
+					<a href="javascript:void(0);">{$v}</a>
+					{/loop}
+				</div>
+<!--				<span class="tagTips-title">非必填</span>-->
+			</div>
+		</div>
+		<div class="form-group" style="z-index:153;*zoom:1">
+			<label class="control-label">手机号：</label>
+			<div class="combobox-input">
+				<input type="text" name="activitymobile" id="activitymobile" value="$activity[mobile]" class="form-control w150 js">
+				<span class="t" id="activitymobileSpan"><span style="color:red;">填写后可免费接收报名短信并推广到</span><a href="http://hd.8264.com/" target="_blank" style="color:blue;">8264活动平台</a></span>
+				<input type="hidden" name="activitymobileclaimnum" id="activitymobileclaimnum" value="">
+			</div>
+		</div>
+		<div class="form-group div-adjust" style="z-index:152;*zoom:1">
+			<label class="control-label">活动要求：</label>
+			<div class="combobox-input">
+				<input type="text" name="cost" id="cost" class="form-control w110" value="$activity[cost]" placeholder="费用">
+				<span class="t">元/人</span>
+
+				<input type="text" name="activitynumber" id="activitynumber" class="form-control w110" value="$activity[number]" placeholder="人数上限"/>
+				<span class="t">人</span>
+                
+                {if $_G['setting']['activitycredit'] && $_G[adminid] == 1}
+                <input type="text" name="activitycredit" id="activitycredit" class="form-control w110" value="$activity[credit]">
+                <span class="t">枚8264币</span>
+                {else}
+                <input type="hidden" name="activitycredit" id="activitycredit" class="form-control w110" value="0">
+                {/if}
+			</div>
+		</div>
+        <div class="form-group" style="z-index:156;*zoom:1">
+			<label class="control-label">报名填写表：</label>
+			<div class="combobox-input">
+                <div class="dq needdown mr10" {if !$tpllist}style='display:none;'{/if}>
+                    <input type="text" name="formname" id="formname" value="$tpllist[$activity[formid]][formname]" readonly class="actioninput js" placeholder="选择报名模板" />
+                    <div class="dq_down" id="formlist">
+                        <!--{if $tpllist}-->
+                        <!--{loop $tpllist $formid $forminfo}-->
+                        <a href="javascript:void(0);" fid="{$formid}" onclick="usethisform(this)">{$forminfo[formname]}</a>
+                        <!--{/loop}-->
+                        <!--{/if}-->
+                    </div>
+                    <input type="hidden" name="formid" id="formid" value="{$activity[formid]}">
+                </div>
+                <a href="http://www.8264.com/misc.php?mod=hd&action=gohd" target="_blank" onclick="showDialog($('idoit').innerHTML, 'info', '提示')" class="op-btn {if !$tpllist}bg-c1{/if}">新建报名填写表</a>
+			</div>
+            <div class="captions-box" style="display:block">
+                <div class="tips-icon"></div>
+                <p>1、默认报名填写表</p>
+                <p>适合大部分活动收集报名信息。收集内容：真实姓名，电话号码，身份证号，人数，备注</p>
+                <p>2、新建报名填写表</p>
+                <p>若现有表格不符合要求，请点击新建报名填写表，自定义填写项，建立之后即可选择使用</p>
+            </div> 
+		</div>
+		<!--{if $allowpostimg}-->
+		<div class="form-group div-adjust" style="z-index:151;*zoom:1">
+			<label class="control-label">活动封面：</label>
+			<div class="combobox-input">
+				<!--<a href="javascript:void(0);" class="upload-cover-btn inittanchu" onclick="uploadWindow(function (aid, url){updateactivityattach(aid, url, 'http://image1.8264.com/forum')})">{if $activityattach[attachment]}{lang update}{lang post_topic_image}{else}{lang upload}{lang post_topic_image}{/if}</a>-->
+					<input id="url_action" value="{$action}" type="hidden">
+					<input id="url_policy" value="{$policy}" type="hidden">
+					<input id="url_signature" value="{$sign}" type="hidden">
+					<input id="fileid" value="" type="hidden">
+					<input id="fid" value="$_G[fid]" type="hidden">
+					<input id="filename" name="filename" value="" type="hidden">
+					<input id="picPath" name="picPath" value="" type="hidden">
+
+
+					<div id="filePicker">{if $activityattach[attachment]}{lang update}{lang post_topic_image}{else}{lang upload}{lang post_topic_image}{/if}</div>
+				<!--<span class="tagTips-title">请尽量上传650*400尺寸的图片，只能上传一张</span>-->
+				<input type="hidden" name="activityaid" id="activityaid" value="$activity[aid]" />
+			</div>
+			<div style="clear:both;height:0;line-height:0;font-size:0;"></div>
+			<div class="" id="activityattach_image">
+				<!--{if $activity['thumb']}-->
+				<a href="$activity['attachurl']" target="_blank"><img class="spimg" src="$activity['thumb']" alt="" /></a>
+				<!--{/if}-->
+			</div>
+            <div class="captions-box" style="display:block">
+                <div class="tips-icon"></div>
+                <p>只能上传一张，尽量上传650*400尺寸的图片;</p>
+                <p>通过数据调查，上传精美图片可以提高报名量200%</p>
+            </div>
+		</div>
+		<div style="clear:both;height:1px;"></div>
+		<!--{/if}-->
+	</div>
+	<div class="primaryButton-wrapper">
+		<a href="javascript:void(0);" class="comb-btn next-link inittanchu" onclick="tostep2()">下一步</a>
+	</div>
+</div>
+<!--第一步 end-->
+<!--第二步-->
+<div class="base-panel step" style="height:0;overflow:hidden;position:relative;">
+	<div class="sub-title" style="margin-top:30px;">
+		<h2 id="subject_show"></h2>
+		<a href="javascript:void(0);" class="prev-link" onclick="tostep1()">返回上一步</a>
+	</div>
+	<div class="main-content" id="activitycontent">
+		<div class="ft-content">
+			<div class="form-title">
+				<h3><i class="ui-title-icon ui-tTrip-icon"></i>行程介绍</h3>
+			</div>
+			<div class="input-wrap">
+				<textarea name="activitymessage[1]" id="info-input1" class="textarea" onpropertychange="this.style.height=this.scrollHeight+'px';" oninput="this.style.height=this.scrollHeight+'px';">{$postinfo[activitymessage][0]}</textarea>
+			</div>
+		</div>
+		<div class="ft-content">
+			<div class="form-title">
+				<h3><i class="ui-title-icon ui-tPrice-icon"></i>费用装备</h3>
+			</div>
+			<div class="input-wrap">
+				<textarea name="activitymessage[2]" id="info-input2" class="textarea" onpropertychange="this.style.height=this.scrollHeight+'px';" oninput="this.style.height=this.scrollHeight+'px';">{$postinfo[activitymessage][1]}</textarea>
+			</div>
+		</div>
+		<div class="ft-content">
+			<div class="form-title">
+				<h3><i class="ui-title-icon ui-tNotice-icon"></i>其他<span style="font-size:12px;color:#a8a8a8;margin-left:12px;">非必填</span></h3>
+			</div>
+			<div class="input-wrap">
+				<textarea name="activitymessage[3]" id="info-input3" class="textarea" onpropertychange="this.style.height=this.scrollHeight+'px';" oninput="this.style.height=this.scrollHeight+'px';">{$postinfo[activitymessage][2]}</textarea>
+			</div>
+		</div>
+	</div>
+
+	<!--{subtemplate forum/post_newimage_2014_editor}-->
+	<input type="hidden" name="activitymessagecount" value="{$postinfo[activitymessagecount]}" id="activitymessagecount"/>
+
+	<div class="primaryButton-wrapper">
+		{if $_G[gp_action] == 'edit'}
+		<input type="hidden" name="editsubmit" value="true" id="postsubmit"/>
+		<input type="submit" class="comb-btn next-link" value="保存"/>
+		{else}
+		<input type="hidden" name="topicsubmit" value="true" id="postsubmit"/>
+		<input type="submit" class="comb-btn next-link" value="发布活动"/>
+		{/if}
+		<a href="javascript:void(0);" class="prev-link" onclick="tostep1()">返回上一步</a>
+	</div>
+	</div>
+<!--第二步 end-->
+<div id="idoit" style="display:none;">
+    <div style="color:#333;text-align:center;width:260px;padding:10px 0 10px;font-size:16px;">报名表是否新建完成？</div>
+    <div class="gsh ptm pbm">
+        <a href="javascript:void(0);" onclick="freshformlist()" class="pn pnc"><span>已完成</span></a>
+    </div>
+</div>
+
+<script type="text/javascript" src="http://static.8264.com/static/js/webuploader.js"></script>
+<script src="http://static.8264.com/static/js/webuploader_huodong.js" type="text/javascript"></script>
+
+<script type="text/javascript" reload="1">
+//判断是活动，还是发奖品
+function isActivityFunc() {
+
+	var isActivity = false;
+	var activitycredit = 0;
+	activitycredit = jQuery('#activitycredit').val() == '' ? 0 : parseInt(jQuery('#activitycredit').val(), 10);
+	var activitymessagecount = 0;
+	var gp_action = '{$_G[gp_action]}';
+
+	if (gp_action == 'edit') {
+		var activitymessagecount = parseInt(jQuery('#activitymessagecount').val(), 10);
+	}
+	if ((gp_action == 'newthread' && activitycredit == 0) || (gp_action == 'edit' && activitycredit == 0 && activitymessagecount > 1)) {
+		isActivity = true;
+	}
+	return isActivity;
+}
+function tostep1() {
+	jQuery('.step').eq(1).css({'height':'0'});
+	jQuery('.step').eq(1).find('#e_body').css({'height':'0'});
+	jQuery('.step').eq(0).show();
+	jQuery('.futitle').show();
+}
+function tostep2() {
+	var nummode = /^\d+$/;
+
+	{if $isfirstpost && !empty($_G['forum'][threadtypes][types])}
+	if($('postform').typeid.value == '0') {
+		showDialog('对不起，请选择子版分类', 'alert', '', function () { $('postform').typeid.focus() });
+		return false;
+	}
+	{/if}
+
+	var tempValue = jQuery('#subject').val();
+	jQuery('#subject_show').html('').html(tempValue);
+	jQuery('.futitle').hide();
+	if(!tempValue) {
+		showDialog('对不起，请填写活动标题', 'alert', '', function () { $('postform').subject.focus() });
+		return false;
+	}
+
+	var hasActivityplaceVal = false;
+	jQuery("input[name='activityplace[]']").each(function(){
+		if (jQuery(this).val() != '') {
+			hasActivityplaceVal = true;
+		}
+	});
+	if(!hasActivityplaceVal) {
+		showDialog('{lang post_error_message_2}', 'alert', '', function () { jQuery('.activityplace').eq(0).focus() });
+		return false;
+	}
+	if($('postform').collectplace.value == '') {
+		showDialog('对不起，请输入{lang activity_city}', 'alert', '', function () { $('postform').collectplace.focus() });
+		return false;
+	}
+	if($('postform').lng.value == '' || $('postform').lat.value == '') {
+		showDialog('请修改集合地点，确保地址能在地图中显示。', 'alert', '', function () { $('postform').collectplace.focus() });
+		return false;
+	}
+	if($('postform').starttimefrom_1.value == '') {
+		showDialog('{lang post_error_message_1}', 'alert', '', function () { $('postform').starttimefrom_1.focus(); });
+		return false;
+	}
+	if($('postform').starttimeto.value == '') {
+		showDialog('{lang post_error_message_1}', 'alert', '', function () { $('postform').starttimeto.focus(); });
+		return false;
+	}
+	if($('postform').starttimefrom_1.value != '') {
+		var date0 = getNumberTime($('postform').starttimefrom_1.value);
+		var date1 = getNumberTime($('postform').starttimeto.value);
+		if (date0 > date1) {
+			showDialog('对不起，活动的结束时间应晚于开始时间', 'alert', '', function () { $('postform').starttimefrom_1.focus(); });
+			return false;
+		}
+	}
+	if($('postform').activityexpiration.value == '') {
+		showDialog('对不起，请输入报名截止日期', 'alert', '', function () { $('postform').activityexpiration.focus() });
+		return false;
+	}
+	var date0 = getNumberTime($('postform').starttimefrom_1.value);
+	var date1 = getNumberTime($('postform').activityexpiration.value);
+	if (date0 < date1) {
+		showDialog('对不起，报名截止日期应早于活动开始时间', 'alert', '', function () { $('postform').activityexpiration.focus(); });
+		return false;
+	}
+	if($('postform').activityclass.value == '') {
+		showDialog('{lang post_error_message_3}', 'alert', '', function () { $('postform').activityclass.focus() });
+		return false;
+	}
+	if($('postform').activitynature.value == '0') {
+		showDialog('对不起，请选择{lang activiy_nature}', 'alert', '', function () { $('postform').activitynature.focus() });
+		return false;
+	}
+	var activitymobilemode = /^0?1[3|4|5|7|8][0-9]\d{8}$/;
+	if($('postform').activitymobile.value != ''&&!activitymobilemode.test($('postform').activitymobile.value)) {
+		showDialog('对不起，请输入正确的手机号', 'alert', '', function () { $('postform').activitymobile.focus() });
+		return false;
+	}
+	if (!nummode.test($('postform').cost.value) && $('postform').activitynature.value == '2') {
+		showDialog('对不起，请正确输入每人花销', 'alert', '', function () { $('postform').cost.focus() });
+		return false;
+	}
+	if($('postform').cost.value == '0' && $('postform').activitynature.value == '2') {
+		showDialog('对不起，请输入每人花销', 'alert', '', function () { $('postform').cost.focus() });
+		return false;
+	}
+    if($('postform').formid.value == '0') {
+		showDialog('对不起，请选择报名填写表', 'alert', '', function () { $('postform').formname.focus() });
+		return false;
+	}
+	if($('postform').activityaid.value == '') {
+		showDialog('对不起，请上传活动图片', 'alert', '', function () {});
+		return false;
+	}
+
+	jQuery('.step').eq(0).hide();
+	jQuery('.step').eq(1).css({'height':'auto'});
+	jQuery('.step').eq(1).find('#e_body').css({'height':'auto'});
+
+	var isActivity = isActivityFunc();
+	if (isActivity) {
+		jQuery('#activitycontent').show();
+		jQuery('#e_body').hide();
+	} else {
+		jQuery('#activitycontent').hide();
+		jQuery('#e_body').show();
+	}
+
+	{if $_G[gp_action] != 'edit'}
+	var nowhdmobile = jQuery.trim(jQuery('#activitymobile').val());
+	jQuery.get('http://m.hd.8264.com/wap.php?app=api&act=ajaxGetMobile&isget=-1&mobile='+nowhdmobile+'&bbs_uid={$_G[uid]}',function(data){},'jsonp');
+	{/if}
+}
+function validateextra_activity() {
+
+	var isActivity = isActivityFunc();
+	if (isActivity) {
+		var obj = jQuery('#postform #info-input1');
+		if(obj.val() == '') {
+			showDialog('对不起，请填写行程介绍', 'alert', '', function () { obj.focus() });
+			return false;
+		}
+		var obj = jQuery('#postform #info-input2');
+		if(obj.val() == '') {
+			showDialog('对不起，请填写费用装备', 'alert', '', function () { obj.focus() });
+			return false;
+		}
+	}
+	return true;
+}
+//将日期转为时间戳
+function getNumberTime(time){
+    time = time.replace(/-/g,"/");
+    var date = new Date(time);
+    time = Math.floor(date.getTime()/1000);
+    return time;
+}
+//设置活动时长标签
+function setTagDays(startTime, endTime){
+	startTime   = getNumberTime(startTime);
+	endTime     = getNumberTime(endTime);
+	var days    = Math.floor((endTime - startTime)/86400)+1;
+	var tempObj = jQuery('.single-tag-starttimeto');
+	tempObj.find('span').html('').html(days+"日");
+	tempObj.removeClass('single-tag-default').show();
+	tempObj.find('.tag-info').show();
+
+	return days;
+}
+//增加活动地点
+function addPlace(place) {
+
+	//去掉省市
+	var placeIndex = place.lastIndexOf(' - ');
+	place = placeIndex > -1 ? place.substring(0, placeIndex) : place;
+
+	var html = '';
+	html    +=  '<div class="place-component-block">';
+	html    +=  '<strong class="place-name">'+place+'</strong>';
+	html    +=  '<a href="javascript:void(0);" title="删除活动地点" class="place-menu-link delete-row"><b class="icon-delete"></b></a>';
+	html    +=  '<input type="hidden" name="activityplace[]" value="'+place+'">';
+	html    +=  '</div>';
+	jQuery('.place-multiLine').append(html).show();
+	jQuery('.activityplace').val('');
+}
+//过滤特殊字符，最多8个字
+function dealText(keyword) {
+	keyword     = keyword.replace(/[~|`|!|@|#|$|%|^|&|*|\(|\)|_|\-|——|\+|=|\{|\[|\}|\]|\||\\|:|;|"|'|<|,|>|.|\?|/|·|！|￥|……|（|）|【|】|：|；|”|“|‘|’|《|，|》|。|？|、| |　]+/g, '');
+	var kindex  = 0;
+	var len     = 0;
+	for (var i=0; i<keyword.length; i++) {
+		iVal = keyword.charCodeAt(i);
+		len += iVal>127 || iVal==94 ? 2 : 1;
+		if (len <= 16) {
+			kindex = i;
+		}
+	}
+	kindex++;
+	keyword = len <= 16  ? keyword : keyword.substr(0,kindex);
+	return keyword;
+}
+
+</script>
+<script type="text/javascript">
+jQuery.noConflict();
+;(function($){
+
+	$('.base-panel .needdown').hover(function(event){
+		$(this).find('[class$=_down]').show();
+	}, function(event){
+		$(this).find('[class$=_down]').hide();
+	});
+	$(".base-panel").delegate('div[class$=_down]>a', 'click', function(){
+		var hid     = $(this).attr('hid');
+		var tempVal = $(this).text();
+		$(this).parent().hide();
+		if(hid) {
+			var tempobj = $(this).parent().siblings('input[type=hidden]').val(hid).siblings('span.js');
+		} else {
+			var tempobj = $(this).parent().siblings('input[type=text]');
+		}
+		tempobj.val(tempVal).end();
+
+		//活动地点
+		if (tempobj.hasClass('activityplace')) {
+			$('.activityplace').focus();
+			addPlace(tempVal);
+		}
+
+	});
+
+	$('.base-panel div.timesj>span.xlcf').click(function(event){
+		$(this).siblings('.timesj_down_ot').show();
+	});
+	$('.base-panel div.timesj>div.timesj_down_ot').mouseleave(function(event){
+		$(this).hide();
+	});
+	$('.base-panel div.timesj>div.timesj_down_ot>a').click(function(event){
+		$(this).parent().hide();
+	});
+
+	//活动性质
+	$('.nature-item').click(function(){
+		$(this).siblings().removeClass('nature-selected');
+		$(this).addClass('nature-selected');
+		if ($(this).hasClass('sy-nature')) {
+			$('#activitynature').val('2');
+		} else {
+			$('#activitynature').val('1');
+		}
+	});
+
+	$(".activityplace").keyup(function(){
+		var keyword = $(this).val();
+
+		//过滤特殊字符，最多8个字
+		keyword = dealText(keyword);
+		$(this).val(keyword);
+
+		var date = new Date();
+		var time = date.getTime();
+
+		var place_down = $(this).siblings('.place_down');
+		var html = '<span>限8个字，符号无效，空格生效。</span>';
+		if (keyword != '') {
+			var re  = /\w+/i;
+			var pos = keyword.search(re);
+			keyword = encodeURI(keyword);
+			if (pos < 0) {
+				$.post('forum.php?mod=misc&action=activitytermini&time='+time,{keyword:keyword},function(data){
+					var list = data.list;
+					for(var i=0;i<list.length;i++){
+						html += '<a href="javascript:void(0);">'+list[i]+'</a>';
+					}
+					$('.place_down').hide();
+					place_down.html('').html(html).show();
+				},'json');
+			} else {
+				place_down.html('').html(html).show();
+			}
+		} else {
+			$('.place_down').hide();
+		}
+	});
+	$('.activityplace').keydown(function(event){
+		if (event.keyCode == 32) {
+			var tempVal = $(this).val();
+			$(this).val('');
+			tempVal = tempVal.replace(/[ |　]+/g, '');
+			if (tempVal != '') {
+				addPlace(tempVal);
+			}
+		}
+	});
+	//俱乐部自动完成
+	$(".form-group").delegate('input.js', 'keyup', function(){
+		var findvalue = $(this).val();
+		var mydowndiv = $(this).siblings('div[class=auto_down]');
+		mydowndiv.show().find('a').hide();
+		if(findvalue != ''){
+			mydowndiv.find("a:contains('" + findvalue + "')").show().end();
+		}
+		mydowndiv.css('height', mydowndiv.find('a:visible').length < 9 ? 'auto' : '270px');
+	});
+	$("#clubname").keyup(function(){
+		var tempVal = $(this).val();
+
+		//过滤特殊字符，最多8个字
+		tempVal = dealText(tempVal);
+
+		$(this).val(tempVal);
+
+	});
+
+	//删除选项
+	$(".place-multiLine").delegate(".delete-row","click",function(){
+		var objParent = $(this).parents('.place-component-block');
+		objParent.remove();
+		$('.place_down').hide();
+
+		if ($('.place-component-block').length == 0) {
+			jQuery('.place-multiLine').hide();
+		}
+	});
+
+	//删掉开始的弹出框(编辑器带的)
+	si = setInterval(function(){
+		if ($('#append_parent #fwin_dialog').length > 0) {
+			$('#append_parent #fwin_dialog').remove();
+			$('#append_parent #fwin_dialog_cover').remove();
+			$('#append_parent').css({'display':'inline'});
+			clearInterval(si);
+		}
+	},500);
+	$('.inittanchu').click(function(){
+		$('#append_parent').css({'display':'inline'});
+		clearInterval(si);
+	});
+
+	//子版分类的样式
+	siTypeid = setInterval(function(){
+		var typeid = parseInt($('#typeid').val(), 10);
+		if (typeid > 0) {
+			$('#typeid').next().css({'color':'#585858'});
+			clearInterval(siTypeid);
+		}
+	},500);
+
+	//活动玩法的样式
+	siClass = setInterval(function(){
+		if ($('#activityclass').val() != '') {
+			$('#activityclass').next().css({'color':'#585858'});
+			clearInterval(siClass);
+		}
+	},500);
+
+	//使自动完成框消失
+	$(document).click(function(){
+		$('.place_down').hide();
+		$('.auto_down').hide();
+		$('#result1').hide();
+		$('#result').hide();
+
+		var tempVal = $('.activityplace').val();
+		$('.activityplace').val('');
+		tempVal = tempVal.replace(/[ |　]+/g, '');
+		if (tempVal != '') {
+			addPlace(tempVal);
+		}
+	});
+
+	//阻止回车提交
+	$('.combobox-input input').keydown(function(event){
+		if (event.keyCode == 13) {
+			return false;
+		}
+	});
+
+
+	$("#activitymobile").bind("input propertychange",function(){
+		var hdmobile = $.trim($('#activitymobile').val());
+		showactivitymobileSpan(hdmobile);
+	});
+
+	{if $_G[gp_action] == 'edit'}
+	var loadhdmobile ='{$activity[mobile]}';
+	showactivitymobileSpan(loadhdmobile);
+	{else}
+	jQuery.get('http://m.hd.8264.com/wap.php?app=api&act=ajaxGetMobile&isget=1&bbs_uid={$_G[uid]}',function(data){
+		var loadhdmobile = data.mobile;
+		jQuery('#activitymobile').val(loadhdmobile);
+		showactivitymobileSpan(loadhdmobile);
+	},'jsonp');
+	{/if}
+
+
+})(jQuery);
+
+
+function showactivitymobileSpan(hdmobile){
+	var activitymobilemode = /^0?1[3|4|5|8][0-9]\d{8}$/;
+	if(hdmobile != ''&&activitymobilemode.test(hdmobile)) {
+		jQuery.get('http://m.hd.8264.com/wap.php?app=api&act=ajaxMobilehd&mobile='+hdmobile+'&bbs_uid={$_G[uid]}',function(data){
+			if(data.count >0){
+				jQuery('#activitymobileSpan').html('<a href="http://hd.8264.com/index.php?app=claim&mobile='+hdmobile+'" target="_blank">活动平台上有<b style="color:#ff6639;font-size:16px;">'+data.count+'条</b>活动待认领，认领后报名量增加200%&nbsp;<u style="color:#ff6639;font-size:14px;">马上认领></u></a>');
+				jQuery('#activitymobileclaimnum').val(data.count);
+			}else{
+				jQuery('#activitymobileSpan').html('<span style="color:red;">填写后可免费接收报名短信并推广到</span><a href="http://hd.8264.com/" target="_blank" style="color:blue;">8264活动平台</a>');
+				jQuery('#activitymobileclaimnum').val('');
+			}
+		},'jsonp');
+	}else{
+		jQuery('#activitymobileSpan').html('<span style="color:red;">填写后可免费接收报名短信并推广到</span><a href="http://hd.8264.com/" target="_blank" style="color:blue;">8264活动平台</a>');
+		jQuery('#activitymobileclaimnum').val('');
+	}
+}
+
+</script>
+<!-- 高德地图 -->
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=58e839fc201e927a2a4b5f0a16d8a0db"></script>
+<script type="text/javascript">
+var windowsArr = [];
+var marker = [];
+var mapObj = new AMap.Map("container", {
+    resizeEnable: true,
+        resizeEnable: true,
+        center: [116.397428, 39.90923],//地图中心点
+        zoom: 13,//地图显示的缩放级别
+    keyboardEnable: false
+});
+
+document.getElementById("collectplace").onkeyup = keydown;
+//输入提示
+function autoSearch() {
+    var keywords = document.getElementById("collectplace").value;
+    var auto;
+    //加载输入提示插件
+    AMap.service(["AMap.Autocomplete"], function() {
+        var autoOptions = {
+            city: "" //城市，默认全国
+        };
+        auto = new AMap.Autocomplete(autoOptions);
+        //查询成功时返回查询结果
+        if (keywords.length > 0) {
+            auto.search(keywords, function(status, result) {
+                autocomplete_CallBack(result);
+            });
+        }
+        else {
+            document.getElementById("result1").style.display = "none";
+        }
+    });
+}
+
+//输出输入提示结果的回调函数
+function autocomplete_CallBack(data) {
+    var resultStr = "";
+    var tipArr = data.tips;
+    if (tipArr && tipArr.length > 0) {
+        for (var i = 0; i < tipArr.length; i++) {
+            resultStr += "<div id='divid" + (i + 1) + "' onmouseover='openMarkerTipById(" + (i + 1)
+                    + ",this)' onclick='selectResult(" + i + ")' onmouseout='onmouseout_MarkerStyle(" + (i + 1)
+                    + ",this)' style=\"font-size: 13px;cursor:pointer;padding:5px 5px 5px 5px;\"" + "data=" + tipArr[i].adcode + ">" + tipArr[i].name + "<span style='color:#C1C1C1;'>" + tipArr[i].district + "</span></div>";
+        }
+    }
+    else {
+        resultStr = '<div style="padding:10px;">π__π 亲,人家找不到结果!<br />要不试试：<br />1.请确保所有字词拼写正确<br />2.尝试不同的关键字<br />3.尝试更宽泛的关键字</div>';
+    }
+    document.getElementById("result1").curSelect = -1;
+    document.getElementById("result1").tipArr = tipArr;
+    document.getElementById("result1").innerHTML = resultStr;
+    document.getElementById("result1").style.display = "block";
+}
+
+//输入提示框鼠标滑过时的样式
+function openMarkerTipById(pointid, thiss) {  //根据id打开搜索结果点tip
+    thiss.style.background = '#CAE1FF';
+}
+
+//输入提示框鼠标移出时的样式
+function onmouseout_MarkerStyle(pointid, thiss) {  //鼠标移开后点样式恢复
+    thiss.style.background = "";
+}
+
+//从输入提示框中选择关键字并查询
+function selectResult(index) {
+    if (index < 0) {
+        return;
+    }
+    if (navigator.userAgent.indexOf("MSIE") > 0) {
+        document.getElementById("collectplace").onpropertychange = null;
+        document.getElementById("collectplace").onfocus = focus_callback;
+    }
+    //截取输入提示的关键字部分
+    var text = document.getElementById("divid" + (index + 1)).innerHTML.replace(/<[^>].*?>.*<\/[^>].*?>/g, "");
+    var cityCode = document.getElementById("divid" + (index + 1)).getAttribute('data');
+    document.getElementById("collectplace").value = text;
+    document.getElementById("result1").style.display = "none";
+    //根据选择的输入提示关键字查询
+    mapObj.plugin(["AMap.PlaceSearch"], function() {
+        var msearch = new AMap.PlaceSearch();  //构造地点查询类
+        AMap.event.addListener(msearch, "complete", placeSearch_CallBack); //查询成功时的回调函数
+        msearch.setCity(cityCode);
+        msearch.search(text);  //关键字查询查询
+    });
+    var p = jQuery("#result1 > #divid"+(index+1)+" > span").html();
+    jQuery("#collectprovince").html(p);
+}
+
+//定位选择输入提示关键字
+function focus_callback() {
+    if (navigator.userAgent.indexOf("MSIE") > 0) {
+        document.getElementById("collectplace").onpropertychange = autoSearch;
+    }
+}
+
+//输出关键字查询结果的回调函数
+function placeSearch_CallBack(data) {
+    //清空地图上的InfoWindow和Marker
+    windowsArr = [];
+    marker = [];
+    mapObj.clearMap();
+    var resultStr1 = "";
+    var poiArr = data.poiList.pois;
+    var resultCount = poiArr.length;
+    for (var i = 0; i < resultCount; i++) {
+        resultStr1 += "<div id='divid" + (i + 1) + "' onmouseover='openMarkerTipById(" + i + ",this)' onmouseout='onmouseout_MarkerStyle(" + (i + 1) + ",this)' style=\"font-size: 12px;cursor:pointer;padding:0px 0 4px 2px; border-bottom:1px solid #C1FFC1;\"><table><tr><td><img src=\"http://webapi.amap.com/images/" + (i + 1) + ".png\"></td>" + "<td><h3><font color=\"#00a6ac\">名称: " + poiArr[i].name + "</font></h3>";
+//            resultStr1 += createContent(poiArr[i].type, poiArr[i].address, poiArr[i].tel) + "</td></tr></table></div>";
+        resultStr1 += createContent(poiArr[i].type, poiArr[i].address, poiArr[i].tel) + "<span style='display:none;' class='lng'>"+poiArr[i].location.getLng()+"</span><span style='display:none;' class='lat'>"+poiArr[i].location.getLat()+"</span></td></tr></table></div>";
+    }
+    mapObj.setFitView();
+
+    document.getElementById("result").innerHTML = resultStr1;
+    document.getElementById("result").style.display = "none";
+    jQuery("#result div[id=divid1]").click();
+
+    jQuery("#result").addClass('hasClick');
+}
+
+//infowindow显示内容
+function parseStr(p){
+    if(!p || p == "undefined" || p == " undefined"||p=="tel"){
+        p="暂无";
+    }
+    return p;
+}
+function createContent(type, address, tel) {  //窗体内容
+    type=parseStr(type);
+    address=parseStr(address);
+    tel=parseStr(tel);
+    var s=[];
+    s.push("地址：" +address);
+    s.push("电话：" +tel);
+    s.push("类型：" +type);
+    return s.join("<br>");
+}
+function keydown(event) {
+    var key = (event || window.event).keyCode;
+    var result = document.getElementById("result1")
+    var cur = result.curSelect;
+    if (key === 40) {//down
+        if (cur + 1 < result.childNodes.length) {
+            if (result.childNodes[cur]) {
+                result.childNodes[cur].style.background = '';
+            }
+            result.curSelect = cur + 1;
+            result.childNodes[cur + 1].style.background = '#CAE1FF';
+            document.getElementById("collectplace").value = result.tipArr[cur + 1].name;
+        }
+    } else if (key === 38) {//up
+        if (cur - 1 >= 0) {
+            if (result.childNodes[cur]) {
+                result.childNodes[cur].style.background = '';
+            }
+            result.curSelect = cur - 1;
+            result.childNodes[cur - 1].style.background = '#CAE1FF';
+            document.getElementById("collectplace").value = result.tipArr[cur - 1].name;
+        }
+    } else if (key === 13) {
+        var res = document.getElementById("result1");
+        if (res && res['curSelect'] !== -1) {
+            selectResult(document.getElementById("result1").curSelect);
+        }
+    } else {
+        autoSearch();
+    }
+}
+
+function setMapPoint(mapObj, lng1, lat1) {
+	AMap.service('AMap.Geocoder',function(){
+        geocoder = new AMap.Geocoder({
+        });
+    })
+
+	mapObj.panTo(new AMap.LngLat(lng1, lat1));
+
+	//加载鹰眼
+    mapObj.plugin(["AMap.OverView"], function () {
+        view = new AMap.OverView();
+        mapObj.addControl(view);
+    });
+
+    //初始化覆盖物
+    mapObj.clearMap();
+    marker = new AMap.Marker({
+		icon: "http://webapi.amap.com/images/marker_sprite.png",
+		position: new AMap.LngLat(lng1, lat1),
+		draggable: true,
+		cursor: 'move',
+		raiseOnDrag: true
+    });
+    marker.setMap(mapObj);  //在地图上添加点
+    marker.setAnimation('AMAP_ANIMATION_DROP');
+    mapObj.setCenter([lng1,lat1]);
+
+    AMap.event.addListener(marker, 'dragend', function(e){
+    	jQuery("#lng").val(e.lnglat.lng);
+    	jQuery("#lat").val(e.lnglat.lat);
+    	mapObj.setCenter([e.lnglat.lng,e.lnglat.lat]);
+
+    	 //逆地理编码
+        var lnglatXY=[e.lnglat.lng, e.lnglat.lat];//地图上所标点的坐标
+        geocoder.getAddress(lnglatXY, function(status, result) {
+            if (status === 'complete' && result.info === 'OK') {
+							province = result.regeocode.formattedAddress.replace('省', '省,');
+							province = province.replace('市', '市,');
+							province = province.replace('区', '区,');
+              jQuery('#collectplace').val(province);
+            }else{
+               console.log('获取地址失败');
+            }
+        });
+    });
+}
+
+function setMapPointByAddress(mapObj) {
+	if (jQuery("#result").hasClass('hasClick')) {
+		jQuery("#result").removeClass('hasClick');
+		return false;
+	}
+	jQuery("#lat").val('');
+	jQuery("#lng").val('');
+    address = jQuery("#collectplace").val();
+
+    AMap.service(["AMap.Geocoder"], function () { //加载地理编码
+        geocoder = new AMap.Geocoder({
+            radius: 1000,
+            extensions: "all"
+        });
+        geocoder.getLocation(address, function (status, info) {
+            var pointObj = info.geocodes;
+            if (typeof(pointObj) == 'object') {
+	            jQuery.each(pointObj, function (n, value) {
+	                lng1 = value.location.lng;
+	                lat1 = value.location.lat;
+	            });
+
+	            jQuery("#lat").val(lat1);
+	            jQuery("#lng").val(lng1);
+	            mapObj.panTo(new AMap.LngLat(lng1, lat1));
+	            //加载鹰眼
+	            mapObj.plugin(["AMap.OverView"], function () {
+	                view = new AMap.OverView();
+	                mapObj.addControl(view);
+	            });
+	            //初始化覆盖物
+		        mapObj.clearMap();
+		        marker = new AMap.Marker({
+					icon: "http://webapi.amap.com/images/marker_sprite.png",
+					position: new AMap.LngLat(lng1, lat1),
+					draggable: true,
+					cursor: 'move',
+					raiseOnDrag: true
+		        });
+		        marker.setMap(mapObj);  //在地图上添加点
+		        marker.setAnimation('AMAP_ANIMATION_DROP');
+		        mapObj.setCenter([lng1,lat1]);
+
+		        AMap.event.addListener(marker, 'dragend', function(e){
+		        	jQuery("#lng").val(e.lnglat.lng);
+			    	jQuery("#lat").val(e.lnglat.lat);
+			    	mapObj.setCenter([e.lnglat.lng,e.lnglat.lat]);
+
+			    	 //逆地理编码
+			        var lnglatXY=[e.lnglat.lng, e.lnglat.lat];//地图上所标点的坐标
+			        geocoder.getAddress(lnglatXY, function(status, result) {
+			            if (status === 'complete' && result.info === 'OK') {
+			              jQuery('#collectplace').val(result.regeocode.formattedAddress);
+			            }else{
+			               console.log('获取地址失败');
+			            }
+			        });
+		        });
+            } else {
+				showDialog('请修改集合地点，确保地址能在地图中显示。', 'alert', '', function () { jQuery('#collectplace').focus() });
+				return false;
+            }
+        });
+    });
+}
+
+jQuery("#result").delegate('div[id^=divid]', 'click', function(){
+	var tempObj   = jQuery(this).find('td').eq(1);
+	var tempValue = tempObj.find('font').html();
+	tempValue     = tempValue.replace('名称:', '');
+	province = jQuery("#collectprovince").html();
+	province = province.replace('省', '省,');
+	province = province.replace('市', '市,');
+	province = province.replace('区', '区,');
+	jQuery("#collectplace").val(province + tempValue);
+	jQuery("#result").hide();
+
+	//已存在经纬度，可以直接加载地图
+	var lng1 = tempObj.find('.lng').html();
+	var lat1 = tempObj.find('.lat').html();
+    jQuery("#lng").val(lng1);
+    jQuery("#lat").val(lat1);
+
+    if(lng1 && lat1){
+        setMapPoint(mapObj, lng1, lat1);
+    }
+});
+jQuery("#collectplace").blur(function(){
+	setTimeout(function(){
+		setMapPointByAddress(mapObj);
+	}, 1000);
+});
+function usethisform(thisObj){
+    jQuery("#formid").val(jQuery(thisObj).attr('fid'));
+}
+function freshformlist(){
+    var defalutobj = null;
+    jQuery.get("misc.php", {mod:'hd',action:'getformlist'}, function (data){
+        data = eval("("+data+")");
+        if(data.status == 1){
+            var html = '';
+            for(formid in data.tpllist){
+                html+= '<a href="javascript:void(0);" fid="'+formid+'" onclick="usethisform(this)">'+data.tpllist[formid]+'</a>';
+            }
+            jQuery("#formlist").html(html);
+            defalutobj = jQuery("#formlist a").eq(0);
+            jQuery("#formname").val(defalutobj.html());
+            jQuery("#formid").val(defalutobj.attr('fid'));
+            jQuery("#formid").parents('div').show();
+            jQuery("a.bg-c1").removeClass('bg-c1');
+            hideMenu('fwin_dialog', 'dialog');
+        }else{
+            alert('未检测到数据更新');
+        }
+    });
+}
+</script>
+<script type="text/javascript">
+jQuery(function () {
+    //已存在经纬度，可以直接加载地图
+    lng1 = jQuery("#lng").val();
+    lat1 = jQuery("#lat").val();
+
+    if(lng1 && lat1){
+        setMapPoint(mapObj, lng1, lat1);
+    }
+
+});
+</script>
+<!-- 高德地图 end -->

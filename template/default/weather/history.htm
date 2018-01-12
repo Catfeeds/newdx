@@ -1,0 +1,127 @@
+<!--{subtemplate common/header_8264_new}-->
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/weather/style/style.css">
+<style>
+    body{ background:url(http://static.8264.com/static/css/weather/images/forecast_bg.png) fixed top center;}
+</style>
+<script src="http://static.8264.com/static/js/jquery-1.9.1.min.js"></script>
+        <div class="w1170">
+        	<!-- 值得买 -->
+            <!--{eval include(DISCUZ_ROOT.'./source/plugin/skiing/hd_zw.php');}-->
+            <!--{eval $zhidemai_list = ForumOptionHuoDong::pianyi_sidebar(6, 'top', 'jiu', '10027');}-->
+            <!--{if $zhidemai_list}-->
+            <div style="margin: 10px auto 10px auto;">
+            <style>
+                .zhidemaiwidth{ width:1170px;}
+                .zhidemaibox .zhidemailist_new{ width:1170px; margin:0 auto; overflow:hidden;}
+                .zhidemaibox .zhidemailist_new ul{ width:1370px;}
+                .zhidemaibox .zhidemailist_new li{width:176px; overflow:hidden;}
+                .zhidemaibox .zhidemailist_new li img{ width:176px;}
+            </style>
+            <!--{subtemplate common/zhidemai}-->
+            </div>
+            <!--{/if}-->
+            <!-- //值得买 -->
+            <div class="navigation clear_b">
+                <h3>
+                    当前位置：<a href="http://www.8264.com/weather/">全国天气预报</a>><a href="http://www.8264.com/weather/{$parent_spell}/">{$parent_area}</a>><a href="http://www.8264.com/weather/{$_GET['pspell']}/{$_GET['area']}/">{$cur_city}天气</a>
+                </h3>
+                <div class="changecity">
+                    <span>切换城市</span>
+                </div>
+            </div>
+            <div class="btitle clear_b">
+                <h1>{$cur_city}{$show_dateline}历史天气</h1>
+            </div>
+            <div class="historylist">
+                <div class="historyzs">
+                    <span>平均高温：<i>{$weather_history_result['avg_max_tem']}℃</i></span>
+                    <span>平均低温：<i>{$weather_history_result['avg_min_tem']}℃</i></span>
+                    <span>极端高温：<i>{$weather_history_result['max_tem']}℃</i></span>
+                    <span>极端低温：<i>{$weather_history_result['min_temp']}℃</i></span>
+                </div>
+                <div class="historylistcon mt30">
+                    <div class="historytitle">
+                        <span class="w300">日期</span>
+                        <span class="w174">最高气温</span>
+                        <span class="w174">最低气温</span>
+                        <span class="w174">天气</span>
+                        <span class="w174">风向</span>
+                        <span class="w174">风力</span>
+                    </div>
+
+                    <!--{loop $weather_history_result['data'] $weather_history}-->
+                    <div class="historyone">
+                        <span class="w300">{$weather_history['date']}</span>
+                        <span class="w174">{$weather_history['maxTem']}℃</span>
+                        <span class="w174">{$weather_history['minTem']}℃</span>
+                        <span class="w174">{$weather_history['weather']}</span>
+                        <span class="w174">{$weather_history['winddirection']}</span>
+                        <span class="w174">{$weather_history['windpower']}</span>
+                    </div>
+                    <!--{/loop}-->
+                </div>
+            </div>
+            <div class="btitle clear_b">
+                <h1>{$cur_city}历史天气</h1>
+
+            </div>
+            <div class="citylist clear_b">
+            	{eval $year=date("Y");}
+            	{eval $now=strtotime(date('Y-m'));}
+            	{eval $last=strtotime('2014-1');}
+            	{eval while($now>=$last){ }
+            	{eval $nows=date('Ym',$now);}
+            	<a href="http://www.8264.com/weather/{$_GET['pspell']}/{$area}/tianqi-{eval echo $nows;}.html" target="_blank">{$cur_city}{eval echo date('Y年m月',$now);}天气</a>
+            	{eval $now= strtotime('-1 month',$now);}
+            	{eval } }
+            </div>
+
+            <div class="btitle clear_b">
+                <h1>其他城市历史天气</h1>
+                <div><a href="http://www.8264.com/weather/" target="_blank">更多城市查询</a></div>
+            </div>
+            <div class="citylist clear_b">
+                <!--{loop $weather_parallel_area_list $weather_parallel_area}-->
+                <a href="http://www.8264.com/weather/{$weather_parallel_area['pspell']}/{$weather_parallel_area['spell']}/tianqi-{$show_history_date}.html" target="_blank">{$weather_parallel_area['name']}历史天气</a>
+                <!--{/loop}-->
+            </div>
+        </div>
+        <!--切换城市列表开始-->
+        <div class="citylistbox">
+            <div class="citytitle">
+                <span>选择城市</span>
+                <i></i>
+            </div>
+            <div class="minicity_content">
+
+             </div>
+        </div>
+        <!--切换城市列表结束-->
+
+        <script>
+            $(function () {
+                var ww = $(window).height();
+                $(".changecity span").click(function () {
+                    $(".minicity_content").load('http://www.8264.com/weather.php?ctl=get_citylist_by_ajax&is_ajax=1&area={$_GET['area']}&pspell={$_GET['pspell']}');
+                    $(".citylistbox").css({
+                        "opacity": "100", "z-index": "1091"
+                    });
+                    $(".citylistbox").height(ww);
+                    $(".minicity_content").height(ww - 70);
+                });
+                $(document).on("click",".citytitle i",function(){
+                    $(".citylistbox").css({
+                        "opacity": "0", "z-index": "-1"
+                    });
+                });
+
+                $(".changecity a").click(function () {
+                    $(".citylistbox").css({
+                        "opacity": "0", "z-index": "-1"
+                    });
+                });
+            });
+        </script>
+<!--嵌入公用底部开始-->
+<!--{subtemplate common/footer_8264_new}-->
+

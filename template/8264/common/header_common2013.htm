@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={CHARSET}" />
+<title>
+<!--{if isset($forumOption)}-->
+<!--{eval $forumOption->initPageTitle();}-->
+<!--{/if}-->
+<!--{if $pageTitle}-->
+<!--{eval echo $pageTitle;}-->
+<!--{elseif $_G['basescript']=='portal' && $_G['gp_mod']=='list' && $metakeywords && $_G['catid']!=874 }-->
+<!--{if $_G['catid']==878}-->
+户外美女图片_驴友图片_最健康的户外美女照片
+<!--{else}-->
+$metakeywords
+<!--{if $_G['setting']['bbname']}-->- $_G['setting']['bbname']<!--{/if}-->
+<!--{/if}-->
+<!--{else}-->
+<!--{if $_GET['do']=="produce"&&$_G['uid']}-->
+$navtitle<!--{eval echo "的装备分享";}-->
+<!--{else}-->
+<!--{eval $navtitle = preg_replace('/的记录/', '的微博', $navtitle);}-->
+<!--{if !empty($topic['title'])}-->$topic['title']<!--{/if}--><!--{if !empty($navtitle)}-->$navtitle -<!--{/if}--><!--{if $_G['setting']['bbname']}-->$_G['setting']['bbname'] -<!--{/if}-->
+<!--{/if}-->
+<!--{/if}-->
+</title>
+<link href="http://www.8264.com/template/8264/css/common/reset.css" rel="stylesheet" type="text/css" />
+$_G['setting']['seohead']
+<meta name="keywords" content="{if !empty($metakeywords)}{echo htmlspecialchars($metakeywords)}{/if}" />
+<meta name="description" content="{if !empty($metadescription)}{echo htmlspecialchars($metadescription)} {/if},$_G['setting']['bbname']" />
+<meta name="author" content="8264.com" />
+<meta name="copyright" content="2001-2010" />
+<meta name="MSSmartTagsPreventParsing" content="True" />
+<meta http-equiv="MSThemeCompatible" content="Yes" />
+<!--{if isset($forumOption)}--> 
+<!--{eval $flag = $forumOption->getSiteUrlbyUrl($_G['siteurl']);}--> 
+<!--{if ($flag==1)}--> 
+<!--{eval $_G['siteurl'] = "http://bbs.8264.com/";}--> 
+<!--{else}--> 
+<!--{eval $_G['siteurl'] = $_G['siteurl'];}--> 
+<!--{/if}--> 
+<!--{/if}-->
+<base href="$_G['siteurl']" />
+<!--{csstemplate}--> 
+<script type="text/javascript">var STYLEID = '{STYLEID}', STATICURL = '{STATICURL}', IMGDIR = '{IMGDIR}', VERHASH = '{VERHASH}', charset = '{CHARSET}', discuz_uid = '$_G[uid]', cookiepre = '{$_G[config][cookie][cookiepre]}', cookiedomain = '{$_G[config][cookie][cookiedomain]}', cookiepath = '{$_G[config][cookie][cookiepath]}', showusercard = '{$_G[setting][showusercard]}', attackevasive = '{$_G[config][security][attackevasive]}', disallowfloat = '{$_G[setting][disallowfloat]}', creditnotice = '<!--{if $_G['setting']['creditnotice']}-->$_G['setting']['creditnames']<!--{/if}-->', defaultstyle = '$_G[style][defaultextstyle]', REPORTURL = '$_G[currenturl_encode]', SITEURL = '$_G[siteurl]';</script> 
+
+<script type="text/javascript" src="{$_G[setting][jspath]}common.js?{VERHASH}"></script> 

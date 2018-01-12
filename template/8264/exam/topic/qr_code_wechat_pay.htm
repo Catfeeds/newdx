@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="gbk">
+<title>微信支付 - 8264户外运动学校</title>
+<meta name="viewport" content="minimal-ui,width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="MobileOptimized" content="width">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="renderer" content="webkit"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+<link rel="stylesheet" href="http://static.8264.com/static/css/exam/style.css?20170901">
+<script type="text/javascript" src="http://static.8264.com/static/js/exam/jquery-1.9.1.min.js"></script>
+<style>
+    body,html{background:#f8f8f8;}
+</style>
+
+</head>
+
+<body>
+<!--头部开始-->
+<!--{if $isWechat == 0}-->
+<div class="header-content">
+	<div class="home-icons" style="display: none;">
+		<a href="http://www.8264.com/xuexiao/">首页</a>
+	</div>
+	<div class="goback-icons">
+		<a href="http://www.8264.com/xuexiao/">返回</a>
+	</div>
+	<div class="logo">
+		<a href="#">
+			<img src="http://static.8264.com/static/images/exam/logo.png" alt="">
+		</a>
+	</div>
+</div>
+<!--{else}-->
+	<!--{if $phonetype == 'android'}-->
+		<a href="{$back_url}" class="chat-back"></a>
+	<!--{/if}-->
+<!--{/if}-->
+<div class="zhifutitle">支付订单</div>
+
+<div class="zhifujiagebox">
+    <div class="zhifujiagecon">
+        <!--{if $attach == 1}-->
+        <i class="hyzhifuicon"></i>
+        <div class="zhifurightcon">
+            <span>8264超级会员</span>
+            <em>成为会员，超值享受各种福利</em>
+        </div>
+        <b class="baojia">￥{$total_fee}	/年</b>
+        <!--{else}-->
+        <i class="hyzhifuicon"></i>
+        <div class="zhifurightcon">
+            <span>&nbsp;8264视频课程</span>
+            <em>{$video_title}</em>
+        </div>
+        <b class="baojia">￥{$total_fee}	</b>
+        <!--{/if}-->
+    </div>
+</div>
+
+
+<div class="zhifujiagecon whitebox ptb15">
+    <i class="weixinzhifuicon"></i>
+    <div class="zhifurightcon">
+        <span>微信扫码支付</span>
+        <em>微信安全支付</em>
+    </div>
+    <b class="duigou"></b>
+</div>
+
+<div class="zhifuadbox" style="text-align: center">
+    <img alt="扫码支付" src="http://paysdk.weixin.qq.com/example/qrcode.php?data={$url2}" style="width:150px"/>
+</div>
+<script type="text/javascript">
+    var i = 0;
+    var listen;
+    $(document).ready(function(){
+        listen = setInterval(function(){
+            check_order()
+        },3000)
+    });
+    function check_order(){
+        i++;
+        $.ajax({
+            type: 'POST',
+            url: 'http://www.8264.com/exam.php?ctl=topic&act=ajax_check_order',
+            async:false,
+            data: {attach:'{$attach}',product_id:'{$product_id}'},
+            dataType: 'json',
+            success: function(data){
+                if(data.return_state == 1){
+                    alert('请先登录系统,再尝试购买');
+                    return false;
+                }else if(data.return_state == 0){
+                    if(data.pay == 1){
+                        alert("支付成功!");
+                        window.location.href = '{$exam_http_referer}';
+                    }
+                }else{
+                    alert("参数不正确，请联系客服!");
+                    return false;
+                }
+            }
+        });
+        if(i == 60){
+            window.clearInterval(listen);
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+/* CSS Document */
+body { margin:0 0 0 0; font-size:12px; color:#333;}
+ul li{ list-style:none; margin:auto 0px;letter-spacing:0; word-spacing:0; padding:0;}
+a{text-decoration:none; color:#333; font-size:12px;}
+a:hover{text-decoration:underline; color:#333; font-size:12px;}
+form{ padding:0 0 0 0; margin:0 0 0 0;}
+em{ font-style:normal;}
+.clear{ clear:both;}
+.warpper{ width:960px; margin:auto;}
+/*资讯头开始*/
+.zxnav{ width:960px; height:76px; background: url(/template/8264/css/moban/zxpd/images/zxnabg.jpg) top no-repeat; }
+.zxnavlogo{ width:191px; height:76px; float:left; padding:0px 0px 0px 28px;}
+.zxcoinall{ width:330px; float:left; padding-left:45px;}
+.zxcoinall li{ width:90px; float:left; display:inline; margin:17px 5px 5px 15px;}
+.zxcoinall li a{ width:90px; height:25px; padding:15px 0px 0px 0px; text-align:right; display:inline; float:left; font-size:14px; font-weight:bold;}
+.zxcoinall li a:hover{ width:90px; height:25px; padding:15px 0px 0px 0px; text-align:right; display:inline; float:left; font-size:14px; font-weight:bold; text-decoration:none;}
+.zonghe{ width:90px; background:url(/template/8264/css/moban/zxpd/images/1.png) no-repeat left center;}
+.dengshan{ width:90px; background:url(/template/8264/css/moban/zxpd/images/2.png) no-repeat left center;}
+.payan{ width:90px; background:url(/template/8264/css/moban/zxpd/images/3.png) no-repeat left center;}
+.searchone{ width:280px; height:30px;  float:right; position:relative; }
+.searchtext{ width:160px; height:22px; line-height:22px; border:0; position:absolute; top:26px; left:0px;}
+.searchbuttom{ width:60px; height:26px; border:0; background:url(../images/searchbuttom.png) no-repeat; cursor:pointer; top:26px; right:30px; position:absolute;}
+/*资讯头结束*/
+.mid{ width:960px; margin-top:10px;}
+.l{ width:650px; float:left;}
+.l1{ width:650px; margin-bottom:10px;  position:relative;}
+.r1ceng{ width:25px; height:104px; position:absolute; top:46px; left:-22px;}
+.ltitle{ width:640px; height:25px; padding:8px 0px 0px 10px; background:url(/template/8264/css/moban/zxpd/images/ltitle.png) top no-repeat; font-weight:bold; color:#799a33;}
+.l1box{ width:648px; border:#cdd798 solid 1px; border-top:0; padding:10px 0px 0px 0px;}
+.l1box1{ width:648px; border:#cdd798 solid 1px; padding:10px 0px 0px 0px;}
+.topic-content{ width:628px; margin:0px auto 10px auto; padding:0px 5px 15px 5px; background:url(/template/8264/css/moban/zxpd/images/580x10.jpg) bottom center no-repeat;}
+.post-date{ width:38px; height:40px; padding:2px 0px 0px 0px; margin-top:3px; float:left; background:url(/template/8264/css/moban/zxpd/images/post-date-bg-lusongsong.png) top no-repeat; text-align:center;}
+.post-date b{ font-size:12px; color:#FFF;}
+.post-date span{ font-size:14px; line-height:1.5;}
+.post-title{ width:580px; float:right; position:relative;}
+.post-title h2{ padding:0px 0px 0px 0px; margin:0px 0px 0px 0px;}
+.post-title h2 a{ font-size:20px; font-weight:bold; font-family:Microsoft YaHei,Verdana,Arial;}
+.post-title h2 a:hover{ font-size:20px; font-weight:bold; font-family:Microsoft YaHei,Verdana,Arial; text-decoration:none}
+.edier{ padding:3px 0px 0px 0px 0px; position:absolute; top:21px;}
+.edier{ width:100%;}
+.edier em{ float:left; padding-top:10px;}
+.edier span{ float:right;}
+.edier b{ color:#c81f1f; font-size:20px; font-family:Arial,Helvetica,sans-serif;}
+.post-list-info{}
+.post-list-info p{ margin-top:10px; line-height:1.7; font-size:14px;}
+.post-list-info p img{ float:left; width:130px; height:90px; border:#ccc solid 1px; padding:3px; margin-right:5px;}
+.r{ width:300px; float:right;}
+.r1{ width:300px; margin-bottom:10px; word-break:break-all;}
+.rtitle{ width:280px; height:25px; padding:8px 10px 0px 10px; background:url(/template/8264/css/moban/zxpd/images/rtitle.png) top no-repeat; font-weight:bold; color:#799a33;}
+.rtitle span{ float:left;}
+.rtitle em{ float:right;}
+.rtitle a{ font-weight:bold; color:#799a33;}
+.rtitle a:hover{ font-weight:bold; color:#799a33;}
+.r1box{ width:298px; border:#cdd798 solid 1px; border-top:0; padding:10px 0px 0px 0px;}
+.sfsj{ padding-bottom:10px; }
+.sfsj li{ height:18px; float:left; white-space:nowrap; display:inline; background:url(/template/8264/css/moban/zxpd/images/s_r.gif) right no-repeat; margin:3px 5px 2px 5px;}
+.sfsj li a{ height:18px; background:url(/template/8264/css/moban/zxpd/images/s_l.gif) left no-repeat; float:left; padding:0px 0px 0px 5px; margin-right:3px; color:#fff;}
+.dsbbs{ width:280px; margin:0px auto 10px auto;}
+.dsbbs_l{ width:54px; float:left;}
+.tou{ width:54px; height:50px; padding:4px 0px 0px 0px; text-align:center; background:url(/template/8264/css/moban/zxpd/images/toubg.jpg);}
+.tou img{ width:46px; height:46px; border:0;}
+.name{ width:54px; height:20px; overflow:hidden; text-align:center; margin-top:5px;}
+.dsbbs_r{ width:220px; float:right; line-height:1.5;}
+.dsbbs_r a{ font-weight:bold; color:#666}
+.dsbbs_r a:hover{ font-weight:bold; color:#666}
+.dszt{ padding-top:10px;}
+.dsztone{ width:132px; float:left; margin:5px 0px 5px 10px!important; margin:5px 5px 5px 6px;}
+.dsztone img{ width:130px; height:65px; border:#ccc solid 1px;}
+.dsztname{ width:100%; height:20px; overflow:hidden; text-align:center; line-height:1.5; margin-top:5px;}
+.xztopone{ width:280px; margin:auto;}
+.xztopone h1{ margin:0; padding:0px 0px 5px 0px;}
+.xztopone h1 a{ font-size:12px;}
+.xztopone h1 a:hover{ font-size:12px;}
+.xztopimg{ width:100px; padding:2px; border:#ccc solid 1px; float:left;}
+.xztopimg img{ width:100px; height:75px; border:0;}
+.xztopcon{ width:170px; float:right; line-height:1.5; }
+.xzlist{ width:280px; margin:0px auto;}
+.xzlist li{ width:265px; padding-left:15px; height:22px; line-height:22px; overflow:hidden; background:url(/template/8264/css/moban/zxpd/images/mil_yc_green.png) left no-repeat;}
+.xzlist li em{ float:left;}
+.xzlist li span{ float:right; color:#999;}
+.sfmc{ padding-bottom:10px; }
+.sfmc li{ height:18px; float:left; white-space:nowrap; display:inline; background:url(/template/8264/css/moban/zxpd/images/ls_r.gif) right no-repeat; margin:3px 5px 2px 5px;}
+.sfmc li a{ height:18px; background:url(/template/8264/css/moban/zxpd/images/ls_l.gif) left no-repeat; float:left; padding:0px 0px 0px 5px; margin-right:3px; color:#fff;}
+.dsactiontop{ width:260px; margin:0px auto;}
+.dsactiontop img{ width:260px; height:100px; border:0; padding-bottom:5px;}
+.dsactiontop h1{ padding:0px 0px 5px 0px; line-height:1.5; margin:0;}
+.dsactiontop li{ width:50%; float:left; height:20px; line-height:20px; overflow:hidden;}
+.dsactiontop li img{ width:59px; height:18px; border:0; }
+.touall{ width:54px; float:left; margin:0px 0px 10px 16px!important; margin:0px 8px 10px 8px}
+.touxiang{ width:54px; height:50px; padding:4px 0px 0px 0px; background: url(/template/8264/css/moban/zxpd/images/toubg.jpg) top no-repeat; text-align:center;}
+.touxiang img{ width:46px; height:46px; border:0;}
+.touname{ width:100%; height:20px; overflow:hidden; line-height:1.8; text-align:center;}
+.py_sp{ width:132px; float:left; margin:5px 8px 5px 8px!important; margin:5px 5px 5px 6px; }
+.py_sp img{ width:130px; border:#ccc solid 1px; height:90px;}
+.py_spname{ width:100%; height:35px; overflow:hidden; line-height:1.4; padding-top:5px;}
+
+
+
+.adl{border:#ccc solid 1px; margin-bottom:10px;}
+.adl2{ margin-bottom:10px;}

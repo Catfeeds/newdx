@@ -1,0 +1,500 @@
+body {
+	font-size: 12px;
+	color: #000000;
+	margin: 0px;
+}
+.xuxian {
+	background-image: url(/moban/1024face/images/face_xuxian.gif);
+	background-repeat: repeat-x;
+	height: 1px;
+}
+a {
+	color: #000000;
+	text-decoration: none;
+}
+.toptd1 {
+	padding-top: 9px;
+}
+.toptd2 {
+	padding-top: 5px;
+	padding-bottom:4px;
+	padding-left:12px;
+	padding-right:4px;
+}
+.toptd3 {
+	border: 1px solid #FF0000;
+}
+.toptd4 {
+	padding-top: 7px;
+	padding-bottom:4px;
+	padding-right:4px;
+	text-align:right;
+	color: #6a6a6a;
+}
+.toptd5 {
+	padding: 6px;
+	border: 1px solid #dddddd;
+	
+}
+.toptd6 {
+	padding-top: 6px;
+	padding-bottom:4px;
+	padding-left:8px;
+	padding-right:4px;
+	background-color: #efefef;
+	line-height: 200%;
+	text-align:left;
+}
+.toptd7 {
+	background-color: #f6f6f6;
+	padding-top: 6px;
+	padding-right: 8px;
+	padding-bottom: 4px;
+	padding-left: 8px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #dddddd;
+	border-bottom-color: #dddddd;
+	border-left-color: #dddddd;
+	text-align:left;
+}
+.toptd7 a {
+	color: #000000;
+	text-decoration: none;
+}
+.toptd8 {
+    padding-top:4px;
+	pddding-bottom:4px;
+	padding-left:6px;
+	padding-right::6px;
+	line-height:150%;
+	text-align:left;
+}
+.toptd8 a:link {
+    color:#1f3a87;
+	text-decoration: none;
+}
+.toptd8 a:visited {
+    color:#1f3a87;
+	text-decoration: none;
+}
+.toptd8 a:hover{
+    color:#ff0000;
+	text-decoration: underline;
+}
+.toptd9 {
+	background-color: #f6f6f6;
+	padding: 3px;
+	border: 1px solid #dddddd;
+}
+.toptd10{
+	background-color: #00478a;
+	padding: 3px;
+}
+.toptable1 {
+    border: 1px solid #000000;
+	margin-top:8px;
+	margin-bottom:4px;
+}
+.toptable2 {
+	margin-bottom:8px;
+}
+.toptable3{
+	background-color:#FFFFFF;
+	padding-top:3px;
+	padding-bottom:2px;
+	padding-left:8px;
+	padding-right:8px;
+	text-align:left;
+}
+.toptable4{
+	margin-top:4px;
+}
+.toptable6{
+	margin-top:8px;
+	margin-bottom:8px;
+}
+.toptable5{
+	padding-top:3px;
+	padding-bottom:2px;
+	padding-left:8px;
+	padding-right:8px;
+	text-align:left;
+	color:#ffffff;
+}	
+.bannertd1 {
+    margin-top:15px;
+    margin-bottom:15px;
+}
+.bannertd2 {
+    line-height:180%;
+	text-align:left;
+	padding-left:4px;
+}
+.mainbody {
+	text-align: left;
+	border: 1px solid #000000;
+}
+.mainbody1 {
+	text-align: left;
+	border: 1px solid #000000;
+	background-color: #f8f2e4;
+	padding:15px;
+}
+.lefttable1 {
+   background-color:#f9fcfe;
+}
+.lefttd1 {
+	padding-top: 16px;
+	padding-bottom: 4px;
+	padding-left:20px;
+}
+.lefttd2 {
+	padding-top: 16px;
+	padding-right: 5px;
+	padding-bottom: 4px;
+	padding-left:10px;
+}
+.lefttd3 {
+	padding: 6px;
+}
+.lefttd4 {
+	padding-right:6px;
+	padding-left:6px;
+}
+.lefttd5 {
+	padding-top: 18px;
+	padding-right:10px;
+	padding-bottom:10px;
+	padding-left:10px;
+	text-align:center;
+}
+.lefttd6 {
+	height:1px;
+	line-height:150%;
+	text-align: center;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #dddddd;
+	border-bottom-color: #dddddd;
+	padding-top:6px;
+	padding-bottom:6px;
+}
+.lefttd7 {
+    height:1px;
+	background-color:#FFFFFF;
+}
+.lefttd8 {
+    line-height:150%;
+}
+.lefttd9 {
+    padding-bottom:10px;
+}
+.lefttd10 {
+	line-height: 150%;
+	padding-top: 10px;
+	padding-right: 20px;
+	padding-left: 20px;
+}
+.lefttd11 {
+	line-height: 140%;
+	background-color: #ffffff;
+	text-align: left;
+	padding-top: 6px;
+	padding-right: 6px;
+	padding-bottom: 4px;
+	padding-left: 6px;
+	border: 1px dotted #2c85c0;
+}
+.lefttd12 {
+	padding-bottom: 12px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #000000;
+	background-color:#f9fcfe;
+}
+.lefttd13 {
+	background-color: #f4f4f4;
+	padding-top:4px;
+	padding-bottom:2px;
+	padding-left:10px;
+	padding-right:10px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #e3e3e3;
+}
+.lefttd14 {
+	font-size: 14px;
+	font-weight: bold;
+	background-image: url(/moban/1024face/images/face_lefttitle_pic.gif);
+	background-repeat: no-repeat;
+	background-position: 15px 8px;
+	padding-left:40px;
+	padding-top: 8px;
+	color: #FFFFFF;
+	background-color: #824d07;
+	text-align: left;
+	padding-bottom: 4px;
+}
+.lefttd15 {
+	border: 1px solid #dddddd;
+	padding:8px;
+}
+.lefttd15 a {
+	font-size: 14px;
+	color: #000000;
+	text-decoration: none;
+}
+.lefttd16{
+	padding-left:6px;
+	padding-right: 6px;
+	padding-bottom: 10px;
+}
+.formtd1 {
+	height: 16px;
+}
+.formtd2 {
+	height: 12px;
+}
+.lefttd17 {
+	background-color: #f4f4f4;
+	padding-top:8px;
+	padding-bottom:6px;
+	padding-left:10px;
+	padding-right:10px;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #e3e3e3;
+}
+.lefttd18{
+	font-size: 15px;
+	font-weight: bold;
+	background-image: url(/images/1024/read_title_ion.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 4px;
+	padding-left:26px;
+	padding-top: 6px;
+	color: #cc0000;
+}
+.lefttd20 {
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+.lefttd21 {
+	border: 1px solid #000000;
+}
+.lefttd19{
+	font-size: 13px;
+	padding-bottom:8px;
+	padding-top: 6px;
+	padding-left:6px;
+}
+.lefttd22 {
+   padding-top:12px;
+   background-color:#f9fcfe;
+}
+.lefttd23 {
+   padding-bottom:10px;
+   padding-top:16px;
+   padding-left:20px;
+   padding-right:20px;
+}
+.lefttd24 {
+	background-color: #f4f4f4;
+	padding-top:4px;
+	padding-bottom:2px;
+	padding-left:10px;
+	padding-right:10px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #e3e3e3;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #e3e3e3;
+}
+.lefttd25 {
+	font-size: 14px;
+	font-weight: bold;
+	background-image: url(/images/1024/read_title_ion.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 4px;
+	padding-left:26px;
+	padding-top: 4px;
+	color:#cc0000;
+}
+.lefttd26{
+	padding-left:20px;
+	padding-right: 20px;
+	padding-bottom: 10px;
+}
+.lefttd27{
+	font-size: 14px;
+	font-weight: bold;
+	background-image: url(/moban/1024face/images/face_lefttitle_pic.gif);
+	background-repeat: no-repeat;
+	background-position: 15px 8px;
+	padding-left:40px;
+	padding-top: 8px;
+	background-color: #f4f4f4;
+	text-align: left;
+	padding-bottom: 4px;
+}
+.leftad2 td {
+	background-color: #f3f3f3;
+	padding-bottom: 4px;
+	padding-top:6px;
+	font-size: 14px;
+	text-align: center;
+}
+.leftad2 a:link {
+	color: #595959;
+	text-decoration: none;
+}
+.leftad2 a:visited {
+	color: #595959;
+	text-decoration: none;
+}
+.leftad2 a:hover {
+	color: #FF0000;
+	text-decoration: underline;
+}
+.lefttitle1 {
+	font-size: 20px;
+	font-weight: bolder;
+	color: #2f2f2f;
+}
+.righttd1 {
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #ffb51c;
+	background-image: url(/moban/1024face/images/face_righttitle_pic.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	padding-top: 5px;
+	padding-bottom: 2px;
+	padding-left: 37px;
+}
+.righttd2 {
+    padding-top:15px;
+	padding-bottom:15px;
+}
+.righttd3 {
+	color: #656565;
+	background-color: #FFFFFF;
+	padding-top: 8px;
+	padding-bottom:8px;
+	padding-left:10px;
+	padding-right:10px;
+	line-height: 160%;
+}
+.righttd4 {
+    padding-top:16px;
+	padding-left:8px;
+	padding-right:8px;
+}
+.righttd5 {
+	background-color: #FFFFFF;
+	padding: 2px;
+	border: 1px solid #000000;
+	width: 90px;
+}
+.righttd6 {
+	padding-top: 2px;
+	padding-left: 10px;
+}
+.righttd7 {
+	font-size: 13px;
+	font-weight: bold;
+	color: #3f3f3e;
+	background-image: url(/moban/1024face/images/face_rightpeple_ion.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 8px;
+	padding-top: 4px;
+	padding-bottom: 2px;
+	padding-left: 15px;
+}
+.righttd8 {
+	padding-top:8px;
+	line-height: 150%;
+	color: #7f7f7f;
+}
+.righttd8 a {
+	color: #7f7f7f;
+	text-decoration: none;
+}
+.righttd8 a.hover {
+	color: #FF0000;
+	text-decoration: underline;
+}
+.righttd9 {
+    background-color: #ffb51c;
+	padding-top:4px;
+	padding-bottom:4px;
+	padding-right:10px;
+}
+.righttd10 {
+	color: #8a8989;
+	padding-top:2px;
+	background-color: #FFFFFF;
+	text-align:center;
+}
+.righttd10 a {
+	color: #8a8989;
+	text-decoration: none;
+}
+.righttd10 a.hover {
+	color: #FF0000;
+	text-decoration: underline;
+}
+.righttd11{
+    padding-top:16px;
+	padding-bottom:16px;
+}
+.righttd12 {
+	padding-bottom:15px;
+	color:#824d07;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 180%;
+}
+.righttd12 a {
+	color:#824d07;
+	text-decoration: none;
+}
+.righttd13 {
+	padding:8px;
+	background-color: #FFFFFF;
+}
+.pinglunshu {
+	font-size: 14px;
+	line-height: 150%;
+	color: #000000;
+	padding-right: 6px;
+	padding-left: 6px;
+}
+.pinglunform {
+	border: 1px solid #000000;
+}
+.pinluntext {
+	font-size: 13px;
+	font-weight: bold;
+	color: #000000;
+	padding-bottom: 8px;
+	padding-left: 8px;
+}
+.pinluntext1 {
+	font-size: 13px;
+	font-weight: bold;
+	color: #000000;
+	padding-top: 6px;
+}
+.pingluntd8 {
+	padding-top: 6px;
+}

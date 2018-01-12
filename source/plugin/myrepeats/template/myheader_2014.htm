@@ -1,0 +1,11 @@
+<!--{block myheader}-->
+<li>
+	<a href="javascript:;" class="head_login_icon24_24"><span class="mjimg"></span></a>
+	<div class="mjwarpten" style="display:none;">
+		<!--{loop $nuserlist $user}-->
+		<a href="plugin.php?id=myrepeats:switch&username={$user[uname]}&formhash={FORMHASH}">{$user[name]}</a>
+		<!--{/loop}-->
+		<a href="home.php?mod=spacecp&ac=plugin&id=myrepeats:memcp">{$language[memcp]}</a>
+	</div>
+</li>
+<!--{/block}-->

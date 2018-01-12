@@ -1,0 +1,249 @@
+<!--{subtemplate dianping/header}-->
+<!--{subtemplate dianping/nav_comment}-->
+<link rel="stylesheet" id="css_widthauto" type="text/css" href="./static/css/dianping/style_comment.css" />
+<style>
+    .rows-content{
+        padding-left:92px;
+    }
+</style>
+<div class="global-common-content">
+    <div class="module">
+        <!--左侧开始-->
+        <div class="col-main">
+            <div class="main-wrap">
+            	<!--单条评论开始-->
+                <div class="ui-grid-6 ui-grid-left">
+                    <div class="review-comment-box">
+                        <div class="">   
+                            <div class="comment-main">
+                                <div class="comment-list-box">
+<!--                                    <div class="avatar-box">
+                                    <a rel="nofollow" target="_blank" class="user-avatar" href="home.php?mod=space&uid={$commentlist['authorid']}">
+                                        {avatar($commentlist['authorid'], small)}
+                                        <span class="user-name">{$commentlist['author']}</span>
+                                    </a>
+                                    </div>-->
+                                    <div>
+                                        {if $commentlist['starnum']}
+                                            <div class="rows-content row-color-1">
+                                                <div class="commAttr">
+                                                <i class="attrs-icon comm"></i>难度评价
+                                                </div>
+                                                <div class="attrValues">
+                                                    <div class="rating-level big-rating">
+                                                        <span class="score-value score-value-{echo $commentlist['starnum']*2}">
+                                                        <em></em>
+                                                        </span>
+                                                        <span>(<!--{if $commentlist['starnum']==1}-->非常简单<!--{elseif $commentlist['starnum']==2}-->简单<!--{elseif $commentlist['starnum']==3}-->难<!--{elseif $commentlist['starnum']==4}-->困难<!--{elseif $commentlist['starnum']==5}-->非常困难<!--{/if}-->)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {/if}
+                                        
+                                            <div class="rows-content row-color-3">
+                                                <div class="commAttr">
+                                                <i class="attrs-icon date"></i>攀登日期
+                                                </div>
+                                                <div class="attrValues">
+                                                <p>{date($commentlist['ext1'], 'Y-m-d')} 至 {date($commentlist['ext2'], 'Y-m-d')} 
+                                                共
+                                                <!--{if date($comment['ext1'], 'Y-m-d')==date($comment['ext2'], 'Y-m-d')}-->
+                                                        {echo floor($commentlist['ext2']-$commentlist['ext1'])/3600;}小时
+                                                <!--{else}-->
+                                                        {echo floor(($commentlist['ext2']-$commentlist['ext1'])/86400)}天
+                                                <!--{/if}-->
+                                                </p>
+                                                </div>
+                                            </div>
+                                        
+                                        {if $commentlist['ext3']}
+                                            <div class="rows-content row-color-4">
+                                            <div class="commAttr">
+                                            <i class="attrs-icon price"></i>费用协作
+                                            </div>
+                                            <div class="attrValues">
+                                            <p>$commentlist['ext3']</p>
+                                            </div>
+                                            </div>
+                                        {/if}
+                                        <div class="rows-content row-color-4">
+                                            <div class="commAttr">
+                                                    <i class="attrs-icon note"></i>我的建议
+                                            </div>
+                                            <div class="attrValues">
+                                                    <p>$commentlist['ext4']</p>
+                                            </div>
+                                        </div>
+                                        {if $commentlist['message']}
+                                            <div class="rows-content row-color-5">
+                                                <div class="commAttr">
+                                                <i class="attrs-icon complex"></i>攀登综述
+                                                </div>
+                                                <div class="attrValues">
+                                                <p>{$commentlist['message']}</p>
+                                                </div>
+                                            </div>
+                                        {/if}
+                                        {if $commentlist['attachlist']}
+                                            <div class="rows-content row-color-6">
+                                                <div class="commAttr">
+                                                    <i class="attrs-icon picture"></i>图片
+                                                </div>
+                                                <div class="attrValues">
+                                                    <ul class="attrPic-list">
+                                                        <!--{loop $commentlist['attachlist'] $item}-->
+                                                        <li>
+                                                            <a href="http://{if $item['serverid']==1}image{elseif $item['serverid']==99}image1{/if}.8264.com/{$item['dir']}/{$item['attachment']}" target="_blank" title="点击查看大图"><img src="{echo getimagethumb(80,80,2, $item['dir'].'/'.$item['attachment'], '', $item['serverid'])}" alt="$comment['subject']"></a>
+                                                        </li>
+                                                        <!--{/loop}-->
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            {/if}
+                                    <div class="rows-content">
+                                    <div class="attrValues rows-detail">
+                                    <span class="rows-time">{date($commentlist['dateline'])}</span>
+                                    <span class="rows-title"><a target="_blank" title="{$commentlist['subject']}" href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$commentlist['tid']}">$commentlist['subject']</a></span>
+                                    
+                                    </div>
+                                    </div>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--单条评论结束-->
+                <div class="ui-grid-6 ui-grid-left">
+                	<div class="morecommenttitle clear_b">
+                    	<span>更多{$commentlist['subject']}的点评</span>
+                        <a href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$commentlist['tid']}" target="_blank">全部点评（共{$detail['cnum']}条）></a>
+                    </div>
+                    <div class="review-comment-box">
+                    	<!--单条循环开始-->
+                        {if $comm_pre}
+                        <!--{loop $comm_pre $pre}-->
+                        <div class="ui-block ui-block-content">
+                            <div class="comment-main">
+                                <div class="comment-list-box">
+                                    <div class="avatar-box">
+                                    <a rel="nofollow" target="_blank" class="user-avatar" href="home.php?mod=space&uid={$pre['authorid']}">
+                                        <!--{avatar($pre['authorid'], small)}-->
+                                    </a>
+                                    </div>
+                                    <div class="comment-word">
+                                        <div class="plname clear_b">
+                                        	<span>{$pre['author']}</span>
+                                            <em>{date($pre['dateline'],'Y-m-d')}</em>
+                                        </div>
+                                        <div class="attrValues">
+                                            <div class="rating-level big-rating">
+                                                <span class="score-value score-value-{echo $pre['starnum']*2}">
+                                                    <em></em>
+                                                </span>
+                                                <span>(<!--{if $pre['starnum']==1}-->非常简单<!--{elseif $pre['starnum']==2}-->简单<!--{elseif $pre['starnum']==3}-->难<!--{elseif $pre['starnum']==4}-->困难<!--{elseif $pre['starnum']==5}-->非常困难<!--{/if}-->)</span>
+                                            </div>
+                                        </div>
+                                        <div class="attrValues pt15">
+                                            <p>{$pre['message']}<a href="http://www.8264.com/dianping.php?mod={$mod}&act=commentdetail&tid={$pre['tid']}&pid={$pre['pid']}&uid={$pre['uid']}" target="_blank" class="morelink">显示全文</a></p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--{/loop}-->
+                        {/if}
+                        {if $comm_next}
+                        <!--{loop $comm_next $next}-->
+                        <div class="ui-block ui-block-content">
+                            <div class="comment-main">
+                                <div class="comment-list-box">
+                                    <div class="avatar-box">
+                                    <a rel="nofollow" target="_blank" class="user-avatar" href="home.php?mod=space&uid={$next['authorid']}">
+                                        <!--{avatar($next['authorid'], small)}-->
+                                    </a>
+                                    </div>
+                                    <div class="comment-word">
+                                        <div class="plname clear_b">
+                                        	<span>{$next['author']}</span>
+                                            <em>{date($next['dateline'],'Y-m-d')}</em>
+                                        </div>
+                                        <div class="attrValues">
+                                            <div class="rating-level big-rating">
+                                                <span class="score-value score-value-{echo $next['starnum']*2}">
+                                                    <em></em>
+                                                </span>
+                                                <span>(<!--{if $next['starnum']==1}-->非常简单<!--{elseif $next['starnum']==2}-->简单<!--{elseif $next['starnum']==3}-->难<!--{elseif $next['starnum']==4}-->困难<!--{elseif $next['starnum']==5}-->非常困难<!--{/if}-->)</span>
+                                            </div>
+                                        </div>
+                                        <div class="attrValues pt15">
+                                            <p>{$next['message']}<a href="http://www.8264.com/dianping.php?mod={$mod}&act=commentdetail&tid={$next['tid']}&pid={$next['pid']}&uid={$next['uid']}" target="_blank" class="morelink">显示全文</a></p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--{/loop}-->
+                        {/if}
+                        <!--单条循环结束-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--左侧结束-->
+        <!--右边侧开始-->
+        <div class="col-sider">
+        	<div class="morecommenttitle clear_b">点评对象</div>
+                <div class="porductimg">
+                    <a href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$detail['tid']}" target="_blank" class="morelink">
+                        <img src="{echo getimagethumb(120,90,2, $detail['dir'].'/'.$detail['showimg'], '', $detail['serverid'])}" alt="$detail['subject']" style="width:200px;height:200px;">
+                    </a>
+                </div>
+            <div class="porductname">
+                <a href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$detail['tid']}" target="_blank" class="morelink">
+                {$commentlist['subject']}
+                </a>
+            </div>
+            <div class="stardpbox clear_b">
+            	<div class="rating-level small-rating req-rating">
+                    <span class="score-value score-value-{echo floor($detail['score'])}">
+                    	<em></em>
+                    </span>
+                    <strong>{$detail['score']}</strong>
+                    <i class="dpnum">{$detail['cnum']}人点评</i>
+                </div>
+            </div>
+            <div class="taglist clear_b">
+            	<a href="http://www.8264.com/shanfeng" target="_blank">山峰</a>
+                <a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&order=lastpost&dq={$detail['type']}&gd=0&page=1" target="_blank">
+                    
+                    {$cate_dq[$detail['type']]}
+                </a>
+                <a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&order=lastpost&dq=0&gd={$detail['altitude']}&page=1" target="_blank">
+                    
+                    {$detail['height']}
+                </a>
+                
+            </div>
+            <div class="morecommenttitle clear_b">关于作者</div>
+            <div class="authorlist">
+            	<div class="authorone clear_b">
+                	<a href="home.php?mod=space&uid={$commentlist['authorid']}&do=dianping" target="_blank">
+                	<!--{avatar($commentlist['authorid'], small)}-->
+                    <p>
+                    	<span>{$commentlist['author']}</span>
+                        <em>{$allcount}条点评 ></em>
+                    </p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--右侧结束-->
+    </div>
+</div>
+
+
+<!--{subtemplate dianping/footer}-->

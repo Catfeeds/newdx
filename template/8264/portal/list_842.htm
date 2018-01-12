@@ -1,0 +1,92 @@
+<!--{template common/header2014}-->
+<!--[name]每日一图模板[/name]-->
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/portal/style_842.css" />
+<style id="diy_style" type="text/css"></style>
+
+
+<div class="warpten clearfix">
+	<div class="sm">
+		<div class="sm_n clearfix">
+			<a href="http://www.8264.com/plugin.php?id=dailypicture:public" target="_blank"><img src="http://static.8264.com/static/images/moban/mryt/images/tj.png" class="signUp"></a>
+			<div>
+				8264每日一图是由8264主办，旨在传播户外运动精神，展现户外运动文化。户外运动在中国蓬勃发展，每年都有数以千万计的驴友参与到其中，这也是未来人们生活不可缺少的一部分。8264每日一图作为国内户外运动图片栏目的先驱者，在中国驴友的目光和脚步中前行，我们期望在若干年之后，这里的每一幅作品都能成为户外运动发展的记录，不朽的记忆。
+			</div>
+			<div style="padding:10px 0px;"> 
+				<div class="baiduShare">
+					<!-- Baidu Button BEGIN -->
+					<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare" style="float:left; padding-top:1px;">
+						<a class="bds_qzone"></a>
+						<a class="bds_tsina"></a>
+						<a class="bds_tqq"></a>
+						<a class="bds_renren"></a>
+						<span class="bds_more"></span>
+						<a class="shareCount"></a>
+					</div>
+					<script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
+					<script type="text/javascript" id="bdshell_js"></script>
+					<script type="text/javascript">
+					document.getElementById("bdshell_js").src = "http://news.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+					</script>
+					<!-- Baidu Button END -->
+				</div>
+			<br></div>
+		</div>
+	</div>
+	{eval $array;}
+	{eval $pic_array = array(array(), array(), array()); $i = 0;}
+	{if count($array) > 3}
+	{eval $pic_array[0][] = $array[0]; unset($array[0]);}
+	{eval $pic_array[1][] = $array[1]; unset($array[1]);}
+	{eval $pic_array[2][] = $array[2]; unset($array[2]);}
+	{eval $pics = array_merge($array, array());}
+	{/if}
+	{eval foreach ($pics as $pic):}
+	{eval $pic_array[$i%3][] = $pic;}
+	{eval ++$i;}
+	{eval endforeach;}	
+	{eval include DISCUZ_ROOT.'/template/default/forum/daypicture_from_list.php';}
+	<div class="st">
+		<!--单条开始-->
+		{loop $pic_array[0] $pic}
+		<div>{eval render_pic($pic);}</div>
+		{/loop}
+		<!--单条结束-->
+	</div>
+	<div class="st">
+		<!--单条开始-->
+		{loop $pic_array[1] $pic}
+		<div>{eval render_pic($pic);}</div>
+		{/loop}
+		<!--单条结束-->
+	</div>
+	<div class="st">
+		<!--单条开始-->
+		{loop $pic_array[2] $pic}
+		<div>{eval render_pic($pic);}</div>
+		{/loop}
+		<!--单条结束-->
+	</div>
+	{eval $count = DB::result_first("SELECT COUNT(*) FROM ".DB::table('portal_article_title')." WHERE catid IN (842) AND pic<>'' and idtype<>''");}
+	{eval $ppp = 50;}
+	{eval $multi = multi($count, $ppp, $page, 'portal.php?mod=list&catid=842');}
+</div>
+<!--{if $multi}-->
+<div class="listPageBox clearfix" style="width:960px; margin:auto;">{$multi}</div>
+<!--{/if}-->
+<div class="yl">
+	<div style="display:none;">
+		<div class="mmtitle">
+			<h2>友情链接</h2>
+		</div>
+		<div class="ylcon">
+			<div class="ylcon_nei clearfix">
+				<!--[diy=fLink]-->
+				<div id="fLink" class="area"></div>
+				<!--[/diy]-->
+			</div>
+		</div>
+	</div>
+</div>
+<!--{subtemplate common/float_guide}-->
+<!--{subtemplate common/ewm_l}-->
+<!--{subtemplate common/footer_8264_new}-->

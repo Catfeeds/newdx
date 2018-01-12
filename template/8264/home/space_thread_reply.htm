@@ -1,0 +1,48 @@
+<div class="reply-content article-info">
+	<div class="bd">
+		<span class="icon-c reply-icon">回复</span>
+		<div class="reply-list">
+			{loop $v $val}
+			<div id="postmessage_{$val[pid]}">
+				{if $val[imgList]}
+				<p class="rlist-has-img">
+					<!--有图-->
+					{loop $val[imgList] $src}
+					<a href="forum.php?mod=redirect&goto=findpost&ptid=$val[tid]&pid=$val[pid]" target="_blank"><img src="{$src}" alt=""></a>
+					{/loop}
+				</p>
+				{else}				
+				<p>
+					<!--无图-->
+					{if $postList[$forpids[$val[pid]]]}
+					<b class="reply-inner">回复<a href="home.php?mod=space&uid={$postList[$forpids[$val[pid]]][authorid]}" class="c-tx">$postList[$forpids[$val[pid]]][author]：</a></b>
+					{/if}
+					{if $val[touid]}
+					<b class="reply-inner">回复<a href="home.php?mod=space&uid={$val[touid]}" class="c-tx">$val[tousername]：</a></b>
+					{/if}
+					<a href="forum.php?mod=redirect&goto=findpost&ptid=$val[tid]&pid=$val[pid]" target="_blank">{echo cutstr({$val[message]}, 120, '...')}</a>
+				</p>
+				{/if}						
+				<span class="reply-time">{echo date('Y-m-d H:i:s', $val[dateU])}</span>
+			</div>
+			{eval $listcnt++;}
+			{/loop}
+		</div>	
+	</div>
+	<div class="ft">
+		<div class="list-op-bar">
+			<span class="list-op-item">
+				<i class="icon-m icon-view-m"></i>
+				<em class="views_$val[tid]">{$val[views]}</em>
+			</span>
+			<span class="list-op-item">
+				<i class="icon-m icon-comment-m"></i>
+				<em class="replies_$val[tid]">{$val[replies]}</em>
+			</span>
+			<span class="list-op-item list-op-item-tit">
+				<a href="forum.php?mod=viewthread&tid=$val[tid]" class="c-tx3" title="$val[subject]" target="_blank">{echo cutstr($val[subject], 72, '...')}</a>
+				<b>$forums[$val[fid]][name]</b>
+			</span>										
+		</div>
+	</div>
+</div>

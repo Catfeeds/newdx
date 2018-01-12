@@ -1,0 +1,13 @@
+<!--{template common/header_ajax}-->
+<div class="imglistcon_1 clboth">
+	<ul>
+		<!--{loop $photolist $photo}-->
+		<li><img onerror="this.src = '{$_G[config][web][forum]}static/images/common/imglistbg_1.jpg';this.onclick=null;" src="$photo[thumburl]" title="$photo[filename]" width="112" height="112" _width="112" _height="112" onload="thumbImg(this, 1)" onclick="ajaxalbumlist('$photo[url]', <!--{echo strlen($photo[url]) + 11}-->)" /></li>
+		<!--{/loop}-->
+	</ul>
+</div>
+<div class="imglistfy">
+	$multi
+</div>
+<span class="djaddtz">点击图片添加到帖子内容中</span>
+<!--{template common/footer_ajax}-->

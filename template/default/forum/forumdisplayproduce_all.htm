@@ -1,0 +1,259 @@
+<!--{subtemplate common/header}-->
+<link rel="stylesheet" href="/source/plugin/produce/css/style.css" />
+<script type="text/javascript" src="http://www.8264.com/static/js/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+</script>
+<!--{if $_G['forum']['ismoderator']}-->
+	<script type="text/javascript" src="{$_G[setting][jspath]}forum_moderate.js?{VERHASH}"></script>
+<!--{/if}-->
+
+<div id="pt" class="bm cl">
+	<!--{subtemplate common/simplesearchform}-->
+	<div class="z">
+		<a href="./" id="fjump"{if $_G['setting']['forumjump'] == 1} onmouseover="showMenu({'ctrlid':this.id})"{/if} class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> $navigation
+	</div>
+</div>
+
+
+<style id="diy_style" type="text/css"></style>
+<div class="wp">
+	<!--[diy=diy1]--><div id="diy1" class="area"></div><!--[/diy]-->
+</div>
+<div class="mn" style="display:none;">
+		<div class="bm bml">
+			<!--{if $_G[forum][banner] && !$subforumonly}--><img src="$_G[forum][banner]" width="100%" alt="$_G['forum'][name]" /><!--{/if}-->
+			<div class="bm_h cl">
+				<!--{if $_G['page'] == 1 && $_G['forum']['rules']}--><span class="o"><img id="forum_rules_{$_G[fid]}_img" src="{IMGDIR}/collapsed_{$collapse[forum_rulesimg]}.gif" title="{lang spread}" alt="{lang spread}" onclick="toggle_collapse('forum_rules_{$_G[fid]}')" /></span><!--{/if}-->
+				<span class="y">
+					<a href="home.php?mod=spacecp&ac=favorite&type=forum&id=$_G[fid]&handlekey=favoriteforum" id="a_favorite" class="fa_fav" onclick="showWindow(this.id, this.href, 'get', 0);">{lang forum_favorite}</a>
+					<!--{if rssforumperm($_G['forum']) && $_G[setting][rssstatus] && !$_G['gp_archiveid'] && !$subforumonly}--><span class="pipe">|</span><a href="forum.php?mod=rss&fid=$_G[fid]&auth=$rssauth" class="fa_rss" target="_blank" title="RSS">{lang rss_subscribe_this}</a><!--{/if}-->
+					<!--{if !empty($forumarchive)}-->
+						<span class="pipe">|</span><a id="forumarchive" href="javascript:;" class="fa_achv" onmouseover="showMenu(this.id)"><!--{if $_G['gp_archiveid']}-->$forumarchive[$_G['gp_archiveid']]['displayname']<!--{else}-->{lang forum_archive}<!--{/if}--></a>
+					<!--{/if}-->
+					<!--{hook/forumdisplay_forumaction}-->
+
+					<!--{if $_G['forum']['ismoderator']}-->
+					<!--{if $_G['forum']['recyclebin']}-->
+						<span class="pipe">|</span><a href="{if $_G['adminid'] == 1}admin.php?mod=forum&action=recyclebin&frames=yes{elseif $_G['forum']['ismoderator']}forum.php?mod=modcp&action=recyclebins&fid=$_G[fid]{/if}" class="fa_bin" target="_blank">{lang forum_recyclebin}</a>
+					<!--{/if}-->
+					<!--{if $_G['forum']['ismoderator'] && !$_G['gp_archiveid']}-->
+						<span class="pipe">|</span><strong>
+						<!--{if $_G['forum']['status'] != 3}-->
+							<a href="forum.php?mod=modcp&fid=$_G[fid]">{lang modcp}</a>
+						<!--{else}-->
+							<a href="forum.php?mod=group&action=manage&fid=$_G[fid]">{lang modcp}</a>
+						<!--{/if}-->
+						</strong>
+					<!--{/if}-->
+					<!--{if $_G['forum']['modworks']}-->
+						<!--{if $modnum}--><span class="pipe">|</span><a href="forum.php?mod=modcp&action=moderate&op=threads&fid=$_G[fid]" target="_blank">{lang mod_works_modpost_existence}</a><!--{/if}-->
+						<!--{if $modusernum}--><span class="pipe">|</span><a href="forum.php?mod=modcp&action=moderate&op=members&fid=$_G[fid]" target="_blank">{lang mod_works_moduser_existence}</a><!--{/if}-->
+					<!--{/if}-->
+					<!--{hook/forumdisplay_modlink}-->
+					<!--{/if}-->
+				</span>
+				<h1 class="xs2">
+					<a href="forum.php?mod=forumdisplay&fid=$_G[fid]">$_G['forum'][name]</a>
+					<!--{if !$subforumonly}--><span class="xs1 xw0 i">{lang index_today}: <strong class="xi1">$_G[forum][todayposts]</strong><span class="pipe">|</span>{lang index_threads}: <strong class="xi1">$_G[forum][threads]</strong></span><!--{/if}-->
+				</h1>
+			</div>
+			<div class="bm_c cl">
+				<!--{if !empty($_G[forum][domain]) && !empty($_G['setting']['domain']['root']['forum'])}-->
+				<div class="pbn">{lang forum_domain}:<a href="http://{$_G[forum][domain]}.{$_G['setting']['domain']['root']['forum']}" id="group_link">http://{$_G[forum][domain]}.{$_G['setting']['domain']['root']['forum']}</a></div>
+				<!--{/if}-->
+				<!--{if $moderatedby}--><div class="pbn">{lang forum_modedby}: <span class="xi2">$moderatedby</span></div><!--{/if}-->
+				<!--{if $_G['page'] == 1 && $_G['forum']['rules']}-->
+					<div id="forum_rules_{$_G[fid]}" style="$collapse['forum_rules'];">
+						<div class="pbm xg2">$_G['forum'][rules]</div>
+					</div>
+				<!--{/if}-->
+				<div id="forumarchive_menu" class="p_pop" style="display:none">
+					<ul>
+						<li><a href="forum.php?mod=forumdisplay&fid=$_G[fid]">{lang threads_all}</a></li>
+						<!--{loop $forumarchive $id $info}-->
+						<li><a href="forum.php?mod=forumdisplay&fid=$_G[fid]&archiveid=$id">{$info['displayname']} ({$info['threads']})</a></li>
+						<!--{/loop}-->
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--{hook/forumdisplay_top}-->
+		<!--{if $subexists && $_G['page'] == 1}--><!--{template forum/forumdisplay_subforum}--><!--{/if}-->
+		<div class="drag">
+			<!--[diy=diy4]--><div id="diy4" class="area"></div><!--[/diy]-->
+		</div>
+		<!--{if !empty($_G['forum']['recommendlist'])}-->
+			<div class="bm bmw">
+				<div class="bm_h cl">
+					<h2>{lang forum_recommend}</h2>
+				</div>
+				<div class="bm_c cl">
+					<!--{subtemplate forum/recommend}-->
+				</div>
+			</div>
+		<!--{/if}-->
+		<!--{hook/forumdisplay_middle}-->
+		<!--{if !$subforumonly}-->
+			<!--{if $recommendgroups && !$_G['forum']['allowside']}-->
+			<div class="bm">
+				<div class="bm_h cl">
+					<h2>{lang recommended_groups}</h2>
+				</div>
+				<div class="bm_c">
+					<ul class="ml mls cl">
+					<!--{loop $recommendgroups $key $group}-->
+						<li>
+							<a href="forum.php?mod=group&fid=$group[fid]" title="$group[name]" target="_blank" class="avt"><img src="$group[icon]" alt="$group[name]"></a>
+							<p><a href="forum.php?mod=group&fid=$group[fid]" target="_blank">$group[name]</a></p>
+						</li>
+					<!--{/loop}-->
+					</ul>
+				</div>
+			</div>
+			<!--{/if}-->
+			<!--{if $threadmodcount}--><div class="bm bmn hm xi2"><strong>{lang forum_moderate_unhandled}</strong></div><!--{/if}-->            
+      <!--{/if}-->	
+</div>
+ 
+
+
+<div class="box960">
+	<div class="prod_lib">
+		<!--<div class="prod_lib_nav"></div>-->
+		<div class="prod_lib_main">
+			<div class="prod_lib_l">               
+                <div id="productNav">
+					<h3 class="productNavTitle">产品分类</h3>
+					<div class="productNavList">
+						<ul>
+							<!--{eval $cpdl = ForumOptionProduce::getTypeData();}-->
+							<!--{if $cpdl}-->
+								<!--{loop $cpdl $dl}-->
+								  <li>
+										<h4><a href="{PORTAL_HOST}zb-type-{$dl['id']}" target="_parent">$dl['tname']</a></h4>
+										<!--{eval $cpxl = ForumOptionProduce::getTypeNextDatas($dl['id']);}-->
+										<!--{if $cpxl}-->
+											<div class="xl">
+												<!--{loop $cpxl $xl}-->
+												   <a href="{PORTAL_HOST}zb-type-{$xl['id']}">$xl['tname']</a>
+												<!--{/loop}-->
+											</div> 
+										<!--{/if}-->
+								  </li>
+								<!--{/loop}-->
+							<!--{/if}-->
+						</ul>
+					</div>
+				</div>
+                <script type="text/javascript">
+				;(function($){
+					$('#productNav .productNavList li > h4').hover(function(){
+						var _this = $(this);
+						_this.addClass('on');
+						$(this).next('.xl').each(function(){
+							_this.addClass('on_withxl');
+							$(this).show();
+						});
+					}, function(){
+						$(this).removeClass('on on_withxl');
+						$(this).next('.xl').hide();
+					});
+					$('#productNav .xl').hover(function(){
+						$(this).prev('h4').addClass('on on_withxl');
+						$(this).show();
+					}, function(){
+						$(this).prev('h4').removeClass('on on_withxl');
+						$(this).hide();
+					});
+				})(jQuery);
+				</script>  
+                
+                <div id="productTypeNav">
+                     <div class="produceTitle">按字母筛选</div>
+                     <div class="zimu">
+						<a href="{PORTAL_HOST}zb-brand-all" title="所有">All</a>
+                        <a href="{PORTAL_HOST}zb-brand-all-id-1">A</a>
+                        <a href="{PORTAL_HOST}zb-brand-all-id-2">B</a>
+                        <a href="{PORTAL_HOST}zb-brand-all-id-3">C</a>
+                        <a href="{PORTAL_HOST}zb-brand-all-id-4">D</a>
+                        <a href="{PORTAL_HOST}zb-brand-all-id-5">E</a>
+                        <a href="{PORTAL_HOST}zb-brand-all-id-6">F</a>
+                        <a href="{PORTAL_HOST}zb-brand-all-id-7">G</a>
+                        <a href="{PORTAL_HOST}zb-brand-all-id-8">H</a>
+                        <a href="{PORTAL_HOST}zb-brand-all-id-9">I</a>
+                        <a href="{PORTAL_HOST}zb-brand-all-id-10">J</a>
+                        <a href="{PORTAL_HOST}zb-brand-all-id-11">K</a>
+                        <a href="{PORTAL_HOST}zb-brand-all-id-12">L</a>
+                        <a href="{PORTAL_HOST}zb-brand-all-id-13">M</a>
+                        <a href="{PORTAL_HOST}zb-brand-all-id-14">N</a>
+                        <a href="{PORTAL_HOST}zb-brand-all-id-15">O</a>             
+                        <a href="{PORTAL_HOST}zb-brand-all-id-16">P</a>
+                        <a href="{PORTAL_HOST}zb-brand-all-id-17">Q</a>
+                        <a href="{PORTAL_HOST}zb-brand-all-id-18">R</a>
+                        <a href="{PORTAL_HOST}zb-brand-all-id-19">S</a>
+                        <a href="{PORTAL_HOST}zb-brand-all-id-20">T</a>
+                        <a href="{PORTAL_HOST}zb-brand-all-id-21">U</a>
+                        <a href="{PORTAL_HOST}zb-brand-all-id-22">V</a>
+                        <a href="{PORTAL_HOST}zb-brand-all-id-23">W</a>
+                        <a href="{PORTAL_HOST}zb-brand-all-id-24">X</a>
+                        <a href="{PORTAL_HOST}zb-brand-all-id-25">Y</a>
+                        <a href="{PORTAL_HOST}zb-brand-all-id-26">Z</a>
+                     </div>
+                </div>            
+			</div> 
+            
+            <style type="text/css">
+			.brand_l_title {background: url("source/plugin/forose_picshow/images/listtitle.jpg") repeat-x scroll left top transparent;
+			                font-size: 14px;font-weight: bold;height: 25px;padding: 5px 0 0 35px;}
+			.testelement {display: block;float: left;font-size: 14px;font-weight: normal;height: 20px;line-height: 20px;padding-right: 5px;width: 80px;}
+			.brand_yy_con {width: 690px;}
+			.brand_yyone {display: inline;float: left;margin: 10px 3px 5px 14px;text-align: center;width: 120px;}
+			.brand_yyname {height: 20px;line-height: 1.5;overflow: hidden;padding-top: 3px;text-align: center;width: 100%;}
+			.warpper a {color: #333333;font-size: 12px;text-decoration: none;}
+			.brand_yyone img {background: url("source/plugin/forose_picshow/images/brandimgbg.gif") no-repeat scroll center center transparent;border: 0 none;height: 50px;padding: 10px;width: 90px;}				
+			</style>
+                
+			<div class="prod_lib_cr"> 
+                <div class="brand_l_title">
+                     <div class="testelement" style="width:85px;">全部品牌列表</div>
+                </div>          
+                <div class="brand_yy_con">                    
+                     <!--{loop $brand $logo}-->                     
+                     <div class="brand_yyone">
+                          <div style="height: 70px;position: relative;width: 110px; border:1px solid #ccc; overflow:hidden;">
+                                <a href="{PORTAL_HOST}zb-brand-{$logo['tid']}">
+                                <!--{eval $thumb = ForumOptionProduce::getBrandThumb($logo['tid']);}-->                      
+                                <img src="$thumb" title="{$logo['subject']}" />                               
+                                </a>
+                          </div>                           
+                          <div class="brand_yyname">
+                                <a href="{PORTAL_HOST}zb-brand-{$logo['tid']}">$logo['subject']</a>
+                          </div>
+                     </div>  
+                     <!--{/loop}-->                                 
+                </div>   
+			</div> 
+            <div class="clear"></div>           
+            <!--分页信息开始-->
+            <div id="pgt" class="bm bw0 pgs cl">
+            $multipage
+            <span class="pgb y" {if $_G[setting][visitedforums]}id="visitedforums" onmouseover="$('visitedforums').id = 'visitedforumstmp';this.id = 'visitedforums';showMenu({'ctrlid':this.id,'pos':'34'})"{/if} ></span>
+            <!--{if !$_G['gp_archiveid']}--><a href="javascript:;" id="newspecial" onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu({'ctrlid':this.id})"{if !$_G['forum']['allowspecialonly']} onclick="showWindow('newthread', 'forum.php?mod=post&action=newthread&fid=$_G[fid]')"{else} onclick="location.href='forum.php?mod=post&action=newthread&fid=$_G[fid]'"{/if} title="{lang send_posts}"><!--<img src="{IMGDIR}/pn_post.png" alt="{lang send_posts}" />--></a><!--{/if}-->
+            <!--{hook/forumdisplay_postbutton_top}-->
+            </div>
+            <!--分页信息结束-->
+		</div>
+        <div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+
+
+
+
+<div class="wp mtn">
+	<!--[diy=diy3]--><div id="diy3" class="area"></div><!--[/diy]-->
+</div>
+<!--{subtemplate common/footer}-->

@@ -1,0 +1,51 @@
+<div id="append_parent"></div>
+<div id="ajaxwaitid"></div>
+<fieldset>
+	<legend>操作区</legend>
+	<p><form id="myform" action="admin.php?ctl=cssadmin&act=addnew" method="POST" onsubmit="return vadata(this);">
+		<input type="text" name="name" size="30" />
+		<input type="submit" name="submit" value="新增" />
+		<span id="infowin"></span>
+	</form>
+	</p>
+</fieldset>
+<fieldset>
+	<legend>信息区</legend>
+	<div id="infolist">
+		
+	</div>
+</fieldset>
+<style>
+fieldset{padding:10px 15px;}
+fieldset p, fieldset h3{margin:5px 0px;}
+table tr td a{margin-right:5px;}
+.red{color:red;}
+.green{color:green;}
+.blue{color:blue;}
+table.listtab{width:980px;}
+#infowin{margin-left:30px;}
+.newrecord{background: #CDF3D1;}
+</style>
+<script>
+var disallowfloat = '';
+function shuaxinlist(){
+	ajaxget('admin.php?ctl=cssadmin&act=getlist', 'infolist');
+}
+function delcss(cid){
+	if(confirm("是否确认删除？")){
+		ajaxget('admin.php?ctl=cssadmin&act=delcss&cid=' + cid, 'infowin', '', '', '', shuaxinlist);
+	}
+}
+function updatecss(cid){
+	ajaxget('admin.php?ctl=cssadmin&act=updatecss&cid=' + cid, 'infowin', '', '', '', shuaxinlist);
+}
+function vadata(obj){
+	if(obj.name.value.length > 3){
+		ajaxpost(obj.id, 'infowin', 'infowin', '', '', shuaxinlist);
+	}else{
+		$('infowin').innerHTML = "<b class='red'>您提交的样式路径太短，不正确</b>";
+	}
+	return false;
+}
+shuaxinlist();
+</script>

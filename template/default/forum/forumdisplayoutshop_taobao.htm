@@ -1,0 +1,168 @@
+<!--{subtemplate common/header_8264}-->
+<link rel="stylesheet" type="text/css" href="/template/8264/css/common/reset.css" />
+<link rel="stylesheet" type="text/css" href="/template/8264/css/common/new_common.css" />
+<link href="/source/plugin/outshop/css/postshop.css" rel="stylesheet" type="text/css">
+<!--[if IE 6]>
+<script src="/source/plugin/outshop/js/DD_belatedPNG_0.0.8a.js"></script>
+<script src="/source/plugin/outshop/js/DD_belatedPNG_css.js"></script>
+<![endif]-->
+<script type="text/javascript" src="/static/js/jquery-1.6.1.min.js"></script>
+<script src="http://a.tbcdn.cn/apps/top/x/sdk.js?appkey=21216498"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+</script>
+<!--{if $_G['forum']['ismoderator']}-->
+	<script type="text/javascript" src="{$_G[setting][jspath]}forum_moderate.js?{VERHASH}"></script>
+<!--{/if}-->
+
+<!--新版头-->
+		<!--{subtemplate common/nav_8264_top}-->
+		<!--{subtemplate common/nav_8264_jian}-->
+<!--新版头-->
+<!--//店铺单独头 开始 //-->
+	<div class="wap dianpu_nav clearfix">
+   		<div class="fl dianpu_nav1"><a href="http://www.8264.com/dianpu">户外店铺</a></div>
+        <div class="fl dianpu_nav2">全国户外店铺查询、口碑点评</div>
+        <div class="fr std_sous">
+        	<form action="http://www.8264.com/dianpu" method="get">
+            	<input name="key" type="text"  class="std_sous_txt" value="{eval echo urldecode($_GET['key'])}"/>
+				<input name="filter" type="hidden"  value="score"/>
+                <input name="sub" type="submit"  class="std_sous_bn" value="搜&nbsp;&nbsp;索"/>
+                <div class="clear"></div>
+            </form>
+        </div>
+    </div>
+<!--//店铺单独头 开始 //-->
+
+	
+<style type="text/css">
+.px { margin-top:4px;}
+/* 搜索修正 */
+.ditu_t1_mtxt .star {
+	overflow: hidden;
+	display: inline;
+}
+.ditu_t1_mtxt .star .redstar {
+	background: url(/static/images/star2.gif) no-repeat;
+	width: 9px;
+	height: 9px;
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: middle;
+}
+.ditu_t1_mtxt .star .graystar {
+	background: url(/static/images/star2.gif) -9px 0 no-repeat;
+	width: 9px;
+	height: 9px;
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: middle;
+}
+
+.std_dplb3 .star {
+	overflow: hidden;
+	display: inline;
+}
+.std_dplb3 .star .redstar {
+	background: url(/static/images/star2.gif) no-repeat;
+	width: 9px;
+	height: 9px;
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: middle;
+}
+.std_dplb3 .star .graystar {
+	background: url(/static/images/star2.gif) -9px 0 no-repeat;
+	width: 9px;
+	height: 9px;
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: middle;
+}
+</style>
+<!--{if file_exists(DISCUZ_ROOT.'./source/plugin/outshop/taobaosign.php')}-->
+<!--{eval include(DISCUZ_ROOT.'./source/plugin/outshop/taobaosign.php');}-->
+<!--{/if}--> 
+<div class="wap">
+	<div class="std_heqian clearfix">
+    	<div class="tbd_sq1"><a href="forum.php?mod=forumdisplay&fid=471">实体店</a></div>
+        <div class="tbd_sq2"><a>淘宝店</a></div>       
+        <div class="clear"></div>
+        <div class="std_mian1_qian3"><a href="http://bbs.8264.com/forum-post-action-newthread-fid-471.html" target="_blank">申请店铺</a></div>
+    </div>    
+	<div class="tbd_mian yuanjiao">
+			
+			<div class="tbd_tit">
+				<div class="tbd_tit1">店铺详情</div>
+				<div class="tbd_tit2">信誉度</div>
+				<div class="tbd_tit2">好评率</div>
+				<div class="tbd_tit2">店铺掌柜</div>
+				<div class="clear"></div>
+			</div>        
+			<!--淘宝店列表循环开始-->	
+			
+			<!--淘宝店列表循环结束-->				
+			<!--{eval $_G['page']=(($_G['page']-1)*20);}-->
+			<!--{eval $tao= ForumOptionShop::loadCacheArray('taobaodate',$_G['page']);}-->
+			<!--{if $tao}-->			
+			<!--{loop $tao $key $shop}-->			
+			<div class="tbd_tit_m" <!--{if $t==1}-->style="border-bottom:0px;"<!--{/if}-->>
+				<div class="tbd_tit1">
+					<div class="tbd_tit1_left"><a href="$shop[url]" target="_blank"><img src="$shop[pic_path]" /></a></div>
+					<div class="tbd_tit1_right">
+						<div style="margin-bottom:5px"><b><a href="$shop[url]" target="_blank">$shop[title]</a></b></div>
+						<p>主营项目：</p>
+						<p>
+							<!--{eval $i=0;}-->
+							<!--{loop $shop[cats] $ca}-->
+							<!--{if $i==6}-->
+							<!--{eval break;}--> 
+							<!--{/if}--> 
+							$ca['name']&nbsp;&nbsp;
+							<!--{eval $i++;}-->
+							<!--{/loop}-->
+						</p>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="tbd_tit2">
+			
+				 <img id="cd_$key" src="" />	
+				</div>
+				<div class="tbd_tit2">				
+					<div class="tbd_dtpf">
+						<span><a abc="$shop[sid]" href="javascript:;">店铺动态评分</a></span>
+						<div id="pf_$shop[sid]" class="dtpf" style="display: none;">
+						商品描述评分: &nbsp;<b>$shop[item_score]</b><br>
+						服务态度评分: &nbsp;<b>$shop[service_score]</b><br>
+						发货速度评分: &nbsp;<b>$shop[delivery_score]</b><br>
+						</div>
+					</div>
+				</div>
+				<div class="tbd_tit2"><a href="$shop[url]" target="_blank" class="qkk">$shop[nick]</a></div>
+				<div class="clear"></div>
+			</div>
+			<!--{/loop}-->
+			<!--{/if}-->
+             <div class="listPageBox clearfix">			
+				$multipage
+            </div>	
+			<script type="text/javascript">
+			;(function($){
+				$('.tbd_tit2 span a').mousemove(function(){
+					var abc =$(this).attr("abc");					
+					$('#pf_'+abc).css('display','');
+				});				
+				$('.tbd_dtpf .dtpf').mouseleave(function(){
+					$(this).hide();							
+				});
+				$('.tbd_tit_m .tbd_tit2').mouseleave(function(){
+					$('.tbd_dtpf .dtpf').hide();						
+				});	
+			})(jQuery);
+			</script>
+		</div>
+			
+				
+</div>
+<!--{subtemplate common/footer_8264lw}-->

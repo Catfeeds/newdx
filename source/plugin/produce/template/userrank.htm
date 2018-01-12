@@ -1,0 +1,26 @@
+{subtemplate common/header}
+<link rel="stylesheet" type="text/css" href="/source/plugin/produce/css/rank-list.css" media="all" />
+
+<h2 class="rank-list-title">户外装备分享贡献榜</h2>
+<div class="rank-list">
+    <ul>
+        {eval $index = 0;}
+        {loop $users $user}
+            {eval $index++;}
+            <li class="rank{eval echo $index;}">
+                <div class="icon">$index</div>
+                <div class="content">
+                    <div class="img">
+                        <a href="http://u.8264.com/space-uid-{$user['uid']}.html" target="_blank">{eval echo avatar($user['uid'], 'small');}</a>
+                    </div>
+                    <div class="text">
+                        <span class="name"><a href="http://u.8264.com/space-uid-{$user['uid']}.html" target="_blank">$user['username']</a></span>
+                        <span class="rank-value">贡献度: $user['rank']</span>
+                        <span class="opera"><a href="http://u.8264.com/space-uid-{$user['uid']}.html" target="_blank">个人空间</a> | <a href="http://u.8264.com/home-space-uid-{$user['uid']}-do-produce-view-me-from-space.html" target="_blank">个人分享($user['shareNum'])</a></span>
+                    </div>
+                </div>
+            </li>
+        {/loop}
+    </ul>
+</div>
+{subtemplate common/footer}

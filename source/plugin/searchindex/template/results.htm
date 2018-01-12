@@ -1,0 +1,192 @@
+{subtemplate common/header}
+<style>
+.guanjianzi{
+    -moz-border-radius: 5px 5px 5px 5px;
+    -moz-box-shadow: 2px 2px 5px #666666;
+    background: none repeat scroll 0 0 #F6EADA;
+    border: 1px solid #A4A4A4;
+    margin: 5px 15px 10px;
+    padding: 10px;
+
+}
+.rizhi{
+    //border-top: 8px solid #A7A59B;
+    clear: both;
+    overflow: hidden;
+}
+.tiezibiaoti{
+    border-top: 8px solid #A7A59B;
+    clear: both;
+    overflow: hidden;
+}
+.rizhibiaoti{
+    margin: 0;
+	font-size: 24px;
+}
+.tiezi{
+    float: left;
+    width: 290px;
+	height: 150px;
+	margin:5px auto;
+	border-bottom: 1px solid #CDCDCD;
+}
+
+.tiezinei{
+    float: left;
+    width: 270px;
+	height: 150px;
+	overflow: hidden;
+}
+.wenzhangbiaoti{
+    border-top: 8px solid #A7A59B;
+    clear: both;
+    overflow: hidden;
+}
+.rizhiziti{
+	font-size: 14px;
+}
+.wenzhangziti{
+	font-size: 12px;
+	color: #999999;
+
+}
+.post-date{ width:38px; height:40px; padding:2px 0px 0px 0px; margin-top:3px; float:left; background:url(/template/8264/css/moban/zbpd/images/post-date-bg-lusongsong.png) top no-repeat; text-align:center;}
+.post-date b{ font-size:12px; color:#FFF;}
+.post-date span{ font-size:14px; line-height:1.5;}
+
+.post-title{ width:590px; float:right; position:relative;}
+.post-title h2{ padding:0px 0px 0px 0px; margin:0px 0px 0px 0px;}
+.post-title h2 a{ font-size:20px; font-weight:bold; font-family:Microsoft YaHei,Verdana,Arial;}
+.post-title h2 a:hover{ font-size:20px; font-weight:bold; font-family:Microsoft YaHei,Verdana,Arial; text-decoration:none}
+
+.forum-title{ width:290px; float:right; position:relative; height: 150px; overflow: hidden;}
+.forum-title h2{ padding:0px 0px 0px 10px; margin:0px 0px 0px 0px; height: 50px; overflow: hidden;}
+.forum-title h2 a{ font-size:16px; font-weight:bold; font-family:Microsoft YaHei,Verdana,Arial;}
+.forum-title h2 a:hover{ font-size:16px; font-weight:bold; font-family:Microsoft YaHei,Verdana,Arial; text-decoration:none}
+
+.blog-all {width:300px; margin:10px auto;}
+.touxiang { width:54px; float:left;}
+.tou { width:54px; height:50px; padding-top:4px; background:url(/template/8264/css/moban/zbpd/images/toubg.jpg) no-repeat; text-align:center;}
+.tou img { width:46px; height:46px; border:0;}
+.name { width:100%; line-height:1.5; height:20px; overflow:hidden; text-align:center;}
+.blog { width:240px; float:right;}
+.blog-title { width:240px; line-height:1.5;}
+.blog-title a{ font-size:14px; font-family:Microsoft YaHei,Verdana,Arial;}
+.post-title a:hover{ font-size:14px; font-family:Microsoft YaHei,Verdana,Arial; text-decoration:none}
+.blog-message { width:240px; height:70px; overflow:hidden; line-height:1.5; color: #999999;}
+.otherkeys {line-height:25px;}
+.otherkeys li {float:left; text-align: center; width: 80px; height: 20px; line-height: 20px; padding:1px 2px 1px 2px; overflow:hidden;}
+
+.boxshop{ width:298px; height:298px; border:#dcdcdc solid 1px; position:relative; margin: 0 auto;}
+.boxshop img{ width:298px; height:298px; border:0;}
+.boxshop_title{ width:264px; padding:12px 17px 12px 17px; height:32px; background:#000; opacity: 0.7; filter: alpha(opacity=70); color:#fff; font-size:12px; display:block; position:absolute; bottom:0; left:0px; text-decoration:none;}
+.boxshop_title:hover{ text-decoration:underline;}
+</style>
+<div class="tl" style="overflow:hidden; margin-bottom:20px;">
+	<div style="padding-right:0px; width:330px; float:right;">
+		<!--{if $ginfo}-->
+			<div class="boxshop">
+				<a href="http://www.lvyoumall.com/goods/$ginfo[goods_id]?from=8264zht" target="_blank"><img src="$ginfo[default_image]" alt="$ginfo[goods_name]"/></a>
+				<a href="http://www.lvyoumall.com/goods/$ginfo[goods_id]?from=8264zht" target="_blank" class="boxshop_title">$ginfo[goods_name]</a>
+			</div>
+		<!--{/if}-->
+		<div style="margin: 0px 5px 5px; padding: 10px;"></div>
+        <div class="guanjianzi">
+        <h1><a href="zhuanti/$searchindex[searchid]" title="$searchindex[keywords]">$searchindex[keywords]</a></h1>
+        <!--{if $manager == 1}-->
+        <p>
+        <form method="post" autocomplete="off" id="addform" name="addform" action="plugin.php?id=searchindex:adminsearch&operation=edit&editsubmit=true&fastsubmit=1&searchid=$searchindex[searchid]" >
+        <font style="color:#F00;">
+        管理员可以见<br />
+        搜索标题：<input type="text" name="keywords" class="px" value="$searchindex[keywords]"><br />
+        搜索规则：<input type="text" name="rule" class="px" value="$searchindex[rule]"><br />
+        (短语##短语)&&短语 “##”代表或关系 “&&”代表并关系<br />
+        是否审核：<input type="radio" name="state" class="pr" <!--{if $searchindex['state']==1}-->checked="checked"<!--{/if}--> value="1"/> <label>是</label> <input type="radio" name="state" class="px pxs vm" <!--{if $searchindex['state']==0}-->checked="checked"<!--{/if}--> value="0"/> <label>否</label> 
+        </font>
+        <button type="submit" name="editsubmit" id="editsubmit" class="pn pnc" value="true"><strong style="font-weight:normal;">提交</strong></button>
+        </form>
+        </p>
+        <!--{/if}-->
+        <p><a href="zhuanti" title="8264户外热点">返回户外热点列表>></a></p>
+        </div>
+		
+        <div class="rizhi">
+                <!--{loop $ing $ing_list}-->
+                    <div class="blog-all">
+                    <div class="touxiang">
+                        <div class="tou"><a href="home.php?mod=space&uid=$ing_list[uid]" title="进入$ing_list[username]的空间看看"  target="_blank">$ing_list[avatar]</a></div>
+                        <div class="name"><a href="home.php?mod=space&uid=$ing_list[uid]" title="进入$ing_list[username]的空间看看"  target="_blank">$ing_list[username]</a></div>
+                    </div>
+                    <div class="blog">
+                        <div class="blog-title">
+                            <a href="home.php?mod=space&uid=$ing_list[uid]&do=blog&id=$ing_list[blogid]" title="$ing_list[subject]" target="_blank">$ing_list[subject]</a>
+                        </div>
+                        <div class="blog-message">
+                            $ing_list[message]
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    </div>
+                <!--{/loop}-->
+        </div>
+        <div class="guanjianzi">
+            <ul class="otherkeys">
+                <!--{loop $neighborKeys $value}-->
+                <li>
+                    <a href="zhuanti/$value[searchid]" title="$value[keywords]">$value[keywords]</a>
+                </li>
+                <!--{/loop}-->
+            </ul>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+    <div style="padding-left:10px; width:610px; float:left;border-right: 1px solid #CDCDCD;">
+        <div style="padding-left:10px; width:590px;">
+        <!--{loop $three $portal_list}-->
+                <ul>
+                <br/>
+                    <li class="post-title"><h2><a href="portal.php?mod=view&aid=$portal_list[aid]" title="$portal_list[title]" target="_blank">$portal_list[title]</a></h2></li>
+                    <li class="wenzhangziti">$portal_list[viewnum]次查看&nbsp;-&nbsp;
+                    <font color="#339933">$portal_list[dateline]</font>
+                    </li>
+                    <li class="rizhiziti">$portal_list[summary]</li>
+                <br/>
+                </ul>
+                <hr color="#CDCDCD" size="1">
+         <!--{/loop}-->
+         <br>
+            <!--{loop $forum $forum_list}-->
+                    <div class="tiezi">
+                        <div class="forum-title">
+                        <div class="post-date">
+                            <b>$forum_list[month]月</b><br>
+                            <span>$forum_list[day]</span>
+                        </div>
+                        <h2><a href="forum.php?mod=viewthread&tid=$forum_list[tid]" title="$forum_list[subject]" target="_blank">$forum_list[subject]</a></h2>
+                        <p class="wenzhangziti">$forum_list[views]次查看&nbsp;-&nbsp;<font color="#339933">$forum_list[dateline]</font></p>
+                        <p class="rizhiziti">$forum_list[message]</p>
+                        </div>
+                    </div>
+            <!--{/loop}-->
+            <br>
+            <div style="width:590px; float:left">
+            <!--{loop $thirteen $portal_list}-->
+                <ul>
+                <br/>
+                    <li class="post-title"><h2><a href="portal.php?mod=view&aid=$portal_list[aid]" title="$portal_list[title]" target="_blank">$portal_list[title]</a></h2></li>
+                    <li class="wenzhangziti">$portal_list[viewnum]次查看&nbsp;-&nbsp;
+                    <font color="#339933">$portal_list[dateline]</font>
+                    </li>
+                    <li class="rizhiziti">$portal_list[summary]</li>
+                <br/>
+                </ul>
+                <hr color="#CDCDCD" size="1">
+         <!--{/loop}-->
+            </div>
+            <br>
+         
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+</div>
+{subtemplate common/footer}

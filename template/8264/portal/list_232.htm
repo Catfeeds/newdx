@@ -1,0 +1,173 @@
+<!--{subtemplate common/header_8264_new}-->
+<!--[name]攀岩频道[/name]-->
+<!--{eval $list = array();}-->
+<!--{eval $isrightlist = $cat['catid']  == 224 ? 1 : 0;}-->
+<!--{eval $cat['subs'] = 1}-->
+<!--{eval $wheresql = category_get_wheresql($cat);}-->
+<!--{eval $list = category_get_list($cat, $wheresql, $page);}-->
+<link href="http://static.8264.com/static/css/portal/list8264_style.css" rel="stylesheet" type="text/css">
+<style id="diy_style" type="text/css"></style>
+
+<div class="header">
+	<div class="layout">
+		<div class="icoHill">&nbsp;</div>
+		<div class="headerL">
+			<h1><span class="country"><!--{if $cat['catid']==232}-->攀岩频道<!--{elseif $cat['catid']==486}-->攀岩资讯<!--{elseif $cat['catid']==235}-->攀岩技术<!--{elseif $cat['catid']==544}-->攀岩人物<!--{elseif $cat['catid']==775}-->攀冰<!--{elseif $cat['catid']==234}-->攀岩其他<!--{/if}--></span></h1>
+			<div class="site">
+				<a href="$_G[config][web][portal]">首页</a>
+				> <a href="http://www.8264.com/list/232/">攀岩频道</a>
+			</div>
+		</div>
+		<div class="headerR">
+			<div class="colNameList">
+				<a href="http://www.8264.com/list/486/">资讯</a>
+				<a href="http://www.8264.com/list/235/">技术</a>
+				<a href="http://www.8264.com/list/544/">人物</a>
+				<a href="http://www.8264.com/list/775/">攀冰</a>
+				<a href="http://www.8264.com/list/234/">其他</a>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+<div class="warpper" style="padding:10px 0px 30px 0px;">
+	<div style="width:980px; margin:0px auto 10px auto; font-size:0;  border:#ccc solid 1px;">
+		<!--{ad/custom_98}-->
+	</div>
+	<div class="listMain clearfix">
+		<div class="listLayoutLeft shadowBlack">
+			<div class="list_wz">
+				<div class="mySite">
+					<div style="float:left;">
+						<!--{loop $cat[ups] $value}-->
+						<a href="{echo getportalcategoryurl($value[catid])}" style="font-size:12px;">$value[catname]</a>
+						<!--{/loop}-->
+						&nbsp;&nbsp;
+						<a href="{echo getportalcategoryurl($cat[catid])}" style="color:#2A85E8; font-weight:bold; font-size:12px">$cat[catname]</a>
+					</div>
+					<div style="float:right;">
+						<a href="http://www.8264.com/" target="_blank">返回首页</a>
+					</div>
+				</div>
+			</div>
+			<div class="list">
+				<!--{loop $list['list'] $value}-->
+				<!--{eval
+						$datearr1 = explode(" ",$value[dateline]);
+						$datearr2 = explode("-",$datearr1[0]);
+						$value['summary'] = str_replace("　　","",$value['summary']);
+					}-->
+				<div class="artListShortExp">
+					<div class="date"> <b>$datearr2[1]月</b>
+						<br>
+						<span>$datearr2[2]</span>
+					</div>
+					<h2>
+						<a href="portal.php?mod=view&amp;aid=$value[aid]" title='$value[title]' target='_blank'>$value[title]</a>
+					</h2>
+					<div class="author"> <em>作者：
+							<!--{if $value[author]}-->
+							$value[author]
+							<!--{else}-->
+							$value[username]
+							<!--{/if}-->
+							&nbsp;|&nbsp;来源于：
+							<!--{if $value[from]}-->
+							$value[from]
+							<!--{else}-->
+							8264
+							<!--{/if}--></em>
+						<!--{if $value['commentnum']}-->|
+						<span class="comment">$value['commentnum']</span>
+						人评论<!--{/if}-->
+					</div>
+					<div class="cont">
+						<a target="_blank" href="portal.php?mod=view&amp;aid=$value[aid]">
+							<img src="$value[pic]"></a>
+						$value[summary]
+					</div>
+				</div>
+				<!--{/loop}-->
+			</div>
+			<!--左侧文章列表循环结束-->
+			<!--{if $list['multi']}-->
+			<div class="listPageBox">
+				<div class="pg">{$list['multi']}</div>
+			</div>
+			<!--{/if}-->
+		</div>
+		<div class="listLayoutRight">
+			<div class="sideRightBars shadowBlack" style="display:none;">
+				<div class="tab">
+					<a href="http://www.8264.com/zhuangbei" target="_blank">装备</a>
+				</div>
+				<div class="artZbShare">
+					<a target="_blank" href="http://www.8264.com/zhuangbei-10-0-0-5-1">服装</a>
+					<a target="_blank" href="http://www.8264.com/zhuangbei-11-0-0-5-1">鞋袜</a>
+					<a target="_blank" href="http://www.8264.com/zhuangbei-12-0-0-5-1">背包</a>
+					<a target="_blank" href="http://www.8264.com/zhuangbei-13-0-0-5-1">露营</a>
+					<a target="_blank" href="http://www.8264.com/zhuangbei-19-0-0-5-1">登山/攀岩</a>
+					<a target="_blank" href="http://www.8264.com/zhuangbei-21-0-0-5-1">手表/眼镜/仪器/数码</a>
+					<a target="_blank" href="http://www.8264.com/zhuangbei-23-0-0-5-1">综合装备</a>
+					<a target="_blank" href="http://www.8264.com/zhuangbei-70-0-0-5-1">自行车</a>
+					<a target="_blank" href="http://www.8264.com/zhuangbei-118-0-0-5-1">滑雪</a>
+					<a target="_blank" href="http://www.8264.com/zhuangbei-13-96-0-5-1">帐篷</a>
+					<a target="_blank" href="http://www.8264.com/zhuangbei-13-97-0-5-1">睡袋</a>
+					<a target="_blank" href="http://www.8264.com/zhuangbei-13-98-0-5-1">垫子</a>
+					<a target="_blank" href="http://www.8264.com/zhuangbei-13-99-0-5-1">头灯</a>
+					<a target="_blank" href="http://www.8264.com/zhuangbei-13-100-0-5-1">手电</a>
+					<a target="_blank" href="http://www.8264.com/zhuangbei-13-101-0-5-1">营地灯</a>
+					<a target="_blank" href="http://www.8264.com/zhuangbei-13-102-0-5-1">炉具</a>
+					<a target="_blank" href="http://www.8264.com/zhuangbei-13-103-0-5-1">餐具</a>
+					<a target="_blank" href="http://www.8264.com/zhuangbei-13-104-0-5-1">水具</a>
+				</div>
+			</div>
+			<div class="sideRightBars shadowBlack" style="margin:40px 0px 10px 0px;">
+				<div class="tab">
+					<a href="http://bbs.8264.com/forum-135-1.html" target="_blank">攀岩论坛</a>
+				</div>
+				<div class="hotbb clearfix">
+					<!--[diy=pybbs]-->
+					<div id="pybbs" class="area"></div>
+					<!--[/diy]-->
+					<!--攀岩论坛-->
+				</div>
+			</div>
+			<div class="sideRightBars shadowBlack dszt" style="margin-top:40px;">
+				<a name="special"></a>
+				<div class="tab">
+					<a href="http://www.8264.com/topic_list/" target="_blank">攀岩专题</a>
+				</div>
+				<!--[diy=pyzt]-->
+				<div id="pyzt" class="area"></div>
+				<!--[/diy]-->
+				<!--//登山专题//-->
+			</div>
+			<div class="rightAd" style=" margin-top:-30px;">
+				<!--{ad/custom_158}-->
+			</div>
+		</div>
+	</div>
+	<div class="wap_960">
+		<!--{block/6623}-->
+	</div>
+</div>
+<!--{subtemplate common/weixin_share_bottom}-->
+<!--{subtemplate common/float_guide}-->
+<!--{subtemplate common/ewm_l}-->
+<style>
+.bbsfoothotlist{ background: #1a2b38; color: #ffffff; padding-bottom:45px;}
+.topHill{  background: url(http://static.8264.com/static/image/common/bg_fourm_sprite.png) no-repeat 0 0; height: 16px;left: 0; position: relative; text-indent: -9999px; top: -16px; width: 175px}
+</style>
+
+<div class="bbsfoothotlist">
+	<div class="layout">
+		<div class="topHill">顶部小山</div>
+	</div>
+	<div class="choiceness">
+		<!--{block/6905}-->
+	</div>
+</div>
+<!--{subtemplate common/footer_8264_new}-->

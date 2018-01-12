@@ -1,0 +1,48 @@
+<style>
+	.clear_b:after{content: ""; display: block; clear: both; visibility: hidden;}
+	.clear_b{ zoom: 1;}
+	.h13_ewm{ height:13px;}
+	.ewmbox{ width:160px; position: fixed !important; _position: absolute; z-index: 1; top:370px;  _top:expression(eval(document.documentElement.scrollTop)); float:right; color:#585858;}
+	.close_ewm{ width:11px; height:11px; background:url(http://static.8264.com/static/images/common/ewmclose.jpg) left top no-repeat; float:right; margin-bottom:2px; display:none;}
+	.close_ewm:hover{  background:url(http://static.8264.com/static/images/common/ewmclose_hover.jpg) left top no-repeat;}
+	.ewmwarpten{ width:110px; font-size:12px; background:#efefef; text-align:center; font-family:"Microsoft YaHei",Tahoma,Helvetica,SimSun,sans-serif; padding:4px 0px 10px 0px; display:block; color:#1e6d9b; text-decoration:none;}
+
+</style>
+<div class="ewmbox" style="display:none;">
+<div class="clear_b h13_ewm"><a href="javascript:void(0)" class="close_ewm"></a></div>
+<!--{ad/custom_468}-->
+</div>
+<script type="text/javascript">
+
+jQuery(function(){	
+	var isiOS 	  = navigator.userAgent.match('iPad') || navigator.userAgent.match('iPhone') || navigator.userAgent.match('iPod');
+    var isAndroid = navigator.userAgent.match('Android');
+    if (!isiOS && !isAndroid) {
+    	jQuery(".ewmbox").show();    	
+    	jQuery(".ewmbox").hover(
+			function () {
+			jQuery(".close_ewm",this).show();
+		  },
+		  function () {
+			jQuery(".close_ewm",this).hide();
+		  }
+		);
+		jQuery(".close_ewm").click(function(){
+			jQuery(".ewmbox").hide();
+		});   	
+    }
+	var ww = jQuery(window).width();   
+	var r_z = (ww-980)/2 -180;
+	if(r_z<0){
+		jQuery(".ewmbox").css("right",'0px');
+	}else{
+		jQuery(".ewmbox").css("right",r_z);
+	};
+	if(ww>1350){
+		jQuery(".ewmbox").show();
+	}else{
+		jQuery(".ewmbox").hide();
+	}	
+});
+
+</script>

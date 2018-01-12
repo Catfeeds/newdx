@@ -1,0 +1,66 @@
+<form id="photo_postform" action="/forum.php?ctl=photo&act=postphoto" method="post">
+<div id="photo_upload_button">
+	<div id="pic_upload_multiimg">
+		<p>此内容需要 Adobe Flash Player 11.1.0 或更高版本</p>
+		<script type="text/javascript"> 
+		var pageHost = ((document.location.protocol == "https:") ? "https://" : "http://"); 
+		document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='" 
+						+ pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" ); 
+		</script>
+	</div>
+	<div style="float:left;margin-left:10px;"><input id="submitbtn" type="submit" name="submit" value="发布"/></div>
+	<div style="clear:both;"></div>
+</div>
+<div id="photo_upload_list">
+
+</div>
+</form>
+<script type="text/javascript" src="static/js/swfobject.js"></script>
+<script type="text/javascript">
+    var params = {site:"{$_G[siteroot]}misc.php%3fmod=swfupload%26type=image%26fid=$fid%26water=no%26random=<!--{echo random(4)}-->"};
+    swfobject.embedSWF("{IMGDIR}/newupload.swf", "pic_upload_multiimg", "208", "50", "11.1.0", "playerProductInstall.swf", params);
+    swfobject.createCSS("#pic_upload_multiimg", "float:left;text-align:left;z-index:200");
+	ajaxget('forum.php?ctl=photo&act=imglist&editid={$editid}', 'photo_upload_list');
+	function uploadsuccess(num,type) {
+		ajaxget('forum.php?ctl=photo&act=imglist&editid={$editid}', 'photo_upload_list');
+	}
+</script>
+<style>
+#photo_imglist_new li{width:150px; float:left;margin:10px 10px 10px 0;}
+#photo_imglist_new .noselectphoto p{display:none;}
+#photo_imglist_new .selectphoto{}
+#photo_imglist_new img{width:150px;height:150px;cursor:pointer;}
+#photo_imglist_new .selectphoto{}
+#photo_imglist_new .selecticon{background: no-repeat url('static/image/brand/thread_top.gif');display:block;width:34px;height:34px; position:absolute;}
+#photo_imglist_new .newicon{background: no-repeat url('static/image/brand/thread_new.gif');display:block;width:34px;height:34px; position:absolute;}
+#photo_imglist_new p{text-align:center;padding-top:3px;}
+#photo_imglist_new input{size:10px;width:100px;border:none; border-bottom:2px dotted #ccc;text-align:center;}
+#submitbtn{background:url('static/image/common/uploadnew.png') no-repeat;border:none;width:208px;height:50px;font-size:16px;color:#FFF;font-weight:bold; font-family:微软雅黑; cursor:pointer;}
+#photo_message{font-size:16px;}
+</style>
+<script src="static/js/jquery-1.6.1.min.js"></script>
+<script>
+jQuery.noConflict();
+;(function($){
+	$('.noselectphoto img').live('click', function(){
+		var myid = $(this).parent().attr('myid');
+		$(this).parent().removeClass('noselectphoto').addClass('selectphoto').find('input:text').removeAttr('disabled').end().find('.icon').removeClass('newicon').addClass('selecticon');
+		$("#photo_imglist_new").append('<input class="photo_aids_hidden" type="hidden" name="aids[]" value="'+myid+'" />');
+		checkheight($(this).parent().height());
+	});
+	$('.selectphoto img').live('click', function(){
+		var intH = $(this).parent().height();
+		var myid = $(this).parent().attr('myid');
+		$(this).parent().removeClass('selectphoto').addClass('noselectphoto').find('input:text').attr('disabled',true).end().find('.icon').removeClass('selecticon').addClass('newicon');
+		$("#photo_imglist_new input.photo_aids_hidden[value='"+myid+"']").remove();
+		checkheight(intH);
+	});
+	function checkheight(intH){
+		if($("#photo_imglist_new input.photo_aids_hidden").length > 0){
+			$("#photo_imglist_new li").height(intH);
+		}else{
+			$("#photo_imglist_new li").height('auto');
+		}
+	}
+})(jQuery);
+</script>

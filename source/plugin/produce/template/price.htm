@@ -1,0 +1,172 @@
+<div class="usersprice">	
+	<div class="userbox">
+		<div class="userlist" id="pri">
+			<!--{if $pro['cpjg']||$pro['gmdz']}-->
+			<div class="list">
+				<div class="showtx">
+				<div class="sjx">               
+				</div>
+				<!--{eval $sharenum = ForumOptionProduce::getShareNumber($post['authorid']);}-->
+				<div style="padding: 7px;">
+					<a href="home.php?mod=space&uid=$post['authorid']" target="_blank">¸öÈË¿Õ¼ä</a><span style="font-size: 12px;line-height: 12px;position: absolute;right: 7px;top: 4px;cursor: pointer;">x</span><br>
+					<a href="http://u.8264.com/home-space-uid-$post['authorid']-do-produce-view-me-from-space.html" target="_blank">×°±¸·ÖÏí($sharenum)</a><br>
+					<a onclick="showWindow('showMsgBox', this.href, 'get', 0);" href="home.php?mod=spacecp&ac=pm&op=showmsg&handlekey=showmsg_$post['authorid']&touid=$post['authorid']&pmid=0&daterange=2" target="_blank">·¢ÏûÏ¢</a>   
+				</div>                    
+				</div>
+				<div class="jiagetx"><a href="home.php?mod=space&uid=$post['authorid']" title="$value['username']" target="_blank">{eval echo avatar($post['authorid'], 'small');}</a></div>
+				<div style="margin-bottom: 3px;"><span style="color: #666666">¹ºÂò¼Û¸ñ£º</span><span style="font-size: 16px;">£¤<!--{if $pro['cpjg']}-->{$pro['cpjg']}<!--{else}--><!--{/if}--></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{if $pro['gmdz']}<!--{if strpos($pro['gmdz'],'taobao')}-->
+				<a class="ico" onclick="openUrl('$pro[gmdz]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/taobao.gif">&nbsp;</a>
+				<!--{elseif strpos($pro['gmdz'],'dangdang')}-->
+				<a class="ico" onclick="openUrl('$pro[gmdz]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/dangdang.gif">&nbsp;</a>
+				<!--{elseif strpos($pro['gmdz'],'360buy')}-->
+				<a class="ico" onclick="openUrl('$pro[gmdz]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/360buy.gif">&nbsp;</a>
+				<!--{elseif strpos($pro['gmdz'],'ibuying')}-->
+				<a class="ico" onclick="openUrl('$pro[gmdz]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/ibuying.gif">&nbsp;</a>
+				<!--{elseif strpos($pro['gmdz'],'lvyoumall')}-->
+				<a class="ico" onclick="openUrl('$pro[gmdz]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/lvyoumall.gif">&nbsp;</a>
+				<!--{elseif strpos($pro['gmdz'],'amazon')}-->
+				<a class="ico" onclick="openUrl('$pro[gmdz]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/amazon.gif">&nbsp;</a>
+				<!--{elseif strpos($pro['gmdz'],'newegg')}-->
+				<a class="ico" onclick="openUrl('$pro[gmdz]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/newegg.gif">&nbsp;</a>
+				<!--{elseif strpos($pro['gmdz'],'sanfo')}-->
+				<a class="ico" onclick="openUrl('$pro[gmdz]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/sanfo.gif">&nbsp;</a>
+				<!--{elseif strpos($pro['gmdz'],'paipai')}-->
+				<a class="ico" onclick="openUrl('$pro[gmdz]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/paipai.gif">&nbsp;</a>
+				<!--{elseif strpos($pro['gmdz'],'tuan.8264.com')}-->
+				<a class="ico" onclick="openUrl('$pro[gmdz]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/8264.gif">&nbsp;</a>
+				<!--{elseif strpos($pro['gmdz'],'www.yoger.cn')}-->
+				<a class="ico" onclick="openUrl('$pro[gmdz]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/yoger.gif">&nbsp;</a>
+				<!--{elseif strpos($pro['gmdz'],'tmall.com')}-->
+				<a class="ico" onclick="openUrl('$pro[gmdz]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/tmall.gif">&nbsp;</a>
+				<!--{elseif strpos($pro['gmdz'],'buy.qq.com')}-->
+				<a class="ico" onclick="openUrl('$pro[gmdz]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/buyqq.gif">&nbsp;</a>
+				<!--{elseif strpos($pro['gmdz'],'shop.vafox.com')}-->
+				<a class="ico" onclick="openUrl('$pro[gmdz]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/vafox.gif">&nbsp;</a>
+				<!--{elseif strpos($pro['gmdz'],'hwfanli.com')}-->
+				<a class="ico" onclick="openUrl('$pro[gmdz]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/hwfanli.gif">&nbsp;</a>
+				<!--{else}-->
+				<a style="cursor: pointer;text-decoration: none;" onclick="openUrl('$pro[gmdz]');" target="_blank">¹ºÂòÍøÖ·&nbsp;>></a>
+				<!--{/if}-->{/if}				
+				&nbsp;&nbsp;
+				<!--{if $value['comment']!=""}-->
+				<span class="quotes_begin"><span style="background: url('http://bbs.8264.com/static/image/common/qz.gif') no-repeat scroll right 0 transparent;padding-right: 16px;">$value[comment]</span></span></span>
+				<!--{/if}-->				
+				</div>
+			</div>
+			<!--{/if}-->	
+			<!--{loop $userlist $value}-->   
+			<div class="list" style="display: none;">
+				<div class="showtx">
+				<div class="sjx">               
+				</div>
+				<!--{eval $sharenum = ForumOptionProduce::getShareNumber($value['uid']);}-->
+				<div style="padding: 7px;">
+					<a href="home.php?mod=space&uid=$value['uid']" target="_blank">¸öÈË¿Õ¼ä</a><span style="font-size: 12px;line-height: 12px;position: absolute;right: 7px;top: 4px;cursor: pointer;">x</span><br>
+					<a href="http://u.8264.com/home-space-uid-$value['uid']-do-produce-view-me-from-space.html" target="_blank">×°±¸·ÖÏí($sharenum)</a><br>
+					<a onclick="showWindow('showMsgBox', this.href, 'get', 0);" href="home.php?mod=spacecp&ac=pm&op=showmsg&handlekey=showmsg_$value['uid']&touid=$value['uid']&pmid=0&daterange=2" target="_blank">·¢ÏûÏ¢</a>   
+				</div>                    
+				</div>
+				<div class="jiagetx"><a href="home.php?mod=space&uid=$value['uid']" title="$value['username']" target="_blank">$value['avatar']</a></div>
+				<div style="margin-bottom: 3px;margin-left: 34px;">ÍÚµ½ÁË<span style="font-weight: bold;font-size: 16px;">£¤$value['price']</span>&nbsp;µÄ<!--{if strpos($value['url'],'taobao')}-->
+				<a class="ico" onclick="openUrl('$value[url]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/taobao.gif">&nbsp;</a>
+				<!--{elseif strpos($value['url'],'dangdang')}-->
+				<a class="ico" onclick="openUrl('$value[url]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/dangdang.gif">&nbsp;</a>
+				<!--{elseif strpos($value['url'],'360buy')}-->
+				<a class="ico" onclick="openUrl('$value[url]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/360buy.gif">&nbsp;</a>
+				<!--{elseif strpos($value['url'],'ibuying')}-->
+				<a class="ico" onclick="openUrl('$value[url]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/ibuying.gif">&nbsp;</a>
+				<!--{elseif strpos($value['url'],'lvyoumall')}-->
+				<a class="ico" onclick="openUrl('$value[url]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/lvyoumall.gif">&nbsp;</a>
+				<!--{elseif strpos($value['url'],'amazon')}-->
+				<a class="ico" onclick="openUrl('$value[url]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/amazon.gif">&nbsp;</a>
+				<!--{elseif strpos($value['url'],'newegg')}-->
+				<a class="ico" onclick="openUrl('$value[url]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/newegg.gif">&nbsp;</a>
+				<!--{elseif strpos($value['url'],'sanfo')}-->
+				<a class="ico" onclick="openUrl('$value[url]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/sanfo.gif">&nbsp;</a>
+				<!--{elseif strpos($value['url'],'paipai')}-->
+				<a class="ico" onclick="openUrl('$value[url]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/paipai.gif">&nbsp;</a>
+				<!--{elseif strpos($value['url'],'tuan.8264.com')}-->
+				<a class="ico" onclick="openUrl('$value[url]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/8264.gif">&nbsp;</a>
+				<!--{elseif strpos($value['url'],'www.yoger.cn')}-->
+				<a class="ico" onclick="openUrl('$value[url]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/yoger.gif">&nbsp;</a>
+				<!--{elseif strpos($value['url'],'tmall.com')}-->
+				<a class="ico" onclick="openUrl('$value[url]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/tmall.gif">&nbsp;</a>				
+				<!--{elseif strpos($value['url'],'buy.qq.com')}-->
+				<a class="ico" onclick="openUrl('$value[url]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/buyqq.gif">&nbsp;</a>
+				<!--{elseif strpos($value['url'],'shop.vafox.com')}-->
+				<a class="ico" onclick="openUrl('$value[url]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/vafox.gif">&nbsp;</a>
+				<!--{elseif strpos($value['url'],'hwfanli.com')}-->
+				<a class="ico" onclick="openUrl('$value[url]');" target="_blank">¹ºÂòÍøÖ·>>&nbsp;<img src="/source/plugin/produce/images/hwfanli.gif">&nbsp;</a>
+				<!--{else}-->				
+				<a style="cursor: pointer;text-decoration: none;" onclick="openUrl('$value[url]');" target="_blank">¹ºÂòÍøÖ·&nbsp;>></a>
+				<!--{/if}-->				
+				&nbsp;&nbsp;
+				<!--{if $value['comment']!=""}-->
+				<span class="quotes_begin"><span style="background: url('http://bbs.8264.com/static/image/common/qz.gif') no-repeat scroll right 0 transparent;padding-right: 16px;">$value[comment]</span></span></span>
+				<!--{/if}-->				
+				<!--{if $value['uid']==$_G['uid']||$_G['adminid']==1}-->
+				<span class="delete"><a class="delete_$value['id']" href="javascript:;">delete</a></span>				
+				<script type="text/javascript">					
+					;(function($) {	
+						$('.delete_$value[id]').click(function(){
+							var prid = <!--{$value['id']}-->;
+							var puid = <!--{$value['uid']}-->;	
+							showWindow('confimpanel','/plugin.php?id=produce:confimpanel&prid='+prid+'&puid='+puid);							
+						});
+					})(jQuery);	
+				</script>
+				<!--{/if}-->
+				</div>
+			</div>	
+			<!--{/loop}-->	
+		</div>
+	    <script type="text/javascript">
+		function openUrl(url){				
+		   window.open(url,"_blank");	
+		}			
+		</script>
+	</div>	
+	<div class="addprice" style="display: none;">
+		<a href="#"><img src="source/plugin/produce/css/images/wjg.jpg"></a>
+	</div>
+</div> 
+<script type="text/javascript">
+jQuery.noConflict();
+var tid = <!--{$_G['tid']}-->;
+var uid = <!--{$_G['uid']}-->;
+;(function($){	
+	{if $forbidprice_power!=0}
+		var accomplish = 1;
+	{else}
+		var accomplish = 0;
+	{/if}
+	var publiced_alert_interval;
+	function show_publiced_alert(_this) {
+		clearInterval(publiced_alert_interval);
+		$('#publiced_alerts').css({top: _this.offset().top+_this.outerHeight(1), left: _this.offset().left}).show();
+	}
+	$('.addprice a').mouseout(function(){
+		clearInterval(publiced_alert_interval);
+		publiced_alert_interval = setInterval(function(){
+			$('#publiced_alerts').hide();
+		}, 1000);
+	})	
+	<!--{if !$_G['uid']}-->
+	$('.usersprice .addprice a').click(function(){	
+		showWindow('login', 'member.php?mod=logging&action=login');hideWindow('register');
+	})
+	<!--{else}-->			
+	$('.usersprice .addprice a').click(function(){
+		if (accomplish==1) {
+			show_publiced_alert($(this));			
+			return false;
+		}		
+		showWindow('addprice','/plugin.php?id=produce:addprice&tid='+tid+'&uid='+uid);
+		return false;
+	});	
+	<!--{/if}-->		
+})(jQuery);
+</script>
+<div id="publiced_alerts" style="display: none;">
+	ºÜÒÅº¶µÄÍ¨ÖªÄú£¬ÄúÒÑ±»¹ÜÀíÔ±½ûÖ¹ÔÚ±¾°æ¿éÍÚ¼Û¸ñ£¡
+</div>

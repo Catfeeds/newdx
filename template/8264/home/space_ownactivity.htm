@@ -1,0 +1,258 @@
+<!--{subtemplate common/header_8264_new}-->
+<!--{subtemplate home/space_header_uc}-->
+<link href="data/cache/style_2_forum_viewthread.css?{VERHASH}" rel="stylesheet" type="text/css">
+<!--main-content-->			
+<div class="main-content layout-page">
+<div class="layout-app">
+	<!--左侧-->
+	<div class="col-main">
+	<div class="main-wrap">
+	<div class="ui-block ui-block-content">
+	<div class="page-container-activity">
+	<div class="list-area">
+	{if $list}
+		<ul class="act-list mod-op-current manageContainer">		
+			{loop $list $v} 
+			{if $viewtype == 'apply'}								
+			<li class="list-row" id="acitivity_$v[tid]" style="height:auto;">
+				<div class="activity-content">
+					<div class="hd">					
+						<div class="activity-img-wrap">
+							<a href="forum.php?mod=viewthread&tid={$v[tid]}" title="$v[subject]" target="_blank">
+								{if $v[thumb]}
+								<img src="$v[thumb]" alt="$v[subject]">
+								{/if}
+							</a>	
+						</div>			
+						{if $v[activityStatus] == '已结束'}		
+						<span class="icon-status icon-end-a"></span>
+						{/if}
+						{if $space[self]}
+						<div class="mod-activity-op pl-popup-wrap pl-activityitem-op mod-op" style="display:none;">
+							<a href="javascript:void(0)" class="pl-popup-btn pl-activityitem-op-btn">
+								<span class="activity-op-tip">
+									<i class="icon-m icon-expansion-m"></i>
+								</span>
+							</a>
+							<div class="activity-op-list pl-popup-panel pl-activityitem-op-list">
+								<ul>
+									<li>
+										{if $v[activityStatus] == '已结束'}	
+										<a href="home.php?mod=spacecp&ac=activity&tid=$v[tid]&op=delete&handlekey=activity_noshow_{$v[tid]}" class="pl-activityitem-op-delete" onclick="showWindow(this.id, this.href, 'get', 0);" id="activity_noshow_$v[tid]">
+											<i class="icon-m icon-delete-m"></i>删除
+										</a>
+										{else}
+										<a href="javascript:void(0);" onclick="activityCancle('{$v[tid]}')">
+											<i class="icon-m icon-cancle-m"></i>取消报名
+										</a>
+										{/if}
+									</li>
+								</ul>
+							</div>
+						</div>
+						{/if}
+					</div>
+					<div class="bd">
+						<div class="txt-details-info">
+							<h3>
+								<a href="forum.php?mod=viewthread&tid={$v[tid]}" class="" title="$v[subject]" target="_blank">$v[subject]</a>
+							</h3>
+							<span class="sign-time">活动地点：{$v[place]}</span>
+							<span class="rele-time">
+								{eval $starttimefrom = date('Y-m-d', $v[starttimefrom]);}
+								活动时间：{if !$v[displayorder]}{if $v[starttimeto]}{$starttimefrom} 至 {eval echo date('Y-m-d', $v[starttimeto])} 商定{else}{$starttimefrom}{/if}{/if}
+							</span>
+						</div>
+					</div>
+				</div>
+                {if $v[displayorder] == -1}
+                <div class="isDelete-mask"></div>
+                <div class="isDelete-panel">
+                    <p>此活动已删除</p>
+                    <form name="activitycancleform_{$v[tid]}" id="activitycancleform_{$v[tid]}" method="post" autocomplete="off" action="forum.php?mod=misc&action=activityapplies&is_uc=1&page={$page}" onsubmit="ajaxpost(this.id, 'return_activitycancle_{$v[tid]}');">		
+                        <button type="submit" name="activitycancel" value="true" class="button_confirm confirm-ok" id="activitycancel">确认</button>
+                        <input type="hidden" name="formhash" value="{FORMHASH}" />
+                        <input type="hidden" name="tid" id="tid" value="{$v[tid]}" />
+                        <input type="hidden" name="query_string" value="{eval echo str_replace('?', '' , $_SERVER['QUERY_STRING']);}" />
+                        <input type="hidden" name="activitycancel" value="true" />		
+                        <input type="hidden" name="referer" value="$_G[referer]" />
+                        <input type="hidden" name="handlekey" value="activitycancle" />
+                        <div id="return_activitycancle_{$v[tid]}" style="display:none;"></div>
+                    </form>
+                </div>
+                {/if}
+			</li>
+			{else}
+			<li class="list-row" id="acitivity_$v[tid]">
+				<div class="activity-content">
+					<div class="hd">
+						<div class="activity-img-wrap">
+							<a href="forum.php?mod=viewthread&tid={$v[tid]}" title="$v[subject]" target="_blank">
+								{if $v[thumb]}
+								<img src="$v[thumb]" alt="$v[subject]">
+								{/if}
+							</a>
+						</div>	
+						{if $v[activityStatus] == '已满员'}
+						<span class="icon-status icon-full-a"></span>
+						{elseif $v[activityStatus] == '已结束'}
+						<span class="icon-status icon-end-a"></span>
+						{/if}	
+						{if $v[activityStatus] != '已结束' && $space[self]}				
+						<div class="mod-activity-op pl-popup-wrap pl-activityitem-op mod-op" style="display:none;">
+							<a href="javascript:void(0)" class="pl-popup-btn pl-activityitem-op-btn">
+								<span class="activity-op-tip">
+									<i class="icon-m icon-expansion-m"></i>
+								</span>
+							</a>
+							<div class="activity-op-list pl-popup-panel pl-activityitem-op-list">
+								<ul>
+									<li>
+										<a href="{$v[manageurl]}" target="_blank" class="pl-activityitem-op-manage">
+											<i class="icon-m icon-manage-m"></i>管理
+										</a>
+									</li>
+									<li>
+										<a href="misc.php?mod=invite&action=thread&id=$v[tid]&is_uc=1" onclick="showWindow('invite', this.href, 'get', 0);" class="pl-activityitem-op-invit">
+											<i class="icon-m icon-invit-m"></i>邀请
+										</a>
+									</li>
+									<li>
+										<a href="{$v[manageurl]}" target="_blank" class="pl-activityitem-op-export">
+											<i class="icon-m icon-export-m"></i>导出
+										</a>
+									</li>								
+								</ul>
+							</div>
+						</div>
+						{/if}	
+					</div>
+					<div class="bd">
+						<div class="txt-details-info">
+							<h3>
+								<a href="forum.php?mod=viewthread&tid={$v[tid]}" class="" title="$v[subject]" target="_blank">$v[subject]</a>
+							</h3>							
+							<span class="sign-time">活动地点：{$v[place]}</span>
+							<span class="rele-time">
+								{eval $starttimefrom = date('Y-m-d', $v[starttimefrom]);}
+								活动时间：{if $v[starttimeto]}{$starttimefrom} 至 {eval echo date('Y-m-d', $v[starttimeto])} 商定{else}{$starttimefrom}{/if}
+							</span>
+						</div>
+					</div>
+					<div class="ft">
+						<div class="list-stat-bar">
+							<span class="list-stat-item list-stat-yes">
+								<em>$v[allapplynum]人</em>已报名
+							</span>
+							<span class="list-stat-item list-stat-no">
+								<em>$v[noverifiednum]人</em>未审核
+							</span>
+						</div>
+					</div>
+				</div>
+			</li>
+			{/if}
+			{/loop}
+		</ul>
+		<!--分页-->
+		{if $multi}<div class="cust-page-list">{$multi}</div>{/if}			
+		<!--分页 end-->
+	{else}
+		<div class="page-container-empty">
+			<div class="empty-tips">
+				{eval $tempval = $viewtype == 'apply' ? '报名' : '发起';}
+				<p><i class="icon-warn"></i>{if $space[self]}您还没有{$tempval}活动{else}没有可浏览的活动{/if}</p>
+			</div>
+		</div>	
+	{/if}
+	
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	<!--左侧 end-->
+	<!--右侧-->
+	<div class="col-sub">
+		<!--活动-->
+		<div class="category-nav-container mod-wrap">
+			<div class="category-menu-nav">
+				<ul class="menu-nav-tree">
+					<li class="menu-nav {if $viewtype == 'apply'}menu-nav-current{/if}">
+						<a href="home.php?mod=space&uid=$space[uid]&do=ownactivity&type=apply">
+							<i class="menu-nav-icon icon-sign"></i>
+							<em>已报名的</em>
+							<span class="number">$applyCnt</span>
+						</a>
+					</li>
+					<li class="menu-nav {if $viewtype == 'orig'}menu-nav-current{/if}">
+						<a href="home.php?mod=space&uid=$space[uid]&do=ownactivity&type=orig">
+							<i class="menu-nav-icon icon-initiate"></i>
+							<em>已发起的</em>
+							<span class="number">$origCnt</span>
+						</a>
+					</li>					
+				</ul>
+			</div>
+		</div>
+		<!--活动 end-->
+        <div style="padding:20px 0px 0px 0px;;"><!--{ad/custom_465}--></div>
+	</div>
+	<!--右侧 end-->
+</div>
+</div>
+
+<!--报名取消框-->
+<div id="activityjoincancel" style="display:none;">
+	<form name="activitycancleform" id="activitycancleform" method="post" autocomplete="off" action="forum.php?mod=misc&action=activityapplies&is_uc=1&page={$page}" onsubmit="ajaxpost(this.id, 'return_activitycancle');">		
+		<div class="popbox" style="width:465px;">
+			<div class="flb">
+			<div class="popbox_title clearfix">
+				<span>取消报名</span>
+				<em onclick="hideMenu('fwin_dialog', 'dialog');"></em>
+			</div>
+			</div>
+			<div>
+				<ul class="albumform">
+					<li>
+						<label style="width:85px;">留言：</label>
+						<input type="text" id="message" name="message" maxlength="200" value="" class="inputtext" />
+					</li>	
+					<li>
+						<label style="width:85px;"></label>
+						<button type="submit" name="activitycancel" value="true" class="button_confirm" id="activitycancel">{lang determine}</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		<input type="hidden" name="formhash" value="{FORMHASH}" />
+		<input type="hidden" name="tid" id="tid" value="" />
+		<input type="hidden" name="query_string" value="{eval echo str_replace('?', '' , $_SERVER['QUERY_STRING']);}" />
+		
+		
+		<input type="hidden" name="activitycancel" value="true" />		
+		<input type="hidden" name="referer" value="$_G[referer]" />
+		<input type="hidden" name="handlekey" value="activitycancle" />
+		<div id="return_activitycancle" style="display:none;"></div>
+		
+	</form>
+</div>
+<script type="text/javascript">
+function activityCancle(tid) {
+	jQuery('#activityjoincancel').find('#tid').attr('value', tid);
+	showDialog($('activityjoincancel').innerHTML, 'info', '');		
+	jQuery('#activitycancleform').prev().remove();
+}
+//活动取消后的回调函数
+function succeedhandle_activitycancle(url, msg, values) {
+	if (values['success']) {
+		location.reload();
+	}
+}
+</script>
+<!--报名取消框 end-->
+
+<!--main-content end-->
+<!--{subtemplate home/space_footer_uc}-->
+<!--{subtemplate common/footer_8264_new}-->

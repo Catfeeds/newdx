@@ -1,0 +1,186 @@
+<?php if(!defined('IN_DISCUZ')) exit('Access Denied'); ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>天石越冬计划</title>
+<link href="/css/pinglun20070313.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+margin-left: 0px;
+margin-top: 0px;
+margin-right: 0px;
+}
+td {
+font-size: 12px;
+line-height: 16px;
+text-decoration: none;
+}
+-->
+</style>
+</head>
+
+<body>
+<table width="958" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><img src="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/top1.jpg" width="327" height="357" /></td>
+    <td><img src="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/top2.jpg" width="284" height="357" /></td>
+    <td><img src="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/top3.jpg" width="347" height="357" /></td>
+  </tr>
+</table>
+<table width="958" border="0" align="center" cellpadding="0" cellspacing="0" background="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/di.gif">
+  <tr>
+    <td width="240" align="center" valign="top"><table width="200" border="0" cellpadding="2" cellspacing="3">
+      <tr>
+        <td><img src="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/biana.jpg" width="216" /></td>
+      </tr>
+      <tr>
+        <td><img src="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/bian2.jpg" width="216" height="275" /></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+    </table></td>
+    <td valign="top"><table width="200" border="0" cellpadding="2" cellspacing="3">
+      <tr>
+        <td><img src="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/hjs.jpg" width="135" height="23" /></td>
+      </tr>
+    </table>
+      <table border="0" align="center" cellspacing="0">
+        <tr>
+          <td><img src="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/tp1.jpg" width="443" height="191" /></td>
+          <td><img src="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/tp2.jpg" width="265" height="191" /></td>
+        </tr>
+      </table>
+      <table width="200" border="0" cellpadding="2" cellspacing="3">
+        <tr>
+          <td><img src="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/hga.jpg" height="23" /></td>
+        </tr>
+      </table>
+      <table width="100%" border="0" align="center" cellpadding="4" cellspacing="4" bgcolor="#A4C0D5">
+        <tr>
+          <td bgcolor="#F7F5EF"><table width="100%" border="0" align="center">
+            <tr>
+              <td align="center"><a href="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/cc1d.jpg" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/cc1.jpg" width="96" height="72" border="0" /></a></td>
+              <td align="center"><a href="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/cc2b.jpg" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/cc2.jpg" width="96" height="72" border="0" /></a></td>
+              <td align="center"><a href="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/cc3d.jpg" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/cc3.jpg" width="96" height="72" border="0" /></a></td>
+              <td align="center"><a href="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/cc4b.jpg" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/cc4.jpg" width="96" height="72" border="0" /></a></td>
+              <td align="center"><a href="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/cc5b.jpg" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/cc5.jpg" width="96" height="72" border="0" /></a></td>
+              <td align="center"><a href="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/cc6b.jpg" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/cc6.jpg" width="96" height="72" border="0" /></a></td>
+              <td align="center"><a href="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/cc7b.jpg" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/cc7.jpg" width="96" height="72" border="0" /></a></td>
+            </tr>
+            <tr>
+              <td align="center">上海三夫捐助者</td>
+              <td align="center">郑州起点李云</td>
+              <td align="center">天津坚石花旗</td>
+              <td align="center">三夫俱乐部沐雨</td>
+              <td align="center">浦伟</td>
+              <td align="center">龙王庙的捐助者</td>
+              <td align="center">捐助天使</td>
+            </tr>
+          </table></td>
+        </tr>
+      </table>
+      <table width="200" border="0" cellpadding="2" cellspacing="3">
+        <tr>
+          <td><img src="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/htp.jpg" width="135" height="23" /></td>
+        </tr>
+      </table>
+      <table width="98%" border="0" align="center">
+        <!--<tr>
+          <td align="center"><table border="0" cellpadding="3" cellspacing="3" bgcolor="#FFFFFF">
+            <tr>
+              <td><a href="http://bbs.8264.com/thread-101981-1-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/cp2.jpg" width="130" height="90" border="0" /></a></td>
+            </tr>
+            <tr>
+              <td>天石越冬计划情况汇报</td>
+            </tr>
+          </table>
+  </td>
+          <td align="center"><table border="0" cellpadding="3" cellspacing="3" bgcolor="#FFFFFF">
+            <tr>
+              <td align="center"><a href="http://bbs.8264.com/thread-105668-1-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/cp3.jpg" width="130" height="90" border="0" /></a></td>
+            </tr>
+            <tr>
+              <td>户外联盟捐助太白山向导</td>
+            </tr>
+          </table></td>
+          <td align="center"><table border="0" cellpadding="3" cellspacing="3" bgcolor="#FFFFFF">
+            <tr>
+              <td align="center"><a href="http://bbs.8264.com/thread-105652-1-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/cp4.jpg" width="130" height="90" border="0" /></a></td>
+            </tr>
+            <tr>
+              <td>上海三夫捐助马家河小学</td>
+            </tr>
+          </table></td>
+          <td align="center"><table border="0" cellpadding="3" cellspacing="3" bgcolor="#FFFFFF">
+            <tr>
+              <td align="center"><a href="http://bbs.8264.com/thread-105517-1-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2008tianshi/ima/cp5.jpg" width="130" height="90" border="0" /></a></td>
+            </tr>
+            <tr>
+              <td>三夫向贵州灾区捐助爱心</td>
+            </tr>
+          </table></td>
+        </tr>-->
+<tr>
+
+          <td align="center"><table border="0" cellpadding="3" cellspacing="3" bgcolor="#FFFFFF">
+            <tr>
+              <td><a href="/30026.html" target="_blank"><img src="http://image1.8264.com/portal/upload/Image/2008/200803/data_img/1206002859909704979.jpg" width="130" height="90" border="0"  title='越冬计划汇报--三夫向贵州灾区捐助爱心活动汇报' /></a></td>
+            </tr>
+            <tr>
+              <td><a href=/30026.html title='越冬计划汇报--三夫向贵州灾区捐助爱心活动汇报' target='_blank'>越冬计划汇报--三夫向</a></td>
+            </tr>
+          </table>
+  </td>		
+ 				
+          <td align="center"><table border="0" cellpadding="3" cellspacing="3" bgcolor="#FFFFFF">
+            <tr>
+              <td><a href="/29993.html" target="_blank"><img src="http://image1.8264.com/portal/upload/Image/2008/200803/data_img/1206001988384388126.jpg" width="130" height="90" border="0"  title='《越冬计划》上海三夫捐助安徽省霍山县黄尾镇马家河小学' /></a></td>
+            </tr>
+            <tr>
+              <td><a href=/29993.html title='《越冬计划》上海三夫捐助安徽省霍山县黄尾镇马家河小学' target='_blank'>《越冬计划》上海三夫</a></td>
+            </tr>
+          </table>
+  </td>		
+ 				
+          <td align="center"><table border="0" cellpadding="3" cellspacing="3" bgcolor="#FFFFFF">
+            <tr>
+              <td><a href="/29992.html" target="_blank"><img src="http://image1.8264.com/portal/upload/Image/2008/200803/data_img/1206001481072511267.jpg" width="130" height="90" border="0"  title='《越冬计划》河南户外联盟捐助太白山向导活动' /></a></td>
+            </tr>
+            <tr>
+              <td><a href=/29992.html title='《越冬计划》河南户外联盟捐助太白山向导活动' target='_blank'>《越冬计划》河南户外</a></td>
+            </tr>
+          </table>
+  </td>		
+ 				
+          <td align="center"><table border="0" cellpadding="3" cellspacing="3" bgcolor="#FFFFFF">
+            <tr>
+              <td><a href="/29988.html" target="_blank"><img src="http://image1.8264.com/portal/upload/Image/2008/200803/data_img/1206001044953867171.jpg" width="130" height="90" border="0"  title='天石《越冬计划》实施情况汇报--爱心传递' /></a></td>
+            </tr>
+            <tr>
+              <td><a href=/29988.html title='天石《越冬计划》实施情况汇报--爱心传递' target='_blank'>天石《越冬计划》实施</a></td>
+            </tr>
+          </table>
+  </td>		
+ </tr><tr>		        </tr>
+
+      </table>
+      <table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="1" bgcolor="#FFFFFF"></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,1056 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset={CHARSET}" />
+	<title><!--{if !empty($topic['title'])}-->$topic['title'] <!--{/if}--><!--{if !empty($navtitle)}-->$navtitle - <!--{/if}--><!--{if $_G['setting']['bbname']}-->$_G['setting']['bbname'] - <!--{/if}--></title>
+	$_G['setting']['seohead']
+
+	<meta name="keywords" content="{if $_G['seokeywords']}{echo htmlspecialchars($_G['seokeywords'])}{/if} {if !empty($metakeywords)}{echo htmlspecialchars($metakeywords)}{/if}" />
+	<meta name="description" content="{echo htmlspecialchars($_G['seodescription'])} {if !empty($metadescription)}{echo htmlspecialchars($metadescription)}{/if} Discuz! Board" />
+	<meta name="generator" content="8264" />
+	<meta name="author" content="8264.com" />
+	<meta name="copyright" content="2001-2010" />
+	<meta name="MSSmartTagsPreventParsing" content="True" />
+	<meta http-equiv="MSThemeCompatible" content="Yes" />
+	<base href="$_G['siteurl']" />		
+        <script src="http://static.8264.com/oldcms/moban/zt/2011ispo/js/common.js" type="text/javascript" language="javascript"></script>
+
+        <script type="text/javascript" src="http://static.8264.com/oldcms/moban/zt/2011ispo/js/jquery-1.4.min.js"></script>
+        <script type="text/javascript" src="http://static.8264.com/oldcms/moban/zt/2011ispo/js/jquery.lazy-1.3.1.js"></script>
+        <script>
+          jQuery(document).ready(function(){
+                jQuery.lazy({src:'/moban/zt/2011ispo/js/jquery.darizi.js',name:'darizi',dependencies:{js:['/moban/zt/2011ispo/js/jquery.countdown.js']},cache:true});
+                // 大日子
+                var ndate = new Date(2011,1,23); 
+                jQuery('.darizi').darizi({ bigDay:ndate,last:3});
+
+          });
+        </script>
+
+	<!--{csstemplate}-->
+	<script type="text/javascript">var STYLEID = '{STYLEID}', STATICURL = '{STATICURL}', IMGDIR = '{IMGDIR}', VERHASH = '{VERHASH}', charset = '{CHARSET}', discuz_uid = '$_G[uid]', cookiepre = '{$_G[config][cookie][cookiepre]}', cookiedomain = '{$_G[config][cookie][cookiedomain]}', cookiepath = '{$_G[config][cookie][cookiepath]}', showusercard = '{$_G[setting][showusercard]}', attackevasive = '{$_G[config][security][attackevasive]}', disallowfloat = '{$_G[setting][disallowfloat]}', creditnotice = '<!--{if $_G['setting']['creditnotice']}-->$_G['setting']['creditnames']<!--{/if}-->', defaultstyle = '$_G[style][defaultextstyle]', REPORTURL = '$_G[currenturl_encode]', SITEURL = '$_G[siteurl]';</script>
+	<script type="text/javascript" src="{$_G[setting][jspath]}common.js?{VERHASH}"></script>
+ 
+ <!--{if defined('CURMODULE') && ($_G['basescript'] == 'forum' || $_G['basescript'] == 'group') && (CURMODULE == 'index' || CURMODULE == 'forumdisplay' || CURMODULE == 'group')}-->$rsshead<!--{/if}-->
+	<!--{if $_G['basescript'] == 'forum'}-->
+		<!--{if !empty($_G['cookie']['widthauto']) && empty($_G['disabledwidthauto'])}-->
+			<link rel="stylesheet" id="css_widthauto" type="text/css" href="data/cache/style_{STYLEID}_widthauto.css?{VERHASH}" />
+			<script type="text/javascript">HTMLNODE.className += ' widthauto'</script>
+		<!--{/if}-->
+		<script type="text/javascript" src="{$_G[setting][jspath]}forum.js?{VERHASH}"></script>
+	<!--{elseif $_G['basescript'] == 'home' || $_G['basescript'] == 'userapp'}-->
+		<script type="text/javascript" src="{$_G[setting][jspath]}home.js?{VERHASH}"></script>
+	<!--{elseif $_G['basescript'] == 'portal'}-->
+		<script type="text/javascript" src="{$_G[setting][jspath]}portal.js?{VERHASH}"></script>
+	<!--{/if}-->
+	<!--{if $_G['basescript'] != 'portal' && $_GET['diy'] == 'yes' && ($_G[mod] == 'topic' || $_G[group][allowdiy]) && !empty($_G['style']['tplfile'])}-->
+		<script type="text/javascript" src="{$_G[setting][jspath]}portal.js?{VERHASH}"></script>
+	<!--{/if}-->
+	<!--{if $_GET[diy] == 'yes' && ($_G[mod] == 'topic' || $_G[group][allowdiy]) && !empty($_G['style']['tplfile'])}-->
+	<link rel="stylesheet" type="text/css" href="data/cache/style_{STYLEID}_css_diy.css?{VERHASH}" />
+	<!--{/if}-->
+
+
+<!--冲突js-->
+<!--自己样式结束-->
+
+</head>
+
+<body id="nv_{$_G[basescript]}" class="pg_{CURMODULE}" onkeydown="if(event.keyCode==27) return false;">
+	<!--{if ($_G[mod]!='topic' && $_G[group][allowdiy] && !empty($_G['style']['tplfile'])) || (!empty($_G['style']['tplfile']) && $_G[mod]=='topic' && (($_G['group']['allowaddtopic'] && $topic[uid]==$_G[uid]) || $_G[group][allowmanagetopic]))}-->
+	<a id="diy-tg" href="javascript:openDiy();" title="{lang open_diy}"><img src="{STATICURL}image/diy/panel-toggle.png" alt="DIY" /></a>
+	<!--{/if}-->
+	<div id="append_parent"></div><div id="ajaxwaitid"></div>
+	<!--{if $_GET['diy'] == 'yes' && (CURMODULE == 'topic' || $_G[group][allowdiy]) && !empty($_G['style']['tplfile'])}-->
+		<!--{template common/header_diy}-->
+	<!--{/if}-->
+	<!--{if empty($topic) || $topic[useheader]}-->
+	<!--{ad/headerbanner/wp a_h}-->
+	<!--{hook/global_header}-->
+	<!--{/if}-->   
+<!--dx代码结束-->
+<style id="diy_style" type="text/css"></style>
+<!--自己样式开始-->
+<link href="http://static.8264.com/oldcms/moban/zt/2011ispo/style/style.css" rel="stylesheet" type="text/css" />
+<div class="warpper">
+	<div class="warpper_960">
+        <!--导航开始-->
+        <div class="navall"><a href="#" target="_blank">8264首页</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">展会动态</a>&nbsp;|&nbsp;<a href="#">虚拟展厅</a>&nbsp;|&nbsp;<a href="#n3">8264专区</a>&nbsp;|&nbsp;<a href="#">互动专区</a>&nbsp;|&nbsp;<a href="#n5">专访</a>&nbsp;|&nbsp;<a href="#">新品展示</a>&nbsp;|&nbsp;<a href="#n7">驴友看ispo</a>&nbsp;|&nbsp;<a href="#">视频</a>&nbsp;|&nbsp;<a href="#">花絮</a>&nbsp;|&nbsp;<a href="#">美女</a>&nbsp;|&nbsp;<a href="#">8264战略合作参展品牌</a></div>
+        <!--导航结束-->
+        <!--第一部分开始-->
+        <div class="mid">
+        	<div class="l">
+            	<!--轮播开始-->
+            	<div class="lunboall">
+                	<div class="ltitle1">焦点关注</div>
+                    <div class="lunbo">
+                    	<div id="focus_turn">
+                            <ul id="focus_pic">
+                                <li class="current"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testb.gif"/></a></li>
+                                <li class="normal"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testb.gif" /></a></li>
+                                <li class="normal"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testb.gif" /></a></li>
+                            </ul>
+                            <ul id="focus_tx">
+                                <li class="current"><a href="#" target="_blank">大连山友28日凌晨成功登顶南极1</a></li>
+                                <li class="normal"><a href="#" target="_blank">2010第11届三夫户外俱乐部会员2</a></li>
+                                <li class="normal"><a href="#" target="_blank">2010第11届三夫户外俱乐部会员3</a></li>
+                            </ul>
+                            <div id="focus_opacity"></div>
+						</div>
+                    </div>
+                </div>
+                <!--轮播结束-->
+                <div class="l2">
+                	<div class="zhinantitle">观展指南</div>
+                    <div class="zn">
+                    	<ul>
+                        	<li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/zn1.jpg"></a></li>
+                            <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/zn2.jpg"></a></li>
+                            <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/zn3.jpg"></a></li>
+                            <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/zn4.jpg"></a></li>
+                            <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/zn5.jpg"></a></li>
+                            <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/zn6.jpg"></a></li>
+                        </ul>
+                        <div style="clear:both"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="m">
+            	<div class="m1">
+                	<div class="mtitle">展会头条</div>
+                    <div class="mcon">
+						<div class="toutiaocon">2010年度即将结束，在岁末之际，8264面向中国户外产业资深从业者，我们陆续会把各家观点整理成文，与关注户外运动产业发展的朋友一起分享。本期受访嘉宾——北京三夫户外总经理张恒先生。</div>
+                        <div class="toutiao">
+                        	<h1><a href="#" target="_blank">ispo china 2010 冬季展会圆满闭幕</a></h1>
+                            &#8226;&nbsp;<a href="#" target="_blank">展会滚动新闻</a>&nbsp;&nbsp;<a href="#" target="_blank">展会总结</a>&nbsp;&nbsp;<a href="#" target="_blank">8264驴友“百色团”精彩集粹</a>&nbsp;&nbsp;<a href="#" target="_blank">8264公益晚宴</a><br>
+							&#8226;&nbsp;<a href="#" target="_blank">展会滚动新闻</a>&nbsp;&nbsp;<a href="#" target="_blank">展会总结</a>&nbsp;&nbsp;<a href="#" target="_blank">8264驴友“百色团”精彩集粹</a>&nbsp;&nbsp;<a href="#" target="_blank">8264公益晚宴</a>
+                        </div>
+                        <div class="toutiao">
+                        	<h1><a href="#" target="_blank">ispo china 2010 冬季展会圆满闭幕</a></h1>
+                            &#8226;&nbsp;<a href="#" target="_blank">展会滚动新闻</a>&nbsp;&nbsp;<a href="#" target="_blank">展会总结</a>&nbsp;&nbsp;<a href="#" target="_blank">8264驴友“百色团”精彩集粹</a>&nbsp;&nbsp;<a href="#" target="_blank">8264公益晚宴</a><br>
+							&#8226;&nbsp;<a href="#" target="_blank">展会滚动新闻</a>&nbsp;&nbsp;<a href="#" target="_blank">展会总结</a>&nbsp;&nbsp;<a href="#" target="_blank">8264驴友“百色团”精彩集粹</a>&nbsp;&nbsp;<a href="#" target="_blank">8264公益晚宴</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="m1">
+                	<div class="mtitle">会议进程</div>
+                    <div class="toutiaolist">
+                    	<ul style="display:none">
+                        	<li>&#8226;&nbsp;<a href="#" target="_blank">金飞豹费宣骑行东南亚 31日公信名单</a></li>
+                            <li>&#8226;&nbsp;<a href="#" target="_blank">金飞豹费宣骑行东南亚 31日公布信使名单</a></li>
+                            <li>&#8226;&nbsp;<a href="#" target="_blank">金飞豹费宣骑行东南亚 31日公布“信使”名单</a></li>
+                            <li>&#8226;&nbsp;<a href="#" target="_blank">金飞豹费宣骑行东南亚 31日公布“信使”名单</a></li>
+                            <li>&#8226;&nbsp;<a href="#" target="_blank">金飞豹费宣骑行东南亚 31日公布“信使”名单</a></li>
+                            <li>&#8226;&nbsp;<a href="#" target="_blank">金飞豹费宣骑行东南亚 31日公布“信使”名单</a></li>
+                            <li>&#8226;&nbsp;<a href="#" target="_blank">金飞豹费宣骑行东南亚 31日公布“信使”名单</a></li>
+                            <li>&#8226;&nbsp;<a href="#" target="_blank">金飞豹费宣骑行东南亚 31日公布“信使”名单</a></li>
+                            <li>&#8226;&nbsp;<a href="#" target="_blank">金飞豹费宣骑行东南亚 31日公布“信使”名单</a></li>
+                            <li>&#8226;&nbsp;<a href="#" target="_blank">金飞豹费宣骑行东南亚 31日公布“信使”名单</a></li>
+                            <li>&#8226;&nbsp;<a href="#" target="_blank">金飞豹费宣骑行东南亚 31日公布“信使”名单</a></li>
+                            <li>&#8226;&nbsp;<a href="#" target="_blank">金飞豹费宣骑行东南亚 31日公布“信使”名单</a></li>
+                        </ul>
+                        <!--//头条列表 12条 标题长度30//-->
+            			<!--[diy=ttlist]--><div id="ttlist" class="area"></div><!--[/diy]-->
+                        <div style="clear:both;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="r">
+                <div class="darizi">
+                    <div class="zhengjishi"><span class="shu"></span></div>
+                    <div class="daojishi"><span class="shu"></span></div>
+                    <div class="jieshule">结束了</div>
+                </div>
+                <div class="r1">
+                	<ul>
+                    	<li><a href="#" target="_blank">金飞豹费宣骑行东南亚</a></li>
+                        <li><a href="#" target="_blank">金飞豹费宣骑行东南亚</a></li>
+                        <li><a href="#" target="_blank">金飞豹费宣骑行东南亚</a></li>
+                        <li><a href="#" target="_blank">金飞豹费宣骑行东南亚</a></li>
+                        <li><a href="#" target="_blank">金飞豹费宣骑行东南亚</a></li>
+                        <li><a href="#" target="_blank">金飞豹费宣骑行东南亚</a></li>
+                        <li><a href="#" target="_blank">金飞豹费宣骑行东南亚</a></li>
+                        <li><a href="#" target="_blank">金飞豹费宣骑行东南亚</a></li>
+                        <li><a href="#" target="_blank">金飞豹费宣骑行东南亚</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+        <!--第一部分结束-->
+        <!--专访开始-->
+        <div class="mid">
+        	<div class="title960">专&nbsp;&nbsp;&nbsp;&nbsp;访</div>
+            <div class="zf">
+                <div class="zf_l">
+                    <div class="zfimgbg1" id="sh_tip1" onmousemove="slide_ty(1)"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test.gif"></div>
+                    <div class="zfimgbg" id="sh_tip2" onmousemove="slide_ty(2)"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test.gif"></div>
+                    <div class="zfimgbg" id="sh_tip3" onmousemove="slide_ty(3)"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test.gif"></div>
+                    <div class="zfimgbg" id="sh_tip4" onmousemove="slide_ty(4)"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test.gif"></div>
+                    <div class="zfimgbg" id="sh_tip5" onmousemove="slide_ty(5)"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test.gif"></div>
+                    <div class="zfimgbg" id="sh_tip6" onmousemove="slide_ty(6)"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test.gif"></div>
+                    <div class="zfimgbg" id="sh_tip7" onmousemove="slide_ty(7)"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test.gif"></div>
+                    <div class="zfimgbg" id="sh_tip8" onmousemove="slide_ty(8)"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test.gif"></div>
+                    <div class="zfimgbg" id="sh_tip9" onmousemove="slide_ty(9)"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test.gif"></div>
+                    <div class="zfimgbg" id="sh_tip10" onmousemove="slide_ty(10)"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test.gif"></div>
+                    <div class="zfimgbg" id="sh_tip11" onmousemove="slide_ty(11)"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test.gif"></div>
+                    <div class="zfimgbg" id="sh_tip12" onmousemove="slide_ty(12)"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test.gif"></div>
+                    <div style="clear:both"></div>
+                </div>
+                <div class="zf_r" id="sh_ce_p">
+                    <div class="zf_r_one" id="ce_pic1" onmousemove="slide_ty(1)">
+                    <div class="zf_imgb"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testb.gif"/></a></div>
+                    <div class="zf_imginfo">
+                    <h1><a href="#" target="_blank">这里放标题，这里放标题</a></h1>2010年12月2日-6日，第三届东盟南宁车展开幕，届时，它将以5.8万平方米的磅礴气势震撼登场，以其它成熟的魅力彰显车展力量。本届车展展出面积6万余平米，包括室内4万平1</div>
+                    </div>
+                    <div class="zf_r_one" id="ce_pic2" onmousemove="slide_ty(2)">
+                    <div class="zf_imgb"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testb.gif"/></a></div>
+                    <div class="zf_imginfo">2010年12月2日-6日，第三届东盟南宁车展开幕，届时，它将以5.8万平方米的磅礴气势震撼登场，以其它成熟的魅力彰显车展力量。本届车展展出面积6万余平米，包括室内4万平米，室外2万平米，展出规模创广西室内车展之最。此次参展品牌近80个，包括97%以上的自主品牌2</div>
+                    </div>
+                    <div class="zf_r_one" id="ce_pic3" onmousemove="slide_ty(3)">
+                    <div class="zf_imgb"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testb.gif"/></a></div>
+                    <div class="zf_imginfo">2010年12月2日-6日，第三届东盟南宁车展开幕，届时，它将以5.8万平方米的磅礴气势震撼登场，以其它成熟的魅力彰显车展力量。本届车展展出面积6万余平米，包括室内4万平米，室外2万平米，展出规模创广西室内车展之最。此次参展品牌近80个，包括97%以上的自主品牌3</div>
+                    </div>
+                    <div class="zf_r_one" id="ce_pic4" onmousemove="slide_ty(4)">
+                    <div class="zf_imgb"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testb.gif"/></a></div>
+                    <div class="zf_imginfo">2010年12月2日-6日，第三届东盟南宁车展开幕，届时，它将以5.8万平方米的磅礴气势震撼登场，以其它成熟的魅力彰显车展力量。本届车展展出面积6万余平米，包括室内4万平米，室外2万平米，展出规模创广西室内车展之最。此次参展品牌近80个，包括97%以上的自主品牌4</div>
+                    </div>
+                    <div class="zf_r_one" id="ce_pic5" onmousemove="slide_ty(5)">
+                    <div class="zf_imgb"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testb.gif"/></a></div>
+                    <div class="zf_imginfo">2010年12月2日-6日，第三届东盟南宁车展开幕，届时，它将以5.8万平方米的磅礴气势震撼登场，以其它成熟的魅力彰显车展力量。本届车展展出面积6万余平米，包括室内4万平米，室外2万平米，展出规模创广西室内车展之最。此次参展品牌近80个，包括97%以上的自主品牌5</div>
+                    </div>
+                    <div class="zf_r_one" id="ce_pic6" onmousemove="slide_ty(6)">
+                    <div class="zf_imgb"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testb.gif"/></a></div>
+                    <div class="zf_imginfo">2010年12月2日-6日，第三届东盟南宁车展开幕，届时，它将以5.8万平方米的磅礴气势震撼登场，以其它成熟的魅力彰显车展力量。本届车展展出面积6万余平米，包括室内4万平米，室外2万平米，展出规模创广西室内车展之最。此次参展品牌近80个，包括97%以上的自主品牌6</div>
+                    </div>
+                    <div class="zf_r_one" id="ce_pic7" onmousemove="slide_ty(7)">
+                    <div class="zf_imgb"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testb.gif"/></a></div>
+                    <div class="zf_imginfo">2010年12月2日-6日，第三届东盟南宁车展开幕，届时，它将以5.8万平方米的磅礴气势震撼登场，以其它成熟的魅力彰显车展力量。本届车展展出面积6万余平米，包括室内4万平米，室外2万平米，展出规模创广西室内车展之最。此次参展品牌近80个，包括97%以上的自主品牌7</div>
+                    </div>
+                    <div class="zf_r_one" id="ce_pic8" onmousemove="slide_ty(8)">
+                    <div class="zf_imgb"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testb.gif"/></a></div>
+                    <div class="zf_imginfo">2010年12月2日-6日，第三届东盟南宁车展开幕，届时，它将以5.8万平方米的磅礴气势震撼登场，以其它成熟的魅力彰显车展力量。本届车展展出面积6万余平米，包括室内4万平米，室外2万平米，展出规模创广西室内车展之最。此次参展品牌近80个，包括97%以上的自主品牌8</div>
+                    </div>
+                    <div class="zf_r_one" id="ce_pic9" onmousemove="slide_ty(9)">
+                    <div class="zf_imgb"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testb.gif"/></a></div>
+                    <div class="zf_imginfo">2010年12月2日-6日，第三届东盟南宁车展开幕，届时，它将以5.8万平方米的磅礴气势震撼登场，以其它成熟的魅力彰显车展力量。本届车展展出面积6万余平米，包括室内4万平米，室外2万平米，展出规模创广西室内车展之最。此次参展品牌近80个，包括97%以上的自主品牌9</div>
+                    </div>
+                    <div class="zf_r_one" id="ce_pic10" onmousemove="slide_ty(10)">
+                    <div class="zf_imgb"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testb.gif"/></a></div>
+                    <div class="zf_imginfo">2010年12月2日-6日，第三届东盟南宁车展开幕，届时，它将以5.8万平方米的磅礴气势震撼登场，以其它成熟的魅力彰显车展力量。本届车展展出面积6万余平米，包括室内4万平米，室外2万平米，展出规模创广西室内车展之最。此次参展品牌近80个，包括97%以上的自主品牌10</div>
+                    </div>
+                    <div class="zf_r_one" id="ce_pic11" onmousemove="slide_ty(11)">
+                    <div class="zf_imgb"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testb.gif"/></a></div>
+                    <div class="zf_imginfo">2010年12月2日-6日，第三届东盟南宁车展开幕，届时，它将以5.8万平方米的磅礴气势震撼登场，以其它成熟的魅力彰显车展力量。本届车展展出面积6万余平米，包括室内4万平米，室外2万平米，展出规模创广西室内车展之最。此次参展品牌近80个，包括97%以上的自主品牌11</div>
+                    </div>
+                    <div class="zf_r_one" id="ce_pic12" onmousemove="slide_ty(12)">
+                    <div class="zf_imgb"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testb.gif"/></a></div>
+                    <div class="zf_imginfo">2010年12月2日-6日，第三届东盟南宁车展开幕，届时，它将以5.8万平方米的磅礴气势震撼登场，以其它成熟的魅力彰显车展力量。本届车展展出面积6万余平米，包括室内4万平米，室外2万平米，展出规模创广西室内车展之最。此次参展品牌近80个，包括97%以上的自主品牌12</div>
+                    </div>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+        </div>
+        <script language="javascript">
+                var _tnum;
+                var tMyMar;
+                var tSize=12;
+                function slide_ty(v){
+                for(i=1;i<=tSize;i++){
+                document.getElementById("ce_pic"+i).style.display="none";
+                document.getElementById("sh_tip"+i).className="zfimgbg1";
+                }
+                document.getElementById("ce_pic"+v).style.display="";
+                document.getElementById("sh_tip"+v).className="zfimgbg";
+                _tnum=v; 
+                clearInterval(tMyMar);
+                tMyMar=setInterval("tGunDong()",1000);
+                }
+                function tGunDong(){
+                if((_tnum+1)>tSize)
+                _tnum=1;
+                else	
+                _tnum=_tnum+1;
+                slide_ty(_tnum);
+                }
+                slide_ty(1);
+                </script>
+        <!--专访结束-->
+        <!--展台和往届回顾开始-->
+        <div class="mid">
+        	<div class="mid3_l">
+            	<div class="mid3_l_title">网上展厅</div>
+                <div class="mid3_l_con">
+                	<div class="mid3_l_con_one">
+                        <div class="ztconall">
+                            <!--虚拟展厅开始-->
+                            <div class="ztcon" id="hhotcomment1">
+                                <div class="ztconimg"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/zttest.jpg"/></div>
+                                <div class="ztcon_r">
+                                    <div class="brandall"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testbrand.jpg"></a></div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+                            <!--虚拟展厅结束-->
+                            <!--2号展厅-->
+                            <div class="ztcon" style="display:none" id="hhotcomment2">
+                                <div class="ztconimg"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/zttest.jpg" /></div>
+                                <div class="ztcon_r">
+                                    <div class="brandall"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testbrand.jpg"></a></div>
+                                    <div class="brandall"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testbrand.jpg"></a></div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+                            <!--2号展厅结束-->
+                            <!--3号展厅-->
+                            <div class="ztcon" style="display:none" id="hhotcomment3">
+                                <div class="ztconimg"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/zttest.jpg"/></div>
+                                <div class="ztcon_r">
+                                    <div class="brandall"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testbrand.jpg"></a></div>
+                                    <div class="brandall"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testbrand.jpg"></a></div>
+                                    <div class="brandall"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testbrand.jpg"></a></div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+                            <!--3号展厅结束-->
+                            <!--4号展厅-->
+                            <div class="ztcon" style="display:none" id="hhotcomment4">
+                                <div class="ztconimg"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/zttest.jpg"/></div>
+                                <div class="ztcon_r">
+                                    <div class="brandall"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testbrand.jpg"></a></div>
+                                    <div class="brandall"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testbrand.jpg"></a></div>
+                                    <div class="brandall"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testbrand.jpg"></a></div>
+                                    <div class="brandall"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testbrand.jpg"></a></div>
+                                    <div class="brandall"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testbrand.jpg"></a></div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+                            <!--4号展厅结束-->
+                            <!--5号展厅-->
+                            <div class="ztcon" style="display:none" id="hhotcomment5">
+                                <div class="ztconimg"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/zttest.jpg"/></div>
+                                <div class="ztcon_r">
+                                    <div class="brandall"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testbrand.jpg"></a></div>
+                                    <div class="brandall"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testbrand.jpg"></a></div>
+                                    <div class="brandall"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testbrand.jpg"></a></div>
+                                    <div class="brandall"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testbrand.jpg"></a></div>
+                                    <div class="brandall"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testbrand.jpg"></a></div>
+                                    <div class="brandall"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testbrand.jpg"></a></div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+                            <!--5号展厅结束-->
+                            <!--6号展厅-->
+                            <div class="ztcon" style="display:none"  id="hhotcomment6">
+                                <div class="ztconimg"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/zttest.jpg" /></div>
+                                <div class="ztcon_r">
+                                    <div class="brandall"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testbrand.jpg"></a></div>
+                                    <div class="brandall"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testbrand.jpg"></a></div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+                            <!--6号展厅结束-->
+                        </div>
+                        <script language="javascript">
+                function settHotph_2(i)
+                {
+                 selecttHot2(i);
+                }
+                function selecttHot2(i)
+                {
+                  for(var id = 1;id<=6;id++)
+                 {
+                  var bb="hhotcomment"+id;
+                  if(id==i)
+                  document.getElementById(bb).style.display="";
+                  else
+                  document.getElementById(bb).style.display="none";
+                 } 
+                  for(var id = 1;id<=6;id++)
+                 {
+                  var bb="hhotdiv"+id+"_2";
+                  if(id==i)
+                  document.getElementById(bb).className="zg";
+                  else
+                  document.getElementById(bb).className="zg1";
+                 } 
+                }
+                </script>
+                        <div class="ztr">
+                            <div class="zg" id="hhotdiv1_2" onmouseover="settHotph_2(1);"><a href="javascript:void(0)" target="_self">虚拟展厅</a></div>
+                            <div class="zg1" id="hhotdiv2_2" onmouseover="settHotph_2(2);"><a href="javascript:void(0)" target="_self">2号馆</a></div>
+                            <div class="zg1" id="hhotdiv3_2" onmouseover="settHotph_2(3);"><a href="javascript:void(0)" target="_self">3号馆</a></div>
+                            <div class="zg1" id="hhotdiv4_2" onmouseover="settHotph_2(4);"><a href="javascript:void(0)" target="_self">4号馆</a></div>
+                            <div class="zg1" id="hhotdiv5_2" onmouseover="settHotph_2(5);"><a href="javascript:void(0)" target="_self">5号馆</a></div>
+                            <div class="zg1" id="hhotdiv6_2" onmouseover="settHotph_2(6);"><a href="javascript:void(0)" target="_self">6号馆</a></div>
+                            <div style="clear:both;"></div>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="mid3_r">
+            	<div class="mid3_r_title">往届回顾</div>
+                <div class="mid3_r_con">
+                	<ul>
+                    	<li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/ispo1.jpg"></a><br><a href="#" target="_blank">ipso china 2010专题</a></li>
+                        <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/ispo2.jpg"></a><br><a href="#" target="_blank">ipso china 2010专题</a></li>
+                        <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/ispo3.jpg"></a><br><a href="#" target="_blank">ipso china 2010专题</a></li>
+                        <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/ispo4.jpg"></a><br><a href="#" target="_blank">ipso china 2010专题</a></li>
+                        <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/ispo5.jpg"></a><br><a href="#" target="_blank">ipso china 2010专题</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+        <!--展台和往届回顾结束-->
+        <!--访谈开始-->
+        <div class="mid">
+        	<div class="title960">专&nbsp;&nbsp;&nbsp;&nbsp;访</div>
+            <div class="fangtan">
+            	<div class="hudongl">
+                	<div id="hotttdiv1_2" onmouseover="setttHotph_2(1);"><div id="hotttdiv1_3" class="sheqian"></div></div>
+            		<div id="hotttdiv2_2" onmouseover="setttHotph_2(2);"><div id="hotttdiv2_3" class="sheqian1"></div></div>
+            		<div id="hotttdiv3_2" onmouseover="setttHotph_2(3);"><div id="hotttdiv3_3" class="sheqian1"></div></div>
+            		<div id="hotttdiv4_2" onmouseover="setttHotph_2(4);"><div id="hotttdiv4_3" class="sheqian1"></div></div>
+                    <div id="hotttdiv5_2" onmouseover="setttHotph_2(5);"><div id="hotttdiv5_3" class="sheqian1"></div></div>
+                </div>
+                <script language="javascript">
+function setttHotph_2(i)
+{
+ selectttHot2(i);
+}
+function selectttHot2(i)
+{
+  for(var id = 1;id<=5;id++)
+ {
+  var bbb="hotttcomment0"+id;
+  if(id==i)
+  document.getElementById(bbb).style.display="";
+  else
+  document.getElementById(bbb).style.display="none";
+ } 
+  for(var id = 1;id<=5;id++)
+ {
+  var bb="hotttdiv"+id+"_3";
+  if(id==i)
+  document.getElementById(bb).className="sheqian1";
+  else
+  document.getElementById(bb).className="sheqian";
+ } 
+}
+</script>
+                <div class="hudongr" style=" display:;" id="hotttcomment01">
+                	<div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                </div>
+                <div class="hudongr" style=" display:none;" id="hotttcomment02">
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                </div>
+                <div class="hudongr" style=" display:none;" id="hotttcomment03">
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                </div>
+                <div class="hudongr" style=" display:none;" id="hotttcomment04">
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                </div>
+                <div class="hudongr" style=" display:none;" id="hotttcomment05">
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="hudongall">
+                    	<div class="hudongimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test9.jpg" width="120" height="80" border="0" /></a></div>
+                        <div class="hudongwen"><a href="#" target="_blank">你好你好你好</a><br>地点：综合楼201室201室<br>时间：2月23日全天</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+        </div>
+        <!--访谈结束-->
+        <!--装备开始-->
+        <div class="mid">
+        	<div class="title960">展会装备</div>
+            <div class="zball">
+            	<div class="zbgun">
+                	<div class="gun" id="de">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td id="de1">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td>
+                                                <div class="imgall">
+                                                    <div class="imgallimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test.jpg"/></a></div>
+                                                    <div class="wen"><a href="#" target="_blank">MTW-0035-4摩托服</a></div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="imgall">
+                                                    <div class="imgallimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test.jpg"/></a></div>
+                                                    <div class="wen"><a href="#" target="_blank">MTW-0035-4摩托服</a></div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="imgall">
+                                                    <div class="imgallimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test.jpg"/></a></div>
+                                                    <div class="wen"><a href="#" target="_blank">MTW-0035-4摩托服</a></div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="imgall">
+                                                    <div class="imgallimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test.jpg"/></a></div>
+                                                    <div class="wen"><a href="#" target="_blank">MTW-0035-4摩托服</a></div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="imgall">
+                                                    <div class="imgallimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test.jpg"/></a></div>
+                                                    <div class="wen"><a href="#" target="_blank">MTW-0035-4摩托服</a></div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="imgall">
+                                                    <div class="imgallimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test.jpg"/></a></div>
+                                                    <div class="wen"><a href="#" target="_blank">MTW-0035-4摩托服</a></div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="imgall">
+                                                    <div class="imgallimg"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/test.jpg"/></a></div>
+                                                    <div class="wen"><a href="#" target="_blank">MTW-0035-4摩托服</a></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td id="de2">&nbsp;</td>
+                            </tr>
+                        </table>
+                        <SCRIPT language=JavaScript type=text/javascript>
+                            function GetObj01(objName){
+                                if(document.getElementById){
+                                    return eval('document.getElementById("' + objName + '")');
+                                }else if(document.layers){
+                                    return eval("document.layers['" + objName +"']");
+                                }else{
+                                    return eval('document.all.' + objName);
+                                }
+                            }
+                              var speed01=20//速度数值越大速度越慢
+                              GetObj01("de2").innerHTML=GetObj01("de1").innerHTML
+                              function Marquee01(){
+                                  if(GetObj01("de").scrollLeft<=0)
+                                  GetObj01("de").scrollLeft=GetObj01("de1").offsetWidth
+                                  else{
+                                    GetObj01("de").scrollLeft--
+                                  }
+                              }
+                              var MyMar01=setInterval(Marquee01,speed01)
+                              GetObj01("de").onmouseover=function() {clearInterval(MyMar01)}
+                              GetObj01("de").onmouseout=function() {MyMar01=setInterval(Marquee01,speed01)}
+                              </SCRIPT>
+					</div>
+                </div>
+            	<div>
+                    <div class="mid7con_l">
+                        <div class="zhantu"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/guonei.jpg" width="390" height="220" border="0" /></div>
+                        <div class="zhantutitle">
+                            <div class="zhantutitle_l">8264直击--国内新品</div>
+                            <div class="zhantutitle_r"><a href="#" target="_blank">最值得期待装备评选</a></div>
+                            <div style="clear:both;"></div>
+                        </div>
+                        <div class="zhantunew">
+                            <ul>
+                                <li>·<a href="/38039.html" target="_blank">极星采用OutDry防水技术徒步鞋</a></li>
+                                <li>·<a href="/38048.html" target="_blank">牧高笛2009 ispo 推出服装系列</a></li>
+                                <li>·<a href="/38041.html" target="_blank">火枫推出全新BLACK DEER餐具</a></li>
+                                <li>·<a href="/38047.html" target="_blank">ALPITEC CHINA滑雪鞋类新品展示</a></li>
+                                <li>·<a href="/38120.html" target="_blank">爱纯真FERA儿童滑雪服新品一览</a></li>
+                                <li>·<a href="/38061.html" target="_blank">OZARK Rock系列男装压胶冲锋衣</a></li>
+                                <li>·<a href="/38058.html" target="_blank">OZARK Pro Shell冲锋衣</a></li>
+                                <li>·<a href="/38205.html" target="_blank">KAILAS 09年新款可扩展多功能腰包</a></li>
+                                <li>·<a href="/38115.html" target="_blank">天石超轻系列睡袋 -8℃蜻蜓</a></li>
+                                <li>·<a href="/38107.html" target="_blank">ARCTICFOX品牌全新推出旅行眼镜系列</a></li>
+                                <li>·<a href="/38099.html" target="_blank">泰尼卡人体工程学原理骨架</a></li>
+                                <li>·<a href="/38091.html" target="_blank">VASQUE品牌新品介绍</a></li>
+                            </ul>
+                            <div style="clear:both;"></div>
+                      </div>
+                    </div>
+                    <div class="mid7con_r">
+                    <div class="zhantuimgall">
+                        <div class="zhantuimg"><a href="/38048.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/guonei001.jpg" width="160" height="110" border="0" /></a></div>
+                        <div class="zhantuimgwen"><a href="/29423.html">牧高笛全新服装产品</a></div>
+                    </div>
+                    <div class="zhantuimgall">
+                        <div class="zhantuimg"><a href="/38041.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/guonei002.jpg" width="160" height="110" border="0" /></a></div>
+                        <div class="zhantuimgwen"><a href="/38041.html">全新BLACK DEER餐具</a></div>
+                    </div>
+                    <div class="zhantuimgall">
+                        <div class="zhantuimg"><a href="/38061.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/guonei003.jpg" width="160" height="110" border="0" /></a></div>
+                        <div class="zhantuimgwen"><a href="/38061.html">OZARK Rock压胶冲锋衣</a></div>
+                    </div>
+                    <div class="zhantuimgall">
+                        <div class="zhantuimg"><a href="/38206.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/guonei004.jpg" width="160" height="110" border="0" /></a></div>
+                        <div class="zhantuimgwen"><a href="/38206.html">KAILAS 09年推出钛合金餐具</a></div>
+                    </div>
+                    <div class="zhantuimgall">
+                        <div class="zhantuimg"><a href="/38058.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/guonei005.jpg" width="160" height="110" border="0" /></a></div>
+                        <div class="zhantuimgwen"><a href="/38058.html">OZARK Pro Shell冲锋衣</a></div>
+                    </div>
+                    <div class="zhantuimgall">
+                        <div class="zhantuimg"><a href="/38071.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/guonei006.jpg" width="160" height="110" border="0" /></a></div>
+                        <div class="zhantuimgwen"><a href="/38071.html">ARCTICFOX新款旅行系列产品</a></div>
+                    </div>
+                    <div class="zhantuimgall">
+                        <div class="zhantuimg"><a href="/38136.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/guonei007.jpg" width="160" height="110" border="0" /></a></div>
+                        <div class="zhantuimgwen"><a href="/38136.html">Northland高端滑雪服</a></div>
+                    </div>
+                    <div class="zhantuimgall">
+                        <div class="zhantuimg"><a href="/38110.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/guonei008.jpg" width="160" height="110" border="0" /></a></div>
+                        <div class="zhantuimgwen"><a href="/38110.html">男女款倒淌河两层冲锋衣</a></div>
+                    </div>
+                    <div class="zhantuimgall">
+                        <div class="zhantuimg"><a href="/38114.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/guonei009.jpg" width="160" height="110" border="0" /></a></div>
+                        <div class="zhantuimgwen"><a href="/38114.html">极限 -28℃南迦巴瓦睡袋</a></div>
+                    </div>
+                </div>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        </div>
+        <!--装备结束-->
+        <!--视频开始-->
+        <div class="mid">
+        	<div class="title960">视&nbsp;&nbsp;&nbsp;&nbsp;频</div>
+            <div class="shipinall">
+            	<div class="shipin_l"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/shipinbig.jpg" width="370" height="275" border="0" /></div>
+                <div class="shipin_r">
+                	<ul>
+                    	<li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/shipinsmall.jpg"/></a></li>
+                        <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/shipinsmall.jpg"/></a></li>
+                        <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/shipinsmall.jpg"/></a></li>
+                        <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/shipinsmall.jpg"/></a></li>
+                        <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/shipinsmall.jpg"/></a></li>
+                        <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/shipinsmall.jpg"/></a></li>
+                        <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/shipinsmall.jpg"/></a></li>
+                        <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/shipinsmall.jpg"/></a></li>
+                        <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/shipinsmall.jpg"/></a></li>
+                        <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/shipinsmall.jpg"/></a></li>
+                        <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/shipinsmall.jpg"/></a></li>
+                        <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/shipinsmall.jpg"/></a></li>
+                    </ul>
+                    <div style="clear:both;"></div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+        <!--视频结束-->
+        <!--博客花絮开始-->
+        <div class="mid">
+        	<div class="mid3_l">
+            	<div class="mid3_l_title">博客评论</div>
+                <div class="boke">
+                	<ul>
+                    	<li><span>&#8226;&nbsp;<a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></span><em><a href="#" target="_blank">奥迪TT-S</a></em><div style="clear:both;"></div></li>
+                        <li><span>&#8226;&nbsp;<a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></span><em><a href="#" target="_blank">奥迪TT-S</a></em><div style="clear:both;"></div></li>
+                        <li><span>&#8226;&nbsp;<a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></span><em><a href="#" target="_blank">奥迪TT-S</a></em><div style="clear:both;"></div></li>
+                        <li><span>&#8226;&nbsp;<a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></span><em><a href="#" target="_blank">奥迪TT-S</a></em><div style="clear:both;"></div></li>
+                        <li><span>&#8226;&nbsp;<a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></span><em><a href="#" target="_blank">奥迪TT-S</a></em><div style="clear:both;"></div></li>
+                        <li><span>&#8226;&nbsp;<a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></span><em><a href="#" target="_blank">奥迪TT-S</a></em><div style="clear:both;"></div></li>
+                        <li><span>&#8226;&nbsp;<a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></span><em><a href="#" target="_blank">奥迪TT-S</a></em><div style="clear:both;"></div></li>
+                        <li><span>&#8226;&nbsp;<a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></span><em><a href="#" target="_blank">奥迪TT-S</a></em><div style="clear:both;"></div></li>
+                        <li><span>&#8226;&nbsp;<a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></span><em><a href="#" target="_blank">奥迪TT-S</a></em><div style="clear:both;"></div></li>
+                        <li><span>&#8226;&nbsp;<a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></span><em><a href="#" target="_blank">奥迪TT-S</a></em><div style="clear:both;"></div></li>
+                        <li><span>&#8226;&nbsp;<a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></span><em><a href="#" target="_blank">奥迪TT-S</a></em><div style="clear:both;"></div></li>
+                        <li><span>&#8226;&nbsp;<a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></span><em><a href="#" target="_blank">奥迪TT-S</a></em><div style="clear:both;"></div></li>
+                        <li><span>&#8226;&nbsp;<a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></span><em><a href="#" target="_blank">奥迪TT-S</a></em><div style="clear:both;"></div></li>
+                        <li><span>&#8226;&nbsp;<a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></span><em><a href="#" target="_blank">奥迪TT-S</a></em><div style="clear:both;"></div></li>
+                        <li><span>&#8226;&nbsp;<a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></span><em><a href="#" target="_blank">奥迪TT-S</a></em><div style="clear:both;"></div></li>
+                        <li><span>&#8226;&nbsp;<a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></span><em><a href="#" target="_blank">奥迪TT-S</a></em><div style="clear:both;"></div></li>
+                        <li><span>&#8226;&nbsp;<a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></span><em><a href="#" target="_blank">奥迪TT-S</a></em><div style="clear:both;"></div></li>
+                        <li><span>&#8226;&nbsp;<a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></span><em><a href="#" target="_blank">奥迪TT-S</a></em><div style="clear:both;"></div></li>
+                        <li><span>&#8226;&nbsp;<a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></span><em><a href="#" target="_blank">奥迪TT-S</a></em><div style="clear:both;"></div></li>
+                        <li><span>&#8226;&nbsp;<a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></span><em><a href="#" target="_blank">奥迪TT-S</a></em><div style="clear:both;"></div></li>
+                        <li><span>&#8226;&nbsp;<a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></span><em><a href="#" target="_blank">奥迪TT-S</a></em><div style="clear:both;"></div></li>
+                        <li><span>&#8226;&nbsp;<a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></span><em><a href="#" target="_blank">奥迪TT-S</a></em><div style="clear:both;"></div></li>
+                        <li><span>&#8226;&nbsp;<a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></span><em><a href="#" target="_blank">奥迪TT-S</a></em><div style="clear:both;"></div></li>
+                        <li><span>&#8226;&nbsp;<a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></span><em><a href="#" target="_blank">奥迪TT-S</a></em><div style="clear:both;"></div></li>
+                        <li><span>&#8226;&nbsp;<a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></span><em><a href="#" target="_blank">奥迪TT-S</a></em><div style="clear:both;"></div></li>
+                        <li><span>&#8226;&nbsp;<a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></span><em><a href="#" target="_blank">奥迪TT-S</a></em><div style="clear:both;"></div></li>
+                        <li><span>&#8226;&nbsp;<a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></span><em><a href="#" target="_blank">奥迪TT-S</a></em><div style="clear:both;"></div></li>
+                        <li><span>&#8226;&nbsp;<a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></span><em><a href="#" target="_blank">奥迪TT-S</a></em><div style="clear:both;"></div></li>
+                    </ul>
+                    <div style="clear:both;"></div>
+                </div>
+			</div>
+            <div class="mid3_r">
+            	<div class="mid3_r_title">展会花絮</div>
+                <div class="hxone">
+                	<ul>
+                    	<li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/guonei001.jpg"/></a><div class="hxonename"><a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></div></li>
+                        <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/guonei001.jpg"/></a><div class="hxonename"><a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></div></li>
+                        <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/guonei001.jpg"/></a><div class="hxonename"><a href="#" target="_blank">极星防水技术的徒步鞋徒步鞋徒步</a></div></li>
+                    </ul>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        	<div style="clear:both"></div>
+        </div>
+        <!--博客花絮结束-->
+        <!--美女开始-->
+        <div class="mid">
+        	<div class="title960">展会美女</div>
+            <div class="meinvall">
+            	<div>
+                	<div class="meinv_l"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testmm.jpg"></a><div class="hxonename"><a href="#" target="_blank">极星防水技术的徒步鞋徒</a></div></div>
+                    <div class="meinv_r">
+                    	<div class="meinvone">
+                        	<a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testmm.jpg"></a>
+                            <div class="hxonename"><a href="#" target="_blank">极星防水技术的徒步鞋徒</a></div>
+                        </div>
+                        <div class="meinvone">
+                        	<a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testmm.jpg"></a>
+                            <div class="hxonename"><a href="#" target="_blank">极星防水技术的徒步鞋徒</a></div>
+                        </div>
+                        <div class="meinvone">
+                        	<a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testmm.jpg"></a>
+                            <div class="hxonename"><a href="#" target="_blank">极星防水技术的徒步鞋徒</a></div>
+                        </div>
+                        <div class="meinvone">
+                        	<a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testmm.jpg"></a>
+                            <div class="hxonename"><a href="#" target="_blank">极星防水技术的徒步鞋徒</a></div>
+                        </div>
+                        <div class="meinvone">
+                        	<a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testmm.jpg"></a>
+                            <div class="hxonename"><a href="#" target="_blank">极星防水技术的徒步鞋徒</a></div>
+                        </div>
+                        <div class="meinvone">
+                        	<a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testmm.jpg"></a>
+                            <div class="hxonename"><a href="#" target="_blank">极星防水技术的徒步鞋徒</a></div>
+                        </div>
+                        <div class="meinvone">
+                        	<a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testmm.jpg"></a>
+                            <div class="hxonename"><a href="#" target="_blank">极星防水技术的徒步鞋徒</a></div>
+                        </div>
+                        <div class="meinvone">
+                        	<a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testmm.jpg"></a>
+                            <div class="hxonename"><a href="#" target="_blank">极星防水技术的徒步鞋徒</a></div>
+                        </div>
+                        <div class="meinvone">
+                        	<a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testmm.jpg"></a>
+                            <div class="hxonename"><a href="#" target="_blank">极星防水技术的徒步鞋徒</a></div>
+                        </div>
+                        <div class="meinvone">
+                        	<a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testmm.jpg"></a>
+                            <div class="hxonename"><a href="#" target="_blank">极星防水技术的徒步鞋徒</a></div>
+                        </div>
+                        <div class="meinvone">
+                        	<a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testmm.jpg"></a>
+                            <div class="hxonename"><a href="#" target="_blank">极星防水技术的徒步鞋徒</a></div>
+                        </div>
+                        <div class="meinvone">
+                        	<a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testmm.jpg"></a>
+                            <div class="hxonename"><a href="#" target="_blank">极星防水技术的徒步鞋徒</a></div>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+                <div>
+                    <div class="meinvonedown">
+                        <a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testmm.jpg"></a>
+                        <div class="hxonename"><a href="#" target="_blank">极星防水技术的徒步鞋徒</a></div>
+                    </div>
+					<div class="meinvonedown">
+                        <a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testmm.jpg"></a>
+                        <div class="hxonename"><a href="#" target="_blank">极星防水技术的徒步鞋徒</a></div>
+                    </div>
+                    <div class="meinvonedown">
+                        <a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testmm.jpg"></a>
+                        <div class="hxonename"><a href="#" target="_blank">极星防水技术的徒步鞋徒</a></div>
+                    </div>
+                    <div class="meinvonedown">
+                        <a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testmm.jpg"></a>
+                        <div class="hxonename"><a href="#" target="_blank">极星防水技术的徒步鞋徒</a></div>
+                    </div>
+                    <div class="meinvonedown">
+                        <a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testmm.jpg"></a>
+                        <div class="hxonename"><a href="#" target="_blank">极星防水技术的徒步鞋徒</a></div>
+                    </div>
+                    <div class="meinvonedown">
+                        <a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testmm.jpg"></a>
+                        <div class="hxonename"><a href="#" target="_blank">极星防水技术的徒步鞋徒</a></div>
+                    </div>
+                    <div class="meinvonedown">
+                        <a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testmm.jpg"></a>
+                        <div class="hxonename"><a href="#" target="_blank">极星防水技术的徒步鞋徒</a></div>
+                    </div>
+                    <div class="meinvonedown">
+                        <a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011ispo/images/testmm.jpg"></a>
+                        <div class="hxonename"><a href="#" target="_blank">极星防水技术的徒步鞋徒</a></div>
+                    </div>
+					<div style="clear:both;"></div>  
+                </div>
+            </div>
+        </div>
+        <!--美女结束-->
+        <!--底部开始-->
+        <div class="bottom"><a href="/template/8264/about/aboutus.htm" target="_blank">8264简介</a>&nbsp;|&nbsp;<a href="/template/8264/about/ggservice/index.html" target="_blank" style="color:#FF0000;">广告服务</a>&nbsp;|&nbsp;<a href="/list/531/" target="_blank">编辑部的故事</a>&nbsp;|&nbsp;<a href="/template/8264/about/sitemap.html" target="_blank">站点地图</a>&nbsp;|&nbsp;<a href="/template/8264/about/aboutus.htm" target="_blank">联系方式</a>&nbsp;|&nbsp;<a href="http://buy.8264.com/" target="_blank">户外网购</a>&nbsp;|&nbsp;<a href="http://bbs.8264.com/thread-457062-1-1.html" target="_blank" style="color:#FF0000;">QQ群联盟</a>&nbsp;|&nbsp;<a href="http://8.8264.com/job/" target="_blank">8264招聘</a>&nbsp;|&nbsp;<a href="/template/8264/about/link/link.htm" target="_blank">友情链接</a><br>服务热线：022-23708264&nbsp;|&nbsp;传真：022-23708323&nbsp;|&nbsp;地址：天津市新技术产业园华苑产业区华天道8号海泰信息广场C座1001号<br><a href="http://bx.8264.com" target="_blank" style="color:#53792e;">户外活动有风险，8264提醒您购买</a> <a href="http://bx.8264.com" style="color:#53792e;">户外保险</a><br>除了脚印什么都不留下 除了摄影什么都不带走，欢迎各种媒体转载我们的原创作品[转载请注明出处]。8264&nbsp;版权所有   <a href="http://www.miibeian.gov.cn/" target="_blank">津ICP备05004140号-1</a></div>
+        <!--底部结束-->
+	</div>
+    
+    
+    
+<!--dx代码开始-->  
+<!--{hook/global_footerlink}-->
+
+<!--{eval updatesession();}-->
+<!--dx代码结束-->
+    
+</div>
+<!--dx代码开始-->
+
+
+
+<!--//waper结束//-->
+<!--{if empty($topic) || ($topic[usefooter])}-->
+	<!--{eval $focusid = getfocus_rand($_G[basescript]);}-->
+	<!--{if $focusid !== null}-->
+		<!--{eval $focus = $_G['cache']['focus']['data'][$focusid];}-->
+		<div class="focus" id="sitefocus">
+			<h3 class="flb">
+				<em><!--{if $_G['cache']['focus']['title']}-->{$_G['cache']['focus']['title']}<!--{else}-->{lang focus_hottopics}<!--{/if}--></em>
+				<span><a href="javascript:;" onclick="setcookie('nofocus_$focusid', 1, 86400);$('sitefocus').style.display='none'" class="flbc" title="{lang close}">{lang close}</a></span>
+			</h3>
+			<hr class="l" />
+			<div class="detail">
+				<h4><a href="{$focus['url']}" target="_blank">$focus['subject']</a></h4>
+				<p>
+					<!--{if $focus[image]}-->
+					<a href="{$focus['url']}" target="_blank"><img src="{$focus['image']}" onload="thumbImg(this, 1)" _width="58" _height="58" /></a>
+					<!--{/if}-->
+					$focus['summary']
+				</p>
+			</div>
+			<hr class="l" />
+			<a href="{$focus['url']}" class="moreinfo" target="_blank">{lang focus_show}</a>
+		</div>
+	<!--{/if}-->
+	<!--{hook/global_footer}-->
+<!--{/if}-->
+
+<ul id="usersetup_menu" class="p_pop" style="display:none;">
+	<li><a href="home.php?mod=spacecp&ac=avatar">{lang modify_avatar}</a></li>
+	<li><a href="home.php?mod=spacecp&ac=profile">{lang personal_profile}</a></li>
+	<!--{if $_G['setting']['verify']['enabled'] || $_G['setting']['my_app_status'] && $_G['setting']['videophoto']}-->
+		<li><a href="{if $_G['setting']['verify']['enabled']}home.php?mod=spacecp&ac=profile&op=verify{else}home.php?mod=spacecp&ac=videophoto{/if}">{lang certification}</a></li>
+	<!--{/if}-->
+	<li><a href="home.php?mod=spacecp&ac=credit">{lang credits}</a></li>
+	<li><a href="home.php?mod=spacecp&ac=usergroup">{lang usergroup}</a></li>
+	<li><a href="home.php?mod=spacecp&ac=privacy">{lang privacy_filter}</a></li>
+	<!--{if $_G['setting'][sendmailday]}-->
+	<li><a href="home.php?mod=spacecp&ac=sendmail">{lang mail_notifier}</a></li>
+	<!--{/if}-->
+	<li><a href="home.php?mod=spacecp&ac=profile&op=password">{lang password_security}</a></li>
+	<!--{if !empty($_G['setting']['plugins']['spacecp'])}-->
+		<!--{loop $_G['setting']['plugins']['spacecp'] $id $module}-->
+			<!--{if !$module['adminid'] || ($module['adminid'] && $_G['adminid'] > 0 && $module['adminid'] >= $_G['adminid'])}--><li{if $_G[gp_id] == $id} class="a"{/if}><a href="home.php?mod=spacecp&ac=plugin&id=$id">$module[name]</a></li><!--{/if}-->
+		<!--{/loop}-->
+	<!--{/if}-->
+</ul>
+
+<!--{if $upgradecredit !== false}-->
+<div id="g_upmine_menu" class="g_up" style="display:none;">
+	<div class="crly">
+		{lang credits} $_G[member][credits], {lang thread_groupupgrade} $upgradecredit {lang credits}
+	</div>
+	<div class="mncr"></div>
+</div>
+<!--{/if}-->
+
+<!--{if !$_G['setting']['bbclosed']}-->
+	<!--{if $_G[uid] && !isset($_G['cookie']['checkpm'])}-->
+	<script type="text/javascript" src="home.php?mod=spacecp&ac=pm&op=checknewpm&rand=$_G[timestamp]"></script>
+	<!--{/if}-->
+
+	<!--{if !isset($_G['cookie']['sendmail'])}-->
+	<script type="text/javascript" src="home.php?mod=misc&ac=sendmail&rand=$_G[timestamp]"></script>
+	<!--{/if}-->
+<!--{/if}-->
+
+<!--{if $_GET['diy'] == 'yes' && ($_G[mod] == 'topic' || $_G[group][allowdiy]) && (empty($do) || $do != 'index') && !empty($_G['style']['tplfile'])}-->
+<script type="text/javascript" src="{$_G[setting][jspath]}common_diy.js?{VERHASH}"></script>
+<script type="text/javascript" src="{$_G[setting][jspath]}portal_diy.js?{VERHASH}"></script>
+<!--{/if}-->
+<!--{if $_GET['diy'] == 'yes' && $space['self'] && $_G[mod] == 'space' && $do == 'index'}-->
+<script type="text/javascript" src="{$_G[setting][jspath]}common_diy.js?{VERHASH}"></script>
+<script type="text/javascript" src="{$_G[setting][jspath]}space_diy.js?{VERHASH}"></script>
+<!--{/if}-->
+<!--{if $_G['member']['newprompt'] && (empty($_G['cookie']['promptstate_'.$_G[uid]]) || $_G['cookie']['promptstate_'.$_G[uid]] != $_G['member']['newprompt']) && $_G['gp_do'] != 'notice'}-->
+<script type="text/javascript">noticeTitle();</script>
+<!--{/if}-->
+<!--{eval output();}-->
+
+
+<!--dx代码结束-->
+</body>
+</html>

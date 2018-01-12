@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/admin.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/bangdan.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/config/config_dianping.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/config/config_global.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/config/config_global_bak0928.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/config/config_global_bak_20171026.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/config/config_global_default.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/external/app/checkver.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/forum.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/portal.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/qrcode.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/sapp.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/source/8264/controller/frontend.base.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/source/8264/launcher.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/source/admincp/admincp_question.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/source/class/class_core.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/source/class/class_forumupload.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/source/class/class_sockpost.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/source/class/class_upload.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/source/function/function_core.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/source/function/function_discuzcode.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/source/function/function_forum.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/source/function/function_forumlist.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/source/function/function_home.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/source/function/function_space.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/source/function/function_wap.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/source/language/task/lang_avatar.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/source/module/forum/forum_forumdisplay.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/source/module/forum/forum_viewthread.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/source/module/sapp/examIndex.ctl.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/source/module/sapp/forumIndex.ctl.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/source/module/sapp/forumPost.ctl.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/source/module/sapp/thread.ctl.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/source/module/wap/forumIndex.ctl.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/source/module/wechatconnect/models/wechat_user.class.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/source/plugin/attachment_server/attachment_server.class.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/source/plugin/domainset/indomain.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/wap.php" charset="GBK" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

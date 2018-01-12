@@ -1,0 +1,55 @@
+/* CSS Document */
+body{ background:#f1f3f5; font-family:"Microsoft YaHei",Tahoma,Helvetica,SimSun,sans-serif;}
+.clear_b:after{content: ""; display: block; clear: both; visibility: hidden;}
+.clear_b{ zoom: 1;}
+.w980{ width:980px; margin:0 auto;}
+.top2box{ margin-top:90px;}
+.top2one{ background:#fff; width:480px; border:#dfe1e3 solid 1px; border-top:0 none; height:310px; float:left; position:relative;}
+.top2one.right{ float:right; }
+.topbigimg{ width:200px; height:300px; position:absolute; top:-50px; left:18px; box-shadow: 0px 0px 4px rgba(4,0,0,.2);}
+.topbigimg img{ width:200px; height:300px;}
+.gunum{ width:55px; height:55px; background: url(http://static.8264.com/static/images/bg60.png); position: absolute; top:-38px; left:30px;}
+.gunum i{ background:url(http://static.8264.com/static/images/gzicon.png) center bottom no-repeat; height:20px; padding:11px 0px 0px 0px; display:block;}
+.gunum em{ text-align:center; font-size:12px; color:#fff; display:block;}
+.topztbox{ margin:30px 0px 0px 244px;}
+.qinum{ background:url(http://static.8264.com/static/images/r.png) 0 4px no-repeat; color:#81a0b8; font-size:14px; padding:0px 0px 0px 25px;}
+.title20333{ font-size:20px; color:#333; padding:4px 0px 0px 0px;}
+.infoboxyh{ background:url(http://static.8264.com/static/images/yinhao.png) left top no-repeat; font-size:14px; color:#585858; padding:18px 0px 0px 0px;}
+.infoboxyh blockquote{ background:url(http://static.8264.com/static/images/yinhaoafter.png) bottom right no-repeat; padding:0px 0px 30px 0px; width:210px; line-height:1.8;}
+.gzboxgray{ background:#f6f7f9; height:50px; position: absolute; bottom:0px; left:0px; width:100%;}
+.reveiwbox{ float:left; padding:14px 0px 0px 18px;}
+.reveiwbox img{ width:24px; height:24px; float:left; border-radius:50%; margin:0px 6px 0px 0px;}
+.slhicon{ background:url(http://static.8264.com/static/images/slh.png) center center no-repeat; width:24px; height:24px; display:block; float:left; margin:0px 6px 0px 0px;}
+.gznumbox{ float:right; color:#81a0b8; font-size:12px; padding:13px 20px 0px 0px;}
+.gznumbox b{ font-size:16px; }
+.syslistbox{ padding:40px 0px 0px 0px;}
+.sysbox{ width:230px; float:left; margin:0px 20px 22px 0px; position:relative;}
+.qsbox60{ width:55px; height:55px; background:url(http://static.8264.com/static/images/bg60.png) no-repeat; position:absolute; right:12px; top:12px; text-align:center; line-height:1;}
+.qsbox60 b{ display:block; color:#fff; font-size:24px; padding:8px 0px 0px 0px;}
+.qsbox60 span{ display:block; font-size:12px; padding:3px 0px 0px 0px; color:#b6b6b6;}
+.bigimg{ width:230px; height:345px; }
+.bigimg img{ width:230px; height:345px; }
+.name_ll_dp_box{ height:90px; background:#fff; border:#ececec solid 1px; border-top:0 none;}
+.name_ll_dp_box a{ display:block; font-size:16px; color:#666; text-align:center; padding:18px 0px 0px 0px;}
+.name_ll_dp_box a:hover{ text-decoration:none;}
+.lldpbox{ color:#999999; font-size:12px; text-align:center; padding:10px 0px 0px 0px;}
+.llicon{ background:url(http://static.8264.com/static/images/liulanicon.png) 0px 3px no-repeat; padding:0px 15px 0px 20px;}
+.dpicon{ background:url(http://static.8264.com/static/images/dianpingicon.png) 0px 3px no-repeat; padding:0px 15px 0px 15px;}
+.w1000{ width:1000px;}
+/*·ÖÒ³*/
+.pageBox {width:100%; height:36px; text-align:center; }
+.pageBox .pg { margin: 0 15px 10px; }
+.pageBox .pg a, .pageBox .pg strong { float: left; display: block; font-size: 15px; font-weight: 400; color: #999999; height: 24px; padding: 6px 7px 4px; margin-left: 5px; font-family: "Microsoft YaHei"; background:none; border:0; }
+.pageBox .pg a:hover, .pageBox .pg strong { border:0;border-bottom: 2px solid #00A6FC; color: #141414; text-decoration: none; background:none; }
+
+
+
+
+
+
+
+
+
+
+
+

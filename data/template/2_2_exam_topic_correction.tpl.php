@@ -1,0 +1,92 @@
+<?php if(!defined('IN_DISCUZ')) exit('Access Denied'); ?>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="gbk">
+<title>试题纠错 - 8264户外运动学校</title>
+<meta name="viewport" content="minimal-ui,width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="MobileOptimized" content="width">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="renderer" content="webkit"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+<title>试题纠错</title>
+
+<link rel="stylesheet" href="http://static.8264.com/static/css/exam/style.css?<?php echo VERHASH;?>">
+<script src="http://static.8264.com/static/js/exam/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="http://static.8264.com/static/js/exam/swiper.min.js" type="text/javascript"></script>
+<style>
+    body,html{background:#f8f8fa;}
+    .biaotititlebox{border-bottom: #ccc solid 1px; font-size:16px; padding:15px 20px 15px 20px; color: #666; margin-bottom: 5px;}
+    .textareabox textarea{ width:100%; height:145px; resize: none; outline:none; border:#d1d1d1 solid 1px;  font-size: 15px; padding:15px;}
+</style>
+<script>
+var _hmt = _hmt || [];
+(function() {
+var hm = document.createElement("script");
+hm.src = "https://hm.baidu.com/hm.js?49299785f8cc72bacc96c9a5109227da";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+
+<body>
+<!--头部开始-->
+<?php if($isWechat == 0) { ?>
+<div class="header-content">
+<div class="home-icons" style="display: none;">
+<a href="http://www.8264.com/xuexiao/">首页</a>
+</div>
+<div class="goback-icons">
+<a href="http://www.8264.com/xuexiao/">返回</a>
+</div>
+<div class="logo">
+<a href="#">
+<img src="http://static.8264.com/static/images/exam/logo.png" alt="">
+</a>
+</div>
+</div>
+<?php } else { if($phonetype == 'android') { ?>
+<a href="<?php echo $back_url;?>" class="chat-back"></a>
+<?php } } ?>
+<div class="biaotititlebox">
+    <?php echo $title;?>
+</div>
+<div class="page">
+        <div class="textareabox"><textarea id="error_content" placeholder="填写纠错内容"></textarea></div>
+        <div class="submit">
+            <button id="correction" class="button">提交</button>
+        </div>
+</div><?php include template('exam/topic/footer'); ?><script type="text/javascript">
+jQuery(function(){
+$("#correction").click(function() {
+var error_content = $('#error_content').val();
+        var qid = '<?php echo $qid;?>';
+        if(error_content.length == 0){
+            alert('请填写纠错信息');
+            return false;
+        }
+        $.ajax({
+            type: 'POST',
+            url: '/exam.php?ctl=topic&act=correction',
+            async:false,
+            data: {'qid':qid,'error_content':error_content},
+            dataType: 'json',
+            success: function(data){
+                if(data.code == 0){
+                    alert('感谢您积极提供信息！');
+                    history.go(-1);
+                }else{
+                    alert('添加失败！请联系管理员');
+                }
+            }
+        });
+});
+
+
+});
+</script>
+</body>
+</html>

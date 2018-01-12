@@ -1,0 +1,119 @@
+{subtemplate common/header_8264_new}
+<script type="text/javascript" src="http://www.8264.com/static/js/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+</script>
+<link rel="stylesheet" href="/source/plugin/whither/css/main.css?3" />
+
+<div style="padding-bottom:5px;height:35px;overflow:hidden;width:100%;">
+	<div class="z" style="line-height:30px;">
+		<!--{eval echo $forumoption_mudidi->getBreadcrumbNavByTid($mudidi_info['tid']);}--> <em>&rsaquo;</em> {$mudidi_info['name']}
+	</div>
+</div>
+
+<div id="ct" class="ct2_a wp cl">
+	<div class="container">
+		<div class="mudidi_view_top"></div>
+		<div class="mudidi_view">
+			<div class="mudidi_box">
+				<h4>
+					<span style="float:right; font-size:12px; font-weight:normal; line-height:40px;">
+						<!--{if $_G['uid'] && $_G['group']['radminid'] > 0}-->
+						<a href="/plugin.php?id=whither:pubinfo&tid={$mudidi_info['tid']}">发布新信息</a> <span class="pipe">|</span>
+						<a href="/plugin.php?id=whither:pubinfo&tid={$mudidi_info['tid']}&infoid=$infoid">编辑</a> <span class="pipe">|</span>
+							<!--{if $mudidi_info['default'] == 0}-->
+							<a href="/plugin.php?id=whither:delinfo&infoid=$infoid">删除{$mudidi_info['name']}信息</a> <span class="pipe">|</span>
+							<!--{/if}-->
+						<!--{/if}-->
+						<a href="/forum.php?mod=viewthread&tid={$mudidi_data['tid']}" class="link_blue">返回{$mudidi_data['subject']}</a>
+					</span>
+					{$mudidi_info['name']}
+				</h4>
+				<div class="info">
+					<!--{if $mudidi_info['message']}-->
+						$mudidi_info['message']
+					<!--{else}-->
+					<p>
+						<!--{if $_G['uid'] && $_G['group']['radminid'] > 0}-->
+							{$mudidi_info['name']}目前尚无内容, <a href="/plugin.php?id=whither:pubinfo&tid={$mudidi_info['tid']}&infoid=$infoid">点击添加</a>
+						<!--{else}-->
+							信息正在完善中...
+						<!--{/if}-->
+					</p>
+					<!--{/if}-->
+				</div>
+			</div>
+		</div>
+
+			<!--{if $scapeareaTid}-->
+			<!--{eval $guideData = $forumoption_mudidi->getGuideByTid($scapeareaTid, 5);}-->
+			<!--{/if}-->
+			<!--{if $guideData}-->
+			<div class="bm vw pl guide_list">
+				<div class="bm_h cl">
+					<h2>
+						<a href="/plugin.php?id=whither:guidelist&tid={$mudidi_info['tid']}" class="more">更多攻略</a>
+						{$mudidi_data['subject']}攻略大全
+						<span class="pub_guide">
+							<a href="http://bbs.8264.com/forum-post-action-newthread-fid-52.html?mtid={$tid}">发布攻略</a>
+						</span>
+					</h2>
+				</div>
+				<div class="bm_c">
+					<!--{loop $guideData $guideid $guide}-->
+						<!--{if $guide['type'] == 1}-->
+							<!--{eval $link = "/thread-".$guide['typeid']."-1-1.html";}-->
+						<!--{elseif $guide['type'] == 2}-->
+							<!--{eval $link = "http://u.8264.com/home-space-uid-".$guide['uid']."-do-blog-id-".$guide['typeid'].".html";}-->
+						<!--{/if}-->
+					<div class="row">
+						<div class="detail">
+							<h5>
+								<span class="status">
+									<img src="http://bbs.8264.com/source/plugin/whither/css/images/icon1.png" title="回复" />
+									<a href="$link" title="回复" target="_blank">$guide['replies']</a>
+									<img src="http://bbs.8264.com/source/plugin/whither/css/images/icon2.png" title="查看" class="icon2" />
+									<a href="$link" title="查看" target="_blank">$guide['views']</a>
+								</span>
+								<a href="$link" target="_blank">$guide['subject']</a>
+							</h5>
+							<div class="author_info">
+								<div class="author">
+									<a href="http://u.8264.com/home-space-uid-{$guide['authorid']}-do-profile.html">
+										<!--{eval echo avatar($guide['authorid'], 'small');}-->
+									</a>
+									作者: <a href="http://u.8264.com/home-space-uid-{$guide['authorid']}-do-profile.html">{$guide['author']}</a>
+								</div>
+								<div class="lastposter">
+									<a href="http://u.8264.com/home-space-uid-{$guide['lastposterid']}-do-profile.html">
+										<!--{eval echo avatar($guide['lastposterid'], 'small');}-->
+									</a>
+									回复: <a href="http://u.8264.com/home-space-uid-{$guide['lastposterid']}-do-profile.html">{$guide['lastposter']}</a>
+									<span class="gray"><!--{eval echo dgmdate($guide['lastpost'], 'u');}--></span>
+								</div>
+							</div>
+							<div class="content">
+								<!--{if $guide['firstPicture'] != NULL}-->
+									<div class="image">
+										<a href="$link" target="_blank">
+											<img src="{$guide['firstPicture']}" alt="" />
+										</a>
+									</div>
+								<!--{/if}-->
+								<!--{eval echo messagecutstr($guide['message'], 200);}-->
+							</div>
+						</div>
+					</div>
+					<!--{/loop}-->
+				</div>
+			</div>
+			<!--{/if}-->
+	</div>
+
+	<!--{eval include DISCUZ_ROOT.'./source/plugin/whither/template/_sidebar.php';}-->
+</div>
+<div style="display:none;">
+	<script src="http://s84.cnzz.com/stat.php?id=3496107&web_id=3496107&show=pic1" language="JavaScript"></script>
+</div>
+
+{subtemplate common/footer_8264_new}

@@ -1,0 +1,25 @@
+/* CSS Document */
+body { margin:0 0 0 0;text-align:center;font-size:12px; color:#333333;}
+ul{ list-style:none; margin:auto 0px;letter-spacing:0; word-spacing:0; padding:0;}
+a{text-decoration:none; color:#333333; }
+a:hover{text-decoration:underline; color:#333333;}
+form{ padding:0 0 0 0; margin:0 0 0 0;}
+em{ font-style:normal;}
+.warpper{ width:960px; text-align:center; margin:auto;}
+.top{ width:960px;}
+.mid{ width:960px;}
+.left{ width:780px; float:left; border:#CCCCCC solid 1px; background: url(/images/pic/line.gif) repeat;}
+.con{ width:132px; float:left; margin:5px 11px 8px 12px!important; margin:5px 8px 8px 8px;}
+.img{ width:130px; height:90px; padding:3px; border:#CCCCCC solid 1px;}
+.wen{ height:36px; width:132px; line-height:1.5; text-align:left;}
+.right{ width:160px; float:right; border:#CCCCCC solid 1px; background:url(/images/pic/line.gif) repeat;}
+.rightlist{ width:100%;}
+.rightlist li{ width:146px; float:left; height:29px; line-height:29px; overflow:hidden; text-align:center; background:url(/images/pic/anniu.gif) no-repeat top center; margin:5px 0px 5px 6px!important; margin:5px 0px 5px 3px;}
+.rightlist a{ font-size:14px; font-weight:bold; color:#666666;}
+.rightlist a:hover{ font-size:14px; font-weight:bold; color:#666666; text-decoration:none;}
+.bottom{ width:960px; margin-top:10px;}
+.fenye{ width:100%; padding:5px 0px; text-align:center;}
+a.no:link{ font-size:12px; background:#cccccc; font-weight:bold; padding:2px 8px;} 
+a.no:visited{ font-size:12px; background:#cccccc; font-weight:bold; padding:2px 8px;} 
+a.no:hover{ font-size:12px; background:#FFFF33; font-weight:bold; padding:2px 8px; text-decoration:none;} 
+a.no:active{ font-size:12px; background:#cccccc; font-weight:bold; padding:2px 8px;}

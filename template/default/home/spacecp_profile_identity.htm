@@ -1,0 +1,38 @@
+<!--{loop $arr_identity $identity}-->
+	<div id="div_identity_{$identity['id']}" status="{if $identity['identity_status']}{$identity['identity_status']}{else}0{/if}" style="height:100px; border: solid 1px blue; margin-bottom:5px">
+		{$identity['identity_entity']}
+		<div>
+			{$identity['description']}
+		</div>
+		<div>
+			申请说明：{$identity['remark']}
+		</div>
+		<div id="div_btn_{$identity['id']}" class="div_btn div_btn_{$identity['identity_status']}">
+			{$identity['status_name']}
+		</div>
+	</div>
+<!--{/loop}-->
+<!--{loop $arr_detail $identity}-->
+	<div id="div_identity_{$identity['id']}" identity_id="{$identity['identity']['id']}" status="{if $identity['identity_status']}{$identity['identity_status']}{else}0{/if}" style=" border: solid 1px blue; margin-bottom:5px;overflow:hidden;">
+		<!--{if $identity['identity_status'] != 1 && $identity['identity_status'] != 2 && $identity['identity_status'] != 4}-->
+		<div id="div_reason_{$identity['id']}" style="float:right; border: solid 1px; margin:5px; display: none">
+			申请理由：
+			<br />
+			<textarea id="txta_{$identity['id']}" rows="3" cols="25"></textarea>
+			<div>
+				您可以简述您的经历以便我们审核<br>（申请后您将自动加入 <span style="color:red">{$identity['identity']['identity_entity']}</span> 的身份组）
+			</div>
+		</div>
+		<!--{/if}-->
+		<div id="div_btn_sub_{$identity['identity']['id']}_{$identity['id']}" class="div_btn_sub div_btn_sub_{$identity['identity_status']}">
+			{$identity['status_name']}
+		</div>
+		{$identity['subname']}
+		<div>
+			{$identity['description']}
+		</div>
+		<div>
+			申请说明：{$identity['remark']}
+		</div>
+	</div>
+<!--{/loop}-->

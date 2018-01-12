@@ -1,0 +1,10 @@
+<!--{subtemplate home/spacecp_poke_type}-->
+<!--{eval foreach($datas as $_time => $_value):}-->
+	<!--{eval foreach($_value as $_values):}-->
+			{eval include template('home/space_sub_' . $_values['type']);}
+	<!--{eval endforeach;}-->
+<!--{eval endforeach;}-->
+<li id="more_list{if $newsmsg==1}_new{/if}" style="padding:0px;">
+	<p id="watting_list{if $newsmsg==1}_new{/if}" style="display:none;text-align:center;"></p>
+<!--{if $nextpageif}--><p style="text-align:center; padding:0px;margin:0px;"><a style="font-size:12px;  display:block; padding:18px 0px;" href="home.php?mod=space&do=notice&page={$nextpage}{if $newsmsg==1}&getnew=1{/if}" onclick="return false;" >查看更多</a></p><!--{/if}-->
+</li>

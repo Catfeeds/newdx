@@ -1,0 +1,107 @@
+<!--{template common/header_8264_new}-->
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/common/reset.css">
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/common/common_head_bottom.css">
+<style>
+    .layout{ width:980px; margin:0 auto;}
+    .timubox{ padding-bottom:30px;}
+    .bigtimutitle{ font-size:18px; color:#1a2b38; border-bottom:#d2d2d2 solid 1px; padding:30px 0px 15px 0px; }
+    .chooselist{ padding:6px 0px 0px 0px;}
+    .chooselist li{ display:block; font-size:16px; color:#333; height:40px; line-height:40px; overflow: hidden;}
+    .answerbox{ font-size:14px; color:#333; margin-top:15px;}
+    .answerfxbox{ margin-top:10px;}
+    .answerfxbox img{ width:290px; display:block; margin:15px 0px 0px 0px;}
+    .othertimubox{ padding:60px 0px 0px 0px;}
+    .classificationtitle{  position:relative; padding:0px 0px 0px 20px; line-height:1.1;}
+    .classificationtitle:after{ content:""; width:5px; height:27px; border-radius:5px; position:absolute; left:0px; top:0px; display:block; background:#508eff;}
+    .classificationtitle a{ font-size:22px; color:#333; text-decoration:none;}
+    .pre_next_box{ border-top:#d2d2d2 solid 1px; background:#f6f8fb;}
+    .pre_next_box a{ font-size:18px; color:#357dff; text-align:center; float:left; width:50%; height:56px; line-height:56px; text-decoration:none; position:relative;}
+    .pre_next_box a.right:after{ content:""; height:56px; border-left:#d2d2d2 solid 1px; position:absolute; right:0px; top:0px; display:block;}
+    .shipinbox{	margin:15px 0px 0px 0px; width:290px; position: relative; height:145px; display: block;}
+    .shipinbox iframe{ position: absolute; left: 0px; right:0px; top:0px; bottom: 0px; width: 100%; height: 100%;}
+</style>
+<body>
+<!--插入头部-->
+<div class="header">
+    <div class="layout">
+        <div class="icoHill">&nbsp;</div>
+        <div class="headerL">
+            <h1><span class="country">户外学校</span></h1>
+            <div class="site"><a href="{$_G['config']['web']['portal']}xuexiao/" title="户外学校">户外学校</a>&gt; <a href="{$_G['config']['web']['portal']}xuexiao/catinfo-{$main['catid']}.html" title="{$cate}">{$cate}</a></div>
+        </div>
+    </div>
+</div>
+<div class="layout">
+    <!--题目开始-->
+    <div class="timubox">
+        <div class="bigtimutitle">{$main['title']}</div>
+        <div class="chooselist">
+            <ul>
+                {loop $main['answer_arr'] $k $v}
+                <li>{$v}</li>
+                {/loop}
+            </ul>
+        </div>
+        <div class="answerbox">
+            <div><b>标准答案：</b>{$main['right_answer']}</div>
+            <div class="answerfxbox">
+                <b>本题分析：</b>
+                {$main['analysis']}
+                {if $main['imgurl']}
+                <img src="{$main['imgurl']}" alt="{$main['title']}_问题分析">
+                {/if}
+                {if $main['videourl']}
+                <div class="shipinbox"><iframe src="{$main['videourl']}" frameborder="0" allowfullscreen></iframe></div>
+                {/if}
+            </div>
+        </div>
+    </div>
+    <!--题目结束-->
+    <div><a href="{$_G['config']['web']['portal']}xuexiao/" target="_blank"><img src="http://static.8264.com/static/images/exam/kaoshilink.jpg" alt="专业户外评级测试"/></a></div>
+    <!--其他分类题开始-->
+    <div class="othertimubox">
+        <div class="classificationtitle"><a href="{$_G['config']['web']['portal']}xuexiao/catinfo-{$main['catid']}.html" target="_blank" title="其他{$cate}试题">其他{$cate}试题</a></div>
+        <!--循环其他题目开始-->
+        {loop $other $k $v}
+            <div class="timubox">
+            <div class="bigtimutitle">{echo $k+1}.{$v['title']}</div>
+            <div class="chooselist">
+                <ul>
+                    {loop $v['answer_arr'] $key $val}
+                    <li>{$val}</li>
+                    {/loop}
+                </ul>
+            </div>
+            <div class="answerbox">
+                <div><b>标准答案：</b>{$v['right_answer']}</div>
+                <div class="answerfxbox">
+                    <b>本题分析：</b>
+                    {$v['analysis']}
+                    {if $v['imgurl']}
+                    <img src="{$v['imgurl']}" alt="{$main['title']}_问题分析">
+                    {/if}
+                    {if $v['videourl']}
+                    <div class="shipinbox"><iframe src="{$v['videourl']}" frameborder="0" allowfullscreen></iframe></div>
+                    {/if}
+                </div>
+            </div>
+        </div>
+        {/loop}
+        <!--循环其他题目开始-->
+    </div>
+    <!--其他分类题结束-->
+    <div class="pre_next_box clearfix">
+        <a href="{$main['pre_url']}" class="right" title="{$main['pre_title']}">上一题</a>
+        <a href="{$main['next_url']}" class="" title="{$main['next_title']}">下一题</a>
+    </div>
+</div>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?49299785f8cc72bacc96c9a5109227da";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<!--{subtemplate common/footer_8264_1170_new}-->

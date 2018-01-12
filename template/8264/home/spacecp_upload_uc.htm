@@ -1,0 +1,258 @@
+<!--{subtemplate common/header_8264_new}-->
+
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/common/common.css?{VERHASH}">
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/common/reset.css">
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/common/common_head_bottom.css">
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/home/album-app.css?{VERHASH}">
+
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/home/album-new.css?{VERHASH}">
+
+<script src="http://static.8264.com/static/js/jquery-1.9.1.min.js"></script>
+
+
+<style>#wp{background-color:#f4f4f4;}</style>
+<div id="adpt-h" class="container">
+	<div class="ui-title ui-block-title">
+		<div class="ui-title">
+			<h2>上传照片</h2>
+		</div>
+	</div>
+	<div class="upimgbox">
+		<div class="upimgtitle">
+			<input type="hidden" id="album_now" value="{$albumid}">
+			<div class="upimgfont">上传到</div>
+			<div class="xlprbox">
+				<div class="albumcon" id="albumcon">
+					<!--{if $album_list_type == 1}-->
+					<img src="{$the_album[mpic]}"/>
+					<span>{$the_album[albumname]}</span>
+					<!--{else}-->
+					<img src=""/>
+					<span>请选择相册</span>
+					<!--{/if}-->
+				</div>
+				<!--下拉开始-->
+				<div class="popxllist" style="display:none;">
+					<div class="album_list">
+						<!--循环开始-->
+						<!--{loop $user_albums $album_list_id $album_list_one}-->
+						<div class="albumcon" onclick="changelist(this, {$album_list_id});" id="album_{$album_list_id}" <!--{if $album_list_id == $albumid}--> style="display:none;" <!--{/if}--> >
+						<img src="{$album_list_one[mpic]}"/>
+						<span>{$album_list_one[albumname]}</span>
+					</div>
+					<!--{/loop}-->
+					<!--循环结束-->
+				</div>
+
+				<div class="albumcon_cp" id="" style="display:none;" onclick="">
+					<img src="http://bbs.8264.com/static/images/default.jpg"/>
+					<span></span>
+				</div>
+				<div class="addalbumcon">新建相册</div>
+			</div>
+			<!--下拉结束-->
+		</div>
+	</div>
+	<!--点击上传开始-->
+	<script src="http://static.8264.com/static/js/webuploader.js?{VERHASH}" type="text/javascript"></script>
+	<script src="http://static.8264.com/static/js/webuploader_album.js?{VERHASH}" type="text/javascript"></script>
+	<div class="upimgbuttonbox" >
+		<input id="url_action" value="{$action}" type="hidden">
+		<input id="url_policy" value="{$policy}" type="hidden">
+		<input id="url_signature" value="{$sign}" type="hidden">
+
+		<span class="imgbutton" id="filePicker">请选择图片</span>
+		<span>按着Ctrl可以上传多张</span>
+	</div>
+	<!--点击上传结束-->
+	<!--状态部分开始-->
+	<div class="input-wrap" style="display: none;">
+		<ul class="edit-photo-info-list clearfix">
+			<div class="photo-list">
+			</div>
+
+			<li>
+				<!--<div id="addbutton" style="height: 200px;width: 200px;"></div>-->
+				<div onclick="continueupload()"><img src="http://static.8264.com/static/images/home/album/uploadcontinue.png"/></div>
+			</li>
+			<!--<img src="http://static.8264.com/static/images/home/album/uploadcontinue.png"/>-->
+		</ul>
+		<div class="photo-btn-wrap clearfix">
+			<a href="javascript:void(0);" class="imgupbegin"></a>
+			<a href="javascript:void(0);" class="goonadd" onclick="continueupload()"></a>
+			<em>共<i class="counts">0</i>张图片，<i class="sizes">0</i>M（上传过成中请不要删除原图）</em>
+		</div>
+	</div>
+	<!--状态部分结束-->
+	<!--弹出开始-->
+	<!--创建相册开始-->
+	<div class="albumpopbox" style="display:none;">
+		<div class="albumpoptitle">
+			<span>相册信息</span>
+			<em></em>
+		</div>
+		<div class="albumpopcon">
+			<div class="addalbumnumebox">
+				相册名称：
+				<input type="text" class="new_name" onkeyup="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')" >
+			</div>
+			<div class="albumbuttoncon">
+				<input type="submit" class="submitalbumname" value="提交" onclick="validate();">
+				<input type="submit" class="submitcancel" value="取消">
+			</div>
+		</div>
+	</div>
+	<!--创建相册结束-->
+	<div class="popnoticebox" style="display:none;">
+		<div class="popnoticetitle">
+			<em></em>
+		</div>
+		<img src="http://static.8264.com/static/images/home/album/uploadalbumtipsright.png"/>
+		<span>创建成功</span>
+	</div>
+	<!--弹出结束-->
+</div>
+</div>
+<!--<script type="text/javascript">-->
+	<!--jQuery(function(){-->
+		<!--var ua    = navigator.userAgent.toLowerCase();-->
+		<!--var isIE6 = ua.indexOf('msie 6.0') > -1;-->
+		<!--if(!isIE6){-->
+			<!--var wh = jQuery(window).height();-->
+			<!--var ch = jQuery('#adpt-h').height();-->
+			<!--var calch = wh - 124;-->
+			<!--var nh = ch > wh ? ch : calch;-->
+			<!--console.log(ch);-->
+			<!--if(nh > ch){-->
+				<!--jQuery('#adpt-h').height(nh);-->
+			<!--}-->
+		<!--}-->
+	<!--});-->
+<!--</script>-->
+
+<script>
+	jQuery(function(){
+		var pop_h = jQuery(".popxllist").height();
+		if( pop_h > 400){
+			jQuery(".popxllist").css({ height:'400px' , "overflow-y":'scroll'})
+		};
+		jQuery(".addalbumcon").click( function () {
+			jQuery(".albumpopbox").show();
+		});
+//        jQuery(".popxllist .albumcon").click( function () {
+//            console.log(this);
+//            var imgsrc = jQuery("img",this).attr("src");
+//            var name = jQuery("span",this).text();
+//
+//            jQuery("#albumcon img").attr("src",imgsrc);
+//            jQuery("#albumcon span").text(name);
+//
+//            jQuery(this).hide().siblings().show();
+//        });
+		jQuery(".albumcon").click( function () {
+			jQuery(".popxllist").show();
+		});
+		jQuery(".popxllist").click( function () {
+			jQuery(".popxllist").hide();
+		});
+		jQuery(".submitcancel ,.albumpoptitle em").click( function () {
+			jQuery(".albumpopbox").hide();
+			jQuery(".new_name").val("");
+		});
+		jQuery(".popnoticetitle em").click( function () {
+			jQuery(".popnoticebox").hide();
+		});
+
+	});
+
+	function changelist(that, aid){
+		var imgsrc = jQuery("img",that).attr("src");
+		var name = jQuery("span",that).text();
+
+		jQuery("#albumcon img").attr("src",imgsrc);
+		jQuery("#albumcon span").text(name);
+
+		jQuery(that).hide().siblings().show();
+		jQuery("#album_now").val(aid);
+	}
+
+	function validate(){
+		var new_name = jQuery(".new_name").val();
+		new_name = jQuery.trim(new_name);
+		if(new_name == ""){
+			jQuery(".popnoticebox").show();
+			jQuery(".popnoticebox span").html("请确认新建相册名不能为空");
+			return false;
+		}
+		if( new_name.length > 30 ) {
+			jQuery(".popnoticebox").show();
+			jQuery(".popnoticebox span").html("相册名不能超过30字符");
+			return false;
+		}
+
+		$.ajax({
+			type: 'GET',
+			url: 'http://u.8264.com/home.php?mod=misc&ac=swfupload&newflash=1&op=createalbum',
+			async:false,
+			data: {uid:{$_G['uid']}, hash:"{$hash}", albumid:"new_"+new_name, catid:0},
+			dataType: 'json',
+			success:function(data){
+				if(data > 0){
+					jQuery(".popxllist").hide();
+					jQuery(".popxllist .albumcon").show();
+
+					jQuery("#albumcon img").attr("src", "http://bbs.8264.com/static/images/default.jpg").next().html(new_name+"[新建]");
+					jQuery(".albumpopbox").hide();
+					jQuery(".new_name").val("");
+
+					jQuery("#album_now").val(data);
+
+					jQuery(".albumcon_cp").clone().attr('id', 'album_' + data).attr('class', 'albumcon')
+							.attr('onclick', "changelist(this, "+ data +");").appendTo('.album_list');
+					jQuery("#album_" + data + " span").html(new_name);
+				}
+			}
+		});
+	}
+
+	function continueupload() {
+		jQuery("#filePicker label").click();
+	}
+
+</script>
+<style>
+
+	.webuploader-container {
+		position: relative;
+	}
+	.webuploader-element-invisible {
+		position: absolute !important;
+		clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+		clip: rect(1px,1px,1px,1px);
+	}
+	.webuploader-pick {
+		position: relative;
+		display: inline-block;
+		cursor: pointer;
+		background: #00b7ee;
+		padding: 10px 15px;
+		font-size: 16px;
+		color: #fff;
+		text-align: center;
+		width:178px;
+		border-radius: 3px;
+		overflow: hidden;
+	}
+
+	.webuploader-pick-hover {
+		background: #00a2d4;
+	}
+
+	.webuploader-pick-disable {
+		opacity: 0.6;
+		pointer-events:none;
+	}
+
+</style>
+
+<!--{subtemplate common/footer_8264_new}-->

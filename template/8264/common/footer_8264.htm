@@ -1,0 +1,137 @@
+{if !isset($_ENV['domain'])}{eval require_once DISCUZ_ROOT.'/source/plugin/forumoption/include.php';}{if getcookie('nofocus_difanban')!=1 && ($ip = $discuz->_get_client_ip()) && isset($forumOption) && $forumOption->getSetting('recom_thread_opened') && ($data = $forumOption->getThreadByIp($ip))}
+<style type="text/css">
+.sitefocuslist li { background: url(/static/images/dot.gif) 0px 7px no-repeat; padding-left: 10px; margin-bottom: 3px;}.sitefocuslist li a{ color:#186dd7; font-size: 12px;}.sitefocuslist li a:hover{ color:#e00000;}#sitefocus h3 em a:hover{color:red;}
+</style>
+<div id="sitefocus" class="focus">
+	<h3 class="flb"><em><a title="点击进入{$data['stateName']}户外论坛" href="http://bbs.8264.com/forum-{$data['fid']}-1.html" >{$data['stateName']}户外论坛</a></em> <span><a title="关闭" class="flbc" onclick="setcookie('nofocus_difanban', 1, 86400);$('sitefocus').style.display='none'" href="javascript:;">关闭</a></span></h3>
+	<hr class="l">
+	<div class="detail">
+		<ul class="sitefocuslist">
+			{loop $data['threads'] $thread}
+			<li> <a target="_blank" href="http://bbs.8264.com/thread-{$thread['tid']}-1-1.html">{$thread['subject']}</a> </li>
+			{/loop}
+		</ul>
+	</div>
+</div>
+{/if}{/if}
+<div class="bottom">
+	<div class="bottom2"> <a href="http://www.8264.com/about-index.html" target="_blank">8264简介</a>&nbsp;|&nbsp;<a href="http://www.8264.com/about-contact.html" target="_blank">联系我们</a>&nbsp;|&nbsp;<a href="http://www.8264.com/about-adservice.html" target="_blank" style="color:#FF0000;">广告服务</a>&nbsp;|&nbsp;<a href="http://www.8264.com/zhuanti" target="_blank">户外热点</a>&nbsp;|&nbsp;<a href="http://www.8264.com/link/" target="_blank">户外网址大全</a>&nbsp;|&nbsp;<a href="http://www.8264.com/sitemap" target="_blank">网站地图</a><br>
+		<a href="http://bx.8264.com/?bbsbxnew" style="color:#53792e;" target="_blank">户外活动有风险，8264提醒您购买</a> <a href="http://bx.8264.com/?8264com" style="color:#53792e;">户外保险</a><br>
+		除了脚印什么都不留下 除了摄影什么都不带走，欢迎各种媒体转载我们的原创作品[转载请注明出处]。8264&nbsp;版权所有 <a href="http://www.miibeian.gov.cn/" target="_blank">津ICP备05004140号-10</a>&nbsp;&nbsp;&nbsp;<a href="/template/8264/image/icp.jpg" target="_blank">ICP证 津B2-20110106</a>
+		<div id="myShow1" style="display:none;"></div>
+		<div id="myShow2" style="display:none;"></div>
+		<div id="myShow3" style="display:none;"></div>
+		<div id="myShow4" style="display:none;"></div>
+		<div id="myShow5" style="display:none;"></div>
+		<div id="myShow6" style="display:none;"></div>
+	</div>
+</div>
+<!--{hook/global_footerlink}--><!--{eval updatesession();}-->
+</div>
+<!--//waper结束//--><!--{if empty($topic) || ($topic[usefooter])}--> <!--{eval $focusid = getfocus_rand($_G[basescript]);}--> <!--{if $focusid !== null}--> <!--{eval $focus = $_G['cache']['focus']['data'][$focusid];}-->
+<div class="focus" id="sitefocus">
+	<h3 class="flb"> <em><!--{if $_G['cache']['focus']['title']}-->{$_G['cache']['focus']['title']}<!--{else}-->{lang focus_hottopics}<!--{/if}--></em> <span><a href="javascript:;" onclick="setcookie('nofocus_$focusid', 1, 86400);$('sitefocus').style.display='none'" class="flbc" title="{lang close}">{lang close}</a></span> </h3>
+	<hr class="l" />
+	<div class="detail">
+		<h4><a href="{$focus['url']}" target="_blank">$focus['subject']</a></h4>
+		<p> <!--{if $focus[image]}--> <a href="{$focus['url']}" target="_blank"><img src="{$focus['image']}" onload="thumbImg(this, 1)" _width="58" _height="58" /></a> <!--{/if}--> $focus['summary'] </p>
+	</div>
+	<hr class="l" />
+	<a href="{$focus['url']}" class="moreinfo" target="_blank">{lang focus_show}</a> </div>
+<!--{/if}--> <!--{hook/global_footer}--><!--{/if}-->
+<ul id="site_link_menu" class="p_pop" style="display:none;">
+	<li><a href="http://bbs.8264.com/plugin.php?id=drc_qqgroup:main" target="_blank">户外QQ群联盟</a></li>
+	<li><a href="http://www.8264.net/" target="_blank">ENGLISH</a></li>
+</ul>
+<ul id="usersetup_menu" class="p_pop" style="display:none;">
+	<li><a href="home.php?mod=spacecp&ac=avatar" class="touxiang">{lang modify_avatar}</a></li>
+	<li><a href="home.php?mod=spacecp&ac=profile" class="ziliao">{lang personal_profile}</a></li>
+	<!--{if $_G['setting']['verify']['enabled'] || $_G['setting']['my_app_status'] && $_G['setting']['videophoto']}-->
+	<li><a href="{if $_G['setting']['verify']['enabled']}home.php?mod=spacecp&ac=profile&op=verify{else}home.php?mod=spacecp&ac=videophoto{/if}">{lang certification}</a></li>
+	<!--{/if}-->
+	<li><a href="home.php?mod=spacecp&ac=credit" class="jifen">{lang credits}</a></li>
+	<li><a href="home.php?mod=spacecp&ac=usergroup" class="yonghuzu" >{lang usergroup}</a></li>
+	<li><a href="home.php?mod=spacecp&ac=privacy" class="yinsishaixuan" >{lang privacy_filter}</a></li>
+	<!--{if $_G['setting'][sendmailday]}-->
+	<li><a href="home.php?mod=spacecp&ac=sendmail" class="youjiantixing">{lang mail_notifier}</a></li>
+	<!--{/if}-->
+	<li><a href="home.php?mod=spacecp&ac=profile&op=password" class="mimaanquan">{lang password_security}</a></li>
+	<!--{if !empty($_G['setting']['plugins']['spacecp'])}-->
+    
+    
+     <!--{loop $_G['setting']['plugins']['spacecp'] $id $module}--> 
+     
+     <!--{if !$module['adminid'] || ($module['adminid'] && $_G['adminid'] > 0 && $module['adminid'] >= $_G['adminid'])}-->
+     <li {if $_G[gp_id] == $id} class="a"{/if} ><a href="home.php?mod=spacecp&ac=plugin&id=$id" {if  $id!='myrepeats:memcp'} class="qq"{elseif $id=='myrepeats:memcp'}class="majia"{/if}>$module[name]</a></li>  
+	 <!--{/if}-->
+
+    
+     <!--{/loop}-->
+     
+      <!--{/if}-->
+</ul>
+<!--{if $upgradecredit !== false}-->
+<div id="g_upmine_menu" class="g_up" style="display:none;">
+	<div class="crly"> {lang credits} $_G[member][credits], {lang thread_groupupgrade} $upgradecredit {lang credits} </div>
+	<div class="mncr"></div>
+</div>
+<!--{/if}--><!--{if !$_G['setting']['bbclosed']}--> <!--{if $_G[uid] && !isset($_G['cookie']['checkpm'])}-->
+<script type="text/javascript" src="home.php?mod=spacecp&ac=pm&op=checknewpm&rand=$_G[timestamp]"></script> <!--{/if}-->
+<!--{if !isset($_G['cookie']['sendmail'])}-->
+<script type="text/javascript" src="home.php?mod=misc&ac=sendmail&rand=$_G[timestamp]"></script> <!--{/if}--><!--{/if}-->
+<!--{if $_GET['diy'] == 'yes' && ($_G[mod] == 'topic' || $_G[group][allowdiy]) && (empty($do) || $do != 'index') && !empty($_G['style']['tplfile'])}-->
+<script type="text/javascript" src="{$_G[setting][jspath]}common_diy.js?{VERHASH}"></script><script type="text/javascript" src="{$_G[setting][jspath]}portal_diy.js?{VERHASH}"></script><!--{/if}--><!--{if $_GET['diy'] == 'yes' && $space['self'] && $_G[mod] == 'space' && $do == 'index'}--><script type="text/javascript" src="{$_G[setting][jspath]}common_diy.js?{VERHASH}"></script><script type="text/javascript" src="{$_G[setting][jspath]}space_diy.js?{VERHASH}"></script><!--{/if}--><!--{if $_G['member']['newprompt'] && (empty($_G['cookie']['promptstate_'.$_G[uid]]) || $_G['cookie']['promptstate_'.$_G[uid]] != $_G['member']['newprompt']) && $_G['gp_do'] != 'notice'}--><script type="text/javascript">noticeTitle();</script>
+<!--{/if}-->
+<!--{eval output();}-->
+
+{if $_G[forum][fup] != 76}
+<!-- 页面底部弹出新闻表 -->
+<script src="http://www.8264.com/template/8264/js/jquery-1.6.1.min.diy.js" type="text/javascript"></script>
+<script src="http://www.8264.com/template/8264/js/jquery.cookie.js" type="text/javascript"></script>
+<style>	
+	.newswarpten{ position:absolute; position:fixed!important; bottom:0px; display:none; left:50%;z-index: 999}
+	.newstopone{ height:46px;  font-size:14px; background: url(http://www.8264.com/static/image/common/kxbg.png) 0px -1px no-repeat #fffff6; border:#e0d3be solid 1px;  float:left; border-right:0 none;}
+	.newstopone .linktitle_4587{ float:left; margin:12px 0px 0px 70px; display:inline;}
+	.newstopone .linktitle_4587 a{ font-size:16px; color:#064361; text-decoration:none;}
+	.newstopone .linktitle_4587 a:hover{ font-size:16px; color:#ff7e00; text-decoration:none;}
+	.newstopone .close16_16{ width:16px; height:16px; float:right; cursor:pointer; background:url(http://www.8264.com/static/image/common/kxbgarrowclose.png) -47px -1px no-repeat; margin:16px 0px 0px 10px; display:inline;}
+	.newstopone .close16_16:hover{background:url(http://www.8264.com/static/image/common/kxbgarrowclose.png) -1px -1px no-repeat;}
+	.newsarrow{ width:18px; height:48px; background:url(http://www.8264.com/static/image/common/kxbgarrow.png) left top no-repeat; float:right;}
+</style>
+<body>
+<div class="newswarpten">
+	<div class="newstopone">
+		<div class="linktitle"><!--{ad/custom_294}--></div>
+		<span class="close16_16"></span>
+	</div>
+	<div class="newsarrow"></div>
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function(){	
+	var tiao = jQuery(".newswarpten").width();
+	jQuery(".newswarpten").css( 'margin-left' , -tiao/2 );
+	var t_time = Date.parse(new Date());
+	var cookietime = jQuery.cookie('showboxtime');
+	if(!cookietime){
+		jQuery(".newswarpten").show();
+	};	
+	if(t_time >= cookietime){
+	   jQuery(".newswarpten").show();
+	};
+	jQuery('.close16_16,.linktitle_4587 a').click(function(){
+		var t_time = Date.parse(new Date());
+		jQuery.cookie('showboxtime',t_time+3600*24*1000,{expires:30,domain:'8264.com',path:'/'});	
+		jQuery(".newswarpten").hide();
+	}); 
+});	
+</script>
+{/if}
+
+
+</body><script charset="gbk" src=" http://www.baidu.com/js/opensug.js"></script>
+</html>
+
+
+
+
+

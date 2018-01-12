@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={CHARSET}" />
+    <meta name="apple-itunes-app" content="app-id=492167976">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <meta name="renderer" content="webkit"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <link rel="dns-prefetch" href="http://stats.8264.com/">
+	<title>
+		<!--{if isset($forumOption)}-->
+			<!--{eval $forumOption->initPageTitle();}-->
+		<!--{/if}-->
+		<!--{if $pageTitle}-->
+			<!--{eval echo $pageTitle;}-->
+		<!--{elseif $_G['basescript']=='portal' && $_G['gp_mod']=='list' && $metakeywords && $_G['catid']!=874 }-->
+			<!--{if $_G['catid']==878}-->
+			户外美女图片_驴友图片_最健康的户外美女照片
+			<!--{else}-->
+            $metakeywords
+            <!--{if $_G['setting']['bbname']}--> - $_G['setting']['bbname']<!--{/if}-->
+			<!--{/if}-->
+		<!--{else}-->
+            <!--{if $_GET['do']=="produce"&&$_G['uid']}-->
+               $navtitle<!--{eval echo "的装备分享";}-->
+             <!--{elseif $_G['basescript']=='group'}-->
+				<!--{if $_G['uid']}-->
+				$navtitle
+				<!--{else}-->
+				<!--{eval $navtitle ='群组 - 8264';}-->
+				$navtitle
+				<!--{/if}-->
+			<!--{else}-->
+			<!--{eval $navtitle = preg_replace('/的记录/', '的微博', $navtitle);}-->
+			<!--{if !empty($topic['title'])}-->$topic['title']<!--{/if}--><!--{if !empty($navtitle)}-->$navtitle - <!--{/if}--><!--{if $_G['setting']['bbname']}-->$_G['setting']['bbname']<!--{/if}-->
+            <!--{/if}-->
+		<!--{/if}-->
+	</title>
+	$_G['setting']['seohead']
+    <meta name="keywords" content="{if !empty($metakeywords)} {echo htmlspecialchars($metakeywords, ENT_COMPAT | ENT_HTML401, GB2312)} {/if}" />
+	<meta name="description" content="{if !empty($metadescription)} {echo htmlspecialchars($metadescription, ENT_COMPAT | ENT_HTML401, GB2312)},$_G['setting']['bbname'] {/if}" />
+	<meta name="author" content="8264.com" />
+	<meta name="copyright" content="2001-2010" />
+	<meta name="MSSmartTagsPreventParsing" content="True" />
+	<meta http-equiv="MSThemeCompatible" content="Yes" />
+	<!--{if $_G['basescript']=='portal'}-->
+		<!--{if $_G['gp_mod']=='list'}-->
+			<!--{if $_G[catid] == '849'}-->
+			<meta name="mobile-agent" content="format=html5;url=http://m.8264.com/topic">
+			<!--{else}-->
+			<meta name="mobile-agent" content="format=html5;url=http://m.8264.com/list/{$_G['catid']}">
+			<!--{/if}-->
+		<!--{elseif $_G['gp_aid']}-->
+			<meta name="mobile-agent" content="format=html5;url=http://m.8264.com/viewnews-{$_G['gp_aid']}-page-1.html">
+		<!--{else}-->
+			<meta name="mobile-agent" content="format=html5;url=http://m.8264.com/">
+		<!--{/if}-->
+	<!--{elseif $_G['basescript']=='forum'}-->
+		<!--{if $_G['gp_mod']=='viewthread' && $_G['tid']}-->
+			<meta name="mobile-agent" content="format=html5;url=http://m.8264.com/thread-{$_G['tid']}-{$page}.html">
+		<!--{elseif $_G['fid']}-->
+			<meta name="mobile-agent" content="format=html5;url=http://m.8264.com/bbs-{$_G['fid']}-1.html">
+		<!--{else}-->
+			<meta name="mobile-agent" content="format=html5;url=http://m.8264.com/bbs">
+		<!--{/if}-->
+        <!--{elseif $_G['basescript']=='dianping'}-->
+		<!--{if $_G['url_mod'] && $_G['tid']}-->
+			<meta name="mobile-agent" content="format=html5;url=http://m.8264.com/{$_G['url_mod']}/{$_G['tid']}.html">
+		<!--{else}-->
+			<meta name="mobile-agent" content="format=html5;url=http://m.8264.com/{$_G['url_mod']}/">
+		<!--{/if}-->
+	<!--{/if}-->
+	<!--{if isset($forumOption)}-->
+	<!--{eval $flag = $forumOption->getSiteUrlbyUrl($_G['siteurl']);}-->
+	<!--{if ($flag==1)}-->
+	<!--{eval $_G['siteurl'] = "http://bbs.8264.com/";}-->
+	<!--{else}-->
+	<!--{eval $_G['siteurl'] = $_G['siteurl'];}-->
+	<!--{/if}-->
+	<!--{/if}-->
+	<base href="$_G['siteurl']" />
+	<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/common/common.css?{VERHASH}" />
+	<script type="text/javascript">
+	var STYLEID = '{STYLEID}',
+		STATICURL = '{STATICURL}',
+		IMGDIR = 'http://static.8264.com/static/image/common',
+		VERHASH = '{VERHASH}',
+		charset = '{CHARSET}',
+		discuz_uid = '$_G[uid]',
+		cookiepre = '{$_G[config][cookie][cookiepre]}',
+		cookiedomain = '{$_G[config][cookie][cookiedomain]}',
+		cookiepath = '{$_G[config][cookie][cookiepath]}',
+		showusercard = '{$_G[setting][showusercard]}',
+		attackevasive = '{$_G[config][security][attackevasive]}',
+		disallowfloat = '{$_G[setting][disallowfloat]}',
+		creditnotice = '<!--{if $_G['setting ']['creditnotice ']}-->$_G['setting ']['creditnames ']<!--{/if}-->',
+		defaultstyle = '$_G[style][defaultextstyle]',
+		REPORTURL = '$_G[currenturl_encode]',
+		SITEURL = '$_G[siteurl]';
+	</script>
+	<script type="text/javascript" src="http://static.8264.com/static/js/common.js?{VERHASH}"></script>
+	<style>
+	/* 头部广告文字 */
+	.textAdBox { float: left; width: 978px; border: 1px solid #f0f0f0; border-bottom: 0 none; overflow: hidden; }
+	.textAdBox ul { float: left; width: 100%; margin-left: -1px; }
+	.textAdBox ul li { float: left; width:20%; padding: 4px 0; border-bottom: 1px solid #f0f0f0; }
+	.textAdBox a { display: block; font-size:12px; line-height:24px; font-family: "Microsoft Yahei"; height: 24px; color: #585858; text-align: center; border-left: 1px dashed #d6d6d6; overflow: hidden; }
+	.textAdBox a:hover { color: #162833; }
+	.textAdBox .cRed,
+	.textAdBox .cRed:hover { color: #ff0000; }
+	.layout:after,
+	.hd:after,
+	.bd:after,
+	.ft:after,
+	.layoutLeft:after,
+	.layoutRight:after,
+	.w980:after { content: ""; display: block; clear: both; visibility: hidden; }
+	.layout,
+	.hd,
+	.bd,
+	.ft,
+	.layoutLeft,
+	.layoutRight,
+	.w980 { zoom: 1; }
+	/* 论坛首页 Start */
+	.layout { width: 980px; margin: 0 auto; }
+	.layoutLeft { float: left; display: inline; width: 660px; }
+	.layoutRight { float: right; display: inline; width: 260px; }
+	.w980 { width: 980px; margin: 0 auto; }
+	.oldad .textAdBox{width: 100%;}
+	.wp .oldad{width: 98%;}
+
+	/* 头部广告文字 */
+	.a_t #textadbox_old { border: 1px solid #cdcdcd; border-bottom: 0 none; overflow: hidden; width:100%; float:none;}
+	.a_t #textadbox_old ul {  width: 100%; margin-left: -1px; }
+	.a_t #textadbox_old ul li { float: left; width: 20%; padding:0px; border-bottom: 1px solid #cdcdcd }
+	.a_t #textadbox_old a { display: block; font: 14px; font-family: Tahoma,Helvetica,SimSun,sans-serif,Hei; height: 28px; color: #333; text-align: center; border-left: 1px solid #cdcdcd; overflow: hidden; line-height: 28px;}
+	.a_t #textadbox_old a:hover { color: #162833; }
+	.a_t #textadbox_old .cRed,
+	.a_t #textadbox_old .cRed:hover { color: #ff0000; }
+	</style>

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="gbk">
+	<title>户外运动知识学习和考试系统 - 8264户外运动学校 - 8264.com</title>
+	<meta name="viewport" content="minimal-ui,width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="MobileOptimized" content="width">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="renderer" content="webkit"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+	<link rel="stylesheet" href="http://static.8264.com/static/css/exam/style.css?20170908">
+    <link rel="stylesheet" href="http://static.8264.com/static/css/exam/swiper.min.css">
+
+    <script type="text/javascript" src="http://static.8264.com/static/js/exam/jquery-1.9.1.min.js"></script>
+	<script src="http://static.8264.com/static/js/exam/swiper.min.js"></script>
+	<style>
+		body{ background:#ebf0f2;}
+	</style>
+
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?49299785f8cc72bacc96c9a5109227da";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+
+</head>
+
+<body style="background: #f9f9f9;">
+
+<!--{if $isWechat == 0}-->
+<div class="header-content">
+	<div class="home-icons" style="display: none;">
+		<a href="javascript:void(0);">首页</a>
+	</div>
+	<div class="goback-icons">
+		<a href="javascript:void(0);">返回</a>
+	</div>
+	<div class="logo">
+		<a href="#">
+			<img src="http://static.8264.com/static/images/exam/logo.png" alt="">
+		</a>
+	</div>
+</div>
+<!--{/if}-->
+
+<div class="barnnerbox">
+    <!--轮播开始-->
+    <style>
+        .swiper-slide img {
+            width: 100%;
+        }
+    </style>
+    <script type='text/javascript' src='http://bbs.8264.com/api.php?mod=ad&adid=custom_479'></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            paginationClickable: true
+        });
+    </script>
+    <!--轮播结束-->
+</div>
+<div class="">
+	<div class="titlebox">
+		所有课程
+	</div>
+	<div class="allkechengbox">
+		<!--{loop $list_arr $list_one}-->
+		<div class="kechengone">
+        	<a href="catinfo-{$list_one[id]}.html" class="kechengcon">
+				<div style="position: relative; overflow:hidden; font-size: 0px;">
+					<img src="http://image1.8264.com/{$list_one[img]}" alt="">
+					<span><i>{$list_one[join_nums]}</i></span>
+				</div>
+				<b>{$list_one[catname]}</b>
+				
+				<em></em>
+			</a>
+		</div>
+		<!--{/loop}-->
+	</div>
+    <div class="titlebox whitebox">
+        合作伙伴
+        <a class="titlemorelink" href="http://www.8264.com/xuexiao/shidian.html">更多</a>
+    </div>
+        <div class="whitebox" style="margin-top: 2px;">
+            <div class="actmorelist">
+                <ul>
+                    <!--{loop $peixun_result $peixun}-->
+                    <li>
+                        <a href="/xuexiao/shidian-{$peixun[id]}.html">
+                            <img src="{$peixun[img]}" alt="">
+                            <div class="">
+							<span>{$peixun[name]}</span>
+                                <em>
+                                    <i class="didian">{$peixun[address]}</i>
+                                </em>
+                            </div>
+                        </a>
+                    </li>
+                    <!--{/loop}-->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--{template exam/topic/footer}-->
+<!--{template exam/topic/wechat_share}-->
+</body>
+</html>

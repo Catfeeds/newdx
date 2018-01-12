@@ -1,0 +1,213 @@
+<!--{subtemplate common/header_8264_new}-->
+<!--{subtemplate home/space_header_uc}-->
+<div class="main-content layout-page">
+	<div class="layout-app">
+		<div class="col-main">
+			<div class="main-wrap">
+				<!--基本信息-->
+				<div class="basic-panel" id="basic_info">
+					<div class="basic-info-tit">
+						<h3 class="tit">基本信息</h3>
+					</div>				
+					<div class="basic-msg-panel">
+						<ul class="panel-list">
+							<li>
+								<label class="lbl-txt">用户名</label>
+								<div class="collon-t">
+									<span>$space[username]</span>
+								</div>
+							</li>
+							<li>
+								<label class="lbl-txt">ID</label>
+								<div class="collon-t">
+									<span>$space[uid]</span>
+								</div>
+							</li>
+							<li>
+								<label class="lbl-txt">性别</label>
+								<div class="collon-t">
+									<span>{if $profiles[gender][value]}$profiles[gender][value]{else}未填写{/if}</span>
+								</div>
+							</li>
+							<li>
+								<label class="lbl-txt">访问量</label>
+								<div class="collon-t">
+									<span class="c-tx6">$space[views]</span>
+								</div>
+							</li>
+							<li>
+								<label class="lbl-txt">等级</label>
+								<div class="collon-t">
+									<span>$space[group][grouptitle]</span>
+								</div>
+							</li>
+							<li>
+								<label class="lbl-txt">勋章</label>
+								<div class="collon-t">
+									<span>
+										{if $space[medals]}
+										{loop $space[medals] $medal}
+										<img src="http://static.8264.com/static/image/common/$medal[image]" border="0" alt="$medal[name]" title="$medal[name]" /> &nbsp;
+										{/loop}
+										{else}
+										目前没有
+										{/if}
+									</span>
+								</div>
+							</li>
+							<li>
+								<label class="lbl-txt">现居地</label>
+								<div class="collon-t">
+									<span>{if $profiles[residecity][value]}$profiles[residecity][value]{else}未填写{/if}</span>
+								</div>
+							</li>
+						</ul>
+						<ul class="panel-list">
+							<!--{if in_array($_G[adminid], array(1, 2))}-->
+							<li>
+								<label class="lbl-txt">E-mail</label>
+								<div class="collon-t">
+									<span>$space[email]</span>
+								</div>
+							</li>
+							<li>
+								<label class="lbl-txt">常用邮箱</label>
+								<div class="collon-t">
+									<span>{if $profiles[field1][value]}$profiles[field1][value]{else}未填写{/if}</span>
+								</div>
+							</li>
+							<!--{/if}-->
+							<li>
+								<label class="lbl-txt">统计信息</label>
+								<div class="collon-t collon-span">
+									<a href="home.php?mod=space&uid=$space[uid]&do=friend" target="_blank">关注数 <em class="c-tx">{if $space[friends]}{$space[friends]}{else}0{/if}</em></a>
+									<a href="home.php?mod=space&uid=$space[uid]&do=friend&view=fans" target="_blank">粉丝数 <em class="c-tx">{if $space[fans]}{$space[fans]}{else}0{/if}</em></a>
+									<a href="home.php?mod=space&uid=$space[uid]&do=blog&view=me&from=space" target="_blank">日志数 <em class="c-tx">{if $space[blogs]}{$space[blogs]}{else}0{/if}</em></a>
+									<a href="home.php?mod=space&uid=$space[uid]&do=album&view=me" target="_blank">相册数 <em class="c-tx">{if $space[albums]}{$space[albums]}{else}0{/if}</em></a>
+									<a href="home.php?mod=space&uid=$space[uid]&do=thread&view=me&type=reply&from=space" target="_blank">回帖数 <em class="c-tx">{if $space[posts]}{$space[posts]}{else}0{/if}</em></a>
+									<a href="home.php?mod=space&uid=$space[uid]&do=thread&view=me&type=thread&from=space" target="_blank">帖子数 <em class="c-tx">{if $space[threads]}{$space[threads]}{else}0{/if}</em></a>
+									<a href="home.php?mod=spacecp&ac=credit&uid={$space[uid]}&op=base">积分 <em class="c-tx">$space[credits]</em></a>
+									<span>驴币 <em class="c-tx">$space[extcredits2]</em></span>
+									<span>8264币 <em class="c-tx">$space[extcredits5]</em></span>
+									<span>先锋币 <em class="c-tx">$space[extcredits6]</em></span>
+								</div>
+							</li>						
+						</ul>
+					</div>
+				</div>
+				<!--基本信息 end-->
+				<!--活跃概况-->
+				<div class="basic-panel" id="active_profile">
+					<div class="basic-info-tit">
+						<h3 class="tit">活跃概况</h3>
+					</div>
+					<div class="basic-msg-panel">
+						<ul class="panel-list">
+							<li>
+								<label class="lbl-txt">用户组</label>
+								<div class="collon-t">
+									<span class="c-tx5">$space[group][grouptitle]</span>
+								</div>
+							</li>
+							{if $count}
+							<li>
+								<label class="lbl-txt">管理的板块</label>
+								<div class="collon-t">
+									{loop $manage_forum $key $value}
+									<a href="forum.php?mod=forumdisplay&fid=$key" target="_blank" class="c-tx5">$value</a> &nbsp;
+									{/loop}
+								</div>
+							</li>
+							{/if}
+							{if $space[adminid] && $space[admingroup][grouptitle]}
+							<li>
+								<label class="lbl-txt">管理组</label>
+								<div class="collon-t">
+									<span class="c-tx5">$space[admingroup][grouptitle]</span>
+								</div>
+							</li>
+							{/if}
+							<li>
+								<label class="lbl-txt">在线时间</label>
+								<div class="collon-t">
+									<span>$space[oltime]小时</span>
+								</div>
+							</li>
+							<li>
+								<label class="lbl-txt">注册时间</label>
+								<div class="collon-t">
+									<span>$space[regdate]</span>
+								</div>
+							</li>
+							<li>
+								<label class="lbl-txt">最后访问</label>
+								<div class="collon-t">
+									<span>$space[lastvisit]</span>
+								</div>
+							</li>
+						</ul>
+						<ul class="panel-list">							
+							<li>
+								<label class="lbl-txt">上次活动时间</label>
+								<div class="collon-t">
+									<span>$space[lastactivity]</span>
+								</div>
+							</li>
+							<li>
+								<label class="lbl-txt">上次发表时间</label>
+								<div class="collon-t">
+									<span>$space[lastpost]</span>
+								</div>
+							</li>
+							{if $_G[uid] == $space[uid] || $_G[group][allowviewip]}
+							<li>
+								<label class="lbl-txt">{lang register_ip}</label>
+								<div class="collon-t">
+									<span>$space[regip] - $space[regip_loc]</span>
+								</div>
+							</li>
+							<li>
+								<label class="lbl-txt">{lang last_visit_ip}</label>
+								<div class="collon-t">
+									<span>$space[lastip] - $space[lastip_loc]</span>
+								</div>
+							</li>
+							{/if}
+						</ul>
+					</div>
+				</div>
+				<!--活跃概况 end-->		
+			</div>
+		</div>
+		<div class="col-sub">
+			<div class="category-nav-container mod-wrap">
+				<div class="category-menu-nav">
+					<ul class="menu-nav-tree">
+						<li class="menu-nav menu-nav-current">
+							<a href="home.php?mod=space&uid=$space[uid]&do=profile#basic_info">
+								<i class="menu-nav-icon icon-basic"></i>
+								<em>基本信息</em>
+							</a>
+						</li>
+						<li class="menu-nav">
+							<a href="home.php?mod=space&uid=$space[uid]&do=profile#active_profile">
+								<i class="menu-nav-icon icon-situ"></i>
+								<em>活跃概况</em>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+jQuery(function(){
+	jQuery('.menu-nav').click(function(){
+		jQuery('.menu-nav').removeClass('menu-nav-current');
+		jQuery(this).addClass('menu-nav-current');
+	});
+});
+</script>
+<!--{subtemplate home/space_footer_uc}-->
+<!--{subtemplate common/footer_8264_new}-->

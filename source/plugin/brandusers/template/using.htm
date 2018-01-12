@@ -1,0 +1,100 @@
+{subtemplate common/header}
+    <div class="tm_c" fwin="mods" style="width:400px;">
+        <h3 class="flb"><em fwin="mods">选择相应的产品</em> <span><a title="关闭" onclick="hideWindow('productselect')" class="flbc" href="javascript:;">关闭</a></span></h3>
+            <div class="c">
+                <div class="tplw">
+                    <form onsubmit="return false;" action="" autocomplete="off" method="post" fwin="mods" id="product_select_form">
+                        <!--{loop $products $i $item}-->
+                        <label for="product_id_{$i}">
+                            <input type="checkbox" value="{$i}" id="product_id_{$i}" name="product_select[]" style="vertical-align:middle;" /> <span style="vertical-align:middle;">{$item}</span>
+                        </label>
+                        <!--{/loop}-->
+                    </form>
+                </div>
+                <div class="tplw">
+                    <form method="post" autocomplete="off" id="product_select_message_form" action="">
+                        <input type="hidden" name="formhash" value="{FORMHASH}" />
+                        <input type="hidden" name="subject" value="" />
+                        <h6 style="font-size:12px; color:#888; font-weight:normal; padding-bottom:3px;">填写装备型号和使用感受可以帮助别人选购装备</h6>
+                        <textarea name="message" cols="30" rows="10" style="width:376px;height:80px;" onkeyup="validate_message(this)"></textarea>
+                        
+                        <!--{if checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
+							<!--{block sectpl}--><sec> <span id="sec<hash>" onclick="showMenu(this.id)"><sec></span><div id="sec<hash>_menu" class="p_pop p_opt" style="display:none"><sec></div><!--{/block}-->
+							<div class="mtm sec"><!--{subtemplate common/seccheck}--></div>
+						<!--{/if}-->
+                    </form>
+                </div>
+                <p class="product_select_error" style="color:#f00; display:none;"></p>
+            </div>
+            <div id="product_iframe_div" style="display:none;">
+                <iframe loading="1" id="product_iframe" name="product_iframe"></iframe>
+            </div>
+            <p class="o pns" style="text-align:center;">
+                <button type="button" value="提交" class="pn pnc" name="modsubmit" fwin="mods" style="margin:0;" onclick="javascript:submit_product_select_message_form(this);return false;"><span>提交</span></button>
+            </p>
+       
+        <script type="text/javascript">
+        
+        function validate_message(message) {
+            var message_size = mb_strlen(jQuery(message).val());			
+            var postminchars = 50;
+            if (!disablepostctrl && message_size < postminchars) {
+                jQuery('.product_select_error').text('您至少还需要输入' + (postminchars - message_size) + "个字节").show();
+                return false;
+            } else if (!disablepostctrl && message_size > postmaxchars) {
+                jQuery('.product_select_error').text('您的输入己超过' + (message_size - postmaxchars) + "个字节").show();
+                return false;
+            } else {
+                jQuery('.product_select_error').hide();
+                return true;
+            }
+        }
+        function submit_product_select_message_form(submit) {			
+            var message = jQuery('#product_select_message_form textarea[name="message"]');			
+            if (!validate_message(message)){				
+                return false;
+            }			
+            submit.disabled = 'disabled';
+            jQuery('.product_select_error').hide();
+            jQuery('#product_iframe').load(function() {
+                //var script = jQuery(window.frames["product_iframe"].document).find('root').text();
+                try {
+                    script = $('product_iframe').contentWindow.document.XMLDocument.text;
+                } catch(e) {
+                    try {
+                        script = $('product_iframe').contentWindow.document.documentElement.firstChild.wholeText;
+                    } catch(e) {
+                        try {
+                            script = $('product_iframe').contentWindow.document.documentElement.firstChild.nodeValue;
+                        } catch(e) {
+                            script = '内部错误，无法显示此内容';
+                        }
+                    }
+                }				
+                var pid = /pid=(\d+)/.exec(script)[1];
+                evalscript(script);                
+                params = jQuery('#product_select_form').serialize();
+                params += '&pid='+pid;
+                jQuery.ajax({
+                    type: 'post',
+                    url: '/plugin.php?id=brandusers:attention&op=new&type={$type}&tid={$tid}',
+                    data: params,
+                    success: function(html){
+                        accomplish_button('{$type}');
+                        jQuery('#fastpostform').attr('target', '');
+                        hideWindow('productselect');
+                    }
+                });
+            });            
+            //jQuery('#fastpostform [name="message"]').val(jQuery('#product_select_message_form [name="message"]').val());
+            //jQuery('#fastpostform [name="secanswer"]').val(jQuery('#product_select_message_form [name="secanswer"]').val());
+            //jQuery('#fastpostform').attr('target', 'product_iframe').submit();
+            jQuery('#product_select_message_form [name="sechash"]').val(jQuery('#fastpostform [name="sechash"]').val());
+            jQuery('#product_select_message_form [name="formhash"]').val(jQuery('#fastpostform [name="formhash"]').val());
+            jQuery('#product_select_message_form').attr('action', jQuery('#fastpostform').attr('action').replace(/\&inajax\=1/g, '')+'&inajax=1').attr('target', 'product_iframe').submit();
+           
+            return false;
+        }
+        </script>
+    </div>
+{subtemplate common/footer}

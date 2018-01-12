@@ -1,0 +1,233 @@
+<!--{subtemplate common/header_8264_new}-->
+<link rel="stylesheet" type="text/css" href="/source/plugin/dailypicture/css/style.css" media="all" />
+
+<div class="pic-box">
+    <div class="top-info pic-box-2">
+        <div class="inner">
+            <h2><a href="http://www.8264.com/portal-list-catid-842.html">8264每日一图</a></h2>
+            <p class="description">8264每日一图是由8264主办，旨在传播户外运动精神，展现户外运动文化。户外运动在中国蓬勃发展，每年都有数以千万计的驴友参与到其中，这也是未来人们生活不可缺少的一部分。8264每日一图作为国内户外运动图片栏目的先驱者，在中国驴友的目光和脚步中前行，我们期望在若干年之后，这里的每一幅作品都能成为户外运动发展的记录，不朽的记忆。</p>
+            <p>
+                <strong>投稿须知：</strong>1、表现户外运动特色的大场景照片，如徒步露营、登山攀岩、骑行越野、探洞岩降、水上运动等<br />
+                <b style=" padding-left:65px;"></b>2、微距特写类不刊登；小品人文类不刊登；长宽比超过2:1的全景照不刊登<br />
+				<b style=" padding-left:65px;"></b>3、投稿作品可以适度后期处理，画面中不要带有任何文字、水印，最长边不能低于2000像素<br />
+                <b style=" padding-left:65px;"></b>4、投稿作品必须是作者本人拍摄，请勿随意上传他人作品<br />
+                <strong>奖&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;励：</strong>凡入选者，每幅作品奖励10枚8264币<br />
+            </p>
+            <p>
+                （注: 因投稿作品众多，稿件若不被采用将不再通知投稿者，稿件刊登或其他事务会联系投稿者。有上传附件或其他问题的网友可以直接联系我们的工作人员
+                <strong>邮箱：</strong>meng.bin@8264.com
+                <strong>QQ：</strong>2534155085
+                <strong>电话：</strong>022-23708264-8013）
+            </p>
+        </div>
+    </div>
+
+    <div class="pub-form-box pic-box-2">
+        <div class="inner">
+            <div class="form-box">
+                <form action="" method="post" enctype="multipart/form-data" id="pic-pub-form">
+                    <h3>作品上传</h3>
+                    <div class="row">
+                        <label for="username">昵　　称:</label>
+                        <div class="form-widget">
+                            {if $_G['uid']}
+                                <input type="hidden" name="uid" id="uid" value="{$_G['uid']}" />
+                                <input type="hidden" name="username" id="username" value="{$_G['username']}" />
+                                {$_G['username']}
+                            {else}
+                                <input type="text" name="username" id="username" class="text" />
+                                <p class="help-block">请务必填写8264论坛账号, 以便刊登作品后向账号支付8264币。最好先登录论坛后再投稿</p>
+                            {/if}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="contact">常用邮箱:</label>
+                        <div class="form-widget">
+                            <input type="text" name="contact" id="contact" class="text" />
+                            <p class="help-block">请务必填写您的常用邮箱, 以方便接收稿件处理信息</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label for="picUpload">作品上传:</label>
+                        <div class="form-widget">
+                            <input id="url_action" value="{$action}" type="hidden">
+                            <input id="url_policy" value="{$policy}" type="hidden">
+                            <input id="url_signature" value="{$sign}" type="hidden">
+                            <input id="fileid" value="" type="hidden">
+                            <input id="filename" name="filename" value="" type="hidden">
+                            <input id="picPath" name="picPath" value="" type="hidden">
+                            
+
+                            <div id="filePicker">选择文件</div>
+                            <div id="pic_tips"></div>
+                            <p class="help-block">图片大小在9m之内, 边长大于2000px, 画面中不要带有任何日期、文字、水印(若图片超过9m无法上传或者raw格式图片请发送至邮箱<a href="mailto:meng.bin@8264.com">meng.bin@8264.com</a>)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <label for="picName">作品名称:</label>
+                        <div class="form-widget">
+                            <input type="text" name="picName" id="picName" class="text picName" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="picDescription">作品描述:</label>
+                        <div class="form-widget">
+                            <textarea name="picDescription" id="picDescription" cols="30" rows="10" class="description picDescription"></textarea>
+                        </div>
+                    </div>
+                    <div id="pic-more"></div>
+                    <div class="row">
+                        <label for="captcha">验 证 码:</label>
+                        <div class="form-widget">
+                            <input type="text" name="captcha" id="captcha" class="text" style="width:50px;vertical-align: top;" />
+                            <a href="#" id="refreshCaptcha" title="点击刷新图片">
+                            <img src="/plugin.php?id=dailypicture:captcha" alt="" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button class="submit" type="button" id="start_submit">提交</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="http://www.8264.com/static/js/jquery-1.6.1.min.js" type="text/javascript"></script>
+<script src="http://www.8264.com/static/js/jquery.tmpl.min.js" type="text/javascript"></script>
+{eval include DISCUZ_ROOT.'/source/plugin/dailypicture/template/pic_upload_template.php';}
+<script type="text/javascript">
+function getFileSize(obj) {
+	var size = 0;
+	if(navigator.userAgent.indexOf("MSIE")>0){
+		var fso = new ActiveXObject('Scripting.FileSystemObject');
+		var file = fso.GetFile(obj.value);
+		size = file.size;
+	}else {
+		size = obj.files[0].size;
+	}
+	if(size > 10000000){
+		alert("文件太大，请选择小于9M的文件");
+		obj.value = '';
+	}
+}
+</script>
+<script type="text/javascript">
+jQuery.noConflict();
+;(function($) {
+
+    $('#refreshCaptcha').click(function() {
+        $(this).children('img').attr('src', '/plugin.php?id=dailypicture:captcha&_='+(new Date().getTime()));
+        return false;
+    });
+
+    function validate_captcha() {
+        var vaild = false;
+        $.ajax(
+            {
+                async: false,
+                type: 'get',
+                url: '/plugin.php?id=dailypicture:validatecaptcha&captcha='+$('#captcha').val(),
+                success : function(data) {
+                    if (data==1) {
+                        vaild = true;
+                    }
+                }
+            }
+        );
+        return vaild;
+    }
+
+    function validate_file_info() {
+        var pic_upload_length     = $('#pic-pub-form .picUpload').length,
+            picName_length        = $('#pic-pub-form .picName').length,
+            picDescription_length = $('#pic-pub-form .picDescription').length,
+            i = 0;
+
+        for (i = 0; i < pic_upload_length; ++i) {
+            if ($('#pic-pub-form .picUpload').eq(i).val() == '') {
+                return false
+            }
+        }
+        for (i = 0; i < picName_length; ++i) {
+            if ($('#pic-pub-form .picName').eq(i).val() == '') {
+                return false
+            }
+        }
+        for (i = 0; i < picDescription_length; ++i) {
+            if ($('#pic-pub-form .picDescription').eq(i).val() == '') {
+                return false
+            }
+        }
+
+        return true;
+    }
+
+
+    $('#pic-pub-form').submit(function() {
+
+        if ($('#contact').val() == '') {
+            alert('常用邮箱不可为空');
+            return false;
+        }
+        if ($('#picPath').val() == '') {
+            alert('请上传作品');
+            return false;
+        }
+
+        if ($('#pic-pub-form .picName').val() == '') {
+            alert('作品名称不可为空');
+            return false;
+        }
+        if ($('#pic-pub-form .picDescription').val() == '') {
+            alert('作品描述不可为空');
+            return false;
+        }
+        if ($('#captcha').val() == '') {
+            alert('验证码不可为空');
+            return false;
+        }
+        if (!validate_captcha()) {
+            alert('验证码错误');
+            $('#refreshCaptcha').click();
+            $('#captcha').val('');
+            return false;
+        }
+        return true;
+    });
+
+    var upload_data = {
+            id: 1
+        },
+        box_num = 1;
+    $('#pic-pub-form .add-pic-btn').click(function() {
+        if (box_num >= 5) {
+            alert('己到达最大发布数量');
+            return false;
+        }
+        ++box_num;
+
+        if (validate_file_info()) {
+            $('#pic-upload-template').tmpl(upload_data).appendTo('#pic-more');
+            upload_data.id++;
+        } else {
+            alert('请完善现有作品信息');
+        }
+        return false;
+    });
+
+    $('#pic-pub-form .del-pic-btn').live('click', function() {
+        box_num = --box_num < 1 ? 1 : box_num;
+        $(this).parents('.pic-upload-box').remove();
+        return false;
+    });
+
+}(jQuery));
+</script>
+<script src="http://static.8264.com/static/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://static.8264.com/static/js/webuploader.js"></script>
+<script src="http://static.8264.com/static/js/webuploader_dailypicture.js" type="text/javascript"></script>
+<!--{subtemplate common/footer_8264_new}-->

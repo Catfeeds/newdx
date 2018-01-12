@@ -1,0 +1,74 @@
+<!--{template common/header}-->
+{if $_G[gp_is_uc]}
+<form method="post" autocomplete="off" id="form_$_G[gp_handlekey]" name="form_$_G[gp_handlekey]" action="misc.php?mod=report&is_uc=1" {if $_G[inajax]}onsubmit="ajaxpost(this.id, 'form_$_G[gp_handlekey]');"{/if}>
+	<div class="popbox" style="width:345px;">
+		<div class="flb">
+		<div class="popbox_title clearfix">
+			<span>{lang report}</span>
+			<!--{if $_G[inajax]}--><em onclick="hideWindow('$_G[gp_handlekey]');"></em><!--{/if}-->
+		</div>
+		</div>
+		<div>
+			<ul class="albumform" style="width:90%;margin:0 auto;">
+				<li>
+					<label style="text-align:left;width:auto;">{lang report_reason}£º</label>
+					<a onclick="showselect(this, 'message', 'reasonselect')" href="javascript:;" style="float:none;border:1px solid #666;">^</a>
+					<ul id="reasonselect" style="display:none;"><!--{echo modreasonselect()}--></ul>	
+				</li>					
+				<li>
+					<textarea id="message" name="message" class="pt" onkeydown="ctrlEnter(event, 'reportsubmit', 1);" onkeyup="strLenCalc(this, 'checklen');" rows="8" style="width:100%;"></textarea>
+					
+					<div class="dhinfo" style="text-align:left;margin-top:15px;">
+						<span>{lang input_message1} <strong id="checklen">200</strong> {lang input_message2}</span>
+					</div>		
+				</li>
+				<li>
+					<button type="submit" name="reportsubmit" value="true" class="button_confirm" id="reportsubmit">{lang confirms}</button>
+				</li>
+			</ul>
+		</div>
+	</div>
+		
+	<input type="hidden" name="referer" value="$_G[referer]" />
+	<input type="hidden" name="reportsubmit" value="true" />
+	<input type="hidden" name="rtype" value="$_G[gp_rtype]" />
+	<input type="hidden" name="rid" value="$_G[gp_rid]" />
+	<input type="hidden" name="url" value="$_G[gp_url]" />
+	<input type="hidden" name="inajax" value="$_G[inajax]" />
+	<!--{if $_G[inajax]}--><input type="hidden" name="handlekey" value="$_G[gp_handlekey]" /><!--{/if}-->
+	<input type="hidden" name="formhash" value="{FORMHASH}" />
+	<div id="return_$_G[gp_handlekey]" style="display:none;"></div>
+</form>
+{else}
+<h3 class="flb">
+	<em>{lang report}</em>
+	<span><a href="javascript:;" onclick="hideWindow('$_G[gp_handlekey]');" class="flbc" title="{lang close}">{lang close}</a></span>
+</h3>
+<form method="post" autocomplete="off" id="form_$_G[gp_handlekey]" name="form_$_G[gp_handlekey]" action="misc.php?mod=report" {if $_G[inajax]}onsubmit="ajaxpost(this.id, 'form_$_G[gp_handlekey]');"{/if}>
+	<input type="hidden" name="referer" value="$_G[referer]" />
+	<input type="hidden" name="reportsubmit" value="true" />
+	<input type="hidden" name="rtype" value="$_G[gp_rtype]" />
+	<input type="hidden" name="rid" value="$_G[gp_rid]" />
+	<input type="hidden" name="url" value="$_G[gp_url]" />
+	<input type="hidden" name="inajax" value="$_G[inajax]" />
+	<!--{if $_G[inajax]}--><input type="hidden" name="handlekey" value="$_G[gp_handlekey]" /><!--{/if}-->
+	<input type="hidden" name="formhash" value="{FORMHASH}" />
+	<div class="c" id="return_$_G[gp_handlekey]">
+		<div class="tpclg">
+			<h4 class="cl">
+				<span class="z">{lang report_reason}:</span>
+				<a onclick="showselect(this, 'message', 'reasonselect')" class="dpbtn" href="javascript:;">^</a>
+			</h4>
+			<p>
+				<textarea id="message" name="message" class="pt" onkeydown="ctrlEnter(event, 'reportsubmit', 1);" onkeyup="strLenCalc(this, 'checklen');" rows="8"></textarea>
+			</p>
+			<ul id="reasonselect" style="display: none"><!--{echo modreasonselect()}--></ul>
+		</div>
+	</div>
+	<p class="o pns">
+		<span class="z">{lang input_message1} <strong id="checklen">200</strong> {lang input_message2}</span>
+		<button type="submit" value="true" class="pn pnc"><strong>{lang confirms}</strong></button>
+	</p>
+</form>
+{/if}
+<!--{template common/footer}-->

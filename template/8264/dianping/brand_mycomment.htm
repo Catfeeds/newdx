@@ -1,0 +1,88 @@
+	<div class="review-comment-box">
+		<div class="ui-block ui-block-title">
+			<div class="ui-title ui-title-line">
+				<h3>我的点评</h3><span class="note">假如您的点评没有奖励8264币，请联系工作人员QQ1919501975询问原因</span>
+			</div>
+		</div>
+		<div class="ui-block ui-block-content">
+			<div class="comment-main">
+				<div id="post_{$mycomment['pid']}" class="comment-list-box">
+					<div class="avatar-box">
+						<a href="home.php?mod=space&uid={$_G['uid']}" class="user-avatar" target="_blank" rel="nofollow">
+							<!--{avatar($mycomment['authorid'], small)}-->
+							<span class="user-name">{$mycomment['author']}</span>
+						</a>
+					</div>
+					<div class="comment-word">
+						
+						<div class="rows-content row-color-1" {if $mycomment['starnum']==0} style="display:none;" {/if}>
+							<div class="commAttr">
+								<i class="attrs-icon comm"></i>推荐
+							</div>
+							<div class="attrValues">
+								<div class="rating-level big-rating clist-rating">
+									<span id="score-value" class="score-value score-value-{echo $mycomment['starnum']*2}">
+										<em></em>
+									</span>
+									<span id="scorename">(<!--{if $mycomment['starnum']==1}-->很差<!--{elseif $mycomment['starnum']==2}-->较差<!--{elseif $mycomment['starnum']==3}-->还行<!--{elseif $mycomment['starnum']==4}-->推荐<!--{elseif $mycomment['starnum']==5}-->力荐<!--{/if}-->)</span>
+								</div>
+							</div>
+						</div>
+						
+						<div class="rows-content row-color-2" {if !$mycomment['weakpoint']}style="display:none;"{/if}>
+							<div class="commAttr">
+								<i class="attrs-icon note"></i>不足
+							</div>
+							<div class="attrValues">
+								<p>$mycomment['weakpoint']</p>
+							</div>
+						</div>
+						<div class="rows-content row-color-3" {if !$mycomment['weakpoint']}style="display:none;"{/if}>
+							<div class="commAttr">
+								<i class="attrs-icon date"></i>优点
+							</div>
+							<div class="attrValues">
+								<p>$mycomment['goodpoint']</p>
+							</div>
+						</div>
+						<div class="rows-content row-color-5">
+							<div class="commAttr">
+								<i class="attrs-icon complex"></i>综合
+							</div>
+							<div class="attrValues">
+								<p>{$mycomment['message']}</p>
+							</div>
+						</div>
+						{if $mycomment['attachlist']}
+						<div class="rows-content row-color-6">
+							<div class="commAttr">
+								<i class="attrs-icon picture"></i>图片
+							</div>
+							<div class="attrValues">
+								<ul class="attrPic-list">
+								<!--{loop $mycomment['attachlist'] $item}-->
+									<li>
+										<a href="http://{if $item['serverid']==1}image{elseif $item['serverid']==99}image1{/if}.8264.com/{$item['dir']}/{$item['attachment']}" target="_blank" title="点击查看大图"><img src="{echo getimagethumb(80,80,2, $item['dir'].'/'.$item['attachment'], '', $item['serverid'])}" alt="$mycomment['subject']"></a>
+									</li>
+								<!--{/loop}-->
+								</ul>
+							</div>
+						</div>
+						{/if}
+						<div class="rows-content row-color-6">
+							<div class="attrValues rows-detail">
+								<span class="rows-time">{date($mycomment['dateline'])}</span>
+								<span class="rows-title"><a href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$mycomment['tid']}" target="_blank">$mycomment['subject']</a></span>
+								<div class="rows-praise">
+									<a href="javascript:void(0);" id="support_{$mycomment['pid']}" onclick="support($mycomment['pid']);"><i class="rows-icon{if $mycomment['supports']} icon-praise{/if}"></i>有用<em>{if $mycomment['supports']}($mycomment['supports']){/if}</em></a>
+								</div>
+							</div>
+						</div>
+						<!--{if $act=='showview' && $_G['adminid'] == 1}--><!--{template dianping/cplist_comment}--><!--{/if}-->
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+{if $_GET['inajax'] == 1}<!--{eval dp_output();}-->{/if}

@@ -1,0 +1,117 @@
+<div class="global-common-header">
+	<div class="module">
+		<div class="global-marks">
+			<div class="ui-block ui-block-title">
+				<div class="ui-title">
+					<h2>{$dp_modules[$mod]['cname']}</h2>
+				</div>
+			</div>
+			<div class="ui-crumbs ui-crumbs-box textoverflow">
+				<a href="http://www.8264.com/" title="网站首页">首页</a>
+				<span>&gt;</span>
+				<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist" title="{$dp_modules[$mod]['cname']}">{$dp_modules[$mod]['cname']}</a>
+				{$subnav}
+				<!--{if $tid && $detail['subject']}-->
+					<span>&gt;</span>
+					<strong><a href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$tid}" title="{$detail['subject']}" style="background:url('http://static.8264.com/dianping/images/icon/data/crumb_bg.gif') 100% 50% no-repeat;">{$detail['subject']}</a></strong>
+				<!--{/if}-->
+                                <!--{if $tid && $commentlist['author']}-->
+                                        {$commentlist['author']}的点评
+				<!--{/if}-->
+				{if $bid}<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&order={$order}&pcid={$pcid}&cid={$cid}&bid=0{if $min || $max}&min=$min&max=$max{/if}&page=1" class="condition">$brandlist[$bid]['subject']</a>{/if}
+			</div>
+			<!--{if $act=='showview'}-->
+				<!--{if $mod=='skiing' && $act=='showview'}-->
+					<em class="city-change">
+						<em class="city-blue">（切换城市）</em>
+						<div class="city-list-box">
+							<div class="city-list-warpten">
+							<!--{loop $region $k $v}-->
+								<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&order=lastpost&pro={$k}&page=1">$v['name']</a>
+							<!--{/loop}-->
+							</div>
+						</div>
+					</em>
+				<!--{elseif $mod=='shop'}-->
+					<em class="city-change">
+						<em class="city-blue">（切换城市）</em>
+						<div class="city-list-box">
+							<div class="city-list-warpten">
+							<!--{loop $arr_region $k $v}-->
+								<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&pid={$k}&rid=0&sid=0&cid=0&bid=0&order=lastpost&page=1">$v['name']</a>
+							<!--{/loop}-->
+							</div>
+						</div>
+					</em>
+				<!--{elseif $mod=='climb' }-->
+					<em class="city-change">
+						<em class="city-blue">（切换城市）</em>
+						<div class="city-list-box">
+							<div class="city-list-warpten">
+							<!--{loop $proList $k $v}-->
+								<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&order=lastpost&type=0&placetype=0&provinceid={$k}&cityid=0&page=1">$v['cityname']</a>
+							<!--{/loop}-->
+							</div>
+						</div>
+					</em>
+				<!--{elseif $mod=='diving'}-->
+					<em class="city-change">
+						<em class="city-blue">（切换城市）</em>
+						<div class="city-list-box">
+							<div class="city-list-warpten">
+							<!--{loop $proList $k $v}-->
+								<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&order=lastpost&type=0&provinceid={$k}&cityid=0&page=1">$v['cityname']</a>
+							<!--{/loop}-->
+							</div>
+						</div>
+					</em>
+				<!--{elseif $mod=='mountain'}-->
+					<em class="city-change">
+						<em class="city-blue">（切换城市）</em>
+						<div class="city-list-box">
+							<div class="city-list-warpten">
+							<!--{loop $cate_dq $k $v}-->
+								<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&order=lastpost&dq={$k}&gd=0&page=1">$v</a>
+							<!--{/loop}-->
+							</div>
+						</div>
+					</em>
+				<!--{elseif $mod=='line'}-->
+					<em class="city-change">
+						<em class="city-blue">（切换城市）</em>
+						<div class="city-list-box">
+							<div class="city-list-warpten">
+							<!--{loop $proList $k $v}-->
+								<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&order=lastpost&type=0&timetype=0&provinceid={$k}&cityid=0&page=1">{$regionList[$k]['cityname']}</a>
+							<!--{/loop}-->
+							</div>
+						</div>
+					</em>
+				<!--{elseif $mod=='fishing'}-->
+					<em class="city-change">
+						<em class="city-blue">（切换城市）</em>
+						<div class="city-list-box">
+							<div class="city-list-warpten">
+							<!--{loop $proList $k $v}-->
+								<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&type=0&isfree=0&provinceid={$k}&cityid=0&order=lastpost&page=1">$v['cityname']</a>
+							<!--{/loop}-->
+							</div>
+						</div>
+					</em>
+				<!--{/if}-->
+				
+			<!--{/if}-->
+			
+		</div>
+		<ul class="global-nav">
+		<!--{loop $dp_modules $v}-->
+			<!--{if $v['enable']==1}-->
+			<li class="global-nav-item{if $v['mname']==$mod} global-nav-item-current{/if}">
+				<a href="http://www.8264.com/dianping.php?mod={$v['mname']}&act=showlist" title="{$v['cname']}">{$v['cname']}</a>
+			</li>
+			<!--{/if}-->
+		<!--{/loop}-->
+		</ul>
+		<div class="hill-icon"></div>
+	</div>
+</div>

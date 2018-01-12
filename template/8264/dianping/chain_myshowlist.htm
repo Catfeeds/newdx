@@ -1,0 +1,141 @@
+<!--{subtemplate dianping/header}-->
+<!--{subtemplate dianping/nav}-->
+		<div class="global-common-content">
+			<div class="module">
+				<!-- main left -->
+				<div class="col-main">
+<!--                	<div style=" margin-bottom:35px;">{ad/custom_338}</div>-->
+					<div class="main-wrap">
+						<div class="ui-grid-6 ui-grid-left">
+							<div class="left-title-box">
+								<div class="title-right">
+									 
+                                                                        <h3><span style="color:#585858;">
+                                                                                    我的俱乐部
+                                                                            </span>
+                                                                        </h3>
+                                                                        
+								</div>
+                                                                    
+                                                                    <a href="http://www.8264.com/dianping.php?mod={$mod}&act=myshowlist&page=1" title="我发布的俱乐部" style="float:left; margin-left:10px; width: 22px; height:22px; background:url(http://static.8264.com/static/images/dianping/header_ico1.png) 0px 1px no-repeat"></a>
+                                                                    
+							
+                                                                <div class="sift-left">
+									<div class="condition-box">
+										<h1>
+										{if $gongsitype}<a
+											href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&order=lastpost&gongsitype=0&provinceid={$provinceid}&cityid={$cityid}&page=1"
+											class="condition">$cate_type[$gongsitype]<i></i></a>{/if}
+										{if $provinceid}<a
+											href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&order=lastpost&gongsitype={$gongsitype}&provinceid=0&cityid=0&page=1"
+											class="condition">$proList[$provinceid]['cityname']<i></i></a>{/if}
+										{if $provinceid && $cityid}<a
+											href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&order=lastpost&gongsitype={$gongsitype}&provinceid={$provinceid}&cityid=0&page=1"
+											class="condition">$cityList[$provinceid][$cityid]['cityname']<i></i></a>{/if}
+									 	</h1>
+									</div>
+								</div>
+								
+							</div>
+							<!-- list -->
+							<div class="left-list-box">
+								<div class="left-img-list-warpten">
+									<ul>
+                                                                                
+                                                                                <!--{if $modlist_my}-->
+										<!--{loop $modlist_my $item}-->
+										<li>
+											<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$item['tid']}"
+											   title="$item['subject']" target="_blank">
+                                                                                            <img src="{echo getimagethumb(400,300,2, $item['dir'].'/'.$item['showimg'], '', $item['serverid'])}" alt=""></a>
+											<div class="list-info">
+												<h2>
+													<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$item['tid']}"
+													   title="$item['subject']" class="title-big" target="_blank">$item['subject']</a>
+												</h2>
+                                                                                                <!--{if $item['addr']}-->
+                                                                                                     <span>
+                                                                                                             {if $item['provinceid']} {$proList[$item['provinceid']]['cityname']}，{/if}
+                                                                                                             {if $item['provinceid'] && $item['cityid']}{$cityList[$item['provinceid']][$item['cityid']]['cityname']}{/if}
+
+                                                                                                     </span>
+                                                                                                    
+                                                                                                    <p>
+                                                                                                        地址：
+                                                                                                        {echo
+                                                                                                            str_replace(array($proList[$item['provinceid']]['cityname'],$cityList[$item['provinceid']][$item['cityid']]['cityname'],'市','省'),'',$item['addr'])}
+                                                                                                    </p>
+                                                                                                <!--{else}-->
+                                                                                                    <span style="margin-top:40px;">
+                                                                                                             {if $item['provinceid']} {$proList[$item['provinceid']]['cityname']}，{/if}
+                                                                                                             {if $item['provinceid'] && $item['cityid']}{$cityList[$item['provinceid']][$item['cityid']]['cityname']}{/if}
+                                                                                                     </span>
+                                                                                                <!--{/if}-->
+											</div>
+											<div class="list-star-comment">
+												<div class="rating-level big-rating clim-rating">
+															<span class="score-value score-value-{echo floor($item['score'])}"
+																  title="{$item['score']}分">
+																<em></em>
+															</span>
+												</div>
+												{if $item['cnum']}<a
+													href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$item['tid']}#comment"
+													target="_blank">{$item['cnum']}人点评</a>{else}<a
+													href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$item['tid']}#write"
+													class="gift" target="_blank"><i></i>我要点评</a>{/if}
+											</div>
+										</li>
+										<!--{/loop}-->
+                                                                                <!--{/if}-->
+									</ul>
+								</div>
+							</div>
+							<!-- //list -->
+							<!-- page -->
+							<div class="page-box-warpten">{$multipage}</div>
+							<!-- //page -->
+						</div>
+					</div>
+				</div>
+				<!-- //main left -->
+				<div class="col-sider">
+					<div class="ui-grid-2 ui-grid-right">
+						<div class="right-publish-button-wapten">
+							<a href="http://www.8264.com/dianping.php?mod=club&act=dopost&do=new" target="_blank"
+							   class="line-button">
+								<i class="line-icon"></i>
+								<span>发布俱乐部</span>
+							</a>
+						</div>
+					</div>
+					<!-- 精彩点评 -->
+					<!--{subtemplate dianping/sidebar_comment_rate}-->
+					<!-- //精彩点评 -->
+					<!-- 联系我们 -->
+					<!--{subtemplate dianping/sidebar_contactus}-->
+					<!-- //联系我们 -->
+				</div>
+			</div>
+		</div>
+		<!-- 友情链接 -->
+		<!--{if $dp_modules[$mod]['fid'] && ($_G['cache']['forumlinks']['forum'][$dp_modules[$mod][fid]][0] || $_G['cache']['forumlinks']['forum'][$dp_modules[$mod][fid]][1] || $_G['cache']['forumlinks']['forum'][$dp_modules[$mod][fid]][2])}-->
+		<div class="friendLink">
+			<div class="layout friendLinkcon">
+				<ul>
+				<!--{if $_G['cache']['forumlinks']['forum'][$dp_modules[$mod][fid]][0]}-->
+				$_G['cache']['forumlinks']['forum'][$dp_modules[$mod][fid]][0]
+				<!--{/if}-->
+				<!--{if $_G['cache']['forumlinks']['forum'][$dp_modules[$mod][fid]][1]}-->
+				$_G['cache']['forumlinks']['forum'][$dp_modules[$mod][fid]][1]
+				<!--{/if}-->
+				<!--{if $_G['cache']['forumlinks']['forum'][$dp_modules[$mod][fid]][2]}-->
+				$_G['cache']['forumlinks']['forum'][$dp_modules[$mod][fid]][2]
+				<!--{/if}-->
+				</ul>
+			</div>
+		</div>
+		<!--{/if}-->
+		<!-- //友情链接 -->
+	</div>
+	<!--{subtemplate dianping/footer}-->

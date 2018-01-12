@@ -1,0 +1,154 @@
+<!--{eval $_G['home_tpl_titles'] = array('{lang remind}');}-->
+<!--{template common/header_8264_new}-->
+<link rel="stylesheet" href="http://static.8264.com/static/css/common/common_head_bottom.css?{VERHASH}">
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/common/bootstrap.min.css?{VERHASH}">
+<div class="container main-container" style="position:relative">
+<!--{if $tasklist}-->
+<div class="title52">
+	<span>今日任务</span>
+	<a href="home.php?mod=task&item=new">前往任务中心>></a>
+</div>
+<div class="taskall clearfix">
+	<ul>
+		<!--{loop $tasklist $task}-->
+        <!--{if $task[scriptname] != 'weixin'}-->
+            <!--{if $task['scriptname']=='appshare' }-->
+            <li>
+                <span class="tasktitlename"><a href="home.php?mod=task&do=view&id=$task[taskid]" target="_blank">{$task[name]}</a></span>
+                <p>
+                    <span>
+                        <!--{if $task['reward'] == 'credit'}-->
+                        <b>$task[bonus]</b><i> 枚 </i><em>$_G['setting']['extcredits'][$task[prize]][title]</em>
+                        <!--{elseif $task['reward'] == 'magic'}-->
+                        <b>$task[bonus]</b><i>{lang magics_unit}</i><em>{lang magics_title} $listdata[$task[prize]]</em>
+                        <!--{/if}-->
+                    </span>
+                    <!--{if $task['noperm']}-->
+                        <a href="javascript:;" onclick="doane(event);showDialog('{lang task_group_nopermission}')" title="{lang task_group_nopermission}"></a>
+                    <!--{elseif $task['appliesfull']}-->
+                        <a href="javascript:;" onclick="doane(event);showDialog('{lang task_applies_full}')" title="{lang task_applies_full}"></a>
+                    <!--{else}-->
+                        <a href="home.php?mod=task&do=view&id=$task[taskid]">立即申请</a>
+                    <!--{/if}-->
+                </p>
+            </li>
+
+            <!--{elseif $task['scriptname']!='changxian'}-->
+            <li>
+                <span class="tasktitlename"><a href="home.php?mod=task&do=view&id=$task[taskid]" target="_blank">{$task[name]}</a></span>
+                <p>
+                    <span>
+                        <!--{if $task['reward'] == 'credit'}-->
+                        <b>$task[bonus]</b><i> 枚 </i><em>$_G['setting']['extcredits'][$task[prize]][title]</em>
+                        <!--{elseif $task['reward'] == 'magic'}-->
+                        <b>$task[bonus]</b><i>{lang magics_unit}</i><em>{lang magics_title} $listdata[$task[prize]]</em>
+                        <!--{/if}-->
+                    </span>
+                    <!--{if $task['noperm']}-->
+                    <a href="javascript:;" onclick="doane(event);showDialog('{lang task_group_nopermission}')" title="{lang task_group_nopermission}"></a>
+                    <!--{elseif $task['appliesfull']}-->
+                    <a href="javascript:;" onclick="doane(event);showDialog('{lang task_applies_full}')" title="{lang task_applies_full}"></a>
+                    <!--{else}-->
+                    <!--{if $task['scriptname']=='weixin'}-->
+                    <a href="home.php?mod=task&do=view&id=$task[taskid]">立即申请</a>
+                    <!--{else}-->
+                    <a href="home.php?mod=task&do=apply&id=$task[taskid]">立即申请</a>
+                    <!--{/if}-->
+                    <!--{/if}-->
+                </p>
+            </li>
+        <!--{/if}-->
+        <!--{else}-->
+        <li>
+            <span class="tasktitlename"><a href="home.php?mod=task&do=view&id=$task[taskid]" target="_blank">{$task[name]}</a></span>
+            <p>
+				<span>
+					<!--{if $task['reward'] == 'credit'}-->
+					<b>$task[bonus]</b><i> 枚 </i><em>$_G['setting']['extcredits'][$task[prize]][title]</em>
+					<!--{elseif $task['reward'] == 'magic'}-->
+					<b>$task[bonus]</b><i>{lang magics_unit}</i><em>{lang magics_title} $listdata[$task[prize]]</em>
+					<!--{/if}-->
+				</span>
+                <!--{if $task['noperm']}-->
+                <a href="javascript:;" onclick="doane(event);showDialog('{lang task_group_nopermission}')" title="{lang task_group_nopermission}"></a>
+                <!--{elseif $task['appliesfull']}-->
+                <a href="javascript:;" onclick="doane(event);showDialog('{lang task_applies_full}')" title="{lang task_applies_full}"></a>
+                <!--{else}-->
+                <!--{if $task['scriptname']=='weixin'}-->
+                <a href="home.php?mod=task&do=view&id=$task[taskid]">立即申请</a>
+                <!--{else}-->
+                <a href="home.php?mod=task&do=apply&id=$task[taskid]">立即申请</a>
+                <!--{/if}-->
+                <!--{/if}-->
+            </p>
+        </li>
+        <!--{/if}-->
+		<!--{/loop}-->
+	</ul>
+</div>
+<!--{/if}-->
+<!-- 户外学校广告 -->
+<style>
+.hotmudidibox{border:#e0e7eb solid 1px; border-bottom:0px; border-right:0px; margin-top:15px; width:980px;background-color:#FFF;}
+.hotmudidibox li{ width:139px; border-bottom:#e0e7eb solid 1px; border-right:#e0e7eb solid 1px; height:70px; float:left;}
+.hotmudidibox li a{ display:block; height:72px; width:133px; text-align:center; overflow:hidden;}
+.hotmudidibox li a:hover{text-decoration:none;}
+.hotmudidibox li:hover,.hotmudidibox li.hover{ background:#508eff;}
+.hotmudidibox li:hover span,.hotmudidibox li.hover span{ color:#fff;}
+.hotmudidibox li:hover em,.hotmudidibox li.hover em{ color:#fff;}
+.hotmudidibox li span{ font-size:16px; color:#31424e; display: block; width:100%; padding:13px 0px 0px 0px;}
+.hotmudidibox li em{ font-size:12px; color:#93a4b0; display:block; width:100%;}
+.hotmudidibox li i{ font-size:16px; color:#31424e; display: block; width:100%; line-height:70px; height:72px; font-style:normal;}
+.hotmudidibox li:hover i,.hotmudidibox li.hover i{ color:#fff;}
+</style>
+<div class="hotmudidibox clearfix">
+    <ul>
+        <li>
+            <a href="http://www.8264.com/xuexiao/catinfo-2.html" target="_blank">
+                <span>安全急救考试</span>
+                <em>268题</em>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.8264.com/xuexiao/catinfo-1.html" target="_blank">
+                <span>户外基础考试</span>
+                <em>187题</em>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.8264.com/xuexiao/catinfo-18.html" target="_blank">
+                <span>野外生存考试</span>
+                <em>91题</em>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.8264.com/xuexiao/catinfo-15.html" target="_blank">
+                <span>徒步知识考试</span>
+                <em>77题</em>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.8264.com/xuexiao/catinfo-5.html" target="_blank">
+                <span>登山知识考试</span>
+                <em>49题</em>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.8264.com/xuexiao/catinfo-3.html" target="_blank">
+                <span>攀岩知识考试</span>
+                <em>43题</em>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.8264.com/xuexiao/catinfo-8.html" target="_blank">
+                <span>跑步知识考试</span>
+                <em>71题</em>
+            </a>
+        </li>
+    </ul>
+</div>
+<!-- //户外学校广告 -->
+<div class="module user-setting-wrap">
+	<!--{subtemplate home/space_left_2014}-->
+	<div class="setting-form">
+				<div class="main-wrap" id="main_message">

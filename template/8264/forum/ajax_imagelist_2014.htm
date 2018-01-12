@@ -1,0 +1,17 @@
+<!--{if $imagelist}-->
+	<!--{loop $imagelist $image}-->
+		<script class="needdelete">
+			uploadsuccess(1, "{type: '{$image[dir]}', pic:'{$image[attachment]}', aid:{$image[aid]}, fileid:'{$image[aid]}', filename:'{$image[filename]}', thumbpic:'{eval echo getimagethumb(112, 112, 2, $image[dir] . '/' . $image[attachment], $image[aid], $image[serverid]);}', bigthumbpic:'{eval echo getimagethumb(300, 300, 1, $image[dir] . '/' . $image[attachment], $image[aid], $image[serverid]);}'}");
+		</script>
+	<!--{/loop}-->
+	<script>
+		jQuery.noConflict();
+		;(function($){
+			function removeallscript(){
+				$('script.needdelete').remove();
+			}
+			setTimeout(removeallscript, 15000);
+			$('#uploadimagelist').parent().scrollTop(0);
+		})(jQuery);
+	</script>
+<!--{/if}-->

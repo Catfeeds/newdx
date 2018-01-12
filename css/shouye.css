@@ -1,0 +1,166 @@
+#8264{POSITION:absolute;
+	MARGIN:0px;
+	top:10px;
+	WIDTH:962px;
+	LEFT:150px;
+}
+
+#logo{POSITION:absolute;
+	MARGIN:0px;
+	TOP:10px;
+	WIDTH:962px;
+	height:76px;
+	left: 150px;	
+	bordercolor:#111;
+	BACKGROUND-COLOR:#FFF;		
+}
+#topmenu{
+	POSITION:absolute;
+	TOP: 80px;
+	width: 960px;
+	height:20px;
+	left: 150px;
+	border-style:solid;
+	border-width:1px thin;
+	border-color:#FF6600;
+	background-color:#FFD700;
+	font-size:12px;
+	font-size-adjust:middle;
+}
+#one{
+	POSITION:absolute;
+	TOP: 0px;
+	left: 0px;	
+	width: 200px;
+	height: 20px;
+	padding-top:3px;
+}
+#two{
+	POSITION:absolute;
+	TOP: 0px;
+	width: 16px;
+	left: 220px;
+}
+#three{
+	POSITION:absolute;
+	TOP: 0px;
+	width: 100px;
+	left: 240px;
+	padding-top:3px;
+}
+#four{
+	POSITION:absolute;
+	TOP: 0px;
+	width: 16px;
+	left: 320px;
+}
+#five{
+	POSITION:absolute;
+	TOP: 0px;
+	width: 100px;
+	left: 340px;
+	padding-top:3px;
+}
+#six{
+	POSITION:absolute;
+	TOP: 0px;
+	width: 16px;
+	left: 420px;
+}
+#seven{
+	POSITION:absolute;
+	TOP: 0px;
+	width: 100px;
+	left: 440px;
+	padding-top:3px;
+}
+#eight{
+	POSITION:absolute;
+	TOP: 0px;
+	width: 16px;
+	left: 520px;
+}
+#nine{
+	POSITION:absolute;
+	TOP: 0px;
+	width: 100px;
+	left: 540px;
+	padding-top:3px;
+}
+#ten{
+	POSITION:absolute;
+	TOP: 0px;
+	width: 16px;
+	left: 620px;
+}
+#eleven{
+	POSITION:absolute;
+	TOP: 0px;
+	width: 100px;
+	left: 640px;
+	padding-top:3px;
+}
+#twelve{
+	POSITION:absolute;
+	TOP: 0px;
+	width: 16px;
+	left: 720px;
+}
+#thirteen{
+	POSITION:absolute;
+	TOP: 0px;
+	width: 100px;
+	left: 740px;
+	padding-top:3px;
+}
+#fourteen{
+	POSITION:absolute;
+	TOP: 0px;
+	width: 16px;
+	left: 820px;
+}
+#fifteen{
+	POSITION:absolute;
+	TOP: 0px;
+	width: 100px;
+	left: 840px;
+	padding-top:3px;
+}
+#shouye_link{
+	POSITION:absolute;
+	TOP: 105px;
+	width: 964px;
+	height:20px;
+	left: 150px;
+	bordercolor:#111;
+	background-color:#e6f2e7;
+}
+#shouye_link_1{
+	POSITION:absolute;
+	TOP: 0px;
+	width: 350px;
+	height:20px;
+	left: 0px;
+	padding-top:3px;
+	font-size:14px;
+	font-weight:bold;
+	color:#333333;
+}
+#shouye_time{
+	POSITION:absolute;
+	TOP: 0px;
+	width: 294px;
+	height:20px;
+	right:0px;
+	padding-top:3px;
+	font-size:14px;
+	
+}
+#note{
+	POSITION:absolute;
+	left:150px;
+	height:24px;
+	background-color:#CCE6CD;
+	width: 962px;
+	top: 128px;
+}

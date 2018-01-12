@@ -1,0 +1,14 @@
+<!--{loop $attachlist $attach}-->
+<script class="needdelete">
+	addattachlist("{aid: $attach[aid], filename: '$attach[filename]', uploadtime: '$attach[dateline]', readperm: $attach[readperm], descr: '$attach[description]', old :{if $attachused}0{else}1{/if}}");
+</script> 
+<!--{/loop}-->
+<script>
+	jQuery.noConflict();
+	;(function($){
+		function removeallscript(){
+			$('script.needdelete').remove();
+		}
+		setTimeout(removeallscript, 15000);
+	})(jQuery);
+</script>

@@ -1,0 +1,60 @@
+reada {
+	BORDER-RIGHT: #cccccc 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #cccccc 1px solid; PADDING-LEFT: 5px; PADDING-BOTTOM: 10px; BORDER-LEFT: #cccccc 1px solid; LINE-HEIGHT: 150%; PADDING-TOP: 3px; BORDER-BOTTOM: #cccccc 1px solid
+}
+.style1 {
+	COLOR: #0000ff
+}
+BODY {
+	MARGIN: 0px
+}
+.pic2 {
+	BORDER-RIGHT: #ffffff 1px solid; BORDER-TOP: #ffffff 1px solid; BORDER-LEFT: #ffffff 1px solid; BORDER-BOTTOM: #ffffff 1px solid
+}
+.style1 {
+	COLOR: #0000ff
+}
+.style2 {
+	COLOR: #ffffff
+}
+.p14 {
+	FONT-SIZE: 14px; LINE-HEIGHT: 23px; FONT-FAMILY: ËÎÌו, Arial
+}
+.f14 {
+	FONT-SIZE: 14px
+}
+.linkRed {
+	COLOR: #aa0000
+}
+.test UL {
+	LIST-STYLE-TYPE: none
+}
+.test LI {
+	BACKGROUND: #ccc; MARGIN-LEFT: 3px; WIDTH: 250px; LINE-HEIGHT: 30px
+}
+.test A {
+	DISPLAY: block; HEIGHT: 30px; TEXT-ALIGN: center
+}
+.test A:link {
+	BACKGROUND: url(arrow_off.gif) #ccc no-repeat 5px 12px; COLOR: #666; TEXT-DECORATION: none
+}
+.test A:visited {
+	COLOR: #666; TEXT-DECORATION: underline
+}
+.test A:hover {
+	FONT-WEIGHT: bold; BACKGROUND: url(arrow_on.gif) #f00 no-repeat 5px 12px; COLOR: #fff; TEXT-DECORATION: none
+}
+.blue {
+	COLOR: #0000ff
+}
+.8264a1 {
+	PADDING-BOTTOM: 4px; PADDING-TOP: 4px
+}
+.8264a2 {
+	PADDING-BOTTOM: 4px
+}
+.8264b1 {
+	MARGIN-LEFT: auto; WIDTH: 776px; MARGIN-RIGHT: auto; TEXT-ALIGN: left
+}
+.8264b2 {
+	WIDTH: 776px; LINE-HEIGHT: 150%; PADDING-TOP: 6px
+}

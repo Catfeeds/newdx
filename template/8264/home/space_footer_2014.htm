@@ -1,0 +1,17 @@
+<script type="text/javascript">
+var ie6=false;
+if(/msie/.test(navigator.userAgent.toLowerCase()) && 'undefined' == typeof(document.body.style.maxHeight)){
+	ie6=true;
+}
+if(ie6){
+	jQuery(".w980").css('height',jQuery(window).height()-130);
+} else {
+	jQuery(".w980").css('min-height',jQuery(window).height()-130);
+}
+
+jQuery(".list760 li").hover(function(){
+	jQuery(this).addClass("z");
+},function(){
+	jQuery(this).removeClass("z");
+})
+</script>

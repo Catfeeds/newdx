@@ -1,0 +1,41 @@
+{subtemplate common/header}
+    <div class="tm_c" fwin="mods" style="width:200px;">
+        <h3 class="flb"><em fwin="mods">选择相应的产品</em> <span><a title="关闭" onclick="hideWindow('productselect')" class="flbc" href="javascript:;">关闭</a></span></h3>
+        <form onsubmit="return false;" action="" autocomplete="off" method="post" fwin="mods" id="product_select_form">
+            <div class="c">
+                <div class="tplw">
+                    <!--{loop $products $i $item}-->
+                    <label for="product_id_{$i}">
+                        <input type="checkbox" value="{$i}" id="product_id_{$i}" name="product_select[]" style="vertical-align:middle;" /> <span style="vertical-align:middle;">{$item}</span>
+                    </label>
+                    <!--{/loop}-->
+                </div>
+                <p class="error" style="color:#f00; display:none;">请至少选择一项产品</p>
+            </div>
+
+            <p class="o pns" style="text-align:center;">
+                <button type="button" value="提交" class="pn pnc" name="modsubmit" fwin="mods" style="margin:0;" onclick="javascript:submit_product_select_form();return false;"><span>提交</span></button>
+            </p>
+        </form>
+        <script type="text/javascript">
+        function submit_product_select_form() {
+            if (jQuery('#product_select_form :checkbox:checked').size() == 0) {
+                jQuery('#product_select_form .error').show();
+                return false;
+            }
+            jQuery('#product_select_form .error').hide();
+            params = jQuery('#product_select_form').serialize();
+            jQuery.ajax({
+                type: 'post',
+                url: '/plugin.php?id=brandusers:attention&op=new&type={$type}&tid={$tid}',
+                data: params,
+                success: function(html){
+                    accomplish_button('{$type}');
+                    hideWindow('productselect');
+                }
+            });
+            return false;
+        }
+        </script>
+    </div>
+{subtemplate common/footer}

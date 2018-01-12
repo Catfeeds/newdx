@@ -1,0 +1,327 @@
+<!--{subtemplate common/header_8264_new}-->
+<style>
+#diy-tg{display:none;}
+</style>
+<link href=" http://static.8264.com/static/css/portal/channel_204.css" rel="stylesheet" type="text/css" />
+<div class="header">
+	<div class="layout">
+		<div class="icoHill">&nbsp;</div>
+		<div class="headerL">
+			<h1><span class="country">{$cat[catname]}</span></h1>
+			<div class="site">
+				<a href="$_G[config][web][portal]">首页</a>
+				> <a href="http://www.8264.com/list/204">{$cat[catname]}</a>
+			</div>
+		</div>
+		<div class="headerR">
+			<div class="colNameList">
+				<a target="_blank" href="http://bbs.8264.com/forum-378-1.html">体验</a>
+				<a target="_blank" href="http://www.8264.com/zhuangbei">装备库</a>
+				<a target="_blank" href="http://bbs.8264.com/forum-7-1.html">装备论坛</a>
+				<a target="_blank" href="http://bbs.8264.com/forum-53-1.html">装备交易</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="warpten">
+	<div class="mt5 adborder">
+		<!-- 广告位：装备频道doite 391-->
+		<script type='text/javascript'><!--//<![CDATA[
+           var m3_u = (location.protocol=='https:'?'https://ads.8264.com/www/delivery/ajs.php':'http://ads.8264.com/www/delivery/ajs.php');
+           var m3_r = Math.floor(Math.random()*99999999999);
+           if (!document.MAX_used) document.MAX_used = ',';
+           document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+           document.write ("?zoneid=25");
+           document.write ('&amp;cb=' + m3_r);
+           if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+           document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+           document.write ("&amp;loc=" + escape(window.location));
+           if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+           if (document.context) document.write ("&context=" + escape(document.context));
+           if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+           document.write ("'><\/scr"+"ipt>");
+        //]]>--></script>
+	</div>
+
+	<div class="mt5 adborder">
+		<!-- 广告位：装备频道 纳丽德 392-->
+<script type='text/javascript'><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://ads.8264.com/www/delivery/ajs.php':'http://ads.8264.com/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=3");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script>
+	</div>
+	<div class="clear_b mt20">
+		<div class="l660zb">
+			<!--头条开始-->
+			<!--头条开始-->
+			<div class="bignewsbox">
+            	<!--轮播主题内容显示开始-->
+            	<div class="bignews">
+                	<!--单条循环开始-->
+                	{loop $lunboList $v}
+                    <div class="bignewsone">
+                        <div class="bignewsimg"><img src="{$v[pic]}"/></div>
+                        <div class="bignewssummary">
+                            <a href="portal.php?mod=view&aid={$v[aid]}" target="_blank">$v[title]</a>
+                            <p>{echo cutstr($v[summary],160,'...')}</p>
+                            <div class="bignewsinfo zbiconbg">
+                                <a href="/list/{$v[catid]}" class="zbicon{$v[catid]}">装备</a>
+                                <span>来源：<i>$v[from]</i></span>
+                                <span>作者：<i>$v[author]</i></span>
+                                <em>{echo date('Y-m-d', $v[dateline])}</em>
+                            </div>
+                        </div>
+                    </div>
+                    {/loop}
+                    <!--单条循环结束-->
+				</div>
+                <!--轮播主题内容显示结束-->
+			</div>
+			<script>
+				// 轮播开始
+				jQuery(function(){
+					 var shuliang = jQuery(".bignews>div").size();
+					 var lunbotime;
+					 var index = 0;
+						jQuery(".bignewsbox").append("<div class='shuzi'></div>");
+						for ( i=0 ; i< shuliang ;i){
+						i++
+						jQuery(".shuzi").append("<span></span>");
+						};
+						jQuery(".shuzi span").eq(0).addClass("tsshuzi");
+					jQuery(".shuzi span").mouseenter(function(){
+						var index = jQuery(this).index();
+						jQuery(this).addClass("tsshuzi").siblings().removeClass("tsshuzi");
+						jQuery(".bignews>div").eq(index).fadeIn(1).siblings().hide(1);
+					});
+					jQuery(".bignewsbox").hover(
+						function(){
+							clearInterval(lunbotime);
+						},function(){
+							lunbotime = setInterval(function(){
+								jQuery(".shuzi span").eq(index).addClass("tsshuzi").siblings().removeClass("tsshuzi");
+								jQuery(".bignews>div").eq(index).fadeIn(1).siblings().hide(1);
+								index++;
+								if(index == shuliang ){
+									index=0;
+								};
+							},3000);
+						}).trigger("mouseleave");
+				});
+				// 轮播结束
+	        </script>
+			<!--头部结束-->
+			<!--list条大模块开始-->
+			<div class="">
+				<!--list单条开始-->
+				{eval $templist = array_slice($list, 0, 2);}
+				{loop $templist $v}
+				<div class="newslistone clear_b">
+					<a href="{$v[url]}" target="_blank"><img src="{$v[pic]}" alt="{$v[title]}"/></a>
+					<div class="newslist_r">
+						<a href="{$v[url]}" target="_blank">{$v[title]}</a>
+						<p>{$v[summary]}</p>
+						<div class="newslist_info zbiconbg clear_b">
+							<a href="/list/{$v[catid]}" class="zbicon{$v[catid]}" target="_blank">{$v[catname]}</a>
+							<span>来源：<i>{$v[from]}</i></span>
+							<span>作者：<i>{$v[author]}</i></span>
+						</div>
+					</div>
+				</div>
+				{/loop}
+				<!--list单条结束-->
+			</div>
+			<!--list条大模块结束-->
+		</div>
+		<div class="r260zb">
+			<div class="rtitle">分类阅读</div>
+			<div  class="rlinkbox clear_b">
+            	<ul>
+                    <li><a  href="/list/209" class="zbicon209" >服装</a></li>
+                    <li><a  href="/list/923" class="nonebg" >冲锋衣</a></li>
+                    <li><a  href="/list/924" class="nonebg">抓绒衣</a></li>
+                    <li><a  href="/list/925" class="nonebg" >皮肤衣</a></li>
+                    <li><a  href="/list/926" class="nonebg">速干衣</a></li>
+                    <li><a  href="/list/927" class="nonebg">羽绒服</a></li>
+                    <li><a  href="/list/929" class="nonebg">软壳</a></li>
+                    <li><a  href="/list/211" class="zbicon211">户外鞋</a></li>
+                    <li><a  href="/list/928" class="nonebg">登山鞋</a></li>
+                    <li><a  href="/list/930" class="nonebg">徒步鞋</a></li>
+                    <li><a  href="/list/933" class="nonebg">越野跑鞋</a></li>
+                    <li><a  href="/list/932" class="zbicon223">溯溪鞋</a></li>
+                    <li><a  href="/list/220" class="zbicon220">登山杖</a></li>
+                    <li><a  href="/list/208" class="zbicon208">帐篷</a></li>
+                    <li><a  href="/list/212" class="zbicon212">睡袋</a></li>
+                    <li><a  href="/list/792" class="zbicon792">炉具</a></li>
+                    <li><a  href="/list/218" class="zbicon218">灯具</a></li>
+                    <li><a  href="/list/219" class="zbicon219">水具</a></li>
+                    <li><a  href="/list/222" class="zbicon222">面料</a></li>
+                    <li><a  href="/list/207" class="zbicon207">背包</a></li>
+                    <li><a  href="/list/214" class="zbicon214">防潮垫</a></li>
+                    <li><a  href="/list/216" class="zbicon216">电子导航</a></li>
+                    <li><a  href="/list/215" class="zbicon215">冰岩绳索</a></li>
+                    <li><a  href="/list/223" class="zbicon223">综合装备</a></li>
+                </ul>
+            </div>
+            <div class=""><!--{ad/custom_324}--></div>
+			<div class="rtitle mt20">装备品牌点评榜</div>
+			<div class="brand">
+				<ul>
+					<!--{loop $pp_list $pp}-->
+					<li>
+						<a href="{$_G['config']['web']['portal']}pinpai-{$pp['tid']}" class="brand" target="_blank" title="{$pp['subject']}"><img src="http://image1.8264.com/{$pp['dir']}/{$pp['showimg']}" /></a>
+						<div class="xc_r brand_r">
+							<a href="{$_G['config']['web']['portal']}pinpai-{$pp['tid']}" target="_blank" title="{$pp['subject']}">{$pp['subject']}</a>
+							<div class="starwarpten">
+								<!--{if $pp['score']!='0.0'}-->
+								{eval for ($i = 0; $i < 5; $i++):}
+								<span class="{if $i < $pp['score']/2}{if $pp['score']/2-$i<1}halfstar{else}redstar{/if}{else}graystar{/if}"></span>
+								{eval endfor;}
+								<span class="fs">{$pp['score']}</span>
+								<!--{else}-->
+								<span class="no">暂无评分</span>
+								<!--{/if}-->
+							</div>
+						</div>
+					</li>
+					<!--{/loop}-->
+				</ul>
+			</div>
+			
+		</div>
+	</div>
+	<div class="mt10">
+		<!-- 广告位：装备频道fenix 393-->
+		<script type='text/javascript'><!--//<![CDATA[
+           var m3_u = (location.protocol=='https:'?'https://ads.8264.com/www/delivery/ajs.php':'http://ads.8264.com/www/delivery/ajs.php');
+           var m3_r = Math.floor(Math.random()*99999999999);
+           if (!document.MAX_used) document.MAX_used = ',';
+           document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+           document.write ("?zoneid=4");
+           document.write ('&amp;cb=' + m3_r);
+           if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+           document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+           document.write ("&amp;loc=" + escape(window.location));
+           if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+           if (document.context) document.write ("&context=" + escape(document.context));
+           if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+           document.write ("'><\/scr"+"ipt>");
+        //]]>--></script>
+	</div>
+	<div class="clear_b">
+		<div class="l660zb">
+			<!--list条大模块开始-->
+			<div class="">
+				<!--list单条开始-->
+				{eval $templist = array_slice($list, 3, 3);}
+				{loop $templist $v}
+				<div class="newslistone clear_b">
+					<a href="{$v[url]}" target="_blank"><img src="{$v[pic]}" alt="{$v[title]}"/></a>
+					<div class="newslist_r">
+						<a href="{$v[url]}" target="_blank">{$v[title]}</a>
+						<p>{$v[summary]}</p>
+						<div class="newslist_info zbiconbg clear_b">
+							<a href="/list/{$v[catid]}" class="zbicon{$v[catid]}" target="_blank">{$v[catname]}</a>
+							<span>来源：<i>{$v[from]}</i></span>
+							<span>作者：<i>{$v[author]}</i></span>
+						</div>
+					</div>
+				</div>
+				{/loop}
+				<!--list单条结束-->
+			</div>
+			<!--list条大模块结束-->
+		</div>
+		<div class="r260zb">
+			<div class="mt20"><!--{ad/custom_39}--></div>
+            <div class="mt10"><!--{ad/custom_343}--></div>
+		</div>
+	</div>
+	<div class="clear_b">
+		<div class="l660zb">
+			<!--list条大模块开始-->
+			<div class="">
+				<!--list单条开始-->
+				{eval $templist = array_slice($list, 6, 4);}
+				{loop $templist $v}
+				<div class="newslistone clear_b">
+					<a href="{$v[url]}" target="_blank"><img src="{$v[pic]}" alt="{$v[title]}"/></a>
+					<div class="newslist_r">
+						<a href="{$v[url]}" target="_blank">{$v[title]}</a>
+						<p>{$v[summary]}</p>
+						<div class="newslist_info zbiconbg clear_b">
+							<a href="/list/{$v[catid]}" class="zbicon{$v[catid]}" target="_blank">{$v[catname]}</a>
+							<span>来源：<i>{$v[from]}</i></span>
+							<span>作者：<i>{$v[author]}</i></span>
+						</div>
+					</div>
+				</div>
+				{/loop}
+				<!--list单条结束-->
+			</div>
+			<!--list条大模块结束-->
+		</div>
+		<div class="r260zb">
+        	<div class="mt20">
+        	<!--{ad/custom_430}-->
+            </div>
+			<div class="rtitle mt20">装备论坛</div>
+			<div class="bbsbox">
+				<ul>
+					{loop $zbList $v}
+					<li>
+						<a href="home.php?mod=space&uid=$v[authorid]" target="_blank">{$v[avatar]}</a>
+						<div class="bbsbox_r">
+							<a href="forum.php?mod=viewthread&tid={$v[tid]}" target="_blank">{$v[subject]}</a>
+						</div>
+					</li>
+					{/loop}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="clear_b mt20">
+		<div class="l660zb">
+			<!--分页开始-->
+			{if $multi}<div class="cust-page-list">{$multi}</div>{/if}
+			<!--分页结束-->
+		</div>
+	</div>
+</div>
+<div style="margin:20px auto 0px auto; width:980px;margin-bottom:40px;">
+		<div style="display:none;">
+            <!--{eval $bottom_ads = array('416', '409', '417'); $bottom_ad = rand(0, 2); $bottom_ad_id = $bottom_ads[$bottom_ad]; }-->
+            <!--{ad/custom_$bottom_ad_id}-->
+        </div>
+        <!-- 值得买 -->
+        <!--{eval include(DISCUZ_ROOT.'./source/plugin/skiing/hd_zw.php');}-->
+        <!--{eval $zhidemai_list = ForumOptionHuoDong::pianyi_sidebar(6, 'top', 'jiu', '10027');}-->
+        <!--{if $zhidemai_list}-->
+        <div>
+        <style>
+            .zhidemaiwidth{ width:980px;}
+            .zhidemaibox .zhidemailist_new li{width:144px; overflow:hidden;}
+            .zhidemaibox .zhidemailist_new li img{ width:144px;}
+        </style>
+        <!--{subtemplate common/zhidemai}-->
+        </div>
+        <!--{/if}-->
+        <!-- //值得买 -->
+</div>
+
+<script src="http://static.8264.com/static/js/common/common.js" type="text/javascript"></script>
+<!--{ad/custom_484}-->
+<!--{subtemplate common/weixin_share_bottom}-->
+<!--{subtemplate common/float_guide}-->
+<!--{subtemplate common/footer_8264_new}-->

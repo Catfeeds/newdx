@@ -1,0 +1,126 @@
+<?php if(!defined('IN_DISCUZ')) exit('Access Denied'); ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>解放军滑雪队携手ttiss三度出征第十二届全运会</title>
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/style.css"/>
+</head>
+<!--[if IE 6]>
+<script src="js/DD_belatedPNG_0.0.8a.js" type="text/javascript"></script>
+<script src="js/DD_belatedPNG_css.js" type="text/javascript"></script>
+<![endif]-->
+<body>
+<div class="wai">
+<div class="nav"><a href="#" >首页&nbsp;&nbsp;&nbsp;|</a><a href="#a1" >赛场报道&nbsp;&nbsp;&nbsp;|</a><a href="#a2" >精彩瞬间&nbsp;&nbsp;&nbsp;|</a><a href="#a3" >金牌榜&nbsp;&nbsp;&nbsp;|</a><a href="#a4" >爱心红手套&nbsp;&nbsp;&nbsp;|</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://weibo.com/ttissoutdoor" target="_blank" ><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/renren.png" /></a>&nbsp;<img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/renren.png" />
+    </div>
+<div class="whui">
+    	<div class="mian1">
+        	<div class="lunbo">
+                <div id="focus_turn">
+                    <ul id="focus_pic">
+<li class="current"><a href="http://www.8264.com/viewnews-72975-page-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/lunbo/lb1-6.jpg" /></a></li>
+<li class="normal"><a href="http://www.8264.com/viewnews-72806-page-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/lunbo/lb1-5.jpg" /></a></li>
+                        <li class="normal"><a href="http://www.8264.com/viewnews-72758-page-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/lunbo/lb1-4.jpg" /></a></li>
+<li class="normal"><a href="http://www.8264.com/viewnews-72773-page-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/lunbo/lb1-3.jpg" /></a></li>
+<li class="normal"><a href="http://u.8264.com/home-space-uid-8720-do-album-view-me-from-space.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/lunbo/lb1-2.jpg" /></a></li>												
+<li class="normal"><a href="http://www.8264.com/viewnews-72758-page-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/lunbo/lb1-1.jpg" /></a></li>
+
+
+                    </ul>
+                    <ul id="focus_tx">
+                        <li class="current"><a href="http://www.8264.com/viewnews-72975-page-1.html" target="_blank">关爱儿童成长 ttiss品牌启动“红手套”爱心计划</a></li>
+<li class="current"><a href="http://www.8264.com/viewnews-72806-page-1.html" target="_blank">男子高山大回转解放军队再斩一金一铜</a></li>
+<li class="normal"><a href="http://www.8264.com/viewnews-72758-page-1.html" target="_blank">冬运会首日解放军队包揽冬季两项项目全部金牌</a></li>
+<li class="normal"><a href="http://www.8264.com/viewnews-72773-page-1.html" target="_blank">第十二届全国冬季运动会开幕</a></li>
+<li class="normal"><a href="http://u.8264.com/home-space-uid-8720-do-album-view-me-from-space.html" target="_blank">解放军队赛前训练</a></li>
+<li class="normal"><a href="http://www.8264.com/viewnews-72758-page-1.html" target="_blank">第十二届冬运会TTISS赞助解放军代表团整装待发</a></li>                    
+                    </ul>
+                    <div id="focus_opacity"></div>
+                </div>
+</div>
+<script src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/js/common.js" type="text/javascript" type="text/javascript" language="javascript"></script>
+<div class="mian1_y">
+            	<img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/ttisslog.jpg" /><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/ttiss.png" />
+            </div>
+            <div class="clear"></div>
+        </div>
+        <a name="a1"></a><div><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/tiao1.png" /></div>
+        <div class="mian2">
+        	<div class="mian2_l">
+            	<div class="mian2_l1">
+                	<ul>
+<li><a href="http://www.8264.com/viewnews-72975-page-1.html" target="_blank">. 关爱儿童成长 ttiss品牌启动"红手套"爱心计划</a></li>
+<li><a href="http://www.8264.com/viewnews-72933-page-1.html" target="_blank">. 1月11日冬运会赛场 解放军队再次收获两枚金牌</a></li>
+<li><a href="http://www.8264.com/viewnews-72929-page-1.html" target="_blank">. 解放军队宋伟龙冬运会男子短道速滑勇夺金牌</a></li>
+<li><a href="http://www.8264.com/viewnews-72904-page-1.html" target="_blank">. 1月9日冬运会解放军队再产三金 成最大赢家</a></li>
+<li><a href="http://www.8264.com/viewnews-72872-page-1.html" target="_blank">. 8日冬运会解放军队勇夺9枚奖牌 张虹包揽两金</a></li>
+                    	<li><a href="http://u.8264.com/home-space-uid-8720-do-blog-id-393937.html" target="_blank">. 金牌锋从磨砺出——解放军滑雪队队员黄海滨</a></li>
+<li><a href="http://www.8264.com/viewnews-72806-page-1.html" target="_blank">. 快讯：冬运会第二日解放军队再斩一金一铜</a></li>
+<li><a href="http://www.8264.com/viewnews-72804-page-1.html" target="_blank">. 冬运会首日解放军队包揽冬季两项项目全部金牌</a></li>
+<li><a href="http://www.8264.com/viewnews-72767-page-1.html" target="_blank" style="color:#FF0000">. 为解放军滑雪队加油 赢冠军专用ttiss雪服</a></li>						
+<li><a href="http://www.8264.com/viewnews-72773-page-1.html" target="_blank">. 第十二届全国冬季运动会在吉林长春开幕</a></li>
+                        <li><a href="http://www.8264.com/viewnews-72772-page-1.html" target="_blank">. 第12届全国冬季运动会前瞻：三强争锋 剑指索契</a></li>
+                        <li><a href="http://www.8264.com/viewnews-72770-page-1.html" target="_blank">. 冬运会解放军代表团：志在“双超” 重在精神</a></li>
+                        <li><a href="http://www.8264.com/viewnews-72769-page-1.html" target="_blank">. TTISS、八一队，八年同行——荣耀每一次征程</a></li>
+                    </ul>
+                </div>
+                <a name="a3"></a><div class="mian2_l2">
+                	<img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/23.png" /><br /><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/16.png" /><br /><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/20.png" />
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="mian2_r">
+            	<iframe src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/lunbo2.html" frameBorder=0  scrolling="no" height="225" width="360" marginheight="0" marginwidth="0"></iframe>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <a name="a2"></a><div><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/tiao2.png" /></div>
+        <div class="mian3">
+<div class="mian3t"><a href="http://u.8264.com/home-space-uid-8720-do-album-picid-3689199.html#pic_block" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/tuwen/25.jpg" /><br />解放军代表队队员</a></div>
+<div class="mian3t"><a href="http://u.8264.com/home-space-uid-8720-do-album-picid-3689203.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/tuwen/22.jpg" /><br />黄海滨（左）</a></div>
+<div class="mian3t"><a href="http://u.8264.com/home-space-uid-8720-do-album-picid-3685881.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/tuwen/21.jpg" /><br />程方明(右)、陈海斌</a></div>
+<div class="mian3t"><a href="http://u.8264.com/home-space-uid-8720-do-album-picid-3685884.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/tuwen/20.jpg" /><br />王春丽在接受采访</a></div>
+<div class="mian3t"><a href="http://u.8264.com/home-space-uid-8720-do-album-picid-3685890.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/tuwen/19.jpg" /><br />陈海斌冬季两项男子20KM冠军</a></div>
+<div class="mian3t"><a href="http://u.8264.com/home-space-uid-8720-do-album-picid-3685886.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/tuwen/17.jpg" /><br />程方明(右)冬季两项男子20KM季军</a></div>
+<div class="mian3t"><a href="http://u.8264.com/home-space-uid-8720-do-album-picid-3685883.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/tuwen/16.jpg" /><br />王春丽冬季两项女子子15KM冠军</a></div>
+<div class="mian3t"><a href="http://u.8264.com/home-space-uid-8720-do-album-picid-3685887.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/tuwen/15.jpg" /><br />男子高山大回转中黄海滨摘金</a></div>
+<div class="mian3t"><a href="http://u.8264.com/home-space-uid-8720-do-album-picid-3685889.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/tuwen/14.jpg" /><br />冬季两项男子20KM颁奖仪式</a></div>
+<div class="mian3t"><a href="http://u.8264.com/home-space-uid-8720-do-album-picid-3685892.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/tuwen/12.jpg" /><br />名闪闪的金牌</a></div>
+<div class="mian3t"><a href="http://u.8264.com/home-space-uid-8720-do-album-picid-3682113.html#pic_block" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/tuwen/10.jpg" /><br />程方明(右)冬季两项男子20KM季军</a></div>
+<div class="mian3t"><a href="http://u.8264.com/home-space-uid-8720-do-album-picid-3682115.html#pic_block" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/tuwen/13.jpg" /><br />陈海斌冬季两项男子20KM冠军</a></div>
+<div class="mian3t"><a href="http://u.8264.com/home-space-uid-8720-do-album-picid-3682117.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/tuwen/11.jpg" /><br />王春丽冬季两项女子子15KM冠军</a></div>
+<div class="mian3t"><a href="http://u.8264.com/home-space-uid-8720-do-album-picid-3678946.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/tuwen/1.jpg" /><br />解放军队赛前训练</a></div>
+<div class="mian3t"><a href="http://u.8264.com/home-space-uid-8720-do-album-picid-3678959.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/tuwen/6.jpg" /><br />解放军队部分参赛装备</a></div>
+<div class="mian3t"><a href="http://u.8264.com/home-space-uid-8720-do-album-picid-3678947.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/tuwen/7.jpg" /><br />解放军队部分参赛装备</a></div>
+<div class="mian3t"><a href="http://u.8264.com/home.php?mod=space&amp;uid=8720&amp;do=album&amp;picid=3678949&amp;goto=up#pic_block" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/tuwen/8.jpg" /><br />解放军队赛前训练</a></div>
+<div class="mian3t"><a href="http://u.8264.com/home-space-uid-8720-do-album-picid-3678958.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/tuwen/9.jpg" /><br />解放军队运动员在观看训练录像</a></div>
+<div class="mian3t"><a href="http://u.8264.com/home-space-uid-8720-do-album-picid-3678951.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/tuwen/2.jpg" /><br />大赛前夕的北大壶</a></div>
+<div class="mian3t"><a href="http://u.8264.com/home-space-uid-8720-do-album-picid-3678954.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/tuwen/3.jpg" /><br />大赛前夕的北大壶</a></div>
+        </div>
+        <a name="a4"></a><div><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/tiao3.png" /></div>
+        <div class="mian4">
+        	<div class="mian4l">
+            	<div class="mian3t"><a href="http://u.8264.com/home-space-uid-8720-do-album-picid-3685869.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/hong/1.jpg" /><br />冬季两项女子组15KM冠军王春丽</a></div>
+                <div class="mian3t"><a href="http://u.8264.com/home-space-uid-8720-do-album-picid-3685868.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/hong/2.jpg" /><br />冬季两项男子20KM冠军陈海斌</a></div>
+                <div class="mian3t"><a href="http://u.8264.com/home-space-uid-8720-do-album-picid-3685866.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/hong/4.jpg" /><br />男子高山大回转冠军&季军</a></div>
+                <div class="mian3t"><a href="http://u.8264.com/home.php?mod=space&amp;uid=8720&amp;do=album&amp;picid=3685865&amp;goto=down#pic_block" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/hong/5.jpg" /><br />男子高山大回转冠军黄海滨</a></div>
+                <div class="mian3t"><a href="http://u.8264.com/home-space-uid-8720-do-album-picid-3685862.html#pic_block" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/hong/6.jpg" /><br />男子高山大回转季军李雷</a></div>
+                <div class="mian3t"><a href="http://u.8264.com/home-space-uid-8720-do-album-picid-3685867.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/images/hong/3.jpg" /><br />冬季两项男子20KM冠军陈海斌</a></div>
+            </div>
+            <div class="mian4r">
+            <iframe src="http://static.8264.com/oldcms/moban/zt/TTISS-2011-12-28/lunbo3.html" frameBorder=0  scrolling="no" height="305" width="360" marginheight="0" marginwidth="0"></iframe>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="bottom">
+    	<a href="http://www.8264.com/template/8264/about/aboutus.htm" target="_blank">8264简介</a>&nbsp;|&nbsp;<a href="http://www.8264.com/template/8264/about/ggservice/index.html" target="_blank" >广告服务</a>&nbsp;|&nbsp;<a href="http://www.8264.com/zhuanti" target="_blank">户外热点</a>&nbsp;|&nbsp;<a href="http://www.8264.com/template/8264/about/aboutus.htm" target="_blank">联系方式</a>&nbsp;|&nbsp;<a href="http://bbs.8264.com/plugin.php?id=drc_qqgroup:main" target="_blank" >QQ群联盟</a>&nbsp;|&nbsp;<a href="http://www.8264.com/link/" target="_blank">户外网址大全</a><br>
+          服务热线：022-23708264&nbsp;|&nbsp;传真：022-23857291&nbsp;|&nbsp;地址：天津市华苑产业园区鑫茂科技园C2座6层AB单元<br>
+          <a href="http://bx.8264.com" target="_blank">户外活动有风险，8264提醒您购买</a> <a href="http://bx.8264.com">户外保险</a><br>
+          除了脚印什么都不留下 除了摄影什么都不带走，欢迎各种媒体转载我们的原创作品[转载请注明出处]。8264&nbsp;版权所有   <a href="http://www.miibeian.gov.cn/" target="_blank">津ICP备05004140号-10</a>&nbsp;&nbsp;&nbsp;<a href="http://www.8264.com/template/8264/image/icp.jpg" target="_blank">ICP证 津B2-20110106</a>
+    </div>
+   
+</div>
+</body>
+</html>

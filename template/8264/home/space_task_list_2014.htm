@@ -1,0 +1,224 @@
+<div class="top_q_d clear_b">
+	<a href="home.php?mod=task&item=new"<!--{if $actives[new]}--> class="zhong"<!--{/if}-->>{lang task_new}</a>
+	<a href="home.php?mod=task&item=doing"<!--{if $actives[doing]}--> class="zhong"<!--{/if}-->>{lang task_doing}</a>
+	<a href="home.php?mod=task&item=done"<!--{if $actives[done]}--> class="zhong"<!--{/if}-->>{lang task_done}</a>
+	<a href="home.php?mod=task&item=failed"<!--{if $actives[failed]}--> class="zhong"<!--{/if}-->>{lang task_failed}</a>
+</div>
+
+<!--{if $tasklist}-->
+<div class="rw_s_l clear_b">
+    <ul class="clear_b">
+    <!--{loop $tasklist $task}-->
+        <!--{if $task['scriptname'] != 'weixin'}-->
+                <!--{if $task['scriptname'] == 'appshare' || $task['scriptname'] == 'changxian' || $task['scriptname'] == 'appfollow'}-->
+                <li class="zaiwaibox">
+                    <span class="rwicon49_50zaiwainew"></span>
+                <!--{else}-->
+                <li>
+                    <span class="rwicon49_50"></span>
+                <!--{/if}-->
+                <a href="home.php?mod=task&do=view&id=$task[taskid]" class="rwname">$task[name]</a>
+                <span class="lbrq">
+                    <span>
+                    <!--{if $task['reward'] == 'credit'}-->
+                            $_G['setting']['extcredits'][$task[prize]][title]：<i class="orange">$task[bonus]</i>
+                    <!--{elseif $task['reward'] == 'magic'}-->
+                            {lang magics_title} $listdata[$task[prize]] $task[bonus] {lang magics_unit}
+                    <!--{elseif $task['reward'] == 'medal'}-->
+                            {lang medals} $listdata[$task[prize]] <!--{if $task['bonus']}-->{lang expire} $task[bonus] {lang days} <!--{/if}-->
+                    <!--{elseif $task['reward'] == 'invite'}-->
+                            {lang invite_code} $task[prize] {lang expire} $task[bonus] {lang days}
+                    <!--{elseif $task['reward'] == 'group'}-->
+                            {lang usergroup} $listdata[$task[prize]] <!--{if $task['bonus']}--> $task[bonus] {lang days} <!--{/if}-->
+                    <!--{/if}-->
+                    </span>
+                    <span>{lang task_applies}：<a href="home.php?mod=task&do=view&id=$task[taskid]#parter">$task[applicants]</a></span>
+                </span>
+                <!--{if $_G['gp_item'] == 'new'}-->
+                    <!--{if $task['noperm']}-->
+                            <a href="javascript:;" onclick="doane(event);showDialog('{lang task_group_nopermission}')" class="ljsq_g" title="{lang task_group_nopermission}"></a>
+                    <!--{elseif $task['appliesfull']}-->
+                            <a href="javascript:;" onclick="doane(event);showDialog('{lang task_applies_full}')" class="ljsq_g" title="{lang task_applies_full}"></a>
+                    <!--{else}-->
+                        <!--{if $task['scriptname'] == 'weixin'}-->
+                            <!--{if !$is_share}-->
+                            <div class="rw_b_45 mt10"><a href="home.php?mod=task&do=view&id=$task[taskid]" class="ljsq"></a></div>
+                            <!--{else}-->
+                            <div class="rw_b_45 mt10"><a href="javascript:void(0);" class="sqjlzh">明天再赚</a></div>
+                            <!--{/if}-->
+                        <!--{elseif $task['scriptname'] == 'changxian'}-->
+                            <!--{if !$is_share_changxian}-->
+                            <div class="rw_b_45 mt10"><a href="home.php?mod=task&do=view&id=$task[taskid]" class="zaiwailink">立即申请</a></div>
+                            <!--{else}-->
+                            <!--<div class="rw_b_45 mt10"><a href="javascript:void(0);" class="sqjlzh">明天再赚</a></div>-->
+                            <div class="mingtianzai"><span>今天已完成，请明天再申请</span></div>
+                            <!--{/if}-->
+                        <!--{elseif $task['scriptname'] == 'tiezi'}-->
+                            <!--{if !$is_share_tiezi}-->
+                            <div class="rw_b_45 mt10"><a href="home.php?mod=task&do=view&id=$task[taskid]" class="ljsq"></a></div>
+                            <!--{else}-->
+                            <!--<div class="rw_b_45 mt10"><a href="javascript:void(0);" class="sqjlzh">明天再赚</a></div>-->
+                            <div class="mingtianzai"><span>今天已完成，请明天再申请</span></div>
+                            <!--{/if}-->    
+                        <!--{elseif $task['scriptname'] == 'appshare'}-->
+                            <!--{if !$is_share_appshare}-->
+                            <div class="rw_b_45 mt10"><a href="home.php?mod=task&do=view&id=$task[taskid]" class="zaiwailink">立即申请</a></div>
+                            <!--{else}-->
+                            <!--<div class="rw_b_45 mt10"><a href="javascript:void(0);" class="sqjlzh">明天再赚</a></div>-->
+                            <div class="mingtianzai"><span>今天已完成，请明天再申请</span></div>
+                            <!--{/if}-->
+                        <!--{elseif $task['scriptname'] == 'appfollow'}-->
+                            <div class="rw_b_45 mt10"><a href="home.php?mod=task&do=view&id=$task[taskid]" class="zaiwailink">立即申请</a></div>	
+                        <!--{else}-->
+                        <div class="rw_b_45 mt10"><a href="home.php?mod=task&do=apply&id=$task[taskid]" class="ljsq"></a></div>
+                        <!--{/if}-->
+                    <!--{/if}-->
+                <!--{elseif $_G['gp_item'] == 'doing'}-->
+                    <div class="jdtwarpten">
+                            <div class="gojdt" style="width:$task[csc]%;"></div>
+                            <span class="wczt">{lang task_complete}<i id="csc_$task[taskid]">$task[csc]</i>%</span>
+                    </div>
+                    <div class="rw_b_45"><a href="home.php?mod=task&do=draw&id=$task[taskid]" class="{if $task[csc]>=100 && $task[checked]}lqjl{else}lqjl_no{/if}"></a></div>
+                    <!--{if $task[csc] >=100 && !$task[checked] }-->
+                    <div style="text-align:center;">{lang task_complete_waitting}</div>
+                    <!--{/if}-->
+                <!--{elseif $_G['gp_item'] == 'done'}-->
+                    <div class="jdtwarpten_dg"><span>{lang task_complete_on} $task[dateline]</span></div>
+                    <div class="rw_b_45">
+                    <!--{if $task['period'] && $task[t]}-->
+                            <!--{if $task[allowapply]}-->
+                                <!--{if $task['scriptname'] == 'tiezi'}-->
+                                    <a href="home.php?mod=task&do=view&id=$task[taskid]" class="zcsq"></a>
+                                <!--{else}-->    
+                                    <a href="home.php?mod=task&do=apply&id=$task[taskid]" class="zcsq"></a>
+                                <!--{/if}-->
+                            <!--{else}-->
+                                <span>{$task[t]}{lang task_applyagain}</span>
+                            <!--{/if}-->
+                    <!--{/if}-->
+                    </div>
+                <!--{elseif $_G['gp_item'] == 'failed'}-->
+                    <div class="jdtwarpten_sb"><span>{lang task_lose_on} $task[dateline]<!--{if $task[checked] == -1}--> {lang moderate_not_validate}<!--{/if}--></span></div>
+                    <div class="rw_b_45">
+                    <!--{if $task['period'] && $task[t]}-->
+                            <!--{if $task[allowapply]}--><a href="home.php?mod=task&do=apply&id=$task[taskid]" class="zcsq"></a><!--{else}-->{$task[t]}{lang task_reapply}<!--{/if}-->
+                    <!--{/if}-->
+                    </div>
+                <!--{/if}-->
+		</li>
+        <!--{else}-->
+            <!--{if $_G['gp_item'] == 'new'}-->
+                <!--{if !$is_doing}-->
+                <li>
+                <span class="rwicon49_50"></span>
+                <a href="home.php?mod=task&do=view&id=$task[taskid]" class="rwname">$task[name]</a>
+                <span class="lbrq">
+                    <span>
+                    <!--{if $task['reward'] == 'credit'}-->
+                            $_G['setting']['extcredits'][$task[prize]][title]：<i class="orange">$task[bonus]</i>
+                    <!--{elseif $task['reward'] == 'magic'}-->
+                            {lang magics_title} $listdata[$task[prize]] $task[bonus] {lang magics_unit}
+                    <!--{elseif $task['reward'] == 'medal'}-->
+                            {lang medals} $listdata[$task[prize]] <!--{if $task['bonus']}-->{lang expire} $task[bonus] {lang days} <!--{/if}-->
+                    <!--{elseif $task['reward'] == 'invite'}-->
+                            {lang invite_code} $task[prize] {lang expire} $task[bonus] {lang days}
+                    <!--{elseif $task['reward'] == 'group'}-->
+                            {lang usergroup} $listdata[$task[prize]] <!--{if $task['bonus']}--> $task[bonus] {lang days} <!--{/if}-->
+                    <!--{/if}-->
+                    </span>
+                    <span>{lang task_applies}：<a href="home.php?mod=task&do=view&id=$task[taskid]#parter">$task[applicants]</a></span>
+                </span>
+                <!--{/if}-->
+            <!--{else}-->
+                <li>
+                <span class="rwicon49_50"></span>
+                <a href="home.php?mod=task&do=view&id=$task[taskid]" class="rwname">$task[name]</a>
+                <span class="lbrq">
+                    <span>
+                    <!--{if $task['reward'] == 'credit'}-->
+                            $_G['setting']['extcredits'][$task[prize]][title]：<i class="orange">$task[bonus]</i>
+                    <!--{elseif $task['reward'] == 'magic'}-->
+                            {lang magics_title} $listdata[$task[prize]] $task[bonus] {lang magics_unit}
+                    <!--{elseif $task['reward'] == 'medal'}-->
+                            {lang medals} $listdata[$task[prize]] <!--{if $task['bonus']}-->{lang expire} $task[bonus] {lang days} <!--{/if}-->
+                    <!--{elseif $task['reward'] == 'invite'}-->
+                            {lang invite_code} $task[prize] {lang expire} $task[bonus] {lang days}
+                    <!--{elseif $task['reward'] == 'group'}-->
+                            {lang usergroup} $listdata[$task[prize]] <!--{if $task['bonus']}--> $task[bonus] {lang days} <!--{/if}-->
+                    <!--{/if}-->
+                    </span>
+                    <span>{lang task_applies}：<a href="home.php?mod=task&do=view&id=$task[taskid]#parter">$task[applicants]</a></span>
+                </span>
+            <!--{/if}-->
+
+            <!--{if $_G['gp_item'] == 'new'}-->
+                <!--{if $task['noperm']}-->
+                <a href="javascript:;" onclick="doane(event);showDialog('{lang task_group_nopermission}')" class="ljsq_g" title="{lang task_group_nopermission}"></a>
+                <!--{elseif $task['appliesfull']}-->
+                <a href="javascript:;" onclick="doane(event);showDialog('{lang task_applies_full}')" class="ljsq_g" title="{lang task_applies_full}"></a>
+                <!--{else}-->
+
+                <!--{if !$is_doing}-->
+                    <!--{if $task['scriptname'] == 'weixin'}-->
+                        <!--{if !$is_share}-->
+                        <div class="rw_b_45 mt10"><a href="home.php?mod=task&do=view&id=$task[taskid]" class="ljsq"></a></div>
+                        <!--{else}-->
+                        <div class="mingtianzai"><span>今天已完成，请明天再申请</span></div>
+                        <!--<div class="rw_b_45 mt10"><a href="javascript:void(0);" class="sqjlzh">明天再赚</a></div>-->
+                        <!--{/if}-->
+                    <!--{elseif $task['scriptname'] == 'changxian'}-->
+                        <!--{if !$is_share_changxian}-->
+                        <div class="rw_b_45 mt10"><a href="home.php?mod=task&do=view&id=$task[taskid]" class="ljsq"></a></div>
+                        <!--{else}-->
+                        <div class="mingtianzai"><span>今天已完成，请明天再申请</span></div>
+                        <!--<div class="rw_b_45 mt10"><a href="javascript:void(0);" class="sqjlzh">明天再赚</a></div>-->
+                        <!--{/if}-->
+                    <!--{elseif $task['scriptname'] == 'tiezi'}-->
+                        <!--{if !$is_share_tiezi}-->
+                        <div class="rw_b_45 mt10"><a href="home.php?mod=task&do=view&id=$task[taskid]" class="ljsq"></a></div>
+                        <!--{else}-->
+                        <div class="mingtianzai"><span>今天已完成，请明天再申请</span></div>
+                        <!--<div class="rw_b_45 mt10"><a href="javascript:void(0);" class="sqjlzh">明天再赚</a></div>-->
+                        <!--{/if}-->
+                    <!--{else}-->
+                        <div class="rw_b_45 mt10"><a href="home.php?mod=task&do=apply&id=$task[taskid]" class="ljsq"></a></div>
+                    <!--{/if}-->
+            <!--{/if}-->
+
+        <!--{/if}-->
+            <!--{elseif $_G['gp_item'] == 'doing'}-->
+                <div class="jdtwarpten">
+                    <div class="gojdt" style="width:$task[csc]%;"></div>
+                    <span class="wczt">{lang task_complete}<i id="csc_$task[taskid]">$task[csc]</i>%</span>
+                </div>
+                <div class="rw_b_45"><a href="home.php?mod=task&do=draw&id=$task[taskid]" class="{if $task[csc]>=100 && $task[checked]}lqjl{else}lqjl_no{/if}"></a></div>
+                <!--{if $task[csc] >=100 && !$task[checked] }-->
+                <div style="text-align:center;">{lang task_complete_waitting}</div>
+                <!--{/if}-->
+            <!--{elseif $_G['gp_item'] == 'done'}-->
+                <div class="jdtwarpten_dg"><span>{lang task_complete_on} $task[dateline]</span></div>
+                <div class="rw_b_45">
+                    <!--{if $task['period'] && $task[t]}-->
+                    <!--{if $task[allowapply]}--><a href="home.php?mod=task&do=apply&id=$task[taskid]" class="zcsq"></a><!--{else}--><span>{$task[t]}{lang task_applyagain}</span><!--{/if}-->
+                    <!--{/if}-->
+                </div>
+            <!--{elseif $_G['gp_item'] == 'failed'}-->
+                <div class="jdtwarpten_sb"><span>{lang task_lose_on} $task[dateline]<!--{if $task[checked] == -1}--> {lang moderate_not_validate}<!--{/if}--></span></div>
+                <div class="rw_b_45">
+                    <!--{if $task['period'] && $task[t]}-->
+                    <!--{if $task[allowapply]}--><a href="home.php?mod=task&do=apply&id=$task[taskid]" class="zcsq"></a><!--{else}-->{$task[t]}{lang task_reapply}<!--{/if}-->
+                    <!--{/if}-->
+                </div>
+            <!--{/if}-->
+            </li>
+        <!--{/if}-->
+
+    <!--{/loop}-->
+    </ul>
+</div>
+<!--{else}-->
+<div class="rwsbwarpten clear_b">
+	<span class="rwsbicon66_80"></span>
+	<span class="rwsbwen"><!--{if $_G['gp_item'] == 'new'}-->{lang task_nonew}<!--{elseif $_G['gp_item'] == 'doing'}-->{lang task_nodoing}<!--{else}-->{lang data_nonexistence}<!--{/if}--></span>
+</div>
+<!--{/if}-->

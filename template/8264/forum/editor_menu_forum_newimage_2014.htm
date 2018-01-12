@@ -1,0 +1,90 @@
+
+<!--{if $_G['group']['allowpostattach']}-->
+	<!--{if !empty($attachs['used'])}--><!--{eval $attachlist = $attachs['used'];$attachused = true;}-->
+		<!--{template forum/ajax_attachlist}-->
+	<!--{/if}-->
+	<!--{if !empty($attachs['unused'])}-->
+		<!--{eval $attachlist = $attachs['unused'];$attachused = false;}-->
+		<!--{template forum/ajax_attachlist}-->
+	<!--{/if}-->
+<!--{/if}-->
+
+<script type="text/javascript">
+	if(wysiwyg) {
+		newEditor(1, bbcode2html(textobj.value));
+	} else {
+		newEditor(0, textobj.value);
+	}
+	var ATTACHNUM = {'imageused':0,'imageunused':0,'attachused':0,'attachunused':0};
+	function switchImagebutton(btn) {
+		var btns = ['www'<!--{if $allowpostimg}-->, 'imgattachlist'<!--{/if}-->, 'albumlist'];
+		<!--{if $allowpostimg}-->
+			<!--{if $_G['setting']['swfupload'] != 1}-->btns.push('local');<!--{/if}-->
+			<!--{if $_G['setting']['swfupload'] != 0}-->btns.push('multi');<!--{/if}-->
+		<!--{/if}-->
+		//switchButton(btn, btns);
+		//$(editorid + '_image_menu').style.height = '';
+	}
+	<!--{if $allowpostimg}-->
+		ATTACHNUM['imageused'] = <!--{echo @count($imgattachs['used'])}-->;
+		ATTACHNUM['imageunused'] = <!--{echo @count($imgattachs['unused'])}-->;
+		<!--{if !empty($imgattachs['used']) || !empty($imgattachs['unused'])}-->
+			switchImagebutton('imgattachlist');
+			//$(editorid + '_image').evt = false;
+			//updateattachnum('image');
+		<!--{else}-->
+			switchImagebutton('<!--{if $_G['setting']['swfupload'] != 0}-->multi<!--{else}-->local<!--{/if}-->');
+		<!--{/if}-->
+	<!--{/if}-->
+	<!--{if $_G['group']['allowpostattach'] || $_G['group']['allowpostimage']}-->
+		function switchAttachbutton(btn) {
+			var btns = ['attachlist'];
+			<!--{if $_G['setting']['swfupload'] != 1}-->btns.push('upload');<!--{/if}-->
+			<!--{if $_G['setting']['swfupload'] != 0}-->btns.push('swfupload');<!--{/if}-->
+			switchButton(btn, btns);
+		}
+		ATTACHNUM['attachused'] = <!--{echo @count($attachs['used'])}-->;
+		ATTACHNUM['attachunused'] = <!--{echo @count($attachs['unused'])}-->;
+		<!--{if !empty($attachs['used']) || !empty($attachs['unused'])}-->
+			//$(editorid + '_attach').evt = false;
+			//updateattachnum('attach');
+		<!--{else}-->
+			//switchAttachbutton('<!--{if $_G['setting']['swfupload'] != 0}-->swfupload<!--{else}-->upload<!--{/if}-->');
+		<!--{/if}-->
+	<!--{/if}-->
+	<!--{if !empty($attachs['unused']) || !empty($imgattachs['unused'])}-->
+		var msg = '<form id="unusedform"><div class="c ufl" style="{if count($attachs[unused]) + count($imgattachs[unused]) > 10}height:180px;{/if}overflow-y:auto;overflow-x:hidden"><p class="xg2">{lang attachment_uploaded}</p>'
+		<!--{loop $attachs['unused'] $attach}-->
+			+ '<p>' + (BROWSER.ie && BROWSER.ie <= 6 ? '' : '<a href="javascript:;" class="d" title="{lang ignore}">{lang ignore}</a><a href="javascript:;" class="d deletepic" title="{lang delete}" attachid="$attach[aid]">{lang delete}</a>') + '<label><input id="unused$attach[aid]" name="unused[]" value="$attach[aid]" checked type="checkbox" class="pc" /> <span title="$attach[filenametitle] $attach[dateline]">$attach[filename]</span></label></p>'
+		<!--{/loop}-->
+		<!--{loop $imgattachs['unused'] $attach}-->
+			+ '<p>' + (BROWSER.ie && BROWSER.ie <= 6 ? '' : '<a href="javascript:;" class="d" title="{lang ignore}">{lang ignore}</a><a href="javascript:;" class="d deletepic" title="{lang delete}"  attachid="$attach[aid]">{lang delete}</a>') + '<label><input id="unused$attach[aid]" name="unused[]" value="$attach[aid]" checked type="checkbox" class="pc" /> <span title="$attach[filenametitle] $attach[dateline]">$attach[filename]</span></label></p>'
+		<!--{/loop}-->
+		+ '</div><div class="o pns cl"><label class="z"><input type="checkbox" name="chkall" class="pc" checked="checked" onclick="checkall(this.form, \'unused\', \'chkall\')" /> {lang checkall}</label><button type="button" value="true" class="pn"><span>{lang ignore}</span></button> <button type="button" value="true" class="pn deletepic"><span>{lang delete}</span></button> <button type="button" value="true" class="pn pnc"><span>{lang use}</span></button> </div></form>';
+		showDialog(msg, 'info', '', '', 1);
+	<!--{/if}-->
+	setCaretAtEnd();
+	if(BROWSER.ie >= 5 || BROWSER.firefox >= '2') {
+		_attachEvent(window, 'beforeunload', saveData);
+	}
+	<!--{if !empty($_G['gp_cedit']) && $_G['gp_cedit'] == 'yes'}-->
+		loadData(1);		
+		$(editorid + '_switchercheck').checked = !wysiwyg;
+	<!--{/if}-->
+</script>
+<script type="text/javascript">
+jQuery.noConflict();
+;(function($){
+	$('#unusedform>.c.ufl>p>a.d').click(function(){
+		var a_aid = $(this).parent().find('input[type=checkbox]').val();
+		$('#newattach_id_' + a_aid).remove();
+		$('#image_td_' + a_aid).remove();
+		$(this).parent().remove();
+	});
+})(jQuery);
+</script>
+<style>
+.c a.deletepic{background-position: 0 -42px;}
+.c a.deletepic:hover{background-position: 0 -62px;}
+</style>
+<div id="hiddenobj" style="visibility: hidden; display:none; width:0px;height:0px;"></div>

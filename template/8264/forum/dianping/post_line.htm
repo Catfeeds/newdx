@@ -1,0 +1,498 @@
+<!--{subtemplate forum/dianping/header}-->
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/dianping/xl_detail.css?{VERHASH}" />
+<style type="text/css">
+#imglist .overlimit{display:none;}
+#pic_upload_multiimg { vertical-align: middle; }
+#div_kml { float:left; }
+#kmllist {clear:both;+margin:20px 0 0;_margin:20px 0 0;display:block;}
+#kmllist .delkml {margin-left:15px;}
+</style>
+<!--{subtemplate forum/dianping/editor_2014_second}-->
+<div id="wp">
+<div class="layout mt50">
+<div class="pubWeb">
+	<h1 class="tit20 mb45">{if ($action=='new')}发布{$modname}{else}编辑{$modname}{/if}</h1>
+	<div class="bd">
+	<form method="post" autocomplete="off" id="postform"  action="
+	{if $action=='new'}
+	forum.php?ctl={$modstr}&act=dopost&do=new
+	{elseif $action=='reply'}
+	forum.php?ctl={$modstr}&act=dopost&do=reply&tid={$_G['tid']}
+	{elseif $action=='edit'}
+	forum.php?ctl={$modstr}&act=dopost&do=edit&tid={$_G['tid']}
+	{/if}" onsubmit="return modform_validate(this);return false;">
+		{if !empty($_G['gp_modthreadkey'])}<input type="hidden" name="modthreadkey" id="modthreadkey" value="{$_G['gp_modthreadkey']}" />{/if}
+		<input type="hidden" name="wysiwyg" id="{$editorid}_mode" value="{$editor['editormode']}" />
+		<input type="hidden" name="formhash" id="formhash" value="{FORMHASH}" />
+		<input type="hidden" name="posttime" id="posttime" value="{TIMESTAMP}" />
+		{if $action == 'edit'}<input type="hidden" name="pid" value="{$editdata['pid']}" />{/if}
+
+
+		<dl class="pubDt50">
+			<dt><span class="icoName48x43"></span></dt>
+			<dd>
+				<span class="inputTipsText">
+					{if $action=='new'}<label class="fs16">{$modname}{$modsetting[mc]}</label>{/if}
+					<input type="text" class="inputText w270" name="subject" id="subject" value="{$editdata['subject']}" />
+				</span>
+				<span class="icoRedStar">*</span>
+			</dd>
+		</dl>
+				<dl class="pubDt50">
+			<dt><span class="icoGps48x43"></span></dt>
+			<dd>
+				<span class="inputTipsText2">
+					<div class="tp selectdown" >
+						<input type="hidden" name="lType" id="lType" value="{$editdata['lType']}" />
+						<input type="text" value="{if !$editdata['lType']}请选择{$modname}类型{else}已选择类型：{$typelist[$editdata['lType']]['name']}{/if}" class="diqu js" readonly="readonly"/>
+						<div class="tp_down">
+							{loop $typelist $k $v}
+							<a href="javascript:void(0);" rel="{$k}" >{$v['name']}</a>
+							{/loop}
+						</div>
+					</div>
+				</span>
+				<span class="icoRedStar">*</span>
+			</dd>
+		</dl>
+		<dl class="pubDt50">
+			<dt><span class="icoCity48x43"></span></dt>
+			<dd>
+				<span class="inputTipsText2">
+					<div class="sc selectdown">
+						<input type="hidden" name="lTime" id="lTime" value="{$timelist[$editdata['lTime']]['cid']}" />
+						<input type="text" value="{if !$editdata['lTime']}请选择{$modname}时长{else}已选择时长：{$timelist[$editdata['lTime']]['name']}{/if}" class="diqu js" readonly="readonly"/>
+						<div class="sc_down">
+							{loop $timelist $k $v}
+							<a href="javascript:void(0);" rel="{$k}" >{$v['name']}</a>
+							{/loop}
+						</div>
+					</div>
+				</span>
+				<span class="icoRedStar">*</span>
+			</dd>
+		</dl>
+		{if $editdata['lcross']}
+		{eval $i = 0;}
+		{eval $zIndex = 500;}
+		{loop $editdata['lcross'] $key $val}
+		<dl class="pubDt50 getRegion">
+			<dt>{if $i == 0}<span class="icoWeb48x43"></span>{else}&nbsp;{/if}</dt>
+			<dd>
+				<span class="inputTipsText2">
+					<div class="qy selectdown " style="z-index:{$zIndex};">
+						<input type="hidden" name="province[]" value="$val['province']" />
+						<input type="text" value="{$regionsList[$val['province']]['cityname']}" class="diqu js" readonly="readonly"/>
+						<div class="qy_down">
+							{loop $regionSort $k $v}
+							<a rel="{$k}" href="javascript:void(0);" class="province">{$regionsList[$k]["cityname"]}</a>
+							{/loop}
+							{loop $regionsList $k $v}
+							{if !isset($regionSort[$k])}
+							<a rel="{$k}" href="javascript:void(0);" class="province">{$v["cityname"]}</a>
+							{/if}
+							{/loop}
+						</div>
+					</div>
+				</span>
+				<span class="inputTipsText2">
+					<div class="qy selectdown noselected" style="z-index:{$zIndex};" >
+						<input type="hidden" name="city[]" value="$val['city']" editvalue="$val['city']" class="fromedit" />
+						<input type="text" name="cityname[]" value="" class="diqu js fromedit" />
+						<div class="qy_down">
+						</div>
+					</div>
+				</span>
+				<span class="btn_p_s plus"></span>
+				<span class="btn_p_s substract"></span>
+			</dd>
+		</dl>
+		{eval $i++;}
+		{eval $zIndex--;}
+		{/loop}
+		{else}
+		<dl class="pubDt50 getRegion">
+			<dt><span class="icoWeb48x43"></span></dt>
+			<dd>
+				<span class="inputTipsText2">
+					<div class="qy selectdown" style="z-index:500;">
+						<input type="hidden" name="province[]" value="" />
+						<input type="text" value="请选择经过省份" class="diqu js" readonly="readonly"/>
+						<div class="qy_down">
+							{loop $regionSort $k $v}
+							<a rel="{$k}" href="javascript:void(0);" class="province">{$regionsList[$k]["cityname"]}</a>
+							{/loop}
+							{loop $regionsList $k $v}
+							{if !isset($regionSort[$k])}
+							<a rel="{$k}" href="javascript:void(0);" class="province">{$v["cityname"]}</a>
+							{/if}
+							{/loop}
+						</div>
+					</div>
+				</span>
+				<span class="inputTipsText2">
+					<div class="qy selectdown noselected" style="z-index:500;" >
+						<input type="hidden" name="city[]" value="" />
+						<input type="text" name="cityname[]" value="" class="diqu js"/>
+						<div class="qy_down">
+						</div>
+					</div>
+				</span>
+				<span class="btn_p_s plus"></span>
+				<span class="btn_p_s substract"></span>
+			</dd>
+		</dl>
+		{/if}
+		<dl class="pubDt50">
+			<dt><span class="icoTel48x43"></span></dt>
+			<dd>
+				<div style="overflow:hidden;">
+					<input id="lMap" name="lMap" type="hidden" value="{if $gpsShow['aid']}{$gpsShow['aid']}{else}0{/if}"/>
+					<div id="div_kml" {if $gpsShow['aid']}style="display:none;"{/if}>
+					<div id="pic_upload_kml" >
+					此内容需要 Adobe Flash Player 10.0.0 或更高版本
+					<script type="text/javascript">
+						var pageHost = ((document.location.protocol == "https:") ? "https://" : "http://");
+						document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='"
+										+ pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" );
+					</script>
+					</div>
+					</div>
+					<input type="button" name="button2" id="btn_kml_show" value="" class="flup" {if !$gpsShow['aid']}style="display:none;"{/if}>
+					<div class="wzjs">手绘地图或轨迹文件都可（支持*.gpx、*.kml）</div>
+				</div>
+				<div id="kmllist">
+				{if $gpsShow['aid']}
+				<span>{$gpsShow["filename"]}<a class="delkml" href="javascript:void(0);">删除</a></span>
+				{/if}
+				</div>
+			</dd>
+		</dl>
+		<dl class="pubDt50" style="margin-bottom:0;">
+			<dt>&nbsp;</dt>
+			<dd>
+			<!--{eval $editor['value'] = $editdata['message'];}-->
+			<!--{subtemplate forum/dianping/editor_2014_first}-->
+			</dd>
+		</dl>
+		{if $action != 'edit' && checkperm('seccode') && ($secqaacheck || $seccodecheck)}
+		<span>验证码：</span>
+		<div style="margin-top:-20px;margin-left:50px;margin-bottom:20px;">
+			<script type="text/javascript" src="http://api.geetest.com/get.php?gt=273df89437f54dac2bfb5b69afe1c318&r=<?=time()?>"></script>	
+		</div>
+		{/if}
+		<dl class="pubDt50" style="clear:both;">
+			<dt>&nbsp;</dt>
+			<dd>
+				<input type="submit" class="publish182x43" name="{$action}post" id="postsubmit" value=""/>
+				<input type="hidden" name="{$action}postsubmit" value="yes" />
+			</dd>
+		</dl>
+		<dl class="pubDt50" style="clear:both;">
+			<dt>&nbsp;</dt>
+			<dd></dd>
+		</dl>
+	</div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+maxpicnumber = 0;
+jQuery(document).ready(function($) {
+	//线路名称
+	$('#subject').focus(function(){
+		!$(this).val() && $(this).prev().hide();
+	}).blur(function(){
+		!$(this).val() && $(this).prev().show();
+	}).click(function(){
+		!$(this).val() && $(this).prev().hide();
+	});
+
+	//下拉菜单:线路类型+线路时长+经过地域
+	$(".inputTipsText2").delegate('.selectdown',"mouseover",function(event){
+		if ( !$(this).hasClass('noselected') && $(this).find('[class$=_down]>a').length > 0) {
+			$(this).find('[class$=_down]').show();
+		}
+	});
+	$(".inputTipsText2").delegate('.selectdown',"mouseleave",function(event){
+		if(!$(this).hasClass('noselected')){
+			$(this).find('[class$=_down]').hide();
+		}
+	});
+	<!--{if $action == 'edit'}-->
+	$(".inputTipsText2").delegate('input.fromedit[type=text]', 'change', function(){
+		var edit_val = $(this).attr('editvalue');
+		if($(this).val() != edit_val){
+			$(this).parents('.inputTipsText2').siblings('span.tips_edit').remove().end().siblings('.substract').after('<span class="tips_edit">所有线路中的<b><font color="black">' + edit_val + '</font></b>将修改为<b><font color="black">' + $(this).val() + '</font></b>，<a href="javascript:;" class="resave_edit"><font color="#44A4DE"><b>撤销</b></font></a></span>')
+		}
+	});
+	$(".getRegion").delegate('a.resave_edit', 'click', function(){
+		$(this).parents('.tips_edit').siblings('.inputTipsText2').find('input.fromedit').each(function(){
+			$(this).val($(this).attr('editvalue'));
+		});
+		$(this).parents('.tips_edit').remove();
+	});
+	<!--{/if}-->
+	$(".inputTipsText2").delegate('div[class$=_down]>a',"click",function(){
+		if(this.id == 'notips') return;
+		var rel = $(this).attr('rel');
+		$(this).parent().hide();
+		if(rel){
+			$(this).parent().siblings('input[type=hidden]').val(rel).siblings('input.js').val($(this).text()).end();
+			if ($(this).hasClass("province")) {
+				var objcity  = $(this).parents(".inputTipsText2").next().find(".qy_down");
+				objcity.siblings('input[type=hidden]').val("").siblings('input.js').val("").end();
+				var postData = "provinceid="+rel;
+				$.ajax({
+					type: 'post',
+					dataType: 'html',
+					url: '/forum.php?ctl={$modstr}&act=ajaxGetRegion',
+					data: postData,
+					success: function(data){
+						objcity.html(data);
+						var aNum = objcity.find("a").length;
+						if (aNum < 9) {
+							objcity.css({"height":"auto"});
+						} else {
+							objcity.css({"height":"240px"});
+						}
+						/*if (aNum > 0) {
+							objcity.parent().removeClass("noselected");
+						} else {
+							objcity.parent().addClass("noselected");
+						}*/
+					}
+				});
+			}
+		}else{
+			$(this).parent().siblings('input[type=text]').val($(this).text()).end();
+		}
+	});
+
+	$(".inputTipsText2").delegate('.noselected>input.js', 'keyup', function(){
+		var findvalue = $(this).val();
+		var mydowndiv = $(this).siblings('div[class$=_down]');
+		mydowndiv.show().find('a').hide();
+		if(findvalue != ''){
+			mydowndiv.find("a:contains('" + findvalue + "')").show().end();
+		}
+		if(mydowndiv.find('a:visible').length > 0){
+			mydowndiv.css('height', mydowndiv.find('a:visible').length < 9 ? 'auto' : '240px');
+		}else{
+			mydowndiv.hide();
+		}
+	});
+
+	//添加选项
+	$(".pubDt50").delegate(".plus","click",function(){
+		var objParent = $(this).parents("dl");
+		var newObj	  = objParent.clone(true);
+		newObj.insertAfter(objParent);
+		newObj.find("dt").html("&nbsp;");
+		newObj.find('input[type=hidden]').attr("value", "");
+		newObj.find('.qy_down').eq(1).html("");
+		newObj.find('.js').eq(0).val("请选择经过省份");
+		newObj.find('.js').eq(1).val("").removeClass('fromedit');
+		/*if (newObj.find('.substract').length == 0) {
+			newObj.find('.plus').after('<span class="btn_p_s substract"></span>');
+		}*/
+		newObj.find('.selectdown').eq(1).addClass("noselected");
+		var zIndex = 500;
+		$(".qy").each(function(){
+			$(this).css({"z-index":zIndex});
+			zIndex--;
+		});
+		newObj.find(".qy_down>a:contains('" + newObj.prev('dl.getRegion').find('input.diqu.js').val() + "')").click();
+	});
+	//删除选项
+	$(".pubDt50").delegate(".substract","click",function(){
+		var objParent = $(this).parents("dl");
+		if(objParent.siblings('dl.getRegion').length == 0){
+			$(this).siblings('span.plus').click();
+		}
+		objParent.remove();
+	});
+
+	//删除kml文件
+	$("#kmllist").delegate(".delkml","click",function(){
+		var postData = "aid="+$("#lMap").attr("value");
+		$.ajax({
+			type: 'post',
+			dataType: 'json',
+			url: '/forum.php?ctl={$modstr}&act=ajaxDelGps',
+			data: postData,
+			success: function(data){
+				if (data.isOk == "yes") {
+					$("#kmllist").hide();
+					$('#kmllist').html("");
+					$("#lMap").attr("value", 0);
+					$("#div_kml").show();
+					$("#btn_kml_show").hide();
+				}
+			}
+		});
+	});
+
+	{if $action=='edit'}
+	$(".getRegion").each(function(i){
+		var tempProvince = $(this).find('input[type=hidden]').eq(0).val();
+		var tempCity 	 = $(this).find('input[type=hidden]').eq(1).val();
+		var objcity 	 = $(this).find(".inputTipsText2").eq(1).find(".qy_down");
+		var js 	 		 = $(this).find(".js").eq(1);
+		var postData 	 = "provinceid="+tempProvince;
+		$.ajax({
+			type: 'post',
+			dataType: 'html',
+			url: '/forum.php?ctl={$modstr}&act=ajaxGetRegion',
+			data: postData,
+			success: function(data){
+				objcity.html(data);
+				var textCity = objcity.find('a[rel='+tempCity+']').text();
+				if (textCity != "") {
+					js.val(textCity).attr('editvalue', textCity);
+				}
+				var aNum = objcity.find("a").length;
+				if (aNum < 9) {
+					objcity.css({"height":"auto"});
+				} else {
+					objcity.css({"height":"240px"});
+				}
+			}
+		});
+	});
+	{/if}
+
+	<!--{if $action != 'edit' && checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
+	$('#refreshCaptcha').click(function() {
+		$(this).children('img').attr('src', '/plugin.php?id=dailypicture:captcha&_='+(new Date().getTime()));
+		$('#jg').html("");
+		return false;
+	});
+	$('#captcha').focus(function(){
+		!$(this).val() && $(this).prev().hide();
+	});
+	$('#captcha').blur(function(){
+		!$(this).val() && $(this).prev().show();
+		 validate_captcha();
+	});
+	function validate_captcha() {
+		$.ajax({
+			async: false,
+			type: 'get',
+			url: '/plugin.php?id=dailypicture:validatecaptcha&inajax=1&captcha='+$('#captcha').val(),
+			success : function(data) {
+				if (data==1) {
+					$('#jg').html('<img width="16" height="16" class="vm" src="static/image/common/check_right.gif">');
+					$('#yzm').val('1');
+				}else{
+					$('#jg').html('<img width="16" height="16" class="vm" src="static/image/common/check_error.gif">');
+					$('#yzm').val('0');
+					$('#captcha').val('');
+				}
+			}
+		});
+	};
+	<!--{/if}-->
+});
+</script>
+<script type="text/javascript">
+function modform_validate(theform) {
+	//alert("{$action}");
+	//获得编辑其中的值
+	var message = wysiwyg ? html2bbcode(getEditorContents()) : (!theform.parseurloff.checked ? parseurl(theform.message.value) : theform.message.value);
+	theform.message.value = message;
+	if(theform.subject.value == "") {
+		_showmsg('请填写{$modname}{$modsetting[mc]}');
+		return false;
+	} else if(mb_strlen(theform.subject.value) > 80) {
+		_showmsg('您的{$modname}{$modsetting[mc]}超过 80 个字符的限制');
+		return false;
+	} else if(trim(theform.subject.value) == ""){
+		_showmsg('请填写{$modname}{$modsetting[mc]}');
+		return false;
+	}
+	if (trim(theform.lType.value)=="") {
+		_showmsg('请选择{$modname}类型');
+		return false;
+	}
+	if (trim(theform.lTime.value)=="") {
+		_showmsg('请选择{$modname}时长');
+		return false;
+	}
+
+	//经过地域
+	var hasRegion = false;
+	var isFull    = true;
+	jQuery(".getRegion").each(function(i){
+		var tempProvince = jQuery(this).find('input[type=hidden]').eq(0).val();
+		var tempCity     = jQuery(this).find('.js').eq(1).val();
+		if (tempProvince != "") {
+			hasRegion = true;
+		}
+		if (tempProvince != "" && tempCity == "") {
+			isFull = false;
+		}
+	});
+	if(!hasRegion) {
+		_showmsg('请选择{$modname}经过地域');
+		return false;
+	}
+	if(!isFull) {
+		_showmsg('请经过{$modname}地域选择完整');
+		return false;
+	}
+
+	if (trim(theform.message.value)=="") {
+		_showmsg('请填写{$modname}简介');
+		return false;
+	}
+
+	<!--{if $action != 'edit' && checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
+	if (trim(theform.captcha.value)=="") {
+		_showmsg('验证码不能为空');
+		return false;
+	}
+	if (theform.yzm.value=='0') {
+		_showmsg('验证码输入错误');
+		return false;
+	}
+	<!--{/if}-->
+	if($('postsubmit').name == 'editpost') {
+		return true;
+	}else if(in_array($('postsubmit').name, ['replypost','newpost'])) {
+		postsubmit(theform);
+	}
+	return false;
+}
+</script>
+<script type="text/javascript" src="static/js/newswfobject.js"></script>
+<script type="text/javascript">
+	//上传kml
+	var params = {site:"{$_G[siteroot]}misc.php%3fmod=swfupload%26type=gps%26fid=$fid%26mtype=plugin%26back=uploadkml%26random=<!--{echo random(4)}-->",buttonimg:"{$_G[siteroot]}static/images/dianping/line/uploaddoc.jpg"};
+	swfobject.embedSWF("static/flash/uploadforum.swf", "pic_upload_kml", "208", "50", "10.0.0", "playerProductInstall.swf", params, {wmode:"transparent"});
+	swfobject.createCSS("#pic_upload_kml", "text-align:left;");
+</script>
+<script type="text/javascript">
+
+//上传kml的回调函数
+function uploadkml(type, returndata) {
+	eval("var nattach = " + returndata + ";");
+	jQuery.noConflict();
+	;(function($){
+		if (typeof(nattach.filename) !== 'undefined') {$("#kmllist").hide().html("").html('<span>'+nattach.filename+'<a class="delkml" href="javascript:void(0);">删除</a></span>');}
+		switch(type){
+			case 1:
+			case 2:
+				$("#kmllist").show();
+				$('#kmllist').find('span:gt(0)').remove();
+				$("#lMap").attr("value", nattach.aid);
+				$("#div_kml").hide();
+				$("#btn_kml_show").show();
+				break;
+			case 3:
+				break;
+		}
+	})(jQuery);
+}
+</script>
+<!--{subtemplate forum/dianping/footer}-->

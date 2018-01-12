@@ -1,0 +1,20 @@
+/* CSS Document */
+
+body { margin:0 0 0 0; font-size:12px; color:#333;}
+ul{ list-style:none; margin:auto 0px; letter-spacing:0; word-spacing:0; padding:0;}
+a{text-decoration:none; color:#333; font-size:12px;}
+a:hover{text-decoration:underline; color:#333; font-size:12px;}
+img{ border:0;}
+.clear{ clear:both;}
+.tuan{ margin:0 auto; border:#ccc solid 1px;}
+.tuantitle{ height:32px; background:url(../images/title.jpg) no-repeat top left;}
+.tuantitle h1{ float:left; padding:10px 0px 0px 20px; margin:0px; font-size:14px; color:#ff6600;}
+.tuantitle a{ float:right; padding:11px 10px 0px 0px; color:#ff6600;}
+.tuanmid{ text-align:center; height:222px; overflow:hidden;}
+.tuanone{ width:175px; float:left; margin:12px 0px 12px 12px; display:inline; border:#ccc solid 1px; padding:8px 0px;}
+.tuanimg{}
+.tuanimg img{ width:150px; height:95px;}
+.tuanname{ width:150px; height:34px; line-height:1.4; overflow:hidden; padding-top:10px; margin:auto;}
+.tuanwen{ width:100%; padding:12px 0px;}
+.tuanwen span{ text-decoration:line-through;}
+.tuanwen b{ color:#ff6600;}

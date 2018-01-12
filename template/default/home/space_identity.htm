@@ -1,0 +1,117 @@
+<!--{subtemplate common/header}-->
+<link href="http://static.8264.com/static/css/home/home_space.css?{VERHASH}" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="http://static.8264.com/static/js/jquery-1.6.1.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+</script>
+<link rel="stylesheet" type="text/css" href="template/default/common/space_indeitity.css" />
+
+<div id="pt" class="bm cl">
+	<!--{subtemplate common/simplesearchform}-->
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> <em>&rsaquo;</em>
+		<a href="home.php">$_G[setting][navs][4][navname]</a> <em>&rsaquo;</em>
+		<a href="home.php?mod=space&do=identity">{lang better_list}</a>
+	</div>
+</div>
+<!--{ad/text/wp a_t}-->
+<style id="diy_style" type="text/css"></style>
+<div class="wp">
+	<!--[diy=diy1]--><div id="diy1" class="area"></div><!--[/diy]-->
+</div>
+<div id="ct" class="ct2_a wp cl">
+	<div class="appl">
+		<!--{template common/userabout}-->
+	</div>
+	<div class="mn">
+		<div class="minr">
+			<div class="minr_l">
+				<div class="minr_ltop">强驴榜，是8264推出的一个展示精英驴友的舞台，其中集结了驴友录及论坛中的强驴和活跃成员。成为强驴榜中的一员，您可以拥有专属的身份标识，还可以结识更多跟您有共同兴趣爱好的驴友。
+                <div class="minr_ltop1"><a href="home.php?mod=space&do=identity"><img src="http://static.8264.com/static/image/common/lv.png" /></a></div>
+                </div>
+				<!-- <a href="home.php?mod=space&do=identity"></a> -->
+				<h2>{if $str_top_name}{$str_top_name}{else}全站强驴{/if}榜单</h2>
+				<!--{loop $arr_users $user}-->
+				<div class="qiang">
+					<div class="qiang_t"></div>
+					<div class="qiang_m">
+						<div class="qiang_m1_{if $user['iter'] <=3 }$user['iter']{else}4{/if}">{$user['iter']}</div>
+						<div class="qiang_m2"><a href="home.php?mod=space&uid=$user['uid']&view=admin" target="_blank"><!--{avatar($user['uid'],small)}--></a></div>
+						<div class="qiang_m3">
+							<h1><a href="home.php?mod=space&uid=$user['uid']&view=admin" target="_blank">{$user['username']}</a></h1>
+							<p>{$user['description']}</p>
+						</div>
+						<div class="qiang_m4">
+							<ul>
+								<li class="conn1"><a href="home.php?mod=space&uid=$user['uid']&view=admin" target="_blank">{lang visit_friend}</a></li>
+								<li class="conn2"><a href="home.php?mod=spacecp&ac=pm&op=showmsg&handlekey=showmsg_$user['uid']&touid=$user['uid']&pmid=0&daterange=2" id="a_sendpm_$key" onclick="showWindow('showMsgBox', this.href, 'get', 0)">{lang send_pm}</a></li>
+								<!--{if isset($user['isfriend']) && !$user['isfriend']}-->
+								<li class="conn3">
+									<a href="home.php?mod=spacecp&ac=friend&op=add&uid=$user['uid']" id="a_friend_$key" onclick="showWindow('friend_$key', this.href, 'get', 0)" title="{lang add_friend}">{lang add_friend}</a>
+								</li>
+								<!--{/if}-->
+							</ul>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="qiang_b">
+                    	<div class="qiang_b1"></div>
+						<div class="qiang_b2"><div style="float:left;"><img src="http://static.8264.com/static/image/common/qiangbg_bd.jpg" />&nbsp;&nbsp;身份：</div><p>{$user['inames']}</p><div class="clear"></div>
+                    </div>
+                    	<div class="qiang_b3"></div>
+					</div>
+				</div>
+				<!--{/loop}-->
+				{$multi}
+			</div>
+			<div class="minr_r">
+				<div class="minr_r_user">
+					<div class="toux">
+						<div class="toux1"><!--{avatar($_G[uid],small)}--></div>
+						<div class="toux2">
+							<p>{$space[username]}</p>
+							<div><a href="home.php?mod=space&uid={$_G['uid']}&do=friend&view=me&from=space">好友数：{$int_friend_num}</a></div>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<!--{if $arr_identitys}-->
+					<div class="shengf">
+						<span>您已具有的身份</span>
+						<div>
+							<ul>
+								<!--{loop $arr_identitys $identity}-->
+									<li><a>{$identity}</a></li>
+								<!--{/loop}-->
+							</ul>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div class="shengq"><a href="home.php?mod=spacecp&ac=profile&op=identity" target="_blank"><img src="http://static.8264.com/static/image/common/shengq1.jpg" /></a></div>
+					<!--{else}-->
+					<div class="shengf1">
+						<span>您还不具有任何身份<br />快去申请吧</span>
+					</div>
+					<div class="shengq"><a href="home.php?mod=spacecp&ac=profile&op=identity" target="_blank"><img src="http://static.8264.com/static/image/common/shengq2.jpg" /></a></div>
+					<!--{/if}-->
+				</div>
+				<div style="margin:5px 0 0 0;">
+					<!--{ad/custom_115}-->				
+				</div>
+				
+				<div class="fenlei">
+					<div class="tit"><div style="float:left; font-weight:bold;">强驴分类</div><a href="home.php?mod=space&do=identity">全部</a></div>
+					<!--{loop $arr_identity_list $identity}-->
+					<div>
+						<div class="tit1"><a href="home.php?mod=space&do=identity&identity={$identity['id']}">>>{$identity['identity_name']}</a></div>
+						<ul>
+						<!--{loop $identity['sub'] $detail}-->
+							<li><a href="home.php?mod=space&do=identity&detail={$detail['id']}">{$detail['subname']}</a></li>
+						<!--{/loop}-->
+						</ul>
+						<div class="clear"></div>
+					</div>
+					<!--{/loop}-->
+				<div class="fenleid"></div>
+			</div>
+		</div>
+		
+	</div>

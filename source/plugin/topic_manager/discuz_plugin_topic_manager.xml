@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Version"><![CDATA[X1.5.1]]></item>
+	<item id="Time"><![CDATA[2012-08-08 15:47]]></item>
+	<item id="From"><![CDATA[»§Íâ×ÊÁÏÍø (http://www.8264.com/)]]></item>
+	<item id="Data">
+		<item id="plugin">
+			<item id="available"><![CDATA[0]]></item>
+			<item id="adminid"><![CDATA[1]]></item>
+			<item id="name"><![CDATA[×¨Ìâ¹ÜÀí]]></item>
+			<item id="identifier"><![CDATA[topic_manager]]></item>
+			<item id="description"><![CDATA[]]></item>
+			<item id="datatables"><![CDATA[]]></item>
+			<item id="directory"><![CDATA[topic_manager/]]></item>
+			<item id="copyright"><![CDATA[8264]]></item>
+			<item id="modules"><![CDATA[a:0:{}]]></item>
+			<item id="version"><![CDATA[1.0]]></item>
+		</item>
+		<item id="version"><![CDATA[X1.5.1]]></item>
+	</item>
+</root>

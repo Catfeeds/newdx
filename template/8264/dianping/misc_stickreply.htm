@@ -1,0 +1,22 @@
+<input type="hidden" name="formhash" id="formhash" value="{FORMHASH}" />
+<input type="hidden" name="pid" id="pid" value="{$pid}" />
+<div class="c">
+	<div>
+		<ul class="llst">
+			<li><label><input type="radio" name="mode" class="pr" value="1" checked="checked" /> 置顶 </label></li>
+			<li><label><input type="radio" name="mode" class="pr" value="0" /> 解除置顶 </label></li>
+		</ul>
+	</div>
+	<div class="tpclg">
+		<h4>
+		<a onclick="convertselect('reason', 'reasonselect');" class="dpbtn y" href="javascript:;">^</a>
+		操作说明:
+		</h4>
+		<p><textarea name="reason" id="reason" class="pt"></textarea></p>
+		<ul id="reasonselect" style="display: none"><!--{echo modreasonselect()}--></ul>
+	</div>
+	<div class="o pns">
+		<button type="submit" name="stickreplybtn" id="stickreplybtn" value="ture" class="pn pnc" onclick="stickreplybtn();"><span>确定</span></button>
+		<input type="checkbox" name="sendreasonpm" id="sendreasonpm" class="pc"{if $_G['group']['reasonpm'] == 2 || $_G['group']['reasonpm'] == 3} checked="checked" disabled="disabled"{/if} /> <label for="sendreasonpm" />通知作者</label>
+	</div>
+</div>

@@ -1,0 +1,634 @@
+<!--{subtemplate forum/dianping/header}-->
+<script type="text/javascript">var fid = {$_G['fid']}, tid = {$_G['tid']};</script>
+<script type="text/javascript" src="{$_G['setting']['jspath']}forum_moderate.js?{VERHASH}"></script>
+<style type="text/css">
+#mdly { margin: 20px 0 0 10px; padding: 0; width: 200px; height: auto; background: none; }
+
+.share_bd_warpten{ width:50px; position:absolute; float:right; position: fixed !important;  position: absolute; z-index: 1; bottom:20px; right: 30px; background:#fff;}
+.bbs_share_sc{ width:50px;}
+.bbs_share_sc li{ width:50px; height:51px;}
+.bbs_share_sc li.ps_re{ position:relative;}
+.bbs_share_sc li a{ background:url('http://www.8264.com/static/images/common/baidushare.jpg') no-repeat; display:block; }
+.bbs_share_sc li .share{ width:50px; height:50px; background-position:0px 0px;}
+.bbs_share_sc li .share:hover{ width:50px; height:50px; background-position:0px -204px;}
+.bbs_share_sc li .sc{ width:50px; height:50px; background-position:0px -51px;}
+.bbs_share_sc li .sc:hover{ width:50px; height:50px; background-position:0px -255px;}
+.bbs_share_sc li .bbsli{ width:50px; height:50px; background-position:0px -102px;}
+.bbs_share_sc li .bbsli:hover{ width:50px; height:50px; background-position:0px -306px;}
+.bbs_share_sc li .gotop_50{ width:50px; height:50px; background-position:0px -153px;}
+.bbs_share_sc li .gotop_50:hover{ width:50px; height:50px; background-position:0px -357px;}
+
+.share_bd{ width:200px; position:absolute; height:50px; top:0px; right:50px; font-size:0px; display:none;}
+.bbs_share_sc li .share_bd a{ width:50px; height:50px; background:url('http://www.8264.com/static/images/common/baidushare.jpg') no-repeat; display:inline-block; _display:inline; _zoom:1;}
+.bbs_share_sc li .share_bd a.sina{ background-position:0 -408px;}
+.bbs_share_sc li .share_bd a.sina:hover{ background-position:0 -612px;}
+.bbs_share_sc li .share_bd a.qq{ background-position: 0px -459px;}
+.bbs_share_sc li .share_bd a.qq:hover{ background-position: 0px -663px;}
+.bbs_share_sc li .share_bd a.wb{ background-position: 0px -510px;}
+.bbs_share_sc li .share_bd a.wb:hover{ background-position: 0px -714px;}
+.bbs_share_sc li .share_bd a.wx{ background-position: 0px -561px;}
+.bbs_share_sc li .share_bd a.wx:hover{ background-position: 0px -765px;}
+
+.bdshare-button-style0-32 a{padding:0;margin:0;}
+</style>
+<script type="text/javascript">
+var ie6=false;
+if(/msie/.test(navigator.userAgent.toLowerCase()) && 'undefined' == typeof(document.body.style.maxHeight)){
+	ie6=true;
+}
+
+var postminchars = parseInt(0);
+var postmaxchars = parseInt(0);
+var disablepostctrl = parseInt('{$_G['group']['disablepostctrl']}');
+var tid = {$viewdata['tid']};
+jQuery(document).ready(function($) {
+	$('#f_message').focus(function(){
+		!$(this).val() && $(this).prev().hide();
+	}).blur(function(){
+		!$(this).val() && $(this).prev().show();
+	});
+
+	$("#commentsList").on('click',".pg>a",function(e){
+		e.preventDefault();
+		var tempArr = this.href.split('-');
+		$.get('{$url}',{act:'ajaxreply',tid:parseInt(tempArr[1]),page:parseInt(tempArr[2])},function(data){
+			$("#commentsList>.h2Tit").nextAll().remove();
+			data && $("#commentsList>.h2Tit").after(data);
+		});
+		$("#commentsList>.h2Tit").after('<div style="padding: 0 0 10px 6px;"><img src="{$_G[siteurl]}{STATICURL}image/common/loading.gif" style="vertical-align: top;"> 数据读取中...</div>');
+		$("#commentsList dl").remove();
+		$(document).scrollTop($('#commentsList').offset().top-60);
+	});
+
+	$("#bv_closeBtn").click(function(){
+		$("#div_black, #box_view").fadeOut(200);
+	});
+	$("#bm_closeBtn").click(function(){
+		$("#div_black, #box_map").fadeOut(200);
+	});
+
+	$("#lunbosmall li").eq(0).find('.black_48_48').hide();
+	$("#lunbosmall li").hover(function() {
+		$(this).find('.black_48_48').hide().end().siblings().find('.black_48_48').show();
+		var index = $(this).index();
+		$('#lunbobig li').eq(index).stop(true).fadeIn(0).siblings().fadeOut(0);
+	});
+
+	var p_height = $("#info_p").height();
+	if(p_height > 160){
+		$("#info_p").height(160);
+		$("#slidemore").click(function() {
+			if ($("#info_p").height() > 160) {
+				$("#info_p").animate({
+					height: 160
+				}, 300);
+				$("#slidemore").text("查看更多").removeClass("p_more_1");
+			} else {
+				$("#info_p").animate({
+					height: p_height
+				}, 300);
+				$("#slidemore").text("收起").addClass("p_more_1");
+			}
+		});
+	} else {
+		$("#slidemore").hide();
+	}
+	
+	$("#bv_starBox>span").click(function(){
+		$(this).prevAll().addBack().css({"background-position": "0 0"});
+		$(this).nextAll().css({"background-position": "-17px 0"});
+		$("#bv_starBox").next().html($(this).attr('title'));
+		if (ie6) {
+			$("#bv_starNum").val(($(this).index()+1)/3);
+		} else {
+			$("#bv_starNum").val($(this).index()+1);
+		}
+	});
+	var webtellength = $('.webTel').html().length;
+       if(webtellength >147){
+         $('.webphone').css('margin-top','33px');
+       }
+	$(document).on('click',"span[id^=editBtn_]",function(){
+		var p = $(this).parents('dl');
+		$("#box_view #pid").val(this.id.replace('editBtn_',''));
+		var star = p.find('#starnum').val() || 1;
+		var starDom = $("#bv_starBox>span").eq(star-1);
+		starDom.prevAll().addBack().css({"background-position": "0 0"});
+		starDom.nextAll().css({"background-position": "-17px 0"});
+		$("#bv_starBox").next().html(starDom.attr('title'));
+		$("#bv_starNum").val(star);
+		
+		p.find('#goodpoint').html() && $("#box_view #goodpoint").val(p.find('#goodpoint').html().replace(/<br[^>]*>/gi,"\r\n").replace(/&lt;/gi,"<").replace(/&gt;/gi,">"));
+		p.find('#weakpoint').html() && $("#box_view #weakpoint").val(p.find('#weakpoint').html().replace(/<br[^>]*>/gi,"\r\n").replace(/&lt;/gi,"<").replace(/&gt;/gi,">"));
+		p.find('#message').html() && $("#box_view #message").val(p.find('#message').html().replace(/<br[^>]*>/gi,"\r\n").replace(/&lt;/gi,"<").replace(/&gt;/gi,">"));
+
+		$("#div_black, #box_view").fadeIn(200);
+	});
+
+	$("#boxSubmit").click(function(){
+		$('#bv_error').html('').hide();
+		var goodpoint = $("#box_view #goodpoint").val();
+		var weakpoint = $("#box_view #weakpoint").val();
+		var message = $("#box_view #message").val();
+		var starnum = $("#bv_starNum").val();
+		var good = jQuery.trim(goodpoint);
+		var weak = jQuery.trim(weakpoint);
+		var msg = jQuery.trim(message);
+
+		if(! parseInt(starnum)){
+			bv_error("请点击星星图标进行点评");
+			return false;
+		}
+
+		if(! good){
+			bv_error("请点评{$modname}的优点");
+			return false;
+		}
+		if(good.length<10){
+			bv_error("请认真点评{$modname}的优点，不能少于10个字符");
+			return false;
+		}
+		if(! weak){
+			bv_error("请点评{$modname}的不足");
+			return false;
+		}
+		if(weak.length<10){
+			bv_error("请认真点评{$modname}的不足，不能少于10个字符");
+			return false;
+		}
+		if(! msg){
+			bv_error("请填写对{$modname}的综合评价");
+			return false;
+		}
+
+		if(msg<10){
+			bv_error("请认真填写对{$modname}的综合评价，不能少于10个字符");
+			return false;
+		}
+
+		var pid = $("#box_view #pid").val();
+		$.post('forum.php?ctl={$modstr}&act=dopost&do=reply&ext=edit&tid={$_G['tid']}&inajax=1',
+				{pid:pid,starnum:starnum,goodpoint:goodpoint,weakpoint:weakpoint,message:message,formhash:'{FORMHASH}',replypostsubmit:'yes'},function(data){
+					if(data=='ok'){
+						_showmsg('修改成功');
+					} else if($($(data).find('root'))) {
+						_showmsg($(data).children('root').text().replace(/<script.*>.*<\/script>/i, ''));
+					} else {
+						_showmsg('发生错误请重试！');
+					}
+				});
+		
+		var comment = $("#editBtn_"+pid).parents('dl');
+		comment.find('#starnum').val(starnum);
+		var starDom = comment.find('.starBox>span').eq(starnum-1);
+		starDom.prevAll().addBack().css({"background-position": "0 0"});
+		starDom.nextAll().css({"background-position": "-13px 0"});
+		comment.find('#goodpoint').html() && comment.find('#goodpoint').html(goodpoint.replace(/(\r\n)|(\n)/gi,"<br/>").replace(/</g,"&lt;").replace(/>/g,"&gt;"));
+		comment.find('#weakpoint').html() && comment.find('#weakpoint').html(weakpoint.replace(/(\r\n)|(\n)/gi,"<br/>").replace(/</g,"&lt;").replace(/>/g,"&gt;"));
+		comment.find('#message').html(message.replace(/(\r\n)|(\n)/gi,"<br/>").replace(/</g, "&lt;").replace(/>/g, "&gt;"));
+
+		jQuery("#box_view").fadeOut(200);
+	});
+
+	function bv_error(msg){
+		$('#bv_error').html(msg).show();
+	}
+	
+	{if ($_G['forum']['ismoderator'] && $_G['group']['alloweditpost'] && (!in_array($post['adminid'], array(1, 2, 3)) || $_G['adminid'] <= $post['adminid']) || ($_G['groupid'] == 1 ||$_G['groupid']== 45))}
+	//取消审核操作
+	$('.guanli .setcancel').click(function(){
+		jQuery.ajax({
+		type: 'get',
+		url: 'forum.php?ctl={$modstr}&act=checkit&type=0&tid='+tid,
+		success: function(html) {
+			if(checkreturn(html)){
+				jQuery('.guanli .setcancel').hide();
+				jQuery('.guanli .setpass').show();
+				jQuery('.skiName .tit').append('(未审核)');
+			}
+		}});
+		return false;
+	});
+	//审核通过操作
+	$('.guanli .setpass').click(function(){
+		jQuery.ajax({
+		type: 'get',
+		url: 'forum.php?ctl={$modstr}&act=checkit&type=1&tid='+tid,
+		success: function(html) {
+			if(checkreturn(html)){
+				jQuery('.guanli .setcancel').show();
+				jQuery('.guanli .setpass').hide();
+				jQuery('.skiName .tit').text(jQuery('.skiName .tit').text().replace('(未审核)',''));
+			}
+		}});
+		return false;
+	});
+	var checkreturn = function (status) {
+		var msg = '操作失败！';
+		var success = false;
+		switch(status){
+			case '1':
+				msg='操作成功！';success=true;break;
+			case '-1':
+				msg='您没有权限操作！';break;
+		}
+		showDialog(msg);return success;
+	}
+	{/if}
+	{if !$_G[uid]}
+	$(document).on('keydown', '#f_goodpoint', saveUnLoginData);
+	$(document).on('keydown', '#f_weakpoint', saveUnLoginData);
+	$(document).on('keydown', '#f_message', saveUnLoginData);
+	function saveUnLoginData() {
+		saveUserdata(this.id + tid, this.value);
+	}
+	{/if}
+	{if ( $_G['forum']['ismoderator'] && $_G['group']['alloweditpost'] && (!in_array($post['adminid'], array(1, 2, 3)) || $_G['adminid'] <= $post['adminid']) )}
+	$('#glistBox').hover(function(){
+		$('#glist').show();
+	},function(){
+		$('#glist').hide();
+	});
+	{/if}
+	$('.wydp_orangelink').mouseover(function() {
+		$('.wydp_warpten').css("display","");									
+	});							
+	$('.wydp_warpten').mouseleave(function() {
+		$('.wydp_warpten').css("display","none");		
+	});
+	//鼠标移入分享后向左边弹出分享按钮
+	$("#share").hover(
+		function () {
+		$(".share_bd",this).show();
+		},
+		function () {
+		$(".share_bd",this).hide();
+		}
+	);
+	//返回顶部按钮
+	if($(window).scrollTop() > 10){$("#gotop_50 a").show();}	
+	$(window).scroll( function(){
+		if($(window).scrollTop()>10){
+			$("#gotop_50 a").show();
+		}else{
+			$("#gotop_50 a").hide();	
+		}
+	});
+	$("#gotop_50").click(function(){ 
+		$("html,body").animate({ scrollTop: 0 },500);
+	});	
+});
+function loadUnloginData(name,id){
+	var ld = loadUserdata(name);
+	if(ld != '' && ld != null){
+		$(id).value = ld;
+	}
+}
+</script>
+<div class="layout mt50">
+	<div class="layoutLeft">
+		<h1 class="skiName">
+			<span class="tit"><a href="{$url}&act=showview&tid={$viewdata[tid]}" title="{$viewdata['name']}">$viewdata['name']</a></span>
+			
+			{if ( $_G['forum']['ismoderator'] && $_G['group']['alloweditpost'] && (!in_array($post['adminid'], array(1, 2, 3)) || $_G['adminid'] <= $post['adminid']) )}
+			<div class="guanli" id="glistBox">
+            	<a class="gl"></a>
+                <div class="gl_list" id="glist">
+                	<ul>
+						<li>
+							{if ($_G['forum']['ismoderator'] && $_G['group']['alloweditpost'])}
+							<a href="{$url}&act=dopost&do=edit&tid={$_G[tid]}&pid={$viewdata[pid]}&page=1{if !empty($_G[gp_modthreadkey])}&modthreadkey=$_G[gp_modthreadkey]{/if}">{lang edit}</a>
+							{/if}
+						</li>
+						<li><!--{if $_G['group']['allowdelpost']}--><a href="forum.php?ctl={$modstr}&act=deleteit&tid={$_G[tid]}" onclick="return confirm('确认删除这个{$modname}？删除后将不可恢复！');">{lang modmenu_deletethread}</a><!--{/if}--></li>                           
+						<!--{if ($_G['forum']['ismoderator'] && $_G['group']['alloweditpost'] && (!in_array($post['adminid'], array(1, 2, 3)) || $_G['adminid'] <= $post['adminid']) || ($_G['groupid'] == 1 ||$_G['groupid']== 45))}-->
+						<li class="setpass" {if $viewdata['enable']==1}style="display:none;"{/if}><a class="tgsh" href="javascript:;">通过审核</a></li>
+						<li class="setcancel" {if $viewdata['enable']==0}style="display:none;"{/if}><a class="qxsh" href="javascript:;">取消审核</a></li>
+						<!--{/if}-->
+                    </ul>
+                </div>
+			</div>
+			{/if}
+		</h1>
+		<div class="picShow mb35">
+			<div class="picShowL">
+				<!--轮播开始-->
+				<div class="lunbo">
+					<div class="lunbobig" id="lunbobig">
+						<ul>
+							<!--{loop $piclist $pic}-->
+							<li><a title="点击查看原图" target="_blank" href="{$pic['url']}{$pic[attachment]}"><img src="<!--{eval echo getimagethumb(322,244,2, 'plugin/'.$pic['attachment'], $pic['aid'], $pic['serverid']);}-->" /></a></li>
+							<!--{/loop}-->
+						</ul>
+					</div>
+					<div class="lunbosmall" id="lunbosmall">
+						<ul>
+							<!--{loop $piclist $pic}-->
+							<li>
+								<a href="javascript:;" target="_blank"><img src="<!--{eval echo getimagethumb(48,48,2,'plugin/'.$pic['attachment'], $pic['aid'], $pic['serverid']);}-->"/></a>
+								<div class="black_48_48"></div>
+							</li>
+							<!--{/loop}-->
+						</ul>
+					</div>
+				</div>
+				<!--轮播结束-->
+			</div>
+			<div class="picShowR">
+				<div class="pingf">				
+					<div class="interest_sectl" id="interest_sectl">
+						<div class="star_show">
+							{eval for ($i = 0; $i < 5; $i++):}
+							<span class="{if $i < $star_data['price']/2}{if $star_data['price']/2-$i<1}halfstar{else}redstar{/if}{else}graystar{/if} colorstar"></span>
+							{eval endfor;}
+							<span class="num">{$star_data['price']}</span>
+							<span class="text"></span>								
+						</div>
+						<div class="peoples">(<span class="num">{$star_data['count']}</span>人评分)</div>
+						<div class="star_list">
+							<div class="star" title="力荐">
+								<span class="redstar2"></span>
+								<span class="redstar2"></span>
+								<span class="redstar2"></span>
+								<span class="redstar2"></span>
+								<span class="redstar2"></span>
+								<span class="percent" style="width:{eval echo $star_data['percent5']*0.8}px;"></span>
+								<span class="num">{$star_data['percent5']}%</span>
+								<span>(力荐)</span>
+							</div>
+							<div class="star" title="推荐">
+								<span class="redstar2"></span>
+								<span class="redstar2"></span>
+								<span class="redstar2"></span>
+								<span class="redstar2"></span>
+								<span class="graystar2"></span>
+								<span class="percent" style="width:{eval echo $star_data['percent4']*0.8}px;"></span>
+								<span class="num">{$star_data['percent4']}%</span>
+								<span>(推荐)</span>
+							</div>
+							<div class="star" title="还行">
+								<span class="redstar2"></span>
+								<span class="redstar2"></span>
+								<span class="redstar2"></span>
+								<span class="graystar2"></span>
+								<span class="graystar2"></span>
+								<span class="percent" style="width:{eval echo $star_data['percent3']*0.8}px;"></span>
+								<span class="num">{$star_data['percent3']}%</span>
+								<span>(还行)</span>
+							</div>
+							<div class="star" title="较差">
+								<span class="redstar2"></span>
+								<span class="redstar2"></span>
+								<span class="graystar2"></span>
+								<span class="graystar2"></span>
+								<span class="graystar2"></span>
+								<span class="percent" style="width:{eval echo $star_data['percent2']*0.8}px;"></span>
+								<span class="num">{$star_data['percent2']}%</span>
+								<span>(较差)</span>
+							</div>
+							<div class="star" title="很差">
+								<span class="redstar2"></span>
+								<span class="graystar2"></span>
+								<span class="graystar2"></span>
+								<span class="graystar2"></span>
+								<span class="graystar2"></span>
+								<span class="percent" style="width:{eval echo $star_data['percent1']*0.8}px;"></span>
+								<span class="num">{$star_data['percent1']}%</span>
+								<span>(很差)</span>
+							</div>
+						</div>
+					</div>
+                </div>
+				<div class="webTel">
+					<span class="web">{$n_pro}-{$n_city}-{$viewdata['addr']}</span>
+                    {if {$viewdata[tel]}}
+                         <span class="webphone">{$viewdata[tel]}</span>
+                    {else}
+                         <span class="webphone">未填写</span>
+                    {/if}
+
+				</div>
+			</div>
+		</div>
+		{if $viewdata['message']}
+		<div class="intro mb25">
+			<h2 class="h2Titip">
+				<span>{$viewdata['subject']}简介</span>
+				<a href="/panpa/{$viewdata['tid']}.html#writecommon" class="wydp_orangelink">我要点评</a>
+				<div class="wydp_warpten" style="display: none;">
+					<div class="wydp_border">
+						<div class="wydp_arrow"></div>
+						<div class="wydp_bluebg">写点评兑换礼品</div>
+						<div class="wydp_info">
+							<ul>
+								<li>
+									<span class="num_blue">1</span>
+									<span class="wydp_info_con">请写下自己的真实感受，严禁抄袭</span>
+									<div class="clboth_0"></div>
+								</li>
+								<li>
+									<span class="num_blue">2</span>
+									<span class="wydp_info_con">点评被奖励8264币后，请到论坛兑换礼品</span>
+									<div class="clboth_0"></div>
+								</li>
+							</ul>
+						</div>
+						<a href="http://bbs.8264.com/forum-483-1.html" target="_blank" class="dh_bule"></a>
+					</div>
+				</div>
+				<div class="clboth_0"></div>		
+			</h2>
+			<div class="bd">
+				<div class="info" id="info_p"><p>{$viewdata['message']}</p></div>
+				<div class="p_more" id="slidemore">查看更多</div>
+			</div>
+		</div>
+		{/if}
+		{if $_G['uid']}<!--{subtemplate forum/dianping/segment/myComment}-->{/if}
+		{if $replylist }<!--{subtemplate forum/dianping/segment/replyList}-->{/if}
+		{if $myrate != 1 && $viewdata['enable']==1}
+		<!--{subtemplate forum/dianping/segment/writeComment}-->
+		{/if}
+	</div>
+	<div class="layoutRight">
+		{eval echo ChildView('forum/dianping/segment/showview/baidumap', array(
+			'longitude' => $viewdata['lon'],
+			'latitude' => $viewdata['lat'],
+			'name' => $viewdata['name'],
+			'newaddress' => $viewdata['newaddress'],
+			'canedit' => ((($_G['forum']['ismoderator'] && $_G['group']['alloweditpost'] && (! in_array($post['adminid'], array(1, 2, 3)) || $_G['adminid'] <= $post['adminid'])) || ($_G['forum']['alloweditpost'] && $_G['uid'] && $post['authorid'] == $_G['uid']) && ($_G['groupid'] == 1))),
+			'address' => $n_pro . $n_city . $viewdata['addr'],
+			'modstr' => $modstr,
+			'tid' => $viewdata['tid'],
+			'modname' => $modname,
+			'pro' => $n_pro
+		)); }
+		{if $hotmore}
+		<div class="hotArt">
+			<h2 class="h2Tit">热门</h2>
+			<div class="bd">
+				<ul class="hostArtList">
+					<!--{eval $j=1;}-->
+					<!--{loop $hotmore $fj}-->
+					<li>
+						<a href="/forum.php?ctl={$modstr}&act=showview&tid={$fj[tid]}" target="_blank"><img src="<!--{eval echo getimagethumb(60, 60, 2, $fj['picpath'], $fj['aid'], $fj['serverid']);}-->" class="pic" /></a>
+						<div class="text">
+							<h4><a href="/forum.php?ctl={$modstr}&act=showview&tid={$fj[tid]}" title="{$fj['name']}" target="_blank"{eval if($j==1) echo " class=\"cBlue\"";if($j==2||$j==3) echo " class=\"cOrange\""; }>{$fj['shortsubjectmore']}</a></h4>
+							<p class="starBox">
+								{eval for ($i = 0; $i < 5; $i++):}
+								<span class="{if $i < $fj['score']/2}{if $fj['score']/2-$i<1}halfstar{else}redstar{/if}{else}graystar{/if}"></span>
+								{eval endfor;}
+								{if $fj['score']!='0.0'} {$fj['score']}{else} 暂无评分{/if}
+							</p>
+                            <p class="cmt">{if $fj['num']}{$fj['num']}人参与点评{else}0人参与点评{/if}</p>
+						</div>
+						<div class="icoBox"><span class="{eval if($j==1) echo "blueIco";if($j==2||$j==3) echo "orangeIco";if($j>3) echo "greyIco";}"></span></div>
+					</li>
+					<!--{eval $j++;}-->
+					<!--{/loop}-->
+				</ul>
+			</div>
+		</div>
+		{/if}
+		{if $listpro}
+		<div class="sameArea">
+			<h2 class="h2Tit">同地区</h2>
+			<ul class="artLRList">
+				<!--{eval $i=1;}-->
+				<!--{loop $listpro $fj}-->
+				<li>
+					<span class="tit">
+						<a href="/forum.php?ctl={$modstr}&act=showview&tid={$fj[tid]}" target="_blank"{eval if($i==1) echo " class=\"cOrange\"";if($i==2||$i==3) echo " class=\"cBlue\""; }>{$fj['shortsubject']}</a>
+					</span>
+					<span class="right">
+					{eval for ($m = 0; $m < 5; $m++):}
+					<span class="{if $m < $fj['score']/2}{if $fj['score']/2-$m<1}halfstar{else}redstar{/if}{else}graystar{/if}"></span>
+					{eval endfor;}
+					</span>
+				</li>
+				<!--{eval $i++;}-->
+				<!--{/loop}-->
+			</ul>
+		</div>
+		{/if}
+	</div>
+</div>
+
+<div class="popBox" id="box_view">
+	<div class="bd">
+		<div class="popWriteCmt">
+			<h2>
+				<span class="tit">修改点评</span>
+				<span class="tips"></span>
+				<span class="starBox" id="bv_starBox">
+					<span class="graystar" title="很差"></span>
+					<span class="graystar" title="较差"></span>
+					<span class="graystar" title="还行"></span>
+					<span class="graystar" title="推荐"></span>
+					<span class="graystar" title="力荐"></span>
+				</span>
+				<span class="starTextTips"></span>
+				<input type="hidden" name="" id="bv_starNum" value="0" />
+			</h2>
+			<div style="color: red; display: none;" id="bv_error"></div>
+			<form method="post" autocomplete="off" id="postform" action="{$url}&act=dopost&do=reply&ext=edit&page={$_G['page']}&tid={$_G['tid']}">
+			<ul class="writeGoodBad">
+				<li class="mb30">
+					<span class="leftIco bad">不足</span>
+					<div class="cont"><textarea name="weakpoint" id="weakpoint" rows="2" class="line3Area"></textarea></div>
+				</li>
+				<li class="mb30">
+					<span class="leftIco good">优点</span>
+					<div class="cont"><textarea name="goodpoint" id="goodpoint" rows="2" class="line3Area"></textarea></div>
+				</li>
+				<li class="mb18">
+					<span class="leftIco all">综合</span>
+					<div class="cont"><textarea name="message" id="message" rows="6" class="line5Area "></textarea></div>
+				</li>
+				<li class="sub"><input type="button" value="" id="boxSubmit" class="modifi182x43"></li>
+			</ul>
+			<input type="hidden" name="pid" id="pid" value="0" />
+			</form>
+		</div>
+		<span class="closeBtn" id="bv_closeBtn">关闭</span>
+	</div>
+</div>
+<form method="post" autocomplete="off" name="modactions" id="modactions">
+<input type="hidden" name="formhash" value="{FORMHASH}" />
+<input type="hidden" name="optgroup" />
+<input type="hidden" name="operation" />
+<input type="hidden" name="listextra" value="$_G[gp_extra]" />
+</form>
+
+<div id="mdly" class="fwinmask" style="display:none;">
+	<table cellspacing="0" cellpadding="0" class="fwin">
+		<tr>
+			<td class="t_l"></td>
+			<td class="t_c"></td>
+			<td class="t_r"></td>
+		</tr>
+		<tr>
+			<td class="m_l">&nbsp;&nbsp;</td>
+			<td class="m_c">
+				<div class="f_c">
+					<div class="c">
+						<h3>{lang admin_select}&nbsp;<strong id="mdct" class="xi1"></strong>&nbsp;{lang piece}: </h3>
+						<!--{if $_G['forum']['ismoderator']}-->
+							<!--{if $_G['group']['allowdelpost']}--><a href="javascript:;" onclick="modaction('delpost', '', '', 'forum.php?ctl={$modstr}&act=moderator')">{lang modmenu_deletepost}</a><span class="pipe">|</span><!--{/if}-->
+							<!--{if $_G['group']['allowstickreply']}--><a href="javascript:;" onclick="modaction('stickreply', '', '', 'forum.php?ctl={$modstr}&act=moderator')">{lang modmenu_stickpost}</a><!--{/if}-->
+						<!--{/if}-->
+						<!--{if $_G['forum_thread']['pushedaid'] && $allowpostarticle}--><a href="javascript:;" onclick="modaction('pushplus', '', 'aid=$_G[forum_thread][pushedaid]', 'portal.php?mod=portalcp&ac=article&op=pushplus')">{lang modmenu_pushplus}</a><span class="pipe">|</span><!--{/if}-->
+					</div>
+				</div>
+			</td>
+			<td class="m_r"></td>
+		</tr>
+		<tr>
+			<td class="b_l"></td>
+			<td class="b_c"></td>
+			<td class="b_r"></td>
+		</tr>
+	</table>
+</div>
+<script>
+var tta = document.getElementsByTagName('textarea');
+for(var i=0; i<tta.length; i++){
+	if(!isUndefined(tta[i].id)){
+		loadUnloginData(tta[i].id + tid, tta[i].id);
+	}
+}
+</script>
+<div class="share_bd_warpten">
+	<ul class="bbs_share_sc">
+		<li class="ps_re" id="share">
+			<a href="javascript:;" class="share"></a>
+			<div class="bdsharebuttonbox share_bd" data-tag="share_1">
+				<a href="javascript:;" class="sina" data-cmd="tsina"></a>
+				<a href="javascript:;" class="qq" data-cmd="qzone"></a>
+				<a href="javascript:;" class="wb" data-cmd="tqq"></a>
+				<a href="javascript:;" class="wx" data-cmd="weixin"></a>
+			</div>
+		</li>
+		<li><a href="home.php?mod=spacecp&ac=favorite&type=thread&id=$_G[tid]" id="m_k_favorite" onclick="showWindow(<!--{if $_G['uid']}-->this.id, this.href, 'get', 0<!--{else}-->'login','member.php?mod=logging&action=login'<!--{/if}-->);" class="sc"><b style="display: none;" id="favoritenumber"></b></a></li>
+		<li><a href="forum.php?mod=forumdisplay&fid=$_G[fid]" class="bbsli" title="返回{$modname}首页"></a></li>
+		<li id="gotop_50"><a style="display: none;" href="javascript:;" class="gotop_50"></a></li>
+	</ul>
+</div>
+<script>
+window._bd_share_config = {
+	common : {
+		//此处放置通用设置
+	},
+	share : [
+		//此处放置分享按钮设置
+		{"tag" : "share_1", "bdSize" : 32}	
+	]
+}
+with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+(function($){
+	var ww=$(window).width();
+	var s_bd_r=Math.max((ww-980)/2-60,0);
+	$(".share_bd_warpten").css("right",s_bd_r);
+})(jQuery);
+</script>
+<!--{subtemplate forum/dianping/footer}-->

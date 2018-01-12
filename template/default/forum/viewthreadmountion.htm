@@ -1,0 +1,713 @@
+<!--{subtemplate common/header}-->
+<script type="text/javascript">var fid = parseInt('$_G[fid]'), tid = parseInt('$_G[tid]');</script>
+<!--{if $modmenu['thread'] || $modmenu['post']}-->
+	<script type="text/javascript" src="{$_G['setting']['jspath']}forum_moderate.js?{VERHASH}"></script>
+<!--{/if}-->
+
+<script type="text/javascript" src="{$_G['setting']['jspath']}forum_viewthread.js?{VERHASH}"></script>
+<script type="text/javascript">zoomstatus = parseInt($_G['setting']['zoomstatus']);var imagemaxwidth = '{IMAGEMAXWIDTH}';var aimgcount = new Array();</script>
+
+<div id="pt" class="bm cl">
+	<!--{subtemplate common/simplesearchform}-->
+	<div class="z">
+		<a href="./" id="fjump"{if $_G['setting']['forumjump'] == 1} onmouseover="showMenu({'ctrlid':this.id})"{/if} class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a>$navigation <em>&rsaquo;</em> $_G[forum_thread][short_subject]
+	</div>
+</div>
+
+<!--{hook/viewthread_top}-->
+<!--此处去掉了广告-->
+<!--{eval $keyword= ForumOptionMountion::getKeyWord();}-->	
+<style id="diy_style" type="text/css"></style>
+<div class="wp">
+	<!--[diy=diy1]--><div id="diy1" class="area"></div><!--[/diy]-->
+</div>
+
+<div id="ct" class="wp cl">
+<!--{if $_G['group']['allowpost'] && ($_G['group']['allowposttrade'] || $_G['group']['allowpostpoll'] || $_G['group']['allowpostreward'] || $_G['group']['allowpostactivity'] || $_G['group']['allowpostdebate'] || $_G['setting']['threadplugins'] || $_G['forum']['threadsorts'])}-->
+	<ul class="p_pop" id="newspecial_menu" style="display: none">
+		<!--{if !$_G['forum']['allowspecialonly']}--><li><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]">{lang post_newthread}</a></li><!--{/if}-->
+		<!--{if $_G['group']['allowpostpoll']}--><li class="poll"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=1">{lang post_newthreadpoll}</a></li><!--{/if}-->
+		<!--{if $_G['group']['allowpostreward']}--><li class="reward"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=3">{lang post_newthreadreward}</a></li><!--{/if}-->
+		<!--{if $_G['group']['allowpostdebate']}--><li class="debate"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=5">{lang post_newthreaddebate}</a></li><!--{/if}-->
+		<!--{if $_G['group']['allowpostactivity']}--><li class="activity"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=4">{lang post_newthreadactivity}</a></li><!--{/if}-->
+		<!--{if $_G['group']['allowposttrade']}--><li class="trade"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=2">{lang post_newthreadtrade}</a></li><!--{/if}-->
+		<!--{if $_G['setting']['threadplugins']}-->
+			<!--{loop $_G['forum']['threadplugin'] $tpid}-->
+				<!--{if array_key_exists($tpid, $_G['setting']['threadplugins']) && @in_array($tpid, $_G['group']['allowthreadplugin'])}-->
+					<li class="popupmenu_option"{if $_G['setting']['threadplugins'][$tpid][icon]} style="background-image:url($_G['setting']['threadplugins'][$tpid][icon])"{/if}><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&specialextra=$tpid">{$_G['setting']['threadplugins'][$tpid][name]}</a></li>
+				<!--{/if}-->
+			<!--{/loop}-->
+		<!--{/if}-->
+		<!--{if $_G['forum']['threadsorts'] && !$_G['forum']['allowspecialonly']}-->
+			<!--{loop $_G['forum']['threadsorts']['types'] $id $threadsorts}-->
+				<!--{if $_G['forum']['threadsorts']['show'][$id]}-->
+					<li class="popupmenu_option"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&extra=$_G[gp_extra]&sortid=$id">$threadsorts</a></li>
+				<!--{/if}-->
+			<!--{/loop}-->
+		<!--{/if}-->
+	</ul>
+<!--{/if}-->
+
+<!--{if $modmenu['post']}-->
+	<div id="mdly" class="fwinmask" style="display:none;">
+		<table cellspacing="0" cellpadding="0" class="fwin">
+			<tr>
+				<td class="t_l"></td>
+				<td class="t_c"></td>
+				<td class="t_r"></td>
+			</tr>
+			<tr>
+				<td class="m_l">&nbsp;&nbsp;</td>
+				<td class="m_c">
+					<div class="f_c">
+						<div class="c">
+							<h3>{lang admin_select}&nbsp;<strong id="mdct" class="xi1"></strong>&nbsp;{lang piece}: </h3>
+							<!--{if $_G['forum']['ismoderator']}-->
+								<!--{if $_G['group']['allowwarnpost']}--><a href="javascript:;" onclick="modaction('warn')">{lang modmenu_warn}</a><span class="pipe">|</span><!--{/if}-->
+								<!--{if $_G['group']['allowbanpost']}--><a href="javascript:;" onclick="modaction('banpost')">{lang modmenu_banpost}</a><span class="pipe">|</span><!--{/if}-->
+								<!--{if $_G['group']['allowdelpost']}--><a href="javascript:;" onclick="modaction('delpost')">{lang modmenu_deletepost}</a><span class="pipe">|</span><!--{/if}-->
+								<!--{if $_G['group']['allowstickreply']}--><a href="javascript:;" onclick="modaction('stickreply')">{lang modmenu_stickpost}</a><span class="pipe">|</span><!--{/if}-->
+							<!--{/if}-->
+							<!--{if $_G['forum_thread']['pushedaid'] && $allowpostarticle}--><a href="javascript:;" onclick="modaction('pushplus', '', 'aid=$_G[forum_thread][pushedaid]', 'portal.php?mod=portalcp&ac=article&op=pushplus')">{lang modmenu_pushplus}</a><span class="pipe">|</span><!--{/if}-->
+						</div>
+					</div>
+				</td>
+				<td class="m_r"></td>
+			</tr>
+			<tr>
+				<td class="b_l"></td>
+				<td class="b_c"></td>
+				<td class="b_r"></td>
+			</tr>
+		</table>
+	</div>
+<!--{/if}-->
+<style>
+.clear{ clear:both;}
+.brandmid{ margin:auto; margin-bottom:8px;}
+.brand_yyall{ border-top:none;}
+.brand_yy_f_l{ float:left; width:555px;}
+.brand_yy_f_l li{ padding:5px 0px 5px 0px; text-align:left;}
+.brand_yy_f_r{ float:right;width:122px;}
+.brand_yy_f_r img{ width:110px; height:60px; border:#eee solid 1px; padding:5px;}
+.brand_dipu{ background:#f4f4f4; text-align:center; padding:7px 0px 5px 0px; margin-top:5px;}
+.brand_yy2{ width:100%; border-top:#eee solid 1px; margin-top:10px; padding-top:10px;}
+.brand_yy2 a{ color:#4a85a7;}
+.brand_yy2 a:hover{ color:#4a85a7;}
+.brand_yy2 span{ float:left; margin-right:20px;} 
+.brand_yy2 li{ padding:5px 0px 5px 0px;}
+.brand_yy3{ width:100%; border-top:#eee solid 1px; margin-top:10px; padding-top:10px; line-height:1.7;}
+.brand_yy3 em{ color:#4a85a7;}
+.jianjieall{ width:690px; border:#eee solid 1px; border-top:0; text-align:center;}
+.jianjieall img{width:620px; display:block; margin:0 auto; padding:5px 0 0 0;}
+.jianjiealltitle{ height:21px; padding:5px 0px 0px 60px; background:url(http://bbs.8264.com/static/image/brand/long_lb.jpg) top left repeat-x; font-size:14px; font-weight: bold;}
+.jianjieallcon{ width:670px; padding:10px; line-height:1.7;}
+.brand_yyall_r{ width:250px; float:right;}
+.brandr_1{ margin-bottom:10px;}
+.brandr_box{ width:248px; border:#ebebeb solid 1px;overflow:hidden;}
+.brandr_title{ width:236px; height:30px; line-height:30px; padding:0 10px; margin:auto; font-size:12px; font-weight:bold; background:url(http://bbs.8264.com/static/image/brand/sbox_h.jpg) top repeat-x;}
+.brandr_con{ width:248px; padding-bottom:10px;}
+.brandr_con li{ width:224px; height:25px; padding:2px 5px 2px 10px; margin:0px; overflow:hidden; line-height:25px;background:url(http://bbs.8264.com/static/image/common/dot.gif) 0 12px no-repeat !important;}
+.brandr_title1{ height:20px; padding:10px 0px 0px 10px; font-size:12px; font-weight:bold; border-bottom: #e4edf4 solid 4px;}
+.brandr_con1{ width:250px; padding-bottom:10px;}
+.brandr_con1 li{ width:235px; height:20px; padding:5px 5px 0px 10px; overflow:hidden; line-height:1.8;}
+.brandr_title2{ width:236px; height:20px; padding:10px 0px 0px 10px; margin:auto; font-size:12px; font-weight:bold; background:url(http://bbs.8264.com/static/image/brand/title2.jpg) top repeat-x;}
+.brandr_title3{ width:236px; height:20px; padding:10px 0px 0px 10px; margin:auto; font-size:12px; font-weight:bold; background:url(http://bbs.8264.com/static/image/brand/toptitle.jpg) top repeat-x;}
+.brandr_title4{ width:240px; height:20px; padding:15px 0px 0px 10px; margin:auto; font-size:12px; font-weight:bold; background:url(http://bbs.8264.com/static/image/brand/brandt.jpg) top repeat-x;}
+.brandr_con4{ width:250px; background:url(http://bbs.8264.com/static/image/brand/brand_rbg.jpg) top repeat-y;}
+.brandr_con4 li{ width:235px; height:20px; padding:5px 5px 0px 10px; overflow:hidden; line-height:1.8;}
+.brandr_b4{ width:250px; height:8px; background:url(http://bbs.8264.com/static/image/brand/brandb.jpg) bottom no-repeat;}
+
+#postlist{ border:none;overflow:hidden;width:960px;margin:0 auto;}
+#postlist .postlistl{float:left; width:692px;}
+#postlist .postlistr{float:right; width:250px;}
+.vw dd .pcb{width:600px;}
+/*
+.bbda{padding-left:0 !important;}
+.bbda dt, .bbda dd{float:left !important;display:block !important;margin-left:0 !important;width:615px;}
+.bbda .avt{margin-right:8px;width:auto !important;}*/
+</style>    
+   
+<div id="postlist" class="pl bm bmw">
+<div class="postlistl">
+<!--{eval $postcount = 0;}-->
+<!--{loop $postlist $aa $post}-->
+
+	<div id="post_$post[pid]">
+    <!--{if $post[first]==1}-->
+    	<div class="brandmid">		
+		<div class="pct">
+			<!--{if !$_G['inajax']}-->
+				<!--{if $ad_a_pr}-->
+					<!--{if !empty($_G['thread']['contentmr']) && empty($ad_a_pr_css)}-->
+					<style type="text/css">.pcb{margin-right:<!--{echo $_G['thread']['contentmr']+10}-->px}</style>
+					<!--{eval $ad_a_pr_css=1;}-->
+					<!--{/if}-->
+					$ad_a_pr
+				<!--{elseif empty($ad_a_pr_css)}-->
+					<style type="text/css">.pcb{margin-right:110px;}</style>
+					<!--{eval $ad_a_pr_css=1;}-->
+				<!--{/if}-->
+			<!--{/if}-->
+			<!--{if $post['first']}-->
+				<!--{if $post[tags] || $relatedkeywords}-->
+					<div class="ptg">
+						<!--{if $post[tags]}-->$post[tags]<!--{/if}-->
+						<!--{if $relatedkeywords}--><span>$relatedkeywords</span><!--{/if}-->
+					</div>
+				<!--{/if}-->
+			<!--{/if}-->
+				<!--{if $post['first']}-->
+		<!--{if $_G['forum_thread']['price'] > 0 && $_G['forum_thread']['special'] == 0}-->
+			<div class="locked"><em class="y"><a href="forum.php?mod=misc&action=viewpayments&tid=$_G[tid]" onclick="showWindow('pay', this.href)">{lang pay_view}</a></em>{lang pay_threads}: <strong>{$_G['setting']['extcredits'][$_G['setting']['creditstransextra'][1]][title]} $_G[forum_thread][price] {$_G['setting']['extcredits'][$_G['setting']['creditstransextra'][1]][unit]} </strong></div>
+		<!--{/if}-->     
+         
+
+        
+         
+               
+		<!--{if $threadsort && $threadsortshow}-->      
+			<!--{if $threadsortshow['typetemplate']}-->
+				 <style type="text/css">
+					*{padding:0; margin:0;}
+					body{font-size:12px; color:#444; font-family:"宋体";}					
+					.mountain_view{ width:690px; border:1px solid #cdcdcd;}
+					.mountain_view .mountain_box{ margin:0 10px; width:670px; padding:8px 0; border-bottom:1px solid #eee; overflow:hidden;}
+					.mountain_view h4{ border-bottom:4px solid #e4edf4; font-size:20px; padding:2px 8px; margin-bottom:5px;}
+					.mountain_view .mountain_image{ float:right;}
+					.mountain_view .mountain_image img{ width:250px; padding:5px; border:1px solid #ccc;}
+					.mountain_view .mountain_image .admin{ text-align:right; padding:5px 5px 0; color:#999;}
+					.mountain_view .mountain_image .admin a{ color:#999; text-decoration:none;}
+					.mountain_view .mountain_image .admin a:hover{ text-decoration:underline;}
+					.mountain_view .mountain_info{ float:left; width:400px;}
+					.mountain_view .mountain_info_2{ width:670px; margin:10px auto; overflow:hidden; border:1px solid #eee; border-top:none;}
+					.mountain_view .mountain_info_2_title{ height:26px; line-height:26px; background:url(http://bbs.8264.com/static/image/brand/long_lb.jpg);}
+					.mountain_view .mountain_info_2_title h6{padding-left:30px; width:152px; text-align:center; font-size:14px; font-weight:bold;}
+					.mountain_view .mountain_info_2_content{ padding:15px; line-height:22px; font-size:14px;}
+					.mountain_view .info{ padding:3px 0; line-height:22px;}
+					.mountain_view .reply_num{ padding:5px 0; color:#999;}
+					.mountain_view .reply_num strong{ color:#444;}
+				</style>
+				<div class="mountain_view">                
+        <div class="mountain_box">
+            <div class="mountain_image">                
+                <!--{eval  ForumOptionMountion::getMountionPic($post[tid]);}-->
+                <img src="$_G['forum_option']['photo']['value']" />
+                <!--{if (($_G['forum']['ismoderator'] && $_G['group']['alloweditpost'] && (!in_array($post['adminid'], array(1, 2, 3)) || $_G['adminid'] <= $post['adminid'])) || ($_G['forum']['alloweditpost'] && $_G['uid'] && $post['authorid'] == $_G['uid']))}-->
+                <div class="admin">
+                   <a href="home.php?mod=space&uid=$post['authorid']" target="_blank" class="xw1">$post[author]</a>
+                   <a href="forum.php?mod=post&action=edit&fid=$_G[fid]&tid=$_G[tid]&pid=$post[pid]{if !empty($_G[gp_modthreadkey])}&modthreadkey=$_G[gp_modthreadkey]{/if}&page=$page">
+							<!--{if $_G['forum_thread']['special'] == 2 && !$post['message']}-->{lang post_add_aboutcounter}<!--{else}-->{lang edit}</a><!--{/if}-->
+							<!--{if $_G['group']['allowdelpost']}--><!--{eval $modopt++}--><span class="pipe">|</span><a href="javascript:;" onclick="modthreads(3, 'delete')">{lang modmenu_deletethread}</a><!--{/if}-->
+							
+                </div>                
+                <!--{/if}-->
+            </div>
+            <div class="mountain_info">
+                <h4>$_G['forum_option']['mingcheng']['value']</h4>
+                <div class="info">
+                    <strong>山峰名称：</strong>
+                    <span>$_G['forum_option']['mingcheng']['value']</span>
+                </div>
+                <div class="info">
+                    <strong>山峰高度：</strong>
+                    <span>$_G['forum_option']['gaodu']['value']米</span>
+                </div>           
+                <div class="info">
+                    <strong>经度纬度：</strong>
+                    <span>经$_G['forum_option']['jingdu']['value']
+, 纬$_G['forum_option']['weidu']['value']
+</span>
+                </div>
+                <div class="info">
+                    <strong>所在地区：</strong>
+                    <span>$_G['forum_option']['diqu']['value']</span>
+                </div>
+                 <div class="info">
+                    <strong>攀登季节：</strong>
+                    <span>$_G['forum_option']['jijie']['value']</span>
+                </div>
+                <div class="reply_num">
+                    <strong>{$_G[forum_thread][views]}</strong> <span class="xg1">名网友浏览</span>
+                    <span class="xg1">|</span>
+                    <strong>{$_G[forum_thread][replies]}</strong> <span class="xg1">名网友参与讨论</span>
+                </div>
+            </div>
+        </div>
+        <div class="mountain_box">
+            <div class="info">
+                <strong>山峰简介</strong>
+                <br />
+                <span> $_G['forum_option']['jianjie']['value']
+</span>
+            </div>
+        </div>
+        <div class="mountain_box">
+            <div class="info">
+                <strong>气候状况</strong>
+                <br />
+                <span>$_G['forum_option']['tianqi']['value']
+</span>
+            </div>
+        </div>
+        <div class="mountain_box">
+            <div class="info">
+                <strong>进山线路</strong>
+                <br />
+                <span>$_G['forum_option']['jinshan']['value']
+</span>
+            </div>
+        </div>
+        <div class="mountain_box">
+            <div class="info">
+                <strong>攀登历史</strong>
+                <br />
+                <span>$_G['forum_option']['lishi']['value']
+</span>
+            </div>
+        </div>
+        <div class="mountain_box">
+            <div class="info">
+                <strong>攀登线路</strong>
+                <br />
+                <span>$_G['forum_option']['xianlu']['value']
+</span>
+            </div>
+        </div>
+        <div class="mountain_box">
+             <div class="info">
+                    <strong>登山费用</strong>
+                    <span>$_G['forum_option']['feiyong']['value']元</span>
+                </div>
+            <div class="info">
+                <strong>向导联系</strong>
+                <span>$_G['forum_option']['xiezuo']['value']
+</span>
+            </div>
+            <div class="info">
+                <strong>咨询顾问</strong>
+                <span>$_G['forum_option']['guwen']['value']
+</span>
+            </div>
+        </div>
+        <div class="mountain_info_2">
+            <div class="mountain_info_2_title">
+                <h6>相关介绍</h6>
+            </div>
+            <div class="mountain_info_2_content">
+                $post[message]
+            </div>
+          
+        </div>
+        <!--{if file_exists(DISCUZ_ROOT.'./source/plugin/brandusers/mountioninclude.php')}-->
+                   <!--{eval include(DISCUZ_ROOT.'./source/plugin/brandusers/mountioninclude.php');}-->
+        <!--{/if}-->
+      
+</div>			
+				
+				
+			<!--{elseif $threadsortshow['optionlist'] && !($post['status'] & 1) && !$_G['forum_threadpay']}-->
+				<div class="typeoption">
+					<!--{if $threadsortshow['optionlist'] == 'expire'}-->
+						{lang has_expired}
+					<!--{else}-->
+                    
+						<table summary="{lang threadtype_option}" cellpadding="0" cellspacing="0" class="cgtl mbm">
+							<caption>$_G[forum][threadsorts][types][$_G[forum_thread][sortid]]</caption>
+							<tbody>
+								<!--{loop $threadsortshow['optionlist'] $option}-->
+									<!--{if $option['type'] != 'info'}-->
+										<tr>
+											<th>$option[title]:</th>
+											<td><!--{if $option['value']}-->$option[value] $option[unit]<!--{else}-->-<!--{/if}--></td>
+										</tr>
+									<!--{/if}-->
+								<!--{/loop}-->    
+                                <tr>										
+									<td colspan="2">$post[message]</td>
+								</tr>                           
+							</tbody>
+						</table>                       
+					<!--{/if}-->
+				</div>
+			<!--{/if}-->
+		<!--{/if}-->
+	<!--{/if}-->
+		</div>    
+                
+            
+        <div class="clear"></div>
+    </div>     
+    <!--{else}-->            
+    <!--{/if}-->
+
+<!--{if !empty($aimgs[$post[pid]])}-->
+<script type="text/javascript" reload="1">aimgcount[{$post[pid]}] = [<!--{echo implode(',', $aimgs[$post[pid]]);}-->];attachimgshow($post[pid]);</script>
+<!--{/if}-->  
+        
+	</div>
+<!--{eval $postcount++;}-->
+<!--{/loop}-->
+
+<style type="text/css">    
+    .ralateActivety{ width:690px; overflow:hidden;}
+    .ralateActivety a{ color:#000;}
+    .ralateActivety a:hover{ text-decoration:underline;}
+    .ralateActivety thead tr{ background:#f2f2f2;}
+    .ralateActivety thead th{ padding:5px 8px; text-align:center; border-bottom:1px solid #C2D5E3;}
+    .ralateActivety tbody tr:hover{background:#f2f2f2;}
+    .ralateActivety tbody td{ padding:10px 8px; text-align:center; border-bottom:1px solid #C2D5E3;}
+    .ralateActivety .tl{ text-align:left;}
+    .ralateActivety .hlink{ color:#fff; font-size:12px; display:block; width:50px; height:20px; line-height:22px; overflow:hidden; background-image:    url(http://bbs.8264.com/static/image/common/hlink_bg.gif); margin:0 auto;}
+    .ralateActivety .hlink:hover{ color:#fff; background-position:0 -20px; text-decoration:none;}
+	.ralateActivety .dot{ display:block; float:left; background:url("/static/image/common/dot.gif") 0 5px no-repeat;width:12px;height:15px;}
+	.ralateActivetyTitle{ display:block; float:left; width:360px; overflow:hidden;}
+</style>
+
+
+
+
+
+   <!--{eval $albumlist = $forumoption_mountion->getRalateXc($keyword);}-->
+   <!--{if $albumlist}-->  
+   <div class="bm vw pl" id="comment" style="width:690px;">  
+            <div class="bm_h cl">
+				<h2><span style="float:right; padding:1px 6px -1px 2px;"><form class="searchform" method="post" autocomplete="off" target="_blank" action="search.php?mod=album">
+			<input type="hidden" name="formhash" value="{FORMHASH}" /><input type="hidden" name="srchtxt" value="<!--{eval echo $_G['forum_option']['guanjianzi']['value'];}-->"/><input type="hidden" name="searchsubmit" value="yes" />
+            <a href="http://u.8264.com/home-spacecp-ac-upload.html" target="_blank" style="color:#000">发布新照片</a> <img style="margin:0; vertical-align:middle; padding:2px 0 4px" alt="Tip" tip="发布新照片时请把相册名称设置为山峰名称，这样更容易让网友浏览到您所发布的照片！" onmouseover="showTip(this)" src="static/image/common/faq.gif"/>
+            |
+            <input type="submit" value="更多" style="border:none; background:none; font-weight:bold; cursor:pointer;" />
+            </form></span>相关相册</h2>
+			</div>           	
+            <div class="ml mla cl" style="padding:10px 0 0 5px;"> 
+            <ul class="ml mla cl">
+             <!--{loop $albumlist $key $value}-->
+			<li style="padding-left:21px; height:195px;">
+			<div class="c"><a href="home.php?mod=space&uid=$value[uid]&do=album&id=$value[albumid]" target="_blank"><!--{if $value[pic]}--><img src="http://image.8264.com/$value[pic]" /><!--{/if}--></a></div>
+			<p class="ptm"><a href="home.php?mod=space&uid=$value[uid]&do=album&id=$value[albumid]" target="_blank">$value[albumname]</a></p> 
+			</li>
+			<!--{/loop}-->
+            </ul>
+            </div>
+           
+   </div>	
+   <!--{/if}--> 
+
+<!--{eval $sf = $forumoption_mountion->getSfactivity($keyword);}-->
+	 <!--{if $sf}-->   
+     <div class="bm vw pl" id="comment" style="width:690px;">         
+     <table class="ralateActivety">
+        <thead>
+            <tr>
+                <th class="tl" width="60%">相关活动&nbsp;|&nbsp;<a href="http://bbs.8264.com/forum-5-1.html" target="_blank"><font color="#0000FF">更多</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://bbs.8264.com/home-space-do-activity-view-all-order-hot-date-default-class.html?from=bbs_top" target="_blank"><font color="#0000FF">发布新活动</font></a></th>
+                <th width="15%">发起者</th>
+                <th width="15%">回复/查看</th>
+                <th width="10%">报名</th>
+            </tr>
+        </thead>        
+        <tbody>        
+          <!--{loop $sf $value}-->	
+            <tr>
+                <td class="tl">
+                <span class="dot"></span>
+                <a href="http://bbs.8264.com/thread-{$value[tid]}-1-1.html" class="ralateActivetyTitle" target="_blank" title="{$value[subject]}">{$value[subject]}</a>                </td>
+                <td>{$value[author]}</td>
+                <td>{$value[replies]}/{$value[views]}</td>
+                <td><a href="http://bbs.8264.com/thread-{$value[tid]}-1-1.html" class="hlink" target="_blank">报名</a></td>
+            </tr> 
+          <!--{/loop}-->                      
+        </tbody>
+    </table>	
+    </div>	
+<!--{/if}-->  
+
+  <!--{if $sticklist}-->
+  <div class="bm vw pl" id="comment" style="width:690px;">
+			<div class="bm_h cl">
+				<h2>{lang replies_recommended}</h2>
+			</div>
+	        <div>
+		<!--{loop $sticklist $rpost}-->
+        
+			<div class="pstl xs1" style="padding-top:10px; padding-left:10px;">
+				<div class="psta"><a href="home.php?mod=space&uid=$rpost[authorid]" c="1">$rpost[avatar]</a></div>
+				<div class="psti">
+					<p>
+						<a href="home.php?mod=space&uid=$rpost[authorid]" class="xi2 xw1">$rpost[author]</a> {lang published_in_floor}
+						<span class="xi2">
+							&nbsp;<a href="javascript:;" onclick="window.open('forum.php?mod=redirect&goto=findpost&ptid=$rpost[tid]&pid=$rpost[pid]')" class="xi2">{lang view_full_content}</a>
+							<!--{if $_G['group']['allowstickreply']}-->&nbsp;<a href="javascript:;" onclick="modaction('stickreply', $rpost[pid], '&undo=yes')" class="xi2">{lang admin_unstickreply}</a><!--{/if}-->
+						</span>
+					</p>
+					<div class="mtn">$rpost[message]</div>
+				</div>
+			</div>
+       
+		<!--{/loop}-->
+	</div>
+   </div> 
+<!--{/if}-->
+
+
+
+
+
+
+
+
+<div class="bm vw pl" id="comment" style="width:690px;">
+			<div class="bm_h cl">
+				<h2>{lang latest_comments}</h2>
+			</div>
+			<div class="bm_c">   
+           
+			<!--{loop $postlist $postid $post}-->
+				<!--{if $postid && !$post['first']}-->
+				<div id="post_$post[pid]" class="xld xlda mbm">
+					<!--{subtemplate forum/viewthread_from_node_mountion}-->
+				</div>
+				<!--{/if}-->
+			<!--{/loop}-->
+			<div id="postlistreply" class="xld xlda mbm"><div id="post_new" class="viewthread_table" style="display: none;border: none;"></div></div>
+			<!--{if $multipage}-->
+			<div class="pgs cl">$multipage</div>
+			<!--{/if}-->
+			</div>	     		
+</div>
+
+
+<!--{if $_G['setting']['fastpost'] && $allowpostreply && !$_G['forum_thread']['archiveid'] && ($_G['forum']['status'] != 3 || $_G['isgroupuser'])}-->
+<div style="width:692px;">
+	<!--{subtemplate forum/viewthread_fastpostbrand}-->
+</div>
+<!--{/if}-->
+</div>
+
+<div class="postlistr">
+		<div class="brand_yyall_r">     	
+			<style type="text/css">
+			.brand_bbs_list{padding:2px 0; width:250px;height:250px;}			
+			.brand_bbs_list li{ overflow:hidden; vertical-align:top; padding:5px; height:54px;}
+			.brand_bbs_list .img{ width:54px; height:54px; float:left;}
+			.brand_bbs_list .img{ width:48px; height:48px; padding:2px; border:1px solid #ccc;}
+			.brand_bbs_list .text{ float:right; width:176px;overflow:hidden;}	
+			</style>            
+            <!--{eval $aaa=$_G['forum_option']['weidu']['value'];$bbb=$_G['forum_option']['jingdu']['value'];}-->		
+            <!--{if is_numeric($aaa)&&is_numeric($bbb)}-->   
+            <div class="brandr_1 brandr_box">
+                <div class="brandr_title"><!--{eval echo $_G['forum_option']['mingcheng']['value'];}-->地图</div>			
+                   <script src="http://maps.google.com/maps?file=api&v=2&oe=gb2312&key=ABQIAAAAtg6QvMwtoKS2CFfarylFOxQQYiUN9a_n7JBU02jJxQWE5DbnBhQRItiQOoP6l6yCzAh5w8h_NvsukA" type="text/javascript"></script>
+				   <div id="map" class="brand_bbs_list"></div>                  
+					<script type="text/javascript">
+                    //<![CDATA[
+                    window.onload = function(){
+                    var map = new GMap2(document.getElementById("map"));
+					//map.addControl(new GSmallMapControl());
+				    //map.addControl(new GMapTypeControl());	
+					center =new GLatLng($aaa, $bbb)	;
+					map.setCenter(center, 7);
+					var customUI = map.getDefaultUI();		
+					//customUI.maptypes.hybrid = false;
+					var marker = new GMarker(center);					
+					map.addOverlay(marker); 	
+					map.setUI(customUI);	
+                   // map.openInfoWindow(map.getCenter(),document.createTextNode("山峰名称"));
+                   //]]>
+					}
+                    </script>				
+         </div>        
+         <!--{/if}-->
+		 
+		 
+		 <!--{eval $weather =ForumOptionMountion::loadWatherInfo($bbb,$aaa);}-->         
+         <!--{if $weather}-->   
+         <div class="brandr_1 brandr_box">
+                <div class="brandr_title"><!--{eval echo $_G['forum_option']['mingcheng']['value'];}-->近期天气（仅供参考）</div>                        
+				<div class="brand_bbs_list" style="height:130px; padding:8px 12px;"><!--{eval echo $weather;}--></div>  						
+         </div>        
+         <!--{/if}-->    
+		  
+		<style type="text/css">
+        .brand_bbs_listss{padding:2px 0;}
+		.brand_bbs_listss li{ overflow:hidden; vertical-align:top; padding:5px 3px; height:50px; width:245px;}
+		.brand_bbs_listss .img{ width:70px; height:47px; float:left;}
+		.brand_bbs_listss .img{ width:68px; height:47px; padding:2px; border:1px solid #ccc;}
+		.brand_bbs_listss .text{ float:right; width:166px;height:54px;overflow:hidden;overflow:hidden;border-bottom:1px dashed #ccc; position:relative;}
+		.brand_bbs_listss .detail{width:36px;height:18px;line-height:18px;text-align:center;background-image:url(http://www.8264.com/static/image/common/1.png); overflow:hidden; color:#fff;display:block;position:absolute;top:35px;left:125px;}
+		.brand_bbs_listss .detail:hover{background-position:0 -18px; color:#000; text-decoration:none;}
+		</style>
+        <!--{eval $ralateArticles = $forumoption_mountion->getRalateArticles($keyword);}-->		
+        <!--{if $ralateArticles}-->                            
+		<div class="brandr_1 brandr_box">
+                <div class="brandr_title"><span style="float:right; padding:1px 6px -1px 2px;">	<form class="searchform" method="post" autocomplete="off" target="_blank" action="search.php?mod=portal">
+			<input type="hidden" name="formhash" value="{FORMHASH}" /><input type="hidden" name="srchtxt" value="<!--{eval echo $_G['forum_option']['guanjianzi']['value'];}-->"/><input type="hidden" name="searchsubmit" value="yes" />
+            <a href="portal.php?mod=portalcp&ac=article&catid=224" target="_blank">发布新文章</a> 
+            |
+            <input type="submit" value="更多" style="border:none; background:none; font-weight:bold; cursor:pointer;" />
+            </form></span><!--{eval echo $_G['forum_option']['mingcheng']['value'];}-->文章</div>
+                   <div class="brand_bbs_listss">
+								<ul>                                   
+									<!--{loop $ralateArticles $value}-->
+                                     <li>
+                                    <div class="img">
+                                    <a href="http://www.8264.com/{$value[aid]}.html" target="_blank" title="{$value[title]}">
+                                    <!--{if $value['pic']}-->
+									<img src="http://image.8264.com/portal/{$value[pic]}.thumb.jpg" style="width:68px;height:47px;" alt="" />
+									<!--{else}-->
+									<img src="http://www.8264.com/static/image/common/nopic.gif" style="width:68px;height:47px;" alt="" />
+									<!--{/if}--> 
+									</a>                                    
+                                    </div>  
+                                    <div class="text">                                                                       
+									<a href="http://www.8264.com/{$value[aid]}.html" target="_blank" title="{$value[title]}">{$value[title]}</a> <br/> 
+                                    <span style="float:left;font-size:12px; padding-left:2px; color:#ccc;"><!--{eval echo gmdate('m月d日 ',$value['dateline'])}--> </span>
+                                    <a href="http://www.8264.com/{$value[aid]}.html" target="_blank" class="detail">详细</a>
+                                    </div>
+                                    </li>
+                                    <!--{/loop}-->                                   
+								</ul>
+					</div>	
+            </div>
+		<!--{/if}-->        
+        
+			<style type="text/css">
+			.brand_bbs_lists{padding:2px 0;}
+			.brand_bbs_lists li{ overflow:hidden; vertical-align:top; padding:5px; height:54px; width:235px;}
+			.brand_bbs_lists .img{ width:54px; height:54px; float:left;}
+			.brand_bbs_lists .img{ width:48px; height:48px; padding:2px; border:1px solid #ccc;}
+			.brand_bbs_lists .text{ float:right; width:176px;overflow:hidden;}
+			</style>
+								
+			<!--{eval $ralateZb = $forumoption_mountion->getRalateZb($keyword);}-->
+			<!--{if $ralateZb}-->
+            <div class="brandr_1 brandr_box">
+            <div class="brandr_title"><span style="float:right; padding:1px 6px -1px 2px;"><form class="searchform" method="post" autocomplete="off" target="_blank" action="search.php?mod=forum">
+			<input type="hidden" name="formhash" value="{FORMHASH}" /><input type="hidden" name="srchtxt" value="<!--{eval echo $_G['forum_option']['mingcheng']['value'];}-->"/><input type="hidden" name="searchsubmit" value="yes" />
+            <a href="http://bbs.8264.com/forum-24-1.html" target="_blank">发布新帖</a>|
+            <input type="submit" value="更多" style="border:none; background:none; font-weight:bold; cursor:pointer;"/>
+            </form></span><!--{eval echo $_G['forum_option']['mingcheng']['value'];}-->相关帖子</div>
+				<div class="brand_bbs_lists">
+					<ul>
+						<!--{loop $ralateZb $value}-->
+						<li>
+							<div class="img">
+								$value[avatar]
+							</div>
+							<div class="text">
+								<a href="http://bbs.8264.com/thread-{$value[tid]}-1-1.html" target="_blank" title="{$value[subject]}">{$value[subject]}</a>
+							</div>
+						</li>
+						<!--{/loop}-->
+					</ul>
+				</div>
+            </div>
+			<!--{/if}-->
+			
+			<div class="brandr_1" style="display:none">
+                <div class="brandr_title1">品牌空间</div>
+                <div class="brandr_con">
+					<div class="block move-span">
+						<div class="content">
+							<div class="module cl xl xl1">
+								<ul>									
+									<li><a href="ghjhg" target="_blank" title="{$value[subject]}">dsfsfsa</a></li>									
+								</ul>
+							</div>
+						</div>
+					</div>
+                </div>
+            </div>			
+        </div>
+</div>
+
+
+</div>
+
+<form method="post" autocomplete="off" name="modactions" id="modactions">
+<input type="hidden" name="formhash" value="{FORMHASH}" />
+<input type="hidden" name="optgroup" />
+<input type="hidden" name="operation" />
+<input type="hidden" name="listextra" value="$_G[gp_extra]" />
+</form>
+
+
+<!--{hook/viewthread_middle}-->
+<!--[diy=diyfastposttop]--><div id="diyfastposttop" class="area"></div><!--[/diy]-->
+<!--{hook/viewthread_bottom}-->
+
+<!--{if $_G['setting']['visitedforums'] || $oldthreads}-->
+	<div id="visitedforums_menu" class="{if $oldthreads}visited_w {/if}p_pop blk cl" style="display: none;">
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<!--{if $_G['setting']['visitedforums']}-->
+					<td id="v_forums">
+						<h3 class="mbn pbn bbda xg1">{lang viewed_forums}</h3>
+						<ul>
+							$_G['setting']['visitedforums']
+						</ul>
+					</td>
+				<!--{/if}-->
+				<!--{if $oldthreads}-->
+					<td id="v_threads">
+						<h3 class="mbn pbn bbda xg1">{lang viewd_threads}</h3>
+						<ul class="xl">
+						<!--{loop $oldthreads $oldtid $oldsubject}-->
+							<li><a href="forum.php?mod=viewthread&tid=$oldtid">$oldsubject</a></li>
+						<!--{/loop}-->
+						</ul>
+					</td>
+				<!--{/if}-->
+			</tr>
+		</table>
+	</div>
+<!--{/if}-->
+
+<!--{if $_G['setting']['forumjump']}-->
+	<div class="p_pop" id="fjump_menu" style="display: none">
+	$forummenu
+	</div>
+<!--{/if}-->
+
+<!--{if $_G['setting']['connect']['allow'] && $page == 1}-->
+	<script type="text/javascript">
+		var connect_uin = '{$_G[member][conuin]}';
+		var connect_sid = '{$_G[setting][connectsiteid]}';
+		var connect_share_api = '{$_G[connect][share_api]}';
+		var connect_t_api = '{$_G[connect][t_api]}';
+		var connect_thread_info = {
+			thread_id: '{$_G[tid]}',
+			post_id: '{$_G[connect][first_post][pid]}',
+			s_id: '{$_G[setting][connectsiteid]}',
+			uin: '{$_G[member][conuin]}',
+			forum_id: '{$_G[fid]}',
+			author_id: '{$_G[connect][first_post][authorid]}',
+			author: '{$_G[connect][first_post][author]}',
+			access_token: '{$_G[cookie][client_token]}',
+			share_channel: '{$_G[connect][share_channel]}'
+		};
+
+		connect_autoshare = '{$_G[gp_connect_autoshare]}';
+		connect_isbind = '{$_G[member][conisbind]}';
+		if(connect_autoshare == 1 && connect_isbind) {
+			_attachEvent(window, 'load', function(){
+				connect_share(connect_share_api, connect_uin, connect_sid);
+			});
+		}
+	</script>
+	<div id="connect_share_unbind" style="display: none;">
+		<div class="c hm">
+			<div style="font-size:14px; margin:10px 0;">{lang connect_post_unbind}</div>
+			<div><a href="connect.php?mod=config&connect_autoshare=1" target="_blank"><img src="{IMGDIR}/qq_bind.gif" align="absmiddle" style="margin-top:5px;" /></a></div>
+		</div>
+		<input type="hidden" id="connect_thread_title" name="connect_thread_title" value="$_G[forum_thread][subject]" />
+	</div>
+<!--{/if}-->
+
+<!--{if !IS_ROBOT && $_G['setting']['threadmaxpages'] > 1}-->
+	<script type="text/javascript">document.onkeyup = function(e){keyPageScroll(e, <!--{if $page > 1}-->1<!--{else}-->0<!--{/if}-->, <!--{if $page < $_G['setting']['threadmaxpages'] && $page < $_G['page_next']}-->1<!--{else}-->0<!--{/if}-->, 'forum.php?mod=viewthread&tid=$_G[tid]<!--{if $_G[gp_authorid]}-->&authorid=$_G[gp_authorid]<!--{/if}-->', $page);}</script>
+<!--{/if}-->
+</div>
+<div class="wp mtn">
+	<!--[diy=diy3]--><div id="diy3" class="area"></div><!--[/diy]-->
+</div>
+<!--{subtemplate common/footer}-->

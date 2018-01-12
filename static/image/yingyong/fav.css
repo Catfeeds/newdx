@@ -1,0 +1,60 @@
+/* CSS Document */
+.px
+{
+	border-color: #CECECE;
+}
+
+body {
+    background: none;
+}
+.fav td
+{
+	font: 12px/1.5 Tahoma,Helvetica,SimSun,sans-serif,Hei;
+	color:#999;
+}
+span.admin_del {
+    background: url('guanbi.gif') no-repeat scroll 0 0 ;
+    color: #FFFFFF !important;
+    cursor: pointer;
+    font-size: 14px;
+    height: 15px;
+    line-height: 15px;
+	display:none;
+    margin-top: 0;
+    opacity: 0.5;
+    overflow: hidden;
+    text-align: center;
+    text-indent: 10px;
+    width: 15px;
+    z-index: 100;
+}
+span.admin_edit {
+    background: url('bianji.gif') no-repeat scroll 0 0 ;
+    color: #FFFFFF !important;
+    cursor: pointer;
+    font-size: 14px;
+    height: 15px;
+    line-height: 15px;
+	display:none;
+    margin-top: 0;
+    opacity: 0.5;
+    overflow: hidden;
+    text-align: center;
+    text-indent: 10px;
+    width: 15px;
+    z-index: 100;
+}
+.showem{
+	height:30px;
+    overflow: hidden;
+    width: 110px;
+}
+.fastlg
+{
+	width:290px;
+}
+
+.fastlg .ftid {
+    width: 61px;
+	*width: 67px;
+}

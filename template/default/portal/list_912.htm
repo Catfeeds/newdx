@@ -1,0 +1,166 @@
+<!--{template common/header2014}-->
+<!--[name]户外摄影师[/name]-->
+<meta http-equiv=Content-Type content="text/html; charset=GB2312">
+<meta name="keywords" content="户外摄影师">
+<meta name="description" content="户外摄影师">
+
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/portal/style911.css">
+<style id="diy_style" type="text/css"></style>
+<div class="warpten clearfix" style="display:none;">
+        <div class="mmtitle clearfix">
+		<h2 class="clearfix">
+			<a href="http://bbs.8264.com/thread-1353009-1-1.html" target="_blank" style="margin:10px 0px 0px 0px; float:right;">
+				<img src="http://static.8264.com/static/images/moban/kqmg/images/tj.png"/>
+			</a>
+			<div class="baiduShare" style="float:left;margin-top: 4px;">
+				<!-- Baidu Button BEGIN -->
+				<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare" style="float:left; padding-top:1px;">
+					<a class="bds_qzone" style="float:left;"></a>
+					<a class="bds_tsina" style="float:left;"></a>
+					<a class="bds_tqq" style="float:left;"></a>
+					<a class="bds_renren" style="float:left;"></a>
+					<span class="bds_more"></span>
+					<a style="float:left;" class="shareCount"></a>
+				</div>
+				<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=39357" ></script>
+				<script type="text/javascript" id="bdshell_js"></script>
+				<script type="text/javascript">
+                document.getElementById("bdshell_js").src = "http://news.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+                </script>
+				<!-- Baidu Button END -->
+			</div>
+		</h2>
+	</div>
+</div>
+
+<div class="w980">
+    <!--{if $page == 1}-->
+        
+	<div class="top2box clear_b">
+            <!--{if $count_array ==1}-->
+    	<div class="top2one">
+        	<div class="topbigimg"><a href="{$array_2[0]['url']}" target="_blank"><img src="{$array_2[0]['pic']}"></a></div>
+            <div class="gunum">
+            	<i></i>
+                <em>{$array_2[0]['commentnum']}</em>
+            </div>
+            <div class="topztbox">
+            	<div class="qinum">{$array_2[0]['pubmf']} {$array_2[0]['pubd']}th</div>
+                <div class="title20333">{$array_2[0]['title']}</div>
+                <div class="infoboxyh">
+                	<blockquote>{$array_2[0]['summary']}</blockquote>
+                </div>
+            </div>
+            <div class="gzboxgray clear_b">
+            	<div class="reveiwbox">
+                	<img src="http://www.8264.com/static/images/reveiwicon.png"/>
+                    <!--{loop $array_2[0]['arr']  $img}-->    
+                    <a href="$img[uid]" target="_blank">{$img['tx']}</a>
+                    <!--{/loop}-->
+                    <i class="slhicon"></i>
+                </div>
+                <div class="gznumbox">
+                	<b>{$array_2[0]['viewnum']}</b>
+                	人已关注
+                </div>
+            </div>
+        </div>
+            <!--{else}-->
+            <div class="top2one">
+        	<div class="topbigimg"><a href="{$array_2[0]['url']}" target="_blank"><img src="{$array_2[0]['pic']}"></a></div>
+            <div class="gunum">
+            	<i></i>
+                <em>{$array_2[0]['commentnum']}</em>
+            </div>
+            <div class="topztbox">
+            	<div class="qinum">{$array_2[0]['pubmf']} {$array_2[0]['pubd']}th</div>
+                <div class="title20333">{$array_2[0]['title']}</div>
+                <div class="infoboxyh">
+                	<blockquote>{$array_2[0]['summary']}</blockquote>
+                </div>
+            </div>
+            <div class="gzboxgray clear_b">
+            	<div class="reveiwbox">
+                	<img src="http://www.8264.com/static/images/reveiwicon.png"/>
+                    <!--{loop $array_2[0]['arr']  $img}-->    
+                    <a href="$img[uid]" target="_blank">{$img['tx']}</a>
+                    <!--{/loop}-->
+                    <i class="slhicon"></i>
+                </div>
+                <div class="gznumbox">
+                	<b>{$array_2[0]['viewnum']}</b>
+                	人已关注
+                </div>
+            </div>
+        </div>
+        <div class="top2one right">
+        	<div class="topbigimg"><a href="{$array_3[0]['url']}" target="_blank"><img src="{$array_3[0]['pic']}"></a></div>
+            <div class="gunum">
+            	<i></i>
+                <em>{$array_3[0]['commentnum']}</em>
+            </div>
+            <div class="topztbox">
+            	<div class="qinum">{$array_3[0]['pubmf']} {$array_3[0]['pubd']}th</div>
+                <div class="title20333">{$array_3[0]['title']}</div>
+                <div class="infoboxyh">
+                	<blockquote>{$array_3[0]['summary']}</blockquote>
+                </div>
+            </div>
+            <div class="gzboxgray clear_b">
+            	<div class="reveiwbox">
+                	<img src="http://www.8264.com/static/images/reveiwicon.png"/>
+                        <!--{loop $array_3[0]['arr']  $img}-->    
+                        <a href="$img[uid]" target="_blank">{$img['tx']}</a>
+                        <!--{/loop}-->
+                    <i class="slhicon"></i>
+                </div>
+                <div class="gznumbox">
+                	<b>{$array_3[0]['viewnum']}</b>
+                	人已关注
+                </div>
+            </div>
+        </div>
+            <!--{/if}-->
+    </div>
+    <!--{/if}-->
+    <div class="syslistbox clear_b">
+    	<div class="w1000">
+    	<!--单条开始-->
+        <!--{loop $array $item}-->
+    	<div class="sysbox">
+        	<div class="bigimg">
+            	<a href="{$item['url']}" target="_blank"><img src="{$item['pic']}"></a>
+            </div>
+            <div class="name_ll_dp_box">
+            	<a href="{$item['url']}" target="_blank">{$item['title']}</a>
+                <div class="lldpbox">
+                	<span class="llicon">{$item['viewnum']}</span>
+                    <span class="dpicon">{$item['commentnum']}</span>
+                </div>
+            </div>
+            <div class="qsbox60">
+            	<b>{$item['pubd']}</b>
+                <span>{$item['pubm']}</span>
+            </div>
+        </div>
+        <!--{/loop}-->
+        <!--单条结束-->
+        
+        </div>
+    </div>
+    {eval $count = DB::result_first("SELECT COUNT(*) FROM ".DB::table('portal_article_title')." WHERE catid IN (911) AND pic<>''");}
+	{eval $ppp = 100;}	{eval $multi = multi($count, $ppp, $page, 'portal.php?mod=list&catid=911');}
+    <!--{if $multi}-->
+	<div class="pageBox">{$multi}</div>
+	<!--{/if}-->
+</div>
+<div class="yl">
+	<div class="mmtitle" style="display:none;">
+		<h2>
+			<span>友情链接QQ3133252345</span>
+		</h2>
+	</div>
+</div>
+<!--{subtemplate common/float_guide}-->
+<!--{subtemplate common/ewm_l}-->
+<!--{subtemplate common/footer_8264_new}-->

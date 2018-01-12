@@ -1,0 +1,95 @@
+/* CSS Document */
+body {margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;text-align:center;font-size:12px;}
+ul{ list-style:none; margin:auto 0px;letter-spacing:0;word-spacing:0; padding:0;}
+a{text-decoration:none; color:#000000;}
+a:hover{text-decoration:underline;}
+.warpper{ width:980px; text-align:center; margin:auto;}
+/***************************头部导航部分**************************************/
+.nav{ width:980px; height:40px; background:#ffcc00;}
+/****************************中间部分************************************/
+.mid{ width:980px;}
+.flashall{ width:604px; height:377px; border:#9ad7ea solid 1px; float:left; background:url(/moban/tianjin/images/flashbg.jpg) bottom right no-repeat; padding-top:8px;}
+.flash{ width:586px; height:260px; border:#FF0000 1px solid; margin:auto;}
+.flashlist{ width:550px; float:right; margin:10px 0 0 0 ;}
+.flashlist li{ width:260px; height:25px; background:url(/moban/tianjin/images/arrow.jpg) left center no-repeat; float:left; text-align:left; padding-left:10px; line-height:25px; overflow:hidden;}
+.flashlist a{ color:#8d8d8d;}
+.newsall{ width:363px; height:384px; border:#9e9e9e solid 1px; float:right; background:url(/moban/tianjin/images/newsbg.jpg) top no-repeat;}
+.smallbg{ width:9px; height:50px; background:#FFcc00; float:left;}
+.newslist{ width:320px; margin:65px 0 0 10px; float:left;}
+.newslist li{ width:320px; height:25px; line-height:25px; overflow:hidden;}
+.newslist a{ color:#8d8d8d;}
+.newad{ width:350px; height:107px; margin-top:4px;}
+/*********************************户外店铺***************************************/
+.shop{ width:604px; border:#9ad7ea solid 1px; float:left; background:url(/moban/tianjin/images/shop.jpg) no-repeat top left; margin-top:10px;}
+.shopimgwenwarp{ width:364px; margin:75px 0 0 8px; float:left;}
+.shopwarp{ width:364px; height:100px; float:left; margin-bottom:8px;}
+.shopimg{ width:128px; height:94px; float:left; border:#CCCCCC solid 1px; padding-top:4px;}
+.shopconwarp{ width:225px; float:left; margin-left:8px;}
+.shopcontitle{ width:225px; height:25px; line-height:25px; overflow:hidden; font-size:14px; color:#3c8404; text-align:left; font-weight:bold;}
+.shopconwen{ width:225px; height:55px; line-height:1.5; text-align:left;}
+.shopconmore{ width:225px; height:20px; text-align:right; color:#fb5c00;}
+.shopconmore a{ color:#fb5c00; font-size:12px;}
+.shopright{ width:195px; height:365px; float:right; margin-right:4px;}
+.shoprightaccoutertitle{ width:185px; height:18px; border-bottom:#949494 solid 1px; color:#fd5904; font-size:14px; font-weight:bold; padding-top:20px; text-align:right; padding-right:10px;}
+.shoprightaccouter{ width:195px; height:225px; background:#f3f0e7; margin-top:8px;}
+.shoprightaccouter li{ width:167px; height:25px; line-height:25px; overflow:hidden; margin:auto;}
+.shoprightad{ width:195px; height:120px; background:#b7daed; margin-top:8px; padding-top:4px;}
+.shopborder{ width:586px;border-top:solid 7px #b7daed ;float:right; margin-right:4px;}
+/********************************论坛*********************************************/
+.bbs{ width:365px;background:#e0f7ff; float:right; margin-top:10px;}
+.bbstitle{ width:365px; height:41px; background:url(/moban/tianjin/images/bbsbg.jpg) repeat-x;}
+.bbstitleimg{ width:52px; height:35px; background:url(/moban/tianjin/images/bbsicon.jpg) no-repeat; float:left; margin-top:6px;}
+.bbstitlecon{ width:200px; height:41px; line-height:41px; overflow:hidden; float:left; color:#FFFFFF; font-size:14px; font-weight:bold; text-align:left; padding-left:7px;}
+.bbstitlemore{ width:90px; height:41px; line-height:41px; overflow:hidden; float:right; color:#FFFFFF;}
+.bbstitlemore a{ color:#FFFFFF; font-size:14px;}
+.bbslist{ width:310px; margin:auto;}
+.bbslist li{ width:310px; height:25px; line-height:25px; overflow:hidden; text-align:left;}
+.bbssearch{ width:365px; height:112px!important; height:130px; background:#000000 url(/moban/tianjin/images/bbssearch.jpg) top left no-repeat; margin-top:5px;}
+/******************************************户外攻略******************************/
+.manual{ width:604px; border:#9ad7ea solid 1px; float:left; background:url(/moban/tianjin/images/manual.jpg) no-repeat top left; margin-top:10px; height:400px;}
+.manualleft{width:195px; float:left; margin:68px 0 0 8px; background:#f3f1e5;}
+.manuallefttitlewarp{ width:195px; padding-top:10px;}
+.manuallefttitlewen{ width:110px; text-align:left; padding-left:10px; float:left; font-size:14px; color:#79890d; font-weight:bold;}
+.manuallefttitlemore{ width:50px;text-align:left; color:#79890d; float:right;}
+.manuallefttitlemore a{ color:#79890d; font-size:14px;}
+.manualleftimg{ width:180px; margin:auto; margin-top:5px!important;}
+.manualleftcontent{ width:195px;}
+.manualleftcontent li{ width:180px; height:24px; line-height:24px; overflow:hidden; text-align:left; padding-left:15px;}
+.manualright{width:364px; margin:0 0 0 8px; float:right;}
+.manualrighttitle{ width:219px; float:right; border-bottom:#949494 solid 1px; color:#d37ae8;padding-top:21px!important;padding-top:22px; font-size:14px; font-weight:bold; text-align:right; padding-right:10px; margin-right:5px!important;}
+.manualrightimgwenwarp{ width:364px; float:right; margin-right:5px; margin-top:30px;}
+.manualrightimgwenall{ width:364px; float:right; margin-bottom: 10px;}
+.manualrightimg{width:128px; height:94px; float:left; border:#CCCCCC solid 1px; padding-top:4px;}
+.manualrightconwarp{ width:225px; float:left; margin-left:8px;}
+.manualrightwenttitle{width:225px; height:25px; line-height:25px; overflow:hidden; font-size:14px; color:#248bda; text-align:left; font-weight:bold;}
+.manualrightwencon{width:225px; height:55px; line-height:1.5; text-align:left;}
+.manualrightwenmore{ width:225px; height:20px; text-align:right; color:#fb5c00;}
+.manualrightwenmore a{ color:#fb5c00; font-size:12px;}
+/************************户外活动*************************************/
+.activity{ width:365px; float:right; margin-top:10px; background:#cfdc50; height:402px;}
+.activitytitle{ width:365px;height:40px; background:url(/moban/tianjin/images/businessbg.jpg) repeat-x;}
+.activitytitleimg{ width:50px; background:url(../images/businessicon.jpg) no-repeat; margin-left:5px; float:left; height:40px;}
+.activitytitlewen{ width:300px; height:40px; font-size:14px; font-weight:bold; float:left; text-align:left; line-height:40px; overflow:hidden; padding-left:5px;}
+.activitycon{ width:365px;}
+.activitylist{ width:235px; float:left; margin-left:8px;}
+.activitylist li{ width:235px; height:25px; line-height:25px; overflow:hidden; text-align:left;}
+.activityad{ width:100px; float:right; margin-right:5px;}
+/*****************************户外商户**************************/
+.company{width:604px; border:#9ad7ea solid 1px; float:left; background:url(/moban/tianjin/images/company.jpg) no-repeat top left; margin-top:10px;}
+.companytitle{ float:right; width:250px; border-bottom:#949494 solid 1px; margin-right:5px;  padding-top:23px!important; padding-top:24px;}
+.companyimgwarp{ width:604px; margin-top:70px!important;margin-top:30px;}
+.companyimgall{text-align:center; border: #CCCCCC 1px solid; margin-bottom:10px;}
+.companyimg{ padding:2px 2px 2px 2px;}
+.companywen{ height:25px; line-height:25px; overflow:hidden; text-align:center; text-overflow:ellipsis; text-overflow:ellipsis; white-space:nowrap;}
+/*********************************品牌**********************************/
+.brandwarp{width:365px; float:right; margin-top:10px; background:#ff6600;}
+.brandtitle{ width:365px; height:40px; background:url(/moban/tianjin/images/brandbg.jpg) repeat-x;}
+.brandimg{ width:49px; height:40px; background:url(/moban/tianjin/images/brand.jpg) no-repeat top left; margin-left:5px; float:left;}
+.brandwen{ width:200px; height:40px; color:#df7a04; font-size:14px; font-weight:bold; text-align:left; padding-left:5px; float:left; line-height:40px; overflow:hidden;}
+.brandmore{ width:50px; height:40px; float:right; text-align:right; padding-right:5px; line-height:40px; overflow:hidden;}
+.brandlogo{ width:110px; float:left; margin:5px 4px 0px 4px;}
+.brandlogoimg{ width:100px; height:50px; border:#CCCCCC 4px solid;}
+.brandlogowen{ width:100px; height:20px; line-height:20px; overflow:hidden;}
+.web{ width:348px; margin-left:8px; float:left;}
+.web li{ width:348px; height:25px; overflow:hidden; line-height:25px; text-align:left; color:#FFFFFF;}
+.web a{ color:#FFFFFF;}

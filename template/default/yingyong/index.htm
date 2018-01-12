@@ -1,0 +1,69 @@
+<!--{subtemplate common/header_fav}-->
+       <div id="addurl" class="bm_c"  style="display:block; height:270px;">
+       <!--{if $_G['uid']}-->    
+      <div id="daohang_guest" class="cl" style="height:220px;">
+        <table cellpadding="0" cellspacing="0" align="center">
+        <tr style="border-bottom:1px solid #E6E6E6">
+        <!--{loop $daohang $key $value}-->
+   			 <td height="30" width="150" align="left" class="showem" id="edit_$value[id]" onmousemove="showedit('edit_$value[id]',1)" onmouseout="showedit('edit_$value[id]',0)">
+             <div id="daohangtext" class="showem" style="width:155px;">
+                 <a href="$value[href]" title="$value[name]" class="xi2" style="font-size:14px;line-height:24px;" target="_blank"> <!--{if $value[color]}--><font class="showem" color="$value[color]">$value[name]</font><!--{else}-->$value[name]<!--{/if}--></a>
+                 <span onclick="$('return_daohang').innerHTML='';changecon(this,'$value[id]','$value[name]','$value[href]','$value[color]');" class="admin_edit" title="编辑">ddff</span>
+                  <span onclick="showWindow('daohang_del_$value[id]','fav.php?mod=ajax&id=$value[id]&op=del_fav')" class="admin_del" title="删除">dddd</span>
+                 
+             </div>
+             </td>
+        	 <!--{if ($key+1)%5==0}--></tr><tr style="border-bottom:1px solid #E6E6E6"> <!--{/if}-->
+         <!--{/loop}-->
+         </tr>
+         </table>
+         </div>
+          <div>
+            <div id="return_daohang" style="color:red;"></div>
+            
+            <form id="form_daohang_add" name="form_daohang_edit" method="post" action="fav.php">
+              <table cellpadding="0" cellspacing="0" width="100%" class="fav" height="50" align="center">
+                <tr><td width="20"></td><td width="50">名称：</td><td><input style="width:130px;" id="name" type="text" name="title" class="px" onkeydown="ctrlEnter(event, 'add');" onkeyup="strLenCalcnew(this, 'maxlimit',14)"  size="30" value="" /></td>
+                <td width="50">地址：</td><td><input style="width:180px;" id="href" type="text" name="href" class="px" size="30" value="http://" onfocus="if(this.value=='http://'){this.value='';}" onblur="if(this.value==''){this.value='http://'}" /></td>
+                <td width="50">颜色：</td><td><input style="width:70px;" id="color" type="text" name="color" class="px" size="20" value="" onchange="$('color_btn').style.backgroundColor=this.value" />&nbsp;<button type="button" class="setColor" id="color_btn" style="background-color:#000;width:50px;height:26px;" onclick="intocolor('selcolor', this, 'color');setdisplay('selcolor');">　</button> <div id="selcolor" style="width:auto; position:absolute; top:50px;right:50px;width:251px;z-index:65534"></div></td>
+                <td><button type="button" onclick="validate1($('form_daohang_add'));" class="pn pnc" id="daohang_editsubmit" ><em id="daohangname">增 加</em></button></td></tr>
+                </table>
+                <input type="hidden" name="id" id="id" value='' />
+                <input type="hidden" name="daohang_editsubmit" value="true" />
+                <input type="hidden" name="handlekey" value="daohang_result" />
+                <input type="hidden" name="formhash" value="{FORMHASH}" />
+                </form>
+                <script type="text/javascript">
+		
+					function validate1(obj) {
+					
+					var count = {$count};
+					if (count>=35) {
+						
+						showDialog("不能超过35！！！");
+						return false;
+					}
+					else
+					{
+						obj.submit();
+						return true;
+					}}
+				</script> 
+            </div>
+  
+       <!--{else}-->   
+      <table height="100%" width="100%">    
+           <tr><td align="center" style="font-size:14px; padding-top:50px;">随时随地使用您的个人导航，不再担心收藏网址丢失！</td></tr>
+           <tr>
+                <td align="center" valign="middle">
+                <!--{template member/login_simple1}-->
+                </td>
+            </tr>
+            <tr>
+            	<td align="center" style="font-size:14px; padding-bottom:50px;">还没有注册？  <a style="cursor:pointer; color:#336699;" href="member.php?mod=register" target="_blank">立即注册</a></td>
+            </tr>
+       	</table>
+       <!--{/if}-->
+    </div>
+</body>
+</html>

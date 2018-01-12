@@ -1,0 +1,37 @@
+<!--{template home/space_notice_new_header}-->
+<div class="form-box profile weidumsg" id="notic_p">
+	<div class="info-hd">
+		<span class="notice_type"></span>
+		<span class="arrow" style="display:none;"></span>
+		{if $notify_type == 'invitation' && $datalist}<!--<i class="deleteall">删除当前页</i>-->{/if}
+		{if  $notify_type == 'smessage'}<a href="home.php?mod=spacecp&ac=pm" class="msgicon">发短消息</a>{/if}
+	</div>
+	<div class="info-bd">
+		<ul class="notelist">
+			{if $datalist}
+				{if ! $notify_type || $notify_type == 'notification' }
+					{eval echo ChildView('home/space_sub_notice', array('notifications' => $datalist, 'friends_list' => $friends_list));}
+				{elseif $notify_type == 'invitation'}
+					{eval echo ChildView('home/space_sub_invite', array('invitations' => $datalist, 'currPage' => $page));}
+				{elseif $notify_type == 'friend'}
+					{eval echo ChildView('home/space_sub_friend', array('friends' => $datalist));}
+				{elseif $notify_type == 'greeting'}
+					{eval echo ChildView('home/space_sub_poke', array('greetings' => $datalist, 'friends_list' => $friends_list, 'icons' => $icons));}
+				{elseif $notify_type == 'smessage'}
+					{eval echo ChildView('home/space_sub_msg', array('messages' => $datalist));}
+				{/if}
+			{else}
+			<li id="more_tips_new" style="text-align:center;">
+				<div style="font-size:14px; text-align:center; padding:10px 0px;">
+				<img src="http://static.8264.com/static/images/no_new_notice.png"/>
+				<span style="padding-top:10px; display:block;"><p>您当前没有 <em></em>可以显示</p></span>
+				</div>
+			</li>
+			{/if}
+			
+		</ul>
+	</div>
+</div>
+<!--{subtemplate common/ewm_r}-->
+{if $multi }<span class="mulitpage">{$multi}</span>{/if}
+<!--{template home/space_notice_new_footer}-->

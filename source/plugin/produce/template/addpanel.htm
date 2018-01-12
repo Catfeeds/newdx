@@ -1,0 +1,80 @@
+{subtemplate common/header}
+    <div class="tm_c" fwin="mods" style="width:420px;">
+       <h3 class="flb"><em fwin="mods">说说你挖到的装备</em>
+				<span><a title="关闭" onclick="hideWindow('addprice')" class="flbc" href="javascript:;">关闭</a></span></h3>        
+				<form onsubmit="return false;" action="" autocomplete="off" method="post" fwin="mods" id="product_select_form">
+				<div class="c">
+					<div class="tplw">						
+						价&nbsp;&nbsp;&nbsp;格：<input id="price" style="font-size:12px;"class="px" name="price" type="text" size="25"/>￥<br><br>
+						网&nbsp;&nbsp;&nbsp;址：<input id="url" style="font-size:12px;"class="px" name="url" type="text" size="60"/><br><br>				
+						<label style="vertical-align:top;">点&nbsp;&nbsp;&nbsp;评：</label><textarea id="add" class="px" style="height:60px; font-size:12px;" name="comment" rows="3" cols="60"></textarea><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#a9a8a8">(说说您的使用感受和评价)</font>
+											   
+					</div>
+					<p class="err" style="color:#f00; display:none;">输入的产品价格不正确！</p>
+					<p class="error" style="color:#f00; display:none;">请把信息填写完整！(价格、网址必填)</p>
+					<p class="errors" style="color:#f00; display:none;">很遗憾，您所添加的地址不在我们的收录范围内！禁止添加！</p>
+				</div>			
+				<p class="o pns" style="text-align:center;">
+				<button type="button" id="btn" value="提交" class="pn pnc" name="modsubmit" fwin="mods" style="margin:0;" onclick="javascript:submit_product_select_form();return false;"><span>提交</span></button>
+				</p>
+				</form>
+			<script type="text/javascript">
+			 function submit_product_select_form() {
+				
+				var price=trim(jQuery("#price").val());	
+				var url =trim(jQuery("#url").val());	
+					
+				if(price==""||price==null||isNaN(price)||price<0){						
+					jQuery('.err').show();
+					jQuery("#price").select();
+					jQuery("#price").focus();
+					return false;
+				}			
+				if (url==null||url==""){
+					 jQuery('.err').hide();
+					 jQuery('.error').show();
+					 jQuery("#url").select();
+					 jQuery("#url").focus();
+					 return false;	
+				}				
+				jQuery('.err').hide();
+				jQuery('.error').hide();				
+				params = jQuery('#product_select_form').serialize();			
+				jQuery.ajax({				
+					type: 'post',
+					url: '/plugin.php?id=produce:ajax_addprice&uid={$uid}&tid={$tid}',
+					data: params,
+					success: function(html){
+					    if(html=='error'){
+						   jQuery('.errors').show();
+						   jQuery('#btn').attr("disabled","disabled");
+						}else{
+						   hideWindow('addprice');
+						   window.location.reload();
+						}						
+					}
+				});
+			}
+			
+			jQuery("#url").blur(function(){
+			   jQuery('#btn').attr("disabled","disabled");
+			   var urls =jQuery("#url").val();
+			   jQuery.ajax({				
+					type: 'get',					
+					url: '/plugin.php?id=produce:ajax_checkpriceurl',
+					data: {'url':urls},
+					success: function(data){					  
+						if(data=='used'){
+						   jQuery('.errors').show();
+						   jQuery('#btn').attr("disabled","disabled");
+						}else{
+						   jQuery('.errors').hide();
+						   jQuery('#btn').removeAttr("disabled");
+						}						
+					}
+				});
+			});		
+			
+			</script>
+    </div>
+{subtemplate common/footer}

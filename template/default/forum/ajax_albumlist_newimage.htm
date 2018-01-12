@@ -1,0 +1,27 @@
+<!--{template common/header_ajax}-->
+<!--{eval $i = 0;}-->
+<table cellspacing="2" cellpadding="2" class="imgl"><tr>
+<!--{loop $photolist $photo}-->
+	<!--{eval $i++;}-->
+	<td valign="bottom" width="50%">
+		<a href="javascript:;"><img src="$photo[thumburl]" title="$photo[filename]" onclick="ajaxalbumlist('$photo[url]', <!--{echo strlen($photo[url]) + 11}-->)" onload="thumbImg(this, 1)" width="90" _width="90" _height="90"></a>
+	</td>
+	<!--{if $i % 2 == 0 && isset($photolist[$i])}--></tr><tr><!--{/if}-->
+<!--{/loop}-->
+<!--{if ($imgpad = $i % 2) > 0}--><!--{echo str_repeat('<td width="50%"></td>', 2 - $imgpad);}--><!--{/if}-->
+</tr></table>
+<div class="pgs cl">$multi</div>
+<!--{if $multi}-->
+<script type="text/javascript">
+if(document.getElementById('e_fullswitcher').innerHTML!='»Ö¸´'){
+        editorsize('+',500);
+}
+</script>
+<!--{else}-->
+<script type="text/javascript">
+if(document.getElementById('e_fullswitcher').innerHTML!='»Ö¸´'){
+        editorsize('-');
+}
+</script>
+<!--{/if}-->
+<!--{template common/footer_ajax}-->

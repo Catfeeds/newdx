@@ -1,0 +1,320 @@
+<form method="post" autocomplete="off" name="moderate" id="moderate" action="forum.php?mod=topicadmin&action=moderate&fid=$_G[fid]<!--{if $_G[gp_typeid]}-->&typeid={$_G[gp_typeid]}{/if}&infloat=yes&nopost=yes">
+	<input type="hidden" name="formhash" value="{FORMHASH}" />
+	<input type="hidden" name="listextra" value="$extra" />
+
+<div class="layout n_m_s_t" id="threadlist" style="position: relative;">
+	<!--{if ($_G['forum']['threadtypes'] && $_G['forum']['threadtypes']['listable']) || $_G['forum']['threadsorts']}-->
+		<div class="layout forum_category">
+			<a href="{if $dom}http://$dom.8264.com{else}forum.php?mod=forumdisplay&fid=$_G[fid]{if $_G['gp_archiveid']}&archiveid={$_G['gp_archiveid']}{/if}{/if}"{if !$_G['gp_typeid'] && !$_G['gp_sortid']} class="zhong"{/if}>{lang forum_viewall}</a>
+			<!--{if $_G['forum']['threadtypes']}-->
+				<!--{loop $_G['forum']['threadtypes']['types'] $id $name}-->
+				{if $id == $thistypefatherid}<h1><a href="{$_G[forum][threadtypes][url][$id]}" class="zhong">
+					<!--{if $_G[forum][threadtypes][icons][$id] && $_G['forum']['threadtypes']['prefix'] == 2}--><img class="vm" src="$_G[forum][threadtypes][icons][$id]" alt="" /><!--{/if}-->$name
+				</a></h1>
+				{else}
+				<a href="{$_G[forum][threadtypes][url][$id]}">
+					<!--{if $_G[forum][threadtypes][icons][$id] && $_G['forum']['threadtypes']['prefix'] == 2}--><img class="vm" src="$_G[forum][threadtypes][icons][$id]" alt="" /><!--{/if}-->$name
+				</a>
+				{/if}
+				<!--{/loop}-->
+			<!--{/if}-->
+            <a href="http://www.8264.com/xuexiao/" target="_blank" style="background-color: #ff3144;color: #fff;">户外学校</a>
+		</div>
+		<!--{if $_G['forum']['threadsorts']}-->
+		<div class="layout forum_category" style="border-top: none; padding: 0px 0px 10px 0px; margin-top: -6px;">
+			<!--{loop $_G['forum']['threadsorts']['types'] $id $name}-->
+			<a href="forum.php?mod=forumdisplay&fid=$_G[fid]&filter=sortid&sortid=$id$forumdisplayadd[sortid]{if $_G['gp_archiveid']}&archiveid={$_G['gp_archiveid']}{/if}"{if $_G['gp_sortid'] == $id} class="zhong"{/if}>$name</a>
+			<!--{/loop}-->
+		</div>
+		<!--{/if}-->
+
+		<!--{if $_G['forum']['threadtypes']['childtypes'][$thistypefatherid]}-->
+		<div class="layout forum_category_chird">
+			<a href="{$_G[forum][threadtypes][url][$_G[forum][threadtypes][fatherid][$_G[gp_typeid]]]}"{if $_G['gp_typeid'] == $thistypefatherid && !$_G['gp_sortid']} class="zhong"{/if}>{lang forum_viewall}</a>
+			<!--{loop $_G['forum']['threadtypes']['childtypes'][$thistypefatherid] $id $name}-->
+			<a href="{$_G[forum][threadtypes][url][$id]}"{if $_G['gp_typeid'] == $id} class="zhong" {/if}><!--{if $_G[forum][threadtypes][icons][$id] && $_G['forum']['threadtypes']['prefix'] == 2}--><img class="vm" src="$_G[forum][threadtypes][icons][$id]" alt="" /> <!--{/if}-->$name</a>
+			<!--{/loop}-->
+		</div>
+		<!--{/if}-->
+	<!--{/if}-->
+
+	<!--{if $_G['forum_threadcount'] && $_G['forum_toplist']}-->
+	<div class="list_forum_top_fg"><span></span></div>
+
+	<table width="0" border="0" cellspacing="0" cellpadding="0" class="bbslistbox">
+		<!--{loop $_G['forum_toplist'] $key $thread}-->
+		<!--{subtemplate forum/forumdisplay_thread}-->
+		<!--{/loop}-->
+	</table>
+
+	<div class="t_ad">
+    </div>
+	<!--{/if}-->
+
+	<div class="layout mt10" style="margin-bottom:10px; position:relative; display:none;">
+    <!-- 广告位：戈尔先锋营 397-->
+		<script type='text/javascript'><!--//<![CDATA[
+           var m3_u = (location.protocol=='https:'?'https://ads.8264.com/www/delivery/ajs.php':'http://ads.8264.com/www/delivery/ajs.php');
+           var m3_r = Math.floor(Math.random()*99999999999);
+           if (!document.MAX_used) document.MAX_used = ',';
+           document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+           document.write ("?zoneid=38");
+           document.write ('&amp;cb=' + m3_r);
+           if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+           document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+           document.write ("&amp;loc=" + escape(window.location));
+           if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+           if (document.context) document.write ("&context=" + escape(document.context));
+           if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+           document.write ("'><\/scr"+"ipt>");
+        //]]>--></script>
+		<span style="width:26px; height:13px; position:absolute; bottom:0px; right:0px; font-size:0px; line-height:0px;"><img src="http://static.8264.com/static/images/common/ad_logo_update_IAB.gif"></span>
+    </div>
+	<!--{if $quicksearchlist && !$_G['gp_archiveid']}-->
+	<!--{subtemplate forum/search_sortoption}-->
+	<!--{/if}-->
+
+	<div class=" layout forum_screeningwarpten">
+		<div class="forum_screening_l">
+			<a href="http://bbs.8264.com/forum-{if $forumOption->isDigested($_G['fid'])}forumdisplay-fid-{$_G['fid']}-all{else}{$_G['fid']}{/if}-1.html"{if  !in_array($filter,array('digest','heat','recommend','specialtype')) && !$_G['gp_digest'] && !$_G['gp_specialtype']} class="zhong"{/if}>全部</a>
+			<a href="http://bbs.8264.com/forum-forumdisplay-fid-{$_G['fid']}-filter-digest-digest-1.html"{if $filter == 'digest' || $_G['gp_digest']} class="zhong"{/if}>精华</a>
+			<a href="http://bbs.8264.com/forum-forumdisplay-fid-{$_G['fid']}-filter-heat-orderby-heats.html"{if $filter == 'heat'} class="zhong"{/if}>热门</a>
+
+			<!--{if (in_array($_G['fid'],array(158,101,166,113,110,112,108,176,117,104,106,109,111,115,170,143,177,103,165,107,48,102,100,139,171,105,147,164,114,159,116)))}-->
+				<a href="http://bbs.8264.com/forum-forumdisplay-fid-{$_G['fid']}-filter-specialtype-specialtype-activity.html"{if $filter == 'specialtype' || $_G['gp_specialtype']} class="zhong"{/if}>最新活动</a>
+			<!--{/if}-->
+
+			<!--{if $_G['fid'] == 24 }--><a href="http://bbs.8264.com/forum-forumdisplay-fid-5-filter-typeid-typeid-556.html" target="_blank">登山活动</a><!--{/if}-->
+			<!--{if $_G['fid'] == 69 }--><a href="http://bbs.8264.com/forum-161-1.html" target="_blank">出国约伴</a><!--{/if}-->
+
+			{if $forumOption->isDigested($_G['fid'])}
+				{if $_G['gp_all']==1}
+				<a href="http://bbs.8264.com/forum-forumdisplay-fid-{$_G['fid']}.html">精品推荐</a>
+				{/if}
+			{/if}
+
+			<!--{if !empty($_G[setting][recommendthread][status])}-->
+			<a href="forum.php?mod=forumdisplay&fid=$_G[fid]&filter=recommend&orderby=recommends&recommend=1$forumdisplayadd[recommend]{if $_G['gp_archiveid']}&archiveid={$_G['gp_archiveid']}{/if}"{if $filter == 'recommend'} class="zhong"{/if}>{lang order_recommends}</a>
+			<!--{/if}-->
+
+			<!--{if $subexists && $_G['page'] == 1}-->
+				<!--{eval $subCount = count($sublist);$i=1;}-->
+				<!--{loop $sublist $sub}-->
+					<!--{eval $forumurl = !empty($sub['domain']) && !empty($_G['setting']['domain']['root']['forum']) ? 'http://'.$sub['domain'].'.'.$_G['setting']['domain']['root']['forum'] : 'forum.php?mod=forumdisplay&fid='.$sub['fid'];}-->
+					<a href="$forumurl"{if !empty($sub[redirect])} target="_blank"{/if}><span>{$sub['name']}</span><span>({$sub['todayposts']})</span><span class="zbk"></span></a>
+				<!--{eval $i++;}-->
+				<!--{/loop}-->
+			<!--{/if}-->
+		</div>
+		<div class="forum_screening_r">
+			<a href="forum.php?mod=forumdisplay&fid=$_G[fid]&filter=lastpost&orderby=lastpost$forumdisplayadd[lastpost]{if $_G['gp_archiveid']}&archiveid={$_G['gp_archiveid']}{/if}" class="reply{if $_G['gp_orderby'] == 'lastpost'} zhong{/if}"></a>
+			<a href="forum.php?mod=forumdisplay&fid=$_G[fid]&filter=author&orderby=dateline$forumdisplayadd[author]{if $_G['gp_archiveid']}&archiveid={$_G['gp_archiveid']}{/if}" class="publish{if $_G['gp_orderby'] == 'dateline'} zhong{/if}"></a>
+		</div>
+	</div>
+
+	<!--{if $_G['forum_threadcount'] && $_G['forum_middlelist']}-->
+	<table width="0" border="0" cellspacing="0" cellpadding="0" class="bbslistbox">
+		<tr>
+			<th colspan="<!--{if !$_G['gp_archiveid'] && $_G['forum']['ismoderator']==1}-->3<!--{else}-->2<!--{/if}-->" class="t_i26">{$_G['forum']['name']}论坛 本版置顶</th>
+			<th>作者/发布时间</th>
+			<th>回复/查看</th>
+			<th>最后回复</th>
+		</tr>
+		<!--{loop $_G['forum_middlelist'] $key $thread}-->
+		<!--{subtemplate forum/forumdisplay_thread}-->
+		<!--{/loop}-->
+	</table>
+	<!--{/if}-->
+	<!-- 本版二维码 -->
+	<style type="text/css">
+		.blk-adv{float:right;margin-right:12px;position:relative; display:none;}
+		.blk-adv a{padding-left:15px;background:url(http://static.8264.com/static/images/forum/qr.png) no-repeat;}
+		.code-content{position:absolute;display:none;padding:12px 12px 8px;width:118px;background-color:#4e5b64;right:-12px;z-index: 999;text-indent:0;}
+		.code-content p{font-size:12px;color:#fff;line-height:16px;text-align:center;padding-top:8px;}
+	</style>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".blk-adv").hover(function() {
+				$(".code-content", this).show();
+			}, function() {
+				$(".code-content", this).hide();
+			});
+		});
+	</script>
+	<!-- //本版二维码 -->
+
+
+
+    <!--{if $_G['fid'] == 24 }-->
+    <div class="layout mt10" style="margin-bottom:10px; position:relative; display:none;">
+    <!--{ad/custom_463}-->
+    <span style="width:26px; height:13px; position:absolute; bottom:0px; right:0px; font-size:0px; line-height:0px;"><img src="http://static.8264.com/static/images/common/ad_logo_update_IAB.gif"></span>
+    </div>
+    <!--{/if}-->
+
+
+    <!--{if $_G['fid'] == 135 }-->
+    <div class="layout mt10" style="margin-bottom:10px; position:relative; display:none;">
+    <!--{ad/custom_464}-->
+    <span style="width:26px; height:13px; position:absolute; bottom:0px; right:0px; font-size:0px; line-height:0px;"><img src="http://static.8264.com/static/images/common/ad_logo_update_IAB.gif"></span>
+    </div>
+    <!--{/if}-->
+
+
+
+
+	<!--{if $_G['forum_threadcount'] && $_G['forum_mainlist']}-->
+	<table width="0" border="0" cellspacing="0" cellpadding="0" class="bbslistbox">
+		<tr>
+			<!--{if $_G['forum_threadcount'] && $_G['forum_middlelist']}-->
+			<th colspan="<!--{if !$_G['gp_archiveid'] && $_G['forum']['ismoderator']==1}-->6<!--{else}-->5<!--{/if}-->" class="t_i26">{$_G['forum']['name']}论坛 帖子标题
+			<!-- 本版二维码 -->
+				<!--{if in_array($_G[fid], array('24', '88', '179', '186', '447', '495'))}-->
+				<div class="blk-adv">
+					<a href="javascript(0);">{$_G['forum']['name']}版微信公众号</a>
+					<div class="code-content" style="display: none;">
+						<img src="http://static.8264.com/static/images/erweima/{$_G[fid]}.jpg" alt="" width="118">
+						<p>打开微信扫一扫，精彩内容天天推</p>
+					</div>
+				</div>
+				<!--{/if}-->
+			<!-- //本版二维码 -->
+			</th>
+			<!--{else}-->
+			<th colspan="<!--{if !$_G['gp_archiveid'] && $_G['forum']['ismoderator']==1}-->3<!--{else}-->2<!--{/if}-->" class="t_i26">{$_G['forum']['name']}论坛 帖子标题</th>
+			<th>作者/发布时间</th>
+			<th>回复/查看</th>
+			<th>最后回复</th>
+			<!--{/if}-->
+		</tr>
+		<!--{loop $_G['forum_mainlist'] $key $thread}-->
+		<!--{ad/threadlist}-->
+		<!--{subtemplate forum/forumdisplay_thread}-->
+		<!--{/loop}-->
+	</table>
+	<!--{/if}-->
+	<!--{if $_G['forum']['ismoderator'] && $_G['forum_threadcount']}--><!--{template forum/topicadmin_modlayer}--><!--{/if}-->
+
+</div>
+
+</form>
+
+
+<div class="layout ptb16">
+	<div class="forum_post">
+		<!--{if $_G['group']['allowpost'] && ($_G['group']['allowposttrade'] || $_G['group']['allowpostpoll'] || $_G['group']['allowpostreward'] || $_G['group']['allowpostactivity'] || $_G['group']['allowpostdebate'] || $_G['setting']['threadplugins'] || $_G['forum']['threadsorts'])}-->
+		<span class="forum_post_button" id="btn_box_down">
+			<a href="forum.php?mod=post&action=newthread&fid=$_G[fid]" style="display: block; width:133px; height:43px;"></a>
+			<em class="forum_post_outcon" id="btn_list_down">
+				<em class="forum_post_out">
+					<!--{if !$_G['forum']['allowspecialonly']}--><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]">{lang post_newthread}</a><!--{/if}-->
+					<!--{if $_G['group']['allowpostpoll']}--><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=1">{lang post_newthreadpoll}</a><!--{/if}-->
+					<!--{if $_G['group']['allowpostreward']}--><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=3">{lang post_newthreadreward}</a><!--{/if}-->
+					<!--{if $_G['group']['allowpostdebate']}--><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=5">{lang post_newthreaddebate}</a><!--{/if}-->
+					<!--{if $_G['group']['allowpostactivity']}--><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=4">{lang post_newthreadactivity}</a><!--{/if}-->
+					<!--{if $_G['group']['allowposttrade']}--><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=2">{lang post_newthreadtrade}</a><!--{/if}-->
+					<!--{if $_G['setting']['threadplugins']}-->
+						<!--{loop $_G['forum']['threadplugin'] $tpid}-->
+						<!--{if array_key_exists($tpid, $_G['setting']['threadplugins']) && @in_array($tpid, $_G['group']['allowthreadplugin'])}-->
+						<a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&specialextra=$tpid">{$_G[setting][threadplugins][$tpid][name]}</a>
+						<!--{/if}-->
+						<!--{/loop}-->
+					<!--{/if}-->
+					<!--{if $_G['forum']['threadsorts'] && !$_G['forum']['allowspecialonly']}-->
+						<!--{loop $_G['forum']['threadsorts']['types'] $id $threadsorts}-->
+						<!--{if $_G['forum']['threadsorts']['show'][$id]}-->
+						<a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&extra=$extra&sortid=$id">$threadsorts</a>
+						<!--{/if}-->
+						<!--{/loop}-->
+					<!--{/if}-->
+				</em>
+			</em>
+		</span>
+		<!--{/if}-->
+	</div>
+	<div class="list_pager">$multipage</div>
+</div>
+
+<div class="share_bd_warpten">
+	<ul class="bbs_share_sc">
+		<li>
+			<a href="http://bbs.8264.com/forum-post-action-newthread-fid-12.html" class="p-btn-c btn-28">
+				<img src="http://static.8264.com/static/images/common/yjdp1.gif?{VERHASH}"/>
+			</a>
+		</li>
+		<li><a href="http://bbs.8264.com/thread-791154-1-1.html" target="_blank" class="kfhelf"></a></li>
+		<li class="ps_re" id="share">
+			<a href="javascript:;" class="share"></a>
+			<div class="bdsharebuttonbox share_bd" data-tag="share_1">
+				<a href="javascript:;" class="sina" data-cmd="tsina"></a>
+				<a href="javascript:;" class="qq" data-cmd="qzone"></a>
+				<a href="javascript:;" class="wb" data-cmd="tqq"></a>
+				<a href="javascript:;" class="wx" data-cmd="weixin"></a>
+			</div>
+		</li>
+		<li><a href="forum.php?mod=forumdisplay&fid=$_G[fid]" class="bbsli" title="返回帖子列表"></a></li>
+		<li id="gotop_50"><a style="display: none;" href="javascript:;" class="gotop_50"></a></li>
+	</ul>
+</div>
+<script src="http://static.8264.com/static/js/layer/layer.js" type="text/javascript"></script>
+<script>
+function quick_reply_form() {
+    layer.open({
+      type: 2,
+      title: '点评户外装备',
+      shadeClose: false,
+      shade: 0.8,
+      area: ['710px', '600px'],
+      content: 'plugin.php?id=forumoption:quick_reply&tpl=equipment&mod=equipment&des_type={$_G[fid]}'
+    });
+}
+window._bd_share_config = {
+	common : {
+		//此处放置通用设置
+	},
+	share : [
+		//此处放置分享按钮设置
+		{"tag" : "share_1", "bdSize" : 32}
+	]
+}
+with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+(function($){
+	var ww=$(window).width();
+	var s_bd_r=Math.max((ww-980)/2-60,0);
+	$(".share_bd_warpten").css("right",s_bd_r);
+
+		//鼠标移入分享后向左边弹出分享按钮
+	$("#share").hover(
+		function () {
+		$(".share_bd",this).show();
+		},
+		function () {
+		$(".share_bd",this).hide();
+		}
+	);
+	//返回顶部按钮
+	if($(window).scrollTop() > 10){$("#gotop_50 a").show();}
+	$(window).scroll( function(){
+		if($(window).scrollTop()>10){
+			$("#gotop_50 a").show();
+		}else{
+			$("#gotop_50 a").hide();
+		}
+	});
+	$("#gotop_50").click(function(){
+		$("html,body").animate({ scrollTop: 0 },500);
+	});
+
+
+
+
+})(jQuery);
+</script>
+<!-- Baidu Button BEGIN -->
+<script type="text/javascript" id="bdshare_js" data="type=button&amp;mini=1&amp;uid=39357" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+</script>
+<!-- Baidu Button END -->
+<!--{if $_G['fid'] == 186 }--><!--{ad/custom_447}--><!--{/if}-->

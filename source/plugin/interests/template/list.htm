@@ -1,0 +1,70 @@
+<style>
+#mycontainer table{width:100%;}
+#mycontainer table tbody{border-bottom:2px black solid; margin: 20px 10px;}
+#mycontainer table td, table th{text-align: center; border-bottom:1px #CCC dotted; padding: 5px 10px;}
+#mycontainer table td{background:#EEE}
+#mycontainer table th{background: #4DD7F4;}
+</style>
+<div id="mycontainer">
+	<p style="margin-bottom: 5px;">
+		<a href="/admin.php?action=plugins&operation=config&do={$pluginid}&identifier=interests&pmod=linemanagerment&method=add">添加新线路推送</a>&nbsp;&nbsp;
+		{if ($tuisongcount = count($tuisonguser)) > 0}当前共推送<b style="color: blue;">{$tuisongcount}</b>人&nbsp;&nbsp;{/if}
+		{if linemod::$tuisongday}当前推送为报名前第&nbsp;<b style="color: #FF8000;">{eval echo implode('&nbsp;</b>，&nbsp;<b style="color: #FF8000;">', linemod::$tuisongday);}</b>天&nbsp;&nbsp;{/if}
+	</p>
+	<form action="" method="POST">
+		<table>
+			<tbody>
+				<tr>
+					<th>编号</th>
+					<th>线路名称</th>
+					<th>线路地址</th>
+					<th>创建时间</th>
+					<th>线路开始时间</th>
+					<th>报名截止时间</th>
+					<th>线路行程</th>
+					<th>线路放置位置</th>
+					<th>线路版块</th>
+					<th>当前状态</th>
+					<th>点击率</th>
+					<th>操作</th>
+				</tr>
+			</tbody>
+			<tbody>
+			{if $showarr}
+			{loop $showarr $val}
+				<tr>
+					<td>{eval echo $val[linemod::_ID];}</td>
+					<td><a href="{eval echo $val[linemod::_URL];}" target="_blank">{eval echo $val[linemod::_NAME];}</a>{if array_key_exists($val[linemod::_TIME_LAST], $tuisongtimearr)}&nbsp;&nbsp;<b style="color: green;">今日推送中(第<b style="color: orange;">{eval echo $tuisongtimearr[$val[linemod::_TIME_LAST]]}</b>天)</b>{/if}</td>
+					<td><a href="{eval echo $val[linemod::_URL];}" target="_blank">{eval echo $val[linemod::_URL];}</a></td>
+					<td>{eval echo date('Y-m-d H:i', $val[linemod::_TIME_CREATE]);}</td>
+					<td>{eval echo date('Y-m-d', $val[linemod::_TIME_START]);}</td>
+					<td>{eval echo date('Y-m-d', $val[linemod::_TIME_LAST]);}{if $val[linemod::_TIME_LAST] < $todaystart}<b style="color: red;margin:0 5px;">[超时]</b>{/if}</td>
+					<td>{eval echo $val[linemod::_TIME_USED];} 天</td>
+					<td>{eval echo $val[linemod::_POS_NAME];}</td>
+					<td><a target="_blank" href="{$_G[config][web][forum]}forum-{eval echo $val[linemod::_FID]}-1.html">{eval echo $val[linemod::_FID_NAME];}</a></td>
+					<td>{if $val[linemod::_STATUS] >= 2}<b style="color:{eval echo $showcolor[$val[linemod::_STATUS]];}">{eval echo $val[linemod::_STATUS_NAME];}</b>{else}<a href="/admin.php?action=plugins&operation=config&do={$pluginid}&identifier=interests&pmod=linemanagerment&method=openclose&ocid={eval echo $val[linemod::_ID];}"><b style="color:{eval echo $showcolor[$val[linemod::_STATUS]];}">{eval echo $val[linemod::_STATUS_NAME];}</b></a>{/if}</td>
+					<td>{eval echo sprintf("%.2f%%", 100 * $clickcount[$val[linemod::_ID]]/$allcount[$val[linemod::_ID]]);}(<b style="color: green;">点：{eval echo intval($clickcount[$val[linemod::_ID]]);}</b> / <b style="color: blue;">总：{eval echo intval($allcount[$val[linemod::_ID]]);}</b>)</td>
+					<td>
+						{if $val[linemod::_STATUS] == 2}
+						<a href="/admin.php?action=plugins&operation=config&do={$pluginid}&identifier=interests&pmod=linemanagerment&method=restart&editid={eval echo $val[linemod::_ID];}"><b style="color: orange;">新期</b></a>&nbsp;&nbsp;
+						{elseif $val[linemod::_STATUS] != 3}
+						<a href="/admin.php?action=plugins&operation=config&do={$pluginid}&identifier=interests&pmod=linemanagerment&method=edit&editid={eval echo $val[linemod::_ID];}">编辑</a>&nbsp;&nbsp;						
+						{/if}
+						<a href="/admin.php?action=plugins&operation=config&do={$pluginid}&identifier=interests&pmod=linemanagerment&method=history&historyid={eval echo $val[linemod::_ID];}">历史查询</a>
+					</td>
+				</tr>
+			{/loop}
+			{if $multi}
+				<tr>
+					<td colspan="10">{$multi}</td>
+				</tr>
+			{/if}
+			{else}
+				<tr>
+					<td colspan="10">当前没有任何推送线路，请<a href="/admin.php?action=plugins&operation=config&do={$pluginid}&identifier=interests&pmod=linemanagerment&method=add">添加</a></td>
+				</tr>
+			{/if}
+			</tbody>
+		</table>
+	</form>
+</div>

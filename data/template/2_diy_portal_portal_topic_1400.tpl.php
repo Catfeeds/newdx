@@ -1,0 +1,374 @@
+<?php if(!defined('IN_DISCUZ')) exit('Access Denied'); ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>2012世界杯攀岩赛中国重庆站|攀岩| 抱石| 速度攀岩| 国际攀岩联合会| 重庆</title>
+<?php echo $_G['setting']['seohead'];?></title>
+<link href="http://static.8264.com/oldcms/moban/zt/2012panyan/style/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="banner"></div>
+<div class="banner1"><div class="banner1con"><div class="logo"><a href="http://www.8264.com/" target="_blank"></a></div></div></div>
+<div class="top">
+<div class="topcon">
+    	<div class="t_l">
+        	<div class="lunbo">
+                <div id="focus_turn">
+                    <ul id="focus_pic">
+                        <li class="current"><a href="http://www.8264.com/74298.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/lunbo/1.jpg" /></a></li>
+                        <li class="normal"><a href="http://www.8264.com/viewnews-31828-page-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/lunbo/2.jpg" /></a></li>
+                        <li class="normal"><a href="http://www.8264.com/topic/1400.html#a1"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/lunbo/3.jpg" /></a></li>
+                    </ul>
+                    <div id="focus_opacity"></div>
+                    <ul id="focus_tx">
+                        <li class="current"><a href="http://www.8264.com/74298.html" target="_blank">2012世界杯攀岩赛重庆站新闻发布会3月20日举行</a></li>
+                        <li class="normal"><a href="http://www.8264.com/viewnews-31828-page-1.html" target="_blank">关于世界杯攀岩赛</a></li>
+                        <li class="normal"><a href="http://www.8264.com/topic/1400.html#a1">本届赛事明星队员</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="t_m">
+        	<h2><a href="http://www.8264.com/viewnews-75306-page-1.html" target="_blank">2012世界杯攀岩赛重庆分站赛 14日圆满落幕</h2>
+            <ul>
+<li>&#8226;&nbsp;<em style="color:#FF0000">女子抱石决赛视频集</em>：<a href="http://www.8264.com/viewnews-75358-page-1.html" target="_blank">1号线</a>&nbsp;<a href="http://www.8264.com/viewnews-75362-page-1.html" target="_blank">2号线</a>&nbsp;<a href="http://www.8264.com/viewnews-75367-page-1.html" target="_blank">3号线</a>&nbsp;<a href="http://www.8264.com/viewnews-75375-page-1.html" target="_blank">4号线</a></li>
+<li>&#8226;&nbsp;<em style="color:#FFFF00">男子抱石决赛视频集</em>：<a href="http://www.8264.com/viewnews-75358-page-1.html" target="_blank">1号线</a>&nbsp;<a href="http://www.8264.com/viewnews-75362-page-1.html" target="_blank">2号线</a>&nbsp;<a href="http://www.8264.com/viewnews-75367-page-1.html" target="_blank">3号线</a>&nbsp;<a href="http://www.8264.com/viewnews-75375-page-1.html" target="_blank">4号线</a></li>
+<li>&#8226;&nbsp;<a href="http://www.8264.com/viewnews-75319-page-1.html" target="_blank">	2012重庆世界杯攀岩赛8264采访国际定线员赵雷</a></li>
+<li>&#8226;&nbsp;<a href="http://www.8264.com/75308.html" target="_blank">2012世界杯攀岩赛重庆分站赛男子抱石赛决赛成绩</a></li>
+<li>&#8226;&nbsp;<a href="http://www.8264.com/75307.html" target="_blank">2012世界杯攀岩赛重庆分站赛女子抱石赛决赛成绩</a></li>
+<li>&#8226;&nbsp;<a href="http://www.8264.com/75302.html" target="_blank">	2012世界杯攀岩赛重庆分站赛男子速度赛决赛成绩</a></li>
+<li>&#8226;&nbsp;<a href="http://www.8264.com/75303.html" target="_blank">	2012世界杯攀岩赛重庆分站赛女子速度赛决赛成绩</a></li>
+<li>&#8226;&nbsp;<a href="http://www.8264.com/75299.html" target="_blank">男子抱石预赛后 8264专访国家队队员邱洪树</a></li>
+
+            </ul>
+        </div>
+        <div class="t_r">
+        	<h2>关于世界杯攀岩赛</h2>
+          <p>2007年1月27日，国际竞技攀登联合会<br>（IFSC，简称国际攀联）在德国法兰克福<br>宣布成立，48个成员组织一致通过了IFSC章程，规则及各项实施细则。至此，一个全新的监管竞技攀岩项目的组织诞生了。<a href="http://www.8264.com/viewnews-31828-page-1.html" target="_blank" style="color:#FF0000">[详细]</a></p>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="warpper">
+<div class="title">比赛场地</div>
+<div class="mid1">
+    	<div class="l1"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/l1img.jpg" width="632" height="258"/></div>
+        <div class="r1">
+        	<h1>日程安排</h1>
+            <h2>4月12日 周四</h2>
+            <p>15h00 – 17h30	报到注册 (酒店大堂)
+            <br>18h00 – 18h30	技术会议 (会议室)
+            </p>
+            <h2>4月13日 周五</h2>
+            <p>
+            08h00 – 09h00  男子攀石预赛隔离区开放/关闭<br>
+            09h00 – 09h30	开幕式<br>
+            09h45 – 13h30	男子攀石预赛 (2 组)<br>
+            13h30 – 14h30	女子攀石预赛隔离区开放/关闭<br>
+            15h00 – 18h00	女子攀石预赛<br>
+            </p>
+            <h2>4月14日 周六</h2>
+            <p>
+            08h00 – 09h00 男、女子攀石半决赛隔离区开放/关闭<br>
+            09h30 – 11h30 男、女子攀石半决赛<br>
+            11h30 – 12h30 男、女子速度预赛隔离区开放/关闭<br>
+            13h00 – 14h00 男、女子速度预赛<br>
+            14h30 – 15h30 男、女子速度决赛<br>
+            15h00 – 16h00 男、女子攀石决赛隔离区开放/关闭<br>
+            16h30 – 16h50 攀石决赛运动员介绍、线路观察<br>
+            17h00 – 18h30 男、女子攀石决赛<br>
+            19h00	颁奖仪式<br>            
+            </p>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+<!---运动员模块开始--->
+    <a name="a1"></a><div class="title">参赛明星选手</div>
+    <div class="mid2">
+    	<div class="touxiangall" id="sh_tip1" onmousemove="slide_ty(1)">
+        	<a href="http://www.8264.com/viewnews-75226-page-3.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/duiyuan/bb/6.jpg"/></a>
+            <div class="touxiangwen"><a href="http://www.8264.com/viewnews-75226-page-3.html" target="_blank">Jakob Schubert<br>奥地利</a></div>
+        </div>
+        <div class="touxiangall" id="sh_tip2" onmousemove="slide_ty(2)">
+        	<a href="http://www.8264.com/viewnews-75226-page-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/duiyuan/bb/1.jpg"/></a>
+            <div class="touxiangwen"><a href="http://www.8264.com/viewnews-75226-page-1.html" target="_blank">Guillaume<br>法国</a></div>
+        </div>
+        <div class="touxiangall" id="sh_tip3" onmousemove="slide_ty(3)">
+        	<a href="http://www.8264.com/viewnews-75226-page-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/duiyuan/bb/2.jpg"/></a>
+            <div class="touxiangwen"><a href="http://www.8264.com/viewnews-75226-page-1.html" target="_blank">Tsukuru Hori<br>日本</a></div>
+        </div>
+        <div class="touxiangall" id="sh_tip4" onmousemove="slide_ty(4)">
+        	<a href="http://www.8264.com/viewnews-75226-page-2.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/duiyuan/bb/3.jpg"/></a>
+            <div class="touxiangwen"><a href="http://www.8264.com/viewnews-75226-page-2.html" target="_blank">Alexey Rubtsov<br>俄罗斯</a></div>
+        </div>
+        <div class="touxiangall" id="sh_tip5" onmousemove="slide_ty(5)">
+        	<a href="http://www.8264.com/viewnews-75226-page-2.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/duiyuan/bb/4.jpg"/></a>
+            <div class="touxiangwen"><a href="http://www.8264.com/viewnews-75226-page-2.html" target="_blank">Rustam Gelmanov<br>俄罗斯</a></div>
+        </div>
+        <div class="touxiangall" id="sh_tip6" onmousemove="slide_ty(6)">
+        	<a href="http://www.8264.com/viewnews-75226-page-3.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/duiyuan/bb/5.jpg"/></a>
+            <div class="touxiangwen"><a href="http://www.8264.com/viewnews-75226-page-3.html" target="_blank">Klemen Becan<br>斯洛文尼亚</a></div>
+        </div>
+        <div class="touxiangall" id="sh_tip7" onmousemove="slide_ty(7)">
+          <a href="http://www.8264.com/viewnews-75250-page-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/duiyuan/bs/1.jpg"/></a>
+          <div class="touxiangwen"><a href="http://www.8264.com/viewnews-75250-page-1.html" target="_blank">Lukasz SWIRK<br>波兰</a></div>
+      </div>
+        <div class="touxiangall" id="sh_tip8" onmousemove="slide_ty(8)">
+        	<a href="http://www.8264.com/viewnews-75250-page-2.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/duiyuan/bs/2.jpg"/></a>
+            <div class="touxiangwen"><a href="http://www.8264.com/viewnews-75250-page-2.html" target="_blank">Sergey<br>俄罗斯</a></div>
+        </div>
+        <div class="touxiangall" id="sh_tip9" onmousemove="slide_ty(9)">
+        	<a href="http://www.8264.com/viewnews-75250-page-3.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/duiyuan/bs/3.jpg"/></a>
+            <div class="touxiangwen"><a href="http://www.8264.com/viewnews-75250-page-3.html" target="_blank">Libor HROZA<br>捷克</a></div>
+        </div>
+        <div class="touxiangall" id="sh_tip10" onmousemove="slide_ty(10)">
+        	<a href="http://www.8264.com/viewnews-75250-page-3.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/duiyuan/bs/4.jpg"/></a>
+            <div class="touxiangwen"><a href="http://www.8264.com/viewnews-75250-page-3.html" target="_blank">Stanislav<br>俄罗斯</a></div>
+        </div>
+        <div class="touxiangall" id="sh_tip11" onmousemove="slide_ty(11)">
+        	<a href="http://www.8264.com/viewnews-75189-page-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/testtou.jpg"/></a>
+            <div class="touxiangwen"><a href="http://www.8264.com/viewnews-75189-page-1.html" target="_blank">Anna Stohr<br>奥地利</a></div>
+        </div>
+        <div class="touxiangall" id="sh_tip12" onmousemove="slide_ty(12)">
+        	<a href="http://www.8264.com/viewnews-75189-page-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/duiyuan/gb/2.jpg"/></a>
+            <div class="touxiangwen"><a href="http://www.8264.com/viewnews-75189-page-1.html" target="_blank">Akiyo NOGUCHI<br>日本</a></div>
+        </div>
+        <div class="touxiangall" id="sh_tip13" onmousemove="slide_ty(13)">
+        	<a href="http://www.8264.com/viewnews-75189-page-2.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/duiyuan/gb/3.jpg"/></a>
+            <div class="touxiangwen"><a href="http://www.8264.com/viewnews-75189-page-2.html" target="_blank">Alex PUCCIO<br>美国</a></div>
+        </div>
+        <div class="touxiangall" id="sh_tip14" onmousemove="slide_ty(14)">
+        	<a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/duiyuan/gb/4.jpg"/></a>
+            <div class="touxiangwen"><a href="#" target="_blank">Melissa LE NEVE<br>法国</a></div>
+        </div>
+        <div class="touxiangall" id="sh_tip15" onmousemove="slide_ty(15)">
+        	<a href="http://www.8264.com/viewnews-75189-page-3.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/duiyuan/gb/5.jpg"/></a>
+            <div class="touxiangwen"><a href="http://www.8264.com/viewnews-75189-page-3.html" target="_blank">Mina MARKOVIC<br>斯洛文尼亚</a></div>
+        </div>
+        <div class="touxiangall" id="sh_tip16" onmousemove="slide_ty(16)">
+        	<a href="http://www.8264.com/viewnews-75189-page-3.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/duiyuan/gb/6.jpg"/></a>
+            <div class="touxiangwen"><a href="http://www.8264.com/viewnews-75189-page-3.html" target="_blank">Juliane WURM<br>德国</a></div>
+        </div>
+        <div class="touxiangall" id="sh_tip17" onmousemove="slide_ty(17)">
+        	<a href="http://www.8264.com/viewnews-75189-page-4.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/duiyuan/gb/7.jpg"/></a>
+            <div class="touxiangwen"><a href="http://www.8264.com/viewnews-75189-page-4.html" target="_blank">Kim Jain<br>韩国</a></a></div>
+        </div>
+        <div class="touxiangall" id="sh_tip18" onmousemove="slide_ty(18)">
+        	<a href="http://www.8264.com/viewnews-75222-page-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/duiyuan/gs/1.jpg"/></a>
+            <div class="touxiangwen"><a href="http://www.8264.com/viewnews-75222-page-1.html" target="_blank">Edyta ROPEK<br>波兰</a></div>
+        </div>
+        <div class="touxiangall" id="sh_tip19" onmousemove="slide_ty(19)">
+        	<a href="http://www.8264.com/viewnews-75222-page-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/duiyuan/gs/2.jpg"/></a>
+            <div class="touxiangwen"><a href="http://www.8264.com/viewnews-75222-page-1.html" target="_blank">Maria Krasavina<br>俄罗斯</a></div>
+        </div>
+        <div class="touxiangall" id="sh_tip20" onmousemove="slide_ty(20)">
+        	<a href="http://www.8264.com/viewnews-75222-page-2.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/duiyuan/gs/3.jpg"/></a>
+            <div class="touxiangwen"><a href="http://www.8264.com/viewnews-75222-page-2.html" target="_blank">Alina<br>俄罗斯</a></div>
+        </div>
+        <div class="touxiangall" id="sh_tip21" onmousemove="slide_ty(21)">
+        	<a href="http://www.8264.com/viewnews-75222-page-3.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/duiyuan/gs/4.jpg"/></a>
+            <div class="touxiangwen"><a href="http://www.8264.com/viewnews-75222-page-3.html" target="_blank">Yuliya <br>俄罗斯</a></div>
+        </div>
+<div class="touxiangall" id="sh_tip22" onmousemove="slide_ty(22)">
+        	<a href="http://www.8264.com/viewnews-67896-page-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/duiyuan/chn/1.jpg"/></a>
+            <div class="touxiangwen"><a href="http://www.8264.com/viewnews-67896-page-1.html" target="_blank">钟齐鑫<br>中国</a></div>
+        </div>
+<div class="touxiangall" id="sh_tip23" onmousemove="slide_ty(23)">
+        	<div><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/duiyuan/chn/2.jpg"/></a></div>
+            <div class="touxiangwen">邱洪树<br>中国</div>
+        </div>
+<div class="touxiangall" id="sh_tip24" onmousemove="slide_ty(24)">
+        	<a href="http://www.8264.com/45886.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/duiyuan/chn/3.jpg"/></a>
+            <div class="touxiangwen"><a href="http://www.8264.com/45886.html" target="_blank">何翠莲<br>中国</a></div>
+        </div>
+<div class="touxiangall" id="sh_tip25" onmousemove="slide_ty(25)">
+        	<a href="http://www.8264.com/65584.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/duiyuan/chn/4.jpg"/></a>
+            <div class="touxiangwen"><a href="http://www.8264.com/65584.html" target="_blank">潘旭华 <br>中国</a></div>
+        </div>
+<div class="touxiangall" id="sh_tip26" onmousemove="slide_ty(26)">
+        	<a href="http://www.8264.com/portal.php?mod=view&amp;aid=65509&amp;page=1" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/duiyuan/chn/5.jpg"/></a>
+            <div class="touxiangwen"><a href="http://www.8264.com/portal.php?mod=view&amp;aid=65509&amp;page=1" target="_blank">瞿海滨<br>中国</a></div>
+        </div>
+<div class="touxiangall" id="sh_tip27" onmousemove="slide_ty(27)">
+        	<a href="http://www.8264.com/viewnews-67876-page-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/duiyuan/chn/6.jpg"/></a>
+            <div class="touxiangwen"><a href="http://www.8264.com/viewnews-67876-page-1.html" target="_blank">马自达<br>中国</a></div>
+        </div>
+<div class="touxiangall" id="sh_tip28" onmousemove="slide_ty(28)">
+        	<a href="http://www.8264.com/viewnews-65508-page-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/duiyuan/chn/7.jpg"/></a>
+            <div class="touxiangwen"><a href="http://www.8264.com/viewnews-65508-page-1.html" target="_blank">蒋融<br>中国</a></div>
+        </div>
+        
+        <div class="clear"></div>
+        <script language="javascript">
+                var _tnum;
+                var tMyMar;
+                var tSize=28;
+                function slide_ty(v){
+                for(i=1;i<=tSize;i++){
+                document.getElementById("sh_tip"+i).className="touxiangall1";
+                }
+                document.getElementById("sh_tip"+v).className="touxiangall";
+                _tnum=v; 
+                clearInterval(tMyMar);
+                tMyMar=setInterval("tGunDong()",1000);
+                }
+                function tGunDong(){
+                if((_tnum+1)>tSize)
+                _tnum=1;
+                else	
+                _tnum=_tnum+1;
+                slide_ty(_tnum);
+                }
+                slide_ty(1);
+</script>
+    </div>
+<!---运动员模块结束--->
+
+<!---现场视频模块开始--->
+    <div class="title">现场视频&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.youku.com/playlist_show/id_17334502.html" target="_blank">更多[more]</a></div>
+    <div class="mid3">
+    	<div class="l3">
+        	<div class="l3tu"><a href="http://www.8264.com/viewnews-75299-page-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/video/d1.jpg"/></a></div>
+            <div class="l3wen"><a href="http://www.8264.com/viewnews-75299-page-1.html" target="_blank">男子抱石预赛后 8264专访国家队队员邱洪树</a></div>
+        </div>
+        <div class="r3">
+        	<div class="r3tuall">
+            	<div class="r3tu"><a href="http://www.8264.com/viewnews-75295-page-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/video/1.jpg"/></a></div>
+                <div class="r3wen"><a href="http://www.8264.com/viewnews-75295-page-1.html" target="_blank">女子抱石预赛Anna Stohr 5号线</a></div>
+            </div>
+            <div class="r3tuall">
+            	<div class="r3tu"><a href="http://www.8264.com/viewnews-75294-page-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/video/2.jpg"/></a></div>
+                <div class="r3wen"><a href="http://www.8264.com/viewnews-75294-page-1.html" target="_blank">女子抱石预赛Ales Puccio 4号线</a></div>
+            </div>
+            <div class="r3tuall">
+            	<div class="r3tu"><a href="http://www.8264.com/viewnews-75293-page-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/video/3.jpg"/></a></div>
+                <div class="r3wen"><a href="http://www.8264.com/viewnews-75293-page-1.html" target="_blank">女子抱石预赛野口启代4号线</a></div>
+            </div>
+            <div class="r3tuall">
+            	<div class="r3tu"><a href="http://www.8264.com/viewnews-75296-page-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images//video/4.jpg"/></a></div>
+                <div class="r3wen"><a href="http://www.8264.com/viewnews-75296-page-1.html" target="_blank">男子抱石预赛Jakob 1号线</a></div>
+            </div>
+            <div class="r3tuall">
+            	<div class="r3tu"><a href="http://www.8264.com/viewnews-75288-page-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/video/5.jpg"/></a></div>
+                <div class="r3wen"><a href="http://www.8264.com/viewnews-75288-page-1.html" target="_blank">男子抱石预赛邱洪树3号线</a></div>
+            </div>
+            <div class="r3tuall">
+            	<div class="r3tu"><a href="http://www.8264.com/viewnews-75287-page-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/video/6.jpg"/></a></div>
+                <div class="r3wen"><a href="http://www.8264.com/viewnews-75287-page-1.html" target="_blank">男子抱石预赛金滋夏1号线</a></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    
+    
+    <div class="mid4" style="display:none;">
+    	<div class="mid4one">
+        	<div class="mid4tu"><a href="http://u.8264.com/home-space-uid-16717046-do-album-picid-3972474.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/tuwen/25.jpg"/></a></div>
+            <div class="mid4onewen"><a href="http://www.8264.com/viewnews-75294-page-1.html" target="_blank">女子抱石预赛Ales Puccio 4</a></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    
+    
+    
+    
+<!---现场视频模块结束--->
+
+<!---现场花絮模块开始--->
+    <div class="title">现场花絮图集&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://bbs.8264.com/thread-1211929-1-1.html" target="_blank">更多[more]</a></div>
+    <div class="mid4">
+    	<div class="mid4one">
+        	<div class="mid4tu"><a href="http://u.8264.com/home-space-uid-16717046-do-album-picid-3972474.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/tuwen/25.jpg"/></a></div>
+        </div>
+<div class="mid4one">
+        	<div class="mid4tu"><a href="http://u.8264.com/home-space-uid-16717046-do-album-picid-3972488.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/tuwen/24.jpg"/></a></div>
+        </div>
+<div class="mid4one">
+        	<div class="mid4tu"><a href="http://u.8264.com/home-space-uid-16717046-do-album-picid-3972491.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/tuwen/23.jpg"/></a></div>
+        </div>
+<div class="mid4one">
+        	<div class="mid4tu"><a href="http://u.8264.com/home-space-uid-16717046-do-album-picid-3973174.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/tuwen/22.jpg"/></a></div>
+        </div>
+<div class="mid4one">
+        	<div class="mid4tu"><a href="http://u.8264.com/home-space-uid-16717046-do-album-picid-3972489.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/tuwen/21.jpg"/></a></div>
+        </div>
+<div class="mid4one">
+        	<div class="mid4tu"><a href="http://bbs.8264.com/thread-1211929-1-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/tuwen/20.jpg"/></a></div>
+        </div>
+<div class="mid4one">
+        	<div class="mid4tu"><a href="http://u.8264.com/home-space-uid-16717046-do-album-picid-3972424.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/tuwen/19.jpg"/></a></div>
+        </div>
+<div class="mid4one">
+        	<div class="mid4tu"><a href="http://u.8264.com/home-space-uid-16717046-do-album-picid-3972469.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/tuwen/18.jpg"/></a></div>
+        </div>
+<div class="mid4one">
+        	<div class="mid4tu"><a href="http://u.8264.com/home-space-uid-16717046-do-album-picid-3972421.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/tuwen/17.jpg"/></a></div>
+        </div>
+<div class="mid4one">
+        	<div class="mid4tu"><a href="http://u.8264.com/home-space-uid-16717046-do-album-picid-3972418.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/tuwen/16.jpg"/></a></div>
+        </div>
+<div class="mid4one">
+        	<div class="mid4tu"><a href="http://u.8264.com/home-space-uid-16717046-do-album-picid-3972414.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/tuwen/15.jpg"/></a></div>
+        </div>
+<div class="mid4one">
+        	<div class="mid4tu"><a href="http://u.8264.com/home-space-uid-16717046-do-album-picid-3972416.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/tuwen/14.jpg"/></a></div>
+        </div>
+<div class="mid4one">
+        	<div class="mid4tu"><a href="http://u.8264.com/home-space-uid-16717046-do-album-picid-3972410.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/tuwen/13.jpg"/></a></div>
+        </div>
+<div class="mid4one">
+        	<div class="mid4tu"><a href="http://u.8264.com/home-space-uid-16717046-do-album-picid-3972403.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/tuwen/12.jpg"/></a></div>
+        </div>
+<div class="mid4one">
+        	<div class="mid4tu"><a href="http://u.8264.com/home-space-uid-16717046-do-album-picid-3970357.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/tuwen/11.jpg"/></a></div>
+        </div>
+<div class="mid4one">
+        	<div class="mid4tu"><a href="http://u.8264.com/home-space-uid-16717046-do-album-picid-3970350.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/tuwen/10.jpg"/></a></div>
+        </div>
+<div class="mid4one">
+        	<div class="mid4tu"><a href="http://u.8264.com/home-space-uid-16717046-do-album-picid-3970346.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/tuwen/9.jpg"/></a></div>
+        </div>
+<div class="mid4one">
+        	<div class="mid4tu"><a href="http://u.8264.com/home-space-uid-16717046-do-album-picid-3970336.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/tuwen/8.jpg"/></a></div>
+        </div>
+<div class="mid4one">
+        	<div class="mid4tu"><a href="http://u.8264.com/home-space-uid-16717046-do-album-picid-3970330.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/tuwen/7.jpg"/></a></div>
+        </div>
+<div class="mid4one">
+        	<div class="mid4tu"><a href="http://u.8264.com/home-space-uid-16717046-do-album-picid-3970333.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/tuwen/6.jpg"/></a></div>
+        </div>
+<div class="mid4one">
+        	<div class="mid4tu"><a href="http://bbs.8264.com/thread-1211929-1-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/tuwen/5.jpg"/></a></div>
+        </div>
+        <div class="mid4one">
+        	<div class="mid4tu"><a href="http://bbs.8264.com/thread-1211929-1-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/tuwen/4.jpg"/></a></div>
+        </div>
+        <div class="mid4one">
+        	<div class="mid4tu"><a href="http://bbs.8264.com/thread-1211929-1-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/tuwen/3.jpg"/></a></div>
+        </div>
+        <div class="mid4one">
+        	<div class="mid4tu"><a href="http://bbs.8264.com/thread-1211929-1-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/tuwen/2.jpg"/></a></div>
+        </div>
+        <div class="mid4one">
+        	<div class="mid4tu"><a href="http://bbs.8264.com/thread-1211929-1-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2012panyan/images/tuwen/1.jpg"/></a></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+<!---现场花絮模块结束--->
+</div>
+<div class="bottom">
+<a href="http://www.8264.com/about-index.html" target="_blank">8264简介</a>&nbsp;|&nbsp;<a href="http://www.8264.com/about-adservice.html" target="_blank" >广告服务</a>&nbsp;|&nbsp;<a href="http://www.8264.com/zhuanti" target="_blank">户外热点</a>&nbsp;|&nbsp;<a href="http://www.8264.com/about-contact.html" target="_blank">联系我们</a>&nbsp;|&nbsp;<a href="http://bbs.8264.com/plugin.php?id=drc_qqgroup:main" target="_blank">QQ群联盟</a>&nbsp;|&nbsp;<a href="http://www.8264.com/link/" target="_blank">户外网址大全</a>&nbsp;|&nbsp;<a href="http://www.8264.com/sitemap" target="_blank">网站地图</a><br>
+
+服务热线：022-23708264&nbsp;|&nbsp;传真：022-23857291&nbsp;|&nbsp;地址：天津市南开区华苑产业园区鑫茂科技园C2座AB单元6层<br>
+
+<a href="http://bx.8264.com" target="_blank">户外活动有风险，8264提醒您购买</a> <a href="http://bx.8264.com">户外保险</a><br>
+
+除了脚印什么都不留下 除了摄影什么都不带走，欢迎各种媒体转载我们的原创作品[转载请注明出处]。8264&nbsp;版权所有   <a href="http://www.miibeian.gov.cn/" target="_blank">津ICP备05004140号-10</a>&nbsp;&nbsp;&nbsp;<a href="/template/8264/image/icp.jpg" target="_blank">ICP证 津B2-20110106</a>
+</div>
+<script src="http://static.8264.com/oldcms/moban/zt/2012panyan/js/common.js" type="text/javascript" type="text/javascript" language="javascript"></script>
+</body>
+</html>

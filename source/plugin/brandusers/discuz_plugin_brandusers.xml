@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Version"><![CDATA[X1.5]]></item>
+	<item id="Time"><![CDATA[2011-07-05 17:18]]></item>
+	<item id="From"><![CDATA[Discuz! Board (http://discuz/)]]></item>
+	<item id="Data">
+		<item id="plugin">
+			<item id="available"><![CDATA[1]]></item>
+			<item id="adminid"><![CDATA[1]]></item>
+			<item id="name"><![CDATA[Æ·ÅÆÓÃ»§Í³¼Æ]]></item>
+			<item id="identifier"><![CDATA[brandusers]]></item>
+			<item id="description"><![CDATA[]]></item>
+			<item id="datatables"><![CDATA[]]></item>
+			<item id="directory"><![CDATA[brandusers/]]></item>
+			<item id="copyright"><![CDATA[brandusers]]></item>
+			<item id="modules"><![CDATA[a:0:{}]]></item>
+			<item id="version"><![CDATA[1]]></item>
+		</item>
+		<item id="version"><![CDATA[X1.5]]></item>
+	</item>
+</root>

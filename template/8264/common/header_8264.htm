@@ -1,0 +1,53 @@
+<!--{subtemplate common/header_common}-->
+<!--{if defined('CURMODULE') && ($_G['basescript'] == 'forum' || $_G['basescript'] == 'group') && (CURMODULE == 'index' || CURMODULE == 'forumdisplay' || CURMODULE == 'group')}-->$rsshead<!--{/if}-->
+<!--{if $_G['basescript'] == 'forum'}-->
+    <!--{if !empty($_G['cookie']['widthauto']) && empty($_G['disabledwidthauto'])}-->
+   		<link rel="stylesheet" id="css_widthauto" type="text/css" href="data/cache/style_{STYLEID}_widthauto.css?{VERHASH}" />
+    	<script type="text/javascript">HTMLNODE.className += ' widthauto'</script>
+    <!--{/if}-->
+		<script type="text/javascript" src="{$_G[setting][jspath]}forum.js?{VERHASH}"></script>
+	<!--{elseif $_G['basescript'] == 'home' || $_G['basescript'] == 'userapp'}-->
+		<script type="text/javascript" src="{$_G[setting][jspath]}home.js?{VERHASH}"></script>
+	<!--{elseif $_G['basescript'] == 'portal'}-->
+		<script type="text/javascript" src="{$_G[setting][jspath]}portal.js?{VERHASH}"></script>
+		<link rel="stylesheet" type="text/css" href="/template/8264/css/common/reset.css" />
+		<link rel="stylesheet" type="text/css" href="/template/8264/css/common/new_common.css" />
+<!--{/if}-->
+<!--{if $_G['basescript'] != 'portal' && $_GET['diy'] == 'yes' && ($_G[mod] == 'topic' || $_G[group][allowdiy]) && !empty($_G['style']['tplfile'])}-->
+	<script type="text/javascript" src="{$_G[setting][jspath]}portal.js?{VERHASH}"></script>
+<!--{/if}-->
+<!--{if $_GET[diy] == 'yes' && ($_G[mod] == 'topic' || $_G[group][allowdiy]) && !empty($_G['style']['tplfile'])}-->
+	<link rel="stylesheet" type="text/css" href="data/cache/style_{STYLEID}_css_diy.css?{VERHASH}" />
+<!--{/if}-->
+<script src="static/js/jquery-1.6.1.min.js" type="text/javascript"></script>
+<script>jQuery.noConflict();</script>
+<!--[if IE 6]>
+<script src="/template/8264/js/DD_belatedPNG_0.0.8a.js"></script>
+<script src="/template/8264/js/DD_belatedPNG_css.js"></script>
+<![endif]-->
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?49299785f8cc72bacc96c9a5109227da";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
+<body id="nv_{$_G[basescript]}" class="pg_{CURMODULE}" onkeydown="if(event.keyCode==27) return false;">
+<!--{if ($_G[mod]!='topic' && $_G[group][allowdiy] && !empty($_G['style']['tplfile'])) || (!empty($_G['style']['tplfile']) && $_G[mod]=='topic' && (($_G['group']['allowaddtopic'] && $topic[uid]==$_G[uid]) || $_G[group][allowmanagetopic]))}-->
+<a id="diy-tg" href="javascript:openDiy();" title="{lang open_diy}"><img src="http://static.8264.com/static/image/diy/panel-toggle.png" alt="DIY" /></a>
+<!--{/if}-->
+<div id="append_parent"></div>
+<div id="ajaxwaitid"></div>
+    <!--{if $_GET['diy'] == 'yes' && (CURMODULE == 'topic' || $_G[group][allowdiy]) && !empty($_G['style']['tplfile'])}-->
+    <!--{template common/header_diy}-->
+    <!--{/if}-->
+    <!--{if empty($topic) || $topic[useheader]}-->
+    <!--{ad/headerbanner/wp a_h}-->
+    
+    <!--{hook/global_header}-->
+    <!--{/if}-->
+<div id="wp" class="wp">

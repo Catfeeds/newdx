@@ -1,0 +1,561 @@
+<!--{subtemplate common/header_8264_new}-->
+<link rel="stylesheet" href="/source/plugin/whither/css/main.css?3" />
+<script type="text/javascript" src="http://www.8264.com/static/js/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+</script>
+<script type="text/javascript">var fid = parseInt('$_G[fid]'), tid = parseInt('$_G[tid]');</script>
+<!--{if $modmenu['thread'] || $modmenu['post']}-->
+	<script type="text/javascript" src="{$_G['setting']['jspath']}forum_moderate.js?{VERHASH}"></script>
+<!--{/if}-->
+
+<script type="text/javascript" src="{$_G['setting']['jspath']}forum_viewthread.js?{VERHASH}"></script>
+<script type="text/javascript">zoomstatus = parseInt($_G['setting']['zoomstatus']);var imagemaxwidth = '{IMAGEMAXWIDTH}';var aimgcount = new Array();</script>
+
+<div style="overflow:hidden;padding-bottom:5px;height:35px;overflow:hidden;width:100%;">
+	<!--{subtemplate common/simplesearchform}-->
+	<div class="z" style="line-height:30px;">
+		<!--{eval echo $forumoption_mudidi->getBreadcrumbNavByTid($_G['tid']);}-->
+	</div>
+</div>
+
+<!--{hook/viewthread_top}-->
+
+<style id="diy_style" type="text/css"></style>
+<div class="wp">
+	<!--[diy=diy1]--><div id="diy1" class="area"></div><!--[/diy]-->
+</div>
+
+<div id="ct" class="wp cl">
+<!--{if $_G['group']['allowpost'] && ($_G['group']['allowposttrade'] || $_G['group']['allowpostpoll'] || $_G['group']['allowpostreward'] || $_G['group']['allowpostactivity'] || $_G['group']['allowpostdebate'] || $_G['setting']['threadplugins'] || $_G['forum']['threadsorts'])}-->
+	<ul class="p_pop" id="newspecial_menu" style="display: none">
+		<!--{if !$_G['forum']['allowspecialonly']}--><li><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]">{lang post_newthread}</a></li><!--{/if}-->
+		<!--{if $_G['group']['allowpostpoll']}--><li class="poll"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=1">{lang post_newthreadpoll}</a></li><!--{/if}-->
+		<!--{if $_G['group']['allowpostreward']}--><li class="reward"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=3">{lang post_newthreadreward}</a></li><!--{/if}-->
+		<!--{if $_G['group']['allowpostdebate']}--><li class="debate"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=5">{lang post_newthreaddebate}</a></li><!--{/if}-->
+		<!--{if $_G['group']['allowpostactivity']}--><li class="activity"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=4">{lang post_newthreadactivity}</a></li><!--{/if}-->
+		<!--{if $_G['group']['allowposttrade']}--><li class="trade"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=2">{lang post_newthreadtrade}</a></li><!--{/if}-->
+		<!--{if $_G['setting']['threadplugins']}-->
+			<!--{loop $_G['forum']['threadplugin'] $tpid}-->
+				<!--{if array_key_exists($tpid, $_G['setting']['threadplugins']) && @in_array($tpid, $_G['group']['allowthreadplugin'])}-->
+					<li class="popupmenu_option"{if $_G['setting']['threadplugins'][$tpid][icon]} style="background-image:url($_G['setting']['threadplugins'][$tpid][icon])"{/if}><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&specialextra=$tpid">{$_G['setting']['threadplugins'][$tpid][name]}</a></li>
+				<!--{/if}-->
+			<!--{/loop}-->
+		<!--{/if}-->
+		<!--{if $_G['forum']['threadsorts'] && !$_G['forum']['allowspecialonly']}-->
+			<!--{loop $_G['forum']['threadsorts']['types'] $id $threadsorts}-->
+				<!--{if $_G['forum']['threadsorts']['show'][$id]}-->
+					<li class="popupmenu_option"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&extra=$_G[gp_extra]&sortid=$id">$threadsorts</a></li>
+				<!--{/if}-->
+			<!--{/loop}-->
+		<!--{/if}-->
+	</ul>
+<!--{/if}-->
+
+<!--{if $modmenu['post']}-->
+	<div id="mdly" class="fwinmask" style="display:none;">
+		<table cellspacing="0" cellpadding="0" class="fwin">
+			<tr>
+				<td class="t_l"></td>
+				<td class="t_c"></td>
+				<td class="t_r"></td>
+			</tr>
+			<tr>
+				<td class="m_l">&nbsp;&nbsp;</td>
+				<td class="m_c">
+					<div class="f_c">
+						<div class="c">
+							<h3>{lang admin_select}&nbsp;<strong id="mdct" class="xi1"></strong>&nbsp;{lang piece}: </h3>
+							<!--{if $_G['forum']['ismoderator']}-->
+								<!--{if $_G['group']['allowwarnpost']}--><a href="javascript:;" onclick="modaction('warn')">{lang modmenu_warn}</a><span class="pipe">|</span><!--{/if}-->
+								<!--{if $_G['group']['allowbanpost']}--><a href="javascript:;" onclick="modaction('banpost')">{lang modmenu_banpost}</a><span class="pipe">|</span><!--{/if}-->
+								<!--{if $_G['group']['allowdelpost']}--><a href="javascript:;" onclick="modaction('delpost')">{lang modmenu_deletepost}</a><span class="pipe">|</span><!--{/if}-->
+								<!--{if $_G['group']['allowstickreply']}--><a href="javascript:;" onclick="modaction('stickreply')">{lang modmenu_stickpost}</a><span class="pipe">|</span><!--{/if}-->
+							<!--{/if}-->
+							<!--{if $_G['forum_thread']['pushedaid'] && $allowpostarticle}--><a href="javascript:;" onclick="modaction('pushplus', '', 'aid=$_G[forum_thread][pushedaid]', 'portal.php?mod=portalcp&ac=article&op=pushplus')">{lang modmenu_pushplus}</a><span class="pipe">|</span><!--{/if}-->
+						</div>
+					</div>
+				</td>
+				<td class="m_r"></td>
+			</tr>
+			<tr>
+				<td class="b_l"></td>
+				<td class="b_c"></td>
+				<td class="b_r"></td>
+			</tr>
+		</table>
+	</div>
+<!--{/if}-->
+
+<div id="postlist" class="pl" style="overflow:hidden;">
+	<div class="container">
+	<!--{eval $postcount = 0;}-->
+	<!--{eval $regionData = $forumoption_mudidi->getRegionByTid($_G['tid']);}-->
+	<!--{loop $postlist $i $post}-->
+		<!--{if $post['first']}-->
+			<!--{eval $mudidiData = $post;}-->
+			<div class="mudidi_view_top"></div>
+			<div class="mudidi_view">
+				<div class="mudidi_box last">
+					<h4>
+						<span style="float:right; font-size:12px; font-weight:normal; padding-top:11px;">
+							<a href="javascript:void();" class="mudidiPostMessageMore link_blue">显示全部</a>
+						</span>
+						$post['subject']
+						<span style="font-size:12px; font-weight:normal; padding-left:8px;">
+							<!--{if (($_G['forum']['ismoderator'] && $_G['group']['alloweditpost'] && (!in_array($post['adminid'], array(1, 2, 3)) || $_G['adminid'] <= $post['adminid'])) || ($_G['forum']['alloweditpost'] && $_G['uid'] && $post['authorid'] == $_G['uid']))}-->
+								<a class="" href="forum.php?mod=post&action=edit&fid=$_G[fid]&tid=$_G[tid]&pid=$post[pid]{if !empty($_G[gp_modthreadkey])}&modthreadkey=$_G[gp_modthreadkey]{/if}&page=$page"><!--{if $_G['forum_thread']['special'] == 2 && !$post['message']}-->{lang post_add_aboutcounter}<!--{else}-->{lang edit}</a><!--{/if}-->
+							<!--{/if}-->
+							<!--{if $_G['group']['allowdelpost']}--><!--{eval $modopt++}--><span class="pipe">|</span><a href="javascript:;" onclick="modthreads(3, 'delete')">{lang modmenu_deletethread}</a><!--{/if}-->
+						</span>
+					</h4>
+					<!--{eval $post['message'] = preg_replace('/^暂无相关内容$/', '', $post['message']);}-->
+					<div class="info" style="border-bottom:1px solid #ccc;">
+						<div id="mudidiPostMessageMini">
+							<!--{eval $mini_message = messagecutstr($post['message'], 250);}-->
+							<!--{eval $mini_message = preg_replace('/(\s|　)+/', '', $mini_message);}-->
+							$mini_message
+						</div>
+						<div id="mudidiPostMessage" style="display:none;">
+							$post['message']
+						</div>
+						<p style="text-align:right;padding-right:3px;">
+							<a href="javascript:void();" class="mudidiPostMessageMore mudidiPostMessageMoreBottom link_blue" style="display:none;">显示全部</a>
+						</p>
+					</div>
+					<script type="text/javascript">
+						;(function($){
+							{if strlen($post['message']) <= 1000}
+								$('#mudidiPostMessageMini').hide();
+								$('#mudidiPostMessage').show();
+								$('.mudidiPostMessageMore').text('关闭全部').hide();
+							{else}
+								function toggleMudidiPostMessage() {
+									if ($('#mudidiPostMessageMini').css('display') != 'none') {
+										$('#mudidiPostMessageMini').hide();
+										$('#mudidiPostMessage').show();
+										$('.mudidiPostMessageMore').text('关闭全部');
+										$('.mudidiPostMessageMoreBottom').show();
+									} else {
+										$('#mudidiPostMessageMini').show();
+										$('#mudidiPostMessage').hide();
+										$('.mudidiPostMessageMore').text('显示全部');
+										$('.mudidiPostMessageMoreBottom').hide();
+									}
+									return false;
+								}
+								$('.mudidiPostMessageMore').click(toggleMudidiPostMessage);
+								$('.mudidiPostMessageMoreBottom').click(function(){
+									$(document).scrollTop(220);
+								});
+							{/if}
+						})(jQuery);
+					</script>
+					<!--{if !empty($aimgs[$post[pid]])}-->
+					<script type="text/javascript" reload="1">aimgcount[{$post[pid]}] = [<!--{echo implode(',', $aimgs[$post[pid]]);}-->];attachimgshow($post[pid]);</script>
+					<!--{/if}-->
+
+						<!--{eval $mudidi_level = $forumoption_mudidi->getLevelByTid($_G['tid']);}-->
+
+						<!--{if $mudidi_level == 1}-->
+							<!--{eval $subData = $forumoption_mudidi->getSubRegionByTid($_G['tid']);}-->
+							<!--{eval $zoom = 2;}-->
+						<!--{else}-->
+							<!--{eval $subData = $forumoption_mudidi->getSubScapeareaByTid($_G['tid']);}-->
+							<!--{eval $zoom = 5;}-->
+						<!--{/if}-->
+						<div style="margin-top:10px; overflow:hidden; width:100%;">
+							<div class="mudidi_info">
+								<!--{eval $mudidiInfoList = $subData;}-->
+								<!--{eval $detailScapeNum = 0;}-->
+								<div class="mudidi_info_detail_show">
+								<!--{loop $mudidiInfoList $i $scape}-->
+									<!--{if $detailScapeNum == 7}-->
+										<!--{eval break;}-->
+									<!--{/if}-->
+									<p class="row">
+										<strong><a href="/thread-{$scape['tid']}-1-1.html">$scape['name']</a> </strong>
+										<span class="quotes_begin">
+											<span class="quotes_end">
+												<!--{eval $str = messagecutstr($scape['message'], 50);}-->
+												<!--{eval $str = preg_replace('/^[　]+|\s+/', '', $str);}-->
+												<!--{eval $str = preg_replace('/^暂无相关内容$/', '', $str);}-->
+												<!--{eval $str = str_replace('　', '', $str);}-->
+												<!--{eval echo $str;}-->
+											</span>
+										</span>
+									</p>
+									<!--{eval unset($mudidiInfoList[$i]);}-->
+									<!--{eval ++$detailScapeNum;}-->
+								<!--{/loop}-->
+								</div>
+							</div>
+							<div class="mudidi_map">
+								<!--{if $regionData['lat'] && $regionData['long']}-->
+									<!--{eval $centerLat = $regionData['lat'];}-->
+									<!--{eval $centerLong = $regionData['long'];}-->
+								<!--{elseif count($subData) > 0}-->
+									<!--{eval $minLat = 181;}-->
+									<!--{eval $minLong = 181;}-->
+									<!--{eval $maxLat = 0;}-->
+									<!--{eval $maxLong = 0;}-->
+									<!--{loop $subData $i $scapearea}-->
+										<!--{if $scapearea['lat'] && $scapearea['long']}-->
+											<!--{if $scapearea['lat'] < $minLat}-->
+												<!--{eval $minLat = $scapearea['lat'];}-->
+											<!--{/if}-->
+											<!--{if $scapearea['lat'] > $maxLat}-->
+												<!--{eval $maxLat = $scapearea['lat'];}-->
+											<!--{/if}-->
+
+											<!--{if $scapearea['long'] < $minLong}-->
+												<!--{eval $minLong = $scapearea['long'];}-->
+											<!--{/if}-->
+											<!--{if $scapearea['long'] > $maxLong}-->
+												<!--{eval $maxLong = $scapearea['long'];}-->
+											<!--{/if}-->
+										<!--{/if}-->
+									<!--{/loop}-->
+									<!--{eval $centerLat = ($minLat + $maxLat) / 2;}-->
+									<!--{eval $centerLong = ($minLong + $maxLong) / 2;}-->
+								<!--{/if}-->
+								<div id="mapContainer" style="width:220px;height:200px;"></div>
+                                <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2&services=true"></script>
+                                <script type="text/javascript">
+                                    var map = new BMap.Map("mapContainer");
+                                    var point = new BMap.Point({$centerLong}, {$centerLat});
+                                    map.centerAndZoom(point, $zoom);
+                                    //map.disableDragging(); // 禁用地图拖拽
+                                    //map.disableDoubleClickZoom(); // 禁用双击放大
+                                    map.addControl(new BMap.NavigationControl());
+                                    var marker = new BMap.Marker(point);  // 创建标注
+                                    map.addOverlay(marker);              // 将标注添加到地图中
+                                </script>
+							</div>
+						</div>
+
+						<div class="mudidi_info_dropdown info">
+							<div class="ralateContent scapeList" style="line-height:22px;">
+								<!--{loop $mudidiInfoList $i $scape}-->
+								<a href="/thread-{$scape['tid']}-1-1.html">$scape['name']</a>
+								<!--{/loop}-->
+							</div>
+							<div class="more" style="display:none;">
+								<a href="#" title="展开全部"></a>
+							</div>
+						</div>
+
+						<script type="text/javascript">
+							;(function($){
+								if ($('.mudidi_info_dropdown .scapeList').height() > 22) {
+									$('.mudidi_info_dropdown .scapeList').height(22);
+									$('.mudidi_info_dropdown .more').show();
+								};
+								$('.mudidi_info_dropdown .more a').toggle(function(){
+									$('.mudidi_info_dropdown .scapeList').css('height', 'auto');
+									$('.mudidi_info_dropdown .more').addClass('moreB');
+									$(this).attr('title', '折叠全部');
+									return false;
+								}, function(){
+									$('.mudidi_info_dropdown .scapeList').css('height', '22px');
+									$('.mudidi_info_dropdown .more').removeClass('moreB');
+									$(this).attr('title', '展开全部');
+									return false;
+								});
+							})(jQuery);
+						</script>
+
+				</div>
+
+
+			</div>
+		<!--{eval break;}-->
+		<!--{/if}-->
+
+		<div id="post_$post[pid]">
+			<!--{subtemplate forum/viewthread_node}-->
+		</div>
+	<!--{eval $postcount++;}-->
+	<!--{/loop}-->
+
+		{eval $guideData = $forumoption_mudidi->getGuideByRegionTid($_G['tid'], 8);}
+		{eval $guide_title = $regionData['name'].'攻略大全';}
+		{eval $pub_guide_link = 'http://bbs.8264.com/forum-post-action-newthread-fid-52.html?mtid='.$_G['tid'];}
+		{subtemplate forum/mudidi_guide}
+
+	<div class="bm vw pl">
+		<div class="bm_h cl">
+			<h2>{lang latest_comments}</h2>
+		</div>
+		<div class="bm_c">
+            <div id="postlistreply" class="xld xlda mbm"><div id="post_new" class="viewthread_table" style="display: none; border: none;"></div></div>
+		<!--{loop $postlist $i $post}-->
+			<!--{if !$post['first']}-->
+				<div id="post_$post[pid]" class="xld xlda mbm">
+					<!--{subtemplate forum/viewthread_nodebrand}-->
+				</div>
+			<!--{/if}-->
+			<!--{eval $postcount++;}-->
+		<!--{/loop}-->
+		</div>
+	</div>
+
+	<!--{if $_G['setting']['fastpost'] && $allowpostreply && !$_G['forum_thread']['archiveid'] && ($_G['forum']['status'] != 3 || $_G['isgroupuser'])}-->
+		<!--{subtemplate forum/viewthread_fastpostbrand}-->
+	<!--{/if}-->
+	</div>
+
+	<div class="sidebar" style="position:relative;z-index:2;">
+		<div class="mudidi_info_nav">
+			<!--{eval $regionSn = $forumoption_mudidi->getSnByTid($_G['tid']);}-->
+			<!--{eval $mudidi_info_list = $forumoption_mudidi->getInfoNav($regionSn);}-->
+			<h2 class="mudidi_info_title">{$regionData['name']}旅游信息</h2>
+			<dl class="mudidi_info_list" id="mudidi_info_list">
+				<!--{loop $mudidi_info_list $list}-->
+				<dt><a href="/whither-info-{$list[id]}.html">$list['name']</a></dt>
+				<!--{/loop}-->
+			</dl>
+
+			<h2 class="mudidi_info_title mudidi_info_margin_top">{$regionData['name']}旅游导航</h2>
+			<dl class="mudidi_info_list mudidi_info_list2">
+				<dt><a href="/whither-scapearealist-{$_G['tid']}-1.html" title="{$regionData['name']}旅游景区">景区</a></dt>
+				<dt class="even"><a href="/whither-guidelist-{$_G['tid']}-1.html" title="{$regionData['name']}旅游攻略">攻略</a></dt>
+				<dt><a href="/whither-photolist-{$_G['tid']}-1.html" title="{$regionData['name']}照片图片">相册</a></dt>
+				<dt class="even"><a href="http://u.8264.com/home-space-do-activity-view-all-date-week-class--area-0.html" title="{$regionData['name']}户外活动">活动</a></dt>
+				<dt>
+					<!--{if $regionData['hotelUrl']}-->
+					<a href="$regionData['hotelUrl']" target="_blank" title="{$regionData['name']}酒店住宿">旅舍</a>
+					<!--{else}-->
+					<a href="javascript:void(0);" title="此景区暂无旅舍推荐">旅舍</a>
+					<!--{/if}-->
+				</dt>
+				<dt class="even"><a href="http://bx.8264.com/" target="_blank" title="{$regionData['name']}户外保险">保险</a></dt>
+				<dt><a href="/whither-weather-{$_G['tid']}.html" title="{$regionData['name']}天气预报">天气</a></dt>
+				<dt class="even"><a href="/whither-map-{$_G['tid']}.html" title="{$regionData['name']}地图">地图</a></dt>
+			</dl>
+		</div>
+        <script type="text/javascript">
+			jQuery('#mudidi_info_list dt a').click(function(){
+                <!--{if ($_G['uid'] && $_G['group']['radminid'] > 0)}-->
+                var isAdmin = true;
+                <!--{else}-->
+                var isAdmin = false;
+                <!--{/if}-->
+                var tid = $_G['tid'];
+				var ddMinHeight = jQuery('#mudidi_info_list dt').size() * 33 + 9;
+
+				jQuery(this).blur();
+				var dt = jQuery(this).parent('dt');
+				if (!dt.is('.ajaxed')) {
+					var infoid = /info-(\d+).html$/.exec(jQuery(this).attr('href'))[1];
+                    jQuery.ajax({
+						type: "GET",
+						dataType: 'json',
+						async: false,
+						url: "/plugin.php?id=whither:ajaxgetinfo",
+						data: "infoid="+infoid,
+						success: function(data) {
+							if (!data['message']) {
+								data['message'] = '<p style="padding:20px 0;text-align:center;">'+data['subject']+'暂无内容</p>';
+							}
+							dt.after(jQuery('<dd><div class="mudidi_info_dropdown_info"><h1><a href="javascript:void();" class="close flbc">关闭</a><span class="htitle">'+data['subject']+'&nbsp;&nbsp;'+(isAdmin?'<a href="http://bbs.8264.com/plugin.php?id=whither:pubinfo&tid='+tid+'&infoid='+infoid+'" class="opearte">编辑</a><span class="pipe">|</span>':'')+'<a href="/whither-info-'+infoid+'.html" class="opearte">查看详细</a></span></h1><div class="content">'+data['message']+'</div></div></dd>'));
+							dt.addClass('ajaxed');
+						}
+					});
+                }
+				if (!dt.next().is('dd')) {
+					jQuery('.mudidi_info_nav a').removeClass('with_dropdown');
+					jQuery('.mudidi_info_nav dd').hide();
+					return false;
+				}
+				jQuery('.mudidi_info_nav a').removeClass('with_dropdown');
+				jQuery('.mudidi_info_nav dd').hide();
+				jQuery(this).addClass('with_dropdown');
+				dt.next('dd').show();
+				if (dt.next('dd').children('div').height() < ddMinHeight) {
+					dt.next('dd').children('div').height(ddMinHeight)
+				}
+
+				return false;
+			});
+
+			jQuery('.mudidi_info_nav dd').live('click', function(){
+				jQuery(this).prev('dt').children('a').addClass('with_dropdown');
+				jQuery(this).show();
+			});
+
+			jQuery('.mudidi_info_nav .close').live('click', function(){
+				var dd = jQuery(this).parent('h1').parent('div').parent('dd');
+				dd.prev('dt').children('a').removeClass('with_dropdown');
+				dd.hide();
+				return false;
+			});
+
+			jQuery('body').click(function(){
+				jQuery('.mudidi_info_nav a').removeClass('with_dropdown');
+				jQuery('.mudidi_info_nav dd').hide();
+			});
+		</script>
+
+		<!--{eval $activityData = $forumoption_mudidi->getRalateActivityByKeyword($regionData['name'], 6);}-->
+		<!--{if $activityData}-->
+		<div class="sidebar_box">
+			<div class="sidebar_box_title">
+				<a href="http://bbs.8264.com/forum-5-1.html" class="more">更多</a>
+				<h5>{$regionData['name']}活动</h5>
+			</div>
+			<div class="sidebar_box_content">
+				<ul class="list2">
+					<!--{loop $activityData $activityeid $activity}-->
+					<li>
+						<div class="image">
+							<a href="/thread-{$activity['tid']}-1-1.html">
+								<!--{eval echo avatar($activity['authorid'], 'small');}-->
+							</a>
+						</div>
+						<div class="text">
+							<h6><a href="/thread-{$activity['tid']}-1-1.html">{$activity['subject']}</a></h6>
+							<p class="dateline">
+								<a href="/thread-{$activity['tid']}-1-1.html" class="hlink">报名</a>
+								<a href="http://u.8264.com/home-space-uid-{$activity['authorid']}-do-profile.html" class="color_gray">{$activity['author']}</a>
+							</p>
+						</div>
+					</li>
+					<!--{/loop}-->
+				</ul>
+			</div>
+		</div>
+		<!--{/if}-->
+
+		<!--{eval $subScapeareaData = $forumoption_mudidi->getSubScapeareaBySn($regionSn, 3);}-->
+        <!--{if subScapeareaData}-->
+			<div class="sidebar_box">
+				<div class="sidebar_box_title">
+					<a href="/whither-weather-{$_G['tid']}.html" class="more">查看详细</a>
+					<h5>{$regionData['name']}相关景区天气</h5>
+				</div>
+				<div class="sidebar_box_content">
+					<div class="weather">
+						<!--{loop $subScapeareaData $subScapeareaId $subScapearea}-->
+							<!--{eval $weathers = $forumoption_mudidi->getWeatherInfo($subScapearea['long'], $subScapearea['lat']);}-->
+							<!--{if $weathers[0]}-->
+							<div class="item">
+								<span><a href="http://bbs.8264.com/whither-weather-{$subScapearea['tid']}.html">{$subScapearea['name']}</a></span>
+								<span><img src="http://www.google.com{$weathers[0]['icon']}" alt="" /></span>
+								<span>{$weathers[0]['condition']}</span>
+								<span>{$weathers[0]['high']}℃/{$weather['low']}℃</span>
+							</div>
+							<!--{/if}-->
+						<!--{/loop}-->
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		<!--{/if}-->
+
+		<!--{eval $albumData = $forumoption_mudidi->getRalateAlbumByTid($_G['tid'], 9);}-->
+		<!--{if $albumData}-->
+		<div class="sidebar_box">
+			<div class="sidebar_box_title">
+                <span class="more">
+                    <a style="color:#000" target="_blank" href="http://u.8264.com/home-spacecp-ac-upload.html">发布新照片</a>
+                    <img src="/static/image/common/faq.gif" onmouseover="showTip(this)" tip="发布新照片时请把相册名称设置为景点名称，这样更容易让网友浏览到您所发布的照片！" alt="Tip" style="margin:0; vertical-align:middle; padding:2px 0 4px" id="tip_mudidi">
+                    <a href="/whither-photolist-{$_G['tid']}-1.html">更多</a>
+                </span>
+				<h5>{$regionData['name']}照片</h5>
+			</div>
+			<div class="sidebar_box_content">
+				<ul class="photolist1">
+					<!--{loop $albumData $albumid $album}-->
+					<li>
+						<div class="image">
+							<a href="http://u.8264.com/home-space-uid-{$album['uid']}-do-album-id-{$album['albumid']}.html">
+								<img src="{$album['trueurl']}" alt="" />
+							</a>
+						</div>
+						<div class="text">
+							<a href="http://u.8264.com/home-space-uid-{$album['uid']}-do-album-id-{$album['albumid']}.html">$album['albumname']</a>
+						</div>
+					</li>
+					<!--{/loop}-->
+				</ul>
+			</div>
+		</div>
+		<!--{/if}-->
+		<!--{subtemplate forum/tagLeft}-->
+	</div>
+</div>
+<div class="clear"></div>
+<!--{if $regionData['hotelName']}-->
+<div class="bm vw pl">
+	<div class="bm_h cl">
+		<!--{if $regionData['hotelUrl']}-->
+		<a href="{$regionData['hotelUrl']}" class="more">更多旅舍</a>
+		<!--{/if}-->
+		<h2>{$regionData['hotelName']}旅舍</h2>
+	</div>
+	<div style="padding:10px 0;">
+		<script type="text/javascript" src="http://hoteldistr.yododo.com/sale/distr_backoffice/adCodeJump_gbk.jsp?distrid=1&width=960&height=120&styletype=wide&areaname={$regionData['hotelName']}"></script>
+	</div>
+</div>
+<!--{/if}-->
+<!--{subtemplate forum/mudidi_footer}-->
+<form method="post" autocomplete="off" name="modactions" id="modactions">
+<input type="hidden" name="formhash" value="{FORMHASH}" />
+<input type="hidden" name="optgroup" />
+<input type="hidden" name="operation" />
+<input type="hidden" name="listextra" value="$_G[gp_extra]" />
+</form>
+
+$_G['forum_tagscript']
+
+<!--[diy=diyfastposttop]--><div id="diyfastposttop" class="area"></div><!--[/diy]-->
+
+
+<!--{if $_G['setting']['visitedforums'] || $oldthreads}-->
+	<div id="visitedforums_menu" class="{if $oldthreads}visited_w {/if}p_pop blk cl" style="display: none;">
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<!--{if $_G['setting']['visitedforums']}-->
+					<td id="v_forums">
+						<h3 class="mbn pbn bbda xg1">{lang viewed_forums}</h3>
+						<ul>
+							$_G['setting']['visitedforums']
+						</ul>
+					</td>
+				<!--{/if}-->
+				<!--{if $oldthreads}-->
+					<td id="v_threads">
+						<h3 class="mbn pbn bbda xg1">{lang viewd_threads}</h3>
+						<ul class="xl">
+						<!--{loop $oldthreads $oldtid $oldsubject}-->
+							<li><a href="forum.php?mod=viewthread&tid=$oldtid">$oldsubject</a></li>
+						<!--{/loop}-->
+						</ul>
+					</td>
+				<!--{/if}-->
+			</tr>
+		</table>
+	</div>
+<!--{/if}-->
+
+<!--{if $_G['setting']['forumjump']}-->
+	<div class="p_pop" id="fjump_menu" style="display: none">
+	$forummenu
+	</div>
+<!--{/if}-->
+
+<!--{if !IS_ROBOT && $_G['setting']['threadmaxpages'] > 1}-->
+	<script type="text/javascript">document.onkeyup = function(e){keyPageScroll(e, <!--{if $page > 1}-->1<!--{else}-->0<!--{/if}-->, <!--{if $page < $_G['setting']['threadmaxpages'] && $page < $_G['page_next']}-->1<!--{else}-->0<!--{/if}-->, 'forum.php?mod=viewthread&tid=$_G[tid]<!--{if $_G[gp_authorid]}-->&authorid=$_G[gp_authorid]<!--{/if}-->', $page);}</script>
+<!--{/if}-->
+</div>
+
+<div class="wp mtn">
+	<!--[diy=diy3]--><div id="diy3" class="area"></div><!--[/diy]-->
+</div>
+<div style="display:none;">
+	<script src="http://s84.cnzz.com/stat.php?id=3496107&web_id=3496107&show=pic1" language="JavaScript"></script>
+</div>
+
+
+<!--{subtemplate common/footer_8264_new}-->

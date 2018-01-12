@@ -1,0 +1,115 @@
+{subtemplate common/header}
+<style>
+.searchadmintable {bordercolor:#cccccc; border:0px;}
+.searchadmintable td {font-size: 14px; text-align:center;}
+.tableleft{
+
+	BORDER-RIGHT: 0px solid;
+	BORDER-TOP: 0px solid;
+	BORDER-LEFT: 0px solid;
+	BORDER-BOTTOM: 1px solid;
+}
+.tablecenter{
+
+	BORDER-RIGHT: 0px solid;
+	BORDER-TOP: 0px solid;
+	BORDER-LEFT: 0px solid;
+	BORDER-BOTTOM: 1px solid;
+}
+.tableright{
+
+	BORDER-RIGHT: 0px solid;
+	BORDER-TOP: 0px solid;
+	BORDER-LEFT: 0px solid;
+	BORDER-BOTTOM: 1px solid;
+}
+.tableall{
+
+	BORDER-RIGHT:0px solid;
+	BORDER-TOP: 1px solid;
+	BORDER-LEFT: 0px solid;
+	BORDER-BOTTOM: 0px solid;
+}
+</style>
+<script src="http://www.8264.com/source/plugin/searchindex/template/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+//	function selectInput(choose)
+//	{
+//		var op = choose.options[choose.selectedIndex].value;
+//		document.orderform.action = 'plugin.php?id=searchindex:adminsearch&operation=orderby&op='+op ;
+//		document.orderform.submit();
+//	}
+	function check_all(obj,cName)
+	{
+		var checkboxs = document.getElementsByName(cName);
+		for(var i=0;i<checkboxs.length;i++){
+			checkboxs[i].checked = obj.checked;
+		}
+	}
+
+</script>
+<div class="tl">
+	<div>
+		<a href="zhuanti" title="返回首页">返回首页>></a>
+		<br/>
+			<table width="100%"  cellspacing="0" cellpadding="0" bgcolor="#f2f2f2">
+				<tr>
+					<td height="35" width="850" class="tablecenter">
+					    <form method="post"  id="addform" name="addform" action="plugin.php?id=searchindex:adminsearch&operation=select">
+							&nbsp;&nbsp;关键字：<input type="text" name="guanjianzi" style="width:100px;">&nbsp;&nbsp;
+							收录时间：<input type="text" name="kaishi" style="width:90px;" onclick="WdatePicker()" class="Wdate">&nbsp;-&nbsp;<input type="text" name="jieshu" style="width:90px;" class="Wdate" onclick="WdatePicker()" >&nbsp;&nbsp;
+							是否审核：<input type="radio" name="shenhe" value="1"/> <label>是</label><input type="radio" name="shenhe" value="0"/> <label>否</label>&nbsp;&nbsp;
+							结果排序：<select id="order" name="order">
+								<option>默认排序</option>
+								<option value="keyshigh">关键字长度从高到低</option>
+								<option value="keyslow">关键字长度从低到高</option>
+								<option value="timehigh">收录时间从高到低</option>
+								<option value="timelow">收录时间从低到高</option>
+							</select>&nbsp;&nbsp;
+							<button type="submit" name="submit" value="true" ><strong style="font-weight:normal;">提交</strong></button>
+						</form>
+					</td>
+					<td class="tableright">
+						<a href="plugin.php?id=searchindex:audit" title="仅审核未通过的并且上次审核时间大于30天的数据" target="_blank"><font color="red">自动审核关键词</font></a>
+					</td>
+				</tr>
+			</table>
+		<br/>
+		<form name="checkform" method="post" action="plugin.php?id=searchindex:adminsearch&operation=delete">
+			<table width="100%" border="1" cellspacing="0" cellpadding="0" class="searchadmintable">
+			  <tr height="40" bgcolor="#f2f2f2">
+				<td width="8%"></td>
+				<td width="55%">关键字</td>
+				<td width="12%">审核</td>
+				<td width="17%">收录时间</td>
+				<td width="8%">操作</td>
+			  </tr>
+			  <!--{loop $ing_lists $ing_list}-->
+				  <tr height="40" {eval echo $ing_list[state] ? 'style="background:#8bee97;"' : 'style="background:#f7b0b0;"'}>
+					<td ><input type="checkbox" value="$ing_list[searchid]" name="checkbox[]"></td>
+					<td><a href="zhuanti/$ing_list[searchid]">$ing_list[keywords]</a><!--{if $ing_list[rule]}--><br />规则“$ing_list[rule]”<!--{/if}--></td>
+					<td>$statearr[$ing_list[state]]<!--{if $ing_list[lasttime]}--><br>$ing_list[lasttime]<!--{/if}--></td>
+					<td>$ing_list[dateline]</td>
+					<td><a href="plugin.php?id=searchindex:adminsearch&operation=edit&searchid=$ing_list[searchid]" onclick="showWindow('edit', this.href);">编辑</a></td>
+				  </tr>
+			  <!--{/loop}-->
+			</table>
+			<br/>
+			<table width="100%" cellspacing="0" cellpadding="0">
+			  <tr height="40">
+				  <td colspan="6" class="tableall"  bgcolor="#f2f2f2">
+					  <div align="left" style="padding-left:30px;">
+						  <label><input type="checkbox" name="all" onclick="check_all(this,'checkbox[]')" >&nbsp;全选</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						  <button type="submit" name="submitdel" value="true"><strong style="font-weight:normal;">删除</strong></button>
+					  </div>
+				  </td>
+			  </tr>
+			</table>
+		</form>
+	</div>
+</div>
+<br/>
+	<!--{if !empty($multipage)}--><div class="pgs cl mbm">$multipage</div><!--{/if}-->
+<br/>
+{subtemplate common/footer}

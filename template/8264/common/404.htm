@@ -1,0 +1,24 @@
+<!--{subtemplate common/header_8264_new}-->
+<style type="text/css">
+	.box404{ background:url("http://static.8264.com/static/images/404.jpg") center center no-repeat; position:relative;}
+	.box404info{ color:#69757e; font-size:14px; position:absolute; top:50%; left:50%; margin:-79px 0 0 -70px;}
+	.box404return{ width:176px; height:45px; background: url("http://static.8264.com/static/images/404arrow.png") 39px 14px no-repeat #4d667a; color:#fff; font-size:16px; display:block; border-radius:3px; position:absolute; top:50%; left:50%; margin:-33px 0 0 -66px; line-height:45px; text-indent:66px;}
+	.box404return:hover{ color:#fff; font-size:16px; }
+</style>
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/common/discuz_index.css?{VERHASH}">
+<!--主体404开始-->
+<div class="box404">
+	<span class="box404info">很抱歉，您访问的页面不存在</span>
+	<a href="./" class="box404return">返回首页</a>
+  <span style="color: #69757e; font-size: 14px; position: absolute; top: 70%; left: 50%; margin: -79px 0 0 -130px;">您要找的页面消失了，不如<a href="http://www.8264.com/xuexiao/?from=page404" style="text-decoration:underline;">来测测您的户外水平</a>吧！</span>
+</div>
+<!--主体404结束-->
+<script>
+jQuery(function(){
+	var w_height = jQuery(window).height();
+	var box404_h = w_height - 54;
+	jQuery(".box404").height(box404_h);
+
+});
+</script>
+<!--{subtemplate common/footer_forum_8264_new}-->

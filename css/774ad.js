@@ -1,0 +1,1 @@
+document.writeln("<div style=\"width:776px; border:#ccc 1px solid; margin:4px 0 4px 0;\"><a href=\"http:\/\/u.8264.com\" target=\"_blank\"><img src=\"http:\/\/www.8264.com\/img\/8264gg\/2008\/u774_60.jpg\" width=\"774\" height=\"60\" \/><\/a><\/div>")

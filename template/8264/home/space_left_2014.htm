@@ -1,0 +1,29 @@
+	<div class="mt-menu-tree">
+		<ul class="nav nav-tabs nav-stacked navigate_notification">
+			<li {if $notify_type == 'notification'}class="active"{/if}>
+				<a href="$_G[config][web][home]home.php?mod=space&do=notice&type=notification"><s class="menu-nav-icon icon-1">提醒</s><span showclass="li_tz">通知
+					</span>{if isset($space['notifications']) && $space['notifications']}<em class="number">{$space['notifications']}</em>{/if}</a>
+			</li>
+			<li {if $notify_type == 'invitation'}class="active"{/if}>
+				<a href="$_G[config][web][home]home.php?mod=space&do=notice&type=invitation"><s class="menu-nav-icon icon-2">邀请</s><span showclass="li_yq">邀请
+					</span>{if isset($space['newinvite']) && $space['newinvite']}<em class="number">{$space['newinvite']}</em>{/if}</a>
+			</li>
+			<!--
+			<li {if $notify_type == 'greeting'}class="active"{/if}>
+				<a href="$_G[config][web][home]home.php?mod=space&do=notice&type=greeting"><s class="menu-nav-icon icon-5">招呼</s><span showclass="li_dzh">招呼
+				</span>{if isset($space['pokes']) && $space['pokes']}<em class="number">{$space['pokes']}</em>{/if}</a>
+			</li>
+			-->
+			<li {if $notify_type == 'smessage' || $_G['gp_ac'] == 'pm' || $_G['gp_do'] == 'pm'}class="active"{/if}>
+				<a href="$_G[config][web][home]home.php?mod=space&do=notice&type=smessage"><s class="menu-nav-icon icon-7">短消息</s><span showclass="li_dxx">短消息
+				</span>{if isset($space['newpm']) && $space['newpm']}<em class="number smessage_number">{$space['newpm']}</em>{/if}</a>
+			</li>
+
+			<li {if $_G['gp_mod'] == 'task'}class="active"{/if}>
+				<a href="$_G[config][web][home]home.php?mod=task&item=new"><s class="menu-nav-icon icon-8">任务</s><span showclass="li_dxx">任务
+				</span>{if $taskcount}<em class="number smessage_number">{$taskcount}</em>{/if}</a>
+			</li>
+		</ul>
+        <div style="margin:10px 0px 0px 0px;"><!--{ad/custom_435}--></div>
+	</div>
+    

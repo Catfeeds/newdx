@@ -1,0 +1,32 @@
+<!--{subtemplate common/header_8264_new}-->
+<style>
+	.sjwarpten{ width:980px; margin:0px auto; padding:60px 0px;}
+	.sjbg{ width:980px; margin:0 auto; background:url("http://static.8264.com/static/images/app/images/shweb.jpg") top center no-repeat; height:414px; position:relative;}
+	.ewm_sj{ width:90px; margin:0 auto; padding-top:260px; }
+	.ewm_sj span{ display:block; font-size:12px; color:#585858; text-align:center;}
+	.sjxzwarpten{ position:relative; margin-top:40px; height:54px;}
+	.andriod{ top:0px; left:85px; width:212px; height:54px; background:url(" http://static.8264.com/static/images/app/images/sjxz.jpg")0 0 no-repeat; display:block; position:absolute;}
+	.andriod:hover{ background:url("http://static.8264.com/static/images/app/images/sjxz.jpg") 0 -55px no-repeat;}
+	.apple{ top:0px; right:96px; width:212px; height:54px; background:url( "http://static.8264.com/static/images/app/images/sjxz.jpg") -213px 0px no-repeat; display:block; position:absolute;}
+	.apple:hover{ background:url("http://static.8264.com/static/images/app/images/sjxz.jpg") -213px -55px no-repeat;}
+</style>
+<body>
+<div class="sjwarpten">
+	<div class="sjbg">
+		<div class="ewm_sj">
+			<img src=" http://static.8264.com/static/images/common/appewm.jpg" width="90" height="90px"/>
+			<span>请扫描二维码<br>下载安装</span>
+		</div>
+	</div>
+	<div class="sjxzwarpten">
+		<a href="http://static.8264.com/app/8264v3New.apk" class="andriod" target="_blank"></a>
+		<a href="http://itunes.apple.com/app/8264/id492167976?mt=8" class="apple" target="_blank"></a>
+	</div>
+</div>
+<script type="text/javascript">
+var h = jQuery(window).height();
+if(h>900){
+	jQuery(".sjwarpten").height(h-244);
+};
+</script>
+<!--{subtemplate common/footer_8264_new}-->

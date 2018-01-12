@@ -1,0 +1,142 @@
+#picupload_dialog{
+	position:absolute;
+	left:250px;
+	z-index:200;
+	display:none;
+	overflow:hidden;
+}
+#picupload_dialog table.fwin{
+	width:100%
+}
+#picupload_dialog_content{
+	height:100%;
+}
+#close_tips{
+	width:60px;
+	line-height:16px;
+	font-size:14px;
+	color:#EE831F;
+	background:#FEF5D4;
+	padding:2px 5px;
+	text-align:center;
+	border-top:1px solid #EE831F;
+	border-left:1px solid #EE831F;
+	border-right:1px solid #EE831F;
+	cursor:pointer;
+}
+#picupload_dialog h3 p{
+	text-align:center;
+	margin:2px 35px;
+	background-color:#ccc;
+	font-size:24px;
+	line-height:30px;
+}
+#picupload_dialog h3 table{
+	width:100%;
+}
+#picupload_dialog h3 .flbc{
+	float:right;
+}
+#picupload_post{
+	margin-left:5px;	
+}
+#pic_upload_multiimg{
+	float:left;
+	margin-right:10px;
+}
+#imgattachlist{
+	float:left;
+	height:520px;
+	overflow:hidden;
+}
+#picupload_dialog_content .pagehidden{
+	display:none;
+}
+#imgattachlist table textarea{
+	margin:0px 10px;
+}
+#imgattachlist td{
+	padding:10px;
+}
+#imagereview{
+	width:300px;
+	height:450px;
+	border:2px solid #ccc;
+	position:absolute;
+	padding:5px;
+	display:none;
+}
+#picupload_dialog .hidden{
+	display:none;
+}
+#tab_contrl{
+	border-left:2px solid #BBB;
+	border-top:2px solid #BBB;
+}
+#show_upload,#show_album{
+	width:15px;
+	font-size:16px;
+	border-right:2px solid #BBB;
+	border-bottom:2px solid #BBB;
+	padding:2px;
+	cursor:pointer;
+}
+#albumlist{
+
+	min-height:30px;
+	float:left;
+	max-height:520px;
+	overflow:hidden;
+}
+.imgdeleted{
+	opacity:0.3;
+}
+.selected{
+	background-color:#ccc;
+}
+.image_page tr{
+	height:120px;
+}
+.onhover{
+	cursor:pointer;
+}
+.album_des{
+	width:120px;
+	height:120px;
+	margin-left:70px;
+	position:absolute;
+}
+#album_names li{
+	width:400px;
+	padding:5px 10px;
+	border-top:1px #CCC solid;
+	border-left:2px #CCC solid;
+	border-right:2px #CCC solid;
+	border-bottom:1px #CCC solid;
+}
+#album_left{
+	width:280px;
+}
+#album_piclist{
+	padding:10px;
+}
+.album_num{
+	margin-left:10px;
+}
+#newablum_tips{
+	font-weight:700;
+}
+.tips_red{
+	color:red;
+}
+.tips_green{
+	color:green;
+}
+.fadehidden{
+	
+}
+#new_tips{
+	position:relative;
+	right:5px;
+	bottom:20px;
+}

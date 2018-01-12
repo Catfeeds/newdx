@@ -1,0 +1,50 @@
+<!--{template common/header}-->
+	<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/portal/portal_portalcp.css?{VERHASH}" />
+<style type="text/css">
+.parentcat {}
+.cat { margin-left: 20px; }
+.lastchildcat, .childcat { margin-left: 40px; }
+</style>
+
+<div id="pt" class="bm cl">
+	<!--{subtemplate common/simplesearchform}-->
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> <em>&rsaquo;</em>
+		<a href="portal.php">{lang portal}</a> <em>&rsaquo;</em>
+		<a href="portal.php?mod=portalcp">{lang portal_manage}</a> <em>&rsaquo;</em>
+		{lang category_management}
+	</div>
+</div>
+
+<div id="ct" class="ct2_a wp cl">
+	<div class="mn">
+		<h1 class="mt">新专题模块</h1>
+		<div class="bm bw0">
+			<table class="dt">
+				<tr>
+					<th>模块名称</th>
+					<th width="80">显示条数</th>
+					<th width="120">{lang article_operation}</th>
+				</tr>
+				<!--{if $topic_block}-->
+				<!--{loop $topic_block $block}-->
+				<tr>
+					<td><div class="parentcat">$block[name]</div></td>
+					<td>$block[shownum]</td>
+					<td><a href="portal.php?mod=portalcp&ac=topic_block_item&op=list&topicid=$block[topicid]&bid=$block[bid]">管理内容</a>
+				</tr>
+				<!--{/loop}-->
+				<!--{else}-->
+				<tr>
+					<td colspan="3">暂无数据</td>
+				</tr>
+				<!--{/if}-->
+			</table>
+		</div>
+	</div>
+	<div class="appl">
+		<!--{subtemplate portal/portalcp_nav}-->
+	</div>
+</div>
+
+<!--{template common/footer}-->

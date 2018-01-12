@@ -1,0 +1,39 @@
+<div class="clearfix"></div>
+<div class="footer">
+	
+
+<!--{if empty($gid) && empty($_G['fid']) && ($_G['cache']['forumlinks']['forum']['index'][0] || $_G['cache']['forumlinks']['forum']['index'][1] || $_G['cache']['forumlinks']['forum']['index'][2])}-->
+<div class="friendLink">
+	<div class="layout">
+		<ul>
+		<!--{if $_G['cache']['forumlinks']['forum']['index'][0]}-->
+		$_G['cache']['forumlinks']['forum']['index'][0]
+		<!--{/if}-->
+		<!--{if $_G['cache']['forumlinks']['forum']['index'][1]}-->
+		$_G['cache']['forumlinks']['forum']['index'][1]
+		<!--{/if}-->
+		<!--{if $_G['cache']['forumlinks']['forum']['index'][2]}-->
+		$_G['cache']['forumlinks']['forum']['index'][2]
+		<!--{/if}-->
+		</ul>
+	</div>
+</div>
+<!--{/if}-->
+<!--{if $_G['fid'] && ($_G['cache']['forumlinks']['forum'][$_G['fid']][0] || $_G['cache']['forumlinks']['forum'][$_G['fid']][1] || $_G['cache']['forumlinks']['forum'][$_G['fid']][2])}-->
+<div class="friendLink">
+	<div class="layout">
+		<ul>
+		<!--{if $_G['cache']['forumlinks']['forum'][$_G['fid']][0]}-->
+		$_G['cache']['forumlinks']['forum'][$_G['fid']][0]
+		<!--{/if}-->
+		<!--{if $_G['cache']['forumlinks']['forum'][$_G['fid']][1]}-->
+		$_G['cache']['forumlinks']['forum'][$_G['fid']][1]
+		<!--{/if}-->
+		<!--{if $_G['cache']['forumlinks']['forum'][$_G['fid']][2]}-->
+		$_G['cache']['forumlinks']['forum'][$_G['fid']][2]
+		<!--{/if}-->
+		</ul>
+	</div>
+</div>
+<!--{/if}-->
+<!--{subtemplate common/footer_8264_new}-->

@@ -1,0 +1,107 @@
+/* CSS Document */
+.w980{ width:980px; margin:0 auto;}
+.f_l{ float:left;}
+.f_r{ float:right;}
+.category_con{}
+.categorylist{ height:30px; font-size:12px; color:#fff; margin-bottom:5px;}
+.categorylist .bluebar{ background:#43a6df; height:30px; width:99px; text-align:center; line-height:28px; float:left; position: relative;}
+.categorylist .bluebar:before{ content:""; border-color: transparent transparent transparent #43a6df ; border-style:solid; border-width:10px; top:50%; right:-15px; position:absolute; margin-top:-10px;}
+.categorylist .orangebar{ background:#f98260; height:30px; width:99px; text-align:center; line-height:28px; float:left; position: relative;}
+.categorylist .orangebar:before{ content:""; border-color: transparent transparent transparent #f98260 ; border-style:solid; border-width:10px; top:50%; right:-15px; position:absolute; margin-top:-10px;}
+.categorylist .graybar{ overflow:hidden; background:#f7f7f7; height:30px; line-height:30px;}
+.categorylist .graybar a{ color:#585858; text-decoration:none; margin:0px 0px 0px 20px; display:inline; white-space: nowrap;}
+.categorylist .graybar a:hover,.categorylist .graybar a.blue{ color:#43a6df; text-decoration:none;}
+.pt18{ padding-top:18px;}
+.w660{ width:660px;}
+.sxwarpten{height:29px;}
+.selectjg{ float:left;}
+.selectjg span{ float:left;}
+.selectjg span.name{ font-size:18px; margin-right:10px;}
+.selectjg span.option{ font-size:12px; height:25px;line-height:25px; background:url(http://www.8264.com/static/images/dianping/line/closenav.png) right 9px no-repeat #758591; text-align:center; padding:0 18px 0 8px; margin-right:8px; color:#fff; border-radius:2px; cursor:pointer;}
+.hot_pf{ float:right;}
+.hot_pf a{ width:59px; height:21px; float:right; margin-left:8px; display:inline;}
+.hot_pf .hot{  background:url(http://www.8264.com/static/images/dianping/line/indexbg.jpg) 0px -48px no-repeat;}
+.hot_pf .hot_g{  background:url(http://www.8264.com/static/images/dianping/line/indexbg.jpg) -61px -48px no-repeat;}
+.hot_pf .latest{background: url(http://www.8264.com/static/images/dianping/line/indexbg.jpg)  0px -233px;}
+.hot_pf .latest_g{background: url(http://www.8264.com/static/images/dianping/line/indexbg.jpg)  -61px -233px;}
+.hot_pf .pf{ background:url(http://www.8264.com/static/images/dianping/line/indexbg.jpg) 0px -72px no-repeat;}
+.hot_pf .pf_g{ background:url(http://www.8264.com/static/images/dianping/line/indexbg.jpg) -61px -72px no-repeat;}
+.hot_pf .mr{ background:url(http://www.8264.com/static/images/dianping/line/indexbg.jpg) 0px -258px no-repeat;}
+.hot_pf .mr_g{ background:url(http://www.8264.com/static/images/dianping/line/indexbg.jpg) -61px -258px no-repeat;}
+.mountain_list ul{ width:700px;}
+.mountain_list li{ width:310px; float:left; margin:30px 40px 10px 0px; display:inline;}
+.mountain_list li img{ width:178px; height:94px; float:left; margin-right:20px; display:inline;}
+.mountain_list li p{ overflow:hidden;  color:#949494; font-size:14px;}
+.mountain_list li a.linktitle{ font-size:14px; color:#1879c0; display:block; overflow:hidden; text-decoration:none; height:18px; font-weight:normal;}
+.mountain_list li span{ display:block; padding-top:8px; color:#949494; font-size:14px;}
+.mountain_list li .dplink{ display:block; padding-top:25px; color:#949494; font-size:14px; }
+.mountain_list li .dplink i{ color:#ff7e00; font-style:normal; font-size:14px;}
+/* ·ÖÒ³ */
+.pageBox:after { content: ""; display: block; clear: both; visibility: hidden; }
+.pageBox { zoom: 1; }
+.pageBox { padding-top:15px;}
+.pageBox .pg { float: right; margin: 0px; height: 30px; }
+.pageBox .pg a,
+.pageBox .pg strong { float: left; display: block; font-size: 15px; font-weight: 400; color: #999; height: 24px; padding: 6px 7px 4px; margin-left: 5px; font-family: "Microsoft YaHei"; background: none; border: 0; text-decoration:none}
+.pageBox .pg a:hover,
+.pageBox .pg strong,
+.pageBox .pg a.select { border: 0; border-bottom: 2px solid #00A6FC; color: #141414; text-decoration: none; background: none; }
+.pageBox .pg .prev { display: none; }
+
+
+.w260{ width:260px;}
+.index_fbbutton_box{ border:#eee solid 1px; background:#fbfbfb; border-radius:3px; padding-top:13px; padding-bottom: 13px; text-align:center; font-size:0px;}
+.index_fbbutton{ width:224px; height:47px; background:url(http://www.8264.com/static/images/dianping/sfbg.jpg) -108px -243px  no-repeat; display:inline-block; *zoom:1; *display:inline;}
+.index_fbbutton:hover{ width:224px; height:47px; background:url(http://www.8264.com/static/images/dianping/sfbg.jpg) -108px -304px  no-repeat; display:inline-block; *zoom:1; *display:inline;}
+
+
+
+.mb15{ margin-bottom:15px;}
+
+.r_title_h4{ height:38px; border-bottom:#eee solid 1px; font-size:16px; font-weight:normal!important;}
+.r_list{ font-size:12px;}
+.r_list a{ font-size:12px; text-decoration:none;}
+.r_list li{ border-bottom:#eee dashed 1px; padding:10px 0px 10px 0px;}
+.r_list li img{ float:left; width:48px; height:48px; border:0;}
+.r_list li p{ }
+.r_list li p a.t_i{ height:20px; overflow:hidden; width:100%; display:block; font-size:12px; color:#585858; text-decoration:none; line-height:1.5}
+.r_list li p a.name{ height:20px; overflow:hidden; width:100%; display:block; font-size:12px; color:#43a6df; text-decoration:none;}
+.r_list li p span.time{ height:20px; overflow:hidden; width:100%; display:block; font-size:12px; color:#949494; text-decoration:none;}
+.r_list li p a.t_con{  font-size:12px; color:#585858; text-decoration:none;  overflow:hidden; line-height:1.5; width:100%; display:block; margin-top:10px;}
+.r_list li p a.t_c_s{  font-size:12px; color:#585858; text-decoration:none;overflow:hidden; line-height:1.5; width:100%; display:block;}
+.r_list a{color:#585858;}
+.r_list a:hover{ color:#585858; text-decoration:none;}
+.r_list li .r_nr{ background:#fbfbfb; border:1px solid #eee; border-radius:3px; padding:10px; line-height:1.5; margin-bottom:10px; position:relative}
+.r_list li .r_nr span{ color:#43a6df;}
+.r_list li .r_nr .arr{ width:8px; height:7px; overflow:hidden;background: url(http://www.8264.com/static/images/dianping/line/ski_sprite.jpg) -229px -798px no-repeat; position:absolute; z-index:99; left:20px; bottom:-7px;}
+.r_list .r_pl{ color:#949494; padding-left:4px; font-size:14px; padding-bottom:6px;}
+.r_list .r_pl a{ color:#1e6d9b; font-size:14px;}
+.r_list .r_pl a:hover{ color:#1a2b38; text-decoration:none;}
+.r_list a.name{color:#43a6df;}
+.r_list a.name:hover{ color:#1e6d9b; text-decoration:none;}
+
+.r_list_without_b li{ border-bottom:none; padding:16px 0px 0px 0px;}
+
+
+
+
+
+.useful{background-color:#f7f7f7;background:-webkit-linear-gradient(#fff, #f0f0f0);background:linear-gradient(#fff, #f0f0f0);padding: 3px 10px 3px 7px;border: 1px solid #dfdfdf;-webkit-border-radius: 2px;-moz-border-radius: 2px;border-radius: 2px;font-size: 12px;float: right;cursor: pointer;margin-left: 10px;}
+.useful i{background: url(../../images/dianping/useful.png) left top no-repeat;display: inline-block;width: 11px;height: 13px;float: left;margin: 1px 4px 0;}
+.useful.active i{background-position: left bottom;margin-top: 2px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

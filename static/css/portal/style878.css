@@ -1,0 +1,52 @@
+/* CSS Document */
+body { margin:0 0 0 0;font-size:12px; color:#333; font-family: 宋体,Arial,Helvetica,sans-serif; }
+ul{ list-style:none; margin:auto 0px;letter-spacing:0; word-spacing:0; padding:0;}
+a{text-decoration:none; color:#333; font-size:12px;}
+a:hover{text-decoration:underline; color:#ff6600; font-size:12px;}
+form{ padding:0 0 0 0; margin:0 0 0 0;}
+em{ font-style:normal;}
+img{ border:0;}
+.clearfix:after{ clear: both; content: " "; display: block; font-size: 0; height: 0; line-height: 0; visibility: hidden; width: 0;}
+/*top*/
+.top{ width:100%; height:110px; background:url(http://static.8264.com/static/images/moban/kqmg/images/top.jpg) top center no-repeat;}
+.warpten{ width:980px; margin:0 auto;}
+.st{ width:232px; float:left; margin:0px 5px 0px 5px; display:inline;}
+.warpten9{ width:997px; margin:0 auto;}
+.mmtitle{ width:980px; margin:auto;}
+.mmtitle h2{font: bold 20px 微软雅黑; margin:0px; padding:10px 0px 2px 0px;}
+.bds_tools_32 span.bds_more{height:37px !important;}
+/*单条一个*/
+.mmone{ width:230px; border:#d6d6d6 solid 1px; box-shadow:0px 0px 5px #CCC; background:#fff; margin:10px 6px 0px 11px; float:left; display:inline;}
+.imgone{ background:#fff; padding:15px 0px 0px 0px; text-align:center;}
+.imgone img{ width:200px; height:300px;}
+.imgname{ width:200px; height:15px; overflow:hidden; text-align:center; line-height:2; padding:6px 0px 17px 0px; margin:auto;}
+.imgname a{ font-size:15px; font-family:微软雅黑,Arial,Helvetica,sans-serif; font-weight:bold;}
+.xh{ width:170px; background:#F0F0F0; padding:20px 30px 0px 30px; text-align:center; font-size:12px;}
+.xh em{ width:75px; float:left; height:23px; color:#fff; padding:30px 0px 0px 0px; background:url(http://static.8264.com/static/images/moban/kqmg/images/xh.png) top center no-repeat; color:#CF4429; text-align:center; }
+.xh span{ width:75px; float:right; height:23px; color:#fff; padding:30px 0px 0px 0px; background:url(http://static.8264.com/static/images/moban/kqmg/images/pl.png) top center no-repeat; color:#2A6FBC; text-align:center;}
+.pinglun_w{ border-top:#D9E0D5 solid 1px;}
+.pinglun_n{ background:#F0F0F0; border-top:#fff solid 1px; text-align:center;  width:200px; margin:auto; line-height:1.5; text-align:left; padding:5px 15px 5px 15px; color:#666; height:35px; overflow:hidden;}
+.tou img{ width:32px; height:32px; border:#ccc solid 1px; float:left; border:#ccc solid 1px;}
+.tou dd{ float:right; margin:0px; padding:0; width:160px; padding:2px 0px 0px 0px; }
+.pinglun_n a{ color:#2A6FBC;}
+.pinglun_n p{ padding:0px 0px 0px 0px; margin:0px; }
+
+
+/*友情链接*/
+.yl{ width:980px; margin:10px auto 30px auto;}
+.ylcon{ width:980px;  border-top:#D9E0D5 solid 1px;}
+
+.ylcon_nei{ width:980px; background:#F0F0F0; padding:10px 0px 0px 0px; border-top:#fff solid 1px;}
+
+.ylcon_nei a{ float:left; display: inline; white-space: nowrap; margin:4px 5px 4px 10px;}
+
+/*底部*/
+
+
+.warpten9-box{overflow: hidden;}
+/* 分页 Start */
+.pageBox {width:100%; height:36px; text-align:center; padding-top:20px; }
+.pageBox .pg { margin: 0 15px 10px; }
+.pageBox .pg a, .pageBox .pg strong { float: left; display: block; font-size: 15px; font-weight: 400; color: #999999; height: 24px; padding: 6px 7px 4px; margin-left: 5px; font-family: "Microsoft YaHei"; background:none; border:0; }
+.pageBox .pg a:hover, .pageBox .pg strong { border:0;border-bottom: 2px solid #00A6FC; color: #141414; text-decoration: none; background:none; }
+/*分页 End */

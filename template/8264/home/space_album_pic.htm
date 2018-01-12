@@ -1,0 +1,392 @@
+<!--{subtemplate common/header_common}-->
+<link href="{$_G['siteurl']}{STATICURL}css/forum/photo.css?{VERHASH}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{$_G[siteurl]}{STATICURL}css/home/uc_tanchukuang.css?{VERHASH}" />
+<style type="text/css">
+.vt32 {top:32px!important;}
+.vt64 {top:66px!important;}
+</style>
+<script type="text/javascript" src="{$_G['setting']['jspath']}jquery-1.9.1.min.js?{VERHASH}"></script>
+<script type="text/javascript" src="{$_G['setting']['jspath']}jquery.nicescroll.min.js?{VERHASH}"></script>
+<script type="text/javascript">jQuery.noConflict();</script>
+<script type="text/javascript">zoomstatus = parseInt($_G['setting']['zoomstatus']);var imagemaxwidth = '{IMAGEMAXWIDTH}';var aimgcount = new Array();</script>
+<link href="http://static.8264.com/static/css/home/home_space.css?{VERHASH}" rel="stylesheet" type="text/css">
+<script>
+jQuery(document).ready(function($) {
+	var picid = {$picid};
+	
+	//分页
+	jQuery("#commentsList .pg").addClass("gallery-reply-pager");
+	jQuery("#commentsList").on('click',".pg>a",function(e){
+		e.preventDefault();
+		getpage(this.href);
+	});
+});
+
+//分页
+function getpage(url){
+	jQuery.post(url,{inajax:1},function(data){
+		jQuery("#commentsList").nextAll().remove();
+		jQuery("#commentsList").html(data);
+		jQuery("#commentsList .pg").addClass("gallery-reply-pager");
+	});
+	jQuery("#commentsList>.h2Tit").after('<div style="padding: 0 0 10px 6px;"><img src="{$_G[siteurl]}{STATICURL}image/common/loading.gif" style="vertical-align: top;"> 数据读取中...</div>');
+	jQuery("#f_message").val('');
+	jQuery(document).scrollTop(jQuery('#commentsList').offset().top-60);
+}
+</script>
+</head>
+
+<body>
+{eval $_G[gp_listpage] = max($_G[gp_listpage], 1);}
+<div id="append_parent"></div>
+<div id="ajaxwaitid"></div>
+<div class="container dy-container">
+	<!--dy-left-->
+	<div class="dy-left">
+		<div class="dy-head">
+			<div class="dy-head-right">
+				<a href="javascript:void(0);" class="link-share"><i>分享</i></a>	
+				<a href="{$pic_url}" class="link-orimg" target="brank_"><i>查看原图</i></a>
+				<ul class="share-list share_bd bdsharebuttonbox" data-tag="share_1">
+					<li>
+						<a class="wb" href="javascript:void(0);" data-cmd="tsina">新浪微博</a>
+					</li>
+					<li>
+						<a class="qz" href="javascript:void(0);" data-cmd="qzone">QQ空间</a>
+					</li>
+					<li>
+						<a class="qwb" href="javascript:void(0);" data-cmd="tqq">腾讯微博</a>
+					</li>
+					<li>
+						<a class="wx" href="javascript:void(0);" data-cmd="weixin">微信</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script>
+		window._bd_share_config = {
+			common : {
+				//此处放置通用设置
+			},
+			share : [
+				//此处放置分享按钮设置
+				{"tag" : "share_1", "bdSize" : 32}	
+			]
+		}
+		with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+		(function($){
+			var ww=$(window).width();
+			var s_bd_r=Math.max((ww-980)/2-60,0);
+		})(jQuery);
+		</script>
+		<script type="text/javascript" id="bdshare_js" data="type=button&amp;mini=1&amp;uid=39357" ></script>
+		<script type="text/javascript" id="bdshell_js"></script>
+		<script type="text/javascript">
+			document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+		</script>
+		<div class="dy-original">
+			<div class="dy-original-wrapper">
+				<div class="gallery-image-original">
+					<img title="{$forum_picture['subject']}"  src="{$pic_url}" data-large="{$pic_url}"/>
+				</div>
+				{if $prevpicid}
+				<a href="home.php?mod=space&uid=$album[uid]&do=album&picid={$prevpicid}" class="image-original-prev"><i class="dy-sprite"></i></a>
+				{/if}
+				{if $nextpicid}
+				<a href="home.php?mod=space&uid=$album[uid]&do=album&picid={$nextpicid}" class="image-original-next"><i class="dy-sprite"></i></a>
+				{/if}
+			</div>
+		</div>
+	</div>
+	<!--dy-left end-->
+	<!--dy-right-->
+	<div class="dy-right">
+		<div class="dy-anchors">
+			<div class="dy-notification no-bor">
+				<a href="home.php?mod=space&uid=$album[uid]&do=album&id=$album[albumid]{if $_G[gp_listpage]>1}&page={$_G[gp_listpage]}{/if}" class="dy-close-button"><i class="dy-sprite"></i>关闭</a>
+			</div>
+		</div>
+		<div class="dy-info-scroller">
+			<!--相册及照片信息-->
+			<div class="dy-info-wrapper photoitem-wrapper">
+				<style type="text/css">
+					.photoitem-info{
+						position: relative;
+						padding-left: 65px;
+						min-height: 48px;
+					}
+					.photoitem-info .avatar{
+						position: absolute;
+						left: 0;
+						top: 3px;
+					}
+					.photoitem-info .avatar img{
+						width: 48px;
+						height: 48px;
+						-webkit-border-radius: 2px;
+						-moz-border-radius: 2px;
+						border-radius: 2px;
+					}
+					.photoitem-other{
+					}
+					.photoitem-other span{
+						display: block;
+						font-size: 12px;
+						margin-bottom: 2px;
+						color: #4f4f4f;
+					}
+					.photoitem-other .user-name{
+						font-size: 14px;
+						margin-bottom: 5px;
+					}
+					.photoitem-other .user-name a{
+						color: #428bca
+					}
+					.photoitem-other .album-name{
+						color: #4f4f4f;
+						margin-left: 8px;
+					}
+					.photoitem-title-wrap{
+						margin-top: 10px;
+					}
+					.photoitem-title-wrap .photoitem-title{
+						color: #949494;
+					}
+					.photoitem-title-wrap .photoitem-edit,.photoitem-title-wrap .photoitem-save{
+						font-size: 12px;
+						color: #428bca;
+					}
+					.photoitem-title-wrap .photoitem-save{
+						float: right;
+					}
+					.photoitem-title-wrap .mod-input{
+						overflow: hidden;
+						/*display: none;*/
+					}
+					.photoitem-title-wrap .mod-input input{
+						width: 278px;
+						padding: 3px 5px 3px 0;
+						border: 0 none;
+						background-color: transparent;
+						color: #949494;
+					}
+					.dy-original > .dy-original-wrapper > .gallery-image-original{
+						text-align: center;
+					}
+				</style>
+				<div class="photoitem-info">
+					<a href="home.php?mod=space&uid={$album[uid]}" class="avatar">
+						{avatar($album[uid],small)}
+					</a>
+					<div class="photoitem-other">
+						<span class="user-name"><a href="home.php?mod=space&uid={$album[uid]}" title="">{$album['username']}</a></span>
+						<span class="">上传于{eval echo date('Y-m-d H:i', $pic[dateline])}</span>
+						<span>来自<a class="album-name" href="home.php?mod=space&uid=$album[uid]&do=album&id=$album[albumid]" title="{$album['albumname']}">{$album['albumname']}</a></span>
+					</div>
+				</div>
+				<div class="photoitem-title-wrap">
+				<form method="post" autocomplete="off" id="editform_{$album[albumid]}" action="home.php?mod=spacecp&ac=album&op=editpic&albumid={$album[albumid]}&subop=update&is_uc=1" onsubmit="ajaxpost('editform_{$album[albumid]}', 'return_editpictitle');">
+					<div class="photoitem-title">
+						<span id="pictitleshow">{eval echo $pic[title] = $pic[title] ? $pic[title] : $pic[filename];}</span>
+						{if $space[self]}<a href="javascript:void(0);" class="photoitem-edit">编辑</a>{/if}
+					</div>
+					{if $space[self]}
+					<div class="mod-input photoitemform" style="display:none;">
+						<input type="text" value="" name="title[{$pic[picid]}]" id="pictitleedit">
+						<button type="submit" class="photoitem-save" style="border: 0 none;background-color: transparent;" />保存</button>
+					</div>
+					{/if}
+					<input type="hidden" name="editpicsubmit" value="true" />
+					<input type="hidden" name="formhash" value="{FORMHASH}" />					
+					<input type="hidden" name="referer" value="$theurl" />
+					<input type="hidden" name="handlekey" value="editpictitle" />
+					<div id="return_editpictitle" style="display:none;"></div>
+					<input type="hidden" name="quickcomment" value="true" />
+				</form>
+				</div>
+			</div>		
+			<script type="text/javascript">
+			jQuery(function(){				
+				//图片描述相关
+				jQuery('.photoitem-edit').click(function(){
+					jQuery(this).parent().hide();
+					jQuery('.photoitemform').show();
+					jQuery('#pictitleedit').focus().val(jQuery('#pictitleshow').html());
+				});
+				
+				jQuery('.photoitem-save').click(function(){
+					jQuery('#pictitleshow').html(jQuery('#pictitleedit').val());
+					jQuery('#pictitleedit').html('');
+					jQuery('.photoitem-title').show();
+					jQuery('.photoitemform').hide();
+				});
+			});						
+			</script>
+			<!--相册及照片信息 end-->
+			<div class="dy-reply-wrapper">
+				<div class="gallery-reply-editor">
+                    <form id="quickcommentform_{$picid}" name="quickcommentform_{$picid}" action="home.php?mod=spacecp&ac=comment&handlekey=qcpic_{$picid}&is_uc=1" method="post" autocomplete="off" onsubmit="ajaxpost('quickcommentform_{$picid}', 'return_qcpic_{$picid}');">		
+                		<input type="hidden" name="refer" value="$theurl" />
+						<input type="hidden" name="id" value="$picid" />
+						<input type="hidden" name="idtype" value="picid" />
+						<input type="hidden" name="commentsubmit" value="true" />
+						<input type="hidden" name="quickcomment" value="true" />
+						<input type="hidden" name="formhash" value="{FORMHASH}" />
+						<div class="reply-editor-entry">
+                        	<div id="return_fastreply"></div>
+                            <textarea name="message" class="t_note" cols="30" rows="10" id="f_message"></textarea>
+                            <!--{if checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
+                            <style type="text/css">
+                            	.valid-box{position: relative;}
+                            	.valid-form{display: block;margin-bottom: 10px;}
+                            	.valid-form em{float: left;width: 60px;line-height: 26px;color: #949494;margin-right: 8px;}
+                            	.valid-form input{border: 1px solid #d6d6d6;height: 18px;padding: 3px 5px;}
+                            </style>
+							<div class="valid-box">
+								<!--{block sectpl}--><sec> <span id="sec<hash>" class="valid-form" onclick="showMenu(this.id);"><sec></span><div id="sec<hash>_menu" class="p_pop p_opt yzm" style="display:none;"><sec></div><!--{/block}-->
+								<div class="mtm mbm sec"><!--{subtemplate common/seccheck}--></div>
+							</div>							
+							<!--{/if}-->
+                           	<button class="btn-comment" type="submit" {if !$_G['uid']}onclick="showWindow('login', 'member.php?mod=logging&action=login&guestmessage=yes');return false;"{/if}>评论图片</button>                           	
+							<span id="return_qcpic_{$picid}" style="display:none;"></span>
+	                    </div>
+					</form>
+				</div>
+				<script type="text/javascript">
+				function succeedhandle_qcpic_{$picid} (url, message, values) {
+					jQuery("#f_message").val('');
+					getpage('http://u.8264.com/home.php?mod=space&uid=$album[uid]&do=album&picid={$picid}&page=1');
+					var commentcount = parseInt(jQuery('#commentcount').html(), 10) + 1;
+					jQuery('#commentcount').html(commentcount);
+					showDialog(message,"notice");
+				}
+				</script>
+				<!--评论列表-->
+				<div class="gallery-reply-list-wrapper">
+					<div class="gallery-reply-head">
+						<div class="gallery-reply-title">
+							<span class="gallery-reply-count"><i class="dy-sprite"></i><span id="commentcount">{$count}</span>条 评论</span>
+						</div>
+					</div>
+					<div class="gallery-reply-list" id="commentsList">
+					{if $list}					
+						<ul>
+                            <!--{loop $list $v}-->	
+                             <li id="comments_{$v['cid']}">
+                                <div class="reply-misc-main">
+                                    <a href="home.php?mod=space&uid={$v['authorid']}" class="author-face">		
+                                        {avatar($v[authorid],small)}
+                                        {$v['author']}
+                                    </a>
+                                    <span class="reply-cont">{$v['message']}</span>
+                                </div>
+                             </li>
+							<!--{/loop}-->
+						</ul>
+       					{$multi}					
+					{/if}
+					</div>
+				</div>
+				<!--评论列表 end-->
+			</div>				
+		</div>
+	</div>
+	<!--dy-right end-->
+</div>
+
+<script type="text/javascript">
+	// var adjustImgSize = function(img, boxWidth, boxHeight) {
+ //        var tempImg = new Image();
+ //        tempImg.src = img.attr('src');
+ //        var imgWidth=tempImg.width;
+ //        var imgHeight=tempImg.height;
+  
+ //        if((boxWidth/boxHeight)>=(imgWidth/imgHeight))
+ //        {
+ //            img.width((boxHeight*imgWidth)/imgHeight);
+ //            img.height(boxHeight);
+ //            var margin=(boxWidth-img.width())/2;
+ //            img.css("margin-left",margin);
+ //        }
+ //        else if((boxWidth/boxHeight)<(imgWidth/imgHeight))
+ //        {
+ //            img.width(boxWidth);
+ //            img.height((boxWidth*imgHeight)/imgWidth);
+ //            var margin=(boxHeight-img.height())/2;
+ //            img.css("margin-top",margin);
+ //        }
+ //    };
+	jQuery(".dy-info-scroller").niceScroll({
+		cursorcolor:"#333",
+		cursorwidth:"4px",
+		cursorborderradius:"2px",
+		cursorborder:"none",
+		boxzoom:false,
+		touchbehavior:false
+	});
+	jQuery(function(){
+		var _w = parseInt(jQuery(".gallery-image-original").width());
+		var _h = parseInt(jQuery(".gallery-image-original").height());
+		jQuery(".gallery-image-original img").each(function(i){
+			var img = jQuery(this);
+			var realWidth;
+			var realHeight;
+			jQuery("<img/>").attr("src", jQuery(img).attr("src")).load(function() {
+				realWidth = this.width;
+				realHeight = this.height;
+				var _mt = (_h - img.height()) / 2;
+				if(realWidth >= _w && realHeight < _h) {
+					// console.log(1);
+					// console.log("Width:" + realWidth + "Height:" + realHeight);
+					jQuery(img).css({
+						"width": "100%",
+						"height": "auto",
+						"margin-top": _mt
+					});
+				} else if(realHeight >= _h) {
+					// console.log(2);
+					// console.log("Width:" + realWidth + "Height:" + realHeight);
+					jQuery(img).css({
+						"width": "auto",
+						"height": "100%"
+					});
+				} else {
+					// console.log(3);
+					// console.log("Width:" + realWidth + "Height:" + realHeight);
+					jQuery(img).css({
+						"width": realWidth+'px',
+						"height": realHeight+'px',
+						"margin-top": _mt
+					});
+				}
+			});
+		});
+		//调整图片位置
+		// var wH = jQuery(".dy-container").height();
+		// var nH = wH-56;
+		// jQuery(".dy-info-scroller").height(nH);
+		// adjustImgSize(jQuery(".gallery-image-original img"), jQuery(".gallery-image-original img").parent().width(), jQuery(".gallery-image-original img").parent().height());
+		
+		jQuery(".link-share").click(function() {
+			jQuery(".share-list").toggle();
+		});
+		// jQuery('.gallery-image-original img').load(function() {
+		// 	adjustImgSize(jQuery(this), jQuery(this).parent().width(), jQuery(this).parent().height());
+		// });
+		jQuery(".dy-left").hover(function() {
+			jQuery(".dy-head").show();
+		}, function() {
+			jQuery(".dy-head").hide();
+		});
+		
+		if (jQuery('.yzm').length > 0) {
+			setInterval(function(){
+				jQuery('.yzm').eq(0).css({'left':'0px'}).addClass('vt32');
+				jQuery('.yzm').eq(1).css({'left':'0px'}).addClass('vt64');
+			},10);	
+		}	
+	});
+</script>
+</body>
+</html>	
+<!--{eval output();}-->

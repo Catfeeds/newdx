@@ -1,0 +1,62 @@
+<!--{subtemplate common/header}-->
+<style type="text/css">
+<!--
+.xl1 li {
+height:auto;
+line-height:30px;
+}
+-->
+</style>
+
+
+<div id="pt" class="bm cl">
+	<!--{subtemplate common/simplesearchform}-->
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G['setting']['bbname']</a> <em>&rsaquo;</em>最新主题 / 最新回复
+	</div>
+</div>
+
+<div id="ct" class="wp cl">
+
+
+
+
+
+
+
+
+<div style="float: left; width: 49%; margin-bottom:10px;">
+            	<div class="area" id="diy8"><div class="frame move-span cl frame-1" id="frameHD7s5r"><div class="column frame-1-c" id="frameHD7s5r_left"><div class="move-span temp" id="frameHD7s5r_left_temp"></div><div class="xbs xbs_4 block move-span" id="portal_block_86"><div class="blocktitle title"><span style="" class="titletext">最新主题</span></div><div class="content" id="portal_block_86_content"><div class="module cl xl xl1">
+<ul>
+<!--{loop $newthread_lists $newthread_list}-->
+<li><em><a target="_blank" href="home.php?mod=space&amp;uid=$newthread_list[authorid]">$newthread_list[author]</a></em><a target="_blank" href="forum.php?mod=viewthread&tid=$newthread_list[tid]" $newthread_list[highlight]>$newthread_list[subject]</a></li>
+<!--{/loop}-->
+</ul>
+</div></div></div></div></div></div>
+            </div>
+            
+            
+            
+            <div style="float: right; width: 49%; margin-bottom:10px;">
+            	<div class="area" id="diy9"><div class="frame move-span cl frame-1" id="frame39s6I3"><div class="column frame-1-c" id="frame39s6I3_left"><div class="move-span temp" id="frame39s6I3_left_temp"></div><div class="xbs xbs_4 block move-span" id="portal_block_87"><div class="blocktitle title"><span style="" class="titletext">最新回复</span></div><div class="content" id="portal_block_87_content"><div class="module cl xl xl1">
+<ul>
+<!--{loop $newreply_lists $newreply_list}-->
+
+<li><em>$newreply_list[lastposter]</em><a target="_blank" href="forum.php?mod=redirect&tid=$newreply_list[tid]&amp;goto=lastpost#lastpost" $newreply_list[highlight]>$newreply_list[subject]</a>
+</li>
+<!--{/loop}-->
+</ul>
+</div></div></div></div></div></div>
+            </div>
+            <div style="clear: both;"></div>
+
+
+
+
+
+
+
+
+</div>
+
+<!--{subtemplate common/footer}-->

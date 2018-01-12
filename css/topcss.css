@@ -1,0 +1,193 @@
+.toptitle {
+	background-image: url(/moban/wenzhang_zongpaihang/images/article_toptile_bian.gif);
+	background-repeat: no-repeat;
+	background-position: right;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #125fa7;
+}
+.topright {
+	height: 34px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-right-color: #125fa7;
+	border-bottom-color: #125fa7;
+	padding-left:6px;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #125fa7;
+}
+.toptable {
+	margin-top: 4px;
+	margin-bottom: 10px;
+}
+.betweentd {
+	color: #686868;
+	background-image: url(/moban/wenzhang_zongpaihang/images/article-between_ion.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	padding-top: 20px;
+	line-height: 14px;
+}
+.lefttable {
+	padding: 12px;
+	border: 1px solid #c4c4c4;
+}
+.lefttd1 {
+	border-bottom-width: 4px;
+	border-bottom-style: solid;
+	border-bottom-color: #125fa7;
+}
+.paihanga {
+	background-image: url(/moban/wenzhang_zongpaihang/images/an.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	padding-top: 4px;
+	padding-bottom: 2px;
+	padding-left: 2px;
+	color:#FFFFFF;
+	font-weight: bold;
+	height:25px;
+	width:77px;
+	text-decoration: none;
+	cursor:hand;
+}
+.lefttd2 {
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #125fa7;
+	background-image: url(/moban/wenzhang_zongpaihang/images/index_zhoutop_ion.gif);
+	background-position: 8px 6px;
+	padding-top: 6px;
+	padding-bottom: 4px;
+	padding-left: 30px;
+	background-repeat: no-repeat;
+}
+.lefttd3 {
+	font-weight: bold;
+	color: #303030;
+	background-color:#e6e6e6;
+	background-image: url(/moban/wenzhang_zongpaihang/images/index_yuetop_ion.gif);
+	background-position: 8px 6px;
+	padding-top: 6px;
+	padding-bottom: 4px;
+	padding-left: 30px;
+	background-repeat: no-repeat;
+}
+.lefttable2 td {
+    padding-right:2px;
+}
+.righttd1 {
+	padding-top: 2px;
+	padding-bottom: 2px;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #c4c4c4;
+	border-bottom-color: #c4c4c4;
+	background-color: #e6e6e6;
+	background-image: url(/moban/wenzhang_zongpaihang/images/article_right_bg.gif);
+	background-repeat: repeat-y;
+	background-position: left;
+}
+.righttd2 {
+	padding-top: 15px;
+}
+.righttd3 {
+	background-color:#125fa7;
+	height:18px;
+	width:18px;
+	color: #FFFFFF;
+	text-align: center;
+}
+.righttd4 {
+	padding-bottom:4px;
+	padding-left:4px;
+}
+.righttd5 {
+	font-size: 14px;
+	padding-top: 4px;
+	padding-bottom: 6px;
+}
+.righttd6 {
+	background-image: url(/moban/wenzhang_zongpaihang/images/article_an.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	padding-top: 0px;
+	padding-bottom:8px;
+	padding-left:34px;
+	height:40px;
+}
+.righttd7 {
+	border-top-width: 1px;
+	border-top-style: solid;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-top-color: #c4c4c4;
+	border-bottom-color: #c4c4c4;
+}
+.righttd8 {
+	line-height: 150%;
+	background-color: #f0f0f0;
+	padding-top: 8px;
+	padding-right: 8px;
+	padding-bottom: 8px;
+	padding-left: 12px;
+}
+.righttd9 {
+	padding-top: 20px;
+}
+.righttd10 {
+	font-size: 14px;
+	font-weight: bold;
+	color: #125fa7;
+	background-image: url(/moban/wenzhang_zongpaihang/images/article_an1.gif);
+	background-position: center 10px;
+	padding-top: 18px;
+	padding-bottom: 6px;
+	padding-left: 100px;
+	background-repeat: no-repeat;
+}
+.righttd10 a:link {
+	font-size: 14px;
+	color: #125fa7;
+	text-decoration: none;
+}
+.righttd10 a:visited {
+	font-size: 14px;
+	color: #125fa7;
+	text-decoration: none;
+}
+.bottomtd1 {
+	color: #000000;
+	text-align: center;
+	padding-top: 25px;
+	padding-bottom: 8px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #000000;
+}
+.bottomtd1 a {
+	color: #000000;
+	text-decoration: none;
+}
+.bottomtd2 {
+	border: 1px solid #004a9c;
+	color: #004a9c;
+	padding-top: 6px;
+	padding-right: 10px;
+	padding-bottom: 4px;
+	padding-left: 10px;
+	margin-top:15px;
+	text-align:center;
+}
+.bottomtd2 a {
+	color: #004a9c;
+	text-decoration: none;
+}

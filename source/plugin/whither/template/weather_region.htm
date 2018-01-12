@@ -1,0 +1,149 @@
+{subtemplate common/header_8264_new}
+<script type="text/javascript" src="http://www.8264.com/static/js/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+</script>
+<link rel="stylesheet" href="/source/plugin/whither/css/main.css?3" />
+<div style="padding-bottom:5px;height:35px;overflow:hidden;width:100%;">
+	<div class="z" style="line-height:30px;">
+		<!--{eval echo $forumoption_mudidi->getBreadcrumbNavByTid($tid);}--> <em>&rsaquo;</em> 天气
+	</div>
+</div>
+
+<div id="ct" class="ct2_a wp cl">
+	<div class="container">
+			<!--{eval $ralateScapeareaData = $forumoption_mudidi->getSubScapeareaByTid($tid);}-->
+            <!--{eval $viewDetailNum = 3;}-->
+			<!--{eval $time = time();}-->
+
+            <div class="mudidi_view_top"></div>
+			<div class="weatherBox">
+				<div class="thead">
+					{$mudidi_data['subject']}相关景区天气预报
+				</div>
+				<!--{loop $ralateScapeareaData $ralateScapeareaid $ralateScapearea}-->
+					<!--{eval $weathers = $forumoption_mudidi->getWeatherInfo($ralateScapearea['long'], $ralateScapearea['lat'], true);}-->
+					<!--{if $weathers}-->
+					<div class="currentWeather">
+						<div class="icon">
+							<div class="inner">
+								<img src="http://www.google.com{$weathers['forecast_information'][0]['icon']}" alt="" /><br />
+								<a href="http://bbs.8264.com/whither-weather-{$ralateScapearea['tid']}.html">{$ralateScapearea['name']}</a>
+							</div>
+						</div>
+						<div class="weather">
+							<div class="inner">
+								<!--{eval echo date("Y-m-d", $time)}--> {eval echo str_replace('周', '星期',$weathers['forecast_information'][0]['day_of_week'])}<br />
+								{$weathers['forecast_information'][0]['condition']}<br />
+								{$weathers['forecast_information'][0]['low']}℃ ~ {$weathers['forecast_information'][0]['high']}℃
+							</div>
+						</div>
+						<div class="currentCondition">
+							<div class="inner">
+								{if $weathers['current_conditions']['wind_condition']}
+								{$weathers['current_conditions']['wind_condition']}<br />
+								{/if}
+								{$weathers['current_conditions']['humidity']}
+							</div>
+						</div>
+					</div>
+					<!--{/if}-->
+					<!--{eval unset($ralateScapeareaData[$ralateScapeareaid]);}-->
+					<!--{if $ralateScapeareaid >= $viewDetailNum-1}-->
+						<!--{eval break;}-->
+					<!--{/if}-->
+				<!--{/loop}-->
+			</div>
+
+
+			<!--{if $tid}-->
+			<!--{eval $guideData = $forumoption_mudidi->getGuideByRegionTid($tid, 5);}-->
+			<!--{/if}-->
+			<!--{if $guideData}-->
+			<div class="bm vw pl guide_list">
+				<div class="bm_h cl">
+					<h2>
+						<a href="/plugin.php?id=whither:guidelist&tid={$tid}" class="more">更多攻略</a>
+						{$mudidi_data['subject']}攻略大全
+						<span class="pub_guide">
+							<a href="http://bbs.8264.com/forum-post-action-newthread-fid-52.html?mtid={$tid}">发布攻略</a>
+						</span>
+					</h2>
+				</div>
+				<div class="bm_c">
+					<!--{loop $guideData $guideid $guide}-->
+						<!--{if $guide['type'] == 1}-->
+							<!--{eval $link = "/thread-".$guide['typeid']."-1-1.html";}-->
+						<!--{elseif $guide['type'] == 2}-->
+							<!--{eval $link = "http://u.8264.com/home-space-uid-".$guide['uid']."-do-blog-id-".$guide['typeid'].".html";}-->
+						<!--{/if}-->
+					<div class="row">
+						<div class="detail">
+							<h5>
+								<span class="status">
+									<img src="http://bbs.8264.com/source/plugin/whither/css/images/icon1.png" title="回复" />
+									<a href="$link" title="回复" target="_blank">$guide['replies']</a>
+									<img src="http://bbs.8264.com/source/plugin/whither/css/images/icon2.png" title="查看" class="icon2" />
+									<a href="$link" title="查看" target="_blank">$guide['views']</a>
+								</span>
+								<a href="$link" target="_blank">$guide['subject']</a>
+							</h5>
+							<div class="author_info">
+								<div class="author">
+									<a href="http://u.8264.com/home-space-uid-{$guide['authorid']}-do-profile.html">
+										<!--{eval echo avatar($guide['authorid'], 'small');}-->
+									</a>
+									作者: <a href="http://u.8264.com/home-space-uid-{$guide['authorid']}-do-profile.html">{$guide['author']}</a>
+								</div>
+								<div class="lastposter">
+									<a href="http://u.8264.com/home-space-uid-{$guide['lastposterid']}-do-profile.html">
+										<!--{eval echo avatar($guide['lastposterid'], 'small');}-->
+									</a>
+									回复: <a href="http://u.8264.com/home-space-uid-{$guide['lastposterid']}-do-profile.html">{$guide['lastposter']}</a>
+									<span class="gray"><!--{eval echo dgmdate($guide['lastpost'], 'u');}--></span>
+								</div>
+							</div>
+							<div class="content">
+								<!--{if $guide['firstPicture'] != NULL}-->
+									<div class="image">
+										<a href="$link" target="_blank">
+											<img src="{$guide['firstPicture']}" alt="" />
+										</a>
+									</div>
+								<!--{/if}-->
+								<!--{eval echo messagecutstr($guide['message'], 200);}-->
+							</div>
+						</div>
+					</div>
+					<!--{/loop}-->
+				</div>
+			</div>
+			<!--{/if}-->
+
+			<!--{if $ralateScapeareaData}-->
+			<div class="weatherBox">
+				<div class="thead">
+					其他相关景区天气预报
+				</div>
+				<div class="ralateScapearea">
+					<ul>
+					<!--{eval $otherScapeareaNum = 25;}-->
+					<!--{loop $ralateScapeareaData $scapeareaid $scapearea}-->
+						<li><a href="/whither-weather-{$scapearea['tid']}.html"{if $scapearea['tid']==$tid} class="active"{/if}>{$scapearea['name']}天气预报</a></li>
+						<!--{if --$otherScapeareaNum == 0}-->
+							<!--{eval break;}-->
+						<!--{/if}-->
+					<!--{/loop}-->
+					</ul>
+				</div>
+			</div>
+			<!--{/if}-->
+	</div>
+
+	<!--{eval include DISCUZ_ROOT.'./source/plugin/whither/template/_sidebar.php';}-->
+</div>
+<div style="display:none;">
+	<script src="http://s84.cnzz.com/stat.php?id=3496107&web_id=3496107&show=pic1" language="JavaScript"></script>
+</div>
+
+{subtemplate common/footer_8264_new}

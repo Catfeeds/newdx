@@ -1,0 +1,34 @@
+<div class="brand-product-wrapper">
+	<div class="ui-block ui-block-title">
+		<div class="ui-title ui-title-line">
+			<h3>{$detail['subject']}</h3>
+			 <span style="margin-left:10px;vertical-align:-1px"> 装备库 （{$brand_eq_count}件）</span>
+			<a href="http://www.8264.com/zhuangbei-0-0-{$detail['id']}-5-1.html" target="_blank" class="item-more">+{$detail['subject']}更多</a>
+		</div>
+	</div>
+	<div class="ui-block ui-block-content">
+		
+		<ul class="product-slide-nav">
+			
+		</ul>
+		<div class="product-slide-content">
+			{eval for ($i = 0; $i < $block_num; ++$i):}
+				<div class="product-container" {if $i==0}style="display:black;"{else}style="display:none;"{/if}>
+					{eval $targe_index = $i * 3;}
+					{eval for ($j = $targe_index; $j < $targe_index + 3; ++$j):}
+						{eval if ($j == $brand_eq_count)break;}
+						{eval $value = $brand_eq[$j];}
+						<div class="product-slide-pannel">
+							<a href="http://www.8264.com/zhuangbei-{$value['tid']}-1.html" title="{$value['subject']}" target="_blank" >
+								<p class="img-product">
+									<img src="{echo getimagethumb(185,185,1, $value['dir'].'/'.$value['showimg'], $value['kaid'], $value['serverid'])}" alt="">
+								</p>
+								<div class="text-product"><p>{$value['subject']}</p></div>
+							</a>
+						</div>
+					{eval endfor;}
+				</div>
+			{eval endfor;}
+		</div>
+	</div>
+</div>

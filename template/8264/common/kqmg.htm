@@ -1,0 +1,30 @@
+<div id="kqmg" style="width:100%;overflow:hidden;height:372px; background:#fff;">
+    <!--{block/4837}-->
+</div>
+<script type="text/javascript">
+;(function($){
+    function resize_styles() {
+        var width = 177;
+        var max_width = $('#kqmg').width() - 2;
+        var item_num = parseInt(max_width / width);
+        var item_margin = parseInt((max_width % width) / (item_num + 1) / 2);
+        var padding_left = item_margin;
+		$('#portal_block_4837').css({'margin': 0+'px'});
+        $('.kqmgimgwarpten').css({'padding-left': padding_left+'px'});		
+        $('.kqmgimgwarpten > div').css({'margin-left':padding_left+'px', 'margin-right':padding_left+'px'});
+    }
+    $(window).resize(resize_styles);
+    setTimeout(function(){
+        resize_styles();
+    }, 200);
+	$("#wh").live("mouseleave",function(){		
+        resize_styles();
+	});
+	$("#wh").live("click",function(){		
+        resize_styles();
+	});
+	$("#wh").live("mouseenter",function(){
+        resize_styles();
+    })
+})(jQuery);
+</script>

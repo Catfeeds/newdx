@@ -1,0 +1,26 @@
+<div id="edit_template_div">
+<!--{if $info}-->
+<p><b class="blue">模板编辑</b><span style="float:right"><a href="javascript:;" onclick="hideWindow('edittemplate');" class="flbc">关闭</a></span></p>
+<form action="/admin.php?ctl=templateadmin&act=editemplate&tmpid={$info[tmpid]}" method="GET" onsubmit="addnewtemplate(this, true);hideWindow('edittemplate');return false;">
+<p>模板名称：<input type="text" name="templatename" value="{$info[name]}"/></p>
+<p>模板路径文件：<input type="text" name="templatedir" value="{$info[template]}"/></p>
+<p>模板配置：<select name="model" onchange="ajaxget('admin.php?ctl=templateadmin&act=gettype&mod=' + this.value, 'edit_mod_type');">
+				<option value="">请选择模块</option>
+				<!--{loop $models $k $md}-->
+				<option value="{$k}"<!--{if $k == $info[model]}-->selected<!--{/if}--> >$md[name]</option>
+				<!--{/if}-->
+			</select>
+			&nbsp;&nbsp;
+			<span id="edit_mod_type"><script>ajaxget('admin.php?ctl=templateadmin&act=gettype&mod={$info[model]}&selecttype={$info[type]}', 'edit_mod_type');</script></span></p>
+<p>当前版本：<span class="blue header">{$info[version]}</span></p>
+<p><input type="hidden" name="editsubmit" value="yes"/>
+<input type="submit" name="submit" value="提交修改"/></p>
+</form>
+<!--{else}-->
+当前提交的参数有问题，不能读取当前模块的信息
+<!--{/if}-->
+</div>
+<style>
+#edit_template_div{padding:10px 15px;}
+#edit_template_div p{margin:5px 0;}
+</style>

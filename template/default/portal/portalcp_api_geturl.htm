@@ -1,0 +1,55 @@
+<!--{template common/header}-->
+	<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/portal/portal_portalcp.css?{VERHASH}" />
+<script type="text/javascript" src="http://static.8264.com/static/js/newswfobject.js?{VERHASH}"></script>
+<script type="text/javascript" src="http://static.8264.com/static/js/jquery-1.9.1.min.js?{VERHASH}"></script>
+<style type="text/css">
+.parentcat {}
+.cat { margin-left: 20px; }
+.lastchildcat, .childcat { margin-left: 40px; }
+</style>
+
+<div id="pt" class="bm cl">
+	<!--{subtemplate common/simplesearchform}-->
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> <em>&rsaquo;</em>
+		<a href="portal.php">{lang portal}</a> <em>&rsaquo;</em>
+		<a href="portal.php?mod=portalcp">{lang portal_manage}</a> <em>&rsaquo;</em>
+		{lang category_management}
+	</div>
+</div>
+
+<div id="ct" class="ct2_a wp cl">
+	<div class="mn">
+	<div class="bm bw0">
+		<div id="block_selection">
+			<ul class="tb cl">
+				<li id="li_setting" class="a">链接管理</li>
+			</ul>
+			<form id="blockformsetting" name="blockformsetting" method="post" autocomplete="off" action="portal.php?mod=portalcp&amp;ac=api_geturl" onsubmit="return checkblockname(this);" class="fdiy">
+				<div class="c diywin">
+					<div id="block_setting">
+						<table class="tfm mbm">
+							<tbody id="tbody_setting">
+								<tr class="vt">
+									<th>链接</th>
+									<td><span style="color:red;">每行一个</span><br /><textarea rows="50" name="content" cols="100">$content</textarea></td>
+								</tr>
+							</tbody>
+							<tbody id="tbody_thumbsetting"></tbody>
+						</table>
+					</div>
+				</div>
+				<div class="o pns">
+					<input type="hidden" name="editsubmit" value="true" />
+					<input type="hidden" name="formhash" value="{FORMHASH}" />
+					<button type="submit" class="pn pnc"><strong>确定</strong></button>
+				</div>
+			</form>
+		</div>
+	</div>
+	</div>
+	<div class="appl">
+		<!--{subtemplate portal/portalcp_nav}-->
+	</div>
+</div>
+<!--{template common/footer}-->

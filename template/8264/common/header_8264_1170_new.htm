@@ -1,0 +1,256 @@
+	<!--{subtemplate common/header_common}-->
+	<!--{if defined('CURMODULE') && ($_G['basescript'] == 'forum' || $_G['basescript'] == 'group') && (CURMODULE == 'index' || CURMODULE == 'forumdisplay' || CURMODULE == 'group')}-->$rsshead<!--{/if}-->
+	<!--{if $_G['basescript'] == 'forum'}-->
+		<script type="text/javascript" src="http://static.8264.com/static/js/forum.js?{VERHASH}"></script>
+	<!--{elseif $_G['basescript'] == 'home' || $_G['basescript'] == 'userapp'}-->
+		<script type="text/javascript" src="http://static.8264.com/static/js/home.js?{VERHASH}" ></script>
+
+	<!--{elseif $_G['basescript'] == 'portal'}-->
+		<script type="text/javascript" src="http://static.8264.com/static/js/portal.js?{VERHASH}" ></script>
+	<!--{/if}-->
+	<!--{if $_G['basescript'] != 'portal' && $_GET['diy'] == 'yes' && ($_G[mod] == 'topic' || $_G[group][allowdiy]) && !empty($_G['style']['tplfile'])}-->
+		<script type="text/javascript" src="http://static.8264.com/static/js/portal.js?{VERHASH}" ></script>
+	<!--{/if}-->
+	<!--{if $_GET[diy] == 'yes' && ($_G[mod] == 'topic' || $_G[group][allowdiy]) && !empty($_G['style']['tplfile'])}-->
+	<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/common/diy.css?{VERHASH}" />
+	<!--{/if}-->
+	<!--{eval $user_IP = ($_SERVER["HTTP_CDN_SRC_IP"]);}-->
+	<style type="text/css">
+		.textAdBox ul { width:980px; overflow:hidden; }
+		.textAdBox ul li { width:196px; }
+	</style>
+	<!--[if lt ie 9]>
+    <style type="text/css">
+    .card-box input[type="checkbox"]{opacity:1!important; filter:alpha(opacity=100)!important;}
+    .card-box .input-hack{display:none;}
+    </style>
+    <![endif]-->
+	<!--[if ie 7]>
+		<style type="text/css">
+			.stragy-titbar .pb-time{color:#fff;}
+			.attent-wrapper .left-joint,.attent-wrapper .right-joint,.attent-wrapper .attentList-content,.pf-opt .btn-bed,.btn-30px em,.userlist-wrap a,.userlist-wrap .comment-num,{display:inline;zoom:1}
+		</style>
+	<![endif]-->
+	<link href="http://static.8264.com/static/css/common/reset.css" rel="stylesheet" type="text/css">
+	<link href="http://static.8264.com/static/css/common/common_head_bottom.css" rel="stylesheet" type="text/css">
+	<!--[if IE 6]>
+	<script src="http://static.8264.com/static/js/DD_belatedPNG_0.0.8a.js"></script>
+	<script src="http://static.8264.com/static/js/DD_belatedPNG_css.js"></script>
+	<![endif]-->
+	<script src="http://static.8264.com/static/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+	<script>var timer_showmsg = null;</script>
+	<script src="http://static.8264.com/static/js/common_head_bottom.js" type="text/javascript"></script>
+	<script type="text/javascript">jQuery.noConflict();</script>
+
+<!--{if $_G['fid'] == 433 || $identifier == 'whither'}-->
+	<script>
+	//统计旧版目的地
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?2d3beaebd73cbb25bb5cfb5c1c9c0c37";
+	  var s = document.getElementsByTagName("script")[0];
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+<!--{elseif ($_G['fid']==489 || $_GET['fid']==489 || $_G['fid']==500 || $_GET['fid']==500)}-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "//hm.baidu.com/hm.js?022bd0feae65e018f92448fc5e4517d8";
+	var s = document.getElementsByTagName("script")[0];
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!--{/if}-->
+</head>
+<body id="nv_{$_G[basescript]}" class="pg_{CURMODULE}" onkeydown="if(event.keyCode==27) return false;">
+	<!--{if ($_G[mod]!='topic' && $_G[group][allowdiy] && !empty($_G['style']['tplfile'])) || (!empty($_G['style']['tplfile']) && $_G[mod]=='topic' && (($_G['group']['allowaddtopic'] && $topic[uid]==$_G[uid]) || $_G[group][allowmanagetopic]))}-->
+	<a id="diy-tg" style="z-index:9999" href="javascript:openDiy();" title="{lang open_diy}"><img src="http://static.8264.com/static/image/diy/panel-toggle.png" alt="DIY" /></a>
+	<!--{/if}-->
+	<div id="append_parent"></div><div id="ajaxwaitid"></div>
+	<!--{if $_GET['diy'] == 'yes' && (CURMODULE == 'topic' || $_G[group][allowdiy]) && !empty($_G['style']['tplfile'])}-->
+		<!--{template common/header_diy}-->
+	<!--{/if}-->
+	<div id="forumPage">
+	<div class="headerNav">
+		<div class="layout">
+			<div class="logo">
+				<a href="{$_G[config][web][portal]}">
+					<img src="http://static.8264.com/static/image/common/bbs_logo.png" alt="8264" titile="8264" />
+				</a>
+			</div>
+			<ul class="nav">
+				<li>
+					<a href="{$_G[config][web][portal]}list/238/" class="topLink">知识</a>
+					<dl>
+						<dd>
+							<a href="{$_G[config][web][portal]}list/751/" class="first">业界资讯</a>
+						</dd>
+						<dd>
+							<a href="{$_G[config][web][portal]}list/238/">知识</a>
+						</dd>
+						<dd>
+							<a href="{$_G[config][web][portal]}list/204/">户外装备</a>
+						</dd>
+						<dd>
+							<a href="{$_G[config][web][portal]}topic_list/" class="last">专题</a>
+						</dd>
+					</dl>
+				</li>
+				<li>
+					<a href="{$_G[config][web][portal]}zhuangbei.html" class="topLink">点评</a>
+					<dl>
+						<dd>
+							<a href="{$_G[config][web][portal]}zhuangbei.html" class="first">户外用品</a>
+						</dd>
+						<dd>
+							<a href="{$_G[config][web][portal]}pinpai">品牌</a>
+						</dd>
+						<dd>
+							<a href="{$_G[config][web][portal]}dianpu">户外店</a>
+						</dd>
+						<dd>
+							<a href="{$_G[config][web][portal]}xuechang">滑雪场</a>
+						</dd>
+						<dd>
+							<a href="{$_G[config][web][portal]}shanfeng">山峰</a>
+						</dd>
+						<dd>
+							<a href="{$_G[config][web][portal]}xianlu">线路</a>
+						</dd>
+						<dd>
+							<a href="{$_G[config][web][portal]}panpa/">攀爬</a>
+						</dd>
+						<dd>
+							<a href="{$_G[config][web][portal]}qianshui/">潜水点</a>
+						</dd>
+						<dd>
+							<a href="{$_G[config][web][portal]}diaoyu/">钓鱼场地</a>
+						</dd>
+						<dd>
+							<a href="{$_G[config][web][portal]}julebu/">户外俱乐部</a>
+						</dd>
+                        <dd>
+							<a href="{$_G[config][web][portal]}kezhan/" class="last">旅舍客栈</a>
+						</dd>
+					</dl>
+				</li>
+				<li>
+					<a href="{$_G[config][web][forum]}" class="topLink">论坛</a>
+					<dl>
+						<dd>
+							<a href="{$_G[config][web][portal]}list/871/" class="first">精选</a>
+						</dd>
+                        <dd>
+							<a href="{$_G[config][web][portal]}youji/?from=bbstop">游记</a>
+						</dd>
+                        <dd>
+							<a href="{$_G[config][web][portal]}wenda/?from=bbstop">问答</a>
+						</dd>
+                        <dd>
+							<a href="http://www.8264.com/list/842">每日一图</a>
+						</dd>
+                        <dd>
+							<a href="http://www.8264.com/pp">铿锵玫瑰</a>
+						</dd>
+                        <dd>
+							<a href="http://www.8264.com/list/912">户外摄影师</a>
+						</dd>
+                        <dd>
+							<a href="http://www.8264.com/list/880" class="last">勇者先行</a>
+						</dd>
+					</dl>
+				</li>
+                <li class="wan" style="width:82px;" id="schoolpoplink"><a href="http://www.8264.com/xuexiao/?from=indexnavtop" class="topLink topLink_w_bg wkuan" target="_blank">户外学校</a><div class="navschoolpop"><img src="http://static.8264.com/static/image/common/xuexiaopop.png"></div></li>
+                
+                
+                
+                <li>
+                	<a href="http://hd.8264.com/?from=bbstop" class="topLink" target="_blank">活动</a>
+                    <dl>
+                        <dd>
+							<a href="http://bbs.8264.com/forum-161-1.html" class="first last" target="_blank">结伴</a>
+						</dd>
+                        
+					</dl>
+                </li>
+                
+                
+                
+				<li class="wan"><a href="http://bx.8264.com/?bbsbxnew" class="topLink topLink_w_bg wkuan" target="_blank">保险</a></li>
+                <li class="shop8264nav">
+					<a href="https://8264.tmall.com/" class="topLink" target="_blank">8264商城</a>
+					<dl>
+                        <dd>
+							<a href="https://8264.tmall.com/" class="first" target="_blank">8264天猫</a>
+
+						</dd>
+                        <dd>
+							<a href="https://shop440022528.taobao.com/" target="_blank">8264淘宝</a>
+
+						</dd>
+                         <dd>
+							<a href="https://mall.jd.com/index-650855.html" class="last"  target="_blank">8264京东</a>
+						</dd>
+					</dl>
+				</li>
+			</ul>
+			<!--{if $_G[uid]}-->
+			<ul class="head_login_info">
+				<!--{hook/global_usernav_extra1}-->
+				<li id="usermessagetips" style="z-index:21;"  class="notHover">
+					<!--{eval $counts= $_G[member][newprompt]+$_G[member][newpm];}-->
+					<a href="{$_G[config][web][home]}home.php?mod=space&do=notice" class="head_login_icon24_24 nohover"><span class="newimg <!--{if $counts==0}-->nimg<!--{/if}-->"><!--{if $counts>99}-->99+<!--{else}-->$counts<!--{/if}--><i></i></span></a>
+				</li>
+				<li>
+					<a href="home.php?mod=space&uid=$_G[uid]" class="head_login_icon24_24 tx"><!--{eval echo avatar($_G[uid], 'small', false, false, false, '', true);}--></a>
+					<div class="myidnamewarpten"  style="display:none;">
+						<div class="myidname clearfix">
+						<a href="home.php?mod=space&uid=$_G[uid]">$_G[username]</a>
+						{if $_G[member][extcredits5]}
+						<a href="{$_G[config][web][forum]}forum.php?mod=forumdisplay&fid=483" class="bicon" target="_blank" title="你现在有{$_G[member][extcredits5]}枚8264币，点此去兑换礼品">
+						{else}
+						<a href="{$_G[config][web][forum]}forum.php?mod=viewthread&tid=1641700" class="bicon" target="_blank" title="您现在暂无8264币，点击教您如何赚取">
+						{/if}{$_G[member][extcredits5]}枚
+						</a>
+						</div>
+						<ul class="myidcz">
+							<li><a class="wdtz" target="_blank" href="{$_G[config][web][home]}home-space-uid-{$_G[uid]}-do-thread-view-me-from-space.html">我的帖子</a></li>
+							<li><a class="wdxc" target="_blank" href="{$_G[config][web][home]}home-space-uid-{$_G[uid]}-do-album-view-me.html">我的相册</a></li>
+							<li><a class="myLog" target="_blank" href="{$_G[config][web][home]}home-space-uid-{$_G[uid]}-do-blog-view-me-from-space.html">我的日志</a></li>
+							<li><a class="myFriend" target="_blank" href="{$_G[config][web][home]}home-space-uid-{$_G[uid]}-do-friend.html">我的关注</a></li>
+							<li><a class="sc" target="_blank" href="{$_G[config][web][home]}home-space-do-favorite.html">我的收藏</a></li>
+							<li><a class="myrenwu" target="_blank" href="{$_G[config][web][home]}home-task-item-new.html">我的任务</a></li>
+							<!--{if $_G['group']['allowmanagearticle'] || $_G['group']['allowdiy'] || in_array($_G['uid'], $_G['setting']['ext_portalmanager'])}-->
+							<li><a class="myDoor" target="_blank" href="{$_G[config][web][portal]}portal.php?mod=portalcp">{lang portal_manage}</a></li>
+							<!--{/if}-->
+							<!--{if $_G['uid'] && ($_G['group']['radminid'] == 1 || $_G['member']['allowadmincp'])}-->
+							<li><a class="myCenter" target="_blank" href="{$_G[config][web][forum]}admin.php">{lang admincp}</a></li>
+							<!--{/if}-->
+							<li><a class="myAccount" target="_blank" href="{$_G[config][web][home]}home-setting.html">账户管理</a></li>
+							<li><a class="myQuit" href="member.php?mod=logging&action=logout&formhash={FORMHASH}">退出</a></li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+			<!--{else}-->
+			<ul class="noLogin">
+				<li><a href="{$_G[config][web][forum]}member.php?mod=logging&action=login" onClick="showWindow('login', this.href);hideWindow('register');" class="loginIco">{lang login}</a></li>
+				<li><a href="{$_G[config][web][forum]}member.php?mod={$_G[setting][regname]}" onClick="showWindow('register', this.href);hideWindow('login');" href="" class="regIco">$_G['setting']['reglinkname']</a></li>
+			</ul>
+			<!--{/if}-->
+			<div class="searchTopNav">
+				<form id="scform" autocomplete="off" action="http://so.8264.com/cse/search" target="_blank">
+					<input type="hidden" name="s" value="9963133823733045431" />
+					{if CURMODULE == 'readmodeltravel'}<input type="hidden" name="nsid" value="3" />{/if}
+					<span id="searchTips" class="tips">{lang search}</span>
+					<input id="searchText" class="text" type="text" value="" name="q"/>
+					<input class="subButton" type="submit" value=""/>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!--{hook/global_header}-->
+	<div id="wp">

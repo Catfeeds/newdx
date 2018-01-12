@@ -1,0 +1,178 @@
+<link rel="stylesheet" type="text/css" href="source/plugin/brandusers/css/main.css" media="all" />
+<div id="brandUsers">
+	<span id="MountionUsers_want" class="brandUsers_button">
+		<a href="#" class="brand_users_action">
+			<div class="pillar">
+				<div class="pillar_inner">
+					<em><!--{if $MountionUsersNum['want']==0}--><!--{else}-->{$MountionUsersNum['want']}<!--{/if}--></em>
+				</div>
+			</div>
+			<div class="text">我想攀登</div>
+		</a>
+	</span>
+	
+	<span id="MountionUsers_wopandengguo" class="brandUsers_button">
+		<a href="#" class="brand_users_action">
+			<div class="pillar">
+				<div class="pillar_inner">
+					<em><!--{if $MountionUsersNum['wopandengguo']==0}--><!--{else}-->{$MountionUsersNum['wopandengguo']}<!--{/if}--></em>
+				</div>
+			</div>
+			<div class="text">我攀登过</div>
+		</a>
+	</span>		
+</div>
+
+<script type="text/javascript" src="static/js/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+var accomplish_arr = {
+	'want': {eval echo $user_attentions[want] ? 1 : 0;},
+	'wopandengguo': {eval echo $user_attentions[wopandengguo] ? 1 : 0;}
+};
+
+var MountionUsersNum = {
+	'want': {eval echo $MountionUsersNum['want'];},
+	'wopandengguo': {eval echo $MountionUsersNum['wopandengguo'];}
+}
+
+function initPillarHeight() {
+	var percentage = {}
+	var max = 1;
+	for (var i in MountionUsersNum) {
+		if (max < MountionUsersNum[i]) {
+			max = MountionUsersNum[i];
+		}
+	}
+	for (var i in MountionUsersNum) {
+		if (MountionUsersNum[i] != 0) {
+			percentage[i] = (MountionUsersNum[i] / max) * {PILLAR_HEIGHT};
+			if (percentage[i] != 0) {
+				percentage[i] += "px";
+			} else {
+				percentage[i] = "1px";
+			}
+		} else {
+			percentage[i] = "1px";
+		}
+	}
+	jQuery('#MountionUsers_want .pillar_inner').css('height', percentage['want']);
+	jQuery('#MountionUsers_wopandengguo .pillar_inner').css('height', percentage['wopandengguo']);
+	
+}
+initPillarHeight();
+function accomplish_button(type) {
+	
+	accomplish_arr[type] = 1;
+	var pillar_inner_em = jQuery('#MountionUsers_'+type+' .pillar_inner em');
+	pillar_inner_em.text(pillar_inner_em.text()-0+1);
+	MountionUsersNum[type]++;
+	initPillarHeight();
+	if (type == 'wopandengguo') {
+		jQuery('#likeitUsers_myface').show();
+		jQuery('#likeitUsers').show();
+		var num = parseInt(jQuery('#person_num').text());
+		jQuery('#person_num').text(++num);
+	}
+}
+;(function($){
+	var publiced_alert_interval;
+	function show_publiced_alert(_this) {
+		clearInterval(publiced_alert_interval);
+		$('#publiced_alert').css({top: _this.offset().top+_this.outerHeight(1), left: _this.offset().left}).show();
+	}
+	$('.brandUsers_button').mouseout(function(){
+		clearInterval(publiced_alert_interval);
+		publiced_alert_interval = setInterval(function(){
+			$('#publiced_alert').hide();
+		}, 1000);
+	})
+	
+	var tid = <!--{$_G['tid']}-->;
+<!--{if !$_G['uid']}-->
+	$('.brandUsers_button a').click(function(){
+		showWindow('login', 'member.php?mod=logging&action=login');hideWindow('register');
+	})
+<!--{else}-->
+    $('#MountionUsers_want a').click(function(){
+		var type = 'want';
+		if (accomplish_arr[type]==1) {
+			show_publiced_alert($(this));
+			return false;
+		}
+		
+        $.ajax({
+            type: 'get',			
+            url: 'plugin.php?id=brandusers:mountionreceive&op=new&type='+type+'&tid='+tid,
+            success: function(html) {
+                accomplish_button(type);
+            }
+        });
+		return false;
+    });
+	
+	$('#MountionUsers_wopandengguo a').click(function(){
+		var type = 'wopandengguo';
+		if (accomplish_arr[type]==1) {
+			show_publiced_alert($(this));
+			return false;
+		}
+		
+		$.ajax({
+            type: 'get',			
+            url: 'plugin.php?id=brandusers:mountionreceive&op=new&type='+type+'&tid='+tid,
+            success: function(html) {
+                accomplish_button(type);
+            }
+        });
+		return false;
+		
+	});
+	
+	
+<!--{/if}-->
+	
+})(jQuery);
+</script>
+
+
+<div id="likeitUsers" style="width:660px; border: 1px solid #CCCCCC;margin: 10px 7px;overflow: hidden;padding: 7px; <!--{if count($likeitUsers)==0}--> display:none;<!--{/if}-->">
+  
+	<h6>攀登过此山峰的用户(<span class="person_num"><span class="person_num">{$MountionUsersNum['wopandengguo']}人</span></span>)</h6>    
+   
+	<ul class="user_list">
+		<!--{loop $likeitUsers $value}-->
+		<li>
+			<div class="img">
+				<a href="home.php?mod=space&uid={$value[uid]}" target="_blank" title="$value[username]">
+					$value[avatar]
+				</a>
+			</div>
+			<div class="text">
+				<a href="home.php?mod=space&uid={$value[uid]}" target="_blank" title="$value[username]">
+					$value[username]
+				</a>
+			</div>
+		</li>
+		<!--{/loop}-->
+		<!--{if $_G[uid]}-->
+		<li id='likeitUsers_myface'>
+			<div class="img">
+				<a href="home.php?mod=space&uid={$_G[uid]}" target="_blank" title="{$_G[username]}">
+					{avatar($_G[uid], 'small')}
+				</a>
+			</div>
+			<div class="text">
+				<a href="home.php?mod=space&uid={$_G[uid]}" target="_blank" title="{$_G[username]}">
+					{$_G[username]}
+				</a>
+			</div>
+		</li>
+		<!--{/if}-->
+	</ul>
+</div>
+
+
+<div id="publiced_alert">
+	你己经表过态了
+</div>

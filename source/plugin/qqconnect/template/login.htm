@@ -1,0 +1,57 @@
+
+
+		<form method="post" autocomplete="off" name="login" id="loginform_$loginhash" class="cl" style="display:none" onsubmit="ajaxpost('loginform_$loginhash', 'returnmessage4', 'returnmessage4', 'onerror');return false;" action="member.php?mod=connect&action=login&loginsubmit=yes{if !empty($_G['gp_handlekey'])}&handlekey=$_G[gp_handlekey]{/if}&loginhash=$loginhash">
+			<div class="c cl">
+				<input type="hidden" name="formhash" value="{FORMHASH}" />
+				<input type="hidden" name="referer" value="{$_G['qc']['dreferer']}" />
+				<input type="hidden" id="auth_hash" name="auth_hash" value="{$_G['qc']['connect_auth_hash']}" />
+				<input type="hidden" id="is_notify" name="is_notify" value="{$_G['qc']['connect_is_notify']}" />
+				<div class="lgfm nlf">
+					<!--{if $_G['setting']['autoidselect']}-->
+						<div class="ftid sipt lpsw" id="account_$loginhash">
+							<label for="username">{lang login_id}</label>
+								<input type="text" name="username" id="username_$loginhash" autocomplete="off" size="36" class="txt" tabindex="1" value="" />
+						</div>
+					<!--{else}-->
+						<div class="ftid sipt" id="account_$loginhash">
+							<select name="loginfield" style="float: left;" width="45" id="loginfield_$loginhash">
+								<option value="username">{lang username}</option>
+								<option value="uid">{lang uid}</option>
+								<option value="email">{lang email}</option>
+							</select>
+							<input type="text" name="username" id="username_$loginhash" autocomplete="off" size="36" class="txt" tabindex="1" value="{$first_available_username}" />
+						</div>
+					<!--{/if}-->
+					<p class="sipt lpsw">
+						<label for="password3_$loginhash">{lang login_password}</label>
+						<input type="password" id="password3_$loginhash" name="password" size="36" class="txt" tabindex="1" />
+					</p>
+
+					<div class="ftid sltp">
+						<select id="loginquestionid_$loginhash" width="213" name="questionid" change="if($('loginquestionid_{$loginhash}').value > 0) $('loginanswer_{$loginhash}').style.display='' else $('loginanswer_{$loginhash}').style.display='none';">
+							<option value="0">{lang security_question}</option>
+							<option value="1">{lang security_question_1}</option>
+							<option value="2">{lang security_question_2}</option>
+							<option value="3">{lang security_question_3}</option>
+							<option value="4">{lang security_question_4}</option>
+							<option value="5">{lang security_question_5}</option>
+							<option value="6">{lang security_question_6}</option>
+							<option value="7">{lang security_question_7}</option>
+						</select>
+					</div>
+					<p><input type="text" name="answer" id="loginanswer_$loginhash" style="display:none" autocomplete="off" size="36" class="sipt" tabindex="1" /></p>
+				</div>
+				<!--{if $_G['setting']['regconnect']}-->
+				<div class="lgf">
+					<div class="reginfo">
+						<h4>{lang qqconnect:connect_register_noid}</h4>
+						<h4><a onclick="connect_switch(1)" href="javascript:;" tabindex="900">{lang qqconnect:connect_register_new}</a></h4>
+					</div>
+				</div>
+				<!--{/if}-->
+			</div>
+			<p class="fsb pns cl">
+				<button class="pn pnc" type="submit" name="loginsubmit" value="true" tabindex="1"><strong>{lang qqconnect:connect_register_bind_window_button}</strong></button>
+			</p>
+		</form>
+

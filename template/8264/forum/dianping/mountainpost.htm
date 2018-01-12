@@ -1,0 +1,361 @@
+<!--{subtemplate forum/dianping/header}-->
+<style type="text/css">
+#imglist .overlimit{display:none;}
+#pic_upload_multiimg { vertical-align: middle; }
+</style>
+<script type="text/javascript">
+function modform_validate(theform) {
+	var message = wysiwyg ? html2bbcode(getEditorContents()) : (!theform.parseurloff.checked ? parseurl(theform.message.value) : theform.message.value);
+	theform.message.value = message;
+	<!--{if $action != 'edit'}-->
+	if($('postsubmit').name == 'newpost' && theform.subject.value == "") {
+		_showmsg('请填写{$modname}{$modsetting[mc]}');
+		return false;
+	} else if(mb_strlen(theform.subject.value) > 80) {
+		_showmsg('您的{$modname}{$modsetting[mc]}超过 80 个字符的限制');
+		return false;
+	} else if(trim(theform.subject.value) == ""){
+		_showmsg('请填写{$modname}{$modsetting[mc]}');
+		return false;
+	}
+	if (theform.uploadfile.value == '0') {
+		_showmsg('请上传{$modname}{$modsetting[pic]}，并至少选择一张');
+		return false;
+	}
+	if (theform.height.value == '') {
+		_showmsg('请填写{$modname}高度');
+		return false;
+	}
+	if (theform.lon.value == '') {
+		_showmsg('请填写{$modname}经度');
+		return false;
+	}
+	if (theform.lat.value == '') {
+		_showmsg('请填写{$modname}纬度');
+		return false;
+	}
+	if (theform.type.value == '') {
+		_showmsg('请填写{$modname}所在地址');
+		return false;
+	}
+	if (theform.season.value == '') {
+		_showmsg('请填写{$modname}攀登季节');
+		return false;
+	}
+	<!--{if $action != 'edit' && checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
+	if (trim(theform.captcha.value)=="") {
+		_showmsg('验证码不能为空');
+		return false;
+	}
+	if (theform.yzm.value=='0') {
+		_showmsg('验证码输入错误');
+		return false;
+	}
+	<!--{/if}-->
+	<!--{else}-->
+	if(($('postsubmit').name != 'replypost' && theform.subject.value == "")) {
+		_showmsg('请填写{$modname}{$modsetting[mc]}');
+		return false;
+	} else if(mb_strlen(theform.subject.value) > 80) {
+		_showmsg('您的{$modname}{$modsetting[mc]}超过 80 个字符的限制');
+		return false;
+	} else if(trim(theform.subject.value) == ""){
+		_showmsg('请填写{$modname}{$modsetting[mc]}');
+		return false;
+	}
+	<!--{/if}-->
+
+	if($('postsubmit').name == 'editpost') {
+		return true;
+	}else if(in_array($('postsubmit').name, ['replypost','newpost'])) {
+		postsubmit(theform);
+	}
+	return false;
+}
+jQuery(document).ready(function($) {
+	$('.needdown').hover(function(event){
+		$(this).find('[class$=_down]').show();
+		}, function(event){
+		$(this).find('[class$=_down]').hide();
+		});
+		$('div[class$=_down]>a').click(function(event){
+		var hid = $(this).attr('hid');
+		$(this).parent().hide();
+		if(hid){
+		$(this).parent().siblings('input[type=hidden]').val(hid).siblings('span.js').text($(this).text()).end();
+		}else{
+		$(this).parent().siblings('input[type=text]').val($(this).text()).end();
+		}
+	});
+	$('#subject').focus(function(){
+	!$(this).val() && $(this).prev().hide();
+	}).blur(function(){
+	!$(this).val() && $(this).prev().show();
+	});
+	$('#season').focus(function(){
+	!$(this).val() && $(this).prev().hide();
+	}).blur(function(){
+	!$(this).val() && $(this).prev().show();
+	});
+	$('#height').focus(function(){
+	!$(this).val() && $(this).prev().hide();
+	}).blur(function(){
+	!$(this).val() && $(this).prev().show();
+	});
+	$('#region').focus(function(){
+	!$(this).val() && $(this).prev().hide();
+	}).blur(function(){
+	!$(this).val() && $(this).prev().show();
+	});
+	$('#lon').focus(function(){
+	!$(this).val() && $(this).prev().hide();
+	}).blur(function(){
+	!$(this).val() && $(this).prev().show();
+	});
+	$('#lat').focus(function(){
+	!$(this).val() && $(this).prev().hide();
+	}).blur(function(){
+	!$(this).val() && $(this).prev().show();
+	});
+	$('#gdqj').focus(function(){
+	!$(this).val() && $(this).prev().hide();
+	}).blur(function(){
+	!$(this).val() && $(this).prev().show();
+	});
+	//验证码
+	$('#refreshCaptcha').click(function() {
+		$(this).children('img').attr('src', '/plugin.php?id=dailypicture:captcha&_='+(new Date().getTime()));
+		$('#jg').html("");
+		return false;
+	});
+	$('#captcha').focus(function(){
+	!$(this).val() && $(this).prev().hide();
+	});
+	$('#captcha').blur(function(){
+		!$(this).val() && $(this).prev().show();
+		 validate_captcha();
+	});
+	function validate_captcha() {
+		$.ajax({
+			async: false,
+			type: 'get',
+			url: '/plugin.php?id=dailypicture:validatecaptcha&inajax=1&captcha='+$('#captcha').val(),
+			success : function(data) {
+				if (data==1) {
+					$('#jg').html('<img width="16" height="16" class="vm" src="static/image/common/check_right.gif">');
+					$('#yzm').val('1');
+				}else{
+					$('#jg').html('<img width="16" height="16" class="vm" src="static/image/common/check_error.gif">');
+					$('#yzm').val('0');
+					$('#captcha').val('');
+				}
+			}
+		});
+	};
+
+	$(document).on("click", "#imglist .deleteimg", function() {
+		$(this).parent().remove();
+		if($("#imglist .overlimit").length > 0){
+			$("#imglist .overlimit:first").removeClass('overlimit').find('input:hidden').removeAttr('disabled');
+		}else{
+			$("#numimage").val($("#numimage").val() - 1);
+		}
+	});
+});
+</script>
+<!--{subtemplate forum/dianping/editor_2014_second}-->
+<div id="wps">
+	<div class="layout mt50">
+		<div class="pubWeb">
+			<h1 class="tit20 mb45">{if ($action=='new')}发布{$modname}{else}编辑{$modname}{/if}</h1>
+			<div class="bd">
+				<form action="{if $action=='new'}
+						forum.php?ctl={$modstr}&act=dopost&do=new
+						{elseif $action=='reply'}
+						forum.php?ctl={$modstr}&act=dopost&do=reply&tid={$_G['tid']}
+						{elseif $action=='edit'}
+						forum.php?ctl={$modstr}&act=dopost&do=edit&tid={$_G['tid']}
+						{/if}" onsubmit="return modform_validate(this);return false;" method="post" id="postform" autocomplete="off">
+						{if !empty($_G['gp_modthreadkey'])}<input type="hidden" name="modthreadkey" id="modthreadkey" value="{$_G['gp_modthreadkey']}" />{/if}
+						<input type="hidden" name="wysiwyg" id="{$editorid}_mode" value="{$editor['editormode']}" />
+						<input type="hidden" name="formhash" id="formhash" value="{FORMHASH}" />
+						<input type="hidden" name="posttime" id="posttime" value="{TIMESTAMP}" />
+						{if $action == 'edit'}<input type="hidden" name="pid" value="{$editdata['pid']}" />{/if}
+					<dl class="pubDt50">
+						<dt><span class="icoName48x43"></span></dt>
+						<dd>
+							<span class="inputTipsText">
+							<label class="fs16">{if $editdata['subject']}{else}山峰名称{/if}</label><input type="text" class="inputText w270" name="subject" id="subject" value="{$editdata['subject']}"/>
+							</span>
+							<span class="icoRedStar">*</span>
+						</dd>
+					</dl>
+					<dl class="pubDt50">
+						<dt><span class="icoUpPic48x43"></span></dt>
+						<dd>
+							<input id="numimage" type="hidden" name="uploadfile" value="0"/>
+							<div id="pic_upload_multiimg">
+							此内容需要 Adobe Flash Player 11.1.0 或更高版本
+							<script type="text/javascript">
+								var pageHost = ((document.location.protocol == "https:") ? "https://" : "http://");
+								document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='"
+												+ pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" );
+							</script>
+							</div>
+							<span class="icoRedStar">*</span>
+							<div id="imglist" class="readyPic"></div>
+						</dd>
+					</dl>
+					<dl class="pubDt50">
+						<dt><span class="icoGps48x43"></span></dt>
+						<dd>
+							<span class="inputTipsText">
+								<label class="fs16">{if $editdata['height']}{else}高度{/if}</label><input type="text" class="inputText w270" value="{if $editdata['height']}{$editdata['height']}{else}{/if}" name="height" id="height" />
+							</span>
+							<span class="icoRedStar">*</span>
+						</dd>
+					</dl>
+					<dl class="pubDt50">
+						<dt><span class="icoTel2"></span></dt>
+						<dd>
+							<span class="inputTipsText2">
+								<div class="qy needdown">
+									<input type="hidden" name="gdqj" id="gdqj" value="" /><span class="js">{if !$editdata['gdqj']}请选择{$modname}高度区间{else}已选择高度区间：{$gdqjlist[$editdata['gdqj']]}{/if}</span>
+										<div class="qy_down">
+										{loop $gdqjlist $k $v}
+										<a hid="{$k}" href="javascript:void(0);" class="province">{$v}</a>
+										{/loop}
+										</div>
+								</div>
+							</span>
+							<span class="icoRedStar">*</span>
+						</dd>
+					</dl>
+					<dl class="pubDt50">
+						<dt><span class="icoCity48x43"></span></dt>
+						<dd>
+							<span class="inputTipsText">
+								<label class="fs16">{if $editdata['lon']}{else}经度,位数最好保留一到两位小数（例如：64.11）{/if}</label><input type="text" class="inputText w270" value="{if $editdata['lon']}{$editdata['lon']}{else}{/if}"  name="lon" id="lon" />
+							</span>
+							<span class="icoRedStar">*</span>
+						</dd>
+					</dl>
+					<dl class="pubDt50">
+						<dt><span class="icoWeb48x43"></span></dt>
+						<dd>
+							<span class="inputTipsText">
+								<label class="fs16">{if $editdata['lat']}{else}纬度,位数最好保留一到两位小数（例如：36.11）{/if}</label><input type="text" class="inputText w270" value="{if $editdata['lat']}{$editdata['lat']}{else}{/if}"  name="lat" id="lat"/>
+							</span>
+							<span class="icoRedStar">*</span>
+						</dd>
+					</dl>
+					<dl class="pubDt50">
+						<dt><span class="icoTel3"></span></dt>
+						<dd>
+							<span class="inputTipsText2">
+								<div class="sc needdown">
+									<input type="hidden" name="type" id="type" value="$editdata['type']" /><span class="js">{if !$editdata['type']}所在地区{else}已选择所在地区：{$dqlist[$editdata['type']]}{/if}</span>
+										<div class="sc_down">
+											{loop $dqlist $k $v}
+											<a hid="{$k}" href="javascript:void(0);">{$v}</a>
+											{/loop}
+										</div>
+								</div>
+							</span>
+							<span class="icoRedStar">*</span>
+						</dd>
+					</dl>
+					<dl class="pubDt50">
+						<dt><span class="icoModel48x43"></span></dt>
+						<dd>
+							<span class="inputTipsText">
+								<label class="fs16">{if $editdata['region']}{else}所在地址{/if}</label><input type="text" class="inputText w270" value="$editdata['region']" name="region" id="region"/>
+							</span>
+							<span class="icoRedStar">*</span>
+							</dd>
+					</dl>
+					<dl class="pubDt50">
+						<dt><span class="icoTel48x43"></span></dt>
+						<dd>
+							<span class="inputTipsText">
+								<label class="fs16">{if $editdata['season']}{else}攀登季节{/if}</label><input type="text" class="inputText w270" value="$editdata['season']" name="season" id="season"/>
+							</span>
+							<span class="icoRedStar">*</span>
+							</dd>
+					</dl>
+					<dl class="pubDt50">
+						<dt>&nbsp;</dt>
+						<dd>
+							<div class="contTextArea">
+								<div class="inputTipsText">
+									<!--{eval $editor['value'] = $editdata['message'];}-->
+									<!--{subtemplate forum/dianping/editor_2014_first}-->
+								</div>
+							</div>
+						</dd>
+					</dl>
+					{if $action != 'edit' && checkperm('seccode') && ($secqaacheck || $seccodecheck)}
+					<span>验证码：</span>
+					<div style="margin-top:-20px;margin-left:50px;margin-bottom:20px;">
+						<script type="text/javascript" src="http://api.geetest.com/get.php?gt=273df89437f54dac2bfb5b69afe1c318&r=<?=time()?>"></script>	
+					</div>
+					{/if}
+					<dl class="pubDt50">
+						<dt>&nbsp;</dt>
+						<dd>
+							<input type="submit" class="publish182x43" name="{$action}post" id="postsubmit" value="" />
+							<input type="hidden" name="{$action}postsubmit" value="yes" />
+						</dd>
+					</dl>
+				</form>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+<script type="text/javascript" src="static/js/newswfobject.js"></script>
+<script type="text/javascript">
+	var params = {site:"{$_G[siteroot]}misc.php%3fmod=swfupload%26type=image%26fid=392%26mtype=plugin%26twidth=60%26theight=60%26back=uploadpic%26random=<!--{echo random(4)}-->",buttonimg:"{$_G[siteroot]}static/image/common/uploadnew.png"};
+	swfobject.embedSWF("static/flash/uploadforum.swf", "pic_upload_multiimg", "208", "50", "10.0.0", "playerProductInstall.swf", params, {wmode:"transparent"});
+	swfobject.createCSS("#pic_upload_multiimg", "text-align:left;");
+	{if ($action=='edit')}
+	ajaxget('forum.php?ctl={$modstr}&act=getimglist{if $editdata[tid]}&tid={$editdata[tid]}{/if}{if {$editdata[pid]}}&pid={$editdata[pid]}{/if}', 'imglist');
+	{/if}
+</script>
+<script>
+var maxpic =  {$imgselectlimit};;
+function uploadpic(type, returndata) {
+	eval("var nattach = " + returndata + ";");
+	jQuery.noConflict();
+	;(function($){
+		switch(type){
+			case 1:
+			case 2:
+				var html = '';
+				html 	+= '<span id="imagelist_id_'+nattach.aid+'">';
+				html 	+= '<img src="' + nattach.thumbpic + '" />';
+				html 	+= '<b class="deleteimg">删除</b>';
+				html 	+= '<input type="hidden" value="'+nattach.aid+'" name="imgselect[]">';
+				html 	+= '</span>';
+
+				$("#imglist").append(html);
+				var attachobj = $('#imagelist_id_' + nattach.aid);
+				attachobj.find('input').removeAttr('disabled').end().show();
+
+				attachobj.find('img').one('error', function(){
+					$(this).attr('src', ' ');
+					$(this).attr('src', nattach.thumbpic);
+				}).show();
+				break;
+			case 3:
+				break;
+		}
+		$('#imglist').find('span:gt(' + (maxpic - 1) + ')').addClass("overlimit").find('input').attr('disabled', true);
+
+		//算下上传图片数
+		$("#numimage").attr("value", $('#imglist').find("span:not('.overlimit')").length);
+	})(jQuery);
+}
+</script>
+<!--{subtemplate forum/dianping/footer}-->

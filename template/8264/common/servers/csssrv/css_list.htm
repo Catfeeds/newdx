@@ -1,0 +1,16 @@
+<!--{if $list}-->
+	<table class="listtab">
+		<tr><td>名称</td><td width="8%">版本</td><td width="18%">创建时间</td><td width="17%">最后更新时间</td><td width="20%">操作</td></tr>
+	<!--{loop $list $k $v}-->
+		<tr {if $now - $v[lastupdate] <= 3}class='newrecord' {/if}>
+			<td>{$v[name]}</td>
+			<td>{$v[version]}</td>
+			<td>{eval echo date('Y-m-d H:i:s', $v[createtime]);}</td>
+			<td>{eval echo date('Y-m-d H:i:s', $v[lastupdate]);}</td>
+			<td><a class="css_del" href="javascript:;" onclick="delcss({$v['cssid']});">删除</a> | <a class="css_edit" onclick="showWindow('editcss', this.href, 'get');return false;" href="/admin.php?ctl=cssadmin&act=editcss&cid={$v['cssid']}">修改</a> | <a class="css_update" href="javascript:;" onclick="updatecss({$v['cssid']});">更新版本</a></span></td>
+		</tr>
+	<!--{/loop}-->
+	</table>
+<!--{else}-->
+<h3>当前没有样式需要管理，请从上面添加</h3>
+<!--{/if}-->

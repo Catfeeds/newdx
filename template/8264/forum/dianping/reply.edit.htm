@@ -1,0 +1,42 @@
+<!--{template common/header}-->
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$('#closeBtn').click(function(){
+		hideWindow('{$_G['gp_handlekey']}');
+	});
+});
+</script>
+<div class="bd">
+	<div class="popWriteCmt">
+		<h2>
+			<span class="tit">修改点评</span>
+			<span class="tips">须填写详细点评，您的表态才能成功。</span>
+			<span class="starBox">力推</span>
+		</h2>
+		<form method="post" autocomplete="off" id="postform" action="forum.php?ctl=skiing&act=dopost&do=reply&ext=edit&page={$_G['page']}&tid={$comment['tid']}&pid={$comment['pid']}">
+		<ul class="writeGoodBad">
+			<li class="mb30">
+				<span class="leftIco good">优点</span>
+				<div class="cont"><textarea name="goodpoint" rows="2" class="line3Area">{$comment['goodpoint']}</textarea></div>
+			</li>
+			<li class="mb30">
+				<span class="leftIco bad">缺点</span>
+				<div class="cont"><textarea name="weakpoint" rows="2" class="line3Area">{$comment['weakpoint']}</textarea></div>
+			</li>
+			<li class="mb18">
+				<span class="leftIco all">不足</span>
+				<div class="cont"><textarea name="message" rows="6" class="line5Area ">{$comment['message']}</textarea></div>
+			</li>
+			<li class="sub">
+				<input type="submit" value="" class="modifi182x43">
+			</li>
+		</ul>
+		<input type="hidden" name="replypostsubmit" value="yes">
+		<input type="hidden" name="formhash" id="formhash" value="{FORMHASH}" />
+		<input type="hidden" name="handlekey" value="{$_G['gp_handlekey']}" />
+		</form>
+	</div>
+	<span class="closeBtn" id="closeBtn"></span>
+</div>
+
+<!--{template common/footer}-->

@@ -1,0 +1,37 @@
+<!--{subtemplate common/header_common}-->
+<!--{if defined('CURMODULE') && ($_G['basescript'] == 'forum' || $_G['basescript'] == 'group') && (CURMODULE == 'index' || CURMODULE == 'forumdisplay' || CURMODULE == 'group')}-->$rsshead<!--{/if}-->
+<!--{if $_G['basescript'] == 'forum'}-->
+<!--{if !empty($_G['cookie']['widthauto']) && empty($_G['disabledwidthauto'])}-->
+<link rel="stylesheet" id="css_widthauto" type="text/css" href="data/cache/style_{STYLEID}_widthauto.css?{VERHASH}" />
+<script type="text/javascript">HTMLNODE.className += ' widthauto'</script>
+<!--{/if}-->
+<script type="text/javascript" src="{$_G[setting][jspath]}forum.js?{VERHASH}"></script>
+<!--{elseif $_G['basescript'] == 'home' || $_G['basescript'] == 'userapp'}-->
+<script type="text/javascript" src="{$_G[setting][jspath]}home.js?{VERHASH}"></script>
+<!--{elseif $_G['basescript'] == 'portal'}-->
+<script type="text/javascript" src="{$_G[setting][jspath]}portal.js?{VERHASH}"></script>
+<!--{/if}-->
+<!--{if $_G['basescript'] != 'portal' && $_GET['diy'] == 'yes' && ($_G[mod] == 'topic' || $_G[group][allowdiy]) && !empty($_G['style']['tplfile'])}-->
+<script type="text/javascript" src="{$_G[setting][jspath]}portal.js?{VERHASH}"></script>
+<!--{/if}-->
+<!--{if $_GET[diy] == 'yes' && ($_G[mod] == 'topic' || $_G[group][allowdiy]) && !empty($_G['style']['tplfile'])}-->
+<link rel="stylesheet" type="text/css" href="data/cache/style_{STYLEID}_css_diy.css?{VERHASH}" />
+<!--{/if}-->
+
+
+</head>
+<body id="nv_{$_G[basescript]}" class="pg_{CURMODULE}" onkeydown="if(event.keyCode==27) return false;">
+<!--{if ($_G[mod]!='topic' && $_G[group][allowdiy] && !empty($_G['style']['tplfile'])) || (!empty($_G['style']['tplfile']) && $_G[mod]=='topic' && (($_G['group']['allowaddtopic'] && $topic[uid]==$_G[uid]) || $_G[group][allowmanagetopic]))}-->
+<a id="diy-tg" href="javascript:openDiy();" title="{lang open_diy}"><img src="http://static.8264.com/static/image/diy/panel-toggle.png" alt="DIY" /></a>
+<!--{/if}-->
+<div id="append_parent"></div>
+<div id="ajaxwaitid"></div>
+<!--{if $_GET['diy'] == 'yes' && (CURMODULE == 'topic' || $_G[group][allowdiy]) && !empty($_G['style']['tplfile'])}-->
+<!--{template common/header_diy}-->
+<!--{/if}-->
+<!--{if empty($topic) || $topic[useheader]}-->
+<!--{ad/headerbanner/wp a_h}-->
+
+<!--{hook/global_header}-->
+<!--{/if}-->
+<div id="wp" class="wp">

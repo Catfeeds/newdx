@@ -1,0 +1,246 @@
+<!--{subtemplate forum/dianping/header}-->
+<div class="linelayout980">
+	<!--筛选条开始-->
+	<div class="linefl">
+		<!--第一个条开始-->
+		<div class="line_l_t_d">
+			<span class="qian_lx">{$modname}类型</span>
+			<div class="line_con_gray clboth">
+				<a href="{$base_url}&act=showlist&type=0&isfree={$isfree}&provinceid={$provinceid}&cityid={$cityid}&order={$order}&page=1" {if ! $type} class="blue"{/if}>全部</a>
+           		<!--{if $fishingTypes}-->
+				<!--{loop $fishingTypes $tv}-->
+						<a href="{$base_url}&act=showlist&type={$tv['cid']}&isfree={$isfree}&provinceid={$provinceid}&cityid={$cityid}&order={$order}&page=1" {if $type == $tv['cid']} class="blue"{/if}>
+							{$tv['name']}
+						</a>
+				<!--{/loop}-->
+				<!--{/if}-->
+			</div>
+		</div>
+		<!--第一个条结束-->
+        <!--第二个条开始-->
+        <div class="line_l_t_d">
+            <span class="qian_isfree">是否收费</span>
+            <div class="line_con_gray clboth">
+                <a href="{$base_url}&act=showlist&type={$type}&isfree=0&provinceid={$provinceid}&cityid={$cityid}&order={$order}&page=1" {if !$isfree} class="blue"{/if}>全部</a>
+                <a href="{$base_url}&act=showlist&type={$type}&isfree=2&provinceid={$provinceid}&cityid={$cityid}&order={$order}&page=1" {if $isfree == 2 } class="blue"{/if}>免费
+                </a>
+                <a href="{$base_url}&act=showlist&type={$type}&isfree=1&provinceid={$provinceid}&cityid={$cityid}&order={$order}&page=1" {if $isfree == 1} class="blue"{/if}>收费
+                </a>
+
+            </div>
+        </div>
+        <!--第二个条结束-->
+		<!--第三个条开始-->
+		<div class="line_l_t_d" style="position:relative;z-index:10;">
+			<span class="qian_dy">所在地域</span>
+			<div class="line_con_gray p_r">
+				<span class="arrow_d"></span>
+				<a href="{$base_url}&act=showlist&type={$type}&isfree={$isfree}&provinceid=0&cityid=0&order={$order}&page=1" class="abule {if !$provinceid}blue{/if}">全部</a>
+				<!--{if $proList}-->
+				<!--{loop $proList $pro}-->
+					<a href="{$base_url}&act=showlist&type={$type}&isfree={$isfree}&provinceid={$pro['codeid']}&cityid=0&order={$order}&page=1" value="$pro['codeid']" class="province {if $provinceid==$pro['codeid']}blue{/if}" >
+						{$pro['cityname']}</a>
+				<!--{/loop}-->
+				<!--{/if}-->
+			</div>
+			<span class="tc_dq clboth" style="z-index:10000;width:450px;">
+					{loop $cityList $key $value}
+					<span id='province_{$key}' class='div_city'>
+						{loop $value $k $v}
+					<a href="{$base_url}&act=showlist&type={$type}&isfree={$isfree}&provinceid={$key}&cityid=$k&order={$order}&page=1" class="city {if $cityid == $k} blue{/if}">{$v}</a>
+						{/loop}
+					</span>
+					{/loop}
+			</span>
+		</div>
+		<!--第三个条开始-->
+	</div>
+	<!--筛选条结束-->
+	<!--主体内容开始-->
+	<div class="clboth w980">
+		<!--左侧开始-->
+		<div class="line_l">
+			<!--筛选全部开始-->
+			<div class="sxwarpten clboth">
+				<div class="selectjg" id="search_condition">
+					<span class="name">{if ! $type && ! $isfree && ! $provinceid && ! $cityid}所有信息{/if}</span>
+					{if $type}<span class="option" name="type">{$childrenType[$type]}</span>{/if}
+                    {if $isfree}<span class="option" name="isfree">{if $isfree == 1}收费{else}免费{/if}</span>{/if}
+					{if $provinceid}<span class="option" name="province">{$proList[$provinceid]['cityname']}</span>{/if}
+					{if $cityid}<span class="option" name="city">{$cityList[$provinceid][$cityid]}</span>{/if}
+				</div>
+				<script type="text/javascript">
+				jQuery(document).ready(function() {
+					jQuery('#search_condition span.option').click(function(e) {
+						//http://www.8264.com/forum.php?ctl=fishing&act=showlist&type=188&province=140000&city=140200&order=lastpost
+						var cancel_condition = jQuery(this).attr('name');
+						var url = '';
+						switch(cancel_condition) {
+							case 'type' :
+								url = "{$base_url}&act=showlist&type=0&isfree={$isfree}&provinceid={$provinceid}&cityid={$cityid}&order={$order}&page=1";
+								break;
+                            case 'isfree' :
+                                url = "{$base_url}&act=showlist&type={$type}&isfree=0&provinceid={$provinceid}&cityid={$cityid}&order={$order}&page=1";
+                                break;
+							case 'province' :
+								url = "{$base_url}&act=showlist&type={$type}&isfree={$isfree}&provinceid=0&cityid=0&order={$order}&page=1";
+								break;
+							case 'city' :
+								url = "{$base_url}&act=showlist&type={$type}&isfree={$isfree}&provinceid={$provinceid}&cityid=0&order={$order}&page=1";
+								break;
+						}
+
+						if(url) {
+							window.location.href = url;
+						}
+					});
+				});
+				</script>
+				<div class="hot_pf">
+					<a href="{$base_url}&act=showlist&type={$type}&isfree={$isfree}&provinceid={$provinceid}&cityid={$cityid}&order=dateline&page=1" class="{if $order=='dateline'}latest{else}latest_g{/if}"></a>
+					<a href="{$base_url}&act=showlist&type={$type}&isfree={$isfree}&provinceid={$provinceid}&cityid={$cityid}&order=score&page=1" class="{if $order=='score'}pf{else}pf_g{/if}"></a>
+					<a href="{$base_url}&act=showlist&type={$type}&isfree={$isfree}&provinceid={$provinceid}&cityid={$cityid}&order=heats&page=1" class="{if $order=='heats'}hot{else}hot_g{/if}"></a>
+					<a href="{$base_url}&act=showlist&type={$type}&isfree={$isfree}&provinceid={$provinceid}&cityid={$cityid}&order=lastpost&page=1" class="{if $order=='lastpost'}mr{else}mr_g{/if}"></a>
+				</div>
+			</div>
+			<!--筛选全部结束-->
+			{if $no_lists}
+			<div class="search-tips"><i></i>抱歉，没有找到符合条件的{$modname}，以下将显示"{$proList[$provinceid]['cityname']} {$cityList[$provinceid][$cityid]['cityname']}"所有的{$modname}</div>
+			{/if}
+			<!--主体列表开始-->
+			<div class="line_con_new">
+				{if $list}
+				<ul>
+					<!--单条循环开始-->
+					{loop $list $v}
+					<li>
+						<a href="{$base_url}&act=showlist&type={$type}&isfree={$isfree}&provinceid={$v['provinceid']}&cityid={$v['cityid']}&order=lastpost&page=1" class="biaoqian">
+							<span class="g_b">{$proList[$v['provinceid']]['cityname']}</span>
+							<span class="white">{$childrenType[$v['type']]}</span>
+						</a>
+						<div class="title570">
+							<a class="title14_b" target="_blank" title="{$v[name]}" href="{$base_url}&act=showview&tid={$v[tid]}">{echo cutstr($v[name],70,'')}</a>
+							<span class="jgdy">地址：{$proList[$v['provinceid']]['cityname']}{$cityList[$v['provinceid']][$v['cityid']]}{$v['addr']}</span>
+							<div class="starbox_new">
+								<span class="star">
+									{eval for ($i = 0; $i < 5; $i++):}
+									<span class="{if $i < $v['score']/2}{if $v['score']/2-$i<1}halfstar2{else}redstar2{/if}{else}graystar2{/if}"></span>
+									{eval endfor;}
+								</span>
+								<span class="orange">{if $v['score'] < 10}{$v['score']}{else}{echo intval($v['score']);}{/if}</span>
+								<a href="{$base_url}&act=showview&tid={$v[tid]}" class="gary12" target="_blank">（{$v[replies]}人参与点评）</a>
+							</div>
+						</div>
+					</li>
+					{/loop}
+					<!--单条循环结束-->
+				</ul>
+				{/if}
+				<div class="pageBox">{$multipage}</div>
+			</div>
+			<!--主体列表结束-->
+		</div>
+		<!--左侧结束-->
+		<!--右侧开始-->
+		<div class="line_r">
+			<!--发布按钮开始-->
+			<div class="line_fb mb15">
+				{if $_G['uid']}
+				<a href="{$base_url}&act=dopost&do=new" target="_blank"></a>
+				{else}
+				<a onclick="showWindow('login', 'http://www.8264.com/member.php?mod=logging&action=login&guestmessage=yes')" target="_blank"></a>
+				{/if}
+			</div>
+			<!--发布按钮结束-->
+
+
+			<!--首页右侧list开始-->
+			{if $jcdpList}
+			<div class="r_list mb15 r_list_without_b">
+				<h4 class="r_title_h4" style="margin-bottom:4px;">精彩点评</h4>
+				<ul>
+					{loop $jcdpList $v}
+					<li>
+						<div class="r_nr">
+							<div class="arr"></div>
+							<a href="home.php?mod=space&uid={$v['authorid']}" class="name" target="_blank">{$v[author]}：</a><a href="{$base_url}&act=showview&tid={$v['tid']}" target="_blank">{$v[message]}</a>
+						</div>
+						<div class="r_pl">评论于：<a href="{$base_url}&act=showview&tid={$v['tid']}" target="_blank" title="{$titleList[$v[tid]][subject]}">{$titleList[$v[tid]][subject]}</a></div>
+					</li>
+					{/loop}
+				</ul>
+			</div>
+			{/if}
+			<!--首页右侧list结束-->
+
+			<!--contact us start-->
+			<div class="r_list mb15 r_list_without_b contUs">
+				<h4 class="r_title_h4">联系我们</h4>
+				<ul>
+					<li>QQ： {lang contact_us_with_qq}</li>
+					<li>论坛ID: {lang contact_us_with_id}</li>
+				</ul>
+			</div>
+			<!--contact us end-->
+		</div>
+		<!--右侧结束-->
+	</div>
+	<!--主体内容结束-->
+</div>
+<script type="text/javascript">
+var ie6=false;
+if(/msie/.test(navigator.userAgent.toLowerCase()) && 'undefined' == typeof(document.body.style.maxHeight)){
+	ie6=true;
+}
+</script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	var tc_dq_maxW  = $(".tc_dq").width();
+	var maxW   	= $(".tc_dq").parent().width();
+	$('.province').hover(function(){
+		$(".tc_dq").hide();
+		$(".div_city").hide();
+		clearTimeout(window.subbox_show);
+		var catid = $(this).attr("value");
+		if ($("#province_"+catid).length > 0) {
+			$("#province_"+catid).show();
+			$(".tc_dq").show();
+		}
+		$(".tc_dq").css({"width":"auto"});
+		var tc_dqW = $(".tc_dq").width() + 1;
+		tc_dqW = tc_dqW > tc_dq_maxW ? tc_dq_maxW : tc_dqW;
+		$(".tc_dq").css({"width":tc_dqW});
+		var left   = $(this).position().left + Math.floor($(this).width() / 2) - Math.floor(tc_dq_maxW / 4) + (tc_dq_maxW - tc_dqW) / 2;
+		left       = left < 0 ? 0 : left;
+		left       = left + Math.floor(tc_dqW / 4) * 5 > maxW ? maxW - tc_dqW - 22 : left;
+		$(".tc_dq").css({"top":$(this).position().top+24,'left':left+"px"});
+	},function(){
+		window.subbox_show=setTimeout(function(){$(".tc_dq").hide();$(".div_city").hide();},300);
+	});
+	$('.tc_dq').hover(function(){
+		clearTimeout(window.subbox_show);
+	},function(){
+		window.subbox_show=setTimeout(function(){$(".tc_dq").hide();$(".div_city").hide();},300);
+	});
+
+	//下拉菜单展开缩起
+	$(".line_con_gray").delegate(".arrow_d","click",function(){
+		$(this).removeClass("arrow_d").addClass("arrow_u");
+		$(this).parent().animate({
+			height: 55
+		}, 300);
+	});
+	$(".line_con_gray").delegate(".arrow_u","click",function(){
+		$(this).removeClass("arrow_u").addClass("arrow_d");
+		$(this).parent().animate({
+			height: 30
+		}, 300);
+	});
+
+	$(".searchBox").click(function(){
+		$("label.searchBox").hide();
+		$("input.searchBox").focus();
+	});
+});
+</script>
+<!--{subtemplate forum/dianping/footer}-->

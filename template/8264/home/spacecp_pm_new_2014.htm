@@ -1,0 +1,46 @@
+<!--{template home/space_notice_new_header}-->
+<!--发送消息开始-->
+<div class="form-box profile" id="pm_n_p">
+	<div class="info-hd">
+		<span>发送短消息</span>
+		<a href="$_G[config][web][home]home.php?mod=space&do=notice&type=smessage" class="bluefs"><<我的短消息</a>
+	</div>
+	<div class="info-bd">
+	<form id="pmform_{$pmid}" name="pmform_{$pmid}" method="post" autocomplete="off" action="home.php?mod=spacecp&ac=pm&op=send&touid=$touid&pmid=$pmid" onsubmit="parsepmcode(this);{if $_G[inajax]}ajaxpost(this.id,  'return_$_G[gp_handlekey]');{/if}">
+		<input type="hidden" name="referer" value="$_G[referer]" />
+		<input type="hidden" name="pmsubmit" value="true" />
+		<input type="hidden" name="formhash" value="{FORMHASH}" />
+		<table class="setting-continfo-table">
+			<tr>
+				<th><label for="">收件人：</label></th>
+				<td><input type="text" id="username" name="username" placeholder="" class="w496" value="$msguser"></td>
+			</tr>
+			<tr>
+				<th><label for="">写消息：</label></th>
+				<td>
+					<!--写消息框开始-->
+					<div id="f_pst" class="pingluncon pinglunco_xx">
+						
+							<div class="pinglun">
+								<div class="pinglunmid pinglunmid_xx">
+									<div class="edierbar clboth">
+										<!--{eval $seditor = array('send', array('bold', 'color', 'smilies', 'simpleupload'));}-->
+										<!--{subtemplate common/seditor_new_2014}-->
+									</div>
+									<div class="areatext areatext_xx">
+										<textarea rows="8" cols="40" name="message" class="pt" id="sendmessage" onkeydown="ctrlEnter(event, 'pmsubmit_btn');"></textarea>
+									</div>
+								</div>
+								<button type="submit" name="pmsubmit_btn" id="pmsubmit_btn" value="true" class="kshf">{lang send}</button>
+							</div>
+						
+					</div>
+					<!--写消息框结束-->
+				</td>
+			</tr>									
+		</table>
+		</form>
+	</div>
+</div>
+<!--发送消息结束-->
+<!--{template home/space_notice_new_footer}-->

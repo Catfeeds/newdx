@@ -1,0 +1,140 @@
+<form method="get" action="{ADMINSCRIPT}">
+	<input type="hidden" name="action" value="plugins">
+	<input type="hidden" name="operation" value="config">
+	<input type="hidden" name="do" value="92">
+	<input type="hidden" name="identifier" value="friendlylink">
+	<input type="hidden" name="pmod" value="link_manager">
+	
+	<table class="tb tb2 ">
+		<tbody>
+			<tr><th class="partition" colspan='2'>搜索</th></tr>
+			<tr>
+                <td width='200'>
+					<input type="text" name='name' value="{$_GET['name']}" placeholder='外链名称'>
+				</td>
+                <td width='200'>
+					<input type="text" name='url' value="{$_GET['url']}" placeholder='外链地址'>
+				</td>
+				<td>
+					<select style="margin: 0px;" name="perpage">
+						<option value="20" <!--{if $_GET['perpage']== 20}-->selected<!--{/if}-->>每页显示20个</option>
+						<option value="50" <!--{if $_GET['perpage']== 50}-->selected<!--{/if}-->>每页显示50个</option>
+						<option value="100" <!--{if $_GET['perpage']== 100}-->selected<!--{/if}-->>每页显示100个</option>
+					</select>
+					<input type="submit" value="搜索" class="btn">
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</form>
+<form>
+	<table class="tb tb2">
+		<tr class="header">
+			<th>外链名称</th>
+			<th>外链地址</th>
+			<th>申请时间</th>
+			<th>联系QQ</th>
+			<th>关键字</th>
+			<th style="display:none;">标识符</th>
+			<th>位置</th>
+			<th>排序</th>
+			<th>审核状态</th>
+			<th>操作</th>
+		</tr>
+		<!--{if $links}-->
+		<!--{loop $links $val}-->
+		<tr>
+			<td>
+				<input type="text" name="name" value="$val[name]" onchange="editfield(this)" url="$url&field=name&id=$val[id]">
+			</td>
+			<td>
+				<input type="text" name="url" value="$val[url]" onchange="editfield(this)" url="$url&field=url&id=$val[id]" style="width:400px;">
+			</td>
+			<td>
+				$val[addtime]
+			</td>
+			<td>
+				$val[qq]
+			</td>
+			<td>
+				$val[site_outlink_name]
+			</td>
+			<td style="display:none;">
+				$val[identifie]
+			</td>
+			<td>
+				<a target="_blank" href="$val[site_outlink]">$val[position]</a>
+			</td>
+			<td>
+				<input type="text" name="displayorder" value="$val[displayorder]" size="3" onchange="editfield(this)" url="$url&field=displayorder&id=$val[id]">
+			</td>
+			<td id="sta_$val[id]">
+				<!--{if $val[ispass] == 1}-->
+				<span style='color:red'>未通过</span>
+				<!--{elseif $val[ispass] == 2}-->
+				<span style='color:green'>已通过</span>
+				<!--{else}-->
+				<span style='color:blue'>待审核</span>
+				<!--{/if}-->
+			</td>
+			<td>
+				<!--{if $val['ispass']==2}-->
+				<a href="$url&field=ispass&val=1&id=$val[id]" onclick="return checkPass($val[id],1);" class="shen_$val[id]">不通过</a>
+				<!--{else}-->
+				<a href="$url&field=ispass&val=2&id=$val[id]" onclick="return checkPass($val[id],2);" class="shen_$val[id]">通过</a>
+				<!--{/if}-->
+				<a href="$url&op=del&id=$val[id]" onclick="return del($val[id],this);">删除</a>
+			</td>
+		</tr>
+		<!--{/loop}-->
+		<tr><td colspan="10"><div class="cuspages right">{$multipage}</div></td></tr>
+		<!--{else}-->
+		<!--{/if}-->
+	</table>
+</form>
+
+<script src="static/js/jquery-1.6.1.min.js"></script>
+<script>
+function checkPass(x,status){
+	var _this = $(".shen_"+x);
+	var url=_this.attr('href');
+	$.ajax({
+		type : 'GET',
+		url : url,
+		success:function(html){
+			if(status==1){ //设置为不通过样式
+				$('#sta_'+x).html("<span style='color:red'>未通过</span>");
+				urls = url.replace(/val=([\d]+)/, "val=2");
+				_this.parent().html("<a class='shen_"+x+"' onclick='return checkPass("+x+",2);' href="+urls+">通过</a>");
+			}else{
+				$('#sta_'+x).html("<span style='color:green'>已通过</span>");
+				urls = url.replace(/val=([\d]+)/, "val=1");
+				_this.parent().html("<a class='shen_"+x+"' onclick='return checkPass("+x+",1);' href="+urls+">不通过</a>");
+			}
+		}
+	});
+	return false;
+}
+function editfield(obj){
+	var url = $(obj).attr('url') + "&val=" + $(obj).val();
+	$.ajax({
+		type : 'GET',
+		url : url,
+		success:function(html){}
+	});
+}
+function del(id,obj){
+	if(confirm('确定要删除这条外链吗，删除操作不可恢复')){
+		var url = $(obj).attr('href');
+		console.log(url);
+		$.ajax({
+			type : 'GET',
+			url : url,
+			success:function(html){
+				$(obj).parents('tr').remove();
+			}
+		});
+	}
+	return false;
+}
+</script>

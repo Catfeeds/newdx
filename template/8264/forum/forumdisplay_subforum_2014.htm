@@ -1,0 +1,52 @@
+
+<div class="layout ptb16" id="subforum_{$_G[forum][fid]}">
+	<!--{eval $subCount = count($sublist);$i=1;}-->
+	<!--{loop $sublist $sub}-->
+		<!--{eval $forumurl = !empty($sub['domain']) && !empty($_G['setting']['domain']['root']['forum']) ? 'http://'.$sub['domain'].'.'.$_G['setting']['domain']['root']['forum'] : 'forum.php?mod=forumdisplay&fid='.$sub['fid'];}-->
+		<div class="zbkcon{if $i==$subCount} withoutb_t{/if}">
+			<div class="zbktitle">
+				<span class="zbkname">
+					<a href="$forumurl"{if !empty($sub[redirect])} target="_blank"{/if}>{$sub['name']}</a>
+					<!--{if $sub[todayposts] && !$sub['redirect']}--><em>£¨{$sub['todayposts']}£©</em><!--{/if}-->
+				</span>
+				<!--{if $sub['permission'] == 1}-->
+						{lang private_forum}
+				<!--{else}-->
+					<!--{if $sub['redirect']}-->
+						<a href="$forumurl" class="zbk_t">{lang url_link}</a>
+					<!--{elseif is_array($sub['lastpost'])}-->
+						<!--{if $_G['forum']['forumcolumns'] && $_G['forum']['forumcolumns'] >= 3 }-->
+							<a href="forum.php?mod=redirect&tid=$sub[lastpost][tid]&goto=lastpost#lastpost">{lang forum_lastpost}: $sub[lastpost][dateline]</a>
+						<!--{else}-->
+							<a href="forum.php?mod=redirect&tid=$sub[lastpost][tid]&goto=lastpost#lastpost" class="zbk_t"><!--{echo cutstr($sub[lastpost][subject], 30)}--></a>
+						<!--{/if}-->
+					<!--{/if}-->
+				<!--{/if}-->
+			</div>
+			<div class="zbkinfo">
+				<span class="zbkinfo_l">
+					<span class="zbk_or">×Ó°æ¿é</span>
+					<span class="zbk_zt">{lang forum_threads}£º{$sub['threads']}</span>
+					<span>{lang forum_posts}£º{$sub['posts']}</span>
+				</span>
+				<em class="zbkinfo_r">
+					<!--{if $sub['permission'] == 1}-->
+					<!--{else}-->
+						<!--{if $sub['redirect']}-->
+						<!--{elseif is_array($sub['lastpost'])}-->
+							<!--{if $_G['forum']['forumcolumns'] && $_G['forum']['forumcolumns'] >= 3 }-->
+								<a href="forum.php?mod=redirect&tid=$sub[lastpost][tid]&goto=lastpost#lastpost">{lang forum_lastpost}: $sub[lastpost][dateline]</a>
+							<!--{else}-->
+								$sub[lastpost][dateline] <!--{if $sub['lastpost']['author']}-->$sub['lastpost']['author']<!--{else}-->{lang anonymous}<!--{/if}-->
+							<!--{/if}-->
+						<!--{else}-->
+							{lang never}
+						<!--{/if}-->
+					<!--{/if}-->
+				</em>
+			</div>
+		</div>
+	<!--{eval $i++;}-->
+	<!--{/loop}-->
+	$_G['forum']['endrows']
+</div>

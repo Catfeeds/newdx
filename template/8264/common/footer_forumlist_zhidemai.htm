@@ -1,0 +1,38 @@
+<style type="text/css">
+.choiceness h1 { float: left; width: 100%; padding-top: 10px; padding-bottom: 20px; }
+.choiceness h1 .tit { float: left; display: inline; font: 18px/22px "Microsoft Yahei"; }
+.choiceness h1 .more { float: right; display: inline; font: 12px/16px "Microsoft Yahei"; padding-top: 8px; }
+.more a{ font-size:12px; color:#7b94a4; text-decoration:none; padding:8px 0px 0px 0px;}
+.more a:hover{  color:#fff; }
+.choiceness .bd { overflow: hidden; }
+.choicenessList { float: left; width: 1010px; margin-left: -13px; overflow:hidden}
+.choicenessList a { float: left; width: 200px; margin-left: 8px; margin-bottom: 8px; background:#1d3140;padding:14px 20px 0 20px;color:#7b94a4;}
+.choicenessList a:hover{ background:#1a2b38;color:#fff; }
+.choicenessList li img { width: 200px; height: 150px; }
+.choicenessList  .text{  display: block; width:100%; font: 14px/33px "Microsoft Yahei"; height: 33px; line-height:33px;  text-align: center; }
+</style>
+<div class="layout warpten980">
+<div class="hd">
+	<h1>
+		<span class="more" style="display:none;"><a target="_blank" href="http://www.8264.com/list/871">更多</a></span>
+	</h1>
+</div>
+<div class="bd">
+	<div class="choicenessList">
+		<!--{eval include_once(DISCUZ_ROOT.'./source/plugin/skiing/hd_zw.php');}-->
+    <!--{eval $pianyi_sidebar = ForumOptionHuoDong::pianyi_sidebar(8, 'new', 'jiu', 10002);}-->
+    <!--{if $pianyi_sidebar}-->
+      <!--{loop $pianyi_sidebar $id $item}-->
+      <!--{eval $price = number_format(($item['discount_price']-$item['price_jian']), 2);}-->
+      <!--{eval if(strpos($item['img'], 'tbcdn') !== false) $item['img'] = $item['img'].'_200x200.jpg';}-->
+      <!--{eval if(strpos($item['img'], 'http') === false) $item['img'] = 'http://pianyi.8264.com/'.$item['img'];}-->
+    	<!--8264专题图片开始-->
+    	<a href="{$item['url']}" title="{$item['title']}" target="_blank">
+			<div><img src="{$item['img']}" alt="{$item['title']}" width="200" height="200" /></div>
+			<div class="text">￥{$price} {$item['title']}</div>
+		</a>
+			<!--{/loop}-->
+	  <!--{/if}-->
+	</div>
+</div>
+</div>

@@ -1,0 +1,144 @@
+<!--{subtemplate common/header_8264_new}-->
+<!--[if lte IE 7]>
+ <script src="http://static.8264.com/static/js/dianping/json2.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/dianping/{$modstr}style.css?{VERHASH}" />
+<div class="blackLayout" id="div_black"></div>
+<div class="popBox" id="box_msg" style="display:none;">
+	<div class="bd w420">
+		<div class="popMessage">
+			<div class="messageText" id="bmsg_text"></div>
+			<button class="sureBlueBtn_182x43" id="bmsg_ok"></button>
+		</div>
+		<span class="closeBtn" id="bmsg_closeBtn">关闭</span>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+document.body.onselectstart=function(){ return false;}
+document.body.style="-moz-user-select:none";
+</script>
+
+
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$("#bmsg_ok, #bmsg_closeBtn").click(function(){
+		$("#div_black, #box_msg").hide();
+	});
+	$('#div_black').appendTo('body');
+	$("#div_black").css({ opacity: 0.8 });
+	$('#box_msg').appendTo('body');
+	var bodyheight = $("body").height();
+	$("#div_black").height(bodyheight);
+	$("#div_black").hide();
+});
+function _showmsg(text){
+	jQuery("#bmsg_text").text(text);
+	jQuery("#div_black, #box_msg").show();
+}
+</script>
+<div class="header">
+	<div class="layout">
+		<div class="icoHill">&nbsp;</div>
+		<div class="headerL">
+			<h1><span class="country">{$modname}</span></h1>
+			<div>
+			<div class="site">
+				<a href="$_G[config][web][portal]">首页</a>
+				<!--{if $modstr}-->
+				> <a href="$_G[config][web][portal]forum.php?ctl={$modstr}&act=showlist">{$modname}</a>
+				<!--{/if}-->
+				{if $viewdata['proname']&&$modstr!='shop'}
+				> <strong><a href="{$url}&act=showlist&order=heats&page=1&pro={$viewdata['pro']}">{$viewdata['proname']}</a></strong>
+				{elseif $pcid && $modstr=='equipment'}
+				> <strong><a href="{$url}&act=showlist&order=heats&pcid={$pcid}&cid=0&bid=0&page=1">{$pcname}</a></strong>
+				{if $cid}> <a href="{$url}&act=showlist&order=heats&pcid={$pcid}&cid={$cid}&bid=0&page=1">{$cname}</a>{/if}
+				{elseif $viewdata['pcname'] && $modstr=='equipment'}
+				> <a href="{$url}&act=showlist&order=heats&pcid={$viewdata['pcid']}&cid=0&bid=0&page=1">{$viewdata['pcname']}</a>
+				> <strong><a href="{$url}&act=showlist&order=heats&pcid={$viewdata['pcid']}&cid={$viewdata['cid']}&bid=0&page=1">{$viewdata['cname']}</a></strong>
+				{elseif $viewdata['cname']  && $modstr=='equipment'}
+				> <a href="{$url}&act=showlist&order=heats&cid={$viewdata['cid']}&page=1">{$viewdata['cname']}</a>
+
+				{/if}
+				{if $viewdata['shortsubject'] && $modstr!='equipment'}
+				> <strong><a href="{$url}&act=showview&tid={$viewdata[tid]}">{$viewdata['shortsubject']}</a></strong>
+				{/if}
+				{if $modstr=='brand' && $pro}
+				><strong><a href="{$oldurl}&act=showlist&let=0&nat=0&cp={$pro['id']}&order=score&page=1">{$pro['produce']}</a></strong>
+				{/if}
+				{if $modstr=="line"}
+					{if $province}
+					>
+					{elseif $city}
+					>
+					{elseif $lType}
+					>
+					{/if}
+                    <!--线路和旅游自定义字段处理 by lgt at 20140815-->
+                    {if ($city || $province) && $lType==0}
+                    <a href="$_G[config][web][portal]forum.php?ctl={$modstr}&act=showlist&order=lastpost&lType=0&lTime=$lTime&province=$province&city=$city&page=1">
+                        <strong>{$regionsList[$province]["cityname"]}{$cityList[$province][$city]["name"]}旅游攻略</strong>
+                    </a>
+                    {elseif $city || $province}
+                    <a href="$_G[config][web][portal]forum.php?ctl={$modstr}&act=showlist&order=lastpost&lType=$lType&lTime=$lTime&province=$province&city=$city&page=1">
+                        <strong>{$regionsList[$province]["cityname"]}{$cityList[$province][$city]["name"]}周边{$typelist[$lType]['name']}线路攻略</strong>
+                    </a>
+                    {/if}
+                    <!--线路和旅游自定义字段处理 by lgt at 20140815-->
+                    {/if}
+                {if $modstr=="diving" && $action !='new' && $action!='edit'}
+                    {if ($city || $province) && $type==0}
+                    >
+                        <a href="$_G[config][web][portal]forum.php?ctl={$modstr}&act=showlist&order=lastpost&type=0&provinceid=$province&cityid=$city&page=1">
+                            <strong>2014{$proList[$province]["cityname"]}{$cityList[$province][$city]["cityname"]}{$modname}点评</strong>
+                        </a>
+                    {elseif $city || $province}
+                    >
+                        <a href="$_G[config][web][portal]forum.php?ctl={$modstr}&act=showlist&order=lastpost&type=$type&provinceid=$province&cityid=$city&page=1">
+                            <strong>2014{$proList[$province]["cityname"]}{$cityList[$province][$city]["cityname"]}{$divtypeList[$type][name]}点评</strong>
+                        </a>
+                    {/if}
+                {/if}
+			</div>
+			{if $regions && $citychange}
+			<span class="cityChange"><span id="cBtn">（切换城市）</span>
+				<div class="cityList" id="cList">
+					<div class="list">
+						<a href="forum.php?ctl={$modstr}&act=showlist&order=heats&page=1">中国</a>
+						{loop $regions $type}
+						{if $type['count']>0}<a href="forum.php?ctl={$modstr}&act=showlist&order=heats&page=1&pro={$type['pro']}">{$type['name']}</a>{/if}
+						{/loop}
+					</div>
+					<span class="topJJ">◆</span><span class="topJJWrite">◆</span>
+				</div>
+			</span>
+			<script type="text/javascript">
+			jQuery(document).ready(function($){
+				$('#cBtn').click(function(){
+					$('#cList').show();
+				});
+				$('#cList').mouseleave(function(){
+					$(this).hide();
+				});
+			});
+			</script>
+			{/if}
+			</div>
+		</div>
+		<!--{if $dianpingmodules}-->
+		<div class="headerR">
+			<div class="colNameList">
+				<!--{loop $dianpingmodules $dm}-->
+
+                                        <!--{if {$dm['src']}!="shop" && {$dm['src']}!="fishing" && {$dm['src']}!="diving" && {$dm['src']}!="climb"}-->
+                                        <a <!--{if $modstr == $dm[src]}-->class="nowmod"<!--{/if}--> href="{$_G[config][web][portal]}forum.php?ctl={$dm[src]}&act=showlist">{$dm[name]}</a>
+                                        <!--{/if}-->
+
+				<!--{/loop}-->
+			</div>
+		</div>
+		<!--{/if}-->
+	</div>
+</div>

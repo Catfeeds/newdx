@@ -1,0 +1,683 @@
+<!--{subtemplate common/header}-->
+<link href="http://static.8264.com/static/css/home/home_spacecp.css?{VERHASH}" rel="stylesheet" type="text/css">
+<style type="text/css">
+#td_interest { line-height:1.8; padding-right:20px;}
+#td_interest label {}
+input.pc { margin-right:7px;}
+.tfm input { vertical-align:middle;}
+</style>
+<!--{subtemplate home/spacecp_header}-->
+	<!--{if $validate}-->
+		<p class="tbmu mbm">{lang validator_comment}</p>
+		<form action="member.php?mod=regverify" method="post" autocomplete="off">
+		<input type="hidden" value="{FORMHASH}" name="formhash" />
+		<table summary="{lang memcp_profile}" cellspacing="0" cellpadding="0" class="tfm">
+		<tr>
+			<th>{lang validator_remark}</th>
+			<td>$validate[remark]</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<th>{lang validator_message}</th>
+			<td><input type="text" class="px" name="regmessagenew" value="" /></td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<th>&nbsp;</th>
+			<td colspan="2">
+				<button type="submit" name="verifysubmit" value="true" class="pn pnp" /><strong>{lang validator_submit}</strong></button>
+			</td>
+		</tr>
+		</table>
+		</div></div>
+		<div class="appl">
+		<!--{subtemplate home/spacecp_footer}-->
+	</div>
+	<!--{else}-->
+		<!--{if $operation == 'password'}-->
+			<p class="bbda pbm mbm"><!--{if !$_G['setting']['connect']['allow'] || !$conisregister}-->{lang old_password_comment}<!--{else}-->{lang connect_config_newpassword_comment}<!--{/if}--></p>
+			<form action="home.php?mod=spacecp&ac=profile" method="post" autocomplete="off" onsubmit="return profilecheck()">
+				<input type="hidden" value="{FORMHASH}" name="formhash" />
+				<table summary="{lang memcp_profile}" cellspacing="0" cellpadding="0" class="tfm">
+					<!--{if !$_G['setting']['connect']['allow'] || !$conisregister}-->
+					<tr>
+						<th><strong class="rq" title="{lang required}">*</strong>{lang old_password}</th>
+						<td><input type="password" name="oldpassword" id="oldpassword" class="px" /></td>
+					</tr>
+					<!--{/if}-->
+					<tr>
+						<th>{lang new_password}</th>
+						<td>
+							<input type="password" name="newpassword" id="newpassword" class="px" />
+							<p class="d">{lang memcp_profile_passwd_comment}</p>
+						</td>
+					</tr>
+					<tr>
+						<th>{lang new_password_confirm}</th>
+						<td>
+							<input type="password" name="newpassword2" id="newpassword2"class="px" />
+							<p class="d">{lang memcp_profile_passwd_comment}</p>
+						</td>
+					</tr>
+					<tr id="contact"{if $_G[gp_from] == 'contact'} style="background-color: {SPECIALBG};"{/if}>
+						<th>{lang email}</th>
+						<td>
+							<input type="text" name="emailnew" id="emailnew" value="$space[email]" class="px" />
+							<p class="d">
+								<!--{if $space['emailstatus']}-->
+									{lang email_been_active}
+								<!--{else}-->
+									{lang email_acitve_message}
+								<!--{/if}-->
+							</p>
+							<!--{if $_G['setting']['regverify'] == 1 && (($_G['group']['grouptype'] == 'member' && $_G['adminid'] == 0) || $_G['groupid'] == 8)}--><p class="d">{lang memcp_profile_email_comment}</p><!--{/if}-->
+						</td>
+					</tr>
+
+					<tr>
+						<th>{lang security_question}</th>
+						<td>
+							<select name="questionidnew" id="questionidnew">
+								<option value="" selected>{lang memcp_profile_security_keep}</option>
+								<option value="0">{lang security_question_0}</option>
+								<option value="1">{lang security_question_1}</option>
+								<option value="2">{lang security_question_2}</option>
+								<option value="3">{lang security_question_3}</option>
+								<option value="4">{lang security_question_4}</option>
+								<option value="5">{lang security_question_5}</option>
+								<option value="6">{lang security_question_6}</option>
+								<option value="7">{lang security_question_7}</option>
+							</select>
+							<p class="d">{lang memcp_profile_security_comment}</p>
+						</td>
+					</tr>
+
+					<tr>
+						<th>{lang security_answer}</th>
+						<td>
+							<input type="text" name="answernew" id="answernew" class="px" />
+							<p class="d">{lang memcp_profile_security_answer_comment}</p>
+						</td>
+					</tr>
+					<!--{if checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
+					<!--{eval $sectpl = '<tr><th><sec></th><td><sec><p class="d"><sec></p></td>';}-->
+					<!--{template common/seccheck}-->
+					<!--{/if}-->
+					<tr>
+						<th>&nbsp;</th>
+						<td><button type="submit" name="pwdsubmit" value="true" class="pn pnp" /><strong>{lang save}</strong></button></td>
+					</tr>
+				</table>
+				<input type="hidden" name="passwordsubmit" value="true" />
+			</form>
+		<!--{else}-->
+			<!--{hook/spacecp_profile_top}-->
+			<!--{subtemplate home/spacecp_profile_nav}-->
+				<!--{if $vid}-->
+				<p class="tbms mtm"><!--{if $showbtn}-->{lang spacecp_profile_message1}<!--{else}-->{lang spacecp_profile_message2}<!--{/if}--></p>
+				<!--{/if}-->
+			<iframe id="frame_profile" name="frame_profile" style="display: none"></iframe>
+			<form action="{if $operation != 'plugin'}home.php?mod=spacecp&ac=profile&op=$operation{else}home.php?mod=spacecp&ac=plugin&op=profile&id=$_G[gp_id]{/if}" method="post" enctype="multipart/form-data" autocomplete="off"{if $operation != 'plugin'} target="frame_profile"{/if}>
+				<input type="hidden" value="{FORMHASH}" name="formhash" />
+				<!--{if $_G[gp_vid]}-->
+				<input type="hidden" value="$_G[gp_vid]" name="vid" />
+				<!--{/if}-->
+				<table cellspacing="0" cellpadding="0" class="tfm">
+					<tr class="bbda">
+						<th>{lang username}</th>
+						<td style="width:700px">$_G[member][username]</td>
+						<td>&nbsp;</td>
+					</tr>					
+				<!--{loop $settings $key $value}-->
+				<!--{if $value[available]}-->
+					<tr class="bbda" <!--{if $key=='field3'}-->style="display:none"<!--{/if}-->>
+						<th id="th_$key"><!--{if $value[required]}--><strong class="rq" title="{lang required}">*</strong><!--{/if}-->$value[title]</th>
+						<td id="td_$key">
+							$htmls[$key]
+						</td>
+						<td class="p">
+							<!--{if $value[showinthread] || $vid}-->
+							<input type="hidden" name="privacy[$key]" value="3" />
+							<!--{else}-->
+							<select name="privacy[$key]">
+								<option value="0"{if $privacy[$key] == "0"} selected="selected"{/if}>{lang open_privacy}</option>
+								<option value="1"{if $privacy[$key] == "1"} selected="selected"{/if}>{lang friend_privacy}</option>
+								<option value="3"{if $privacy[$key] == "3"} selected="selected"{/if}>{lang secrecy}</option>
+							</select>
+							<!--{/if}-->
+						</td>
+					</tr>
+				<!--{/if}-->
+				<!--{/loop}-->
+
+				<!-- // 120320 wistar 用户身份选择 START -->
+				<!--{if $arr_identity}-->
+					<div id="note_tip"></div>
+					<div class="col-title" id="div_move_tip" style="display:none">
+						<div class="start"></div>
+						<div class="end"></div>
+						我们为您推荐了 <span id="span_count" style="color:red"></span> 个高级身份，申请成功后将享受更多特殊服务…
+					</div>
+					<script type="text/javascript" src="http://static.8264.com/static/js/jquery-1.6.1.min.js"></script>
+					<script type="text/javascript">
+						// 已选中的身份ID
+						var active_obj_id = '';
+						var str_identitys = '{$str_identitys}';
+						var arr_identitys = str_identitys.split(',');
+						jQuery.noConflict();
+
+						jQuery(function ($) {
+							// 提交按钮隐藏
+							$('#profilesubmitbtn').remove();
+							// 已有身份显示隐藏
+							$('#a_showidentitys').hover(function (e) {
+								if ($('#div_identitys>ul').is(':empty')) {
+									return;
+								}
+								$('#div_identitys').stop(true,true).fadeToggle();
+							});
+							// 筛选按钮控制筛选菜单项显示隐藏
+							$('#a_select').click(function (e) {
+								$('#div_item').fadeToggle();
+							});
+							// 单机空白处筛选菜单项消失
+							$(document).click(function (event) {
+								var str_id = event.target.id;
+								// 当单击点不是触发弹出层弹出事件的td、td中的div和div中的span元素并且不能是弹出层本身时，弹出层隐藏
+								if(str_id != 'div_item' && str_id != 'a_select') {
+									jQuery('#div_item').fadeOut();
+								}
+							});
+							// 筛选菜单项样式设置
+							$('#div_item div').css({'cursor':'pointer'}).mouseenter(function () {
+								$(this).css('background','red');
+							}).mouseleave(function () {
+								// 如果是当前选中菜单则不清除样式
+								if ($(this).attr('id') != active_obj_id) {
+									$(this).css('background', '');
+								}
+							});
+
+							// 提交主身份
+							$('.application.btn_0').click(function (e) {
+								var obj_this = $(this);
+								var arr_iid = obj_this.attr('id').split('_');
+								var iid = arr_iid[1];
+								if (!iid || iid <= 0) {return;}
+								$.ajax({
+									url: 'home.php?mod=spacecp&ac=profile&op=$operation&req_type=ajax&op=add_identity&iid=' + iid,
+									type: 'get',
+									dataType: 'json',
+									success: function (msg) {
+										if (msg.status != 'success') {
+											tipIn('申请失败，请重试！');
+										} else {
+											tipIn('您的申请已成功，可以继续添加身份！');
+											obj_this.unbind('click').removeClass('btn_0').addClass('btn_1');
+											$('#div_identity_' + iid).attr('status', '1');
+											// 获取此主身份下可申请的子身份
+											var obj_jq_div_identity = $('div[identity_id=' + iid + ']').filter('[status=0],[status=3]');
+											var int_sub_identity_count = obj_jq_div_identity.size();
+											// 如果有可选子身份则加入到推荐列表，用弹出层形式弹出
+											if (int_sub_identity_count > 0) {
+												var int_div_tip_h = $('#div_move_tip').height();
+												$('#div_move_tip').fadeIn(0).css({'opacity': '0', 'height': '0', 'margin': '0'}).insertAfter(obj_this.parent()).animate({'opacity': '1', 'height': int_div_tip_h}, 800);
+												// 设置个数
+												$('#span_count').text(int_sub_identity_count);
+												var obj_iterate = null;
+												obj_jq_div_identity.each(function (i) {
+													var int_oh = $(this).height();
+													obj_iterate = i == 0 ? $('#div_move_tip') : obj_iterate;
+													var obj_this = reset_button($(this), 1);
+													obj_this.css({'opacity': '0', 'height': '0'}).insertAfter(obj_iterate).animate({'opacity': '1', 'height': int_oh}, 800, function () {$(this).css({'height': ''})});
+													obj_iterate = $(this);
+												});
+											}
+											// 我的身份中添加刚添加的身份
+											$('#div_identitys>ul').append($('<li>' + $('#h5_title_' + iid).text() +'</li>'));
+											arr_identitys.push(iid);
+											/* 弹出层形式显示 */
+											// 获取此主身份下可申请的子身份
+//											var obj_jq_div_identity = $('div[identity_id=' + iid + ']').filter('[status=0],[status=3]').clone();
+//											var int_sub_identity_count = obj_jq_div_identity.size();
+//											// 如果有可选子身份则加入到推荐列表，用弹出层形式弹出
+//											if (int_sub_identity_count > 0) {
+//												obj_jq_div_identity.each (function () {
+//													$('#div_commend_identity').append(clone_div_identity($(this), iid));
+//												});
+//												// 设置个数
+//												$('#span_count').text(int_sub_identity_count);
+//												// 显示
+//												$('#div_mask').css({'height': $(document).height(), 'opacity':0.5}).fadeIn(800);
+//												$('#div_commend').fadeIn(800);
+//											}
+										}
+									},
+									error: function (msg) {
+										tipIn('申请失败，请重试！');
+									}
+								});
+							});
+
+							// 显示、提交子身份申请
+							$('.application-sub.btn_sub_0, .application-sub.btn_sub_3, .application-sub.btn_sub_5').live('click', function (e) {
+								var obj_this = $(this);
+								var arr_class = obj_this.attr('class').split(' ');
+								var arr_idd = obj_this.attr('id').split('_');
+								var iid = arr_idd[2];
+								var idd = arr_idd[3];
+								if (!iid || !idd || iid <= 0 || idd <= 0) {return;}
+								if ($('#div_reason_' + idd).is(':visible')) {
+//									var str_reason = escape($('#txta_' + idd).val());
+									var str_reason = $('#txta_' + idd).val();
+									$.ajax({
+										url: 'home.php?mod=spacecp&ac=profile&op=$operation&req_type=ajax&op=app_detail',
+										type: 'post',
+										data: {'iid':iid, 'idd':idd, 'app_reason':str_reason},
+										dataType: 'json',
+										contentType : "application/x-www-form-urlencoded; charset=utf-8",
+										success: function (msg) {
+											if (msg.status != 'success') {
+												tipIn('申请失败，请重试！');
+											} else {
+												tipIn('您的申请需要审核，可以继续添加身份！');
+												$('#div_reason_' + idd).fadeOut();
+												obj_this.unbind('click').removeClass(arr_class[1]).addClass('btn_sub_2').insertAfter($('#div_reason_' + idd));
+												$('#div_identity_' + iid + '_' + idd).attr('status', '2');
+											}
+										},
+										error: function (msg) {
+											tipIn('申请失败，请重试！');
+										}
+									});
+								} else {
+									if (arr_identitys.length > 0) {
+										if (jQuery.inArray(iid, arr_identitys) >= 0) {
+											$('#span_iidtip_' + idd).remove();
+										}
+									}
+									$(this).removeClass(arr_class[1]).addClass('btn_sub_5');
+									$('#div_reason_' + idd).append($(this)).fadeIn('slow');
+								}
+							});
+
+							// 推荐层中的子身份申请
+//							$('div[id^=commend_div_btn_sub_]').live('click', function (e) {
+//								var obj_this = $(this);
+//								var arr_class = obj_this.attr('class').split(' ');
+//								var arr_idd = obj_this.attr('id').split('_');
+//								var iid = arr_idd[4];
+//								var idd = arr_idd[5];
+//								if (!iid || !idd || iid <= 0 || idd <= 0) {return;}
+//								var str_reason = escape($('#commend_txta_' + idd).val());
+//								if ($('#commend_div_reason_' + arr_idd[5]).is(':visible')) {
+//									$.ajax({
+//										url: 'home.php?mod=spacecp&ac=profile&op=$operation&req_type=ajax&op=app_detail',
+//										type: 'post',
+//										data: {'iid':iid, 'idd':idd, 'app_reason':str_reason},
+//										dataType: 'json',
+//										success: function (msg) {
+//											close_div_commend();
+//											if (msg.status != 'success') {
+//												tipIn('申请失败，请重试！');
+//											} else {
+//												tipIn('您的申请需要审核，可以继续添加身份！');
+//												$('#div_btn_sub_' + iid + '_' + idd).unbind('click').text('申请中').removeClass(arr_class[1]).addClass('div_btn_sub_2');
+//												$('#div_identity_' + idd).attr('status', '2');
+//											}
+//										},
+//										error: function (msg) {
+//											close_div_commend();
+//											tipIn('申请失败，请重试！');
+//										}
+//									});
+//								} else {
+//									$(this).text('提交');
+//									$('#commend_div_reason_' + arr_idd[5]).append($(this)).fadeIn('slow');
+//								}
+//							});
+
+							// 弹出层关闭
+//							$('#span_close').click(function (e) {
+//								close_div_commend();
+//							});
+
+							// 筛选选项
+							$('#li_item_all').click(function (e) {
+								identity_fadeOut(0, $(this));
+							});
+							$('#li_item_allow').click(function (e) {
+								identity_fadeOut(0, $(this));
+							});
+							$('#li_item_applying').click(function (e) {
+								identity_fadeOut(2, $(this));
+							});
+							$('#li_item_applied').click(function (e) {
+								identity_fadeOut(1, $(this));
+							});
+
+							// 筛选菜单鼠标划过高亮显示
+							$('#li_item_all, #li_item_allow, #li_item_applying, #li_item_applied').hover(
+								function () {
+									$(this).css('background', 'white');
+								},
+								function () {
+									$(this).css('background', '');
+								}
+							);
+						});
+
+						// 关闭弹出层
+//						function close_div_commend () {
+//							jQuery('#div_mask, #div_commend').fadeOut(800);
+//							jQuery('#div_commend_identity').empty();
+//						}
+						// 将推荐身份元素修改相关属性与原元素属性进行区分
+//						function clone_div_identity (obj, iid) {
+//							// 修改最外层div的ID属性
+//							obj.attr('id', 'commend_' + obj.attr('id'));
+//							// 查找申请理由div并修改器ID属性后设置为初始状态（隐藏）
+//							var obj_jq_reason = obj.children('[id^=div_reason_]');
+//							obj_jq_reason.attr('id', 'commend_' + obj_jq_reason.attr('id')).css('display', 'none');
+//							// 查找提交按钮，如果按钮已经触发并加入到申请理由div中则将其重新插入到外层div中后修改ID
+//							var obj_jq_btn = obj.children('[id^=div_btn_sub_]').length ? obj.children('[id^=div_btn_sub_]') : obj_jq_reason.children('[id^=div_btn_sub_]');
+//							obj_jq_btn.attr('id', 'commend_' + obj_jq_btn.attr('id')).text('申请').insertAfter(obj_jq_reason, obj);
+//							// 查找申请理由textarea并修改其ID
+//							var obj_jq_txta = obj_jq_reason.children('[id^=txta_]');
+//							obj_jq_txta.attr('id', 'commend_' + obj_jq_txta.attr('id'));
+//							return obj;
+//						}
+
+						// 身份筛选
+						function identity_fadeOut (status, obj_jq) {
+							// 如果选取的筛选项为已选中的筛选项则不进行再次筛选
+							if (obj_jq.attr('id') == active_obj_id) {
+								return;
+							}
+							// 记录当前筛选项的ID
+							active_obj_id = obj_jq.attr('id');
+							// 通过ID进行相应筛选
+							switch (active_obj_id) {
+								// 显示所有身份
+								case 'li_item_all' :
+									jQuery('#div_move_tip').fadeOut(0);
+									jQuery('div[id^=div_identity_]').fadeIn();
+								break;
+								// 显示可申请和可重新申请的身份
+								case 'li_item_allow' :
+									if (jQuery('div[id^=div_identity_][status=0], div[id^=div_identity_][status=3]').size() > 0) {
+										jQuery('#div_move_tip').fadeOut(0);
+										jQuery('div[id^=div_identity_]').fadeOut();
+										jQuery('div[id^=div_identity_][status=0], div[id^=div_identity_][status=3]').fadeIn();
+									} else {
+										tipIn('暂无可申请的身份！');
+									}
+								break;
+								// 根据status参数显示申请中、申请成功、不可申请的身份
+								default:
+									if (jQuery('div[id^=div_identity_][status=' + status + ']').size() > 0) {
+										jQuery('#div_move_tip').fadeOut(0);
+										jQuery('div[id^=div_identity_]').fadeOut();
+										jQuery('div[id^=div_identity_][status=' + status + ']').fadeIn();
+									} else {
+										var str_tip = '';
+										switch (status) {
+											case 1:
+												str_tip = '暂无申请成功的身份！';
+												break;
+											case 2:
+												str_tip = '暂无申请中的身份！';
+												break;
+											case 4:
+												str_tip = '暂无不可申请的身份！';
+												break;
+											default:
+												break;
+										}
+										tipIn(str_tip);
+									}
+								break;
+							}
+
+							// 隐藏筛选菜单
+							jQuery('#div_item').fadeOut();
+							// 清除所有筛选菜单样式
+							jQuery('#div_item li').css('color', '');
+							// 给选中的筛选菜单添加样式
+							obj_jq.css('color', 'red');
+						}
+
+						// 重置按钮属性、隐藏已打开的申请理由元素
+						function reset_button (obj, type) {
+							var arr_idd = obj.attr('id').split('_');
+							var int_iid = obj.attr('identity_id');
+							var int_status = obj.attr('status');
+							var int_idd = arr_idd[3];
+							var int_btnid = '[id^=btn_sub_' + int_iid + '_' + int_idd + ']';
+							var obj_reason = obj.children('[id^=div_reason_' + int_idd + ']');
+							var obj_btn = obj.children(int_btnid).length ? obj.children(int_btnid) : obj_reason.children(int_btnid);
+							var arr_class = obj_btn.attr('class').split(' ');
+							if (type == 1) {
+								jQuery(int_btnid).removeClass(arr_class[1]).addClass('btn_sub_0').insertAfter('#div_remark_tip_' + int_idd);
+								jQuery('#p_deny_reason_' + int_idd).remove();
+								obj_reason.fadeOut(0);
+							} else {
+								jQuery(int_btnid).removeClass(arr_class[1]).addClass('btn_sub_' + int_status).insertAfter('#div_remark_tip_' + int_idd);
+								obj_reason.fadeOut();
+							}
+							return obj;
+						}
+
+						// 关闭申请理由
+						function close_reason(div_id) {
+							if (!div_id) {return;}
+							reset_button (jQuery('#' + div_id), 2);
+						}
+
+						// 重新申请点击‘知道了’改变申请状态
+						function cancel_tip (app_id, iid, idd) {
+							if (!app_id || !iid || !idd) {
+								return;
+							}
+							jQuery.ajax({
+								url: 'home.php?mod=spacecp&ac=profile&op=$operation&req_type=ajax&op=cancel_tip&app_id=' + app_id,
+								type: 'get',
+								dataType: 'json',
+								success: function (msg) {
+									jQuery('#div_remark_tip_' + idd).fadeOut();
+									jQuery('#btn_sub_' + iid + '_' + idd).removeClass('btn_sub_3').addClass('btn_sub_0');
+								},
+								error: function (msg) {
+									jQuery('#div_remark_tip_' + idd).fadeOut();
+									jQuery('#btn_sub_' + iid + '_' + idd).removeClass('btn_sub_3').addClass('btn_sub_0');
+								}
+							});
+						}
+						// 显示操作提示
+						function tipIn (text) {
+							// 计算弹出提示坐标
+							var x = (jQuery(window).width() - jQuery('#note_tip').width()) / 2;
+							var y = jQuery(document).scrollTop() + jQuery(window).height() / 2 - 50;
+							jQuery('#note_tip').text(text).css({display: 'block', left:x, top:y, opacity:'0'}).stop().animate({ opacity:'1'}, 1500, function() {
+								setTimeout(tipOut, 1000);
+							});
+						}
+						// 隐藏操作提示
+						function tipOut() {
+							jQuery('#note_tip').animate({opacity: '0'}, 1000);
+						}
+					</script>
+					<link rel="stylesheet" type="text/css" href="template/default/common/spacecp_indeitity.css" />
+					<tr>
+						<td colspan="3">
+							<div class="identity-col">
+								<div class="identity-col-tit">
+									<a href="javascript:void(0);" class="my-identity" id="a_showidentitys">我的身份</a>
+									<a href="javascript:void(0);" class="my-filter" id="a_select">筛选身份</a>
+								</div>
+								<div class="identity-col-cont">
+									<div class="my-identity-more" id="div_identitys" style="display:none">
+										<ul>
+											<!--{loop $arr_identitys $identity}-->
+												<li {if $identity['iter'] == 1}class="first"{/if}>
+													{$identity['identity_name']}
+												</li>
+											<!--{/loop}-->
+										</ul>
+									</div>
+									<div class="my-filter-more" id="div_item" style="display:none">
+										<ul>
+											<li id="li_item_all" class="first" style="color:red">
+												全部身份
+											</li>
+											<li id="li_item_allow">
+												可申请的
+											</li>
+											<li id="li_item_applying">
+												申请中的
+											</li>
+											<li id="li_item_applied">
+												已成功的
+											</li>
+										</ul>
+									</div>
+									<!--{loop $arr_identity $identity}-->
+									<div id="div_identity_{$identity['id']}" status="{if $identity['identity_status']}{$identity['identity_status']}{else}0{/if}" class="identity-col-cont-col">
+										<h5 class="tit" id="h5_title_{$identity['id']}">{$identity['identity_entity']}</h5>
+										<p>{$identity['description']}</p>
+										<h5 class="tit mt30">申请说明</h5>
+										<div class="min-height">
+											<p>{$identity['remark']}</p>
+										</div>
+										<input type="button" class="application btn_{$identity['identity_status']}" id="btn_{$identity['id']}">
+										<div class="clear"></div>
+									</div>
+									<!--{/loop}-->
+									<!--{loop $arr_detail $identity}-->
+									<div id="div_identity_{$identity['identity']['id']}_{$identity['id']}" identity_id="{$identity['identity']['id']}" status="{if $identity['identity_status']}{$identity['identity_status']}{else}0{/if}" class="identity-col-cont-col">
+										<h5 class="tit">{$identity['subname']}</h5>
+										<p>{$identity['description']}</p>
+										<h5 class="tit mt30">申请说明</h5>
+										<div class="min-height" id="div_remark_tip_{$identity['id']}">
+											<p>{$identity['remark']}<!-- <a href="#" class="nowgo"></a> --></p>
+											<!--{if $identity['identity_status'] == 3}-->
+												<div class="tips" id="p_deny_reason_{$identity['id']}">您的申请已经被拒绝，原因为：{$identity['deny_reason']}... <a href="javascript:void(0);" style="color:blue" onclick="cancel_tip('{$identity['app_id']}', '{$identity['identity']['id']}', '{$identity['id']}')">知道了</a></div>
+											<!--{/if}-->
+										</div>
+										<input type="button" id="btn_sub_{$identity['identity']['id']}_{$identity['id']}" class="application-sub btn_sub_{$identity['identity_status']}" />
+										<!--{if $identity['identity_status'] != 1 && $identity['identity_status'] != 2 && $identity['identity_status'] != 4}-->
+										<div id="div_reason_{$identity['id']}" class="input-sec" style="display:none;">
+											<h3><a href="javascript:void(0);" onclick="close_reason('div_identity_{$identity['identity']['id']}_{$identity['id']}')" class="close-reason">close</a>申请理由</h3>
+											<textarea id="txta_{$identity['id']}" class="application-second-text"></textarea>
+											<p>您可以简述您的经历以便我们审核<br><span id="span_iidtip_{$identity['id']}">（申请后您将自动加入 <font color="red">{$identity['identity']['identity_entity']} </font>的身份组）</span></p>
+										</div>
+										<!--{/if}-->
+									</div>
+									<!--{/loop}-->
+								</div>
+							</div>
+						</td>
+					</tr>
+				<!--{/if}-->
+				<!-- // 120320 wistar 用户身份选择 END -->
+
+				<!--{if $operation == 'bbs'}-->
+				<!--{if $allowcstatus}-->
+				<tr>
+					<th id="th_customstatus">{lang permission_basic_status}</th>
+					<td id="td_customstatus"><input type="text" value="$space[customstatus]" name="customstatus" id="customstatus" class="px" /></td>
+					<td>&nbsp;</td>
+				</tr>
+				<!--{/if}-->
+				<!--{if $_G['group']['maxsigsize']}-->
+				<tr>
+					<th id="th_sightml">{lang personal_signature}</th>
+					<td id="td_sightml">
+						<div class="tedt">
+							<div class="bar">
+								<span class="y"><a href="javascript:;" onclick="$('signhtmlpreview').innerHTML = bbcode2html($('sightmlmessage').value)">{lang preview}</a></span>
+								<!--{if $_G['group']['allowsigbbcode']}-->
+									<!--{if $_G['group']['allowsigimgcode']}-->
+										<!--{eval $seditor = array('sightml', array('bold', 'color', 'img', 'link', 'smilies'));}-->
+									<!--{else}-->
+										<!--{eval $seditor = array('sightml', array('bold', 'color', 'link', 'smilies'));}-->
+									<!--{/if}-->
+									<!--{subtemplate common/seditor}-->
+								<!--{/if}-->
+							</div>
+							<div class="area">
+								<textarea rows="3" cols="80" name="sightml" id="sightmlmessage" class="pt" onkeydown="ctrlEnter(event, 'profilesubmitbtn');">$space[sightml]</textarea>
+							</div>
+						</div>
+						<div id="signhtmlpreview"></div>
+						<script type="text/javascript" src="http://static.8264.com/static/js/bbcode.js?{VERHASH}"></script>
+						<script type="text/javascript">var forumallowhtml = 0,allowhtml = 0,allowsmilies = 0,allowbbcode = parseInt('{$_G[group][allowsigbbcode]}'),allowimgcode = parseInt('{$_G[group][allowsigimgcode]}');var DISCUZCODE = [];DISCUZCODE['num'] = '-1';DISCUZCODE['html'] = [];</script>
+					</td>
+					<td>&nbsp;</td>
+				</tr>
+				<!--{/if}-->
+				<tr>
+					<th id="th_timeoffset">{lang time_zone}</th>
+					<td id="td_timeoffset">
+						<!--{eval $timeoffset = array({lang timezone});}-->
+						<select name="timeoffset">
+							<!--{loop $timeoffset $key $desc}-->
+							<option value="$key"{if $key==$space[timeoffset]} selected="selected"{/if}>$desc</option>
+							<!--{/loop}-->
+						</select>
+						<p class="mtn">{lang current_time} : <!--{date($_G[timestamp])}--></p>
+						<p class="d">{lang time_zone_message}</p>
+					</td>
+					<td>&nbsp;</td>
+				</tr>
+				<!--{elseif $operation == 'contact'}-->
+				<tr>
+					<th id="th_sightml">Email</th>
+					<td id="td_sightml">$space[email]&nbsp;(<a href="home.php?mod=spacecp&ac=profile&op=password&from=contact#contact">{lang modify}</a>)</td>
+					<td>&nbsp;</td>
+				</tr>
+				<!--{/if}-->
+
+				<!--{if $operation == 'plugin'}-->
+					<!--{eval include(template($_G['gp_id']));}-->
+				<!--{/if}-->
+				<!--{if $showbtn}-->
+				<tr>
+					<th>&nbsp;</th>
+					<td colspan="2">
+						<input type="hidden" name="profilesubmit" value="true" />
+						<button type="submit" name="profilesubmitbtn" id="profilesubmitbtn" value="true" class="pn pnp" /><strong>{lang save}</strong></button>
+						<span id="submit_result" class="rq"></span>						
+					</td>
+				</tr>
+				<!--{/if}-->
+				</table>
+				<!--{hook/spacecp_profile_bottom}-->
+			</form>
+			<script type="text/javascript">
+				function show_error(fieldid, extrainfo) {
+					var elem = $('th_'+fieldid);
+					if(elem) {
+						elem.className = "rq";
+						fieldname = elem.innerHTML;
+						extrainfo = (typeof extrainfo == "string") ? extrainfo : "";
+						$('submit_result').innerHTML = " {lang check_date_item} " + fieldname + extrainfo;
+					}
+				}
+				function show_success() {
+					showDialog('{lang update_date_success}', 'notice', '{lang reminder}', null, 0);
+					setTimeout(function(){
+						top.window.location.href = top.window.location.href;
+					}, 3000);
+				}
+			</script>
+		<!--{/if}-->
+		</div>
+	</div>
+	<div class="appl">
+		<!--{subtemplate home/spacecp_footer}-->
+	</div>
+	<!--{/if}-->
+</div>
+<div id="div_mask"></div>
+<!--{subtemplate common/footer}-->

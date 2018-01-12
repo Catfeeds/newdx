@@ -1,0 +1,400 @@
+<!--{subtemplate common/header}-->
+{eval $isDefault = $_GET['orderby']==null ? true : false;}
+{if $isDefault}
+	{eval $min_dateline = time()-3600*24*7;}
+{/if}
+<link rel="stylesheet" href="/source/plugin/produce/css/style.css" />
+<script type="text/javascript" src="http://www.8264.com/static/js/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+</script>
+<!--{if $_G['forum']['ismoderator']}-->
+	<script type="text/javascript" src="{$_G[setting][jspath]}forum_moderate.js?{VERHASH}"></script>
+<!--{/if}-->
+
+<div id="pt" class="bm cl">
+	<!--{subtemplate common/simplesearchform}-->
+	<div class="z">
+		<a href="./" id="fjump"{if $_G['setting']['forumjump'] == 1} onmouseover="showMenu({'ctrlid':this.id})"{/if} class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> $navigation        
+    <!--{if $_GET['type'] }-->
+    <!--{eval $weizhi = ForumOptionProduce::getPoduceTypeStringBytIds($_GET['type']); }--> 
+    <!--{if $weizhi }-->
+    <em>?</em>$weizhi
+    <!--{/if}--> 
+    <!--{/if}-->
+    <!--{if $_GET['brand'] }-->
+    <!--{eval $ppwz = ForumOptionProduce::getBrandByTid($_GET['brand']); }--> 
+    <!--{if $ppwz }-->
+    <em>?</em> <a href="forum.php?mod=forumdisplay&fid=437&brand=$ppwz['tid']">$ppwz['subject']</a>
+    <!--{else}-->
+    <em>?</em> <a href="forum.php?mod=forumdisplay&fid=437&brand=-1">其他品牌</a>
+    <!--{/if}-->	
+    <!--{/if}-->
+	</div>
+</div>
+
+<div id="goTop">
+    <a href="#" class="cursor" onclick="javascript:void(0)"></a>
+</div>
+<script type="text/javascript" src="/source/plugin/produce/js/jQuery-gotop.js"></script>
+<script type="text/javascript">
+jQuery('#goTop').goTop();
+</script>
+
+<style id="diy_style" type="text/css"></style>
+<div class="wp">
+	<!--[diy=diy1]--><div id="diy1" class="area"></div><!--[/diy]-->
+</div>
+<div class="mn" style="display:none;">
+		<div class="bm bml">
+			<!--{if $_G[forum][banner] && !$subforumonly}--><img src="$_G[forum][banner]" width="100%" alt="$_G['forum'][name]" /><!--{/if}-->
+			<div class="bm_h cl">
+				<!--{if $_G['page'] == 1 && $_G['forum']['rules']}--><span class="o"><img id="forum_rules_{$_G[fid]}_img" src="{IMGDIR}/collapsed_{$collapse[forum_rulesimg]}.gif" title="{lang spread}" alt="{lang spread}" onclick="toggle_collapse('forum_rules_{$_G[fid]}')" /></span><!--{/if}-->
+				<span class="y">
+					<a href="home.php?mod=spacecp&ac=favorite&type=forum&id=$_G[fid]&handlekey=favoriteforum" id="a_favorite" class="fa_fav" onclick="showWindow(this.id, this.href, 'get', 0);">{lang forum_favorite}</a>
+					<!--{if rssforumperm($_G['forum']) && $_G[setting][rssstatus] && !$_G['gp_archiveid'] && !$subforumonly}--><span class="pipe">|</span><a href="forum.php?mod=rss&fid=$_G[fid]&auth=$rssauth" class="fa_rss" target="_blank" title="RSS">{lang rss_subscribe_this}</a><!--{/if}-->
+					<!--{if !empty($forumarchive)}-->
+						<span class="pipe">|</span><a id="forumarchive" href="javascript:;" class="fa_achv" onmouseover="showMenu(this.id)"><!--{if $_G['gp_archiveid']}-->$forumarchive[$_G['gp_archiveid']]['displayname']<!--{else}-->{lang forum_archive}<!--{/if}--></a>
+					<!--{/if}-->
+					<!--{hook/forumdisplay_forumaction}-->
+
+					<!--{if $_G['forum']['ismoderator']}-->
+					<!--{if $_G['forum']['recyclebin']}-->
+						<span class="pipe">|</span><a href="{if $_G['adminid'] == 1}admin.php?mod=forum&action=recyclebin&frames=yes{elseif $_G['forum']['ismoderator']}forum.php?mod=modcp&action=recyclebins&fid=$_G[fid]{/if}" class="fa_bin" target="_blank">{lang forum_recyclebin}</a>
+					<!--{/if}-->
+					<!--{if $_G['forum']['ismoderator'] && !$_G['gp_archiveid']}-->
+						<span class="pipe">|</span><strong>
+						<!--{if $_G['forum']['status'] != 3}-->
+							<a href="forum.php?mod=modcp&fid=$_G[fid]">{lang modcp}</a>
+						<!--{else}-->
+							<a href="forum.php?mod=group&action=manage&fid=$_G[fid]">{lang modcp}</a>
+						<!--{/if}-->
+						</strong>
+					<!--{/if}-->
+					<!--{if $_G['forum']['modworks']}-->
+						<!--{if $modnum}--><span class="pipe">|</span><a href="forum.php?mod=modcp&action=moderate&op=threads&fid=$_G[fid]" target="_blank">{lang mod_works_modpost_existence}</a><!--{/if}-->
+						<!--{if $modusernum}--><span class="pipe">|</span><a href="forum.php?mod=modcp&action=moderate&op=members&fid=$_G[fid]" target="_blank">{lang mod_works_moduser_existence}</a><!--{/if}-->
+					<!--{/if}-->
+					<!--{hook/forumdisplay_modlink}-->
+					<!--{/if}-->
+				</span>
+				<h1 class="xs2">
+					<a href="forum.php?mod=forumdisplay&fid=$_G[fid]">$_G['forum'][name]</a>
+					<!--{if !$subforumonly}--><span class="xs1 xw0 i">{lang index_today}: <strong class="xi1">$_G[forum][todayposts]</strong><span class="pipe">|</span>{lang index_threads}: <strong class="xi1">$_G[forum][threads]</strong></span><!--{/if}-->
+				</h1>
+			</div>
+			<div class="bm_c cl">
+				<!--{if !empty($_G[forum][domain]) && !empty($_G['setting']['domain']['root']['forum'])}-->
+				<div class="pbn">{lang forum_domain}:<a href="http://{$_G[forum][domain]}.{$_G['setting']['domain']['root']['forum']}" id="group_link">http://{$_G[forum][domain]}.{$_G['setting']['domain']['root']['forum']}</a></div>
+				<!--{/if}-->
+				<!--{if $moderatedby}--><div class="pbn">{lang forum_modedby}: <span class="xi2">$moderatedby</span></div><!--{/if}-->
+				<!--{if $_G['page'] == 1 && $_G['forum']['rules']}-->
+					<div id="forum_rules_{$_G[fid]}" style="$collapse['forum_rules'];">
+						<div class="pbm xg2">$_G['forum'][rules]</div>
+					</div>
+				<!--{/if}-->
+				<div id="forumarchive_menu" class="p_pop" style="display:none">
+					<ul>
+						<li><a href="forum.php?mod=forumdisplay&fid=$_G[fid]">{lang threads_all}</a></li>
+						<!--{loop $forumarchive $id $info}-->
+						<li><a href="forum.php?mod=forumdisplay&fid=$_G[fid]&archiveid=$id">{$info['displayname']} ({$info['threads']})</a></li>
+						<!--{/loop}-->
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--{hook/forumdisplay_top}-->
+		<!--{if $subexists && $_G['page'] == 1}--><!--{template forum/forumdisplay_subforum}--><!--{/if}-->
+		<div class="drag">
+			<!--[diy=diy4]--><div id="diy4" class="area"></div><!--[/diy]-->
+		</div>
+		<!--{if !empty($_G['forum']['recommendlist'])}-->
+			<div class="bm bmw">
+				<div class="bm_h cl">
+					<h2>{lang forum_recommend}</h2>
+				</div>
+				<div class="bm_c cl">
+					<!--{subtemplate forum/recommend}-->
+				</div>
+			</div>
+		<!--{/if}-->
+		<!--{hook/forumdisplay_middle}-->
+		<!--{if !$subforumonly}-->
+			<!--{if $recommendgroups && !$_G['forum']['allowside']}-->
+			<div class="bm">
+				<div class="bm_h cl">
+					<h2>{lang recommended_groups}</h2>
+				</div>
+				<div class="bm_c">
+					<ul class="ml mls cl">
+					<!--{loop $recommendgroups $key $group}-->
+						<li>
+							<a href="forum.php?mod=group&fid=$group[fid]" title="$group[name]" target="_blank" class="avt"><img src="$group[icon]" alt="$group[name]"></a>
+							<p><a href="forum.php?mod=group&fid=$group[fid]" target="_blank">$group[name]</a></p>
+						</li>
+					<!--{/loop}-->
+					</ul>
+				</div>
+			</div>
+			<!--{/if}-->
+			<!--{if $threadmodcount}--><div class="bm bmn hm xi2"><strong>{lang forum_moderate_unhandled}</strong></div><!--{/if}-->            
+      <!--{/if}-->	
+</div>
+
+
+
+<div class="clear"></div> 
+  
+
+
+<div class="box960">
+    <!--{eval $firstType = ForumOptionProduce::getTypeNextDatas();}-->
+    <div class="productNavHorizontal">
+	<ul class="firstType">
+		<!--{loop $firstType $type}-->
+		<li><a href="http://bbs.8264.com/forum-forumdisplay-fid-437-type-{$type['id']}.html">{$type['tname']}</a></li>
+		<!--{/loop}-->
+		<li><a href="http://bbs.8264.com/forum-forumdisplay-fid-437-brand-all.html" class="last">品牌大全</a></li>
+	</ul>
+	
+	<div class="secondType">
+		<!--{loop $firstType $type}-->
+		<!--{eval $secondType = ForumOptionProduce::getTypeNextDatas($type['id']);}-->  
+		<div class="item">
+			<!--{loop $secondType $sec_type}-->
+			<a href="forum.php?mod=forumdisplay&fid=437&type={$sec_type['id']}">$sec_type['tname']</a>
+			<!--{/loop}-->
+		</div>
+		<!--{/loop}-->
+		<div class="item">
+			<!--{eval $zbxx = ForumOptionProduce::getBrandLogo(); }-->            
+			<!--{loop $zbxx $xzb}-->            
+			<a href="forum.php?mod=forumdisplay&fid=437&brand={$xzb['tid']}">$xzb['subject']</a>
+			<!--{/loop}-->
+            <a href="forum.php?mod=forumdisplay&fid=437&brand=all">全部品牌列表>></a>
+		</div>
+	</div>
+</div>
+	<script type="text/javascript">
+    ;(function($){
+        $('.productNavHorizontal .firstType li a').each(function(i){
+            $(this).mouseover(function(){
+                var item = $('.productNavHorizontal .secondType .item').eq(i);			
+                //$('.productNavHorizontal .firstType li a.on').removeClass('on');
+                //$(this).addClass('on');
+                $('.productNavHorizontal .secondType .item').hide().eq(i).show();
+                if (item.height() < 22) {
+                    item.height(22);
+                }
+            })
+        });
+		
+		{if $_GET['brand']}
+			jQuery('.productNavHorizontal .firstType li a[href*="brand-all"]').addClass('on').mouseover();
+		{elseif $_GET['type']}
+			{eval $typeid = ForumOptionProduce::getFirstTypeByTypeid($_GET['type']);}
+			jQuery('.productNavHorizontal .firstType li a[href*="type-{$typeid}"]').addClass('on').mouseover();
+		{/if}
+    })(jQuery);
+    </script>
+	
+      
+	<div class="grid_4col alpha">
+    <a href="forum.php?mod=post&action=newthread&fid=437" target="_blank"><img src="source/plugin/produce/images/share.png" style="margin-bottom:3px;" /></a>
+    <!--{if $_GET['type']||$_GET['brand']}-->
+    <div class="productSelectBox erjisx">
+    <div class="borderji">    
+    <!--{if $_GET['type'] }-->
+			<ul class="pro_condition pro_button_list">
+						<li><a{if $isDefault} class="on"{/if} href="{PORTAL_HOST}zb-type-{$_GET['type']}"><span>默认</span></a></li>
+						<li><a{if $_G['gp_orderby']=='dateline'} class="on"{/if} href="{PORTAL_HOST}zb-type-{$_GET['type']}-filter-author-orderby-dateline$forumdisplayadd[author]{if $_G['gp_archiveid']}&archiveid={$_G['gp_archiveid']}{/if}"><span>最新</span></a></li>
+						<li><a{if $_G['gp_orderby']=='heats' && !$isDefault} class="on"{/if} href="{PORTAL_HOST}zb-type-{$_GET['type']}-filter-heat-orderby-heats$forumdisplayadd[heat]{if $_G['gp_archiveid']}&archiveid={$_G['gp_archiveid']}{/if}"><span>热门</span></a></li>
+						<li><a{if $_G['gp_orderby']=='views'} class="on"{/if} href="{PORTAL_HOST}zb-type-{$_GET['type']}-filter-reply-orderby-views$forumdisplayadd[view]{if $_G['gp_archiveid']}&archiveid={$_G['gp_archiveid']}{/if}"><span>查看</span></a></li>
+						<li><a{if $_G['gp_orderby']=='replies'} class="on"{/if} href="{PORTAL_HOST}zb-type-{$_GET['type']}-filter-reply-orderby-replies$forumdisplayadd[reply]{if $_G['gp_archiveid']}&archiveid={$_G['gp_archiveid']}{/if}"><span>评论</span></a></li>
+						<li><a{if $_G['gp_orderby']=='lastpost'} class="on"{/if} href="{PORTAL_HOST}zb-type-{$_GET['type']}-filter-lastpost-orderby-lastpost$forumdisplayadd[lastpost]{if $_G['gp_archiveid']}&archiveid={$_G['gp_archiveid']}{/if}"><span>最后回复</span></a></li>		
+			</ul>
+    <!--{eval $cpdl = ForumOptionProduce::getBandinfoBytypeId($_GET['type']);}-->		
+			<!--{if $cpdl}-->
+			<ul class="pro_class pro_button_list">				
+					<!--{loop $cpdl $dl}-->
+						 <li><a {if {$dl['tid']}=={$_GET['brand']}} class="on"{/if} href="{PORTAL_HOST}zb-type-{$_GET['type']}-brand-{$dl['tid']}{if $_G['gp_orderby']=='heats'&&!$isDefault}-filter-heat-orderby-heats{if $_G['gp_archiveid']}-archiveid-{$_G['gp_archiveid']}{/if}{elseif $_G['gp_orderby']=='views'}-filter-reply-orderby-views{if $_G['gp_archiveid']}-archiveid-{$_G['gp_archiveid']}{/if}{elseif $_G['gp_orderby']=='replies'}-filter-reply-orderby-replies
+						 {elseif $_G['gp_orderby']=='lastpost'}-filter-lastpost-orderby-lastpost{if $_G['gp_archiveid']}-archiveid-{$_G['gp_archiveid']}{/if}{elseif $_G['gp_orderby']=='dateline'}-filter-author-orderby-dateline{if $_G['gp_archiveid']}-archiveid-{$_G['gp_archiveid']}{/if}{/if}" target="_parent"><span>$dl['subject']</span></a></li>                    
+					<!--{/loop}-->
+			</ul>
+	<!--{/if}-->
+    <!--{/if}-->
+    <!--{if $_GET['brand'] }-->
+    <!--{eval $cpdl = ForumOptionProduce::getTypeInfobybrId($_GET['brand']);}-->
+			<!--{if $cpdl&&!$_GET['type']}-->
+			<ul class="pro_class pro_button_list">				
+					<!--{loop $cpdl $dl}-->
+					<li><a class="on" href="{PORTAL_HOST}zb-type-{$dl['id']}-brand-{$_GET['brand']}" target="_parent"><span>$dl['tname']</span></a></li>                
+					<!--{eval $cpxl = ForumOptionProduce::getXltypeBybandt($_GET['brand'],$dl['id']);}-->
+					<!--{loop $cpxl $xl}-->
+					<li><a href="{PORTAL_HOST}zb-type-{$xl['id']}-brand-{$_GET['brand']}" target="_parent"><span>$xl['tname']</span></a></li>   
+					<!--{/loop}-->
+					<div style="height:0px;font-size:0;overflow:hidden;width:100%;clear:both;"></div>                
+					<!--{/loop}-->
+				</ul>
+	       <!--{/if}-->
+    <!--{/if}-->
+   
+    <div>
+    </div>		
+    </div>
+    </div>
+    <!--{/if}-->
+    
+    </div>
+    <div class="grid_4col">    
+    </div>
+    <div class="grid_4col">
+    </div>
+    <div class="grid_4col omega">
+
+    </div>
+	<div class="clear"></div>
+	<div id="loadding_ico">
+		<span>正在加载...</span>
+	</div>
+    <div class="bm bw0 pgs cl">
+	$multipage
+    </div>
+	
+	<script type="text/javascript">
+	;(function($){
+		var load_lock = false;
+		var box_index = 0; // 初始变量
+		var ppp = $_G['tpp'];
+		var incream_num = 20;
+		var showed_num = 0;
+		
+		function getMinHeightBoxIndex() {
+			var min_height = jQuery('.grid_4col').eq(0).height();
+			var min_index = 0;
+			var box_num = jQuery('.grid_4col').size();
+			for (var i = 1; i < box_num; ++i) {
+				if (jQuery('.grid_4col').eq(i).height() < min_height) {
+					min_height = jQuery('.grid_4col').eq(i).height();
+					min_index = i;
+				}
+			}
+			return min_index;
+		}
+		
+		function loadData(){
+			if (load_lock) return;
+			
+			var window_height = $(window).scrollTop() + $(window).height() * 3; // 当接近loadding_ico两屏的时候开始加载
+			var loadding_ico_top = $('#loadding_ico').offset().top;
+			
+			if (window_height >= loadding_ico_top) {
+				load_lock = true;
+				$('#loadding_ico span').css('display', 'inline-block');
+				
+				var data = 'limit='+(({$_G['page']} - 1) * ppp + showed_num)+','+incream_num+'&orderby={$_G['gp_orderby']}';
+				{if !empty($_GET['brand'])}
+					data += "&brand="+$_GET['brand'];
+				{/if}
+				{if !empty($_GET['type'])}
+					data += "&type="+$_GET['type'];
+				{/if}
+				
+				$.ajax({
+					type: 'GET',
+					url: 'http://www.8264.com/plugin.php?id=produce:ajax_getproduct',
+					dataType: 'json',
+					data: data,
+					success: function(html){
+						var index_img_height;
+						for (var i in html) {
+							var item = html[i];
+							if ($('#product_tid_'+item['tid']).size() > 0) {
+								continue;
+							}
+							if (typeof (item['index_img_height'] - 0) == 'number' && item['index_img_height'] > 0) {
+								index_img_height = item['index_img_height']+'px';
+							} else {
+								index_img_height = 'auto';
+							}
+							box_index = getMinHeightBoxIndex();
+							if(typeof (item['cpxh']-0) == 'number' && item['cpxh']== 1 ){
+								item['cpxh']="<div class='cpxh' style='margin:5px auto;width:210px;padding:4px;'><img src='source/plugin/produce/images/zr.gif'></div>";	
+							}else if(typeof (item['cpxh']-0) == 'number' && item['cpxh']==2){
+								item['cpxh']="<div class='cpxh' style='margin:5px auto;width:210px;padding:4px;'><img src='source/plugin/produce/images/tzb.gif'></div>";		
+							}else{
+								item['cpxh']="";	
+							}	
+							$('<div class="product_item" id="product_tid_'+item['tid']+'"><div class="inner"><div class="white_border"><div class="image" style="height:'+index_img_height+'"><a href="http://www.8264.com/zb-'+item['tid']+'" target="_blank"><img src="http://www.8264.com/data/attachment/plugin/'+item['cptp']+'.thumb210.jpg'+'" /></a>'+(item['cpjg']!=0 ? '<span class="jiage">￥'+item['cpjg']+'</span>' : '')+'</div>'+item['cpxh']+'<div class="product_userinfo"><div class="product_userinfo_face"><a href="http://u.8264.com/home-space-uid-'+item['authorid']+'-do-profile.html" target="_blank">'+item['avatar']+'</a></div><div class="product_userinfo_text"><a href="http://u.8264.com/home-space-uid-'+item['authorid']+'-do-profile.html" target="_blank">'+item['author']+'</a> 发布 <a href="http://www.8264.com/zb-'+item['tid']+'"  onclick="atarget(this)">'+item['subject']+'</a><br /><span class="datetime">'+item['dateline']+'</span></div></div><div class="product_desc">'+item['message']+'</div><div class="stat"><a href="http://www.8264.com/zb-'+item['tid']+'" target="_blank">'+item['views']+'</a> 人访问 &nbsp; <img src="http://bbs.8264.com/source/plugin/produce/css/images/icon1.gif" alt="" /> <a href="http://www.8264.com/zb-'+item['tid']+'" target="_blank">'+item['replies']+'</a> 人评论</div></div></div></div>').css('display', 'none').appendTo($('.grid_4col').eq(box_index)).fadeIn(1000);
+						}
+						
+						showed_num += incream_num;
+						if (showed_num >= 150) {
+							load_lock = true;
+						} else if (html.length < incream_num) { //返回内容少于指定个数(己到达末尾)
+							load_lock = true;
+						} else {
+							load_lock = false;
+						}
+						
+						$('#loadding_ico span').css('display', 'none');
+					},
+					error: function() {
+						$('#loadding_ico span').css({'padding':'0','background':'none'}).text('网络出现故障, 加载失败.');
+					}
+				});
+			}
+		}
+		function initProducts() {
+			var index_img_height;
+			{eval $condition = array();}
+			{if !empty($_GET['brand'])}
+				{eval $condition['brand'] = $_GET['brand'];}
+			{/if}
+			{if !empty($_GET['type'])}
+				{eval $condition['type'] = $_GET['type'];}
+			{/if}
+			{eval $_G['gp_orderby']=dateline;}		
+			{eval $product_list = ForumOptionProduce::getProductList($condition, ($_G['gp_orderby']?$_G['gp_orderby']." DESC":null), (($_G['page']-1)*$_G['tpp']).',40');}
+			var html = new Array();
+			{loop $product_list $i $item}
+				html[$i] = new Array();
+				{loop $item $j $j_item}
+					{eval $j_value = addcslashes($j_item, "\\'");}
+					html[$i]['$j'] = '$j_value';
+				{/loop}
+			{/loop}			
+			for (var i in html) {
+				var item = html[i];
+				if (typeof (item['index_img_height']-0) == 'number' && item['index_img_height'] > 0) {
+					index_img_height = item['index_img_height']+'px';
+				} else {
+					index_img_height = 'auto';
+				}
+				box_index = getMinHeightBoxIndex();
+				if(typeof (item['cpxh']-0) == 'number' && item['cpxh']== 1 ){
+				item['cpxh']="<div class='cpxh' style='margin:5px auto;width:210px;padding:4px;'><img src='source/plugin/produce/images/zr.gif'></div>";	
+				}else if(typeof (item['cpxh']-0) == 'number' && item['cpxh']==2){
+				item['cpxh']="<div class='cpxh' style='margin:5px auto;width:210px;padding:4px;'><img src='source/plugin/produce/images/tzb.gif'></div>";		
+				}else{
+				item['cpxh']="";	
+				}	
+				$('<div class="product_item" id="product_tid_'+item['tid']+'"><div class="inner"><div class="white_border"><div class="image" style="height:'+index_img_height+'"><a href="http://www.8264.com/zb-'+item['tid']+'" target="_blank"><img src="http://www.8264.com/data/attachment/plugin/'+item['cptp']+'.thumb210.jpg'+'" /></a>'+(item['cpjg']!=0 ? '<span class="jiage">￥'+item['cpjg']+'</span>' : '')+'</div>'+item['cpxh']+'<div class="product_userinfo"><div class="product_userinfo_face"><a href="http://u.8264.com/home-space-uid-'+item['authorid']+'-do-profile.html" target="_blank">'+item['avatar']+'</a></div><div class="product_userinfo_text"><a href="http://u.8264.com/home-space-uid-'+item['authorid']+'-do-profile.html" target="_blank">'+item['author']+'</a> 发布 <a href="http://www.8264.com/zb-'+item['tid']+'"  onclick="atarget(this)">'+item['subject']+'</a><br /><span class="datetime">'+item['dateline']+'</span></div></div><div class="product_desc">'+item['message']+'</div><div class="stat"><a href="http://www.8264.com/zb-'+item['tid']+'" target="_blank">'+item['views']+'</a> 人访问 &nbsp; <img src="http://bbs.8264.com/source/plugin/produce/css/images/icon1.gif" alt="" /> <a href="http://www.8264.com/zb-'+item['tid']+'" target="_blank">'+item['replies']+'</a> 人评论</div></div></div></div>').appendTo($('.grid_4col').eq(box_index));
+			}
+			showed_num = $('.product_item').size();
+			
+			$(window).scroll(loadData).resize(loadData);
+		}
+		initProducts();
+	})(jQuery);
+	</script>
+</div>
+
+
+<div id="tj" style="display:none;">
+<script src="http://s13.cnzz.com/stat.php?id=3723554&web_id=3723554&show=pic1" language="JavaScript"></script>
+</div>
+<div class="wp mtn">
+	<!--[diy=diy3]--><div id="diy3" class="area"></div><!--[/diy]-->
+</div>
+<!--{subtemplate common/footer}-->

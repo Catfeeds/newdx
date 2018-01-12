@@ -1,0 +1,107 @@
+<style>
+.fl{ border:0 none;}
+.weixinhongbao{ background:url(http://static.8264.com/static/images/weixinhongbao.png) 120px top no-repeat; margin-top:20px;}
+.weixinhongbao img{ width:114px; height:114px; border:#eeeeee solid 1px;}
+.diplayblock{ display:block;}
+.weixininfo{ font-size:14px; color:#585858; margin-top:10px;}
+.weixininfo i{ color:#dd2d1d; font-style:normal; font-weight:bold;}
+</style>
+<?php $activitystarttime = strtotime('2015-07-08 13:30:00');?>
+<?php foreach((array)$invitations as $ik => $iv) :?>
+<li class="li_yq" id="newinvite_dl_<?php echo $iv['id']; ?>">
+	<a href="home.php?mod=space&uid=<?php echo $iv['authorid']; ?>" class="tx">
+		<?php echo avatar($iv['authorid'], small); ?>
+		<?php if($iv['new']) :?><i class="wd"> </i><?php endif;?>
+	</a>
+
+	<div>
+		<div class="fl blueall">
+			<span class="diplayblock"><?=$iv['message'];?></span>
+			<?php
+				$is = strrpos($iv['message'], '邀请你参与活动') === false ? false : true;
+				$iv['dateline'] = intval($iv['dateline']);
+			?>
+			<?php if ($is && $iv['dateline'] > $activitystarttime) {
+				preg_match('/tid=(\d+)/i', $iv['message'], $matA);
+			?>
+			<!--<em class="weixininfo diplayblock">扫此活动二维码，分享到微信群或朋友圈得<i>5元</i>在外红包</em>
+			<div class="weixinhongbao">
+				<img src="qrcode.php?output=1&url=http://m.8264.com/thread-<?=$matA[1]?>.html?frominvite=1" style="width:114px;">
+			</div>-->
+			<?php }?>
+		</div>
+		<span class="fr">
+			<a href="javascript:void(0);" id="a_invite_<?php echo $iv[id]; ?>" title="<?php echo lang('home/template', 'delete'); ?>" class='remove_invitation'>删除</a>
+		</span>
+	</div>
+</li>
+
+
+<?php $mids .= $iv['id'] . ','; ?>
+<?php endforeach; ?>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	jQuery('.deleteall').click(function() {
+		var mids = "<?php echo $mids; ?>";
+		if(! mids) return;
+		mids = mids.slice(0, -1);
+		var curPage = <?php echo $currPage ? $currPage : 1; ?>;
+		jQuery.post("<?php echo $_G[config][web][home] . 'home.php?mod=space&do=notice&type=invitation&action=deleteAll'; ?>", {mids: mids}, function(data) {
+			if(data == 'success') {
+				var url = "<?php echo $_G[config][web][home]. 'home.php?mod=space&do=notice&type=invitation&page='; ?>" + curPage;
+				showDialog("<p>删除成功</p>", "notice", '', function(){
+						window.location.href= url; }, 0, '', '', '', '', 2);
+			}
+			else {
+				alert('服务器忙, 请稍后再试!');
+			}
+		});
+	});
+
+	var totalPage = 1;
+	var curPage = 1;
+	if(jQuery('span.mulitpage').length == 1) {
+		if(jQuery('span.mulitpage strong').length == 1) {
+			curPage = parseInt(jQuery('span.mulitpage strong').text());
+		}
+		if(jQuery('span.mulitpage *:last').prop("tagName") != 'STRONG') {
+			totalPage = parseInt(jQuery('span.mulitpage a[class!=nxt]:last').text().replace(/[^0-9]/gi, ''));
+		}
+		else {
+			totalPage = curPage;
+		}
+	}
+	var pageCount = <?php echo count($invitations); ?>;
+
+	jQuery('a.remove_invitation').click(function() {
+			var src = jQuery(this);
+			var id = src.attr('id');
+			if(! id ) return false;
+			var url = 'home.php?mod=space&do=notice&type=invitation&action=delete&mid=' + id.replace('a_invite_', '');
+			jQuery.get(url, function(data) {
+				if(data == 'success') {
+					var li = src.parents('li:first');
+					var ul = li.parents('ul:first');
+					if(li.length == 1) {
+						li.remove();
+						showDialog("<p>删除成功</p>", 'notice', '','' , 0, '', '', '', '', 2);
+					}
+					pageCount--;
+					if(pageCount == 0) {
+						if(totalPage == 1) {
+							ul.html('<li id="more_tips_new" style="text-align:center;"><div style="font-size:14px; text-align:center; padding:10px 0px;"><img src="http://static.8264.com/static/images/no_new_notice.png"/><span style="padding-top:10px; display:block;"><p>您当前没有 <em>邀请</em> 可以显示</p></span></div></li>');
+						}
+						else {
+							var page = curPage < totalPage ? curPage : (totalPage - 1);
+							window.location.href = "home.php?mod=space&do=notice&type=invitation&action=show&page=" + page + "&refresh=" + new Date().getTime();
+						}
+					}
+				}
+				else {
+					alert('服务器忙, 请稍后再试!');
+				}
+			});
+			return false;
+	});
+});
+</script>

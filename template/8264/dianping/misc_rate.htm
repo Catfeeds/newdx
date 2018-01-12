@@ -1,0 +1,39 @@
+<div>
+	<input type="hidden" name="formhash" value="{FORMHASH}" />
+	<input type="hidden" name="tid" value="$_G[tid]" />
+	<input type="hidden" name="pid" value="$_G[gp_pid]" />
+	<div class="c mark">
+		<table class="dt mbm">
+			<tr>
+				<th>&nbsp;</th>
+				<th width="65">&nbsp;</th>
+				<th width="65">评分区间</th>
+				<th width="55">今日剩余</th>
+			</tr>
+			<!--{loop $ratelist $id $options}-->
+				<tr>
+					<td>{$_G['setting']['extcredits'][$id][img]} {$_G['setting']['extcredits'][$id][title]}</td>
+					<td>
+						<input type="text" name="score$id" id="score$id" class="px z" value="0" style="width: 25px;" />
+						<a href="javascript:;" class="dpbtn" onclick="showselect(this, 'score$id', 'scoreoption$id')">^</a>
+						<ul id="scoreoption$id" style="display:none">$options</ul>
+					</td>
+					<td>{$_G['group']['raterange'][$id]['min']} ~ {$_G['group']['raterange'][$id]['max']}</td>
+					<td>$maxratetoday[$id]</td>
+				</tr>
+			<!--{/loop}-->
+		</table>
+
+		<div class="tpclg">
+			<h4>
+				<a onclick="showselect(this, 'reason', 'reasonselect')" class="dpbtn" href="javascript:;">^</a>
+				操作说明:
+			</h4>
+			<p><textarea id="reason" name="reason" class="pt"></textarea></p> <ul id="reasonselect" style="display: none"><!--{echo modreasonselect()}--></ul>
+		</div>
+	</div>
+	<p class="o pns">
+		<button name="ratebtn" type="submit" class="pn pnc" ><span>确定</span></button>
+		<input type="checkbox" name="sendreasonpm" id="sendreasonpm" class="pc"{if $_G['group']['reasonpm'] == 2 || $_G['group']['reasonpm'] == 3} checked="checked" disabled="disabled"{/if} /> <label for="sendreasonpm" />通知作者</label>
+	</p>
+</div>

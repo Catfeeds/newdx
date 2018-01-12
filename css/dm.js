@@ -1,0 +1,2 @@
+
+document.writeln("<a href=\"http:\/\/ad.8264.com\/adclick.php?bannerid=11&zoneid=8&source=&dest=http%3A%2F%2Fosm.8264.com%2F\" target=\"_blank\"><font color=\'#ff0000\' style=\'font-size: 11pt\'><b>《户外经理人》DM直投免费在线申请表<\/b><\/font><\/a>");

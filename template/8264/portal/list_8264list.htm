@@ -1,0 +1,239 @@
+<!--{subtemplate common/header_8264_new}-->
+<!--[name]8264新闻列表模板[/name]-->
+<!--{eval $list = array();}-->
+<!--{eval $wheresql = category_get_wheresql($cat);}-->
+<!--{eval $list = category_get_list($cat, $wheresql, $page);}-->
+<link href="http://static.8264.com/static/css/portal/list8264_style.css" rel="stylesheet" type="text/css">
+<style id="diy_style" type="text/css"></style>
+
+<div class="header">
+	<div class="layout">
+		<div class="icoHill">&nbsp;</div>
+		<div class="headerL">
+			<h1><span class="country">$cat[catname]</span></h1>
+			<div class="site">
+				<a href="$_G[config][web][portal]">首页</a><!--{$category_nav}-->
+			</div>
+		</div>
+        <!--百度分享开始-->
+        <div class="headerR" style="top:5px;">
+        <div class="bdsharebuttonbox"><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a></div>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":[],"bdPic":"","bdStyle":"0","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+        </div>
+        <!--百度分享结束-->
+	</div>
+</div>
+
+
+<div class="wrapper" style="padding:0px 0px 30px 0px;">
+    <!--{if $cat['catid'] == 923}-->
+    <!--{block/7058}-->
+    <!--{elseif $cat['catid'] == 925}-->
+    <!--{block/7061}-->
+    <!--{elseif $cat['catid'] == 924}-->
+    <!--{block/7067}-->
+    <!--{elseif $cat['catid'] == 926}-->
+    <!--{block/7070}-->
+	<!--{elseif $cat['catid'] == 929}-->
+	<!--{block/7072}-->
+    <!--{elseif $cat['catid'] == 927}-->
+	<!--{block/7078}-->
+    <!--{elseif $cat['catid'] == 220}-->
+	<!--{block/7080}-->
+    <!--{elseif $cat['catid'] == 208}-->
+	<!--{block/7084}-->
+    <!--{elseif $cat['catid'] == 212}-->
+	<!--{block/7088}-->
+    <!--{elseif $cat['catid'] == 933}-->
+	<!--{block/7089}-->
+    <!--{elseif $cat['catid'] == 214}-->
+	<!--{block/7092}-->
+    <!--{elseif $cat['catid'] == 218}-->
+	<!--{block/7094}-->
+    <!--{elseif $cat['catid'] == 219}-->
+	<!--{block/7100}-->
+    <!--{elseif $cat['catid'] == 792}-->
+	<!--{block/7097}-->
+    <!--{elseif $cat['catid'] == 207}-->
+	<!--{block/7101}-->
+	<!--{elseif $cat['catid'] == 222}-->
+	<!--{block/7104}-->
+    <!--{elseif $cat['catid'] == 216}-->
+	<!--{block/7108}-->
+    <!--{elseif $cat['catid'] == 215}-->
+	<!--{block/7106}-->
+    <!--{elseif $cat['catid'] == 932}-->
+    <!--{block/7109}-->
+    <!--{elseif $cat['catid'] == 928}-->
+    <!--{block/7117}-->
+    <!--{elseif $cat['catid'] == 930}-->
+    <!--{block/7116}-->
+    <!--{/if}-->
+
+	<div style="margin: 0 auto 10px auto; width:980px;">
+        <!-- 值得买 -->
+        <!--{eval include(DISCUZ_ROOT.'./source/plugin/skiing/hd_zw.php');}-->
+        <!--{eval $zhidemai_list = ForumOptionHuoDong::pianyi_sidebar(6, 'top', 'jiu', '10027');}-->
+        <!--{if $zhidemai_list}-->
+        <div>
+        <style>
+            .zhidemaiwidth{ width:980px;}
+            .zhidemaibox .zhidemailist_new li{width:144px; overflow:hidden;}
+            .zhidemaibox .zhidemailist_new li img{ width:144px;}
+        </style>
+        <!--{subtemplate common/zhidemai}-->
+        </div>
+        <!--{/if}-->
+        <!-- //值得买 -->
+    </div>
+
+	<div class="listMain clearfix">
+		<div class="l660">
+            <ul class="newlistcon">
+                <!--{loop $list['list'] $value}-->
+                <!--{eval
+                        $datearr1 = explode(" ",$value[dateline]);
+                        $datearr2 = explode("-",$datearr1[0]);
+                        $value['summary'] = str_replace("　　","",$value['summary']);
+                }-->
+                <li>
+                    <a href="portal.php?mod=view&amp;aid=$value[aid]" class="newlistimg" target="_blank"><img src="$value[pic]"><i>{$value[catname]}</i></a>
+                    <div class="newlist_r">
+                        <h3>
+                            <a href="portal.php?mod=view&amp;aid=$value[aid]" title='$value[title]' target='_blank'>
+                               $value[title]
+                            </a>
+                        </h3>
+                        <span>$value[summary]</span>
+                        <div style="padding:10px 0px 0px 0px; color:#999; height:40px; line-height:40px;">
+                            <em style="padding:0px 20px 0px 0px;">作者：<!--{if $value[author]}-->$value[author]<!--{else}-->$value[username]<!--{/if}-->&nbsp;&nbsp;来源于：<!--{if $value[from]}-->$value[from]<!--{else}-->8264<!--{/if}--></em>
+                            <em>时间：{echo date('Y-m-d', $value[dateline_ori])}</em>
+                        </div>
+                    </div>
+                </li>
+                <!--{/loop}-->
+            </ul>
+            <!--{if $list['multi']}-->
+            <div class="listPageBox">
+                <div class="pg">{$list['multi']}</div>
+            </div>
+            <!--{/if}-->
+        </div>
+		<div class="listLayoutRight">
+            <div class="rlinkbox clearfix">
+            	<ul>
+                    <li><a  href="/list/209" class="zbicon209" >服装</a></li>
+                    <li><a  href="/list/923" class="nonebg" >冲锋衣</a></li>
+                    <li><a  href="/list/924" class="nonebg">抓绒衣</a></li>
+                    <li><a  href="/list/925" class="nonebg" >皮肤衣</a></li>
+                    <li><a  href="/list/926" class="nonebg">速干衣</a></li>
+                    <li><a  href="/list/927" class="nonebg">羽绒服</a></li>
+                    <li><a  href="/list/929" class="nonebg">软壳</a></li>
+                    <li><a  href="/list/211" class="zbicon211">户外鞋</a></li>
+                    <li><a  href="/list/928" class="nonebg">登山鞋</a></li>
+                    <li><a  href="/list/930" class="nonebg">徒步鞋</a></li>
+                    <li><a  href="/list/933" class="nonebg">越野跑鞋</a></li>
+                    <li><a  href="/list/932" class="zbicon223">溯溪鞋</a></li>
+                    <li><a  href="/list/220" class="zbicon220">登山杖</a></li>
+                    <li><a  href="/list/208" class="zbicon208">帐篷</a></li>
+                    <li><a  href="/list/212" class="zbicon212">睡袋</a></li>
+                    <li><a  href="/list/792" class="zbicon792">炉具</a></li>
+                    <li><a  href="/list/218" class="zbicon218">灯具</a></li>
+                    <li><a  href="/list/219" class="zbicon219">水具</a></li>
+                    <li><a  href="/list/222" class="zbicon222">面料</a></li>
+                    <li><a  href="/list/207" class="zbicon207">背包</a></li>
+                    <li><a  href="/list/214" class="zbicon214">防潮垫</a></li>
+                    <li><a  href="/list/216" class="zbicon216">电子导航</a></li>
+                    <li><a  href="/list/215" class="zbicon215">冰岩绳索</a></li>
+                    <li><a  href="/list/223" class="zbicon223">综合装备</a></li>
+                </ul>
+            </div>
+
+            <!--JD广告开始-->
+            <!--{subtemplate common/adv_jd_300}-->
+            <!--JD广告结束-->
+
+            <!--{if $_GET['catid']=='218'}-->
+			<div class="rightAd shadowBlack" style="margin-bottom:10px;">
+				<!--{ad/custom_250}-->
+			</div>
+			<!--{/if}-->
+            <!--{if $cat['catid'] == 923}-->
+            <!--{block/7059}-->
+			<!--{elseif $cat['catid'] == 925}-->
+            <!--{block/7062}-->
+            <!--{elseif $cat['catid'] == 924}-->
+            <!--{block/7068}-->
+            <!--{elseif $cat['catid'] == 926}-->
+            <!--{block/7071}-->
+			<!--{elseif $cat['catid'] == 929}-->
+			<!--{block/7073}-->
+            <!--{elseif $cat['catid'] == 927}-->
+			<!--{block/7079}-->
+            <!--{elseif $cat['catid'] == 220}-->
+			<!--{block/7081}-->
+            <!--{elseif $cat['catid'] == 208}-->
+			<!--{block/7083}-->
+            <!--{elseif $cat['catid'] == 212}-->
+			<!--{block/7087}-->
+            <!--{elseif $cat['catid'] == 933}-->
+			<!--{block/7090}-->
+            <!--{elseif $cat['catid'] == 214}-->
+			<!--{block/7091}-->
+            <!--{elseif $cat['catid'] == 218}-->
+			<!--{block/7093}-->
+            <!--{elseif $cat['catid'] == 219}-->
+			<!--{block/7099}-->
+            <!--{elseif $cat['catid'] == 792}-->
+			<!--{block/7098}-->
+            <!--{elseif $cat['catid'] == 207}-->
+            <!--{block/7102}-->
+            <!--{elseif $cat['catid'] == 222}-->
+            <!--{block/7103}-->
+            <!--{elseif $cat['catid'] == 216}-->
+            <!--{block/7107}-->
+            <!--{elseif $cat['catid'] == 215}-->
+            <!--{block/7105}-->
+            <!--{elseif $cat['catid'] == 932}-->
+            <!--{block/7110}-->
+            <!--{elseif $cat['catid'] == 928}-->
+            <!--{block/7118}-->
+            <!--{elseif $cat['catid'] == 930}-->
+            <!--{block/7115}-->
+            <!--{/if}-->
+
+			<div class="mt10 ewmgraycon">
+                <img src="http://static.8264.com/static/images/moban/1024newslw/images/ewmzb.jpg">
+                <p>
+                    <b>GearPark--装备公园</b>
+                    <span>户外装备发烧友</span>
+                    <span>扫描二维码关注</span>
+                </p>
+            </div>
+		</div>
+	</div>
+	<!-- listMain End -->
+</div>
+
+
+<style>
+.fconend { background: #1a2b38; color: #FFF; margin-top: 45px; }
+.topHill { position: absolute; top: -16px; left: 0; width: 175px; height: 16px; background: url( http://static.8264.com/static/image/common/bg_fourm_sprite.png ) no-repeat 0 0; text-indent: -9999px;}
+.layoutw980{ width:980px; margin:0 auto; position:relative;}
+.choiceness{ padding:20px 0px;}
+</style>
+
+<div class="fconend">
+	<div class="layoutw980">
+		<div class="topHill">顶部小山</div>
+	</div>
+	<div class="choiceness">
+		<!--{block/7060}-->
+	</div>
+</div>
+
+<!--{ad/custom_484}-->
+<!--{subtemplate common/weixin_share_bottom}-->
+<!--{subtemplate common/footer_8264_new}-->

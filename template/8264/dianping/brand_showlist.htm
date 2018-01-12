@@ -1,0 +1,220 @@
+<!--{subtemplate dianping/header}-->
+	<!--{subtemplate dianping/nav}-->
+		<div class="global-common-content">
+			<div class="module">
+				<!-- 值得买 -->
+        <!--{eval include(DISCUZ_ROOT.'./source/plugin/skiing/hd_zw.php');}-->
+        <!--{eval $zhidemai_list = ForumOptionHuoDong::pianyi_sidebar(6, 'top', 'jiu', '10027');}-->
+        <!--{if $zhidemai_list}-->
+        <div class="ui-grid-12 ui-grid-full" style="margin-top:20px;">
+        <style>
+            .zhidemaiwidth{ width:980px;}
+            .zhidemaibox .zhidemailist_new li{width:144px; overflow:hidden;}
+            .zhidemaibox .zhidemailist_new li img{ width:144px;}
+        </style>
+        <!--{subtemplate common/zhidemai}-->
+        </div>
+        <!--{/if}-->
+        <!-- //值得买 -->
+        <div class="ui-grid-12 ui-grid-full" style="margin-top:20px;display: none;">
+        	<!--{eval $bottom_ads = array('416', '409', '417'); $bottom_ad = rand(0, 2); $bottom_ad_id = $bottom_ads[$bottom_ad]; }-->
+					<!--{ad/custom_$bottom_ad_id}-->
+        </div>
+				<div class="ui-grid-12 ui-grid-full" style="display:none;">
+					<div class="brand-list-warpten">
+						<ul class="brand-without-star">
+						<!--{loop $zhaolist $item}-->
+								<!--{eval $zhaozsp = stripos($item[subject],"（");}-->
+								<!--{eval $zhaoesp = stripos($item[subject],"(");}-->
+							<!--{if $zhaozsp}-->
+								<!--{eval $item[ename] =  mb_substr($item[subject],0,$zhaozsp);}-->
+								<!--{eval $item[cname] =  mb_substr($item[subject],$zhaozsp,strlen($item[subject]));}-->
+							<!--{elseif $zhaoesp}-->
+								<!--{eval $item[ename] =  mb_substr($item[subject],0,$zhaoesp);}-->
+								<!--{eval $item[cname] =  mb_substr($item[subject],$zhaoesp,strlen($item[subject]));}-->
+							<!--{/if}-->
+							<li>
+								<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$item['tid']}" class="brand-img" target="_blank">
+									<img src="http://image1.8264.com/{$item['dir']}/{$item['showimg']}" alt="{$item['subject']}"></a>
+								<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$item['tid']}#comment" target="_blank" class="brand-commn">{$item[cnum]}</a>
+								<h2 class="brand-name">
+									<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$item['tid']}" target="_blank">{echo cutstr($item[ename],15,'')}<br>
+									<!--{if $item[cname]}-->{echo cutstr($item[cname],20,'')}<!--{/if}--></a>
+								</h2>
+							</li>
+						<!--{/loop}-->
+							<li>
+								<a href="http://www.8264.com/about-adservice.html" class="brand-img" target="_blank"><img src="http://image1.8264.com/forum/201109/23/165255v8vsi8nvr4iqadv5.jpg" alt=""></a>
+								<h2 class="brand-name">
+									<a  href="http://www.8264.com/about-adservice.html" target="_blank">其他您的加入</a>
+								</h2>
+							</li>
+							<li>
+								<a href="http://www.8264.com/about-adservice.html" class="brand-img" target="_blank"><img src="http://image1.8264.com/forum/201109/23/165255v8vsi8nvr4iqadv5.jpg" alt=""></a>
+								<h2 class="brand-name">
+									<a href="http://www.8264.com/about-adservice.html" target="_blank">其他您的加入</a>
+								</h2>
+							</li>
+							<li>
+								<a href="http://www.8264.com/about-adservice.html" class="brand-img" target="_blank"><img src="http://image1.8264.com/forum/201109/23/165255v8vsi8nvr4iqadv5.jpg" alt=""></a>
+								<h2 class="brand-name">
+									<a href="http://www.8264.com/about-adservice.html" target="_blank">其他您的加入</a>
+								</h2>
+							</li>
+							<li>
+								<a href="http://www.8264.com/about-adservice.html" class="brand-img" target="_blank"><img src="http://image1.8264.com/forum/201109/23/165255v8vsi8nvr4iqadv5.jpg" alt=""></a>
+								<h2 class="brand-name">
+									<a href="http://www.8264.com/about-adservice.html" target="_blank">其他您的加入</a>
+								</h2>
+							</li>
+							<li>
+								<a href="http://www.8264.com/about-adservice.html" class="brand-img" target="_blank"><img src="http://image1.8264.com/forum/201109/23/165255v8vsi8nvr4iqadv5.jpg" alt=""></a>
+								<h2 class="brand-name">
+									<a href="http://www.8264.com/about-adservice.html" target="_blank">其他您的加入</a>
+								</h2>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+				<div class="ui-grid-12 ui-grid-full">
+					<div class="nav-sift-class">
+						<!--单个导航开始-->
+						<div class="nav-sift-one">
+							<div class="nav-name blue">品牌首字母</div>
+							<div class="nav-list-wartpen">
+								<div class="nav-list-box">
+									<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&let=0&nat={$nat}&cp={$cp}&order={$order}&page=1" {if $_GET['let']==0}class="blue"{/if}>全部</a>
+									<!--{loop $cate_letter $k $v}-->
+										<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&let={$k}&nat={$nat}&cp={$cp}&order=lastpost&page=1"{if $_GET['let']==$k} class="blue"{/if}>$v</a>
+									<!--{/loop}-->
+								</div>
+							</div>
+						</div>
+						<!--单个导航结束-->
+						<div class="nav-sift-one">
+							<div class="nav-name orange">品牌国籍</div>
+							<div class="nav-list-wartpen">
+								<div class="nav-list-box">
+									<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&let={$let}&nat=0&cp={$cp}&order={$order}&page=1" {if $_GET['nat']==0}class="blue"{/if}>全部</a>
+									<!--{loop $cate_region $k $v}-->
+										<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&let={$let}&nat={$k}&cp={$cp}&order={$order}&page=1"{if $_GET['nat']==$k} class="blue"{/if}>$v</a>
+									<!--{/loop}-->
+								</div>
+							</div>
+						</div>
+						<div class="line_l_t_d line_l_t_brand">
+								<div class="nav-name darkblue">排行榜</div>
+								<div class="line_con_gray clboth p_r div_region">
+									<span class="arrow_d"></span>
+									<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&let={$let}&nat={$nat}&cp=0&order={$order}&page=1" {if $_GET['cp']==0}class="blue"{/if}>全部</a>
+									<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&let={$let}&nat={$nat}&cp=39&order=score&page=1" {if $_GET['cp']==39}class="blue"{/if}>$cate_ranklist['39']</a>
+									<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&let={$let}&nat={$nat}&cp=41&order=score&page=1" {if $_GET['cp']==41}class="blue"{/if}>$cate_ranklist['41']</a>
+									<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&let={$let}&nat={$nat}&cp=43&order=score&page=1" {if $_GET['cp']==43}class="blue"{/if}>$cate_ranklist['43']</a>
+									<!-- <a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&let={$let}&nat={$nat}&cp=45&order=score&page=1" {if $_GET['cp']==45}class="blue"{/if}>$cate_ranklist['45']</a> -->
+									<a href="https://h5.youzan.com/v2/showcase/homepage?common%2Furl%2Fcreate=&kdt_id=18585513&scan=3&from=kdt" style="position:relative; display:none;" target="_blank">十大2017最受欢迎装备排行榜<span style="position: absolute; top:-10px; right:-24px;"><img src="http://static.8264.com/dianping/images/icon/data/hot.png"></span></a>
+									<ul class="nav-brand-item">
+									<!--{loop $cate_ranklist $k $v}-->
+										<!--{if $k!=39 &&  $k!=41 &&  $k!=43}-->
+										<li><a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&let={$let}&nat={$nat}&cp={$k}&order=score&page=1"{if $_GET['cp']==$k} class="blue"{/if}>$v</a></li>
+										<!--{/if}-->
+									<!--{/loop}-->
+									</ul>
+								</div>
+						</div>
+
+					</div>
+				</div>
+				<div class="ui-grid-12 ui-grid-full">
+					<div class="sift-publish-warpten">
+						<div class="sift-left">
+							<div class="sift-box">
+								<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist" <!--{if $_GET['order']=='lastpost' || $_GET['order']==''}--> class="hover" <!--{/if}--> ><i></i>默认</a>
+								<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&let={$let}&nat={$nat}&cp={$cp}&order=heats&page=1" <!--{if $_GET['order']=='heats'}--> class="hover" <!--{/if}--> ><i></i>热度</a>
+								<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&let={$let}&nat={$nat}&cp={$cp}&order=score&page=1" <!--{if $_GET['order']=='score'}--> class="hover" <!--{/if}-->><i></i>评分</a>
+								<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&let={$let}&nat={$nat}&cp={$cp}&order=dateline&page=1" <!--{if $_GET['order']=='dateline'}--> class="hover" <!--{/if}-->><i></i>最新</a>
+                                <a href="http://www.8264.com/list/867/" target="_blank" style="background:#f98361;">装备值得买</a>
+							</div>
+						</div>
+						<div class="publish-right">
+							<div class="publish-box">
+								<a href="http://www.8264.com/dianping.php?mod=brand&act=dopost&do=new&action=newthread" target="_blank" class="publish-orange">发布新品牌</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ui-grid-12 ui-grid-full">
+					<!-- list -->
+					<div class="brand-list-warpten">
+						<ul>
+							<!--{loop $modlist $item}-->
+								<!--{eval $zsp = stripos($item[subject],"（");}-->
+								<!--{eval $esp = stripos($item[subject],"(");}-->
+							<!--{if $zsp}-->
+								<!--{eval $item[ename] =  mb_substr($item[subject],0,$zsp);}-->
+							<!--{elseif $esp}-->
+								<!--{eval $item[ename] =  mb_substr($item[subject],0,$esp);}-->
+							<!--{/if}-->
+							<li>
+								<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$item['tid']}" target="_blank" class="brand-img">
+									<img src="http://image1.8264.com/{$item['dir']}/{$item['showimg']}" alt="{$item['subject']}">
+								</a>
+								<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$item['tid']}#comment" target="_blank" class="brand-commn">{$item[cnum]}</a>
+								<div class="rating-level small-rating brand-rating">
+									<span class="score-value score-value-{echo floor($item['score'])}" title="{$item['score']}分">
+										<em></em>
+									</span>
+									<strong>{$item['score']}</strong>
+								</div>
+								<h2 class="brand-name">
+									<a target="_blank" href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$item['tid']}">{echo cutstr($item[ename],20,'')}<br><!--{if $item['cname']}-->({echo cutstr($item[cname],20,'')})<!--{/if}--></a>
+								</h2>
+							</li>
+							<!--{/loop}-->
+						</ul>
+					</div>
+					<!-- //list -->
+				</div>
+				<div class="ui-grid-12 ui-grid-full">
+					<!-- page -->
+							<div class="page-box-warpten">{$multipage}</div>
+					<!-- //page -->
+				</div>
+			</div>
+		</div>
+        <style>
+.bbsfoothotlist{ background: #1a2b38; color: #ffffff; padding-bottom:45px;}
+.topHill{  background:url(http://static.8264.com/static/image/common/bg_fourm_sprite.png) no-repeat 0 0; height: 16px;left: 0; position: relative; text-indent: -9999px; top: -16px; width: 175px}
+</style>
+
+<div class="bbsfoothotlist">
+	<div class="module">
+		<div class="topHill">顶部小山</div>
+	</div>
+	<div class="choiceness">
+        	<!--{block/6905}-->
+	</div>
+</div>
+		<!-- 友情链接 -->
+		<!--{if $dp_modules[$mod]['fid'] && ($_G['cache']['forumlinks']['forum'][$dp_modules[$mod][fid]][0] || $_G['cache']['forumlinks']['forum'][$dp_modules[$mod][fid]][1] || $_G['cache']['forumlinks']['forum'][$dp_modules[$mod][fid]][2])}-->
+		<div class="friendLink">
+			<div class="layout friendLinkcon">
+				<ul>
+				<!--{if $_G['cache']['forumlinks']['forum'][$dp_modules[$mod][fid]][0]}-->
+				$_G['cache']['forumlinks']['forum'][$dp_modules[$mod][fid]][0]
+				<!--{/if}-->
+				<!--{if $_G['cache']['forumlinks']['forum'][$dp_modules[$mod][fid]][1]}-->
+				$_G['cache']['forumlinks']['forum'][$dp_modules[$mod][fid]][1]
+				<!--{/if}-->
+				<!--{if $_G['cache']['forumlinks']['forum'][$dp_modules[$mod][fid]][2]}-->
+				$_G['cache']['forumlinks']['forum'][$dp_modules[$mod][fid]][2]
+				<!--{/if}-->
+				</ul>
+			</div>
+		</div>
+		<!--{/if}-->
+		<!-- //友情链接 -->
+	</div>
+	<!--{subtemplate dianping/footer}-->
+
+

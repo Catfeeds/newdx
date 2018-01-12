@@ -1,0 +1,8 @@
+
+    {loop $piclist $pic}
+    <span class="attachpic" style="" id="image_{$pic[aid]}" title="{$pic['filename']}">
+    <img src="<!--{eval echo getimagethumb(60,60,2,'plugin/'.$pic['attachment'], $pic['aid'], $pic['serverid']);}-->">
+        <b class="deleteimg">É¾³ý</b>
+        <input type="hidden" value="{$pic['aid']}" name="imgselect[]">
+    </span>
+    {/loop}

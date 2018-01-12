@@ -1,0 +1,5 @@
+/* CSS 分页类样式文件 */
+a.pagelink{ color: blue; font-size: 12px; font-family: arial; font-weight: bold; background-image: url(/images/2007/top_a_4.gif); background-repeat: no-repeat; background-position: right 0; width: 20px; height: 18px; padding-top: 2px; padding-right: 2px; text-align:center}
+a.pagelink:hover{ color: red; font-size: 12px; font-family: arial; font-weight: bold; background-image: url(/images/2007/top_a.gif); background-repeat: no-repeat; background-position: right 0; width: 20px; height: 18px;  padding-top: 2px; padding-right: 2px; }
+.pagelink_now{ color: red; font-size: 12px; font-family: arial; font-weight: bold; background-image: url(/images/2007/top_a.gif); background-repeat: no-repeat; background-position: right 0; width: 20px; height: 18px;  padding-top: 2px; padding-right: 2px; text-align:center}
+

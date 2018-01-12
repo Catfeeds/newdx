@@ -1,0 +1,30 @@
+<!--{if $imagelist}-->
+	<!--{loop $imagelist $image}-->
+	<script class="getimagelist_ajax">
+	uploadsuccess(2, '{filename:"{$image[filename]}", aid:{$image[aid]}, fileid:{$image[aid]}, type:"forum", pic:"{$image[attachment]}", thumbpic:"{eval echo getimagethumb(100, 100, 2, 'forum/' . $image[attachment], $image[aid], $image[serverid]);}"}');
+	jQuery.noConflict();
+	;(function($){
+		var value = loadUserdata('descrip_image_{$image[aid]}');
+		if(value != '' && value != null)
+		{
+			$('#watting_' + {$image[aid]}).find('textarea.textshow').val(value).show().addClass('attachshows').end().find('textarea.texttips').removeClass('attachshows').hide();
+		}
+	})(jQuery);
+	</script>
+	<!--{/loop}-->
+	<script class="getimagelist_ajax">$('img_num').innerHTML = '{$nowpicnum}';$('img_sy').innerHTML = '{$canpicnum}';$('pic_tools_tips').style.display = 'block';</script>
+<!--{else}-->
+<!--此处修改调取模块的名称,修改时同时修改下面两个数字-->
+	<!--{block/6873}-->
+	<script class="getimagelist_ajax">$('portal_block_6873').className = 'needdelete';</script>
+<!--{/if}-->
+<script>
+jQuery.noConflict();
+;(function($){
+	function removeallscript(){
+		$('.getimagelist_ajax').remove();
+		$('#append_parent script').remove();
+	}
+	setTimeout(removeallscript, 5000);
+})(jQuery);
+</script>

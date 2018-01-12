@@ -1,0 +1,77 @@
+<!--{template common/header_ajax}-->
+<!--{if count($threadlist)>0}-->
+<!--{loop $threadlist $k $v}-->
+<li>
+	<div class="upline clear_b">
+		<a href="forum.php?mod=viewthread&tid=$v[icontid]&{if $_G['gp_archiveid']}archiveid={$_G['gp_archiveid']}&{/if}extra=$extra" title="{if in_array($v['displayorder'], array(1, 2, 3, 4,'p'))}{if $v['displayorder'] == 1}{lang thread_type1} - {elseif $v['displayorder'] == 2}{lang thread_type2} - {elseif $v['displayorder'] == 3}{lang thread_type3} - {elseif $v['displayorder'] == 4}{lang thread_type4} - {elseif $v['displayorder'] == 'p'}{lang thread_typep} - {/if}{/if}{lang target_blank}" target="_blank" class="icon17_17">
+		<!--{if $v[folder] == 'lock'}-->
+			<img src="http://static.8264.com/static/image/common/folder_lock.gif" />
+		<!--{elseif $v['special'] == 1}-->
+			<img src="http://static.8264.com/static/image/common/pollsmall.gif" alt="{lang thread_poll}" />
+		<!--{elseif $v['special'] == 2}-->
+			<img src="http://static.8264.com/static/image/common/tradesmall.gif" alt="{lang thread_trade}" />
+		<!--{elseif $v['special'] == 3}-->
+			<img src="http://static.8264.com/static/image/common/rewardsmall.gif" alt="{lang thread_reward}" />
+		<!--{elseif $v['special'] == 4}-->
+			<img src="http://static.8264.com/static/image/common/activitysmall.gif" alt="{lang thread_activity}" />
+		<!--{elseif $v['special'] == 5}-->
+			<img src="http://static.8264.com/static/image/common/debatesmall.gif" alt="{lang thread_debate}" />
+		<!--{elseif in_array($v['displayorder'], array(1, 2, 3, 4,'p'))}-->
+			<img src="http://static.8264.com/static/image/common/pin_$v[displayorder].gif" alt="$_G[setting][threadsticky][3-$v[displayorder]]" />
+		<!--{else}-->
+			<img src="http://static.8264.com/static/image/common/folder_$v[folder].gif" />
+		<!--{/if}-->
+		</a>
+		<!--{if !$_G['gp_archiveid'] && $_G['forum']['ismoderator']==1}-->
+		<span class="czcheckbox">
+		<!--{if $v['fid'] == $_G[fid]}-->
+		<!--{if $v['displayorder'] <= 3 || $v['displayorder']=='p' || $_G['adminid'] == 1}-->
+			<input onclick="tmodclick(this)" type="checkbox" name="moderate[]" value="$v[tid]" />
+		<!--{else}-->
+			<input type="checkbox" disabled="disabled" />
+		<!--{/if}-->
+		<!--{else}-->
+			<input type="checkbox" disabled="disabled" />
+		<!--{/if}-->
+		</span>
+		<!--{/if}-->
+		<a href="http://bbs.8264.com/forum-forumdisplay-fid-{$_G['fid']}-typeid-{$v['typeid']}-filter-typeid.html" target="_blank" class="zfenlei">[{if $_G['forum']['threadtypes']['types'][$v['typeid']]}$_G['forum']['threadtypes']['types'][$v['typeid']]{else}$_G['forum']['threadtypes']['childtypes'][$_G['forum']['threadtypes']['fatherid'][$v['typeid']]][$v['typeid']]{/if}]</a><a href="http://bbs.8264.com/thread-{$v[tid]}-1-1.html" $v[highlight] target="_blank" class="title14">$v[subject]</a>
+		<!--{if $v[multipage]}--><span class="tps">$v[multipage]</span><!--{/if}-->
+		<!--{if $v['readperm']}--> [{lang readperm} <span class="bold">$v[readperm]</span>]<!--{/if}-->
+		<!--{if $v['price'] > 0}-->
+		<!--{if $v['special'] == '3'}-->
+			<span style="color: #C60">{lang thread_reward}{$v['price']}{$_G[setting][extcredits][$_G['setting']['creditstransextra'][2]][title]}
+										{$_G[setting][extcredits][$_G['setting']['creditstransextra'][2]][unit]}</span>
+		<!--{else}-->[{lang price} {$_G[setting][extcredits][$_G['setting']['creditstransextra'][1]][title]}
+			<span class="bold">$v[price]</span>{$_G[setting][extcredits][$_G['setting']['creditstransextra'][1]][unit]}]
+		<!--{/if}-->
+		<!--{elseif $v['special'] == '3' && $v['price'] < 0}-->
+			<span style="color: #C60">[{lang reward_solved}]</span>
+		<!--{/if}-->
+
+		<!--{if $v['attachment'] == 2}-->
+			<img src="http://static.8264.com/static/image/common/th_img.jpg" title="{lang attach_img}" style="display: none;" />
+		<!--{elseif $v['attachment'] == 1}-->
+			<img src="http://static.8264.com/static/image/common/th_fj.jpg" title="{lang attachment}" style="display: none;" />
+		<!--{/if}-->
+		<!--{if $v['stamp']==0 && $v['rate']>0}--><img src="http://static.8264.com/static/image/common/th_b.jpg" title="奖励8264币" /><!--{/if}-->
+		<!--{if $v['weeknew']}--><a href="forum.php?mod=redirect&tid=$thread[tid]&goto=lastpost#lastpost" class="newicon" style="display: none;">NEW</a><!--{/if}-->
+	</div>
+	<div class="downline clear_b">
+		<em>作者：<a href="home.php?mod=space&uid=$v[authorid]">$v[author]</a></em>
+		<em>发表于：<a $v[color]>$v[dateline]</a></em>
+		<em>最后回复：<!--{if $v['lastposter']}--><a href="home.php?mod=space&username=$v[lastposterenc]">$v[lastposter]</a><!--{else}-->{lang anonymous}<!--{/if}--> <a href="forum.php?mod=redirect&tid=$v[tid]&goto=lastpost#lastpost" class="dateend">$v[lastpost]</a></em>
+		<em class="review">$v[views]</em>
+		<a href="forum.php?mod=viewthread&tid=$v[tid]&extra=$extra" class="hfs">$v[replies]</a>
+	</div>
+</li>
+<!--{/loop}-->
+<div id="threadmore_{$typeid}_{$nextpage}">
+	<a href="javascript:void(0);" onclick="ajaxget('forum.php?mod=ajax&action=loadthreadlist&fid=$fid&typeid=$typeid&page=$nextpage', 'threadmore_{$typeid}_{$nextpage}');" class="addmore">点击加载更多</a>
+</div>
+<!--{else}-->
+<div id="threadmore">
+	<a href="javascript:void(0);" class="addmore">没有更多帖子了，去别的版看看吧</a>
+</div>
+<!--{/if}-->
+<!--{template common/footer_ajax}-->

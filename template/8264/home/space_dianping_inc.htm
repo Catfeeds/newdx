@@ -1,0 +1,114 @@
+<div class="review-cate">
+	<a href="{$_G['config']['web']['portal']}$dpModList[$v[fid]][uname]{if in_array($dpModList[$v[fid]][mname], array('climb', 'club', 'hostel', 'diving', 'fishing', 'chain'))}/{/if}" class="review-name">
+		<i class="icon-r icon-{$dpModList[$v[fid]][mname]}-r"></i>{$dpModList[$v[fid]][cname]}
+	</a>
+</div>
+<div class="review-content article-info">
+	<div class="hd">
+		<div class="list-tit">
+			<a href="{$_G['config']['web']['portal']}$dpModList[$v[fid]][uname]{if in_array($dpModList[$v[fid]][mname], array('climb', 'club', 'hostel', 'diving', 'fishing', 'chain'))}/{$v[tid]}.html{elseif $dpModList[$v[fid]][mname] == 'equipment'}-{$v[tid]}-1.html{else}-{$v[tid]}{/if}" class="c-tx2" title="{$threadList[$v[tid]][subject]}" target="_blank">
+				点评<span class="rl-tit">{$threadList[$v[tid]][subject]}</span>
+			</a>
+			{if $v['rate']}
+			<span class="icon-m icon-coin-m" title="8264币"></span>
+			{/if}
+		</div>
+		<div class="rating-level small-rating rlist-rating">
+			<span class="score-value score-value-{echo intval($v[starnum])*2;}">
+				<em></em>
+			</span>
+			<strong>{$dpModList[$v[fid]][star][$v[starnum]]}</strong>
+		</div>
+	</div>
+	<div class="bd">
+		<div class="txt-details-info review-info showheight" style="height:90px;">
+			{if $dpModList[$v[fid]][mname] == 'mountain'}
+				{if $v['ext1']}<p><b>攀登日期：</b>{if $v[ext1]==$v[ext2]}{$v[ext1]}&nbsp;&nbsp;{$v[starHour]}时至{$v[endHour]}时&nbsp;共用 {$v[time]}{else}{$v[ext1]}&nbsp;至&nbsp;{$v[ext2]}&nbsp;共用 {$v[time]}{/if}</p>{/if}
+				{if $v['ext3']}<p><b>费用协作：</b>{$v[ext3]}</p>{/if}
+				{if $v['ext4']}<p><b>我的建议：</b>{$v[ext4]}</p>{/if}
+				{if $v[message]}<p><b>攀登综述：</b>{$v[message]}</p>{/if}
+			{elseif $dpModList[$v[fid]][mname] == 'line'}
+				{if $v['ext1']}
+				<p>
+					<b>时间：</b>
+					{if $v['isTian']}
+					{$v['ext1_show']}&nbsp;&nbsp;-&nbsp;&nbsp;{$v['ext2_show']}&nbsp;&nbsp;&nbsp;&nbsp;共计{$v['timeTotal']}
+					{else}
+					{$v['ext1_show']}&nbsp;&nbsp;{$v['ext4']}时&nbsp;&nbsp;-&nbsp;&nbsp;{$v['ext5']}时&nbsp;&nbsp;&nbsp;&nbsp;共计{$v['timeTotal']}
+					{/if}
+				</p>
+				{/if}
+				{if $v['ext3']}<p><b>费用：</b>{$v[ext3]}</p>{/if}
+				{if $v['weakpoint']}<p><b>注意：</b>{$v[weakpoint]}</p>{/if}
+				{if $v[message]}<p><b>综合：</b>{$v[message]}</p>{/if}
+			{elseif $dpModList[$v[fid]][mname] == 'equipment'}
+				{if $v['extdata']['price']}<p><b>价格来源：</b>{$v['extdata']['price']}</p>{/if}
+				{if $v['weakpoint']}<p><b>不足：</b>{$v[weakpoint]}</p>{/if}
+				{if $v['goodpoint']}<p><b>优点：</b>{$v[goodpoint]}</p>{/if}
+				{if $v[message]}<p><b>综合：</b>{$v[message]}</p>{/if}
+			{else}
+				{if $v['weakpoint']}<p><b>不足：</b>{$v[weakpoint]}</p>{/if}
+				{if $v['goodpoint']}<p><b>优点：</b>{$v[goodpoint]}</p>{/if}
+				{if $v[message]}<p><b>综合：</b>{$v[message]}</p>{/if}
+			{/if}
+			<span style="display:none;" class="span_height"></span>
+		</div>
+		<a class="j-rw-toggle" href="javascript:void(0)"><span>展开</span><i class="icon-m icon-unfold-m" {if $isIE6}style="display:none;"{/if}></i></a>
+		<!--计算高度所用-->
+		<div class="txt-details-info review-info realheight" style="display:none;">
+			{if $dpModList[$v[fid]][mname] == 'mountain'}
+				{if $v['ext1']}<p><b>攀登日期：</b>{if $v[ext1]==$v[ext2]}{$v[ext1]}&nbsp;&nbsp;{$v[starHour]}时至{$v[endHour]}时&nbsp;共用 {$v[time]}{else}{$v[ext1]}&nbsp;至&nbsp;{$v[ext2]}&nbsp;共用 {$v[time]}{/if}</p>{/if}
+				{if $v['ext3']}<p><b>费用协作：</b>{$v[ext3]}</p>{/if}
+				{if $v['ext4']}<p><b>我的建议：</b>{$v[ext4]}</p>{/if}
+				{if $v[message]}<p><b>攀登综述：</b>{$v[message]}</p>{/if}
+			{elseif $dpModList[$v[fid]][mname] == 'line'}
+				{if $v['ext1']}
+				<p>
+					<b>时间：</b>
+					{if $v['isTian']}
+					{$v['ext1_show']}&nbsp;&nbsp;-&nbsp;&nbsp;{$v['ext2_show']}&nbsp;&nbsp;&nbsp;&nbsp;共计{$v['timeTotal']}
+					{else}
+					{$v['ext1_show']}&nbsp;&nbsp;{$v['ext4']}时&nbsp;&nbsp;-&nbsp;&nbsp;{$v['ext5']}时&nbsp;&nbsp;&nbsp;&nbsp;共计{$v['timeTotal']}
+					{/if}
+				</p>
+				{/if}
+				{if $v['ext3']}<p><b>费用：</b>{$v[ext3]}</p>{/if}
+				{if $v['weakpoint']}<p><b>注意：</b>{$v[weakpoint]}</p>{/if}
+				{if $v[message]}<p><b>综合：</b>{$v[message]}</p>{/if}
+			{elseif $dpModList[$v[fid]][mname] == 'equipment'}
+				{if $v['extdata']['price']}<p><b>价格来源：</b>{$v['extdata']['price']}</p>{/if}
+				{if $v['weakpoint']}<p><b>不足：</b>{$v[weakpoint]}</p>{/if}
+				{if $v['goodpoint']}<p><b>优点：</b>{$v[goodpoint]}</p>{/if}
+				{if $v[message]}<p><b>综合：</b>{$v[message]}</p>{/if}
+			{else}
+				{if $v['weakpoint']}<p><b>不足：</b>{$v[weakpoint]}</p>{/if}
+				{if $v['goodpoint']}<p><b>优点：</b>{$v[goodpoint]}</p>{/if}
+				{if $v[message]}<p><b>综合：</b>{$v[message]}</p>{/if}
+			{/if}
+		</div>
+		<!--计算高度所用 end-->
+	</div>
+	<div class="ft">
+		<div class="list-op-bar">
+			<a href="javascript:void(0);" class="list-op-item useful {if $supportlist[$v['pid']]}active{/if}"
+			{if $_G['uid'] && !$supportlist[$v['pid']] && $_G['uid'] != $space[uid]} id="supportBtn_{$v[pid]}"{/if}
+			{if !$_G['uid']} onclick="javascript:window.location.href = '{$_G[siteurl]}member.php?mod=logging&action=login';return false;"{/if}
+			{if $_G['uid']}
+				{if $supportlist[$v['pid']]}
+				title="你已经评价过了"
+				{else}
+				title="有用"
+				{/if}
+			{else}
+			title="登录后才能进行评价"
+			{/if}
+			>
+				<i class="icon-m icon-useful-m"></i>
+				<em>有用({$v[supports]})</em>
+			</a>
+			<span class="list-op-item list-op-item-time">
+				<em>{echo date('Y-m-d', $v[dateline])}</em>
+			</span>
+		</div>
+	</div>
+</div>

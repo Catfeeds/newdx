@@ -1,0 +1,27 @@
+<!--{block/6623}-->
+<script type="text/javascript">
+;(function($){
+    function resize_style() {
+        var width = 186;
+        var max_width = $('.warptenDaypicyy').width()-2;
+        var item_num = parseInt(max_width / width);
+        var item_margin = parseInt((max_width % width) / (item_num + 2) / 2);
+        var padding_left = item_margin;
+        $('.midDaypicyy').css({'padding-left': (2*padding_left)+'px'});
+        $('.midDaypicyy > div').css({'margin-left':item_margin+'px', 'margin-right':item_margin+'px'});
+    }	
+    $(window).resize(resize_style);
+    $("#wh").live("mouseleave",function(){		
+        resize_style();
+	});
+	$("#wh").live("click",function(){		
+        resize_style();
+	});
+	$("#wh").live("mouseenter",function(){
+        resize_style();
+    });
+	setTimeout(function(){
+        resize_style();
+    }, 200)
+})(jQuery);
+</script>

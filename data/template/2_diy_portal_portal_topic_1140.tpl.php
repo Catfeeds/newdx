@@ -1,0 +1,379 @@
+<?php if(!defined('IN_DISCUZ')) exit('Access Denied'); ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>PRIMUS+KARRIMOR徒步装备技术专区</title>
+<link href="http://static.8264.com/oldcms/moban/zt/08primus/style/style.css" rel="stylesheet" type="text/css" />
+<link href="/css/pinglun20070313.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+<!--
+function MM_showHideLayers() { //v9.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) 
+  with (document) if (getElementById && ((obj=getElementById(args[i]))!=null)) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+#apDiv1 {
+position: absolute;
+top:138px;
+width:382px;
+height:152px;
+z-index:1;
+visibility: hidden;
+}
+-->
+</style>
+<link href="style/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<style>
+ul{ list-style:none; margin:auto 0px;letter-spacing:0;word-spacing:0; padding:0;}
+.bbb{ width:794px; float:right;}
+.bbb a:link{ color:#000000; text-decoration:none;}
+.bbb a:visited{color:#000000; text-decoration:none;}
+.bbb a:hover{color:#000000; text-decoration:underline;}
+.bbb a:active{color:#000000; text-decoration:none;}
+.bbb li{ width:52px; float:left; text-align:center; height:27px; line-height:27px; overflow:hidden; background:url(http://static.8264.com/oldcms/images/navtopbg.jpg) right center no-repeat;}
+</style>
+<body>
+<table width="960" height="54" border="0" align="center" cellpadding="0" cellspacing="0" style=" background:#f8f8f8; border:#e5e5e5 solid 1px; font-size:12px;">
+  <tr>
+    <td width="162" height="54" rowspan="2" align="center" valign="middle"><a href="http://www.8264.com/"><img src="http://static.8264.com/oldcms/images/index2_logo.gif" width="153" height="40"  border="0"/></a></td>
+    <td width="794" height="54">
+<div class="bbb">
+<ul>
+<li><a href="/list/201">新闻</a></li>
+<li><a href="/list/204">装备</a></li>
+<li><a href="/list/224">登山</a></li>
+<li><a href="/list/232">攀岩</a></li>
+<li><a href="/list/251">游记</a></li>
+                <li><a href="/list/243">线路</a></li>
+<li><a href="/list/545">自驾</a></li>
+<li><a href="/list/566">救援</a></li>
+<li><a href="/list/389">滑翔</a></li>
+<li><a href="/ziliao/face2face/index.html">专访</a></li>
+<li><a href="/list/238">知识</a></li>              
+<li><a href="http://pp.8264.com/"><font color="#FF0000">图库</font></a></li>
+                <li><a href="/topic_list/">专题</a></li>
+<li><a href="http://osm.8264.com/">经理人</a></li>
+<li class="end"><a href="http://blog.8264.com" style="color:red">博客</a></li>
+<li><a href="/company">商业</a></li>
+<li><a href="/brand/">品牌</a></li>
+                <li><a href="http://www.8264.com/topic/1115.html">旅社</a></li>
+                <li><a href="http://shop.8264.com/ ">商城</a></li>
+<li><a href="/picnews_list/">图文</a></li>
+<li><a href="http://bbs.8264.com/forum-163-1.html">问答</a></li> 
+<li><a href="http://bbs.8264.com/forum-161-1.html">活动</a></li>
+<li><a href="http://job.8264.com/">人才</a></li>
+<li><a href="/list/588">杂志</a></li>
+<li><a href="/sitelink/index.html">网址</a></li>
+<li><a href="http://bbs.8264.com" style="color:red">论坛</a></li>
+                <li><a href="http://www.91ski.com">滑雪</a></li>
+<li><a href="http://so.8264.com/">搜索</a></li>
+<li><a href="http://dian.8264.com/">户外店</a></li>
+                <li><a href="http://www.8264.net/">英文</a></li>
+</ul>
+</div>
+</td>
+  </tr>
+</table>
+<div class="warpper">
+<div class="top"></div>
+    <div class="mid">
+    	<div class="banner"><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="958" height="60">
+              <param name="movie" value="http://static.8264.com/oldcms/moban/zt/08primus/images/banner_958.swf">
+              <param name="quality" value="high">
+              <param name="wmode" value="opaque">
+              <embed src="http://static.8264.com/oldcms/moban/zt/08primus/images/banner_958.swf" wmode="opaque" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="958" height="60"></embed>
+    </object></div>
+        <div class="mid1">
+        	<div class="mid1left">
+                <div class="mid1left1">2009秋季促销名牌：<br>KARRIMOR长距徒步背包<br>CHEETAH 50-75<br>■零售价：2340元<br>
+                <span style="color:#FF0000">■驴友价：1170元(5折)</span><br>
+                  <br>
+                  <a href="http://shop.8264.com/goods-3995.html" target="_blank">进入8264驴友商城</a></div>
+                <div style="float:right;"><div id="apDiv1"><div style="width:380px; text-align:left;">
+<div style="width:380px; height:23px;"><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/top.jpg" width="380" height="23px"></div>
+<div style="border-bottom:#555655 solid 1px; border-left:#555655 solid 1px; border-right:#555655 solid 1px; width:378px; background:#f4f8f9;">
+   	  <div style="background:#f7f7f7; width:370px; margin:0px 0px 0px 3px; font-size:12px; line-height:1.6; margin-bottom:5px; padding:10px 0px 10px 0px;"><div style="float:left; width:130px; margin:5px;"><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/porduct3.jpg" width="130" height="141" align="left" style="margin:0px 15px 0px 10px;"></div><div style="float:right; text-align:left; width:200px;"><span style="color:#CC0000; font-weight:bold;">产品技术特点：</span><br>&#8226;&nbsp;CHEETAH可适应高原、冰川、碎石、浅滩等长距离、大负荷、高难度徒步路线的需要。<br>&#8226;&nbsp;SA一代超级干爽背负系统在运动过程中即可精确的调节背包的背负重心与方式，有效缓解背部与肩部肌肉疲劳，还可以随时应对地形变化与增减衣服的需要。 <br>&#8226;&nbsp;背负结构采用全新的框架材质，在提供最佳舒适性的同时有效的降低了背包整体的重量。<br>&#8226;&nbsp;背包正面采用类似KARRIMOR标识形状的“交叉彩条”设计，使同行者在50米距离即可识别KARRIMOR背包，这是KARRIMOR经典技术款型才可以独享的殊荣。 <br>&#8226;&nbsp;CHEETAH采用六向增升设计，其最大扩容量可达25升，平衡前后左右上下重量配比，保持背负稳定和舒适。 </div></div>
+  </div>
+</div></div></div>
+<div class="mid1left2"><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/cx3.jpg" width="110" height="120" border="0" onMouseOver="MM_showHideLayers('apDiv1','','show')" onMouseOut="MM_showHideLayers('apDiv1','','hide')" style=" cursor:pointer; padding-top:3px;"/></div>
+                <div style="clear:both;"></div>
+            </div>
+            <div class="mid1right"><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="686" height="157">
+              <param name="movie" value="http://static.8264.com/oldcms/moban/zt/08primus/images/lj.swf">
+              <param name="quality" value="high">
+              <param name="wmode" value="opaque">
+              <embed src="http://static.8264.com/oldcms/moban/zt/08primus/images/lj.swf" wmode="opaque" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="686" height="157"></embed>
+            </object></div>
+            <div style="clear:both;"></div>
+        </div>
+        <div class="mid2">
+        	<div class="mid2left">
+            	<div class="mid2left1">
+                	<div class="mid2left1top"><a href="/topic/1143.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/left1title1.jpg" width="231" height="31" border="0"></a></div>
+                    <div class="mid2left1mid1">
+                    	<ul>
+                        	                        	  <li>&nbsp;&nbsp;&#8226;&nbsp;<a href=/47212.html title="北京雪鸟拓展培训传授PPE检测师必备技能" target='_blank'>北京雪鸟拓展培训传授PPE检测..</a>
+                            </li>
+                                                    	  <li>&nbsp;&nbsp;&#8226;&nbsp;<a href=/47194.html title="Petzl专利技术亮相深圳消防局救援装备展" target='_blank'><font color=ff0000>Petzl专利技术亮相深圳消防局..</font></a>
+                            </li>
+                                                    	  <li>&nbsp;&nbsp;&#8226;&nbsp;<a href=/47155.html title="北京雪鸟公司郑州拓展培训图片报道" target='_blank'><font color=ff0000>北京雪鸟公司郑州拓展培训图..</font></a>
+                            </li>
+                                                    	  <li>&nbsp;&nbsp;&#8226;&nbsp;<a href=/46175.html title="2009 Petzl攀登技术培训会广州站图片集锦" target='_blank'><font color=000000>2009 Petzl攀登技术培训会广..</font></a>
+                            </li>
+                                                    	  <li>&nbsp;&nbsp;&#8226;&nbsp;<a href=/45533.html title="2009风电展雪鸟团队积极开拓新市场" target='_blank'><font color=000000>2009风电展雪鸟团队积极开拓..</font></a>
+                            </li>
+                                                    	  <li>&nbsp;&nbsp;&#8226;&nbsp;<a href=/45316.html title="Petzl体验零售价，体验安全体验舒适！" target='_blank'><font color=000000>Petzl体验零售价，体验安全体..</font></a>
+                            </li>
+                                                    	  <li>&nbsp;&nbsp;&#8226;&nbsp;<a href=/45273.html title="2009消防展凝聚雪鸟团队智慧与团结" target='_blank'><font color=000000>2009消防展凝聚雪鸟团队智慧..</font></a>
+                            </li>
+                                                    	  <li>&nbsp;&nbsp;&#8226;&nbsp;<a href=/43624.html title="雪鸟三夫圈圈会 建立渠道沟通理解与信任" target='_blank'><font color=000000>雪鸟三夫圈圈会 建立渠道沟通..</font></a>
+                            </li>
+                                                    </ul>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="mid2left1bottom"><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/leftbottom.jpg" width="231" height="5" border="0"></div>
+                </div>
+                <div class="mid2left1" style="margin-top:10px;">
+                	<div class="mid2left1top"><a href="/topic/1217.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/left1title2.jpg" width="231" height="31" border="0"></a></div>
+                    <div class="mid2left1mid2">
+                    	<ul>
+                        	                        	  <li>&nbsp;&nbsp;&#8226;&nbsp;<a href=/40126.html title="渠道协作：Primus炉具进驻法国迪卡侬运动超市" target='_blank'>渠道协作：Primus炉具进驻法国迪..</a>
+                            </li>
+                                                    	  <li>&nbsp;&nbsp;&#8226;&nbsp;<a href=/38006.html title="新品发布：2009北京雪鸟年度新品发布会" target='_blank'><font color=000000>新品发布：2009北京雪鸟年度新品..</font></a>
+                            </li>
+                                                    	  <li>&nbsp;&nbsp;&#8226;&nbsp;<a href=/37400.html title="渠道服务：雪鸟编译中文小手册，推动经销商了解炉具技术" target='_blank'><font color=ff0000>渠道服务：雪鸟编译中文小手册，..</font></a>
+                            </li>
+                                                    	  <li>&nbsp;&nbsp;&#8226;&nbsp;<a href=/37399.html title="渠道服务：Primus中文说明书即将出炉" target='_blank'><font color=ff0000>渠道服务：Primus中文说明书即将..</font></a>
+                            </li>
+                                                    	  <li>&nbsp;&nbsp;&#8226;&nbsp;<a href=/37398.html title="销售培训：2008雪鸟技术培训年会西安站（零售+拓展）" target='_blank'>销售培训：2008雪鸟技术培训年会..</a>
+                            </li>
+                                                    	  <li>&nbsp;&nbsp;&#8226;&nbsp;<a href=/37397.html title="销售培训：2008雪鸟技术培训年会上海站（零售+拓展+消防）" target='_blank'>销售培训：2008雪鸟技术培训年会..</a>
+                            </li>
+                                                    	  <li>&nbsp;&nbsp;&#8226;&nbsp;<a href=/37396.html title="展会信息：专利攀登技术应用专业救援，雪鸟产品加盟CHINA FIRE" target='_blank'>展会信息：专利攀登技术应用专业..</a>
+                            </li>
+                                                    	  <li>&nbsp;&nbsp;&#8226;&nbsp;<a href=/37395.html title="渠道协作：上海探险家园承办雪鸟产品技术培训与交流第一站" target='_blank'>渠道协作：上海探险家园承办雪鸟..</a>
+                            </li>
+                                                    </ul>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div class="mid2left1bottom"><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/leftbottom.jpg" width="231" height="5" border="0"></div>
+                </div>
+                <div class="mid2left2">
+                	<div class="mid2left2top"><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/left2title.jpg" width="231" height="21" border="0"></div>
+                    <div class="mid2left2mid">
+                    	<!--循环开始-->
+                    	<!--<div class="mid2left2mid1">
+                        	<div class="mid2left2mid1left"><a href="#"><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/test.jpg" width="100" height="100" border="0"></a></div>
+                            <div class="mid2left2mid1right">这里添加相应的东西这里添加相应的东西这里添加相应的东西这里添加相应的东西这里添加相应的东西<a href="#">[详细]</a></div>
+                            <div style="clear:both;"></div>
+                        </div>-->
+                        <!--循环结束-->
+<div style="margin-top:10px;">
+<div><a href="/topic/1144.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/wanjia.jpg" alt="Primus探险历程频道" width="216" height="237" border="0"></a></div>
+    <div style="width:221px; line-height:1.5; margin-top:5px; margin-bottom:10px;">Primus官方网站开辟<br />
+  <a href="http://www.primus.se/Templates/Pages/3_cols_white_middle.aspx?SectionId=5893" target="_blank"><span style="color:#FF9900">Primus was here</span></a>频道<br />
+  五洲四海的炉具玩家<br />随性上传自己的探险故事<br />震撼的实景图片，幽默的炉具感言<br />如果你的图片被Primus官方网站征选<br />
+即可获得Primus特别颁发的个人探险基金<br /><br />
+在此为国内网友编译<br />《Primus中文探险故事汇》<br />让我们来瞧瞧这些"欧洲牛人"<br />啥样玩法？啥个乐趣？<br />其实，你应该比他们玩得更精彩！<br />
+<a href="/topic/1144.html" target="_blank"><span style="color:#FF9900">进入中文探险故事汇</span></a></div>
+</div>
+                    </div>
+                    <div class="mid2left1bottom"><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/leftbottom.jpg" width="231" height="5" border="0"></div>
+                </div>
+                <div style="width:231px; height:82px; margin-top:8px;"><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/leftbg.jpg" width="231" height="82" border="0"></div>
+            </div>
+            <div class="mid2right">
+            	<!------<div class="mid2right1">
+                	<div class="mid2right1left"><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/right1left.jpg" width="26" height="124" border="0"></div>
+                    <div class="mid2right1mid">
+                    	<div class="mid2right1midleft">你曾经带着Primus炉子去过什么稀奇古怪的地方？<br>
+                   	    请登陆 <a href="http://www.primus.se/Templates/Pages/3_cols_white_middle.aspx?SectionId=5893" target="_blank"><font color="#FF0000">www.primus.se</font></a> 《Primus was here》频道<br>
+                   	    上传你的探险经历与精彩照片<br>
+                   	    让全世界的户外爱好者一起来分享你的探险故事吧</div>
+                        <div class="mid2right1midright">
+<div style="float:left; margin-top:18px;">
+<a href="/topic/1144a/index.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/pwh.jpg" alt="更多探险历程" width="80" height			="66" border="0"></a>      </div>
+<div style="float:right; width:258px; margin-top:20px; line-height:1.5; text-align:left;">
+  <a href="/topic/1144.html" target="_blank">外国玩家喜欢去啥地方？常用哪款炉子？<br />请欣赏《Primus was here》频道转载的探险故事<br>
+  幽默的炉具感言，震撼的实景图片<br>
+  你应该比他们玩得更精彩！</a>
+    </div>	
+</div>
+                    </div>
+                    <div class="mid2right1right"><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/right1right.jpg" width="25" height="124" border="0"></div>
+                </div>------>
+                <div class="mid2right2">
+                	<div class="mid2right2top"><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/right2title.jpg" width="695" height="5" border="0"></div>
+                    <div class="mid2right2mid">
+                        <div class="mid2right2midonly">
+                            <div class="mid2right2midonlytop"><em style="float:left; margin:10px 0 3px 0;"><span style="color:#555655;">&#8226;</span>&nbsp;选购支持&nbsp;<span style="color:#555655;">&#8226;</span></em><em style="float:right; margin-top:10px;"><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/arrow.jpg" width="9" height="9" border="0">&nbsp;<a href="/topic/1145.html" target="_blank" style="color:#fe0000">more</a></em>
+                          <div style="clear:both;"></div></div>
+                            <div class="mid2right2midonlybottom3">
+                                <ul>
+                        	                        	  <li>&#8226;&nbsp;<a href="/47506.html" title="2009年Primus电子杂志第6期" target="_blank"><font color=0000ff>2009年Primus电子杂志第6期</font></a></li>
+                                                    	  <li>&#8226;&nbsp;<a href="/45319.html" title="2009年Primus电子杂志第5期" target="_blank"><font color=000000>2009年Primus电子杂志第5期</font></a></li>
+                                                    	  <li>&#8226;&nbsp;<a href="/44129.html" title="2009年Primus电子杂志第4期" target="_blank"><font color=000000>2009年Primus电子杂志第4期</font></a></li>
+                                                    	  <li>&#8226;&nbsp;<a href="/44128.html" title="2009年Primus电子杂志第3期" target="_blank">2009年Primus电子杂志第3期</a></li>
+                                                    	  <li>&#8226;&nbsp;<a href="/44127.html" title="2009年Primus电子杂志第2期" target="_blank">2009年Primus电子杂志第2期</a></li>
+                                                    	  <li>&#8226;&nbsp;<a href="/44126.html" title="2009年Primus电子杂志第1期" target="_blank">2009年Primus电子杂志第1期</a></li>
+                                                    </ul>
+                        <div style="clear:both;"></div>
+                            </div>
+                        </div>
+                        <div class="mid2right2midonly">
+                            <div class="mid2right2midonlytop"><em style="float:left; margin:10px 0 3px 0;"><span style="color:#555655;">&#8226;</span>&nbsp;新品快讯&nbsp;<span style="color:#555655;">&#8226;</span></em><em style="float:right; margin-top:10px;"><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/arrow.jpg" width="9" height="9" border="0">&nbsp;<a href="/topic/1146.html" target="_blank" style="color:#fe0000">more</a></em>
+                          <div style="clear:both;"></div></div>
+                            <div class="mid2right2midonlybottom3">
+                                <ul>
+                        	                        	  <li>&#8226;&nbsp;<a href=/47502.html title='OMNIFUEL万用炉荣膺2009年度OUTDOOR杂志最佳装备奖' target='_blank'><font color=ff0000>OMNIFUEL万用炉荣膺2009年度OUTDOOR杂志最佳装备奖..</font></a>                            </li>
+                                                    	  <li>&#8226;&nbsp;<a href=/39613.html title='2010新品：Primus野外炊具套装Meal Set' target='_blank'><font color=000000>2010新品：Primus野外炊具套装Meal Set</font></a>                            </li>
+                                                    	  <li>&#8226;&nbsp;<a href=/39314.html title='2010新品：Primus高效节能新组合EtaPack Lite' target='_blank'><font color=000000>2010新品：Primus高效节能新组合EtaPack Lite</font></a>                            </li>
+                                                    	  <li>&#8226;&nbsp;<a href=/39290.html title='2010新品：Primus超轻型炉具组合Ti-Lite' target='_blank'><font color=000000>2010新品：Primus超轻型炉具组合Ti-Lite</font></a>                            </li>
+                                                    	  <li>&#8226;&nbsp;<a href=/33342.html title='2009新品：Eta家族添奇兵 09新品做工精' target='_blank'><font color=000000>2009新品：Eta家族添奇兵 09新品做工精</font></a>                            </li>
+                                                    	  <li>&#8226;&nbsp;<a href=/32326.html title='2009新品：Eta家族添猛丁EtaPower(TM) MF兼容5种燃料，应对恶劣环境' target='_blank'><font color=0000ff>2009新品：Eta家族添猛丁EtaPower(TM) MF兼容5种燃..</font></a>                            </li>
+                                                    	  <li>&#8226;&nbsp;<a href=/32325.html title='2009新品：Eta家族小巨人EtaExpress(TM) 煮饭快、省燃料、体积小、重量轻' target='_blank'><font color=0000ff>2009新品：Eta家族小巨人EtaExpress(TM) 煮饭快、..</font></a>                            </li>
+                                                    	  <li>&#8226;&nbsp;<a href=/32259.html title='2008新品：82克轻型气炉ExpressStove(TM) 体重与耐受性之间的完美平衡' target='_blank'>2008新品：82克轻型气炉ExpressStove(TM) 体重与耐..</a>                            </li>
+                                                    </ul>
+                        <div style="clear:both;"></div>
+                            </div>
+                        </div>
+                        <div class="mid2right2midonly">
+                            <div class="mid2right2midonlytop"><em style="float:left; margin:10px 0 3px 0;"><span style="color:#555655;">&#8226;</span>&nbsp;售后支持&nbsp;<span style="color:#555655;">&#8226;</span></em><em style="float:right; margin-top:10px;"><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/arrow.jpg" width="9" height="9" border="0">&nbsp;<a href="/topic/1216.html" target="_blank" style="color:#fe0000">more</a></em>
+                          <div style="clear:both;"></div></div>
+                            <div class="mid2right2midonlybottom3">
+                                <ul>
+                        	                        	  <li>&#8226;&nbsp;<a href="/40701.html" title="性能掌握：Primus极限海拔型万用炉（OmniFuel）中文说明书" target="_blank">性能掌握：Primus极限海拔型万用炉（OmniFuel）中..</a></li>
+                                                    	  <li>&#8226;&nbsp;<a href="/40125.html" title="性能掌握：Primus高效节能万用炉（Eta Power MF）中文说明书" target="_blank">性能掌握：Primus高效节能万用炉（Eta Power MF）..</a></li>
+                                                    	  <li>&#8226;&nbsp;<a href="/40124.html" title="正确使用：Primus气炉高海拔使用小常识" target="_blank"><font color=000000>正确使用：Primus气炉高海拔使用小常识</font></a></li>
+                                                    	  <li>&#8226;&nbsp;<a href="/37963.html" title="正确使用：Primus Gravity MF轻型万用炉全攻略" target="_blank"><font color=000000>正确使用：Primus Gravity MF轻型万用炉全攻略</font></a></li>
+                                                    	  <li>&#8226;&nbsp;<a href="/37402.html" title="正确使用：Primus高效率万用炉EtaPower MF喷嘴选用与预热方法（图解）" target="_blank"><font color=0000ff>正确使用：Primus高效率万用炉EtaPower MF喷嘴选用..</font></a></li>
+                                                    	  <li>&#8226;&nbsp;<a href="/37401.html" title="定期保养：Primus极限环境万用炉 Omnifuel常见故障排除与日常维护保养（图解）" target="_blank"><font color=0000ff>定期保养：Primus极限环境万用炉 Omnifuel常见故障..</font></a></li>
+                                                    	  <li>&#8226;&nbsp;<a href="/40112.html" title="正确选择：Primus七宗“最”" target="_blank">正确选择：Primus七宗“最”</a></li>
+                                                    	  <li>&#8226;&nbsp;<a href="/38009.html" title="性能比较：Primus节能炉性能比较" target="_blank"><font color=000000>性能比较：Primus节能炉性能比较</font></a></li>
+                                                    </ul>
+                        <div style="clear:both;"></div>
+                            </div>
+                        </div>
+                        <div class="mid2right2midonly">
+                            <div class="mid2right2midonlytop"><em style="float:left; margin:10px 0 3px 0;"><span style="color:#555655;">&#8226;</span>&nbsp;背包促销&nbsp;<span style="color:#555655;">&#8226;</span></em><em style="float:right; margin-top:10px;"><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/arrow.jpg" width="9" height="9" border="0">&nbsp;<a href="/topic/1218.html" target="_blank " style="color:#fe0000">more</a></em>
+                          <div style="clear:both;"></div></div>
+                            <div class="mid2right2midonlybottom3">
+                                <ul>
+                        	                        	  <li>&#8226;&nbsp;<a href=/43262.html title='Karrimor城市旅行包夏秋季大促销' target='_blank'><font color=008000>Karrimor城市旅行包夏秋季大促销</font></a>                            </li>
+                                                    	  <li>&#8226;&nbsp;<a href=/43261.html title='Karrimor单车运动包夏秋季大促销' target='_blank'><font color=008000>Karrimor单车运动包夏秋季大促销</font></a>                            </li>
+                                                    	  <li>&#8226;&nbsp;<a href=/40749.html title='我所忠爱的Karrimor大包JAGUAR 70–95' target='_blank'><font color=008000>我所忠爱的Karrimor大包JAGUAR 70–95</font></a>                            </li>
+                                                    	  <li>&#8226;&nbsp;<a href=/40748.html title='karrimor为攀冰运动打造的技术型背包' target='_blank'><font color=008000>karrimor为攀冰运动打造的技术型背包</font></a>                            </li>
+                                                    	  <li>&#8226;&nbsp;<a href=/40746.html title='Karrimor为少年儿童设计的户外小背包' target='_blank'><font color=008000>Karrimor为少年儿童设计的户外小背包</font></a>                            </li>
+                                                    	  <li>&#8226;&nbsp;<a href=/38013.html title='karrimor自驾车旅行实用小物件' target='_blank'><font color=008000>karrimor自驾车旅行实用小物件</font></a>                            </li>
+                                                    	  <li>&#8226;&nbsp;<a href=/38012.html title='karrimor城市斜肩背包SCAPE &amp; VERT' target='_blank'><font color=008000>karrimor城市斜肩背包SCAPE &amp; VERT</font></a>                            </li>
+                                                    	  <li>&#8226;&nbsp;<a href=/38008.html title='karrimor休闲新品：城市行囊Mini Arma' target='_blank'><font color=008000>karrimor休闲新品：城市行囊Mini Arma</font></a>                            </li>
+                                                    </ul>
+                        <div style="clear:both;"></div>
+                            </div>
+                        </div>
+                        <div style=" width:660px; margin-top:10px;">
+                        	<div class="title"><em style="float:left;"><span style="color:#555655;">&#8226;</span>&nbsp;网友测评&nbsp;<span style="color:#555655;">&#8226;</span></em><em style="float:right; margin:0 10px 0px 0px;"><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/arrow.jpg" width="9" height="9" border="0">&nbsp;<a href="/topic/1219.html" target="_blank" style="color:#fe0000">more</a></em>
+                        	  <div style="clear:both;"></div></div>
+                            <div style=" background:#f7f7f7;"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="0" style=" margin-top:10px;">
+  <tr>
+    <td width="65%" style="background:#f7f7f7; border-top:#555655 dashed 1px; border-bottom:#555655 dashed 1px;"><table width="130" border="0" cellspacing="0" cellpadding="0" style="margin:15px 13px 5px 13px; float:left; ">
+  <tr>
+    <td><a href="/38011.html" title="排行：篮筐下的小巨人" target="_blank"><img style="border:#CCCCCC solid 1px;" src="http://image1.8264.com/portal/upload/Image/2009/200909/data_img/1252465227813987609.jpg" width="130" height="90" border="0"></a></td>
+  </tr>
+  <tr>
+    <td height="25" align="center" valign="middle"><a href="/38011.html" target="_blank" title="排行：篮筐下的小巨人">排行：篮筐下的小巨人</a></td>
+  </tr>
+</table>
+    <table width="130" border="0" cellspacing="0" cellpadding="0" style="margin:15px 13px 5px 13px; float:left; ">
+  <tr>
+    <td><a href="/37406.html" title="测试：Primus EtaPower套锅高效率验证" target="_blank"><img style="border:#CCCCCC solid 1px;" src="http://image1.8264.com/portal/upload/Image/2009/200904/data_img/1240996339313537756.jpg" width="130" height="90" border="0"></a></td>
+  </tr>
+  <tr>
+    <td height="25" align="center" valign="middle"><a href="/37406.html" target="_blank" title="测试：Primus EtaPower套锅高效率验证">测试：Primus EtaPowe</a></td>
+  </tr>
+</table>
+    <table width="130" border="0" cellspacing="0" cellpadding="0" style="margin:15px 13px 5px 13px; float:left; ">
+  <tr>
+    <td><a href="/37404.html" title="选购：Primus效率快车EtaExpress图片解析" target="_blank"><img style="border:#CCCCCC solid 1px;" src="http://image1.8264.com/portal/upload/Image/2009/200909/data_img/1252465531821779713.jpg" width="130" height="90" border="0"></a></td>
+  </tr>
+  <tr>
+    <td height="25" align="center" valign="middle"><a href="/37404.html" target="_blank" title="选购：Primus效率快车EtaExpress图片解析">选购：Primus效率快车</a></td>
+  </tr>
+</table>
+    <table width="130" border="0" cellspacing="0" cellpadding="0" style="margin:15px 13px 5px 13px; float:left; ">
+  <tr>
+    <td><a href="/37403.html" title="选购：Primus高效节能万用炉EtaPower MF图片解析" target="_blank"><img style="border:#CCCCCC solid 1px;" src="http://image1.8264.com/portal/upload/Image/2009/200901/data_img/1231924750369646435.jpg" width="130" height="90" border="0"></a></td>
+  </tr>
+  <tr>
+    <td height="25" align="center" valign="middle"><a href="/37403.html" target="_blank" title="选购：Primus高效节能万用炉EtaPower MF图片解析">选购：Primus高效节能</a></td>
+  </tr>
+</table>
+    </td>
+  </tr>
+</table>
+                            </div>
+                        </div>
+                        <div style=" width:340px;float:left;">
+                        <div class="mid2right2midonly">
+                            <div class="mid2right2midonlytop"><em style="float:left; margin:10px 0 3px 0;"><span style="color:#555655;">&#8226;</span>&nbsp;品牌链接&nbsp;<span style="color:#555655;">&#8226;</span></em>
+                              <div style="clear:both;"></div></div>
+                            <div class="mid2right2midonlybottom2">
+   <div style="float:left; margin-left:10px; "><a href="http://www.snowbird.com.cn" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/logo2.jpg" alt="雪鸟公司官方网站" width="80" height="80" border="0"></a></div>
+   <div style="float:left; margin-top:8px; margin-left:15px;"><a href="http://www.primus.se"><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/logo1.jpg" alt="Primus炉具官方网站" width="93" height="60" border="0"></a></div>
+   <div style="float:left; margin-left:13px;"><a href="http://www.karrimor.com" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/karrimor-logo.jpg" alt="karrimor品牌官方网站" width="90" height="80" border="0"></a></div>
+   <div style="clear:both;"></div>
+                            </div>
+                        </div>
+                        </div>
+                      	<div style=" width:320px; float:right; *margin-right:16px!important margin-right:6px;">
+                        <div class="mid2right2midonly">
+                            <div class="mid2right2midonlytop"><em style="float:left; margin:10px 0 3px 0;"><span style="color:#555655;">&#8226;</span>&nbsp;册页下载&nbsp;<span style="color:#555655;">&#8226;</span></em>
+                              <div style="clear:both;"></div></div>
+                            <div class="mid2right2midonlybottom4">
+                               		<ul>
+                                    	<li><a href="http://static.8264.com/oldcms/moban/zt/08primus/down/PRIMUS_shouce.rar" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/ceye.jpg" alt="Primus炉具选购指南" width="80" height="80" border="0"></a></li>
+                                        <li><a href="http://static.8264.com/oldcms/moban/zt/08primus/down/KARRIMOR.pdf" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/ceye3.jpg" alt="karrimor产品目录（英文版）" width="80" height="80" border="0"></a></li>
+                                        <li><a href="http://static.8264.com/oldcms/moban/zt/08primus/down/Selection guide_EN_2008.pdf" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/ceye2.jpg" alt="Primus产品选购指导(英文版)" width="80" height="80" border="0"></a></li>
+                               		</ul>
+                                    <div style="clear:both;"></div>
+</div>
+</div>
+                        </div>
+<div style=" width:660px;">
+                        	<div class="title"><em style="float:left; margin:10px 0 3px 0;"><span style="color:#555655;">&#8226;</span>&nbsp;海报下载&nbsp;<span style="color:#555655;">&#8226;</span></em><em style="float:right; margin:10px 10px 0px 0px;"></em>
+                        	  <div style="clear:both;"></div></div>
+<div style=" width:100%; background:#f7f7f7; border-top:#555655 dashed 1px;">
+                            	<div style="float:left; margin:31px 10px 5px 12px;"><a href="http://static.8264.com/oldcms/moban/zt/08primus/images/dhb7.jpg" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/hb7.jpg" width="300" height="200" border="0" style="border:#CCCCCC solid 1px;"></a><br>
+                           	  <br><a href="#">&nbsp;</a></div>
+                                <div style="float:left; margin:31px 10px 5px 12px;"><a href="http://static.8264.com/oldcms/moban/zt/08primus/images/dhb4.jpg" target="_blank"><img style="border:#CCCCCC solid 1px;"  src="http://static.8264.com/oldcms/moban/zt/08primus/images/hb6.jpg" width="300" height="200"></a><br>
+                              <br><a href="#">&nbsp;</a></div>
+                                <div style="clear:both;"></div>
+                            </div>
+                        <div>
+                    </div>
+                </div>
+            		</div>
+                    <div><img src="http://static.8264.com/oldcms/moban/zt/08primus/images/right2bottom.jpg" width="695" height="5" border="0"></div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<style>
+.bottom{ width:960px; text-align:center; font-size:12px; margin-top:20px;}
+.bottom a{ color:#666666; text-decoration:underline; font-size:12px;}
+.bottom a:hover{ color:#ff0000; text-decoration:underline;}
+</style>
+    <div class="bottom"><a href="/ziliao/about/aboutus.php" target="_blank">关于我们</a> | <a href="/list/531" target="_blank">联系我们</a> | <a href="/ziliao/sitemap.html" target="_blank">网站地图</a> | <a href="http://www.8264.com/tougao.php" target="_blank">我要投稿</a> | <a href="/ziliao/about/ad2.php" target="_blank">广告服务</a> | <a href="/list/531" target="_blank">编辑部的故事</a> | <a href="/sitelink/index.html" target="_blank">友情连接</a><br><br><a href="/8954.html" target="_blank">若发现本站有任何错误，请留言告诉我们</a>&nbsp;&nbsp;&nbsp;&nbsp;欢迎各种媒体转载我们的原创作品[转载请注明出处]<br><br><a href="/ziliao/about/ad2.php"><strong>广告联系：022-23708264-818</strong></a> Mail：admin@8264.com <a href="http://www.miibeian.gov.cn" target="_blank">津ICP备05004140号-1</a></div>
+</body>
+</html>

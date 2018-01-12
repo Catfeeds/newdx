@@ -1,0 +1,19 @@
+<li id="pmlist_$value[pmid]">
+	<!--{if $value[msgfromid]}-->
+	<a href="home.php?mod=space&uid=$value[msgfromid]" class="tx"><!--{avatar($value[msgfromid],small)}--></a>
+	<!--{else}-->
+	<a href="javascript:;" class="rwtx"></a>
+	<!--{/if}-->
+	
+	<div class="listcon">
+		<div class="con615">
+			<div class="upcon">
+				<!--{if $value[msgfromid]}-->
+					<a href="home.php?mod=space&uid=$value[msgfromid]" class="name">{$value[msgfrom]}</a>
+				<!--{/if}-->
+				<span class="time"><!--{date($value[dateline], 'u')}--></span>
+			</div>
+			<div class="downcon"><span class="bbstitle_n">$value[message]</span></div>					
+		</div>
+	</div>
+</li>

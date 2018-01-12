@@ -1,0 +1,451 @@
+<!--{subtemplate common/header}--><!--{if $_G['forum']['ismoderator']}--> 
+<script type="text/javascript" src="{$_G[setting][jspath]}forum_moderate.js?{VERHASH}"></script><!--{/if}--><!--//头部广告//-->
+<!--{ad/text/wp a_t}-->
+<style id="diy_style" type="text/css"></style>
+<!--//通栏广告//-->
+
+<div class="wp">
+<!--[diy=diy1]--><div id="diy1" class="area"></div><!--[/diy]-->
+</div>
+
+<div id="pt" class="bm cl">
+<!--{subtemplate common/simplesearchform}-->
+<div class="z">
+<a href="./" id="fjump"{if $_G['setting']['forumjump'] == 1} onmouseover="showMenu({'ctrlid':this.id})"{/if} class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> $navigation
+</div>
+</div>
+
+
+<!--{if ($_G['cookie']['widthauto']==2)}-->
+<link rel="stylesheet" href="/source/plugin/produce/css/style.css" />
+<div id="goTop">
+<a href="#" class="cursor" onclick="javascript:void(0)"></a>
+</div>
+<!--{/if}-->
+<script type="text/javascript" src="/static/js/jquery-1.6.1.min.js"></script>
+<script type="text/javascript" src="/source/plugin/produce/js/jQuery-gotop.js"></script>
+<script type="text/javascript">jQuery.noConflict();jQuery('#goTop').goTop();</script>
+
+<div id="ct" class="wp cl{if $_G['forum']['allowside']} ct2{/if}">
+
+<!--{if $_G['fid'] == 115 && $_GET['typeid']==817}-->
+<div style="width: 960px; margin: 10px auto 10px;">
+<!--{ad/custom_233}-->
+</div>
+<!--{/if}-->
+
+<div class="mn">
+<div class="bm bml">
+<!--{if $_G[forum][banner] && !$subforumonly}--><img src="$_G[forum][banner]" width="100%" alt="$_G['forum'][name]" /><!--{/if}-->
+<div class="bm_h cl">
+<!--{if $_G['page'] == 1 && $_G['forum']['rules']}-->
+<span class="o">
+<img id="forum_rules_{$_G[fid]}_img" src="{IMGDIR}/collapsed_{$collapse[forum_rulesimg]}.gif" title="{lang spread}" alt="{lang spread}" onclick="toggle_collapse('forum_rules_{$_G[fid]}')" /></span><!--{/if}-->
+<span class="y">
+<a href="home.php?mod=spacecp&ac=favorite&type=forum&id=$_G[fid]&handlekey=favoriteforum" id="a_favorite" class="fa_fav" onclick="showWindow(this.id, this.href, 'get', 0);">{lang forum_favorite}</a>
+<!--{if rssforumperm($_G['forum']) && $_G[setting][rssstatus] && !$_G['gp_archiveid'] && !$subforumonly}--><span class="pipe">|</span><a href="forum.php?mod=rss&fid=$_G[fid]&auth=$rssauth" class="fa_rss" target="_blank" title="RSS">{lang rss_subscribe_this}</a><!--{/if}-->
+<!--{if !empty($forumarchive)}-->
+<span class="pipe">|</span><a id="forumarchive" href="javascript:;" class="fa_achv" onmouseover="showMenu(this.id)"><!--{if $_G['gp_archiveid']}-->$forumarchive[$_G['gp_archiveid']]['displayname']<!--{else}-->{lang forum_archive}<!--{/if}--></a><!--{/if}-->
+<!--{hook/forumdisplay_forumaction}-->
+<!--{if $_G['forum']['ismoderator']}-->
+<!--{if $_G['forum']['recyclebin']}-->
+<span class="pipe">|</span><a href="{if $_G['adminid'] == 1}admin.php?mod=forum&action=recyclebin&frames=yes{elseif $_G['forum']['ismoderator']}forum.php?mod=modcp&action=recyclebins&fid=$_G[fid]{/if}" class="fa_bin" target="_blank">{lang forum_recyclebin}</a><!--{/if}-->
+<!--{if $_G['forum']['ismoderator'] && !$_G['gp_archiveid']}-->
+<span class="pipe">|</span><strong><!--{if $_G['forum']['status'] != 3}--><a href="forum.php?mod=modcp&fid=$_G[fid]">{lang modcp}</a><!--{else}--><a href="forum.php?mod=group&action=manage&fid=$_G[fid]">{lang modcp}</a><!--{/if}--></strong>
+<!--{/if}-->
+<!--{if $_G['forum']['modworks']}--><!--{if $modnum}--><span class="pipe">|</span><a href="forum.php?mod=modcp&action=moderate&op=threads&fid=$_G[fid]" target="_blank">{lang mod_works_modpost_existence}</a><!--{/if}-->
+<!--{if $modusernum}--><span class="pipe">|</span><a href="forum.php?mod=modcp&action=moderate&op=members&fid=$_G[fid]" target="_blank">{lang mod_works_moduser_existence}</a><!--{/if}--><!--{/if}-->
+<!--{hook/forumdisplay_modlink}-->
+<!--{/if}-->
+<!--{if $_G['setting']['connect']['like_allow']}-->
+<iframe src="{$_G['setting']['connect']['like_url']}" class="vm" allowtransparency="true" scrolling="no" border="0" frameborder="0" style="margin-left:30px;width:110px;height:21px;border:none;overflow:hidden;"></iframe><!--{/if}--></span>
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_b" style="line-height: 12px;float:right;margin-right:10px;margin-top:5px;">
+	<img src="/static/images/type-button-7.jpg" />
+	<a class="shareCount"></a>
+</div>
+<!-- Baidu Button END -->
+
+<h1 class="xs2">
+<!--{eval $dom=$forumOption->getdomainbyfid($_G[fid]);}-->
+	<!--{if $dom}-->
+	<a href="http://$dom.8264.com">$_G['forum'][name]</a>
+	<!--{else}-->
+	<a href="forum.php?mod=forumdisplay&fid=$_G[fid]">$_G['forum'][name]</a>
+	<!--{/if}-->	
+
+<!--{if !$subforumonly}--><span class="xs1 xw0 i">{lang index_today}: <strong class="xi1">$_G[forum][todayposts]</strong><span class="pipe">|</span>{lang index_threads}: <strong class="xi1">$_G[forum][threads]</strong></span><!--{/if}-->
+</h1>
+</div>
+<div class="bm_c cl">
+<!--{if !empty($_G[forum][domain]) && !empty($_G['setting']['domain']['root']['forum'])}-->
+	<div class="pbn">{lang forum_domain}:<a href="http://{$_G[forum][domain]}.{$_G['setting']['domain']['root']['forum']}" id="group_link" title="{$_G[forum][domain]}">http://{$_G[forum][domain]}.{$_G['setting']['domain']['root']['forum']}</a></div>
+<!--{/if}-->
+<!--{if $moderatedby}-->
+	<div class="pbn">{if !empty($bkname)}{$bkname}{/if}{lang forum_modedby}: <span class="xi2">$moderatedby</span></div>
+<!--{/if}-->
+<!--{if $fathertype_moderator['moderator_type']}-->
+	<div class="pbn">$fathertype_moderator[name]{lang forum_modedby}: <span class="xi2">$fathertype_moderator['moderator_type']</span></div>
+<!--{/if}-->
+<!--{if $nowtype_moderator['moderator_type']}-->
+	<div class="pbn">$nowtype_moderator[name]{lang forum_modedby}: <span class="xi2">$nowtype_moderator['moderator_type']</span></div>
+<!--{/if}-->
+<!--{if $_G['page'] == 1 && $_G['forum']['rules']}-->
+	<div id="forum_rules_{$_G[fid]}" style="$collapse['forum_rules'];">
+		<div class="pbm xg2">$_G['forum'][rules]</div>
+	</div>
+<!--{/if}-->
+	<div id="forumarchive_menu" class="p_pop" style="display:none">
+		<ul>
+			<li><a href="forum.php?mod=forumdisplay&fid=$_G[fid]">{lang threads_all}</a></li>
+			<!--{loop $forumarchive $id $info}-->
+			<li><a href="forum.php?mod=forumdisplay&fid=$_G[fid]&archiveid=$id">{$info['displayname']} ({$info['threads']})</a></li>
+			<!--{/loop}-->
+		</ul>
+	</div>
+</div>
+</div>
+
+<!--{hook/forumdisplay_top}-->
+
+<!--{if $_G['fid'] == 186 }-->
+	<div style="width: 960px; margin: 0 auto 10px;">
+		<div style="float: left;"><!--{ad/custom_222}--></div>
+		<div style="float: right"><!--{ad/custom_223}--></div>
+		<div style="clear:both;"></div>	
+	</div>
+        <!--{subtemplate common/hxc}-->
+<!--{/if}-->
+
+<!--{if $_G['fid'] == 56 }-->		
+        <!--{subtemplate common/kqmg}-->
+<!--{/if}-->
+<!--{if $_G['fid'] == 58 }-->		
+       <div style="margin-bottom: 8px;text-align: center;"><!--{ad/custom_143}--></div>
+<!--{/if}-->
+<!--{if $_G['fid'] == 100 }-->		
+       <div style="margin-bottom: 8px;text-align: center;"><!--{ad/custom_147}--></div>
+<!--{/if}-->
+
+
+<!--{if $subexists && $_G['page'] == 1}--><!--{template forum/forumdisplay_subforum}--><!--{/if}-->
+
+<!--{if ($_G['fid'] == 53||$_G['fid'] == 7)}-->
+<div style="margin-bottom: 10px;"><!--{subtemplate common/zbtjbbs}--></div>
+<!--{/if}-->
+<!--{if ($_G['fid'] == 135||$_G['fid'] == 24)}-->
+<div style="margin-bottom: 10px;"><!--{subtemplate common/yzxianxing_bbs}--></div>
+<!--{/if}-->
+<!--{if ($_G['fid'] == 52)}-->
+<div style="margin-bottom: 10px;"><!--{subtemplate common/glxz_bbs}--></div>
+<!--{/if}-->
+
+
+<!--{if !empty($_G['forum']['recommendlist'])}-->
+<div class="bm bmw">
+	<div class="bm_h cl">
+		<h2>{lang forum_recommend}</h2>
+	</div>
+	<div class="bm_c cl"><!--{subtemplate forum/recommend}--></div>	</div><!--{/if}-->
+	<!--{hook/forumdisplay_middle}-->
+	<!--{if !$subforumonly}-->
+	<!--{if $recommendgroups && !$_G['forum']['allowside']}-->
+	<div class="bm">
+		<div class="bm_h cl">
+			<h2>{lang recommended_groups}</h2>
+		</div>
+		<div class="bm_c">
+			<ul class="ml mls cl">
+				<!--{loop $recommendgroups $key $group}-->
+				<li>
+					<a href="forum.php?mod=group&fid=$group[fid]" title="$group[name]" target="_blank" class="avt"><img src="$group[icon]" alt="$group[name]"></a>
+					<p><a href="forum.php?mod=group&fid=$group[fid]" target="_blank">$group[name]</a></p>
+				</li>
+				<!--{/loop}-->
+			</ul>
+		</div>
+	</div>
+	<!--{/if}-->
+	
+	<!--{if $threadmodcount}--><div class="bm bmn hm xi2"><strong>{lang forum_moderate_unhandled}</strong></div><!--{/if}-->
+	
+
+	
+	<!--{if $_G['fid'] == 107 }-->		
+       <div style="margin-bottom: 8px;text-align: center;"><!--{ad/custom_199}--></div>
+	<!--{/if}-->	
+	
+	<div id="pgt" class="bm bw0 pgs cl">				$multipage				<span class="pgb y" {if $_G[setting][visitedforums]}id="visitedforums" onmouseover="$('visitedforums').id = 'visitedforumstmp';this.id = 'visitedforums';showMenu({'ctrlid':this.id,'pos':'34'})"{/if} ><a href="http://$_G['setting']['domain']['app']['forum']/">{lang return_index}</a></span>
+	
+	
+	<!--{if !$_G['gp_archiveid']}-->
+	
+	
+	<!--{if $_G['fid'] == 161 }-->
+	<a href="http://yueban.com" target="_blank" id="newspecial"  title="{lang send_posts}"><img src="{IMGDIR}/pn_post.png" alt="{lang send_posts}" /></a>
+	<!--{else}-->
+	<a href="javascript:;" id="newspecial" onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu({'ctrlid':this.id})"{if !$_G['forum']['allowspecialonly']} onclick="showWindow('newthread', 'forum.php?mod=post&action=newthread&fid=$_G[fid]')"{else} onclick="location.href='forum.php?mod=post&action=newthread&fid=$_G[fid]';return false;"{/if} title="{lang send_posts}"><img src="{IMGDIR}/pn_post.png" alt="{lang send_posts}" /></a>
+	<!--{/if}-->
+	<!--{/if}-->
+	
+	
+	<!--{if $_G['fid'] == 161 }--><a href="http://yueban.com" target="_blank"><img src="source/plugin/produce/images/pn_post1.gif"/></a><!--{/if}-->
+	<!--{if $_G['fid'] == 24 }--><a href="http://bbs.8264.com/forum-forumdisplay-fid-5-filter-typeid-typeid-556.html" target="_blank"><img src="source/plugin/produce/images/dshd.png"/></a><!--{/if}-->
+	<!--{if $_G['fid'] == 58 }--><a href="http://bbs.8264.com/forum-459-1.html" target="_blank"><img src="source/plugin/produce/images/zpqz.png"/></a><!--{/if}-->
+	<!--{if $_G['fid'] == 69 }--><a href="http://yueban.com" target="_blank"><img src="source/plugin/produce/images/cgyb.png"/></a><!--{/if}-->
+	{if $forumOption->isDigested($_G['fid'])}
+	{if $_G['gp_all']==1}
+	<a href="http://bbs.8264.com/forum-forumdisplay-fid-{$_G['fid']}.html"><img src="source/plugin/produce/images/jptj.png"/></a>
+	{else}
+	<a href="http://bbs.8264.com/forum-forumdisplay-fid-{$_G['fid']}-all-1.html"><img src="source/plugin/produce/images/qbzt.png"/></a>
+	{/if}
+	{else}
+	<!--{if $_G['fid'] == 52 }--><a href="http://bbs.8264.com/forum-forumdisplay-fid-52-filter-digest-digest-1.html" target="_blank"><img src="source/plugin/produce/images/jptj.png"/></a><!--{/if}-->
+	<!--{if $_G['fid'] == 39 }--><a href="http://bbs.8264.com/forum-forumdisplay-fid-39-filter-digest-digest-1.html" target="_blank"><img src="source/plugin/produce/images/jptj.png"/></a><!--{/if}-->	{/if}
+	<!--{if (in_array($_G['fid'],array(158,101,166,113,110,112,108,176,117,104,106,109,111,115,170,143,177,103,165,107,48,102,100,139,171,105,147,164,114,159,116)))}--><a href="http://bbs.8264.com/forum-forumdisplay-fid-{$_G['fid']}-filter-specialtype-specialtype-activity.html" target="_blank"><img src="source/plugin/produce/images/zxhd.png" /></a><!--{/if}-->
+	<!--{hook/forumdisplay_postbutton_top}-->
+	</div>
+	<!--{subtemplate forum/forumdisplay_list}-->
+	<!--{/if}-->
+	<!--[diy=diyfastposttop]--><div id="diyfastposttop" class="area"></div><!--[/diy]-->
+	
+	
+
+
+<div id="fastpost" style="display: none;">
+<!--{if $fastpost && $_G['group']['allowpost']}-->
+<!--{template forum/forumdisplay_fastpost}-->
+<!--{/if}-->
+</div>
+
+<!--{hook/forumdisplay_bottom}-->
+<!--[diy=diyforumdisplaybottom]--><div id="diyforumdisplaybottom" class="area"></div><!--[/diy]--></div><!--{if $_G['forum']['allowside']}-->
+<div class="sd">
+	<!--{if !$subforumonly}-->
+	<div class="bm">
+		<div class="bm_h">
+			<h2>{lang their}: <!--{eval echo cutstr($_G['cache']['forums'][$_G['forum']['fup']]['name'], 22, '')}--></h2>
+		</div>
+		<div class="bm_c">
+			<ul class="xl xl2 cl">
+				<!--{loop $_G['cache']['forums'] $bforum}-->
+				<!--{if $bforum['fup'] == $_G['forum']['fup'] && $bforum['status']}-->
+				<li><a href="forum.php?mod=forumdisplay&fid=$bforum[fid]">$bforum['name']</a></li>
+				<!--{/if}-->
+				<!--{/loop}-->
+			</ul>
+		</div>
+	</div>
+	<!--{if $recommendgroups}-->
+	<div class="bm">
+		<div class="bm_h cl">
+			<h2>{lang recommended_groups}</h2>
+		</div>
+		<div class="bm_c cl">
+			<ul class="ml mls cl">
+				<!--{loop $recommendgroups $key $group}-->
+				<li>
+					<a href="forum.php?mod=group&fid=$group[fid]" title="$group[name]" target="_blank" class="avt"><img src="$group[icon]" alt="$group[name]"></a>
+					<p><a href="forum.php?mod=group&fid=$group[fid]" target="_blank">$group[name]</a></p>
+				</li>
+				<!--{/loop}-->
+			</ul>
+		</div>
+	</div>
+	<!--{/if}-->
+	<!--{if !($_G['forum']['simple'] & 1) && $_G[setting][whosonlinestatus]}-->
+	<div class="bm">
+		<!--{if $detailstatus}-->
+		<div class="bm_h cl">
+			<span class="o y"><a href="forum.php?mod=forumdisplay&fid=$_G[fid]&page=$page&showoldetails=no#online"><img src="{IMGDIR}/collapsed_no.gif" alt="" /></a></span>
+			<h2>{lang forum_activeusers} ($onlinenum)</h2>
+		</div>
+		<div class="bm_c">
+			<ul class="ml mls cl">
+			<!--{loop $whosonline $key $online}-->
+				<li><a href="home.php?mod=space&uid=$online[uid]" class="avt"><!--{avatar($online[uid],small)}--></a><!--{if $online['uid']}--><p><a href="home.php?mod=space&uid=$online[uid]">$online[username]</a></p><!--{else}--><p>$online[username]</p><!--{/if}--><span>$online[lastactivity]{LF}</span></li>
+			<!--{/loop}-->
+			</ul>
+		</div>
+		<!--{else}-->
+		<div class="bm_h cl">
+			<span class="o y"><a href="forum.php?mod=forumdisplay&fid=$_G[fid]&page=$page&showoldetails=yes#online" class="nobdr"><img src="{IMGDIR}/collapsed_yes.gif" alt="" /></a></span>
+			<h2>{lang forum_activeusers} ($onlinenum)</h2>
+		</div>
+		<!--{/if}-->
+	</div>
+	<!--{/if}-->
+<!--{/if}-->
+	<div class="drag">
+		<!--[diy=diy2]--><div id="diy2" class="area"></div><!--[/diy]-->
+	</div>
+	<!--{hook/forumdisplay_side_bottom}-->
+</div>
+<!--{/if}-->
+</div>
+	<!--{if $_G['group']['allowpost'] && ($_G['group']['allowposttrade'] || $_G['group']['allowpostpoll'] || $_G['group']['allowpostreward'] || $_G['group']['allowpostactivity'] || $_G['group']['allowpostdebate'] || $_G['setting']['threadplugins'] || $_G['forum']['threadsorts'])}-->
+	<ul class="p_pop" id="newspecial_menu" style="display: none">
+	<!--{if !$_G['forum']['allowspecialonly']}-->
+		<li><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]">{lang post_newthread}</a></li>
+	<!--{/if}-->
+	<!--{if $_G['group']['allowpostpoll']}--><li class="poll"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=1">{lang post_newthreadpoll}</a></li><!--{/if}-->
+	<!--{if $_G['group']['allowpostreward']}--><li class="reward"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=3">{lang post_newthreadreward}</a></li><!--{/if}-->
+	<!--{if $_G['group']['allowpostdebate']}--><li class="debate"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=5">{lang post_newthreaddebate}</a></li><!--{/if}-->
+	<!--{if $_G['group']['allowpostactivity']}--><li class="activity"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=4">{lang post_newthreadactivity}</a></li><!--{/if}-->
+	<!--{if $_G['group']['allowposttrade']}--><li class="trade"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=2">{lang post_newthreadtrade}</a></li><!--{/if}-->
+	<!--{if $_G['setting']['threadplugins']}-->
+		<!--{loop $_G['forum']['threadplugin'] $tpid}-->
+		<!--{if array_key_exists($tpid, $_G['setting']['threadplugins']) && @in_array($tpid, $_G['group']['allowthreadplugin'])}-->
+		<li class="popupmenu_option"{if $_G['setting']['threadplugins'][$tpid][icon]} style="background-image:url($_G[setting][threadplugins][$tpid][icon])"{/if}><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&specialextra=$tpid">{$_G[setting][threadplugins][$tpid][name]}</a></li>
+		<!--{/if}-->
+		<!--{/loop}-->
+	<!--{/if}-->
+	<!--{if $_G['forum']['threadsorts'] && !$_G['forum']['allowspecialonly']}-->
+		<!--{loop $_G['forum']['threadsorts']['types'] $id $threadsorts}-->
+		<!--{if $_G['forum']['threadsorts']['show'][$id]}-->
+		<li class="popupmenu_option"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&extra=$extra&sortid=$id">$threadsorts</a></li>
+		<!--{/if}-->
+		<!--{/loop}-->
+	<!--{/if}-->
+	</ul>
+	<!--{/if}-->
+	<!--{if $_G['setting']['visitedforums'] || $oldthreads}-->
+	<div id="visitedforums_menu" class="{if $oldthreads}visited_w {/if}p_pop blk cl" style="display: none;">
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<!--{if $_G['setting']['visitedforums']}-->
+				<td id="v_forums"><h3 class="mbn pbn bbda xg1">{lang viewed_forums}</h3><ul>$_G['setting']['visitedforums']</ul></td>
+				<!--{/if}-->
+				<!--{if $oldthreads}-->
+				<td id="v_threads"><h3 class="mbn pbn bbda xg1">{lang viewd_threads}</h3>
+					<ul class="xl">
+					<!--{loop $oldthreads $oldtid $oldsubject}-->
+						<li><a href="forum.php?mod=viewthread&tid=$oldtid">$oldsubject</a></li>
+					<!--{/loop}-->
+					</ul>
+				</td>
+				<!--{/if}-->
+			</tr>
+		</table>
+	</div>
+	<!--{/if}-->
+	<!--{if $_G['setting']['forumjump']}--><div class="p_pop" id="fjump_menu" style="display: none">	$forummenu	</div><!--{/if}-->
+	<!--{if $_G['setting']['threadmaxpages'] > 1 && $page}--><script type="text/javascript">document.onkeyup = function(e){keyPageScroll(e, <!--{if $page > 1}-->1<!--{else}-->0<!--{/if}-->, <!--{if $page < $_G['setting']['threadmaxpages'] && $page < $_G['page_next']}-->1<!--{else}-->0<!--{/if}-->, 'forum.php?mod=forumdisplay&fid={$_G[fid]}&filter={$filter}&orderby={$_G[gp_orderby]}{$forumdisplayadd[page]}&{$multipage_archive}', $page);}</script><!--{/if}-->
+	<div class="wp mtn">
+	<!--[diy=diy3]--><div id="diy3" class="area"></div><!--[/diy]-->
+	</div>
+<!-- Baidu Button BEGIN -->
+<script type="text/javascript" id="bdshare_js" data="type=button&amp;mini=1&amp;uid=39357" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+</script>
+<!-- Baidu Button END -->
+	<!--{if $fiter_string}-->
+<script type="text/javascript">
+var hidden_id = new Array();
+var display_or_not=1;
+var tipstring = "个新人报道未显示";
+window.onload=checkcookie();
+function checkcookie(){
+	if(getcookie('hidden_fiter')==1){
+		changestyle(0);
+	}else{
+		fiter_forum();
+	}
+}
+function changestyle(stated){
+    if(stated == 1){
+        document.getElementById("fiter_forum").style.backgroundPosition = " 0 2px";
+        display_or_not = 0;
+    }else{
+        document.getElementById("fiter_forum").style.backgroundPosition = "0 -37px";
+        display_or_not = 1;
+    }
+}
+function getClassName(n) {
+    var arr = document.getElementById("moderate").getElementsByTagName("a");
+	var retarr = new Array();
+	var num=0;
+	for(i=0;i<arr.length;i++){
+		var fff = arr.item(i);
+		if(fff.className==n){
+			retarr[num]=fff;
+			num++;
+		}
+	}
+	return retarr;
+}
+function display_fiternum(){
+    if(document.getElementById("fiter_forum").getAttribute("title")!="" && document.getElementById("fiter_forum").getAttribute("title")!="0"+tipstring){
+        
+        }
+    else{
+  		document.getElementById("fiter_forum").removeAttribute("title");
+        }
+}
+function fiter_forum(){
+	if(display_or_not == 1){
+		var classname = getClassName("xst");
+		var len = classname.length;
+		var fiterstr = [{$fiter_string}];
+		var hidden_len = 0;
+		for(i={$startnum};i<len;i++){
+			var thissubject = classname[i];
+			for(j=0;j<fiterstr.length;j++){
+				if(thissubject.innerHTML.indexOf(fiterstr[j])!=-1){
+				thissubject.parentNode.parentNode.parentNode.setAttribute("style","display:none");
+				hidden_id[hidden_len] = thissubject.parentNode.parentNode.parentNode
+				hidden_len++;
+				j=fiterstr.length;
+				}
+			}
+		}
+        changestyle(1);
+		document.getElementById("fiter_forum").setAttribute("title",hidden_id.length+tipstring);
+        display_fiternum();
+		setcookie('hidden_fiter', 0, 86400);
+	}
+}
+
+function get_display_len(){
+	var num=0;
+	for(i=0;i<hidden_id.length;i++){
+		var hid_or_vi = hidden_id[i];
+		if(hid_or_vi.getAttribute("style")=="display:none"){
+			num++;
+		}
+	}
+	return num;	
+}
+function display_hidden(){
+	var h_len = hidden_id.length;
+	if(h_len>0){
+		for(i=0;i<h_len;i++){
+			var hid_or_vi = hidden_id[i];
+				hid_or_vi.setAttribute("style","display:table-row-group")
+		}
+		hidden_id=[];
+		document.getElementById("fiter_forum").setAttribute("title",get_display_len()+tipstring);
+        display_fiternum();
+		setcookie('hidden_fiter', 1, 86400);
+        changestyle(0);
+	}else{
+		fiter_forum();
+	}
+	
+}
+</script>
+
+
+
+
+<!--{if ($_G['fid']==53||$_G['fid']==169)}-->
+<div>
+	<div style="text-align:center;"><iframe src="/plugin.php?id=tuaninvoke:goods" frameBorder=0 name="iframe"  scrolling="no" height="260" width="100%" marginheight="0" marginwidth="0"></iframe></div>	
+</div>
+<!--{/if}-->
+
+
+
+<!--{/if}--><!--{subtemplate common/footer}-->

@@ -1,0 +1,18 @@
+<style>
+#contents{margin:20px 10px;}
+#contents p{margin:10px 0}
+</style>
+
+<div id="contents">
+    <div id="state">
+        <!--{if $message}-->
+            <p>redis状态:连接{$message[state]}</p>
+            <!--{if $message[viewthread_number]}--><hr /><p>帖子点击量缓存: {$message[viewthread_number]} 个<span style="margin-left: 15px;">上次入库缓存：{$message['viewthread_end']}</span></p><!--{/if}-->
+            <!--{if $message[viewthread_doing]}--><p>帖子入库中缓存: {$message[viewthread_doing]} 个 <!--{if $message[viewthread_if]==-1}--><a id="sql_viewthread" class="ajaxdo" href="#" style="color: red;">纠错(入库)</a><!--{if $message[viewthread_bak]}--><span style="margin: 0 10px;color:blue;" title="{eval print_r($message[viewthread_bak])}">{eval echo count($message[viewthread_bak])} 个备份key</span><a id="cache_viewthread" class="ajaxdo" href="#" style="color: red;">纠错(入缓存)</a><!--{/if}--><!--{/if}--></p><!--{/if}-->
+            <!--{if $message[attachment_number]}--><hr /><p>附件点击量缓存: {$message[attachment_number]} 个<span style="margin-left: 15px;">上次入库缓存：{$message['attachment_end']}</span></p><!--{/if}-->
+            <!--{if $message[attachment_doing]}--><p>附件入库中缓存: {$message[attachment_doing]} 个 <!--{if $message[attachment_if]==-1}--><a id="sql_attachment" class="ajaxdo" href="#" style="color: red;">纠错(入库)</a><!--{if $message[attachment_bak]}--><span style="margin: 0 10px;color:blue;" title="{eval print_r($message[attachment_bak])}">{eval echo count($message[attachment_bak])} 个备份key</span><a id="cache_attachment" class="ajaxdo" href="#" style="color: red;">纠错(入缓存)</a><!--{/if}--><!--{/if}--></p><!--{/if}-->
+            <!--{if $message[inqueue] > 0}--><p>入库队列长度: <b>{$message['inqueue']}</b></p><!--{/if}-->
+            <p id="tips"></p>
+        <!--{/if}-->
+    </div>
+</div>

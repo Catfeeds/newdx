@@ -1,0 +1,515 @@
+<!--{subtemplate common/header_8264_new}-->
+<!--{subtemplate home/space_header_uc}-->
+<!--main-content-->
+<div class="main-content layout-page">
+	<div class="layout-app">
+		{if $space[self]}
+		<div class="col-main">
+		<div class="main-wrap">		
+		<div class="ui-block ui-block-content">
+			<!--动态头部-->
+			<div class="dync-tit-bar">
+				<span class="static-tit">驴友动态</span>
+				<div class="serc-wrap">
+					<a href="javascript:void(0);" class="atten-link">{if $groups[$gid]}$groups[$gid]{else}全部关注{/if}<i class="icon-t icon-trai-f"></i></a>
+				</div>
+				<div class="atten-list-wrap">
+					<ul class="atten-list">
+						<li {if $gid == -1}class="active"{/if}>
+							<a href="home.php?mod=space&uid=$space[uid]{if $_G['adminid'] == 1}&view=admin{/if}">全部关注</a>
+						</li>
+						{loop $groups $k $v}
+						<li {if $gid == $k}class="active"{/if}>
+							<a href="home.php?mod=space&uid={$space[uid]}&do=home&ismy=1&gid={$k}">{$v}</a>
+						</li>
+						{/loop}
+					</ul>
+				</div>
+			</div>
+			<script type="text/javascript">
+			jQuery(function(){
+				function stopPropagation(e) {
+	                if (e.stopPropagation){
+	                    e.stopPropagation();
+	                }else{
+	                    e.cancelBubble = true;
+		            }
+		        }
+				jQuery('.atten-link').on('click', function() {
+					jQuery('.atten-list-wrap').toggle();
+				});
+				jQuery(document).on('click', function() {
+					jQuery('.atten-list-wrap').hide();
+				});
+				jQuery('.atten-list-wrap, .atten-link').bind('click',function(e){
+					stopPropagation(e);
+				});
+			});
+			</script>
+			<!--动态头部 end-->
+			<div class="page-container-dync" {if empty($list)}style="padding:0;"{/if}>
+				<div class="list-area">
+				<!--列表-->
+				{if $list}
+					<ul>
+					{loop $list $v}				
+						<li class="dync-list-row">
+							<div class="dync-avatar">
+								<a href="home.php?mod=space&uid=$v[uid]" target="_blank" class="avatar">{avatar($v[uid],small)}</a>
+								{if $v['dateline']==0}
+								<span class="page-container-reded"><span class="reded-content"><a href="javascript:void(0);" class="focus-btn ajax_follow_me" uid="{$v['uid']}">关注</a></span></span>
+								{/if}
+							</div>
+							<div class="dync-content">
+								<div class="hd">
+									<div class="dync-head">
+										<a href="home.php?mod=space&uid=$v[uid]" class="c-tx5" title="$v[username]">$v[username]</a>
+										<span>{$v['subject']}</span>
+										<span class="puplh-time">{if $v['dateline'] > 0}{echo date('Y-m-d', $v[dateline])}{else}来自推荐关注{/if}</span>
+									</div>
+								</div>
+								<div class="bd">
+									<div class="dync-info">
+										{if $v['type'] == 4}
+											<a href="home.php?mod=space&uid={$v['uid']}&do=blog&id={$v['id']}" target="_blank">{$v[message]['title']}</a>
+											{if $v[message]['content'] }<p>{$v[message]['content']}</p>{/if}
+										{elseif $v['type'] == 5}
+											<a href="home.php?mod=space&uid={$v[uid]}&do=album&id={$v['id']}" target="_blank">{$v[message]['albumname']}</a>
+											<div class="dync-album-list">
+												{loop $v[message]['picture'] $picid $img_src}
+												<img src="{$img_src}" alt="" style="width:auto;height:auto;display:none;" class="realimg"/>
+												<a href="home.php?mod=space&uid={$v[uid]}&do=album&picid={$picid}" target="_blank" class="hassrc" style="display:none;"><img src="{$img_src}" alt="" /></a>												
+												<a href="javascript:void(0);" class="img-src-null" style="display:none;"></a>
+												{/loop}
+												<span class="photo-stat">共<em>{$v[message]['pic_count']}</em>张</span>
+											</div>
+										{elseif $v['type'] == 3}
+											<a href="dianping.php?mod={$dpModList[$v['fid']]['mname']}&act=showview&tid={$v['id']}" target="_blank">{$v[message]['subject']}</a>
+											<div class="rating-level big-rating dync-rating">
+												<span class="score-value score-value-{echo intval($v[message]['starnum'])*2;}">
+													<em></em>
+												</span>
+												<strong>({$dp_star[$dpModList[$v['fid']]['mname']][$v[message]['starnum']]})</strong>
+											</div>
+										{elseif $v['type'] == 1}	
+											<a href="forum.php?mod=viewthread&tid=$v[id]" target="_blank">{$v[message]['subject']}</a>
+											{if $v[message][message]}<p>{$v[message][message]}</p>{/if}
+										{elseif $v['type'] == 6 || $v['type'] == 7}
+											<a href="forum.php?mod=viewthread&tid=$v[id]" target="_blank" class="dync-tit">{$v[message]['subject']}</a>
+											{eval $v[message]['expiration'] = max($v[message]['expiration'], 0);}
+											{eval $activityclose = $v[message]['expiration'] ? ($v[message]['expiration'] > $_G[timestamp] ? 0 : 1) : 0;}
+											{if !$activityclose}
+											<p><a href="forum.php?mod=viewthread&tid=$v[id]" target="_blank" class="part-in">我也要参加 >></a></p>
+											{/if}											
+										{/if}
+									</div>
+								</div>
+							</div>
+						</li>
+					{/loop}
+					</ul>				
+				{else}
+					<div class="page-container-empty">
+						<div class="empty-tips">
+							<p><i class="icon-warn"></i>没有可浏览的动态</p>
+						</div>
+					</div>
+				{/if}
+				<!--列表 end-->
+				</div>
+			</div>
+			{if $recommend_list}
+			<div class="page-container-reded mod-wrap">
+				<div class="reded-tit">
+					<span class="icon-reded-m">关注推荐</span>
+					{if $recommend_pages > 1}
+					<div class="scroll-dot-lists">
+						{eval for($i=1; $i<=$recommend_pages; $i++) :}
+						<span {if $i==1}class="curr"{/if} title="第{$i}页" id="recommend_page_{$i}"></span>
+						{eval endfor;}
+					</div>
+					{/if}
+				</div>
+				<div class="reded-bd">
+					<ul class="reded-friend-list">
+						{eval $recommend_user_seq = 1;}
+						{loop $recommend_list $user}
+						<li {if $recommend_user_seq>3}style="display:none;"{/if}>
+							<div class="reded-avatar">
+								<a class="avatar" href="home.php?mod=space&uid={$user[uid]}" target="_blank">{avatar($user[uid],small)}</a>
+							</div>
+							<div class="reded-content">
+								<a title="{$user['username']}" class="usr-name" href="home.php?mod=space&uid={$user[uid]}">{$user['username']}</a>
+								<span class="t">{$groups_statistic[$user['uid']]}</span>
+								<span class="post-num">发帖：{$threads_statistic[$user['uid']]}</span>
+								<a href="javascript:void(0);" class="focus-btn ajax_follow_me" uid="{$user['uid']}">关注</a>
+							</div>
+						</li>
+						{eval $recommend_user_seq++;}
+						{/loop}
+					</ul>
+				</div>
+			</div>
+			{/if}
+		</div>
+		</div>					
+		<!--分页-->
+		{if $multi}<div class="cust-page-list">{$multi}</div>{/if}					
+		<!--分页 end-->	
+		</div>
+		{else}
+		<div class="col-main">
+		<div class="main-wrap">		
+		<div class="ui-block ui-block-content">
+			{if !empty($list)}	
+			<div class="dync-tit-bar">
+				<span class="static-tit">$space[username]的动态</span>
+			</div>
+			<div class="page-container-dynci">
+			<!--列表-->			
+			<div class="list-area">
+			<ul>		
+				{loop $list $k $v}
+				{eval 
+					$v[message][subject] 	= $v[message][subject] ? cutstr($v[message][subject], 64, '...') : '';
+					$v[message][title]   	= $v[message][title] ? cutstr($v[message][title], 64, '...') : '';
+					$v[message][albumname]  = $v[message][albumname] ? cutstr($v[message][albumname], 64, '...') : '';
+				}
+				{if $v[typeen] == 'post'}				
+				<li class="dync-list-row">
+					<div class="dynci-content">
+						<div class="hd">
+							<div class="dync-head">
+								<span class="c-label c-bx2">帖子</span>
+								<a href="forum.php?mod=viewthread&tid=$v[tid]" class="c-tx" title="{$v[subject]}" target="_blank">{$v[message][subject]}</a>
+								<span class="post-cate" title="$forums[$v[fid]][name]">$forums[$v[fid]][name]</span>
+								{if $v['stamp'] == 0 && $v['rate'] > 0}<span class="icon-m icon-coin-m" title="加币"></span>{/if}
+							</div>
+						</div>
+						<div class="bd">
+							<div class="dync-info" {if $v[message][message]}style="margin-top:10px;"{/if}>
+								{if $v[message][message]}
+								<p {if $v[message][imgList]}style="line-height:1.8;margin-bottom:5px;"{/if}>$v[message][message]</p>
+								{/if}				
+								{if $v[message][imgList]}		
+								{loop $v[message][imgList] $src}
+								<img src="{$src}" alt="" style="width:auto;height:auto;display:none;">
+								{/loop}
+								{/if}
+							</div>
+						</div>
+						<div class="ft dyi-ft">
+							<span class="puplh-time">{echo date('Y-m-d', $v[dateline])}</span>
+						</div>
+					</div>
+				</li>
+				{elseif $v[typeen] == 'dianping'}
+				<li class="dync-list-row">
+					<div class="dynci-content">
+						<div class="hd">
+							<div class="dync-head">
+								<span class="c-label c-bx3">点评</span>								
+								<a href="{$_G['config']['web']['portal']}$dpModList[$v[fid]][uname]{if $dpModList[$v[fid]][mname] == 'climb' || $dpModList[$v[fid]][mname] == 'diving' || $dpModList[$v[fid]][mname] == 'fishing'}/{$v[tid]}.html{elseif $dpModList[$v[fid]][mname] == 'equipment'}-{$v[tid]}-1.html{else}-{$v[tid]}{/if}" class="c-tx7 f-sz" title="{$v[message][subject]}" target="_blank">
+									<span class="c-tx8 s-mr8">点评</span>{$v[message][subject]}
+								</a>
+								<div class="rating-level small-rating dync-rating" style="width:140px;display:block;float:left;margin-left:10px;margin-top:0;">
+									<span class="score-value score-value-{echo intval($v[message][starnum])*2;}">
+										<em></em>
+									</span>
+									<strong>({$dpModList[$v[fid]][star][$v[message][starnum]]})</strong>
+								</div>
+								{if $v['rate']}<span class="icon-m icon-coin-m" title="8264币"></span>{/if}
+							</div>
+						</div>
+						{eval unset($v[message][starnum], $v[message][imagelist], $v[message][subject], $v[message][albumname], $v[message][title], $v[message][message]);}
+						<div class="bd">
+							<div class="dync-info">
+								<div class="details-review-info showheight" style="height:90px;overflow:hidden;">
+									{loop $v[message] $key $val}
+									<p><b>{$key}：</b>$val</p>
+									{/loop}
+									<span style="display:none;" class="span_height"></span>
+								</div>
+								<a class="j-rw-toggle" href="javascript:void(0)"><span>展开</span><i class="icon-m icon-unfold-m"></i></a>
+								<!--计算高度所用-->
+								<div class="txt-details-info realheight" style="display:none;">
+									{loop $v[message] $key $val}
+									<p><b>{$key}：</b>{$val}</p>
+									{/loop}
+								</div>
+								<!--计算高度所用 end-->
+							</div>
+						</div>						
+						<div class="ft dyi-ft">
+							<span class="puplh-time">{echo date('Y-m-d', $v[dateline])}</span>
+						</div>
+					</div>
+				</li>
+				{elseif $v[typeen] == 'blog'}
+				<li class="dync-list-row">
+					<div class="dynci-content">
+						<div class="hd">
+							<div class="dync-head">
+								<span class="c-label c-bx5">日志</span>
+								<a href="home.php?mod=space&uid={$v['uid']}&do=blog&id={$v['id']}" class="c-tx" title="{$v[message]['title']}" target="_blank">{$v[message]['title']}</a>
+								{if $v[message][pic]}<span class="icon-m icon-img-m" title="日志中包含图片"></span>{/if}								
+							</div>
+						</div>
+						<div class="bd">
+							<div class="dync-info">
+								{if $v[message]['content'] }<p>{$v[message]['content']}</p>{/if}
+							</div>
+						</div>
+						<div class="ft dyi-ft">
+							<span class="puplh-time">{echo date('Y-m-d', $v[dateline])}</span>
+						</div>
+					</div>
+				</li>
+				{elseif $v[typeen] == 'album'}
+				<li class="dync-list-row">
+					<div class="dynci-content">
+						<div class="hd">
+							<div class="dync-head">
+								<span class="c-label c-bx1">相册</span>
+								<a href="home.php?mod=space&uid={$v[uid]}&do=album&id={$v['id']}" class="c-tx" title="{$v[message]['albumname']}" target="_blank">{$v[message]['albumname']}</a>
+							</div>
+						</div>
+						<div class="bd">
+							<div class="dync-info">
+								<div class="dync-album-list">
+									{loop $v[message]['picture'] $picid $img_src}
+									<img src="{$img_src}" alt="" style="width:auto;height:auto;display:none;" class="realimg"/>
+									<a href="home.php?mod=space&uid={$v[uid]}&do=album&picid={$picid}" target="_blank" class="hassrc" style="display:none;"><img src="{$img_src}" alt="" /></a>												
+									<a href="javascript:void(0);" class="img-src-null" style="display:none;background-color:#e7e7e7;"></a>
+									{/loop}
+									<span class="photo-stat">共<em>{$v[message]['pic_count']}</em>张</span>
+								</div>
+							</div>
+						</div>
+						<div class="ft dyi-ft">
+							<span class="puplh-time">{echo date('Y-m-d', $v[dateline])}</span>
+						</div>
+					</div>
+				</li>
+				{elseif $v[typeen] == 'activity'}							
+				<li class="dync-list-row">
+					<div class="dynci-content">
+						<div class="hd">
+							<div class="dync-head">
+								<span class="c-label c-bx4">活动</span>
+								<a href="forum.php?mod=viewthread&tid=$v[id]" class="c-tx" title="{$v[message]['subject']}" target="_blank"><span class="c-tx8 s-mr8">{if $v[type] == 6}发布{else}参与{/if}</span>{$v[message]['subject']}</a>
+								{eval $v[message]['expiration'] = max($v[message]['expiration'], 0);}
+								{eval $activityclose = $v[message]['expiration'] ? ($v[message]['expiration'] > $_G[timestamp] ? 0 : 1) : 0;}								
+								{if !$activityclose}
+								<a href="forum.php?mod=viewthread&tid=$v[id]" class="part-in" target="_blank">我也要参加 >></a>
+								{/if}
+							</div>
+						</div>
+						<div class="bd">
+							<div class="dync-info">
+								{eval $starttimefrom = date('Y-m-d', $v[message][starttimefrom]);}
+								{if $v[message][place]}<p>活动地点：{$v[message][place]}</p>{/if}
+								{if $v[message][starttimefrom]}<p>活动时间：{if $v[message][starttimeto]}{$starttimefrom} 至 {eval echo date('Y-m-d', $v[message][starttimeto])} 商定{else}{$starttimefrom}{/if}</p>{/if}
+							</div>
+						</div>
+						<div class="ft dyi-ft">
+							<span class="puplh-time">{echo date('Y-m-d', $v[dateline])}</span>
+						</div>
+					</div>
+				</li>
+				{/if}
+				{/loop}	
+			</ul>
+			</div>			
+			<!--列表 end-->
+			</div>
+			{else}
+				<div class="page-container-empty">
+					<div class="empty-tips">
+						<p><i class="icon-warn"></i>没有可浏览的内容</p>
+					</div>
+				</div>
+			{/if}
+		</div>
+		</div>		
+		<!--分页-->
+		{if $multi}<div class="cust-page-list">{$multi}</div>{/if}					
+		<!--分页 end-->	
+		</div>	
+		{/if}
+		<!--右边-->
+		<div class="col-sub">			
+			<!--个人资料-->
+			<div class="icenter-right-mod dashboard-wrap">
+				<div class="dashboard-profile-card">
+					<ul>
+						<li class="name-box">
+							<span>{$space[username]}</span>
+							<span class="n-id">ID {$space[uid]}</span>
+						</li>
+						<li class="other-box">
+							<div class="ic-info-left">
+								<i class="icon-ol icon-visit-ol"></i>
+								访问量
+							</div>
+							<div class="ic-info-main">
+								<span class="t">{$space[views]}</span>
+							</div>
+						</li>
+						<li class="other-box">
+							<div class="ic-info-left">
+								<i class="icon-ol icon-level-ol"></i>
+								等级
+							</div>
+							<div class="ic-info-main">
+								<a href="forum.php?mod=viewthread&tid=669908" class="t a" target="_blank">{$space[group][grouptitle]}</a>
+							</div>
+						</li>
+						<li class="other-box">
+							<div class="ic-info-left">
+								<i class="icon-ol icon-score-ol"></i>
+								积分
+							</div>
+							<div class="ic-info-main">
+								<a href="home.php?mod=spacecp&ac=credit&uid={$space[uid]}&op=base" class="t a">{$space[credits]}</a>
+							</div>
+						</li>
+						<li class="other-box">
+							<div class="ic-info-left">
+								<i class="icon-ol icon-corn2-ol"></i>
+								驴币
+							</div>
+							<div class="ic-info-main">
+								<a href="home.php?mod=spacecp&ac=credit&uid={$space[uid]}&op=base" class="t a">{$space[extcredits2]}</a>
+							</div>
+						</li>
+						<li class="other-box">
+							<div class="ic-info-left">
+								<i class="icon-ol icon-corn1-ol"></i>
+								8264币
+							</div>
+							<div class="ic-info-main">
+								<a href="home.php?mod=spacecp&ac=credit&uid={$space[uid]}&op=base" class="t a" target="_blank">{$space[extcredits5]}</a>
+							</div>
+						</li>
+						<!--<li class="other-box">
+							<div class="ic-info-left">
+								<i class="icon-ol icon-addr-ol"></i>
+								现居地
+							</div>
+							<div class="ic-info-main">
+								<span class="t">{if $profiles[residecity][value]}$profiles[residecity][value]{else}未填写{/if}</span>
+							</div>
+						</li>
+						<li class="other-box">
+							<div class="ic-info-left">
+								<i class="icon-ol icon-medal-ol"></i>
+								勋章
+							</div>
+							<div class="ic-info-main">
+								<span class="t">{if $space[medals][0]}$space[medals][0][name]{else}目前没有{/if}</span>								
+							</div>
+						</li>-->
+					</ul>
+					{if $space[self]}
+					<a href="{$_G[config][web][home]}home-setting.html" class="read-more">完善资料</a>
+					{/if}
+				</div>
+			</div>
+			<!--个人资料 end-->
+			<div style=" margin-top:15px;">
+				<!--{ad/custom_436}--> 
+			</div>
+			<style type="text/css">
+				.qr-code{
+					background-color: #fff;
+					margin-top: 15px;
+					padding: 15px;
+				}
+			</style> 
+			<div class="qr-code">
+				<a href="http://app.zaiwai.com" target="_blank">
+				    <img src="http://static.8264.com/static/images/icon/QR1cd-XvTXX-175x70.jpg">
+				</a>
+			</div>
+		</div>
+		<!--右边 end-->
+	</div>
+</div>
+<!--main-content end-->
+
+<script type="text/javascript">
+jQuery(function(){
+	realimghandle = setInterval(function(){		
+		if (jQuery('.realimg').length > 0) {
+			//处理图片图片无正常显示时，显示默认图
+			jQuery('.realimg').each(function(){
+				var thisobj    = jQuery(this);
+				var thishas    = jQuery(this).next();
+				var thisno     = thishas.next();							
+				var thiswidth  = thisobj.width();							
+				var thisheight = thisobj.height();	
+				if (thiswidth == 120 && thisheight == 120) {
+					thishas.remove();
+					thisno.show();
+				} else {
+					thishas.show();
+					thisno.remove();
+				}
+				thisobj.remove();
+			});	
+		} else {
+			clearInterval(realimghandle);
+		}
+	},100);	
+});
+</script>	
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	var users = jQuery("ul.reded-friend-list li");
+	var users_count = users.length;
+	jQuery("span[id^=recommend_page_]").click(function() {
+		jQuery(this).addClass("curr").siblings("span").removeClass("curr");
+		var page = jQuery(this).attr("id").replace("recommend_page_", "");
+		var show_end = page * 3 - 1;
+		var show_start = show_end - 2;
+		for(var i=0; i<users_count; i++) {
+			if(i>=show_start && i<=show_end) {
+				jQuery(users[i]).show();
+			}
+			else {
+				jQuery(users[i]).hide();
+			}
+		}
+	});
+
+	var follow_url = "home.php?mod=spacecp&ac=friend&op=add&uid=%uid&is_uc=1";
+	jQuery("a.ajax_follow_me").click(function() {
+		var uid = jQuery(this).attr("uid");
+		if(! uid) return false;
+		var id = "ajax_follow_me_" + uid;
+		var href = follow_url.replace(/%uid/g, uid).replace(/&amp;/g, "&");
+		showWindow(id, href, 'get', 0);
+	});
+});
+</script>
+{if !$space[self]}
+<script type="text/javascript">
+jQuery(function(){
+	//处理图片图片无正常显示时，显示默认图
+	jQuery('.list-area img').each(function(){
+		var thisobj    = jQuery(this);						
+		var thiswidth  = thisobj.width();							
+		var thisheight = thisobj.height();
+		if ((thiswidth == 120 && thisheight == 120)|| thiswidth <= 30) {
+			thisobj.remove();
+		} else {
+			thisobj.css({'width':'135px','height':'90px'}).show();
+		}
+	});
+});
+</script>
+{/if}
+<script type="text/javascript" src="http://static.8264.com/static/js/home_dianping.js?{VERHASH}"></script>
+<!--{subtemplate home/space_footer_uc}-->
+<!--{subtemplate common/footer_8264_new}-->

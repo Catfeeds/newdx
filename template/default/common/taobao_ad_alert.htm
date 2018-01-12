@@ -1,0 +1,47 @@
+<!--广告开始-->
+<style type="text/css">
+.tpl-wrap{display:none;position:fixed;overflow:auto;width:100%;height:100%;top:0;bottom:0;right:0;z-index:1900}.mask{position:fixed;top:0;bottom:0;left:0;right:0;background:#000;opacity:.85;filter:alpha(opacity=85);z-index:1901}.modal-dialog{position:fixed;left:50%;top:100px;outline:0;z-index:1000001}.coupon-box{position:relative;left:-381px;width:762px;height:369px;background:url(http://static.8264.com/static/images/coupon/popbg.png) no-repeat}.modal-close{position:absolute;right:-32px;top:2px;cursor:pointer}.modal-close-x{width:22px;height:19px;background:url(http://static.8264.com/static/images/coupon/close-x.png) no-repeat}.main-left{float:left;width:236px;padding:65px 70px 0;text-align:center;color:#000}.feedback-tile{font-size:24px}.pop-logo{width:100px;height:100px;background:url(http://static.8264.com/static/images/coupon/logo-99x100.png) no-repeat;text-indent:-99em;margin:20px auto}.reward-text{text-align:center;font-size:20px}.main-right{float:right;width:385px}.product-item{width:300px;margin:32px auto 0}.item-price{margin-top:15px}.item-button{color:#fff;line-height:40px;font-size:0;margin-top:15px}.item-button a{width:144px;height:40px;font-size:16px;border-radius:20px;display:inline-block;text-align:center}.coupon-button{color:#fff;background-color:#ff512f;box-shadow:0 9px 18px rgba(198,60,33,.43)}.buy-button{color:#ff512f;background-color:#ffe0c1;margin-left:12px}
+</style>
+<div class="tpl-wrap">
+	<div class="mask"></div>
+	<div class="modal-dialog">
+		<div class="coupon-box">
+			<div class="modal-close">
+				<div class="modal-close-x" title="关闭"></div>
+			</div>
+			<div class="modal-content">
+				<div class="main-left">
+					<div class="feedback-tile">十四年内部用户回馈</div>
+					<div class="pop-logo">8264专业的户外运动综合平台</div>
+					<div class="reward-text">
+						<p>恭喜你获得<br />特价优惠券试穿T恤资格</p>
+					</div>
+				</div>
+				<div class="main-right">
+					<div class="product-item">
+						<div class="item-pic">
+							<img src="http://static.8264.com/static/images/coupon/pic.jpg" alt="">
+						</div>
+						<div class="item-price">
+							<img src="http://static.8264.com/static/images/coupon/price.jpg" alt="">
+						</div>
+						<div class="item-button">
+							<a href="http://shop.m.taobao.com/shop/coupon.htm?spm=2013.1.iteminfo.15.pL409y&seller_id=2094317517&activity_id=2832364e5af14ca984a9bfff8f06357e" class="coupon-button" target="_blank">先领券 <strong>&yen;40</strong></a>
+							<a href="{$ad_alert_buy_url}" class="buy-button" target="_blank">再购买</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		getcookie('couponAds') ? '' : $(".tpl-wrap").show();
+		$(".modal-close").click(function() {
+			setcookie("couponAds", 1, 86400);
+			$(this).parents(".tpl-wrap").hide();
+		});
+	});
+</script>
+<!--广告结束-->

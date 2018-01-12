@@ -1,0 +1,53 @@
+{subtemplate common/header_8264_new}
+<script type="text/javascript" src="http://www.8264.com/static/js/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+</script>
+<link rel="stylesheet" href="/source/plugin/whither/css/main.css?3" />
+
+<div style="padding-bottom:5px;height:35px;overflow:hidden;width:100%;">
+	<div class="z" style="line-height:30px;">
+		<!--{eval echo $forumoption_mudidi->getBreadcrumbNavByTid($tid);}--> <em>&rsaquo;</em> 相关景点
+	</div>
+</div>
+
+<div id="ct" class="ct2_a wp cl">
+	<div class="container">
+			<!--{if $scapeData}-->
+			<div class="mudidi_view_top"></div>
+			<div class="bm vw pl guide_list">
+				<div class="bm_h cl">
+					<h2>{$mudidi_data['subject']}景点大全 <span style="font-weight:normal;">(共{$count}处)</span></h2>
+				</div>
+				<div class="bm_c">
+					<!--{loop $scapeData $scapeid $scape}-->
+					<div class="row">
+						<div class="detail">
+							<h5>
+								<a href="/thread-{$scape['tid']}-1-1.html">$scape['subject']</a>
+							</h5>
+							<div class="content">
+								<!--{eval $scape['message'] = messagecutstr($scape['message'], 200);}-->
+								<!--{eval $scape['message'] = str_replace('　', '', $scape['message']);}-->
+								<!--{eval echo $scape['message'];}-->
+							</div>
+						</div>
+					</div>
+					<!--{/loop}-->
+					<div class="pagebar">
+					<!--{eval $pageMulti = multi($count, $ppp, $page, "/whither-scapelist-".$tid."-1.html");}-->
+					<!--{eval $pageMulti = preg_replace('/1\.html\?page=(\d+)/', '$1.html', $pageMulti);}-->
+					$pageMulti
+					</div>
+				</div>
+			</div>
+			<!--{/if}-->
+	</div>
+
+	<!--{eval include DISCUZ_ROOT.'./source/plugin/whither/template/_sidebar.php';}-->
+</div>
+<div style="display:none;">
+	<script src="http://s84.cnzz.com/stat.php?id=3496107&web_id=3496107&show=pic1" language="JavaScript"></script>
+</div>
+
+{subtemplate common/footer_8264_new}

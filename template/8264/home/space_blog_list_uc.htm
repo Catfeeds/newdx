@@ -1,0 +1,136 @@
+{eval
+	$_G[home_tpl_spacemenus][] = "<a href=\"home.php?mod=space&uid=$space[uid]&do=blog&view=me\">{lang they_blog}</a>";
+	$friendsname = array(1 => '{lang friendname_1}',2 => '{lang friendname_2}',3 => '{lang friendname_3}',4 => '{lang friendname_4}');
+}
+<!--{subtemplate common/header_8264_new}-->
+<!--{subtemplate home/space_header_uc}-->
+<!--main-content-->	
+<div class="main-content layout-page">
+	<div class="layout-app">
+		<div class="col-main">
+			<div class="main-wrap">
+				{if $list}
+				<div class="ui-block ui-block-title mod-wrap">
+					<div class="ui-title">
+						<h3>{if $space[self]}我{else}$space[username]{/if}的日志<span class="number">$allcount</span></h3>
+						{if $space[self]}
+						<a href="home.php?mod=spacecp&ac=blog" class="ui-add-link"><i class="ui-icon ui-add-icon"></i>发表日志</a>
+						{/if}
+					</div>
+				</div>
+				{/if}
+				<!--日志列表-->
+				<div class="ui-block ui-block-content">					
+					<div class="page-container-blog">
+						<div class="list-area">
+							{if $list}
+							<ul>
+								{loop $list $k $v}
+								<li class="list-row">
+									{eval $tempYear = date('Y', $v['dateU']);}
+									{if !isset($arrYear[$tempYear])}
+									<div class="blog-post-has-year">
+										<span class="post-year">{$tempYear}</span>
+									</div>
+									{eval $arrYear[$tempYear] = $tempYear;}
+									{/if}
+									<div class="blog-post-data">
+										<span class="date-month">{echo date('m月', $v['dateU'])}</span>
+										<span class="date-day">{echo date('d', $v['dateU'])}</span>
+									</div>
+									<div class="blog-content article-info">
+										<div class="hd">
+											<div class="list-tit">
+												<a href="home.php?mod=space&uid=$v[uid]&do=blog&id=$v[blogid]" class="c-tx" title="{$v[subject]}">
+													<span>$v[subject]</span>
+												</a>	
+												{if $v[pic]}
+												<span class="icon-m icon-img-m" title="日志中包含图片"></span>
+												{/if}
+											</div>
+											<div class="list-op-bar">
+												<span class="list-op-item">
+													<i class="icon-m icon-view-m"></i>
+													<em>$v[viewnum]</em>
+												</span>
+												<span class="list-op-item">
+													<i class="icon-m icon-comment-m"></i>
+													<em>$v[replynum]</em>
+												</span>
+												<span class="list-op-item">
+													<i class="icon-m icon-praise-m"></i>
+													<em>{echo $v[click3]+$v[click4];}</em>
+												</span>
+											</div>
+										</div>
+										<div class="bd">
+											<div class="txt-details-info">
+												<p>{if $v[message]}{echo cutstr($v[message], 190, '...')}{else}&nbsp;{/if}</p>
+											</div>
+										</div>
+									</div>
+								</li>
+								{/loop}
+							</ul>
+							<!--分页-->
+							{if $multi}<div class="cust-page-list">{$multi}</div>{/if}	
+							<!--分页 end-->
+							{else}
+							<div class="page-container-empty">
+								<div class="empty-tips">
+									<p><i class="icon-warn"></i>{if $space[self]}您还没有发表日志{else}没有可浏览的日志{/if}</p>									
+									{if $space[self]}<p><a class="post-btn" href="home.php?mod=spacecp&ac=blog"><i>+</i>发表日志</a></p>{/if}
+								</div>
+							</div>
+							{/if}						
+						</div>
+					</div>
+				</div>
+				<!--日志列表 end-->
+			</div>
+		</div>
+		<div class="col-sub">
+			<!--日志-->
+			<div class="category-nav-container mod-wrap">
+				<div class="category-menu-nav">
+					<ul class="menu-nav-tree">
+						<li class="menu-nav {if !is_numeric($_GET['classid'])}menu-nav-current{/if}">
+							<a href="home.php?mod=space&uid=$space[uid]&do=blog&view=me&from=space">
+								<i class="menu-nav-icon icon-all-blog"></i>
+								<em>全部日志</em>
+								<span class="number">$allcount</span>
+							</a>
+						</li>
+						{if $classnumList[0]}
+						<li class="menu-nav {if 0 == $classid && is_numeric($_GET['classid'])}menu-nav-current{/if}">
+							<a href="home.php?mod=space&uid=$space[uid]&do=blog&classid=0&view=me&from=space">
+								<i class="menu-nav-icon icon-personal-blog"></i>
+								<em>个人日志</em>
+								<span class="number">$classnumList[0]</span>
+							</a>
+						</li>
+						{/if}
+						{if $classarr}
+						{loop $classarr $k $v}
+						{if $classnumList[$k]}
+						<li class="menu-nav {if $k == $classid}menu-nav-current{/if}">
+							<a href="home.php?mod=space&uid=$space[uid]&do=blog&classid=$k&view=me&from=space">
+								<i class="menu-nav-icon icon-create-category"></i>
+								<em>$v</em>
+								<span class="number">$classnumList[$k]</span>
+							</a>
+						</li>
+						{/if}	
+						{/loop}
+						{/if}
+					</ul>
+				</div>
+			</div>			
+			<!--日志 end-->
+            <div style="padding:20px 0px 0px 0px;;"><!--{ad/custom_465}--></div>
+		</div>
+	</div>
+</div>
+<!--main-content end-->
+<!--{subtemplate home/space_footer_uc}-->
+<!--{subtemplate common/footer_8264_new}-->

@@ -1,0 +1,42 @@
+{subtemplate common/header}
+<div id="pt" class="bm cl">
+<div class="z"><a href="./" class="nvhm">$_G[setting][bbname]</a><em>&rsaquo;</em><a href="./">$_G[setting][bbname]</a> <em>&rsaquo;</em><a href="plugin.php?id=drc_qqgroup:main">{lang drc_qqgroup:plugin_name}</a> <em>&rsaquo;</em>$plugin_nav</div>
+</div>
+
+<div id="ct" class="ct2 wp cl">
+<div class="mn">
+    	<div class="bm bw0">
+            <div class="bm bw0">
+			<div class="datalist">
+			<table width="100%" border="1" bordercolor="#cccccc">
+					
+					<tr bgcolor="#F2F2F2" align="center">
+						<td height="35" width="50">{lang drc_qqgroup:ico}</td>
+						<td>{lang drc_qqgroup:name}</td>
+						<td width="100">{lang drc_qqgroup:num}</td>
+						<td width="100">{lang drc_qqgroup:creator}</td>
+						<td width="110">{lang drc_qqgroup:intro}</td>
+						<td width="90">{lang drc_qqgroup:createtime}</td>
+						<td width="100">{lang drc_qqgroup:operater}</td>
+					</tr>
+					<!--{loop $checklists $checklist}-->
+					<tr align="center">
+						<td height="35"><img src="http://face7.qun.qq.com/cgi/svr/face/getface?type=4&fid=2002&uin=$checklist[num]" height="28" /></td>
+						<td>$checklist[name]</td>
+						<td><font style="font-family:Georgia, 'Times New Roman', Times, serif;">$checklist[num]</font></td>
+						<td><font style="font-family:Georgia, 'Times New Roman', Times, serif;">$checklist[creator]</font></td>
+						<td><span id="viewintro_$checklist[id]" onmouseover="showMenu(this.id);"><a href="javascript:;">{lang drc_qqgroup:main_viewintro}</a></span>
+						<span id="viewintro_$checklist[id]_menu" style="display:none; border:1px solid #ccc; background-color:#F2F2F2; padding:10px; text-align:left">$checklist[intro]</span></td>
+						<td><font style="font-family:Georgia, 'Times New Roman', Times, serif;">$checklist[createtime]</font></td>
+						<td><a href="plugin.php?id=drc_qqgroup:main&mod=cpanel&action=check&operation=yes&qid=$checklist[id]">{lang drc_qqgroup:check_ok}</a> | <a href="plugin.php?id=drc_qqgroup:main&mod=cpanel&action=check&operation=no&qid=$checklist[id]">{lang drc_qqgroup:check_no}</a></td>
+					</tr>
+					<!--{/loop}-->
+				</table>    
+			</div></div>
+		</div>
+	</div>
+
+	{template drc_qqgroup:side}
+</div>
+
+{subtemplate common/footer}

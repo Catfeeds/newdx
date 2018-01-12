@@ -1,0 +1,82 @@
+<!--{template common/header}-->
+<!--{if !$_G[inajax]}-->
+<div id="pt" class="bm cl">
+<div class="z"><a href="./" class="nvhm">$_G[setting][bbname]</a><em>&rsaquo;</em><a href="plugin.php?id=drc_vote:main">{lang drc_qqgroup:plugin_name}</a> <em>&rsaquo;</em> {lang drc_qqgroup:qadd_title}</div>
+</div>
+
+<div id="ct" class="ct2 wp cl">
+<div class="mn">
+    	<div class="bm bw0">
+			<div class="ch">
+				<label class="wx"><a href="$_G[setting][navs][4][filename]">$_G[setting][navs][4][navname]</a></label>
+			</div>
+			<div class="bm bw0">
+<!--{/if}-->
+
+	<h3 class="flb">
+		<em id="return_$_G[gp_handlekey]">{lang drc_qqgroup:qadd_title}</em>
+		<!--{if $_G[inajax]}--><span><a href="javascript:;" onclick="hideWindow('$_G[gp_handlekey]');" class="flbc" title="{lang close}">{lang close}</a></span><!--{/if}-->
+	</h3>
+	<form method="post" autocomplete="off" id="addform" name="addform" action="plugin.php?id=drc_qqgroup:main&mod=add&addsubmit=true" {if $_G[inajax]}onsubmit="ajaxpost(this.id, 'return_$_G[gp_handlekey]');"{/if}>
+		<script type="text/javascript" src="{$_G[setting][jspath]}calendar.js?{VERHASH}"></script>
+		<input type="hidden" name="referer" value="$_G[referer]">
+		<input type="hidden" name="formhash" value="{FORMHASH}" />
+		<!--{if $_G[inajax]}--><input type="hidden" name="handlekey" value="$_G[gp_handlekey]" /><!--{/if}-->
+		<div class="c">
+        
+        
+        	<table border="0" cellspacing="0" cellpadding="0">
+				<tr>
+    				<td height="40" width="60">{lang drc_qqgroup:qadd_type}</td>
+    				<td colspan="4">
+						<select name="qtype" style="width:125px;height:25px;">
+							<!--{loop $side_lists $side_list}-->
+						  	<option value="$side_list[id]">$side_list[typename]</option>
+							<!--{/loop}-->
+						</select> *					</td>
+				</tr>
+				
+  				<tr>
+    				<td height="40" width="60">{lang drc_qqgroup:qadd_name}</td>
+    				<td><input type="text" name="name" style="width:120px;height:20px;"> *</td>
+					<td width="30"></td>
+					<td  width="60">{lang drc_qqgroup:qadd_num}</td>
+					<td><input type="text" name="num" style="width:120px;height:20px;"> *</td>
+                </tr>
+				
+				<tr>
+    				<td height="40" width="60">{lang drc_qqgroup:qadd_creator}</td>
+    				<td><input type="text" name="creator" style="width:120px;height:20px;"></td>
+					<td width="30"></td>
+					<td  width="60">{lang drc_qqgroup:qadd_createtime}</td>
+					<td><input type="text" name="createtime" id="createtime" onclick="showcalendar(event, this)" onfocus="showcalendar(event, this);if(this.value=='0000-00-00')this.value=''" style="width:120px;height:20px;"> *</td>
+                </tr>
+				
+				<tr>
+    				<td height="40" width="60">{lang drc_qqgroup:qadd_intro}</td>
+    				<td colspan="4">
+						<div class="tedt" style="width:96%;">
+                            <div class="bar">
+							{eval $seditor = array('reply', array('bold', 'color', 'img', 'link'));}
+							{subtemplate common/seditor}
+							</div>
+							<div class="area">
+								<textarea rows="3" cols="40" name="intro" class="pt" id="replymessage"></textarea>
+							</div>
+						</div>
+					</td>
+				</tr>
+            </table>		
+		</div>
+		<p class="o pns" id="one_btn" style="text-align:center; <!--{if !$_G[inajax]}-->margin-top:20px;<!--{/if}-->">
+			<button type="submit" name="addsubmit" id="addsubmit" class="pn pnc" value="true"><strong style="font-weight:normal;">{lang drc_qqgroup:qadd_submit}</strong></button>
+		</p>
+	</form>
+
+<!--{if !$_G[inajax]}-->
+		</div>
+	</div>
+</div>
+{template drc_qqgroup:side}
+<!--{/if}-->
+<!--{template common/footer}-->

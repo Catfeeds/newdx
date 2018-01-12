@@ -1,0 +1,153 @@
+{if $myrate!=1 && $viewdata['enable']==1}
+<div class="writeCmt" id="writecommon" name="writecommon">
+	<h2 class="h2Tit">写点评
+		<span class="starBox" id="write_starBox">
+			<span class="graystar" title="很差"></span>
+			<span class="graystar" title="较差"></span>
+			<span class="graystar" title="还行"></span>
+			<span class="graystar" title="推荐"></span>
+			<span class="graystar" title="力荐"></span>
+		</span>
+		<span></span>
+	</h2>
+	<span id="fastpostreturn" style="margin-left: 10px;"></span>
+	<form method="post" id="from_post" autocomplete="off" action="{$url}&act=dopost&do=reply&tid={$_G['tid']}">
+	<ul class="writeGoodBad">
+		<li class="mb30">
+			<span class="leftIco bad">缺点</span>
+			<div class="cont"><textarea name="weakpoint" rows="2" class="line3Area" id="f_weakpoint"></textarea></div>
+		</li>
+		<li class="mb30">
+			<span class="leftIco good">优点</span>
+			<div class="cont"><textarea name="goodpoint" rows="2" class="line3Area" id="f_goodpoint"></textarea></div>
+		</li>
+		<li class="mb18">
+			<span class="leftIco all">综合</span>
+			<div class="cont">
+				<label class="fs14">{$modsetting[initdianping]}</label>
+				<textarea name="message" id="f_message" rows="6" class="line5Area "></textarea>
+			</div>
+		</li>
+		<!--{if checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
+		<li class="mb25">
+			<span class="leftArea">验证码</span>
+			<div class="cont">
+				<input type="text" name="captcha" id="captcha" class="codeNum" />
+				<a href="#" id="refreshCaptcha" title="点击刷新图片"><img src="/plugin.php?id=dailypicture:captcha" alt="点击刷新图片" /></a>
+				<input type="hidden" value="" id="yzm" name="yzm">
+				<span id="jg"></span>
+				<span class="tips">用户发帖少于3个小时，需要填写验证码</span>
+			</div>
+		</li>
+		<!--{/if}-->
+		<li>
+			<div class="cont"><input {if $_G['uid']}type="submit"{else}type="button" onclick="showWindow('login', 'member.php?mod=logging&action=login&guestmessage=yes')"{/if} value="" class="publish182x43"></div>
+			<input type="hidden" name="formhash" value="{FORMHASH}" />
+			<input type="hidden" name="replypostsubmit" value="yes">
+			<input type="hidden" name="subject" value="" />
+			<input type="hidden" name="starnum" id="form_starNum" value="0" />
+		</li>
+	</ul>
+	</form>
+</div>
+<script type="text/javascript">
+	var initmsg = jQuery('#f_message').val();
+	jQuery(document).ready(function(){
+		var show_fun = "{$fun}" ? "{$fun}" : '_showmsg';
+
+		jQuery("#from_post").submit(function(){
+			var starnum = jQuery("#form_starNum").val();
+			var goodpoint = jQuery("#f_goodpoint").val();
+			var weakpoint = jQuery("#f_weakpoint").val();
+			var message = jQuery("#f_message").val();
+
+			if(! parseInt(starnum)){
+				eval(show_fun+'("请点击星星图标进行点评")');
+				return false;
+			}
+			if(! checkText(goodpoint, weakpoint, message, show_fun)){
+				return false;
+			}
+			showDialog('', 'info', '<img src="' + IMGDIR + '/loading.gif"> 请稍候...');
+			jQuery('#from_post').parent('.writeCmt').hide();
+			
+			jQuery.post('forum.php?ctl={$modstr}&act=dopost&do=reply&tid={$_G['tid']}&inajax=1',
+					{starnum:starnum,goodpoint:goodpoint,weakpoint:weakpoint,message:message,formhash:'{FORMHASH}',replypostsubmit:'yes'},function(data){
+						hideMenu('fwin_dialog', 'dialog');
+						if(data=='ok'){
+							jQuery('#myComment, #myComment li, #myComment .starBox').show();
+							jQuery('#myComment .bottomCont>.ans').hide();
+							jQuery('#myComment #starnum').val(starnum);
+							var starHtml = '';
+							for(var i=0;i<5;i++){
+								if(i<starnum){
+									starHtml += '<span class="redstar"></span>';
+								} else {
+									starHtml += '<span class="graystar"></span>';
+								}
+							}
+							jQuery('#myComment .starBox').html(starHtml);
+							jQuery('#myComment #goodpoint').html(goodpoint.replace(/(\r\n)|(\n)/gi,"<br/>"));
+							jQuery('#myComment #weakpoint').html(weakpoint.replace(/(\r\n)|(\n)/gi,"<br/>"));
+							jQuery('#myComment #message').html(message.replace(/(\r\n)|(\n)/gi,"<br/>"));
+							var d=new Date();
+							jQuery('#myComment .date').html('发表于 '+d.getFullYear()+'-'+(parseInt(d.getMonth())+1)+'-'+d.getDate()+' '+d.getHours()+':'+d.getMinutes());
+							jQuery('#from_post').parent('.writeCmt').remove();
+
+							eval(show_fun+'("点评成功")');
+						} else {
+							jQuery('#from_post').parent('.writeCmt').show();
+							eval(show_fun+'("发生错误请重试！")');
+						}
+			});
+			return false;
+		});
+
+		
+		jQuery("#write_starBox>span").click(function(){
+			jQuery(this).prevAll().addBack().css({"background-position": "0 0"});
+			jQuery(this).nextAll().css({"background-position": "-17px 0"});
+			if (ie6 != undefined && ie6) {
+				jQuery("#form_starNum").val((jQuery(this).index()+1)/3);
+			} else {
+				jQuery("#form_starNum").val(jQuery(this).index()+1);
+			}
+		});
+	});
+
+	function checkText(good,weak,msg,fun){
+		good = jQuery.trim(good);
+		weak = jQuery.trim(weak);
+		msg = jQuery.trim(msg);
+		if(! fun){
+			fun = '_showmsg'
+		}
+		if(! good){
+			eval(fun+'("请点评{$modname}的优点")');
+			return false;
+		}
+		if(good.length<10){
+			eval(fun+'("请认真点评{$modname}的优点，不能少于10个字符")');
+			return false;
+		}
+		if(! weak){
+			eval(fun+'("请点评{$modname}的不足")');
+			return false;
+		}
+		if(weak.length<10){
+			eval(fun+'("请认真点评{$modname}的不足，不能少于10个字符")');
+			return false;
+		}
+		if(! msg || (initmsg && msg == initmsg)){
+			eval(fun+'("请填写对{$modname}的综合评价")');
+			return false;
+		}
+
+		if(msg<10){
+			eval(fun+'("请认真填写对{$modname}的综合评价，不能少于10个字符")');
+			return false;
+		}
+		return true;
+	}
+</script>
+{/if}

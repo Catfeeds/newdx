@@ -1,0 +1,776 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4fcdb588-1ec1-402a-8c09-5d5ece28e09b" name="默认的" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <expand />
+    <select />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>myFootprint_put</find>
+      <find>user</find>
+      <find>top_list</find>
+      <find>format_date</find>
+      <find>false</find>
+      <find>forum_list</find>
+      <find>myForum_get</find>
+      <find>myPost</find>
+      <find>userPost</find>
+      <find>first</find>
+      <find>回复</find>
+      <find>edit</find>
+      <find>收藏</find>
+      <find>forum_postcomment</find>
+      <find>forumPost.ctl.php</find>
+      <find>[/b][/size]</find>
+      <find>_dealTextPic</find>
+      <find>preg_match_all</find>
+      <find>$matA</find>
+      <find>message</find>
+      <find>tos</find>
+      <find>postcomment_get</find>
+      <find>Input</find>
+      <find>userReply</find>
+      <find>put</find>
+      <find>avatar</find>
+      <find>上传失败</find>
+      <find>pre_forum_post</find>
+      <find>upyun</find>
+      <find>misc_ranklist_thread.php</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/laravel/XiaoChengXuLunTan" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/laravel50/app/Http/Controllers/Apiforum/User_invitationController.php" />
+        <option value="$PROJECT_DIR$/laravel50/app/Http/Controllers/api_forum/userLoginController.php" />
+        <option value="$PROJECT_DIR$/laravel50/app/Http/routes.php" />
+        <option value="$PROJECT_DIR$/config/config_global_bak0928.php" />
+        <option value="$PROJECT_DIR$/laravel50/app/Http/Controllers/apiforum/userLoginController.php" />
+        <option value="$PROJECT_DIR$/source/function/function_forum.php" />
+        <option value="$PROJECT_DIR$/source/module/forum/forum_forumdisplay.php" />
+        <option value="$PROJECT_DIR$/source/module/sapp/forumPost.ctl.php" />
+        <option value="$PROJECT_DIR$/source/module/sapp/examIndex.ctl.php" />
+        <option value="$PROJECT_DIR$/config/config_ucenter.php" />
+        <option value="$PROJECT_DIR$/laravel/app/Http/Controllers/apiforum/userLoginController.php" />
+        <option value="$PROJECT_DIR$/laravel/app/models/Common_openid_wechat.php" />
+        <option value="$PROJECT_DIR$/source/module/wechatconnect/models/wechat_user.class.php" />
+        <option value="$PROJECT_DIR$/source/function/function_forumlist.php" />
+        <option value="$PROJECT_DIR$/source/plugin/attachment_server/attachment_server.class.php" />
+        <option value="$PROJECT_DIR$/source/module/forum/forum_viewthread.php" />
+        <option value="$PROJECT_DIR$/source/language/task/lang_avatar.php" />
+        <option value="$USER_HOME$/Desktop/新建文本文档 (3).html" />
+        <option value="$PROJECT_DIR$/laravel/app/models/Common_member.php" />
+        <option value="$PROJECT_DIR$/source/module/sapp/forumIndex.ctl.php" />
+        <option value="$PROJECT_DIR$/laravel/app/Http/Middleware/VerifyCsrfToken.php" />
+        <option value="$PROJECT_DIR$/laravel/app/Http/routes.php" />
+        <option value="$PROJECT_DIR$/laravel/.env" />
+        <option value="$PROJECT_DIR$/laravel/vendor/laravel/framework/src/Illuminate/Database/Connection.php" />
+        <option value="$PROJECT_DIR$/laravel/vendor/laravel/framework/src/Illuminate/Database/QueryException.php" />
+        <option value="$PROJECT_DIR$/laravel/config/database.php" />
+        <option value="$PROJECT_DIR$/source/function/function_discuzcode.php" />
+        <option value="$PROJECT_DIR$/external/app/checkver.php" />
+        <option value="$PROJECT_DIR$/laravel/app/models/Upload.class.php" />
+        <option value="$PROJECT_DIR$/laravel/app/models/Forum_thread.php" />
+        <option value="$PROJECT_DIR$/laravel/config/app.php" />
+        <option value="$PROJECT_DIR$/source/admincp/admincp_question.php" />
+        <option value="$PROJECT_DIR$/laravel/app/models/Common_member_connect_wechat.php" />
+        <option value="$PROJECT_DIR$/laravel/app/Http/Model/Common_member_connect_wechat.php" />
+        <option value="$PROJECT_DIR$/laravel/app/Http/Models/Common_member.php" />
+        <option value="$PROJECT_DIR$/laravel/app/Http/Models/Forum_post.php" />
+        <option value="$PROJECT_DIR$/laravel/app/Http/Models/Forum_post_tableid.php" />
+        <option value="$PROJECT_DIR$/laravel/app/Http/Models/Forum_thread.php" />
+        <option value="$PROJECT_DIR$/laravel/app/Http/Models/Common_member_connect_wechat.php" />
+        <option value="$PROJECT_DIR$/laravel/app/Http/Controllers/apiforum/api_myController.php" />
+        <option value="$PROJECT_DIR$/forum.php" />
+        <option value="$PROJECT_DIR$/config/config_global.php" />
+        <option value="$PROJECT_DIR$/source/function/function_wap.php" />
+        <option value="$PROJECT_DIR$/laravel/app/Http/Controllers/apiforum/api_userPostedController.php" />
+        <option value="$PROJECT_DIR$/laravel/routes/web.php" />
+        <option value="$PROJECT_DIR$/source/module/sapp/thread.ctl.php" />
+        <option value="$PROJECT_DIR$/source/function/function_core.php" />
+        <option value="$PROJECT_DIR$/laravel/XiaoChengXuLunTan/app/Http/Controllers/apiforum/api_userPostedController.php" />
+        <option value="$PROJECT_DIR$/laravel/XiaoChengXuLunTan/app/Http/Controllers/apiforum/api_userLoginController.php" />
+        <option value="$PROJECT_DIR$/laravel/app/Http/Controllers/apiforum/api_userLoginController.php" />
+        <option value="$PROJECT_DIR$/source/module/wap/forumIndex.ctl.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <annotation-enable>false</annotation-enable>
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpDebugGeneral" break_at_first_line="true" listening_started="true" />
+  <component name="PhpServers">
+    <servers>
+      <server host="newdx" id="86646043-38da-4d4c-ab97-239646897cb9" name="newdx" />
+    </servers>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="PhpXdebugProxy" ide_key="PHPSTORM" host="127.0.0.1" port="9000" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-734" />
+    <option name="y" value="372" />
+    <option name="width" value="1918" />
+    <option name="height" value="994" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Blade files</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="newdx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="newdx" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="newdx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="newdx" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="config" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="newdx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="newdx" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="source" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="newdx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="newdx" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="source" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="function" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../laravel53" />
+    <property name="SearchEverywhereHistoryKey" value="client&#9;FILE&#9;file://E:/phpStudy2014/WWW/newdx/uc_client/client.php" />
+    <property name="js.buildTools.grunt.grunt-cli.package" value="" />
+    <property name="js.buildTools.gulp.gulp_package_dir" value="" />
+    <property name="nodejs.jest.jest_package" value="" />
+    <property name="nodejs.mocha.mocha_node_package_dir" value="" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.api_userLoginController.php">
+    <configuration default="true" type="js.build_tools.grunt" factoryName="Grunt.js">
+      <node-interpreter value="project" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+    </configuration>
+    <configuration default="true" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" browser="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" server_name="newdx" />
+    <configuration name="api_userLoginController.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/newdx/laravel/app/Http/Controllers/apiforum/api_userLoginController.php" />
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.api_userLoginController.php" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4fcdb588-1ec1-402a-8c09-5d5ece28e09b" name="默认的" comment="" />
+      <created>1510282004050</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1510282004050</updated>
+      <workItem from="1510282005904" duration="1656000" />
+      <workItem from="1510375344576" duration="36000" />
+      <workItem from="1510466453781" duration="1406000" />
+      <workItem from="1510553961146" duration="27390000" />
+      <workItem from="1510708785374" duration="12124000" />
+      <workItem from="1511156004748" duration="1206000" />
+      <workItem from="1511240961278" duration="14260000" />
+      <workItem from="1511313485081" duration="16142000" />
+      <workItem from="1511345746933" duration="218000" />
+      <workItem from="1511600046703" duration="1995000" />
+      <workItem from="1511745045184" duration="17481000" />
+      <workItem from="1511774877056" duration="6059000" />
+      <workItem from="1511831054167" duration="32075000" />
+      <workItem from="1511917883849" duration="30965000" />
+      <workItem from="1512003865962" duration="8987000" />
+      <workItem from="1512016305554" duration="2583000" />
+      <workItem from="1512022931926" duration="2000" />
+      <workItem from="1512022975625" duration="3678000" />
+      <workItem from="1512090436475" duration="11379000" />
+      <workItem from="1512195052769" duration="12705000" />
+      <workItem from="1512349293402" duration="33288000" />
+      <workItem from="1512435935955" duration="25903000" />
+      <workItem from="1512522358007" duration="34323000" />
+      <workItem from="1512608860414" duration="14930000" />
+      <workItem from="1512629050528" duration="20144000" />
+      <workItem from="1512695034173" duration="20523000" />
+      <workItem from="1512787527913" duration="17000" />
+      <workItem from="1512787626701" duration="23843000" />
+      <workItem from="1512867810258" duration="21727000" />
+      <workItem from="1512898949195" duration="2347000" />
+      <workItem from="1512901339697" duration="792000" />
+      <workItem from="1512902146379" duration="274000" />
+      <workItem from="1512954417332" duration="39852000" />
+      <workItem from="1513040804594" duration="28623000" />
+      <workItem from="1513142151908" duration="21602000" />
+      <workItem from="1513213615235" duration="31136000" />
+      <workItem from="1513299768105" duration="28459000" />
+      <workItem from="1513559287579" duration="19511000" />
+      <workItem from="1513646362372" duration="31851000" />
+      <workItem from="1513732230217" duration="28655000" />
+      <workItem from="1513818525809" duration="28086000" />
+      <workItem from="1513904710351" duration="18747000" />
+      <workItem from="1513991191303" duration="28789000" />
+      <workItem from="1514163564999" duration="1344000" />
+      <workItem from="1514250575876" duration="15058000" />
+      <workItem from="1514340791337" duration="1377000" />
+      <workItem from="1514358662671" duration="6325000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="729873000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-4" y="-4" width="1928" height="1044" extended-state="6" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26226014" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11954023" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.9576087" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2185501" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="74" />
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="sapp.php">
+        <watch expression="$recommendList" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/uc_client/control/class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="984" column="13" lean-forward="false" selection-start-line="984" selection-start-column="13" selection-end-line="984" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/module/sapp/forumIndex.ctl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="98" column="56" lean-forward="false" selection-start-line="98" selection-start-column="56" selection-end-line="98" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/module/misc/misc_ranklist.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="105" column="1" lean-forward="false" selection-start-line="105" selection-start-column="1" selection-end-line="105" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Middleware/VerifyCsrfToken.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/routes.php" />
+    <entry file="file://$PROJECT_DIR$/laravel/vendor/laravel/framework/src/Illuminate/Database/QueryException.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="38" column="43" lean-forward="false" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/vendor/laravel/framework/src/Illuminate/Database/Connection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="623" column="30" lean-forward="false" selection-start-line="623" selection-start-column="30" selection-end-line="623" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/function/function_discuzcode.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-98">
+          <caret line="97" column="0" lean-forward="false" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/external/app/checkver.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="24" column="42" lean-forward="true" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="597" column="9" lean-forward="false" selection-start-line="597" selection-start-column="9" selection-end-line="597" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/models/Upload.class.php" />
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_4.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="825" column="9" lean-forward="false" selection-start-line="825" selection-start-column="9" selection-end-line="825" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/models/Forum_thread.php" />
+    <entry file="file://$PROJECT_DIR$/laravel/config/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="66" column="32" lean-forward="false" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/class/class_upyun_form.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sapp.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-668">
+          <caret line="17" column="18" lean-forward="true" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/config/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="12" lean-forward="false" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/8264论坛测试版本20171218/libs/public/public.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="32" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/8264论坛测试版本20171218/app.wxss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="90" column="1" lean-forward="false" selection-start-line="90" selection-start-column="1" selection-end-line="90" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/admincp/admincp_question.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5958">
+          <caret line="331" column="13" lean-forward="true" selection-start-line="331" selection-start-column="13" selection-end-line="331" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/apiforum/upyun.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="110" column="31" lean-forward="true" selection-start-line="110" selection-start-column="31" selection-end-line="110" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Model/Common_member_connect_wechat.php" />
+    <entry file="file://$PROJECT_DIR$/laravel/app/models/Common_member_connect_wechat.php" />
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Models/Upload.php" />
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Models/Forum_thread.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Models/Forum_post_tableid.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="26" lean-forward="true" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Models/Forum_post.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Models/Common_member.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="33" lean-forward="false" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/apiforum/config.php" />
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Models/Common_member_connect_wechat.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-918">
+          <caret line="21" column="14" lean-forward="true" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forum.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-777">
+          <caret line="57" column="16" lean-forward="false" selection-start-line="57" selection-start-column="12" selection-end-line="57" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config_global_bak_20171026.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config_global.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1494">
+          <caret line="16" column="46" lean-forward="false" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config_domain.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2394">
+          <caret line="133" column="20" lean-forward="false" selection-start-line="133" selection-start-column="9" selection-end-line="133" selection-end-column="20" />
+          <folding>
+            <element signature="e#6#38#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/function/function_wap.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="276" column="19" lean-forward="true" selection-start-line="276" selection-start-column="19" selection-end-line="276" selection-end-column="19" />
+          <folding>
+            <marker date="1486954430000" expanded="true" signature="2880:2896" ph="SELECT fid F... ${DB::table('plugin_forumoption')}" />
+            <marker date="1486954430000" expanded="true" signature="10149:10240" ph="SELECT aid, ${DB::table('forum_attachment')}" />
+            <marker date="1486954430000" expanded="true" signature="12492:12623" ph="SELECT * FRO... ${DB::table('portal_article_xuexiao_statistics')}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/db/dbbak.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1862">
+          <caret line="491" column="132" lean-forward="true" selection-start-line="491" selection-start-column="43" selection-end-line="491" selection-end-column="132" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="64" column="36" lean-forward="false" selection-start-line="64" selection-start-column="22" selection-end-line="64" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/function/function_core.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7478">
+          <caret line="1001" column="5" lean-forward="true" selection-start-line="1001" selection-start-column="5" selection-end-line="1001" selection-end-column="5" />
+          <folding>
+            <marker date="1514264710352" expanded="true" signature="2433:2512" ph="SELECT total... ${DB::table( 'common_onlinetime' )}" />
+            <marker date="1514264710352" expanded="true" signature="4632:4861" ph="SELECT mc.*,... ${DB::table( 'common_member' )}" />
+            <marker date="1514264710352" expanded="true" signature="20001:20094" ph="SELECT datel... ${DB::table( 'common_diy' )}" />
+            <marker date="1514264710352" expanded="true" signature="27557:27666" ph="SELECT * FRO... ${DB::table( 'common_syscache' )}" />
+            <marker date="1514264710352" expanded="true" signature="39769:39783" ph="SELECT * FRO... ${DB::table( 'plugin_servers_css' )}" />
+            <marker date="1514264710352" expanded="true" signature="77243:77312" ph="..." />
+            <marker date="1514264710352" expanded="true" signature="77328:77359" ph="..." />
+            <marker date="1514264710352" expanded="true" signature="78199:78205" ph=" " />
+            <marker date="1514264710352" expanded="true" signature="78217:78223" ph=" " />
+            <marker date="1514264710352" expanded="true" signature="81449:81455" ph=" " />
+            <marker date="1514264710352" expanded="true" signature="81467:81473" ph=" " />
+            <marker date="1514264710352" expanded="true" signature="83814:83895" ph="SELECT * FRO... ${DB::table( 'common_member_' . $tablename )}" />
+            <marker date="1514264710352" expanded="true" signature="90986:91053" ph="SELECT count... ${DB::table( &quot;common_session&quot; )}" />
+            <marker date="1514264710352" expanded="true" signature="93762:93774" ph="..." />
+            <marker date="1514264710352" expanded="true" signature="93826:93839" ph="..." />
+            <marker date="1514264710352" expanded="true" signature="94901:95051" ph="SELECT * FRO... ${DB::table( 'home_notification' )}" />
+            <marker date="1514264710352" expanded="true" signature="97344:97358" ph="SELECT * FRO... ${DB::table( 'common_diy_data' )}" />
+            <marker date="1514264710352" expanded="true" signature="97716:97798" ph="SELECT svalu... ${DB::table( 'common_setting' )}" />
+            <marker date="1514264710352" expanded="true" signature="98357:98431" ph="SELECT postt... ${DB::table( $threadtable )}" />
+            <marker date="1514264710352" expanded="true" signature="99534:99574" ph="SELECT COUNT... ${$from_clause}" />
+            <marker date="1514264710352" expanded="true" signature="99725:99765" ph="SELECT COUNT... ${$from_clause}" />
+            <marker date="1514264710352" expanded="true" signature="99937:99991" ph="SELECT ${$fi... ${DB::table( $ptable )}" />
+            <marker date="1514264710352" expanded="true" signature="100134:100188" ph="SELECT ${$fi... ${DB::table( $atable )}" />
+            <marker date="1514264710352" expanded="true" signature="100558:100612" ph="SELECT ${{$s... " />
+            <marker date="1514264710352" expanded="true" signature="101135:101189" ph="SELECT ${{$s... " />
+            <marker date="1514264710352" expanded="true" signature="101456:101542" ph="SELECT postt... ${DB::table( 'forum_thread' )}" />
+            <marker date="1514264710352" expanded="true" signature="104653:104726" ph="SELECT COUNT... ${DB::table( $tablename )}" />
+            <marker date="1514264710352" expanded="true" signature="109650:109742" ph="SELECT * FRO... ${DB::table( 'common_session' )}" />
+            <marker date="1514264710352" expanded="true" signature="111981:112086" ph="SELECT attac... ${DB::table( 'forum_attachment' )}" />
+            <marker date="1514264710352" expanded="true" signature="114553:114700" ph="SELECT m.*,p... ${DB::table( 'common_member' )}" />
+            <marker date="1514264710352" expanded="true" signature="116122:116218" ph="SELECT today... ${DB::table( 'forum_forum' )}" />
+            <marker date="1514264710352" expanded="true" signature="117006:117070" ph="SELECT name ${DB::table( 'forum_forum' )}" />
+            <marker date="1514264710352" expanded="true" signature="117224:117294" ph="SELECT usern... ${DB::table( 'common_member' )}" />
+            <marker date="1514264710352" expanded="true" signature="117805:117869" ph="SELECT fid F... ${DB::table( 'forum_thread' )}" />
+            <marker date="1514264710352" expanded="true" signature="117966:118030" ph="SELECT name ${DB::table( 'forum_forum' )}" />
+            <marker date="1514264710352" expanded="true" signature="118139:118209" ph="SELECT usern... ${DB::table( 'common_member' )}" />
+            <marker date="1514264710352" expanded="true" signature="118568:118674" ph="SELECT subje... ${DB::table( 'forum_thread' )}" />
+            <marker date="1514264710352" expanded="true" signature="119325:119389" ph="SELECT fid F... ${DB::table( 'forum_thread' )}" />
+            <marker date="1514264710352" expanded="true" signature="119486:119550" ph="SELECT name ${DB::table( 'forum_forum' )}" />
+            <marker date="1514264710352" expanded="true" signature="119637:119733" ph="SELECT pid F... ${DB::table( 'forum_post' )}" />
+            <marker date="1514264710352" expanded="true" signature="125575:125668" ph="SELECT uid, ${DB::table( 'forum_attachment' )}" />
+            <marker date="1514264710352" expanded="true" signature="128205:128648" ph="SELECT lm.* ${linemod::TABLE_NAME}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/module/sapp/thread.ctl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="29196">
+          <caret line="1622" column="4" lean-forward="false" selection-start-line="1622" selection-start-column="4" selection-end-line="1627" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/XiaoChengXuLunTan/config/database.php" />
+    <entry file="file://$PROJECT_DIR$/laravel/XiaoChengXuLunTan/app/Http/Controllers/apiforum/api_userPostedController.php" />
+    <entry file="file://$PROJECT_DIR$/laravel/XiaoChengXuLunTan/app/Http/Controllers/apiforum/api_userLoginController.php" />
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/apiforum/api_userLoginController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="365" column="40" lean-forward="true" selection-start-line="365" selection-start-column="40" selection-end-line="365" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config_dianping.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="404" column="69" lean-forward="false" selection-start-line="404" selection-start-column="69" selection-end-line="404" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/module/sapp/forumPost.ctl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="765" column="21" lean-forward="false" selection-start-line="765" selection-start-column="21" selection-end-line="765" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/include/misc/misc_ranklist_thread.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="31" column="19" lean-forward="false" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/module/wap/forumIndex.ctl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="104" column="45" lean-forward="true" selection-start-line="104" selection-start-column="45" selection-end-line="104" selection-end-column="45" />
+          <folding>
+            <marker date="1502349537000" expanded="true" signature="1628:1709" ph="SELECT * FRO... ${DB::table('forum_forum')}" />
+            <marker date="1502349537000" expanded="true" signature="2691:3043" ph="SELECT f.fid... pre_forum_forum" />
+            <marker date="1502349537000" expanded="true" signature="4584:4852" ph="SELECT t.tid... ${DB::table('forum_thread')}" />
+            <marker date="1502349537000" expanded="true" signature="4988:5368" ph="SELECT t.tid... ${DB::table('forum_thread')}" />
+            <marker date="1502349537000" expanded="true" signature="6746:6826" ph="SELECT tid F... ${DB::table('common_forum_recommend_wap')}" />
+            <marker date="1502349537000" expanded="true" signature="8561:8643" ph="SELECT * FRO... ${DB::table('forum_post')}" />
+            <marker date="1502349537000" expanded="true" signature="11058:11136" ph="SELECT tid, ${DB::table('forum_post_previewimg')}" />
+            <marker date="1502349537000" expanded="true" signature="13842:13897" ph="SELECT nav f... pre_common_mobile_user_nav" />
+            <marker date="1502349537000" expanded="true" signature="14851:14906" ph="SELECT nav f... pre_common_mobile_user_nav" />
+            <marker date="1502349537000" expanded="true" signature="16210:16265" ph="SELECT nav f... pre_common_mobile_user_nav" />
+            <marker date="1502349537000" expanded="true" signature="19421:19501" ph="SELECT tid F... ${DB::table('common_forum_recommend_wap')}" />
+            <marker date="1502349537000" expanded="true" signature="19680:20010" ph="SELECT t.tid... ${DB::table('forum_thread')}" />
+            <marker date="1502349537000" expanded="true" signature="20246:20332" ph="SELECT * FRO... ${DB::table('forum_post')}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/apiforum/api_myController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="828">
+          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/apiforum/api_userPostedController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-722">
+          <caret line="69" column="26" lean-forward="true" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

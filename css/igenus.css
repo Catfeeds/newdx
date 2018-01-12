@@ -1,0 +1,63 @@
+BODY {
+scrollbar-face-color:#086DB5;
+scrollbar-highlight-color:#FFFFFF;
+scrollbar-3dlight-color:#005100;
+scrollbar-darkshadow-color:#004000;
+scrollbar-shadow-color:#006000;
+scrollbar-arrow-color:#FFFFFF;
+scrollbar-track-color:#E0E0E0;
+font-size: 12px;
+margin-top:0px;
+}
+
+td {font-size: 12px;
+line-height: 150%;
+}
+a {
+	font-size: 12px;
+	color: #000000;
+}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #000000;
+}
+a:hover {
+	text-decoration: underline;
+	color: #000000;
+}
+a:active {
+	text-decoration: none;
+	color: #000000;
+}
+
+.myinput {
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: inset;
+	border-right-style: inset;
+	border-bottom-style: inset;
+	border-left-style: inset;
+	border-top-color: #000000;
+	border-right-color: black;
+	border-bottom-color: black;
+	border-left-color: #000000;
+}
+.myinput3 { font-size:12px;border:#78B471 1px solid}
+.myinput2 { background-color:#FFFFFF;height=20;font-size:12px;border:#096EB2 1px solid}
+.myselect {background-color: #FFFFFF; border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px}
+.myinput4 {
+	background-color:#ffffff;
+height=20;	font-size:12px;
+	border:#096EB2 1px solid;
+	color: #FF0000;
+}
+.mytextarea { font-size:12px; line-height:150%; background-color:#8DC9F1; border:#096EB2 1px solid}
+.myimg { border: 1 solid #000000}
+.ln120 {
+	line-height: 150%;
+}

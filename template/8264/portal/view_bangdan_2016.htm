@@ -1,0 +1,496 @@
+<!--{subtemplate common/header_8264_new}-->
+<!--{if $_GET['aid'] == 98960}-->
+<style>
+html {
+filter:progid:DXImageTransForm.Microsoft.BasicImage(grayscale=1);
+overflow-y:scroll;
+-webkit-filter: grayscale(100%);
+-moz-filter: grayscale(100%);
+-ms-filter: grayscale(100%);
+-o-filter: grayscale(100%);
+filter: grayscale(100%);
+filter: gray; 
+}
+.ad_border{ display:none;}
+body {filter:gray}
+</style>
+<!--{/if}-->
+
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/portal/view.css?{VERHASH}" />
+<style id="diy_style" type="text/css"></style>
+<script type="text/javascript" src="http://static.8264.com/static/js/forum_viewthread.js?{VERHASH}"></script>
+<script type="text/javascript">
+zoomstatus = parseInt($_G['setting']['zoomstatus']), imagemaxwidth = '{IMAGEMAXWIDTH}', aimgcount = new Array();
+jQuery(document).ready(function($){
+	$("#sidebar>a").hover(function(){
+		$(this).addClass("zhong").siblings().removeClass("zhong");
+		$("#sidebox>div").eq($(this).index()).show().siblings().hide();
+	});
+	var c_all={$article[commentnum]};
+	var c_count=$("#commentlist>li").length;
+	$("#more_cbtn").click(function(){
+		var c_show=$("#commentlist>li:visible").length;
+		if(c_count-c_show>0){
+			for(i=-1;i<33;i++){
+				$("#commentlist>li").eq(c_show+i).show();
+			}
+			if($("#commentlist>li:visible").length == c_count){
+				if(c_count == c_all){
+					$("#more_cbtn").text("没有更多评论了").unbind("click");
+				}
+			}
+		} else {
+			$("#more_clink").click();
+		}
+	});
+	$("#message").focus(function(){
+		if($(this).hasClass('t_note')){
+			$(this).removeClass('t_note');
+			$(this).val("");
+		}
+	}).blur(function(){
+		if($.trim($(this).val())==""){
+			$(this).addClass('t_note');
+			$(this).val("说点什么吧...");
+		}
+	});
+});
+</script>
+
+<div class="w980 pt10">
+	<div class="clear_b pt10">
+		<div class="l_660">
+			<div class="fl_dh" style=" position:relative;">
+				<a href="http://www.8264.com/" class="syq">首页</a>
+				<!--{loop $cat[ups] $value}-->
+				<a href="http://www.8264.com/list/{$value[catid]}/" class="syq">$value[catname] </a>
+				<!--{/loop}-->
+				<a href="http://www.8264.com/list/{$cat[catid]}/" class="dpdq">$cat[catname]</a>
+				<a href="{$_G[config][web][portal]}viewnews-{$article[aid]}-page-1.html" class="zpdq">{$article['title']}</a>
+                <style>
+				.kongad{ width:50px; height:25px; display:block; position:absolute; top:0px; right:0px; z-index:10;}
+				.fl_dh div{ display:none;}
+                </style>
+                <div style="line-height:0px; height:0px; font-size:0px; clear:both;"></div>
+			</div>
+			<h1 class="titlebig">
+				{$article['title']}
+				<!--{if $article['status'] == 1}-->
+				({lang moderate_need})
+				<!--{elseif $article['status'] == 2}-->
+				({lang ignored})
+				<!--{/if}-->
+			</h1>
+			<div class="newsinfo">
+				<!--{if $article[from]}-->
+				来源：
+					<!--{if $article[fromurl]}-->
+					<a href="$article[fromurl]" target="_blank">$article[from]</a>
+					<!--{else}-->
+					<span>$article[from]</span>
+					<!--{/if}-->
+				<!--{/if}-->
+				作者：
+				<!--{if $article[author]}-->
+				<span>$article[author]</span>
+				<!--{else}-->
+				<a href="home.php?mod=space&uid=$article[uid]">$article[username]</a>
+				<!--{/if}-->
+				添加时间：<span>$article[dateline]</span>
+
+				<!--{if $_G['group']['allowmanagearticle'] || ($_G['group']['allowpostarticle'] && $article['uid'] == $_G['uid'] && (empty($_G['group']['allowpostarticlemod']) || $_G['group']['allowpostarticlemod'] && $article['status'] == 1)) || $categoryperm[$value['catid']]['allowmanage']}-->
+				<a href="portal.php?mod=portalcp&ac=article&op=edit&aid=$article[aid]&page=$_GET[page]">{lang edit}</a>
+				<!--{if $article[status]> 0 && ($_G['group']['allowmanagearticle'] || $categoryperm[$value['catid']]['allowmanage'])}-->
+				<span>|</span><a href="portal.php?mod=portalcp&ac=article&op=verify&aid=$article[aid]" id="article_verify_$article[aid]" onClick="showWindow(this.id, this.href, 'get', 0);">{lang moderate}</a>
+				<!--{else}-->
+				<span>|</span><a href="portal.php?mod=portalcp&ac=article&op=delete&aid=$article[aid]" id="article_delete_$article[aid]" onClick="showWindow(this.id, this.href, 'get', 0);">{lang delete}</a>
+				<!--{/if}-->
+				<!--{/if}-->
+			</div>
+			<div class="ad_border">
+            	<!--互动广告-->
+            	<!--{ad/custom_360}-->
+			</div>
+			<div class="newscon">
+				<!--{if file_exists(DISCUZ_ROOT.'./source/plugin/articlekeywords/include.php')&&$article[catid]!='910'}-->
+					<!--{eval require_once DISCUZ_ROOT.'./source/plugin/articlekeywords/include.php';}-->
+					<!--{eval $articleKeywords = new ArticleKeywords();}-->
+					<!--{eval echo $articleKeywords->parseArticle($content[content]);}-->
+				<!--{else}-->
+				$content[content]
+				<!--{/if}-->
+				<div class="artPage clear_b"><!--{if $multi}-->$multi<!--{/if}--></div>
+			</div>
+			<!--{if $article['related']}-->
+			<div class="title_l_r clear_b"><span class="l">感兴趣的文章</span></div>
+			<div class="interest clear_b">
+				<ul>
+					<!--{loop $article['related'] $value}-->
+					<li><a title="$value[title]" target="_blank" href="viewnews-{$value[aid]}-page-1.html?from=view">$value[title]</a></li>
+					<!--{/loop}-->
+				</ul>
+			</div>
+			<!--{/if}-->
+            <div style="margin:10px 0;">
+           	<!--{ad/custom_344}-->
+            </div>
+			<div style="margin:10px 0; border:#E5E5E5 solid 1px;">
+				<!-- 广告位：文章详细_戈尔 404-->
+				<!--{ad/custom_404}-->
+			</div>
+			<div class="read_box">
+				<script type="text/javascript">
+				var uid = {$_G['uid']} ? {$_G['uid']} : 0;
+				var aid ={$_GET['aid']};
+				var title ="{$article['title']}";
+				var url = "http://www.8264.com/viewnews-{$_GET['aid']}-page-1.html";
+				var pic = "{$article['pic']}";
+				if(pic=='http://bbs.8264.com/data/attachment/portal/'||pic=='http://image.8264.com/portal/'||pic.match(/^http:\/\/image1\.8264\.com\/(portal|forum)\/(!t\d+(w\d+h\d+)?(x\d+m\d+)?)?$/i) != null||pic==''){
+					pic = 'http://static.8264.com/static/image/common/nopic.gif';
+				}
+				var cat =new Array();
+				cat[0] = "{$cat['catname']}";
+				cat[1] = "{echo getportalcategoryurl($cat[catid])}";
+				var cat1 = new Array();
+				<!--{loop $cat[ups] $value}-->
+				cat1[0] = "$value[catname]";
+				cat1[1] = "{echo getportalcategoryurl($value[catid])}";
+				<!--{/loop}-->
+				var   arr   =   new   Array();
+				arr[0] = cat;
+				arr[1] = cat1;
+				var catname = new Array();
+				catname[0]= cat1[0];
+				catname[1]= "{$cat['catname']}";
+				window["_BFD"] = window["_BFD"] || {};
+				_BFD.BFD_INFO = {
+					user_id : uid,	// 当前用户的user_id，string类型。注意：user_id不是用户的真实注册名，而是其注册名的编号,未登录用户统一使用0或者空值'';
+					iid : aid,  	//文章的id号
+					title : title,  			//当前文章的名称，string类型；
+					url : url,		// 当前文章的完整链接url，string类型
+					imgSrc : pic,//文章的缩略图
+					category : catname, 	// 当前文章的完整类别名称，一维数组
+					categoryDetail : arr//当前文章的完整类别名称和链接，二维数组
+				};
+				_BFD.script = document.createElement("script");
+				_BFD.script.type = 'text/javascript';
+				_BFD.script.async = true;
+				_BFD.script.charset = 'utf-8';
+				_BFD.script.src = (('https:' == document.location.protocol?'https://ssl-static1':'http://static1')+'.baifendian.com/service/huwaiziliao/hwzl_article.js');
+				document.getElementsByTagName("head")[0].appendChild(_BFD.script);
+				</script>
+			</div>
+			<!--{if $article['allowcomment']==1}-->
+			<div class="hf_w">
+				<form id="cform" name="cform" action="$form_url" method="post" autocomplete="off" onsubmit="if(jQuery('#message').hasClass('t_note')||jQuery.trim(jQuery('#message').val())==''){return false;}">
+				<input type="hidden" name="portal_referer" value="portal.php?mod=view&aid=$aid#comment">
+				<input type="hidden" name="aid" value="$aid">
+				<input type="hidden" name="formhash" value="{FORMHASH}">
+				<input type="hidden" name="replysubmit" value="true">
+				<input type="hidden" name="referer" value="portal.php?mod=view&aid=$aid#comment" />
+				<input type="hidden" name="id" value="$article[id]" />
+				<input type="hidden" name="idtype" value="$article[idtype]" />
+				<input type="hidden" name="commentsubmit" value="true" />
+
+				<div class="hf">
+					<textarea name="message" rows="3" class="hf_textarea t_note" id="message" onkeydown="ctrlEnter(event, 'commentsubmit_btn');">说点什么吧...</textarea>
+				</div>
+				<!--{if checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
+					<!--{block sectpl}-->
+					<sec><span id="sec<hash>" onclick="showMenu(this.id);"><sec></span>
+					<div id="sec<hash>_menu" class="p_pop p_opt" style="display:none"><sec></div>
+					<!--{/block}-->
+					<div class="mtm mtm1 twyzm clear_b"><!--{template common/seccheck}--></div>
+				<!--{/if}-->
+				<button type="submit" name="commentsubmit_btn" id="commentsubmit_btn" value="true" class="hfbutton">发布</button>
+				</form>
+			</div>
+			<!--{/if}-->
+			<div class="pt25" id="comment">
+				<div class="title_l_r clear_b">
+					<span class="l">网友评论</span>
+				</div>
+				<!--{if $commentlist}-->
+				<div class="pinluncon">
+					<ul id="commentlist">
+						<!--{eval $n=1;}-->
+						<!--{loop $commentlist $comment}-->
+						<li{if $n>33} style="display:none;"{/if}>
+							<a name="comment_anchor_$comment[cid]"></a>
+							<!--{if !empty($comment['uid'])}-->
+								<a href="home.php?mod=space&uid=$comment[uid]" class="touxiang48">$comment[avatar]</a>
+							<!--{/if}-->
+							<div class="pinglun_r">
+								<div class="pl_info_cz">
+									<span class="l">
+										<a href="home.php?mod=space&uid=$comment[uid]">$comment[username]</a>
+										<span class="jgd">&#8226;</span>
+										<span><!--{date($comment[dateline])}--></span>
+									</span>
+									<!--{if $comment['allowop']}-->
+									<span class="r">
+										<a href="javascript:;" onclick="portal_comment_requote($comment[cid]);">{lang quote}</a>
+										<!--{if ($_G['group']['allowmanagearticle'] || $_G['uid'] == $comment['uid']) && $_G['groupid'] != 7}-->
+										<a href="portal.php?mod=portalcp&ac=comment&op=edit&cid=$comment[cid]" id="c_$comment[cid]_edit" onclick="showWindow(this.id, this.href, 'get', 0);">{lang edit}</a>
+										<a href="portal.php?mod=portalcp&ac=comment&op=delete&cid=$comment[cid]" id="c_$comment[cid]_delete" onclick="showWindow(this.id, this.href, 'get', 0);">{lang delete}</a>
+										<!--{/if}-->
+									</span>
+									<!--{/if}-->
+								</div>
+								<div class="pl_con">
+									<span><!--{if $_G[adminid]==1 || $comment[uid]==$_G[uid] || $comment[status]==0}-->$comment[message]<!--{else}-->{lang moderate_not_validate}<!--{/if}--></span>
+								</div>
+							</div>
+						</li>
+						<!--{if !empty($aimgs[$comment[cid]])}-->
+						<script type="text/javascript" reload="1">
+						aimgcount[{$comment[cid]}] = [<!--{echo implode(',', $aimgs[$comment[cid]]);}-->];attachimgshow($comment[cid]);
+						</script>
+						<!--{/if}-->
+						<!--{eval $n++;}-->
+						<!--{/loop}-->
+					</ul>
+				</div>
+				<!--{if $article['commentnum'] > 33}-->
+				<div class="ckplmore" id="more_cbtn">查看更多评论</div>
+				<!--{/if}-->
+				<!--{else}-->
+				<div class="no_comment">
+				<img src="http://static.8264.com/static/images/portal/sofa.jpg" border="0"><br>
+				还没有评论，沙发等你来抢
+				</div>
+				<!--{/if}-->
+			</div>
+		</div>
+		<div class="r_260">
+			<div style="">
+               <!-- 广告位：文章页右侧kroceus405 -->
+				<!--{ad/custom_405}-->
+			</div>
+			<div class="dslink ad_border mt20"><!--{ad/custom_23}--></div>
+			<div class="mt20">
+				<div class="title_l_r clear_b"><span class="l"><a href="javascript:void(0)">编辑</a>推荐文章</span></div>
+				<!--[diy=diybjtj]-->
+				<div id="diybjtj" class="area"></div>
+				<!--[/diy]-->
+			</div>
+
+			<div class="mt20">
+				<div class="title_l_r clear_b"><span class="l">在外</span><a href="http://www.zaiwai.com/" class="ra">更多</a></div>
+				<div class="list_news_25">
+					<ul>
+						<!--[diy=qnw]-->
+						<div id="qnw" class="area"></div>
+						<!--[/diy]-->
+					</ul>
+				</div>
+			</div>
+
+			<div class="mt20" style="display:none;">
+				<div class="title_l_r clear_b"><span class="l">徒步路线</span><a href="http://www.columbiasports.cn/campaign/" class="ra" target="_blank">更多</a></div>
+				<!--[diy=xltjxz]-->
+				<div id="xltjxz" class="area"></div>
+				<!--[/diy]-->
+			</div>
+			<div class="gnlistwarpten pt20">
+				<div class="gnlist clear_b">
+					<a href="{$_G[config][web][portal]}list/842" target="_blank" class="mryt"></a>
+					<a href="{$_G[config][web][portal]}pp" target="_blank" class="kqmg"></a>
+					<a href="{$_G[config][web][portal]}zhuangbei" target="_blank" class="zbtj"></a>
+					<a href="{$_G[config][web][portal]}list/880" target="_blank" class="yzxx"></a>
+					<a href="http://www.8264.com/xianlu" target="_blank" class="xltj"></a>
+					<a href="{$_G[config][web][portal]}list/871" target="_blank" class="ltjx"></a>
+				</div>
+			</div>
+			<div class="pt20">
+				<div class="title_l_r clear_b title_l_r_bt_n"><span class="l">口碑排行榜</span></div>
+				<div class="q_warpten" id="sidebar">
+					<a href="{$_G['config']['web']['portal']}zhuangbei.html" target="_blank" class="zhong">装备库</a>
+					<a href="{$_G['config']['web']['portal']}pinpai" target="_blank">品牌</a>
+					<a href="{$_G['config']['web']['portal']}xianlu" target="_blank">线路</a>
+					<a href="{$_G['config']['web']['portal']}xuechang" target="_blank" class="end">滑雪场</a>
+				</div>
+				<div class="dpcon" id="sidebox">
+					<div class="hxc">
+						<ul>
+							<!--{loop $zb_list $zb}-->
+							<li>
+								<a href="{$_G['config']['web']['portal']}zhuangbei-{$zb['tid']}-1.html" class="xcimg" target="_blank" title="{$zb['subject']}"><img src="{eval echo getimagethumb(60,60,2,$zb['picpath'],$zb['aid'],$zb['serverid']);}"/></a>
+								<div class="xc_r">
+									<a href="{$_G['config']['web']['portal']}zhuangbei-{$zb['tid']}-1.html" target="_blank" title="{$zb['subject']}">{$zb['subject']}</a>
+									<div class="starwarpten">
+										<!--{if $zb['score']!='0.0'}-->
+										{eval for ($i = 0; $i < 5; $i++):}
+										<span class="{if $i < $zb['score']/2}{if $zb['score']/2-$i<1}halfstar{else}redstar{/if}{else}graystar{/if}"></span>
+										{eval endfor;}
+										<span class="fs">{$zb['score']}</span>
+										<!--{else}-->
+										<span class="no">暂无评分</span>
+										<!--{/if}-->
+									</div>
+								</div>
+							</li>
+							<!--{/loop}-->
+						</ul>
+					</div>
+					<div class="hxc brand" style="display:none">
+						<ul>
+							<!--{loop $pp_list $pp}-->
+							<li>
+								<a href="{$_G['config']['web']['portal']}pinpai-{$pp['tid']}" class="brand" target="_blank" title="{$pp['subject']}"><img src="http://image.8264.com/{$pp['dir']}/{$pp['showimg']}" /></a>
+								<div class="xc_r brand_r">
+									<a href="{$_G['config']['web']['portal']}pinpai-{$pp['tid']}" target="_blank" title="{$pp['subject']}">{$pp['subject']}</a>
+									<div class="starwarpten">
+										<!--{if $pp['score']!='0.0'}-->
+										{eval for ($i = 0; $i < 5; $i++):}
+										<span class="{if $i < $pp['score']/2}{if $pp['score']/2-$i<1}halfstar{else}redstar{/if}{else}graystar{/if}"></span>
+										{eval endfor;}
+										<span class="fs">{$pp['score']}</span>
+										<!--{else}-->
+										<span class="no">暂无评分</span>
+										<!--{/if}-->
+									</div>
+								</div>
+							</li>
+							<!--{/loop}-->
+						</ul>
+					</div>
+					<div class="hxc dp" style="display:none">
+						<ul>
+							<!--{loop $xl_list $xl}-->
+							<li>
+								<div class="xc_r dp_r">
+									<a href="{$_G['config']['web']['portal']}xianlu-{$xl['tid']}" target="_blank" title="{$xl['subject']}">{$xl['subject']}</a>
+									<div class="starwarpten">
+										<!--{if $xl['score']!='0.0'}-->
+										{eval for ($i = 0; $i < 5; $i++):}
+										<span class="{if $i < $xl['score']/2}{if $xl['score']/2-$i<1}halfstar{else}redstar{/if}{else}graystar{/if}"></span>
+										{eval endfor;}
+										<span class="fs">{$xl['score']}</span>
+										<!--{else}-->
+										<span class="no">暂无评分</span>
+										<!--{/if}-->
+									</div>
+								</div>
+							</li>
+							<!--{/loop}-->
+						</ul>
+					</div>
+					<div class="hxc" style="display:none">
+						<ul>
+							<!--{loop $xc_list $xc}-->
+							<li>
+								<a href="{$_G['config']['web']['portal']}xuechang-{$xc['tid']}" class="xcimg" target="_blank" title="{$xc['subject']}"><img src="{eval echo getimagethumb(60,60,2,$xc['picpath'],$xc['aid'],$xc['serverid']);}"/></a>
+								<div class="xc_r">
+									<a href="{$_G['config']['web']['portal']}xuechang-{$xc['tid']}" target="_blank" title="{$xc['subject']}">{$xc['subject']}</a>
+									<div class="starwarpten">
+										<!--{if $xc['score']!='0.0'}-->
+										{eval for ($i = 0; $i < 5; $i++):}
+										<span class="{if $i < $xc['score']/2}{if $xc['score']/2-$i<1}halfstar{else}redstar{/if}{else}graystar{/if}"></span>
+										{eval endfor;}
+										<span class="fs">{$xc['score']}</span>
+										<!--{else}-->
+										<span class="no">暂无评分</span>
+										<!--{/if}-->
+									</div>
+								</div>
+							</li>
+							<!--{/loop}-->
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="footer" style="position:relative;">
+	<div class="layout" style="padding: 20px 0px 26px 0px; position:relative">
+		<div class="topHill">顶部小山</div>
+		<div class="choiceness"><!--{block/6905}--></div>
+	</div>
+    <!--{subtemplate common/camel_ad}-->
+<div class="share_bd_warpten">
+	<ul class="bbs_share_sc">
+		<li class="ps_re" id="share">
+			<a href="javascript:;" class="share"></a>
+			<div class="bdsharebuttonbox share_bd" data-tag="share_1">
+				<a href="javascript:;" class="sina" data-cmd="tsina"></a>
+				<a href="javascript:;" class="qq" data-cmd="qzone"></a>
+				<a href="javascript:;" class="wb" data-cmd="tqq"></a>
+				<a href="javascript:;" class="wx" data-cmd="weixin"></a>
+			</div>
+		</li>
+		<li><a href="http://www.8264.com/list/{$article['catid']}/" class="bbsli" title="返回列表"></a></li>
+		<li id="gotop_50"><a style="display: none;" href="javascript:;" class="gotop_50"></a></li>
+	</ul>
+</div>
+<script>
+window._bd_share_config = {
+	common : {
+		//此处放置通用设置
+	},
+	share : [
+		//此处放置分享按钮设置
+		{"tag" : "share_1", "bdSize" : 32}
+	]
+}
+with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+(function($){
+		//鼠标移入分享后向左边弹出分享按钮
+	$("#share").hover(
+		function () {
+		$(".share_bd",this).show();
+		},
+		function () {
+		$(".share_bd",this).hide();
+		}
+	);
+	//返回顶部按钮
+	if($(window).scrollTop() > 10){$("#gotop_50 a").show();}
+	$(window).scroll( function(){
+		if($(window).scrollTop()>10){
+			$("#gotop_50 a").show();
+		}else{
+			$("#gotop_50 a").hide();
+		}
+	});
+	$("#gotop_50").click(function(){
+		$("html,body").animate({ scrollTop: 0 },500);
+	});
+
+
+
+
+})(jQuery);
+</script>
+<!-- Baidu Button BEGIN -->
+<script type="text/javascript" id="bdshare_js" data="type=button&amp;mini=1&amp;uid=39357" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+</script>
+<script>
+jQuery(function (){
+	jQuery("p.dpcon span").each(function(i){
+		var dph = jQuery(this).height();
+		//var url = jQuery(this).parent().prev('span').find('a').attr('href');
+		if (dph>86){
+			jQuery(this).height(86).append("<i class='morelink'></i>");
+		}
+	});
+});
+
+
+
+jQuery(function (){
+	jQuery("p.bangdanbox span").each(function(i){
+		var dph = jQuery(this).height();
+		//var url = jQuery(this).parent().prev('span').find('a').attr('href');
+		if (dph>86){
+			jQuery(this).height(86).append("<i></i>");
+		}
+	});
+});
+</script>
+<!-- Baidu Button END -->
+<!--{subtemplate common/footer_8264_new}-->

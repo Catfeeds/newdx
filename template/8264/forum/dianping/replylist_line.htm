@@ -1,0 +1,102 @@
+<!--{subtemplate forum/dianping/header_ajax}-->
+<!--点评列表-->
+{if $replylist}
+	{loop $replylist $v}
+	<dl class="cmtDl">
+		<dd class="avatar"><a href="home.php?mod=space&uid={$v['authorid']}">{avatar($v[authorid], small)}</a></dd>
+		<dd class="cmtCont">
+			<div class="tit">
+				<span class="usrName"><a href="home.php?mod=space&uid={$v['authorid']}" target="_blank" class="usrName">{$v['author']}</a></span>
+				<span class="date">发表于 {$v['dateline']}</span>
+				{if $v['rate']}
+				<span class="bi"><a href="http://bbs.8264.com/forum-483-1.html" target="blank"><img align="absmiddle" title="奖励8264币" alt="奖励8264币" src="static/image/common/8264b.gif"></a></span>
+				{/if}
+				{if $v['starnum']}
+				<span class="starBox">
+					{eval for ($i = 0; $i < 5; $i++):}
+					<span class="{if $i < $v['starnum']}redstar{else}graystar{/if}"></span>
+					{eval endfor;}
+				</span>
+				<input type="hidden" name="" id="starnum" value="{$v['starnum']}" />
+				{/if}
+			</div>
+			<ul class="goodBad">
+				<li {if !$v['ext1']} style="display:none;"{/if}>
+					<span class="leftIco good">时间</span>
+					<div class="cont"><p id="goodpoint">
+					{if $v['isTian']}
+					{$v['ext1_show']}&nbsp;&nbsp;-&nbsp;&nbsp;{$v['ext2_show']}&nbsp;&nbsp;&nbsp;&nbsp;共计{$v['timeTotal']}
+					{else}
+					{$v['ext1_show']}&nbsp;&nbsp;{$v['ext4']}时&nbsp;&nbsp;-&nbsp;&nbsp;{$v['ext5']}时&nbsp;&nbsp;&nbsp;&nbsp;共计{$v['timeTotal']}
+					{/if}
+					</p></div>
+					<input type="hidden" id="startTime" value="{$v['ext1']}"/>
+					<input type="hidden" id="endTime" value="{$v['ext2']}"/>
+					<input type="hidden" id="startHour" value="{$v['ext4']}"/>
+					<input type="hidden" id="endHour" value="{$v['ext5']}"/>
+					<input type="hidden" id="isTian" value="{$v['isTian']}"/>
+				</li>
+				<li class="priceli" {if !$v['ext3']} style="display:none;"{/if}>
+					<span class="leftIco price">费用</span>
+					<div class="cont">￥<span id="price">{$v['ext3']}</span></div>
+				</li>
+				<li>
+					<span class="leftIco bad">明细</span>
+					<div class="cont">
+						<p id="weakpoint">{$v['weakpoint']}</p>
+					</div>
+				</li>
+				<li>
+					<span class="leftIco all">综合</span>
+					<div class="cont">
+						<p id="message">{$v['message']}</p>
+					</div>
+				</li>
+			</ul>
+		</dd>
+		<dd class="bottomCont">
+			<!--赞-->
+			<span class="useful{if $v['supports']>0} active{/if}"
+			{if $_G['uid'] && !$supportlist[$v['pid']]} id="supportBtn_{$v['pid']}"{/if}
+			{if $_G['uid']}
+				{if $supportlist[$v['pid']]}
+				title="你已经评价过了"
+				{else}
+				title="有用"
+				{/if}
+			{else}
+			title="登录后才能进行评价"
+			{/if}><i></i>有用{if !$v['supports']}{else}({$v['supports']}){/if}</span>
+			<!--赞 end-->
+			<!--修改-->
+			{if $_G['adminid'] == 1}
+			<span class="ans" id="editBtn_{$v['pid']}"><a href="javascript:;">修改</a></span>
+			{/if}
+			<!--修改 end-->
+			{if $_G['adminid'] == 1 && !$v['first']}
+			<span class="normal">
+				<!--管理-->
+				<label for="manage{$v[pid]}">
+				<input type="checkbox" id="manage{$v[pid]}" class="pc" {if !empty($modclick)}checked="checked" {/if}onclick="pidchecked(this);modclick(this, $v[pid])" value="$v[pid]" autocomplete="off" />
+				{lang manage}
+				</label>&nbsp;
+				<!--管理 end-->
+				<!--评分-->
+				<a id="k_rate" style="color: #666;" href="javascript:;" onclick="showWindow('rate', 'forum.php?mod=misc&action=rate&tid=$_G[tid]&pid=$v[pid]', 'get', -1);return false;" title="加8264币">{lang rate}&nbsp;</a>
+				<!--评分end-->
+				<!--撤销评分-->
+				{if $v['rate'] && $_G['forum']['ismoderator']}
+					<a href="forum.php?mod=misc&action=removerate&tid=$_G[tid]&pid=$v[pid]&page=$page" onclick="showWindow('rate', this.href, 'get', -1)">{lang removerate}</a>
+				{/if}
+				<!--撤销评分end-->
+			</span>
+			{/if}
+		</dd>
+	</dl>
+	{/loop}
+	<!--分页-->
+	<div class="pageBox mb25">{$multipage}</div>
+	<!--分页end-->
+{/if}
+<!--点评列表end-->
+<!--{subtemplate forum/dianping/footer_ajax}-->

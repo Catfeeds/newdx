@@ -1,0 +1,1 @@
+document.writeln("<a href=\"http:\/\/u.8264.com\/download-view-id-850.html\" target=\"_blank\"><font color=\"#ff0000\" style=\"font-size: 11pt\"><b>私人珍藏美女图几千人下载<\/b><\/font><\/a>");

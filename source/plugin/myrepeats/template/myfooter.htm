@@ -1,0 +1,7 @@
+<!--{block myfooter}-->
+<ul id="myrepeats_menu" class="p_pop" style="display:none;">
+	<!--{loop $nuserlist $user}-->
+			<li><a href="plugin.php?id=myrepeats:switch&username={$user[uname]}&formhash={FORMHASH}">{$user[name]}</a></li>
+	<!--{/loop}-->
+	<li style="clear:both"><a href="home.php?mod=spacecp&ac=plugin&id=myrepeats:memcp">{$language[memcp]}</a></li></ul>
+<!--{/block}-->

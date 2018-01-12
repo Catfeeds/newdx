@@ -1,0 +1,466 @@
+  <div style="display: none;" class="box" id="weatherBox">
+            <div class="head"><a title="关闭" id="closeWTBOX" class="close">关闭</a><span style="float:left;">#{postTime}</span></div>
+            <h2>#{city} #{more}</h2>
+            #{weather} </div>
+    </div> 
+ <div id="search" class="wp cl" style="margin-bottom:10px;">
+        <div id="ex" >
+         <div id="weather">
+             <a title="点击查看更多" id="wet" onClick="Weather.more()"><strong>#{city}</strong> #{img} #{title}</a> <a onClick="Weather.set()" href="javascript:void(0)" target="_parent">[定制城市]</a>
+          </div> 
+          <div id="date"></div>
+          
+                      
+                        <div id="setCity" style="display:none">
+                            <select id="w_pro" name="w_pro" onChange="Weather.loadCity(this.value)">
+                                <option value="141">A 澳门</option>
+                                <option value="119">A 安徽</option>
+                                <option value="109">B 北京</option>
+                                <option value="135">C 重庆</option>
+                                <option value="123">F 福建</option>
+                                <option value="127">G 广东</option>
+                                <option value="128">G 广西</option>
+                                <option value="137">G 贵州</option>
+                                <option value="131">G 甘肃</option>
+                                <option value="111">H 河北</option>
+                                <option value="124">H 河南</option>
+                                <option value="125">H 湖北</option>
+                                <option value="126">H 湖南</option>
+                                <option value="129">H 海南</option>
+                                <option value="116">H 黑龙江</option>
+                                <option value="122">J 江西</option>
+                                <option value="120">J 江苏</option>
+                                <option value="115">J 吉林</option>
+                                <option value="114">L 辽宁</option>
+                                <option value="132">N 宁夏</option>
+                                <option value="113">N 内蒙古</option>
+                                <option value="133">Q 青海</option>
+                                <option value="117">S 上海</option>
+                                <option value="118">S 山东</option>
+                                <option value="112">S 山西</option>
+                                <option value="130">S 陕西</option>
+                                <option value="136">S 四川</option>
+                                <option value="110">T 天津</option>
+                                <option value="142">T 台湾</option>
+                                <option value="139">X 西藏</option>
+                                <option value="134">X 新疆</option>
+                                <option value="140">X 香港</option>
+                                <option value="138">Y 云南</option>
+                                <option value="121">Z 浙江</option>
+                            </select>
+                            <select name="w_city" id="w_city">
+                            </select>
+                            <a class="set button" onClick="Weather.tick()">确定</a> <a class="auto button" onClick="Weather.init(1)">自动判断</a> </div>
+        </div>
+        <div id="sm" class="clearfix" >
+            <ul id="sm_tab">
+                                <li s_tab="js_type_8" >新闻</li>
+                                <li s_tab="js_type_2"  class="active" default="1">网页</li>
+                                <li s_tab="js_type_9" >MP3</li>
+                                <li s_tab="js_type_10" >视频</li>
+                                <li s_tab="js_type_11" >图片</li>
+                                <li s_tab="js_type_12" >地图</li>
+                                <li s_tab="js_type_13" >问答</li>
+                                <li s_tab="js_type_14" >购物</li>
+                            </ul>
+        </div>
+        <div id="sb" class="clearfix">
+
+                                                <div class="search-box" id="js_type_8"  style="display:none;">
+                <div class="sw">
+                    <p id="sw_8">
+                                                                                    <a href="http://www.baidu.com/s?wd=%BD%F0%D3%B9%C8%A5%CA%C0&tn=pre_4_pg&ch=4" target="_blank">金庸去世</a>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <a href="http://www.baidu.com/s?wd=%C0%EE%C4%EE%B6%A9%BB%E9&tn=pre_4_pg&ch=4" target="_blank">李念订婚</a>
+                                                                                                                                                                                                                                                                                                                                                                                    <a href="http://www.baidu.com/s?wd=%B7%EF%BD%E3+%D3%A6%C6%B8&tn=pre_4_pg&ch=4" target="_blank">凤姐应聘</a>
+                                                                                                                                                                                                                                                                                                                                                                                    <a href="http://www.baidu.com/s?wd=%C3%C0%C8%D5%BE%FC%D1%DD&tn=pre_4_pg&ch=4" target="_blank">美日军演</a>
+                                                                                                                                                                                </p><!--/ keywords-->
+                </div>
+                <div class="sf">
+                    <form action="http://115.com/s" method="get" target="_blank">
+                        <a href="http://115.com" id="sf_label" rel="lk"><img src="http://www.8264.com/link/static/images/s/115.gif" width="105" height="35" rel="img" /></a><input type="text" name="q" class="int" autocomplete="off" rel="kw"/><input class="searchint" type="submit" value="115聚搜" rel="btn" />
+                        <div class="ctrl">
+                                                                                                                                                                                                                                            <label><input class="radio" type="radio" value="engine_29" name="search_select" rad="engine_29"  checked="checked" />百度</label>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <label><input class="radio" type="radio" value="engine_33" name="search_select" rad="engine_33"  />谷歌</label>
+                                                                                                                                                                                                                                                                        <label><input class="radio" type="radio" value="engine_27" name="search_select" rad="engine_27"  />SOSO</label>
+                                                                            </div>
+                    </form>
+                </div>
+            </div>
+                                                 <div class="search-box" id="js_type_2" >
+            <div class="sf" >
+            <table height="100%" width="100%"><tr><td valign="middle" align="center">
+                
+<script type="text/javascript"><!--
+  google_ad_client = "pub-3043661870494778";
+  google_ad_format = "js_sdo";
+  google_color_bg = "parentport";
+  google_cts_mode ="hq";
+  google_num_cts = "6";
+  google_cts_font_size = "14";
+  google_color_link = "336699";
+  google_searchbox_width = 215;
+  google_searchbox_height = 30;
+  google_link_target = 2;
+  google_ad_channel = "9521510331";
+  google_logo_pos = "left";
+  google_rs_pos = "right";
+  google_ad_height = 35;
+  google_ad_width = 935;
+//-->
+</script>
+<script type="text/javascript"
+  src=" http://pagead2.googlesyndication.com/pagead/show_sdo.js">
+</script>
+</td></tr></table>
+</div></div>
+                                                                        <div class="search-box" id="js_type_9"  style="display:none;">
+                <div class="sw">
+                    <p id="sw_9">
+                                                                                                                                        <a href="http://mp3.baidu.com/m?word=%C7%E9%B8%E8%C3%BB%D3%D0%B8%E6%CB%DF%C4%E3+%C1%BA.&tn=pre_4_pg&ch=4&f=ms&ct=134217728" target="_blank">情歌没有告诉你</a>
+                                                                                                                                                                                                                                                                                                                                                                                    <a href="http://mp3.baidu.com/m?word=%BC%C7%B5%C3+%C1%D6%BF%A1%BD%DC&tn=pre_4_pg&ch=4&f=ms&ct=134217728" target="_blank">记得</a>
+                                                                                                                                                                                                                                                                                                                                                                                                                                        <a href="http://mp3.baidu.com/m?word=%D3%C0%D4%B6%B0%AE%B2%BB%CD%EA+%B9%F9%B8%BB%B3%C7&tn=pre_4_pg&ch=4&f=ms&ct=134217728" target="_blank">永远爱不完</a>
+                                                                                                                                                                                                                                                                                                                                                                                    <a href="http://mp3.baidu.com/m?word=%B4%BA%CC%EC%C0%EF+%CD%F4%B7%E5&tn=pre_4_pg&ch=4&f=ms&ct=134217728" target="_blank">春天里</a>
+                                                                                                                                                                                                                                                                                                                                                                                                </p><!--/ keywords-->
+                </div>
+                <div class="sf">
+                    <form action="http://115.com/s" method="get" target="_blank">
+                        <a href="http://115.com" id="sf_label" rel="lk"><img src="http://www.8264.com/link/static/images/s/115.gif" width="105" height="35" rel="img" /></a><input type="text" name="q" class="int" autocomplete="off" rel="kw"/><input class="searchint" type="submit" value="115聚搜" rel="btn" />
+                        <div class="ctrl">
+                                                                                <label><input class="radio" type="radio" value="engine_16" name="search_select" rad="engine_16"  checked="checked" />百度</label>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <label><input class="radio" type="radio" value="engine_24" name="search_select" rad="engine_24"  />谷歌</label>
+                                                                                                                                                                                                                    <label><input class="radio" type="radio" value="engine_23" name="search_select" rad="engine_23"  />SOSO</label>
+                                                                                                                                                                                                                                        </div>
+                    </form>
+                </div>
+            </div>
+                                                            <div class="search-box" id="js_type_10"  style="display:none;">
+                <div class="sw">
+                    <p id="sw_10">
+                                                                                                                                                                                            <a href="http://www.qiaoqiao.net/movie.php?mod=view&id=33696" target="_blank">新少林寺</a>
+                                                                                                                                                                                                                                                                                                                                                                                    <a href="http://www.qiaoqiao.net/movie.php?mod=view&id=14844" target="_blank">神奇侠侣</a>
+                                                                                                                                                                                                                                                                                                                                                                                                                                        <a href="http://www.qiaoqiao.net/movie.php?mod=view&id=48197" target="_blank">回家的诱惑</a>
+                                                                                                                                                                                                                                                                                                                                                                                    <a href="http://www.qiaoqiao.net/movie.php?mod=view&id=48234" target="_blank">幸福来敲门</a>
+                                                                                                                                                                                                                                                                                                                                            </p><!--/ keywords-->
+                </div>
+                <div class="sf">
+                    <form action="http://115.com/s" method="get" target="_blank">
+                        <a href="http://115.com" id="sf_label" rel="lk"><img src="http://www.8264.com/link/static/images/s/115.gif" width="105" height="35" rel="img" /></a><input type="text" name="q" class="int" autocomplete="off" rel="kw"/><input class="searchint" type="submit" value="115聚搜" rel="btn" />
+                        <div class="ctrl">
+                                                                                                                                                                                        <label><input class="radio" type="radio" value="engine_28" name="search_select" rad="engine_28"  />116搜索</label>
+                                                                                                                                                                                                                                                                        <label><input class="radio" type="radio" value="engine_37" name="search_select" rad="engine_37"  checked="checked" />影视搜索</label>
+                                                                                                            <label><input class="radio" type="radio" value="engine_17" name="search_select" rad="engine_17"  />百度</label>
+                                                                                                                                                                                                                                                                                                                                                                                <label><input class="radio" type="radio" value="engine_25" name="search_select" rad="engine_25"  />谷歌</label>
+                                                                                                                                                                                    </div>
+                    </form>
+                </div>
+            </div>
+                                                            <div class="search-box" id="js_type_11"  style="display:none;">
+                <div class="sw">
+                    <p id="sw_11">
+                                                                                                                                                                                                                                                <a href="http://image.baidu.com/i?tn=baiduimage&ct=201326592&cl=2&pv=&lm=-1&word=justin bieber" target="_blank">justin bie</a>
+                                                                                                                                                                                                                                                                                                                                                                                    <a href="http://image.baidu.com/i?tn=baiduimage&ct=201326592&cl=2&pv=&lm=-1&word=周杰伦" target="_blank">周杰伦</a>
+                                                                                                                                                                                                                                                                                                                                                                                                                                        <a href="http://image.baidu.com/i?tn=baiduimage&ct=201326592&cl=2&pv=&lm=-1&word=范冰冰" target="_blank">范冰冰</a>
+                                                                                                                                                                                                                                                                                                                                                                                    <a href="http://image.baidu.com/i?tn=baiduimage&ct=201326592&cl=2&pv=&lm=-1&word=张馨予" target="_blank">张馨予</a>
+                                                                                                                                                                                                                                                                            <a href="http://image.baidu.com/i?tn=baiduimage&ct=201326592&cl=2&pv=&lm=-1&word=张杰" target="_blank">张杰</a>
+                                                                        </p><!--/ keywords-->
+                </div>
+                <div class="sf">
+                    <form action="http://115.com/s" method="get" target="_blank">
+                        <a href="http://115.com" id="sf_label" rel="lk"><img src="http://www.8264.com/link/static/images/s/115.gif" width="105" height="35" rel="img" /></a><input type="text" name="q" class="int" autocomplete="off" rel="kw"/><input class="searchint" type="submit" value="115聚搜" rel="btn" />
+                        <div class="ctrl">
+                                                                                                                                    <label><input class="radio" type="radio" value="engine_18" name="search_select" rad="engine_18"  checked="checked" />百度</label>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <label><input class="radio" type="radio" value="engine_26" name="search_select" rad="engine_26"  />谷歌</label>
+                                                                                                                                                                                                                                                                                                                                                </div>
+                    </form>
+                </div>
+            </div>
+                                                            <div class="search-box" id="js_type_12"  style="display:none;">
+                <div class="sw">
+                    <p id="sw_12">
+                                                                                                                                                                                                                                                                                                                                                                                                            <a href="http://ditu.google.cn/maps?q=%D3%EA%C1%D6%C4%BE%B7%E7&search_select=engine_21" target="_blank">雨林木风</a>
+                                                                                                                                                                                                                                                                                                                                                                                                                                        <a href="http://ditu.google.cn/maps?q=%B1%B1%BE%A9%CA%D0&search_select=engine_21" target="_blank">北京市</a>
+                                                                                                                                                                                                                                                                                                                                                                                    <a href="http://ditu.google.cn/maps?q=%C9%CF%BA%A3%CA%D0&search_select=engine_21" target="_blank">上海市</a>
+                                                                                                                                                                                                                                                                                                                                                                                    <a href="http://ditu.google.cn/maps?q=%B9%E3%D6%DD%CA%D0&search_select=engine_21" target="_blank">广州市</a>
+                                                                                                                            </p><!--/ keywords-->
+                </div>
+                <div class="sf">
+                    <form action="http://115.com/s" method="get" target="_blank">
+                        <a href="http://115.com" id="sf_label" rel="lk"><img src="http://www.8264.com/link/static/images/s/115.gif" width="105" height="35" rel="img" /></a><input type="text" name="q" class="int" autocomplete="off" rel="kw"/><input class="searchint" type="submit" value="115聚搜" rel="btn" />
+                        <div class="ctrl">
+                                                                                                                                                                                                                                                                                                                                                    <label><input class="radio" type="radio" value="engine_32" name="search_select" rad="engine_32"  checked="checked" />百度</label>
+                                                                                                                                                                                                                    <label><input class="radio" type="radio" value="engine_21" name="search_select" rad="engine_21"  />谷歌</label>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
+                    </form>
+                </div>
+            </div>
+                                                            <div class="search-box" id="js_type_13"  style="display:none;">
+                <div class="sw">
+                    <p id="sw_13">
+                                                                                                                                                                                                                                                                                                    <a href="http://zhidao.baidu.com/q?word=%D3%F6%B5%BD%BB%F0%D4%D6%D4%F5%C3%B4%B0%EC&tn=ikaslist&ct=17&pt=pre_ik" target="_blank">遇到火灾怎么办?</a>
+                                                                                                                                                                                                                                                                                                                                                                                    <a href="http://zhidao.baidu.com/q?word=%D5%C5%BA%E2%B5%D8%B6%AF%D2%C7%D5%E6%B5%C4%D3%D0%D3%C3%C2%F0&tn=ikaslist&ct=17&pt=pre_ik" target="_blank">张衡地动仪真的有用吗</a>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </p><!--/ keywords-->
+                </div>
+                <div class="sf">
+                    <form action="http://115.com/s" method="get" target="_blank">
+                        <a href="http://115.com" id="sf_label" rel="lk"><img src="http://www.8264.com/link/static/images/s/115.gif" width="105" height="35" rel="img" /></a><input type="text" name="q" class="int" autocomplete="off" rel="kw"/><input class="searchint" type="submit" value="115聚搜" rel="btn" />
+                        <div class="ctrl">
+                                                                                                                                                                                                                                                                                                <label><input class="radio" type="radio" value="engine_31" name="search_select" rad="engine_31"  checked="checked" />百度</label>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
+                    </form>
+                </div>
+            </div>
+                                                            <div class="search-box" id="js_type_14"  style="display:none;">
+                <div class="sw">
+                    <p id="sw_14">
+                                                                                                                                                                                                                                                                                                                                                        <a href="http://pindao.huoban.taobao.com/channel/man.htm?pid=mm_18036115_2311920_9044980" target="_blank">潮流男装</a>
+                                                                                                                                                                                                                                                                                                                                                                                    <a href="http://pindao.huoban.taobao.com/channel/lady.htm?pid=mm_18036115_2311920_9044980" target="_blank">时尚女装</a>
+                                                                                                                                                                                                                                                                                                                                                                                    <a href="http://pindao.huoban.taobao.com/channel/beauty.htm?pid=mm_18036115_2311920_9044980" target="_blank">美容护肤</a>
+                                                                                                                                                                                                                                                                                                                                                                                    <a href="http://pindao.huoban.taobao.com/channel/jewelry.htm?pid=mm_18036115_2311920_9044980" target="_blank">饰品鞋包</a>
+                                                                                                                                                                                                                                    </p><!--/ keywords-->
+                </div>
+                <div class="sf">
+                    <form action="http://115.com/s" method="get" target="_blank">
+                        <a href="http://115.com" id="sf_label" rel="lk"><img src="http://www.8264.com/link/static/images/s/115.gif" width="105" height="35" rel="img" /></a><input type="text" name="q" class="int" autocomplete="off" rel="kw"/><input class="searchint" type="submit" value="115聚搜" rel="btn" />
+                        <div class="ctrl">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <label><input class="radio" type="radio" value="engine_34" name="search_select" rad="engine_34"  checked="checked" />卓越</label>
+                                                                                                                                </div>
+                    </form>
+                </div>
+            </div>
+                                   
+            <div id="suggest" style="display:none"></div>
+        </div>
+    </div>    
+    <script type="text/javascript" src="http://www.8264.com/link/public/home/js/base.js"></script>
+<script type="text/javascript" src="http://www.8264.com/link/public/home/js/core.js"></script>
+  
+<script type="text/javascript" src="http://www.8264.com/link/public/home/js/config.js"></script>
+
+<script type="text/javascript">
+    try{
+		if(window.SR){
+			SR.SearchData = {
+                                    engine_16: {
+						action: "http://mp3.baidu.com/m",
+						name: "word",
+						btn: "搜 索",
+						img: ["百度mp3","static/images/s/mp3.gif"],
+						url: "http://mp3.baidu.com/m?ie=utf-8&ct=134217728&word=",
+						params: {
+							f: "ms",
+ct: "134217728",
+ie:'gbk'
+						}
+                    },
+                                    engine_18: {
+						action: "http://image.baidu.com/i",
+						name: "word",
+						btn: "搜 索",
+						img: ["百度图片","static/images/s/pic.gif"],
+						url: "http://image.baidu.com/",
+						params: {
+							ct: "201326592",
+cl: "2",
+pv: "",
+lm: "-1",
+ie:'gbk'
+						}
+                    },
+                                    engine_28: {
+						action: "http://v.116.com/",
+						name: "q",
+						btn: "搜 索",
+						img: ["116影视","static/images/s/115.gif"],
+						url: "http://v.116.com",
+						params: {
+							
+						}
+                    },
+                                    engine_29: {
+						action: "http://news.baidu.com/ns",
+						name: "word",
+						btn: "搜 索",
+						img: ["百度新闻","static/images/s/news.gif"],
+						url: "http://news.baidu.com/",
+						params: {
+							ie:'gbk'
+						}
+                    },
+                                    engine_31: {
+						action: "http://zhidao.baidu.com/q",
+						name: "word",
+						btn: "百度一下",
+						img: ["百度一下","static/images/s/zhidao.gif"],
+						url: "http://zhidao.baidu.com/q?pt=pre_ik",
+						params: {
+							tn: "ikaslist",
+ct: "17",
+pt: "pre_ik",
+ie:'gbk'
+						}
+                    },
+                                    engine_32: {
+						action: "http://map.baidu.com/m",
+						name: "word",
+						btn: "百度一下",
+						img: ["百度地图","static/images/s/baidu.gif"],
+						url: "http://map.baidu.com/",
+						params: {
+							ie:'gbk'
+						}
+                    },
+                                    engine_37: {
+						action: "http://www.qiaoqiao.net/movie.php",
+						name: "srchtxt",
+						btn: "影视搜索",
+						img: ["电影、电视剧、动漫搜索","static/images/s/yingshi.gif"],
+						url: "http://www.qiaoqiao.net",
+						params: {
+							mod:'search',
+searchsubmit:'yes',
+ie:'gbk'
+						}
+                    },
+                                    engine_17: {
+						action: "http://video.baidu.com/v",
+						name: "word",
+						btn: "百度视频",
+						img: ["百度视频","static/images/s/video.gif"],
+						url: "http://video.baidu.com/",
+						params: {
+							ct:'301989888',
+rn:'20',
+pn:'0',
+db:'0',
+s:'0',
+fbl:'800',
+ie:'gbk'
+						}
+                    },
+                                    engine_21: {
+						action: "http://ditu.google.cn/maps",
+						name: "q",
+						btn: "搜 索",
+						img: ["谷歌地图","static/images/s/google.gif"],
+						url: "http://ditu.google.cn/",
+						params: {
+							ie:'gbk'
+						}
+                    },
+                                    engine_24: {
+						action: "http://www.google.cn/music/search",
+						name: "q",
+						btn: "搜 索",
+						img: ["谷歌","static/images/s/google.gif"],
+						url: "http://www.google.cn/music/homepage",
+						params: {
+							aq: "f",
+ie: "gb2312",
+oe: "gbk",
+hl: "zh-CN"
+						}
+                    },
+                                    engine_26: {
+						action: "http://images.google.com.hk/images",
+						name: "q",
+						btn: "搜 索",
+						img: ["谷歌","static/images/s/google.gif"],
+						url: "http://images.google.com.hk/imgcat/imghp?hl=zh-CN",
+						params: {
+							gbv: "2",
+source: "hp",
+hl: "zh-CN",
+ie:'gbk'
+						}
+                    },
+                                    engine_33: {
+						action: "http://news.google.com.hk/news/search",
+						name: "q",
+						btn: "搜 索",
+						img: ["谷歌","static/images/s/google.gif"],
+						url: "http://news.google.com.hk/",
+						params: {
+							ie:'gbk'
+						}
+                    },
+                                    engine_23: {
+						action: "http://cgi.music.soso.com/fcgi-bin/m.q",
+						name: "w",
+						btn: "搜 索",
+						img: ["搜搜mp3","static/images/s/soso.gif"],
+						url: "http://music.soso.com/?cid=union.s.wh",
+						params: {
+							unc: "s200000_7",
+cid: "union.s.wh",
+ie:'gbk'
+						}
+                    },
+                                    engine_25: {
+						action: "http://www.google.com.hk/search",
+						name: "q",
+						btn: "搜 索",
+						img: ["谷歌","static/images/s/google.gif"],
+						url: "http://www.google.com.hk/videohp",
+						params: {
+							tbo: "p",
+tbs: "vid:1",
+source: "vgc",
+ie:'gbk'
+						}
+                    },
+                                    engine_34: {
+						action: "http://www.amazon.cn/search/search.asp",
+						name: "searchWord",
+						btn: "搜 索",
+						img: ["卓越","static/images/s/joyo.gif"],
+						url: "http://www.amazon.cn/",
+						params: {
+							
+						}
+                    },
+                                    engine_27: {
+						action: "http://news.soso.com/n.q",
+						name: "w",
+						btn: "搜 索",
+						img: ["搜搜新闻","static/images/s/soso.gif"],
+						url: "http://news.soso.com/?cid=union.s.wh",
+						params: {
+							cid: "union.s.wh",
+ie:'gbk'
+						}
+                    },
+                				none:{}
+            }	
+		}
+		
+		var sbBox = document.getElementById('sb');
+		var sbForms = sbBox.getElementsByTagName('form');
+		for(var i = 0,len = sbForms.length; i < len; i++){
+			sbForms[i].reset();
+		}
+		
+		var sbRadios = sbBox.getElementsByTagName('input');
+		var inputTxtArr = [];
+		if(sbRadios.length){
+			var setRadios = [];
+			for(var i = 0,len = sbRadios.length; i < len; i++){
+				var input = sbRadios[i];
+				if(input.getAttribute("rad") && input.checked){
+					setRadios.push(input);
+				}
+				else if(input.getAttribute("rel") == "kw"){
+					var key = inputTxtArr.push(input);
+					input.setAttribute("index",key - 1);
+					
+				}
+			}
+			try{
+			for(var i = 0,len = setRadios.length; i < len; i++){
+				var input = setRadios[i];
+				
+				SR.RadioMod.ClickRadio(input);
+			}
+			}catch(e){}
+		}
+	}catch(e){}
+    </script>

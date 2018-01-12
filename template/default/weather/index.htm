@@ -1,0 +1,187 @@
+<!--{subtemplate common/header_8264_new}-->
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/weather/style/style.css">
+<script src="http://static.8264.com/static/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+    jQuery(function($){
+        //external加上target="_blank"
+        $("a[rel*=external]").attr("target","_blank");
+    });
+</script>
+<style>
+    body{ background:url(http://static.8264.com/static/css/weather/images/forecast_bg.png) fixed top center;}
+</style>
+        <div class="w1170">
+        	<!-- 值得买 -->
+            <!--{eval include(DISCUZ_ROOT.'./source/plugin/skiing/hd_zw.php');}-->
+            <!--{eval $zhidemai_list = ForumOptionHuoDong::pianyi_sidebar(6, 'top', 'jiu', '10027');}-->
+            <!--{if $zhidemai_list}-->
+            <div style="margin: 10px auto 10px auto;">
+            <style>
+                .zhidemaiwidth{ width:1170px;}
+                .zhidemaibox .zhidemailist_new{ width:1170px; margin:0 auto; overflow:hidden;}
+                .zhidemaibox .zhidemailist_new ul{ width:1370px;}
+                .zhidemaibox .zhidemailist_new li{width:176px; overflow:hidden;}
+                .zhidemaibox .zhidemailist_new li img{ width:176px;}
+            </style>
+            <!--{subtemplate common/zhidemai}-->
+            </div>
+            <!--{/if}-->
+            <!-- //值得买 -->
+            <div class="navigation clear_b">
+                <h3>
+                    当前位置：<a href="http://www.8264.com/weather/">全国天气预报</a>><a href="http://www.8264.com/weather/{$parent_spell}/">{$parent_area}</a>><a href="http://www.8264.com/weather/{$weather_area_name['pspell']}/{$weather_area_name['spell']}/">{$cur_city}天气</a>
+                </h3>
+                <div class="changecity">
+                    <span>切换城市</span>
+                </div>
+            </div>
+            <div class="btitle clear_b">
+                <h1>{$cur_city}天气预报</h1>
+                <div>
+                    <!-- 活动二维码 -->
+                    <style>
+                    .gzhboxheardbox{float:right; cursor:pointer;position:relative; line-height:1.4; margin-right:15px;}
+                    .gzhboxheardbox .gzhspan{color:#585858;font-size:14px;display:inline-block;margin:0px 0 0 10px;background:url(http://static.8264.com/hd/pc/images/tps/v1/gzhdownarrow.png) right center no-repeat;padding:0 14px 0px 10px; line-height:1}
+                    .gzhboxheardbox:hover .gzhpopcon{display:block}
+                    .gzhpopcon{width:250px;height:120px;position:absolute;top:34px;right:0px;background:rgba(242,242,242,.8);display:none;box-shadow:0 12px 10px rgba(12,4,7,.4)}
+                    .gzhpopcon img{width:100px;height:100px;float:left;margin:10px 0 0 10px}
+                    .gzhpopcon p{text-align:center;overflow:hidden;padding:22px 0 0 0;color:#666; font-size:14px;}
+                    .gzhpopcon b{font-size:18px;font-weight:700;display:block;padding:0 0 8px 0;color:#000}
+                    </style>
+                    <div class="gzhboxheardbox">
+                        <span class="gzhspan" style="color: #ffc52a;">{$cur_city}精彩活动推荐</span>
+                        <div class="gzhpopcon">
+                            <img src="http://static.8264.com/hd/pc/images/tps/v1/gzh8264.jpg" height="100" width="100">
+                            <p><b>扫一扫</b>关注微信号<br>精彩活动每天看</p>
+                        </div>
+                    </div>
+                    <!-- //活动二维码 -->
+                    <a href="http://www.8264.com/weather/{$weather_area_name['pspell']}/{$area}/tianqi-{$history_show}.html" target="_blank">{$cur_city}历史天气</a>
+                </div>
+            </div>
+            <div class="forecast clear_b">
+                <div style=" width:1200px;">
+                    <div class="today_detail">
+                        <div class="dateweek">
+                            <div class="todaycon clear_b">
+                                <div class="left">
+                                    <b>今天</b>
+                                    <span>{$weather_forecast_result['update_date']}实时天气</span>
+                                </div>
+                                <div class="right">
+                                    <span>$weather_forecast_result['current_date']</span>
+                                    <span>{$weather_forecast_result['current_week']}</span>
+                                </div>
+                            </div>
+                            <div class="todaycon clear_b pt30">
+                                <div class="left">
+                                    <img alt="weather_icon" src="http://static.8264.com/static/css/weather/images/icon/{$weather_forecast_result['code']}.png"/>
+                                     <em style=" display:block">{$weather_forecast_result['weather']}</em>
+                                </div>
+                                <div class="right">
+                                    <i style="font-size:36px; color:#ffc52a; font-weight:bold;">{$weather_forecast_result['temperature']}℃</i>
+                                    <em>{$weather_forecast_result['minTemp']}/{$weather_forecast_result['maxTemp']}℃</em>
+                                </div>
+                            </div>
+                            <div class="wdescdatail clear_b">
+                                <a href="#">雾霾指数：<!--{if $weather_forecast_result['aqi']==''}-->良好<!--{else}-->{$weather_forecast_result['aqi']}<!--{/if}--></a>
+                                <span>空气质量：良好</span>
+                                <span>风力预报：{$weather_forecast_result['wind_dir']}{$weather_forecast_result['wind_power']}级</span>
+                                <a href="#">穿衣指数：{$weather_forecast_result['drsg']}</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail_day_list clear_b w242">
+                        <ul>
+                            <!--{loop $weather_forecast_result['hourly_forecast'] $weather_forecast}-->
+                            <li>
+                                <span class="date">{$weather_forecast['date']}</span>
+                                <span class="week">{$weather_forecast['time']}</span>
+                                <span class="wicon"><img src="http://static.8264.com/static/css/weather/images/icon/{$weather_forecast_result['code']}.png"></span>
+                                <span class="wdesc"> {$weather_forecast['weather']} </span>
+                                <span class="temp"> {$weather_forecast['temperature']}℃ </span>
+                                <span class="direct"> {$weather_forecast['wind_dir']} </span>
+                                <span class="wind"> {$weather_forecast['wind_power']}级 </span>
+                            </li>
+                            <!--{/loop}-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="btitle clear_b">
+                <h1>{$cur_city}未来7天天气预报</h1>
+                <div>
+                    <a href="http://www.8264.com/weather/{$weather_area_name['pspell']}/{$weather_area_name['spell']}/yubao-10.html" target="_blank">{$cur_city}10天天气预报</a>
+                    <a href="http://www.8264.com/weather/{$weather_area_name['pspell']}/{$weather_area_name['spell']}/yubao-15.html" target="_blank">{$cur_city}15天天气预报</a>
+                    <a href="http://www.8264.com/weather/{$weather_area_name['pspell']}/{$weather_area_name['spell']}/yubao-30.html" target="_blank">{$cur_city}30天天气预报</a>
+                </div>
+            </div>
+            <div class="forecast clear_b">
+                <div style=" width:1200px;">
+                    <div class="detail_day_list clear_b w129">
+                        <ul>
+                            <!--{loop $weather_forecast_result['daily_forecast'] $weather_forecast_daily}-->
+                            <li>
+                                <span class="date">{$weather_forecast_daily['date']}</span>
+                                <span class="week"> {$weather_forecast_daily['week']} </span>
+                                <span class="wicon"><img src="http://static.8264.com/static/css/weather/images/icon/{$weather_forecast_daily['code']}.png"></span>
+                                <span class="wdesc"> {$weather_forecast_daily['weather']} </span>
+                                <span class="temp"> {$weather_forecast_daily['minTemp']}/{$weather_forecast_daily['maxTemp']}℃ </span>
+                                <span class="direct"> {$weather_forecast_daily['wind_dir']} </span>
+                                <span class="wind"> {$weather_forecast_daily['wind_power']}级</span>
+                            </li>
+                            <!--{/loop}-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btitle clear_b">
+                <h1>其他城市天气预报</h1>
+                <div><a href="http://www.8264.com/weather/" target="_blank">更多城市查询</a></div>
+            </div>
+            <div class="citylist clear_b">
+                <!--{loop $weather_parallel_area_list $weather_parallel_area}-->
+                <a href="http://www.8264.com/weather/{$weather_parallel_area['pspell']}/{$weather_parallel_area['spell']}/" target="_blank">{$weather_parallel_area['name']}天气预报</a>
+                <!--{/loop}-->
+            </div>
+        </div>
+        <!--切换城市列表开始-->
+        <div class="citylistbox">
+            <div class="citytitle">
+                <span>选择城市</span>
+                <i></i>
+            </div>
+            <div class="minicity_content">
+
+             </div>
+        </div>
+        <!--切换城市列表结束-->
+
+        <script>
+            $(function () {
+                var ww = $(window).height();
+                $(".changecity span").click(function () {
+                    $(".minicity_content").load('http://www.8264.com/weather.php?ctl=get_citylist_by_ajax&is_ajax=1&area={$_GET['area']}&pspell={$_GET['pspell']}');
+                    $(".citylistbox").css({
+                        "opacity": "100", "z-index": "1091"
+                    });
+                    $(".citylistbox").height(ww);
+                    $(".minicity_content").height(ww - 70);
+                });
+                $(document).on("click",".citytitle i",function(){
+                    $(".citylistbox").css({
+                        "opacity": "0", "z-index": "-1"
+                    });
+                });
+
+                $(".changecity a").click(function () {
+                    $(".citylistbox").css({
+                        "opacity": "0", "z-index": "-1"
+                    });
+                });
+            });
+        </script>
+
+<!--嵌入公用底部开始-->
+<!--{subtemplate common/footer_8264_new}-->

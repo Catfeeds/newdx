@@ -1,0 +1,29 @@
+<div id="glxz" style="overflow:hidden;height:325px; margin:auto">
+	<!--{block/6615}-->
+</div>
+<script type="text/javascript">
+;(function($){
+    function resize_style() {
+        var width = 180;
+        var max_width = $('.warptenDaypic45').width()-2;
+        var item_num = parseInt(max_width / width);
+        var item_margin = parseInt((max_width % width) / (item_num + 2) / 2);
+        var padding_left = item_margin;
+        $('.midDaypic45').css({'padding-left': (2*padding_left)+'px'});
+        $('.midDaypic45 > div').css({'margin-left':item_margin+'px', 'margin-right':item_margin+'px'});
+    }	
+    $(window).resize(resize_style);
+    $("#wh").live("mouseleave",function(){		
+        resize_style();
+	});
+	$("#wh").live("click",function(){		
+        resize_style();
+	});
+	$("#wh").live("mouseenter",function(){
+        resize_style();
+    });
+	setTimeout(function(){
+        resize_style();
+    }, 200)
+})(jQuery);
+</script>

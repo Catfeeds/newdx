@@ -1,0 +1,215 @@
+{subtemplate common/header}
+<style type="text/css">
+.tplw{margin-bottom:0px;}    
+.showeditmap{border: 1px solid #ccc;clear: both;height: 450px;margin: 0 auto;}
+.bz{cursor: pointer;display: inline-block;height: 20px;margin-right: 5px;overflow: hidden;color: #336699;}
+.add{float: left;margin-bottom: 5px;width: auto;}
+.sh{margin-bottom: 5px;float: left;clear: both;}
+.mark .zs{color: #999999;margin-top: 10px;text-align: right;}
+#edmap{height: 448px;}
+#edmap1{height: 448px;}
+</style>
+
+<div class="tm_c" fwin="mods" style="width:700px;padding: 0 10px;">
+    <h3 class="flb"><em fwin="mods">$shop['sName']</em>
+        <span><a title="关闭" onclick="hideWindow('editmap')" class="flbc" href="javascript:;">关闭</a></span></h3>        
+        <div class="c">
+            <div class="tplw">	              
+                <p class="add">地址：($shop['reg'])$shop['sAddress']&nbsp;&nbsp;&nbsp;&nbsp;</p><b class="bz">地图上标注</b>				
+            </div>
+			<div class="sh"><input type="text" name="add" id="add" size="40"/>&nbsp;&nbsp;<button type="button" id="search">&nbsp;&nbsp;搜 索&nbsp;&nbsp;</button>&nbsp;&nbsp;(搜索地址解析的格式如下：省+城市+区县+街道)</div>
+            <div class="showeditmap">
+                <input type="hidden" value="" id="longitude" name="longitude">
+				<input type="hidden" value="" id="latitude" name="latitude">
+				<input type="hidden" value="$shop['sAddress']" id="sAddress" name="sAddress">	
+				<input type="hidden" value="$shop['reg']" id="reg" name="reg">
+				<input type="hidden" value="$shop['pro']" id="pro" name="pro">
+					<input type="hidden" value="$shop['tid']" id="tid" name="tid">
+                <div id="edmap"></div>				
+            </div>
+            <div class="mark">
+                <span class="zs">注：地图位置标注仅供参考，具体情况以实际道路标实信息为准</span>
+            </div>            
+        </div>        
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2&services=true"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+</script>
+<script type="text/javascript">
+;(function($){
+var tid = {$shop['tid']};
+var edit ={$notip}; 
+var long = {$shop['longitude']};
+var lat = {$shop['latitude']};
+
+$("#edmap").html("");
+var point = new BMap.Point(long, lat);
+var map = new BMap.Map("edmap");            // 创建Map实例
+var opt = {type: BMAP_NAVIGATION_CONTROL_SMALL};
+map.addControl(new BMap.NavigationControl(opt));
+map.centerAndZoom(point, 16);
+var marker = new BMap.Marker(point);  // 创建标注
+map.addOverlay(marker);
+marker.enableDragging(true); // 设置标注可拖拽
+var opts = {
+    width : 110,     // 信息窗口宽度
+    height: 50,     // 信息窗口高度
+    title : "提示信息"  // 信息窗口标题
+}
+if(edit){
+	var infoWindow = new BMap.InfoWindow("拖动此标注更改店铺位置", opts);  // 创建信息窗口对象
+	$(".bz").show();
+	$(".sh").show();
+}else{	
+	marker.disableDragging(true); // 设置标注不可拖拽	
+	$(".bz").hide();
+	$(".sh").hide();
+}
+marker.addEventListener("mouseup", function(){
+    var position = marker.getPosition();
+    var t = confirm('是否将新位置设置为此店铺的默认位置？');
+    if(t==true){    											
+        marker.disableDragging(true); // 设置标注不可拖拽
+        marker.removeEventListener("mouseup");
+        jQuery("#longitude").val(position['lng']);
+		jQuery("#latitude").val(position['lat']);        
+        var lng = jQuery("#longitude").val();
+        var lat = jQuery("#latitude").val();
+        var str_url = 'plugin.php?id=outshop:ajax_updateshop&tid='+tid;
+        jQuery.ajax({           
+            url: str_url,
+			type: 'post',
+            data:{ lng: lng, lat: lat },
+            success: function(msg){
+                showDialog("您的修改已提交,刷新页面可看最新效果！","notice");
+				map.clearOverlays();
+				hideWindow('editmap');
+			}
+        });         
+    }else{
+
+    }													
+});								
+marker.openInfoWindow(infoWindow);
+$(".bz").click(function(){
+	$("#edmap").html("");
+	var pro = document.getElementById("pro").value;
+	var reg = document.getElementById("reg").value;
+	var map = new BMap.Map("edmap");            // 创建Map实例
+	map.centerAndZoom(pro,16);
+	map.addControl(new BMap.NavigationControl());
+	map.enableScrollWheelZoom();
+	//创建地址解析的实例
+	var myGeo = new BMap.Geocoder();
+	var add = document.getElementById("sAddress").value;
+	//var add = pro+reg+add;
+	myGeo.getPoint(add, function(point){		
+      if (point) {
+        map.centerAndZoom(point, 16);
+		mk = new BMap.Marker(point);
+        map.addOverlay(mk);
+		mk.enableDragging(true); // 设置标注可拖拽		
+		var opts = {
+			width : 110,     // 信息窗口宽度
+			height: 50,     // 信息窗口高度
+			title : "提示信息"  // 信息窗口标题
+		}
+		var infoWindow = new BMap.InfoWindow("拖动此标注更改店铺默认位置", opts);  // 创建信息窗口对象
+		mk.addEventListener("mouseup", function(){
+			var position = mk.getPosition();
+			var s = confirm("是否将新位置设置为此店铺的默认位置？");
+			if(s==true){
+				jQuery("#longitude").val(position['lng']);
+				jQuery("#latitude").val(position['lat']);
+				var lng = jQuery("#longitude").val();
+				var lat = jQuery("#latitude").val();
+				var tid = jQuery("#tid").val();
+				mk.disableDragging(true); // 设置标注不可拖拽
+				mk.removeEventListener("mouseup");
+				var str_url = 'plugin.php?id=outshop:ajax_updateshop&tid='+tid;
+				jQuery.ajax({           
+					url: str_url,
+					type: 'post',
+					data:{ lng: lng, lat: lat },
+					success: function(msg){
+						showDialog("您的修改已提交,刷新页面可看最新效果！","notice");
+						map.clearOverlays();
+						hideWindow('editmap');
+					}
+				}); 
+			}else{
+				jQuery("#longitude").val(point['lng']);
+				jQuery("#latitude").val(point['lat']);	
+			}													
+		});								
+		mk.openInfoWindow(infoWindow);			
+      }else{
+		alert("数据错误,加载失败！");
+	  }
+    }, reg);	
+});
+
+$("#search").click(function(){
+	var dz = $("#add").val();
+	if(dz==""){
+		showDialog("详细地址不能为空！","notice");
+	}
+	$("#edmap").html("");
+	var pro = document.getElementById("pro").value;
+	var reg = document.getElementById("reg").value;
+	var map = new BMap.Map("edmap");            // 创建Map实例
+	map.centerAndZoom(pro,16);
+	map.addControl(new BMap.NavigationControl());
+	map.enableScrollWheelZoom();
+	//创建地址解析的实例
+	var myGeo = new BMap.Geocoder();
+	var add = document.getElementById("add").value;
+	myGeo.getPoint(add, function(point){		
+      if (point) {
+        map.centerAndZoom(point, 16);
+		mk = new BMap.Marker(point);
+        map.addOverlay(mk);
+		mk.enableDragging(true); // 设置标注可拖拽		
+		var opts = {
+			width : 110,     // 信息窗口宽度
+			height: 50,     // 信息窗口高度
+			title : "提示信息"  // 信息窗口标题
+		}
+		var infoWindow = new BMap.InfoWindow("拖动此标注更改店铺默认位置", opts);  // 创建信息窗口对象
+		mk.addEventListener("mouseup", function(){
+			var position = mk.getPosition();
+			var s = confirm("是否将新位置设置为此店铺的默认位置？");
+			if(s==true){
+				jQuery("#longitude").val(position['lng']);
+				jQuery("#latitude").val(position['lat']);
+				var lng = jQuery("#longitude").val();
+				var lat = jQuery("#latitude").val();
+				var tid = jQuery("#tid").val();
+				mk.disableDragging(true); // 设置标注不可拖拽
+				mk.removeEventListener("mouseup");
+				var str_url = 'plugin.php?id=outshop:ajax_updateshop&tid='+tid;
+				jQuery.ajax({           
+					url: str_url,
+					type: 'post',
+					data:{ lng: lng, lat: lat },
+					success: function(msg){
+						showDialog("您的修改已提交,刷新页面可看最新效果！","notice");
+						map.clearOverlays();
+						hideWindow('editmap');
+					}
+				}); 
+			}else{
+				jQuery("#longitude").val(point['lng']);
+				jQuery("#latitude").val(point['lat']);	
+			}													
+		});								
+		mk.openInfoWindow(infoWindow);			
+      }else{
+		alert("数据错误,加载失败！");
+	  }
+    }, reg);	
+});
+})(jQuery);
+</script>
+{subtemplate common/footer}

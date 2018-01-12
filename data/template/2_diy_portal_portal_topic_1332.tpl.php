@@ -1,0 +1,327 @@
+<?php if(!defined('IN_DISCUZ')) exit('Access Denied'); ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>中国企业家"绿色北极"瑞典穿越行</title>
+<link href="http://static.8264.com/oldcms/moban/zt/fjallraven/style/style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+.STYLE2 {font-size: 12px}
+-->
+</style>
+</head>
+
+<body>
+<div class="wrapper">
+<div><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/banner.jpg" width="980" height="540" border="0" usemap="#Map" /><map name="Map" id="Map"><area shape="rect" coords="21,5,183,37" href="http://fenixoutdoor.cn/" target="_blank" /><area shape="rect" coords="201,4,343,36" href="http://www.fenixoutdoor.cn/index.asp" target="_blank" /><area shape="rect" coords="366,4,531,36" href="http://u.8264.com/33785193 " target="_blank" /></map></div>
+    <div class="toparea">
+    	<div class="anpai">
+<b>第一天&nbsp;DAY1：</b><br />
+我们的穿越向导会在基律纳机场欢迎我们并将我们送到Camp Ripan酒店 -–FJALLRAVEN CLASSIC（北极狐经典穿越活动）参加者的集合处。在这里将与我们FJALLRAVEN品牌的代表进行会面，他将提供一个穿越前的全面介绍，内容涵盖活动路线和比赛的组织。之后我们会被送至住所，晚上在享用由当地原料烹饪的美味晚餐后将有一个装备和服装展示。<br />
+<br />
+<b>第二天&nbsp;DAY2：</b><br />
+用过早餐后我们前往尼卡卢奥克塔，一个小萨米村庄，JALLRAVEN CLASSIC（北极狐经典穿越活动）由此开始。在穿越的第一阶段，路线向着一个桦树林蜿蜒。午餐时间我们在LapDonalds停留品尝驯鹿肉汉堡，几个小时后我们到达凯布讷山站点。这是经典穿越第一个检查点，我们将在此安营。现在该是在Giebme餐馆吃晚餐之前享受热桑拿的时候。这儿，就在群山之中，我们在FJALLRAVEN品牌的发源处。该品牌在50年间一直致力于给全球户外旅行爱好者提供了性能优秀的户外装备。。
+
+<br />
+<br />
+<b>第三天&nbsp;DAY3：</b><br />
+巍峨的Toulpagorni顶峰迎接我们来到世界上最美的旷野。大雪散落在山坡上，郁郁葱葱的山谷里鲜花盛开。在这些极致的景致中，我们的身心仿佛也回归到了最自然原始的状态。在傍晚时分我们到达Salka小屋，并在木屋附近搭建帐篷。Salka是路线其中一个最美的宿营点，在吃过晚饭还未进入帐篷休息时，我们一起欣赏被夕阳染成金色的天空。<br />
+<br />
+<b>第四天&nbsp;DAY4：</b><br />
+从Salka开始我们将行进到本次路线的最高点，海拔1150米。连续4-5小时的上升直到到Tjaktja垭口，这是路线中最艰苦也是最刺激的部分。在垭口的另一侧我们进入到一个类似月球表面的多石地带，标记着路线的石碑经常与花岗岩和粗石堆混杂在一起。在Tjakatja检查点之后会是一段容易些的下降路线，绿色的旷野会让我们到阿勒斯湖的徒步十分舒适。在阿勒斯湖的小屋附近搭建完帐篷之后，赶在晚餐之前我们还能享受绝妙的户外桑拿。新鲜的空气和身体的疲惫会让我们很快进入梦乡。<br />
+<br />
+<b>第五天&nbsp;DAY5：</b><br />
+今天在到达一个开阔的高原之前（我们将在这儿度过一天大部分时间），我们会经过一系列相互连接的湖泊。与昨天相比，地形更平坦且不艰难。鹅卵石散布在地上，一路上无边的苔藓、小草及风景。我们的路线横穿当地萨米驯鹿放牧的核心区。在穿越的路线当中，我们会经常遇到驯鹿。在下完Kieron山后我们赶上竞赛参与者，他们已经在桦树林里搭好了帐篷。在kieron检查点的露天晚餐品尝起来很美味，当入睡时我们也许会感到一丝的伤感，因为我们知道活动将在明天结束。<br />
+<br />
+<b>第六天&nbsp;DAY6：</b><br />
+吃过早饭，我们进行经典穿越的最后阶段。今天我们将穿过迷人的阿比斯库国家公园，它因种类丰富的北极地区植物和长时间的日照而闻名。舒缓的下坡地形提供了一个相当容易的路程，但经过4天的穿越，我们的身体感觉酸痛，我们的脚步也略带沉重了。穿过在阿比斯库山站点的终点线是一个值得记忆的时刻：我们在徒步者旅馆享用着冰啤酒和美味的食物，一种油然而生的成就感将我们聚在一起。<br />
+<br />
+        </div>
+        <div class="guanyu">
+2010年8月，瑞典FENIX跨国集团旗下第6届中国企业家"绿色北极"瑞典穿越行即将拉开序幕，同时又正值FJALLRAVEN品牌50周年之际。FENIX跨国集团中国子公司将组建一支由数位知名企业家以及媒体记者组成的团队一同探访瑞典， 深入FJALLRAVEN品牌创始地探寻其半个世纪的厚重历史，领略110公里沿途的夏季绿色北极风光，以及参与FJALLRAVEN品牌50周年盛大庆典活动。这一切，相信会给每个参与者留下一生的美妙回忆，同时也是对FJALLRAVEN品牌所提倡的健康生活理念之完美诠释！！
+<br /><br />
+FJALLRAVEN CLASSIC（北极狐经典穿越活动）的概念源于鼓励更多人走入大自然的这一主张，想让更多人享受户外生活的自由和拥有精彩的野外体验。这就是为什么所有的活动参与者都认为它是世界上最美好的穿越活动。FJALLRAVEN CLASSIC将一个山区的穿越活动变成一个民众的节日。这个活动在瑞典拉普兰的高山里举行并且覆盖110公里。
+<br /><br />
+身处欧洲大陆最后的原始旷野中，坐拥在雄壮的高山之间，这是一种多么奇妙的异国风情。FJALLRAVEN CLASSIC（北极狐经典穿越活动）从北极圈北部200公里尼卡卢奥克塔的萨米村开始，参加者将穿越迷人的自然景观，凯布讷山就是其中之一。以及辽阔的自然风光和碧波荡漾的阿勒斯湖。到穿越的尽头将进入阿比斯库国家公园，一个通往独特动植物群栖息地的绿色山谷。
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+
+
+<div class="mid1area">
+    	<div><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/ourteam.jpg" width="960" height="41" border="0" usemap="#Map2" />
+          <map name="Map2" id="Map2">
+ <area shape="rect" coords="902,8,942,33" href="http://u.8264.com/space-33785193-do-album-id-85953.html" target="_blank"/>
+          </map>
+    	</div>
+<div class="mid1v">
+                <div class="tuwenallaaa">
+            	<div class="tuaaa"><a href="http://u.8264.com/space-33785193-do-blog-id-135153.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/tuandui1.jpg" width="180" height="115" border="0" /></a></div>
+<h3>企业家—谈义良</h3>
+</div>
+            </div>
+<div class="mid1linev"></div>
+<div class="mid1v">
+                <div class="tuwenallaaa">
+            	<div class="tuaaa"><a href="http://u.8264.com/space-33785193-do-blog-id-135159.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/tuandui2.jpg" width="180" height="115" border="0" /></a></div>
+<h3>企业家—平刚</h3>
+</div>
+            </div>
+            <div class="mid1linev"></div>
+            <div class="mid1v">
+                <div class="tuwenallaaa">
+            	<div class="tuaaa"><a href="http://u.8264.com/space-33785193-do-blog-id-135163.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/tuandui3.jpg" width="180" height="115" border="0" /></a></div>
+<h3>企业家—陈勇</h3>
+</div>
+            </div>
+<div class="mid1linev"></div>
+            <div class="mid1v">
+                <div class="tuwenallaaa">
+            	<div class="tuaaa"><a href="http://u.8264.com/space-33785193-do-blog-id-135164.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/tuandui4.jpg" width="180" height="115" border="0" /></a></div>
+<h3>FENIX中国副总—郭岩松</h3>
+</div>
+            </div>
+            <div style="clear:both;"></div>
+    </div>
+<div class="mid1area">
+    	<div><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/saishitit.jpg" width="960" height="41" border="0" usemap="#Map3" />
+          <map name="Map3" id="Map3">
+            <area shape="rect" coords="902,8,942,33" href="http://u.8264.com/space-33785193-do-album-view-me.html" target="_blank"/>
+          </map>
+    	</div>
+<div class="mid1v">
+                <div class="tuwenall">
+            	<div class="tu"><a href="http://u.8264.com/space-33785193-do-album-id-87998.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/tuwenpic1.jpg" width="180" height="115" border="0" /></a></div>
+</div>
+<div class="tuwenall">
+            	<div class="tu"><a href="http://u.8264.com/space-33785193-do-album-id-87998.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/tuwenpic2.jpg" width="180" height="115" border="0" /></a></div>
+</div>
+<div class="tuwenall">
+            	<div class="tu"><a href="http://u.8264.com/space-33785193-do-album-id-88135.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/tuwenpic3.jpg" width="180" height="115" border="0" /></a></div>
+</div>
+            </div>
+<div class="mid1linev"></div>
+<div class="mid1v">
+                <div class="tuwenall">
+            	<div class="tu"><a href="http://u.8264.com/space-33785193-do-album-id-87998.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/tuwenpic7.jpg" width="180" height="115" border="0" /></a></div>
+</div>
+                <div class="tuwenall">
+            	<div class="tu"><a href="http://u.8264.com/space-33785193-do-album-id-87998.html.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/tuwenpic4.jpg" width="180" height="115" border="0" /></a></div>
+</div>
+<div class="tuwenall">
+            	<div class="tu"><a href="http://u.8264.com/space-33785193-do-album-id-88135.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/tuwenpic5.jpg" width="180" height="115" border="0" /></a></div>
+</div>
+</div>
+            <div class="mid1linev"></div>
+            <div class="mid1v">
+                <div class="tuwenall">
+            	<div class="tu"><a href="http://u.8264.com/space-33785193-do-album-id-87998.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/tuwenpic6.jpg" width="180" height="115" border="0" /></a></div>
+</div>
+<div class="tuwenall">
+            	<div class="tu"><a href="http://u.8264.com/space-33785193-do-album-id-88135.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/tuwenpic8.jpg" width="180" height="115" border="0" /></a></div>
+</div>
+<div class="tuwenall">
+            	<div class="tu"><a href="http://u.8264.com/space-33785193-do-blog-id-156996.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/tuwenpic9.jpg" width="180" height="115" border="0" /></a></div>
+</div>
+            </div>
+<div class="mid1linev"></div>
+            <div class="mid1v">
+                <div class="tuwenall">
+            	<div class="tu"><a href="http://u.8264.com/space-33785193-do-album-id-87998.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/tuwenpic10.jpg" width="180" height="115" border="0" /></a></div>
+</div>
+<div class="tuwenall">
+            	<div class="tu"><a href="http://u.8264.com/space-33785193-do-album-id-88135.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/tuwenpic11.jpg" width="180" height="115" border="0" /></a></div>
+</div>
+<div class="tuwenall">
+            	<div class="tu"><a href="http://u.8264.com/space-33785193-do-blog-id-157128.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/tuwenpic12.jpg" width="180" height="115" border="0" /></a></div>
+</div>
+            </div>
+            <div style="clear:both;"></div>
+    </div>
+
+
+    <div class="youjiarea">
+    	<div class="youjileft">
+<a href="http://u.8264.com/space-33785193-do-blog-id-152761.html" target="_blank"><b>Fjallraven classic 2010 (Day1)</b><br />共有来自不同国家的2000多名选手参加，包括中国企业家组成的“龙之队”......<br />
+<a href="http://u.8264.com/space-33785193-do-blog-id-156916.html" target="_blank"><b>Fjallraven classic 2010 (Day2)</b><br />
+经过一段时间的穿越，大部分队员达到补给站，签到盖章,最快的3小时到达......<br />
+<a href="http://u.8264.com/space-33785193-do-blog-id-156996.html" target="_blank"><b>Fjallraven classic 2010 (Day3)</b><br />中国“龙之队”谈义良和平刚获得金牌<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://u.8264.com/space-33785193-do-blog-view-me.html" target="_blank">[更多游记]
+</a>
+        </div>
+        <div class="youjiright">
+<a href="http://u.8264.com/space-33785193-do-blog-id-148158.html" target="_blank"><strong>探秘FJALLRAVEN品牌的创始地</strong><br />
+创始地位于瑞典的中部城市ornskoldsvik,占地面积超过2000平米。走进办公室，熟悉的经典小包展现在眼前，一侧是醒目的瑞典皇室勋章相框，另一侧这个是什么呢？猜猜看?很容易猜到。往里走进去，宽敞舒适的办公环境，处处彰显品牌文化气息，同时还参观了曾经用过的生产线及品牌创始人AKE	NORDIN先生的办公室........<a href="http://u.8264.com/space-33785193-do-blog-id-148158.html" target="_blank">[详细]
+</a>      </div>
+    </div>
+    <!--<div class="videoarea">
+    	<div class="videoall">
+    		<div class="videopic"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/videopic.jpg" width="283" height="233" border="0" /></div>
+        </div>
+        <div class="videoall">
+        	<div class="videopic"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/videopic.jpg" width="283" height="233" border="0" /></div>
+        </div>
+        <div class="videoall">
+        	<div class="videopic"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/videopic.jpg" width="283" height="233" border="0" /></div>
+        </div>
+    </div>-->
+    <div class="picsarea">
+    	<div class="picsleft">
+<div class="picsimgall">
+            	<div class="picsimg"><a href="http://u.8264.com/brand-view-id-507.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/tou.jpg" width="60" height="60" border="0" /></a></div>
+                <div class="picstxt">
+<a href="http://u.8264.com/brand-view-id-507.html" target="_blank">hanwag一直以来坚持他的“改进源于传统”的价值关和“HANWAG仍将是鞋匠”的经营理念
+<br />
+</a>
+                </div>
+ <div style="clear:both;"></div>
+            </div>
+            <div class="picsimgall">
+            	<div class="picsimg"><a href="http://u.8264.com/space-33785193-do-blog-id-77958.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/tou1.jpg" width="60" height="60" border="0" /></a></div>
+                <div class="picstxt">
+<a href="http://u.8264.com/space-33785193-do-blog-id-77958.html" target="_blank">hanwag鞋子与其它鞋子不同，没有磨合期，初次穿上也不会有胳脚的感觉，穿着非常舒适<br />
+</a>
+                </div>
+      <div style="clear:both;"></div>
+            </div>
+        </div>
+        <div class="picsright">
+        	<div class="picspic"><a href="http://u.8264.com/space-33785193-do-album-id-87884.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/picspic1.jpg" width="140" height="105" border="0" /></a></div>
+            <div class="picspic"><a href="http://u.8264.com/space-33785193-do-album-id-87884.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/picspic2.jpg" width="140" height="105" border="0" /></a></div>
+            <div class="picspic"><a href="http://u.8264.com/space-33785193-do-album-id-87884.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/picspic5.jpg" width="140" height="105" border="0" /></a></div>
+            <div class="picspic"><a href="http://u.8264.com/space-33785193-do-album-id-87999.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/picspic4.jpg" width="140" height="105" border="0" /></a></div>
+            <div class="picsline"></div>
+            <div class="picspic"><a href="http://u.8264.com/space-33785193-do-album-id-87999.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/picspic7.jpg" width="140" height="105" border="0" /></a></div>
+            <div class="picspic"><a href="http://u.8264.com/space-33785193-do-album-id-87999.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/picspic6.jpg" width="140" height="105" border="0" /></a></div>
+            <div class="picspic"><a href="http://u.8264.com/space-33785193-do-album-id-87999.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/picspic3.jpg" width="140" height="105" border="0" /></a></div>
+            <div class="picspic"><a href="http://u.8264.com/space-33785193-do-album-id-87999.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/picspic8.jpg" width="140" height="105" border="0" /></a></div>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+    <div><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/gundongtit.jpg" width="980" height="39" border="0" /></div>
+    <div class="gundongarea">
+    	<div class="gundong" id="de">
+  	    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  	      <tr>
+  	        <td id="de1"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+  	          <tr>
+  	              <td>
+                  <div class="hwimgall">
+  	              <div class="prodimg"><a href="http://www.8264.com/viewnews-56076-page-4.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/prodpic1.jpg" width="170" height="210" border="0" /></a></div>
+                  <div class="prodname STYLE2">HanWag徒步鞋</div>
+              </div>
+                  </td>
+                  <td>
+                  <div class="frimgall">
+  	              <div class="prodimg"><a href="http://www.8264.com/viewnews-56076-page-2.html"  target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/prodpic2.jpg" width="170" height="210" border="0" /></a></div>
+                  <div class="prodname STYLE2">CapeHorn长裤</div>
+              </div>
+                  </td>
+                  <td>
+                  <div class="frimgall">
+  	              <div class="prodimg"><a href="http://www.8264.com/viewnews-56076-page-2.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/prodpic3.jpg" width="170" height="210" border="0" /></a></div>
+                  <div class="prodname STYLE2">抓绒夹克</div>
+              </div>
+                  </td>
+                  <td>
+                  <div class="frimgall">
+  	              <div class="prodimg"><a href="http://www.8264.com/viewnews-56076-page-2.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/prodpic4.jpg" width="170" height="210" border="0" /></a></div>
+                  <div class="prodname STYLE2">Una棉夹克</div>
+              </div>
+                  </td>
+                  <td>
+                  <div class="frimgall">
+  	              <div class="prodimg"><a href="http://www.8264.com/viewnews-56076-page-3.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/prodpic5.jpg" width="170" height="210" border="0" /></a></div>
+                  <div class="prodname STYLE2">G-1000遮阳帽</div>
+              </div>
+                  </td>
+                  <td>
+                  <div class="frimgall">
+  	              <div class="prodimg"><a href="http://www.8264.com/viewnews-56076.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/prodpic6.jpg" width="170" height="210" border="0" /></a></div>
+                  <div class="prodname STYLE2">Iceland长裤</div>
+              </div>
+                  </td>
+  <td>
+                  <div class="frimgall">
+  	              <div class="prodimg"><a href="http://www.8264.com/viewnews-56076.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/prodpic7.jpg" width="170" height="210" border="0" /></a></div>
+                  <div class="prodname STYLE2">Montt三合一夹克</div>
+              </div>
+                  </td>
+  <td>
+                  <div class="frimgall">
+  	              <div class="prodimg"><a href="http://www.8264.com/viewnews-56076.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/prodpic8.jpg" width="170" height="210" border="0" /></a></div>
+                  <div class="prodname STYLE2">抓绒夹克</div>
+              </div>
+                  </td>
+  <td>
+                  <div class="frimgall">
+  	              <div class="prodimg"><a href="http://www.8264.com/viewnews-56076-page-3.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/prodpic9.jpg" width="170" height="210" border="0" /></a></div>
+                  <div class="prodname STYLE2">Velha遮阳帽 </div>
+              </div>
+                  </td>
+  <td>
+                  <div class="hwimgall">
+  	              <div class="prodimg"><a href="http://www.8264.com/viewnews-56076-page-4.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/prodpic10.jpg" width="170" height="210" border="0" /></a></div>
+                  <div class="prodname STYLE2">HanWag徒步鞋</div>
+              </div>
+                  </td>
+  <td>
+                  <div class="hwimgall">
+  	              <div class="prodimg"><a href="http://www.8264.com/viewnews-56076-page-4.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/prodpic11.jpg" width="170" height="210" border="0" /></a></div>
+                  <div class="prodname STYLE2">HanWag徒步鞋</div>
+              </div>
+                  </td>
+  <td>
+                  <div class="hwimgall">
+  	              <div class="prodimg"><a href="http://www.8264.com/viewnews-56076-page-4.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/fjallraven/images/prodpic12.jpg" width="170" height="210" border="0" /></a></div>
+                  <div class="prodname STYLE2">HanWag徒步鞋</div>
+              </div>
+                  </td>
+              </tr>
+          </table></td>
+  	        <td id="de2">&nbsp;</td>
+          </tr>
+        </table>
+  	    <script language=JavaScript type=text/javascript>
+                    function GetObj01(objName){
+                        if(document.getElementById){
+                            return eval('document.getElementById("' + objName + '")');
+                        }else if(document.layers){
+                            return eval("document.layers['" + objName +"']");
+                        }else{
+                            return eval('document.all.' + objName);
+                        }
+                    }
+                      var speed01=10//速度数值越大速度越慢
+                      GetObj01("de2").innerHTML=GetObj01("de1").innerHTML
+                      function Marquee01(){
+                          if(GetObj01("de").scrollLeft<=0)
+                          GetObj01("de").scrollLeft=GetObj01("de1").offsetWidth
+                          else{
+                            GetObj01("de").scrollLeft--
+                          }
+                      }
+                      var MyMar01=setInterval(Marquee01,speed01)
+                      GetObj01("de").onmouseover=function() {clearInterval(MyMar01)}
+                      GetObj01("de").onmouseout=function() {MyMar01=setInterval(Marquee01,speed01)}
+                      </script>
+      </div>
+    </div>
+    <DIV class=bottom>
+            <A href="http://www.8264.com/ziliao/about/aboutus.php" 
+    target=_blank>关于我们</A> | <A href="http://www.8264.com/ziliao/about/aboutus.php" 
+    target=_blank>联系我们</A> | <A href="http://www.8264.com/8954.html">给我留言</A> | <A 
+    href="http://www.8264.com/ziliao/sitemap.html" target=_blank>网站地图</A> | <A 
+    href="http://www.8264.com/ziliao/ggservice/index.html" target=_blank>广告服务</A> | 
+    <A href="http://www.8264.com/list/531/" target=_blank>编辑部的故事</A> | <A 
+    href="http://www.8264.com/sitelink/index.html" 
+    target=_blank>友情连接</A><BR>服务热线：022-23708264 | 传真：022-23708323 | 
+    地址：天津市新技术产业园区华天道8号海泰信息广场C座1001号<BR>除了脚印什么都不留下除了摄影什么都不带走，欢迎各种媒体转载我们的原创作品[转载请注明出处]。&nbsp;&nbsp;&nbsp;&nbsp;<A 
+    href="http://www.miibeian.gov.cn/" 
+    target=_blank>津ICP备05004140号-1</A>
+            </DIV>
+</div>
+</body>
+<!--<script src="http://static.8264.com/oldcms/moban/zt/fjallraven/js/common.js" type="text/javascript" type="text/javascript" language="javascript"></script>-->
+</html>

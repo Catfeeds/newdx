@@ -1,0 +1,47 @@
+<!--{template common/header_8264_new}-->
+<link href="http://static.8264.com/static/css/home/notice.css?{VERHASH}" rel="stylesheet" type="text/css">
+
+<div class="w980">
+	<div class="t_980">邀请</div>
+	<div class="clear_b">
+		<!--{subtemplate home/space_left_2014}-->
+		<div class="r_760">
+			<div class="r_war760">
+				<div class="r_t760">
+					<span class="num" id="newinvitecount">{$invite_thread_count}</span>
+					<span class="titlename">条新邀请</span>
+					<!--{if $invite_thread_count}-->
+					<a id="deleteallinvite" href="home.php?mod=spacecp&ac=newinvite&op=deleteall" onclick="showWindow(this.id, this.href, 'get', 0);" class="titlelink">全部删除</a>
+					<!--{/if}-->
+				</div>
+				<!--{if $invite_thread}-->
+				<div class="list760">
+					<ul id="all_invite">
+						<!--{loop $invite_thread $key $value}-->
+						<li id="newinvite_dl_$value[mid]">
+							<a href="home.php?mod=space&uid=$value[authorid]" class="tx"><!--{avatar($value[authorid],small)}--></a>
+							<div class="listcon">
+								<div class="con615">
+									<div class="upcon"><span class="time"><!--{date($value[dateline],'u')}--></span></div>
+									<div class="yaoqing">$value[message]</div>								
+								</div>
+							</div>
+							<a href="home.php?mod=spacecp&ac=newinvite&op=delete&mid=$value[mid]" class="del_16_16" id="a_invite_$value[mid]" onclick="showWindow(this.id, this.href, 'get', 0);" title="{lang delete}"></a>
+						</li>
+						<!--{/loop}-->
+					</ul>
+					<script type="text/javascript">
+					jQuery("#all_invite>li").eq(0).css("border-top","0 none");
+					</script>
+				</div>
+				<!--{else}-->
+				<div class="emp">你还没有收到邀请</div>
+				<!--{/if}-->
+			</div>
+
+		</div>
+	</div>
+</div>
+<!--{subtemplate home/space_footer_2014}-->
+
+<!--{template common/footer_8264_new}-->

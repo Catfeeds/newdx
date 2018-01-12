@@ -1,0 +1,260 @@
+<h3 class="manipulation_title">完善账号信息，快速开始</h3>
+<div id="regBox" class="manipulation_form" >
+    <form action="connect_member.php" id="siteRegFrom"  method="post">
+        <input type="hidden" name="mod" value="sinaconnect" />
+        <input type="hidden" name="action" value="register" />
+        <table class="manipulation_form_table">
+            <tr class="manipulation_form_table_tr_error">
+                <td colspan="3">
+                    <em id="regErrorTips" class="xwb-plugin-error" style="display:none;"></em>
+                </td>
+            </tr>
+            <tr class="manipulation_form_table_tr">
+                <td class="xwb-plugin-td-msg"><label for="siteRegName"> 设置用户名：</label></td>
+                <td class="xwb-plugin-td-input">
+                    <input type="text" name="siteRegName" id="siteRegName" class="xwb-plugin-input-a"
+                     value="<?php echo isset($username) ? $username : '' ; ?>" />
+                </td>
+                <td rowspan="4" class="xwb-plugin-td-right-msg">
+                    已经有账号？<br/><br/>
+                    <a href="javascript:void(function(){})" onclick="forTurn('bind')" tabindex="-1">绑定我的账号</a>
+                </td>
+            </tr>
+            <tr class="manipulation_form_table_tr">
+                <td class="xwb-plugin-td-msg"><label for="siteRegEmail"> 邮箱：</label></td>
+                <td class="xwb-plugin-td-input">
+                    <input type="text" name="siteRegEmail"	id="siteRegEmail" class="xwb-plugin-input-a"
+                     value="<?php echo isset($email) ? $email : '' ; ?>" />
+                </td>
+            </tr>
+            <tr class="manipulation_form_table_tr">
+                <td class="xwb-plugin-td-msg"><label for="regPwd"> 密码：</label></td>
+                <td class="xwb-plugin-td-input">
+                    <input name="regPwd" type="password"  class="xwb-plugin-input-a" id="regPwd" maxlength="256" />
+                </td>
+            </tr>
+            <tr class="manipulation_form_table_tr"><td colspan="3" class="xwb-plugin-td-msg"><label>　&nbsp;</label></td></tr>
+            <tr class="manipulation_form_table_tr-btn">
+                <td colspan="3" class="xwb-plugin-td-btn">
+                    <span class="xwb-plugin-btn">
+                        <input name="registerBt1" type="button" onclick="submitForm('siteRegFrom')" id="registerBt1" value="完 成" />
+                    </span>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<div id="bindBox" class="manipulation_form" style="display:none;">
+    <form action="" id="siteBindFrom"  method="post" target="xwbSiteRegister"  >
+        <table class="manipulation_form_table">
+            <tr class="manipulation_form_table_tr_error">
+                <td colspan="3">
+                    <em id="bindErrorTips" class="xwb-plugin-error" style="display:none;"></em>
+                </td>
+            </tr>
+            <tr class="manipulation_form_table_tr">
+                <td class="xwb-plugin-td-msg"><label for="siteBindName"> 用户名：</label></td>
+                <td class="xwb-plugin-td-input">
+                    <input type="text" name="siteBindName" id="siteBindName" class="xwb-plugin-input-a" value="" />
+                </td>
+                <td rowspan="4" class="xwb-plugin-td-right-msg">
+                    还没有账号？<br/><br/>
+                    <a href="javascript:void(function(){})" onclick="forTurn('reg')" tabindex="-1">设置一个账号</a>
+                </td>
+            </tr>
+            <tr class="manipulation_form_table_tr">
+                <td class="xwb-plugin-td-msg"><label for="bindPwd"> 密码：</label></td>
+                <td class="xwb-plugin-td-input">
+                    <input name="bindPwd" type="password" class="xwb-plugin-input-a" id="bindPwd" maxlength="256" />
+                </td>
+            </tr>
+            <tr class="manipulation_form_table_tr">
+                <td class="xwb-plugin-td-msg">
+                    <label for="questionid">安全提问：</label>
+                </td>
+                <td class="xwb-plugin-td-input">
+                    <select id="questionid" name="questionid" class="xwb-plugin-input-select" onchange="selectChange()">
+                        <option value="0">未设置请忽略</option>
+                        <option value="1">母亲的名字</option>
+                        <option value="2">爷爷的名字</option>
+                        <option value="3">父亲出生的城市</option>
+                        <option value="4">你其中一位老师的名字</option>
+                        <option value="5">你个人计算机的型号</option>
+                        <option value="6">你最喜欢的餐馆名称</option>
+                        <option value="7">驾驶执照最后四位数字</option>
+                    </select>
+                </td>
+            </tr>
+            <tr id="bindTr" class="manipulation_form_table_tr"><td colspan="3" class="xwb-plugin-td-msg"><label>　</label></td></tr>
+            <tr class="manipulation_form_table_tr-btn">
+                <td colspan="3" class="xwb-plugin-td-btn">
+                    <span class="xwb-plugin-btn">
+                        <input name="bindBt" type="button" onclick="submitForm('siteBindFrom')" id="bindBt" value="完 成" />
+                    </span>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<div id="regSuccessBox" style="display:none;" class="xwb-plugin-reg-successBox">
+	<div class="xwb-plugin-reg-successBox-forIE6">
+        <p class="xwb-plugin-regSuccess xwb-plugin-reg-successBox-p">
+            <strong>恭喜，创建成功!</strong>
+            <span id="regSuccessTips" ></span>
+        </p>
+    </div>
+    <div class="xwb-plugin-reg-successBox-btn">
+        <span class="xwb-plugin-btn">
+            <input name="registerBt2" type="button" onclick="window.top.location='index.php';" id="registerBt2" value="确 定" />
+        </span>
+    </div>
+</div>
+
+<div id="bindSuccessBox" style="display:none;" class="xwb-plugin-reg-successBox">
+	<div class="xwb-plugin-reg-successBox-forIE6">
+        <p class="xwb-plugin-regSuccess xwb-plugin-reg-successBox-p">
+            <strong>恭喜，绑定成功!</strong>
+            <span id="bindSuccessTips" ></span>
+        </p>
+    </div>
+    <div class="xwb-plugin-reg-successBox-btn">
+        <span class="xwb-plugin-btn">
+            <input name="bindBt2" type="button" onclick="window.top.location='index.php';" id="bindBt2" value="确 定" />
+        </span>
+    </div>
+</div>
+
+<style type="text/css">
+/* CSS Document */
+#dialog_wrapper { margin:0; padding:15px 20px;}
+#dialog_wrapper .manipulation_title { margin:0; font-size:14px; color:#333; font-weight:normal; margin-bottom:14px; font-weight: bold;}
+
+/*用户注册浮层*/
+#dialog_wrapper .manipulation_form label { display:block; font-size:14px; color:#333; font-weight:normal; margin:10px 0 5px;}
+#dialog_wrapper .xwb-plugin-input-a { vertical-align:middle; width:195px; padding:3px 5px; border:1px solid; border-color: #989898 #dfdfdf #dfdfdf #989898; background-color:#fcfcfc;}
+#dialog_wrapper .xwb-plugin-input-select { width:207px; padding:2px 5px; *height:26px;} /* 增加注册绑定样式 2010-10-27 */
+#dialog_wrapper .manipulation_form_table { width:100%; height:100%;}
+#dialog_wrapper .manipulation_form_table .manipulation_form_table_tr { height:20px;}
+#dialog_wrapper .manipulation_form_table .manipulation_form_table_tr-btn {}
+#dialog_wrapper .manipulation_form_table .manipulation_form_table_tr_error { vertical-align:bottom; height:22px;}
+#dialog_wrapper .manipulation_form_table .xwb-plugin-td-msg { text-align:right; width:90px;}
+#dialog_wrapper .manipulation_form_table .xwb-plugin-td-input { padding-top:8px; width:220px;}
+#dialog_wrapper .manipulation_form_table .xwb-plugin-td-right-msg { padding-left:20px; padding-top:10px; vertical-align:top; font-size:12px; border-left: 1px solid #CCCCCC;}
+#dialog_wrapper .manipulation_form_table .xwb-plugin-td-right-a { color:#214FA3; text-decoration:none;}
+#dialog_wrapper .manipulation_form_table .xwb-plugin-td-btn { padding-left:190px;}
+#dialog_wrapper .manipulation_form_table .xwb-plugin-td-btn .xwb-plugin-btn { display:block; width:110px; cursor:pointer;}
+#dialog_wrapper .manipulation_form_table .xwb-plugin-td-btn .xwb-plugin-btn input { margin-left:5px; padding:0 5px 0 0; width:105px; height:25px; background-position:right; border:none; cursor:pointer;}
+
+#dialog_wrapper .xwb-plugin-error { display:inline-block; vertical-align:middle; padding: 0 8px 0 95px; line-height:20px; font-size:12px; font-weight:normal; font-style:normal; color:#ec0000;}
+#dialog_wrapper .xwb-plugin-btn { margin-top:20px; *margin-top:10px;}
+
+#dialog_wrapper .xwb-plugin-regSuccess { font-size:13px; color:#999; line-height:1.6; margin-right:40px;}
+#dialog_wrapper .xwb-plugin-regSuccess strong { font-size:14px; color:#14ac00; display:block; margin-bottom:15px;}
+#dialog_wrapper .xwb-plugin-regSuccess em{ font-style:normal; color:#F00;}
+
+.xwb-plugin-reg-successBox { padding-left:40px;_padding-left:0px;margin-top:30px; text-align:left;} /* 增加注册绑定成功样式 2010-10-28 */
+.xwb-plugin-reg-successBox-btn { padding-left:220px; *padding-left:0px; _padding-top:10px; text-align:center;}
+.xwb-plugin-reg-successBox-p { min-height:80px;}
+.xwb-plugin-reg-successBox-forIE6 { _padding-left:40px;}
+
+/*按钮*/
+.xwb-plugin-btn, .xwb-plugin-btn input { background:url('static/images/sinaconnect/form_btn.gif') no-repeat}
+.xwb-plugin-btn { display:block; width:72px; cursor:pointer;}
+.xwb-plugin-btn input { margin-left:5px; padding:0 5px 0 0; width:67px; height:25px; background-position:right; border:none; cursor:pointer;}
+
+
+
+
+
+
+
+
+
+.xwb-plugin, .xwb-plugin p, .xwb-plugin h3, .xwb-plugin h4{ margin:0; padding:0;}
+.xwb-plugin{ font-family:Tahoma, Geneva, sans-serif; font-size:12px;}
+.hidden{ display:none;}
+
+/*新浪微博奖章*/
+.popavatar .xwb-plugin-medal-sinawb { display:none;} /*鼠标经过头像，隐藏*/
+.xwb-plugin-medal-sinawb { display:inline-block; vertical-align:middle; float:right; margin-right:20px; margin-top:-43px;}
+
+/*注册和登录*/
+.xwb-plugin-sinawb-login { margin-bottom:15px; margin-top:-50px; width:170px; _position:relative;}
+.logininfo .xwb-plugin-sinawb-login h4 { margin:5px 0; font-size:12px;}
+.xwb-plugin-login-btn { display:inline-block; background:url(bgimg/sina_login_btn.png) no-repeat; width:126px; height:24px;}
+
+/*第一帖的功能按钮区域*/
+div.useraction { width:310px;}
+
+/*转发按钮（帖子）*/
+#mibicon {background-image:url(bgimg/icon_logo.png)}
+
+/*转发按钮（日志）*/
+#xwb_blog_mibicon {background:url(bgimg/icon_logo.png) no-repeat scroll 5px 50% #FFFFFF}
+
+/*绑定提示*/
+.xwb-plugin-bindingset { position:relative; _zoom:1; background:url(bgimg/icon_on.gif) no-repeat 5px center}
+.xwb-plugin-bindingset-tips { position:absolute; background:url(bgimg/bindingset_tips.gif) no-repeat; width:178px; height:91px; top:-40px; left:-178px;}
+.xwb-plugin-bindingset-tips a.xwb-plugin-close-btn { position:absolute; right:20px; text-decoration:none;}
+.xwb-plugin-bindingset-tips p { margin:20px 20px 2px 10px; line-height:1.5;}
+.xwb-plugin-bindingset .xwb-plugin-bindingset-tips a { color:#2f8de4; margin-left:10px;}
+
+/*发贴时同步到微博*/
+.xwb-plugin-syn-off { padding-top:2px; padding-right:20px; background:url(bgimg/icon_off.gif) no-repeat right;}
+.xwb-plugin-syn-on { padding-top:2px; padding-right:20px; background:url(bgimg/icon_on.gif) no-repeat right;}
+#postbox a.xwb-plugin-syn-set { color:red; text-decoration:none;}
+#postbox a.xwb-plugin-syn-set:hover {text-decoration:underline;}
+
+/*同步选框样式调整*/
+.xwb-plugin-send-syn {position:relative;top:-3px;#top:-2px;_top:-2px; _padding-top:4px;}
+
+/*绑定设置*/
+.bind-setting{ padding:20px 20px 0; _zoom:1;}
+.setting-box{ margin-bottom:30px;}
+.setting-box h3{ margin-bottom:15px; padding-bottom:5px; border-bottom:1px solid #c9c9c9; font-size:14px; text-indent:5px;}
+.setting-box .radio-box{ margin-bottom:15px;}
+.setting-box .radio{ margin-top:7px}
+.setting-box .radio input{ vertical-align:-3px;}
+.setting-box a, .setting-box a:visited{ color:#f10000; text-decoration:none;}
+.setting-box a:hover{ text-decoration:underline;}
+.setting-box .tips{ margin-top:15px; color:#999;}
+.setting-box p{ margin-bottom:18px;}
+
+.bind-setting .bing-text{ margin:30px 0 40px;}
+.bind-setting .bing-text h4{ margin-bottom:15px; font-size:12px;}
+.bind-setting .bing-text p{ text-indent:14px; line-height:22px; background:url(bgimg/dot.gif) no-repeat 3px 8px;}
+.bind-setting .txtb{ margin-top:10px; color:#999;}
+.bind-setting .txtb a{ color:#389df2; text-decoration:underline;}
+
+.success-tipx{ padding:3px 0 3px 5px; background:#f2fff0; border:1px solid #14ac00; color:#14ac00; font-weight:bold;}
+.alert-tips{ height:30px; border:1px solid #c2a181; line-height:30px; background:#fffdef url(bgimg/talert_icon.gif) no-repeat 6px 5px; font-size:14px; font-weight:bold; color:#333; text-indent:29px;}
+.bind-btn{ margin-top:50px; display:block; width:144px; height:36px; background:url(bgimg/bing_button.gif) no-repeat;}
+.tips-text{ margin:15px;}
+
+/*重复绑定*/
+.unrebind{ position:absolute; top:15px; left:15px; width:300px; height:100px;}
+.unrebind strong{ display:block; color:#F00; background:url(bgimg/alert_icon.gif) no-repeat; text-indent:25px;}
+.unrebind p{ margin-top:15px; color:#666;}
+.unrebind p a{ color:#0000ff; text-decoration:underline;}
+
+
+/*个人绑定资料*/
+.profile-bind img{ vertical-align:-3px;}
+
+/*用户资料页微博标识*/
+.tipGetCount-top{margin-top:10px;}
+.tipGetCount-text{padding-right:12px; color:#0000FF;}
+.tipGetCount-num{padding-right:15px;}
+.tipGetCount-already-attention-btn, .tipGetCount-attention-btn, .tipGetCount-attention-btn:hover{background:url("bgimg/all_bg.png") no-repeat scroll 0 0 transparent !important;}
+.tipGetCount-already-attention-btn{background-position:-151px -72px !important; display:inline-block !important; height:21px; width:58px; cursor:text;}
+.tipGetCount-attention-btn{background-position:-151px -10px !important; display:inline-block !important; height:21px; width:58px;}
+.tipGetCount-attention-btn:hover{background-position:-151px -41px !important;}
+</style>
+<script type="text/javascript">
+function submitForm(id) {
+    jQuery('#' + id).submit();
+}
+
+</script>

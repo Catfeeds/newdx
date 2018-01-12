@@ -1,0 +1,213 @@
+<!--{eval $_G[home_tpl_titles] = array($album[albumname], '{lang album}');}-->
+<!--{eval $friendsname = array(0 => '{lang friendname_0}',1 => '{lang friendname_3}',2 => '{lang friendname_3}',3 => '{lang friendname_3}',4 => '{lang friendname_3}');}-->
+<!--{template common/header}-->
+<!--{if $_GET['op'] == 'editpic'}-->
+	<!--{if $_GET['subop'] == 'move'}-->
+	{eval $albumlist = $albumlist ? $albumlist : array();}
+	{eval //$albumlist = array_slice($albumlist, 0, 6);}
+	{eval $islistbig = count($albumlist) > 15 ? true : false;}
+	<form method="post" autocomplete="off" action="home.php?mod=spacecp&ac=album&op=editpic&albumid=$albumid&is_uc=1" id="movepicform" name="movepicform" {if $_G[inajax]} onsubmit="ajaxpost(this.id, 'return_$_G[gp_handlekey]');"{/if}>
+		<div class="popbox" style="{if $islistbig}width:600px;{else}width:580px;{/if}">
+			<div class="flb">
+			<div class="popbox_title clearfix">
+				<span>移动到相册</span>
+				<!--{if $_G[inajax]}--><em onclick="hideWindow('$_G[gp_handlekey]');"></em><!--{/if}-->
+			</div>
+			</div>		
+			<!--{if $albumlist}-->
+			<div class="popwarpten pl20 clearfix" style="{if $islistbig}width:575px;height:350px;overflow-x:hidden;overflow-y:scroll;{else}width:550px;{/if}">
+				<ul class="popbbslist w165">	
+					<li class="createalbum" onclick="createalbum();">
+						<a href="javascript:void(0);" class="iconbox44">
+							&nbsp;
+							<i class="row"></i>
+							<i class="col"></i>
+						</a>
+						<p><a href="javascript:void(0);" class="titlename pt0">新建相册</a></p>
+					</li>
+					<!--{loop $albumlist $key $value}-->
+					<!--{if $albumid != $value[albumid]}-->
+					<li class="li_$value[albumid] selectAlbumid" rel="$value[albumid]">
+						<a href="javascript:void(0);" class="iconbox44"><img src="{$value[pic]}"></a>
+						<p>
+							<a href="javascript:void(0);" class="titlename pt0">{$value[albumname]}</a>
+							<span class="notetxt">{$friendsname[$album['friend']]}</span>
+						</p>
+					</li>
+					<!--{/if}-->
+					<!--{/loop}-->
+				</ul>
+			</div>
+			<div class="buttonbox">
+				<button type="submit" name="editpicsubmit" value="true" class="button_confirm" onclick="this.form.action+='&subop=move';" id="editpicsubmit">确定</button>
+			</div>
+			<!--{/if}-->
+		</div>
+		{if $_G[gp_picids]}
+		{eval $_G[gp_picids] = explode(',', $_G[gp_picids]);}
+		<!--{loop $_G[gp_picids] $value}-->
+		<input type="checkbox" name="ids[{$value}]" value="{$value}" style="display:none;" checked="checked">
+		<!--{/loop}-->
+		{/if}
+		<input type="hidden" name="page" value="$page" />
+		<input type="hidden" name="editpicsubmit" value="true" />
+		<input type="hidden" name="formhash" value="{FORMHASH}" />	
+		<input type="hidden" name="referer" value="$_G[referer]" />
+		<input type="hidden" name="newalbumid" id="selectAlbumid" value="0" />	
+		<!--{if $_G[inajax]}--><input type="hidden" name="handlekey" value="$_G[gp_handlekey]" /><!--{/if}-->
+		<div id="return_$_G[gp_handlekey]" style="display:none;"></div>	
+	</form>
+	<script type="text/javascript">	
+	function createalbum() {
+		jQuery('#movepicform').hide();
+		showWindow('createalbum', 'home.php?mod=spacecp&ac=album&op=createalbum', 'get', 0);
+	}
+	jQuery(function(){
+		jQuery(".popbbslist").on("click", ".selectAlbumid", function() {
+			var albumid = jQuery(this).attr('rel');
+			jQuery('#selectAlbumid').val(albumid);
+			jQuery('.popbbslist li').removeClass('active');
+			jQuery('.li_'+albumid).addClass('active');
+		});
+		
+	});
+	</script>	
+	<!--{elseif $_GET['subop'] == 'delete'}-->		
+	<form method="post" autocomplete="off" action="home.php?mod=spacecp&ac=album&op=editpic&albumid=$albumid&subop=delete&is_uc=1" id="deletepicform" name="deletepicform">
+		<div class="popbox w450 textcenter">			
+			<div class="dhinfo">
+				<span>确定要删除选中的图片吗？</span>
+				<em></em>
+			</div>
+			<div>
+				<!--<button type="submit" name="editpicsubmit" value="true" class="button_cancel" onclick="this.form.action+='&subop=delete';showDialog('', 'info', '<img src="' + IMGDIR + '/loading.gif"> 请稍候...');" id="editpicsubmit"><strong>{lang determine}</strong></button>-->
+				<button type="button" name="editpicsubmit" value="true" class="button_cancel" id="editpicsubmit"><strong>{lang determine}</strong></button>
+				<!--{if $_G[inajax]}--><input class="button_confirm" onclick="hideWindow('$_G[gp_handlekey]');" value="取消" type="button"/><!--{/if}-->
+			</div>
+<!--			<div id="return_$_G[gp_handlekey]" style="margin-top:20px;display:none;">{lang delete_reply}</div>-->
+		</div>
+		{if $_G[gp_picids]}
+		{eval $_G[gp_picids] = explode(',', $_G[gp_picids]);}
+		<!--{loop $_G[gp_picids] $value}-->
+		<input type="checkbox" name="ids[{$value}]" value="{$value}" style="display:none;" checked="checked">
+		<!--{/loop}-->
+		{/if}
+		<input type="hidden" name="editpicsubmit" value="true" />
+		<input type="hidden" name="formhash" value="{FORMHASH}" />	
+		<input type="hidden" name="referer" value="$_G[referer]" />
+		<!--{if $_G[inajax]}--><input type="hidden" name="handlekey" value="$_G[gp_handlekey]" /><!--{/if}-->
+		<div id="return_$_G[gp_handlekey]" style="display:none;"></div>	
+	</form>	
+	<script type="text/javascript">
+	jQuery(function(){		
+		jQuery('#editpicsubmit').click(function(){
+			
+			//请稍候的样式重写,提到了个人中心总的样式
+			jQuery('#fwin_albumpicdelete').hide();			
+			showDialog('', 'info', '<img src="' + IMGDIR + '/loading.gif"> 请稍候...');
+				
+			ajaxpost('deletepicform', 'return_$_G[gp_handlekey]');
+		});
+	});
+	</script>
+	<!--{/if}-->
+<!--{elseif $_GET['op'] == 'edit'}-->
+	<form method="post" autocomplete="off" id="albumeditform" name="albumeditform" action="home.php?mod=spacecp&ac=album&op=edit&albumid=$albumid&is_uc=1" {if $_G[inajax]} onsubmit="ajaxpost(this.id, 'return_$_G[gp_handlekey]');"{/if}>
+		<div class="popbox w570">
+			<div class="flb">
+			<div class="popbox_title clearfix">
+				<span>相册信息</span>
+				<!--{if $_G[inajax]}--><em onclick="hideWindow('$_G[gp_handlekey]');"></em><!--{/if}-->
+			</div>
+			</div>
+			<div>
+				<ul class="albumform">
+					<li>
+						<label>{lang album_name}：</label>
+						<input type="text" id="albumname" name="albumname" value="$album[albumname]" class="inputtext" />
+					</li>					
+					<li>
+						<label>{lang privacy_settings}：</label>
+						<select name="friend" class="h36">
+							<option value="0" {if $album[friend] == 0}selected="selected"{/if}>{lang friendname_0}</option>
+							<option value="3" {if $album[friend] > 0}selected="selected"{/if}>{lang friendname_3}</option>
+						</select>						
+					</li>
+					<li>
+						<label></label>
+						<button type="submit" name="editsubmit" value="true" class="button_confirm" id="editsubmit">{lang determine}</button>
+						<a href="home.php?mod=spacecp&ac=album&op=delete&albumid=$album[albumid]&handlekey=delalbumhk_{$album[albumid]}&is_uc=1" id="album_delete_$album[albumid]" onclick="hideWindow('$_G[gp_handlekey]');showWindow(this.id, this.href, 'get', 0);" class="delalbum">{lang delete_album}</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<input type="hidden" name="editsubmit" value="true" />
+		<input type="hidden" name="formhash" value="{FORMHASH}" />	
+		<input type="hidden" name="referer" value="$_G[referer]" />
+		<!--{if $_G[inajax]}--><input type="hidden" name="handlekey" value="$_G[gp_handlekey]" /><!--{/if}-->
+		<div id="return_$_G[gp_handlekey]" style="display:none;"></div>	
+	</form>
+	<script type="text/javascript">
+	//相册编辑的回调函数
+	function succeedhandle_albumedit(url, msg, values) {
+		if (values['success']) {
+			location.reload();
+		}
+	}
+	</script>
+<!--{elseif $_GET['op'] == 'createalbum'}-->
+	<form method="post" autocomplete="off" id="albumeditform" name="albumeditform" action="home.php?mod=spacecp&ac=album&op=createalbum&is_uc=1" {if $_G[inajax]} onsubmit="ajaxpost(this.id, 'return_$_G[gp_handlekey]');"{/if}>
+		<div class="popbox w570">
+			<div class="flb">
+			<div class="popbox_title clearfix">
+				<span>相册信息</span>
+				<!--{if $_G[inajax]}--><em onclick="hideWindow('$_G[gp_handlekey]');"></em><!--{/if}-->
+			</div>
+			</div>
+			<div>
+				<ul class="albumform">
+					<li>
+						<label>{lang album_name}：</label>
+						<input type="text" id="albumid" name="albumid" value="" class="inputtext" />
+					</li>
+					<li>
+						<label></label>
+						<button type="submit" name="createalbumsubmit" value="true" class="button_confirm" id="createalbumsubmit">{lang determine}</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<input type="hidden" name="createalbumsubmit" value="true" />
+		<input type="hidden" name="formhash" value="{FORMHASH}" />
+		<input type="hidden" name="referer" value="$_G[referer]" />
+		<!--{if $_G[inajax]}--><input type="hidden" name="handlekey" value="$_G[gp_handlekey]" /><!--{/if}-->
+		<div id="return_$_G[gp_handlekey]" style="display:none;"></div>	
+	</form>	
+	<script type="text/javascript">
+	//新建相册的回调函数
+	function succeedhandle_createalbum(url, msg, values) {
+		if (values['success']) {
+			jQuery('#selectAlbumid').val(values['albumid']);
+			jQuery('#movepicform').show();			
+			jQuery('#movepicform li').removeClass('active');			
+			var html = '<li class="li_'+values['albumid']+' active selectAlbumid" rel="'+values['albumid']+'">';			
+			html    += '<a class="iconbox44" href="javascript:void(0);"><img src=""></a>';
+			html    += '<p>';
+			html    += '<a class="titlename pt0" href="javascript:void(0);">'+values['albumname']+'</a>';
+			html    += '<span class="notetxt">全站用户可见</span>';
+			html    += '</p></li>';			
+			
+			jQuery('.createalbum').after(html);			
+			
+			albummovehandle = setInterval(function(){																								
+				if (jQuery('#fctrl_albummove').length > 0) {
+					jQuery('#fctrl_albummove').show();
+					clearInterval(albummovehandle);
+				}
+			},100);			
+		}
+	}
+	</script>
+
+<!--{/if}-->
+<!--{template common/footer}-->

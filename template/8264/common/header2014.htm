@@ -1,0 +1,32 @@
+<!--{subtemplate common/header_8264_new}-->
+<div class="header">
+	<div class="layout">
+		<div class="icoHill">&nbsp;</div>
+		<div class="headerL">
+			<h1><span class="country"><!--{if $_G['basescript']=='portal' && $_G['gp_mod']=='list' && $_G['catid']}--><!--{if $_G['catid']==842}-->每日一图<!--{elseif $_G['catid']==880}-->勇者先行<!--{elseif $_G['catid']==878}-->铿锵玫瑰<!--{elseif $_G['catid']==912}-->户外摄影师<!--{elseif $_G['catid']==881}-->线路推荐<!--{else}-->论坛精选<!--{/if}--><!--{/if}--></span></h1>
+			<div class="site">
+				<a href="$_G[config][web][portal]">首页</a>
+				<!--{if $_G['basescript']=='portal' && $_G['gp_mod']=='list' && $_G['catid']}-->
+				> <a href="$_G[config][web][portal]list/$_G['catid']"><!--{if $_G['catid']==842}-->每日一图<!--{elseif $_G['catid']==880}-->勇者先行<!--{elseif $_G['catid']==878}-->铿锵玫瑰<!--{elseif $_G['catid']==912}-->户外摄影师<!--{elseif $_G['catid']==881}-->线路推荐<!--{else}-->论坛精选<!--{/if}--></a>
+				<!--{else}-->
+				<a href="http://bbs.8264.com/forum-480-1.html" target="_blank" >装备推荐</a>
+				<!--{/if}-->
+			</div>
+		</div>
+		<div class="headerR">
+			<div class="colNameList">
+
+				<a href="http://www.8264.com/list/871" <!--{if $_G['catid']==871}-->class="nowmod"<!--{/if}-->>论坛精选</a>
+				<a href="http://www.8264.com/list/842" <!--{if $_G['catid']==842}-->class="nowmod"<!--{/if}-->>每日一图</a>
+
+				<a href="http://www.8264.com/pp" <!--{if $_G['catid']==878}-->class="nowmod"<!--{/if}-->>铿锵玫瑰</a>
+
+				<a href="http://www.8264.com/list/912" <!--{if $_G['catid']==912}-->class="nowmod"<!--{/if}-->>户外摄影师</a>
+
+				<a href="http://www.8264.com/list/880" <!--{if $_G['catid']==880}-->class="nowmod"<!--{/if}-->>勇者先行</a>
+
+			</div>
+		</div>
+
+	</div>
+</div>

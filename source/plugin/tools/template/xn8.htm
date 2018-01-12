@@ -1,0 +1,33 @@
+<div id="toolsh">
+	<div class="bm">
+		$des
+	</div>
+	<div class="bm">
+	<form action="$_G['basescript'].php?action=$action" method="post">
+		<table class="tb">
+			<tbody>				
+				<tr>
+				<th width="200px"><b>config.inc.php</b></th>
+				</tr>
+		                <tr>
+					<th>{$tools_dbusername}</th>
+					<td><input type="text" size="35" name="zucdbusername" class="textinput" value="{UC_DBUSER}"></td>
+					</tr>
+		                <tr>
+					<th>{$tools_mdbpw}</th>
+					<td><input type="text" size="35" name="zucdbpw" class="textinput" value="{UC_DBPW}"></td>
+				</tr>
+				<tr>
+					<th>{$tools_mdbname}</th>
+					<td><input type="text" size="35" name="zucdbname" class="textinput" value="{UC_DBNAME}"></td>
+				</tr>
+						<tr>
+						<td><button class="pn vm"  name="action" value="xn7">{$tools_mback}</button></td>
+					<td><button class="pn" value="true" name="zucsubmit" type="submit"><em>{$tools_submit}</em></button></td>
+		                </tr>
+						<input type="hidden" name="next" value="next"/>
+			</tbody>
+		</table>
+	</form>
+	</div>
+</div>						

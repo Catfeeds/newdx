@@ -1,0 +1,50 @@
+<!--{template common/header}-->
+<!--{if !$_G[inajax]}-->
+<div id="pt" class="bm cl">
+<div class="z"><a href="./" class="nvhm">$_G[setting][bbname]</a><em>&rsaquo;</em><a href="plugin.php?id=drc_vote:main">{lang drc_qqgroup:plugin_name}</a> <em>&rsaquo;</em> {lang drc_qqgroup:typeadd_title}</div>
+</div>
+
+<div id="ct" class="ct2 wp cl">
+<div class="mn">
+    	<div class="bm bw0">
+			<div class="ch">
+				<label class="wx"><a href="$_G[setting][navs][4][filename]">$_G[setting][navs][4][navname]</a></label>
+			</div>
+			<div class="bm bw0">
+<!--{/if}-->
+
+	<h3 class="flb">
+		<em id="return_$_G[gp_handlekey]">{lang drc_qqgroup:typeadd_title}</em>
+		<!--{if $_G[inajax]}--><span><a href="javascript:;" onclick="hideWindow('$_G[gp_handlekey]');" class="flbc" title="{lang close}">{lang close}</a></span><!--{/if}-->
+	</h3>
+	<form method="post" autocomplete="off" id="addform" name="addform" action="plugin.php?id=drc_qqgroup:main&mod=cpanel&action=typeadd&typeaddsubmit=true" {if $_G[inajax]}onsubmit="ajaxpost(this.id, 'return_$_G[gp_handlekey]');"{/if}>
+		<input type="hidden" name="referer" value="$_G[referer]">
+		<input type="hidden" name="formhash" value="{FORMHASH}" />
+		<!--{if $_G[inajax]}--><input type="hidden" name="handlekey" value="$_G[gp_handlekey]" /><!--{/if}-->
+		<div class="c">
+        
+        
+        	<table border="0" cellspacing="0" cellpadding="0">
+  				<tr>
+    				<td height="40" width="70">{lang drc_qqgroup:typeadd_name}</td>
+    				<td><input type="text" name="typename" style="width:120px;height:20px;"> *</td>
+                </tr>
+                <tr>
+                    <td width="70">{lang drc_qqgroup:typeadd_order}</td>
+                    <td><input type="text" name="displayorder" style="width:120px;height:20px;" title="{lang drc_qqgroup:order_tip}"> *</td>
+  				</tr>
+                
+            </table>		
+		</div>
+		<p class="o pns" id="one_btn" style="text-align:center; <!--{if !$_G[inajax]}-->margin-top:20px;<!--{/if}-->">
+			<button type="submit" name="typeaddsubmit" id="typeaddsubmit" class="pn pnc" value="true"><strong style="font-weight:normal;">{lang drc_qqgroup:qadd_submit}</strong></button>
+		</p>
+	</form>
+
+<!--{if !$_G[inajax]}-->
+		</div>
+	</div>
+</div>
+{template drc_qqgroup:side}
+<!--{/if}-->
+<!--{template common/footer}-->

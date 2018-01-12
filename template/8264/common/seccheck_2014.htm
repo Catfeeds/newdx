@@ -1,0 +1,29 @@
+{eval
+	$sechash = 'S'.random(4);
+	$sectpl = !empty($sectpl) ? explode("<sec>", $sectpl) : array('<br />',': ','<br />','');
+	$sectpldefault = $sectpl;
+	$sectplqaa = str_replace('<hash>', 'qaa'.$sechash, $sectpldefault);
+	$sectplqaa = str_replace('<classname>', 'tw', $sectplqaa);
+	$sectplcode = str_replace('<hash>', 'code'.$sechash, $sectpldefault);
+	$sectplcode = str_replace('<classname>', 'yzm', $sectplcode);
+	$secshow = !isset($secshow) ? 1 : $secshow;
+	$sectabindex = !isset($sectabindex) ? 1 : $sectabindex;
+}
+<!--{block seccheckhtml}-->
+<input name="sechash" type="hidden" value="$sechash" />
+<!--{if $sectpl}-->
+	<!--{if $secqaacheck}-->
+		<script type="text/javascript" src="http://api.geetest.com/get.php?gt=273df89437f54dac2bfb5b69afe1c318&r={$sechash}"></script>
+	<!--{/if}-->
+	<!--{if $seccodecheck}-->
+		{$sectplcode[0]}{$sectplcode[1]}<em>{lang seccode}</em><input name="seccodeverify" id="seccodeverify_$sechash" type="text" autocomplete="off" style="width:100px" onblur="checksec('code', '$sechash')" tabindex="$sectabindex" />
+		<a href="javascript:;" onclick="updateseccode('$sechash');doane(event);" class="xi2">{lang seccode_change}</a>
+		<span id="checkseccodeverify_$sechash"><img src="http://static.8264.com/static/image/common/none.gif" width="16" height="16" class="vm" /></span>
+		{$sectplcode[2]}<span id="seccode_$sechash"></span>
+		<!--{if $secshow}--><script type="text/javascript" reload="1">updateseccode('$sechash', undefined, '点击换一个，更换验证码');</script><!--{/if}-->
+		$sectplcode[3]
+	<!--{/if}-->
+<!--{/if}-->
+<!--{/block}-->
+<!--{eval unset($secshow);}-->
+<!--{if empty($secreturn)}-->$seccheckhtml<!--{/if}-->

@@ -1,0 +1,61 @@
+/* CSS Document */
+.mid_qw{ width:960px; margin:30px auto; font:Tahoma,Helvetica,SimSun,sans-serif,Hei; background:#fff; font-size:12px; color:#444; border:#e1e9ee solid 1px; position:relative;}
+.mid_qw h3{ font-family:"Microsoft YaHei",Tahoma,Helvetica,SimSun,sans-serif,Hei; font-size:20px; height:121px; margin:0px; padding:0px;}
+.table_form{ margin:20px 0px 0px 20px; float:left; display:inline;}
+.table_form th{ text-align:right; font-weight:normal; font-size:14px; padding:15px 0px; vertical-align:middle;}
+.table_form td{ vertical-align:middle;}
+.table_form td select{  width:160px; border:#ccc solid 1px; padding:5px; border-radius:3px;}
+.table_form td option{ background:#F6F6F6;}
+.dycon{ width:295px; float:right; line-height:2; font-family:"Microsoft YaHei",Tahoma,Helvetica,SimSun,sans-serif,Hei; font-size:16px; margin:10px 35px 0px 0px; border:#ccc dashed 1px; background:#FFFDED; padding:10px 15px; display:inline;}
+
+.jieguo{ width:327px; height:152px; background:url(image/tanchu.png) top left no-repeat; color:#60c1e9; padding:20px 0px 0px 0px; position:absolute; top:170px; left:370px;}
+
+.jieguo h4{ text-align:center; padding:42px 0px 0px 0px; font-size:24px; font-weight:bold; margin:0px;}
+
+.jieguo p{ text-align:center; font-size:24px; font-weight:bold; margin:0px; padding-top:17px;}
+
+
+.jieguo .close{ width:15px; height:15px; background:url(image/close.jpg) no-repeat; cursor:pointer; float:right; margin-right:20px;}
+.q_t{ width:114px; height:31px; background:url(image/q_t.jpg) top left no-repeat; border:0; cursor:pointer;}
+.q_t:hover{ width:114px; height:31px; background:url(image/q_t_hover.jpg) top left no-repeat;  border:0;  cursor:pointer;}
+.w_t{ width:114px; height:31px; background:url(image/w_t.jpg) top left no-repeat;  border:0;  cursor:pointer; margin-top: 10px;}
+.w_t:hover{ width:114px; height:31px; background:url(image/w_t_hover.jpg) top left no-repeat;  border:0;  cursor:pointer; margin-top: 10px;}
+
+.fengping_q{ width:960px; height:458px; position:absolute; top:0px; left:0px; background: #000; opacity: 0.5; filter: alpha(opacity=50);}
+.fengping_w{ width:960px; height:620px; position:absolute; top:0px; left:0px; background: #000; opacity: 0.5; filter: alpha(opacity=50);}
+
+.qd{ height:458px; overflow:hidden;}
+.wx{ height:620px; overflow:hidden;}
+
+.b_red{ color:#c85a43;}
+
+
+.q_w_title{ width:960px; margin:0px auto;}
+.q_bule{ color:#53a6c4}
+.w_red{ color:#c85a43}
+.biaotititle{ border-bottom:#e6e7e9 solid 1px; font-size:20px; font-family:Î¢ÈíÑÅºÚ; padding:20px 0px 14px 0px; margin:0px;}
+.w_q_infor{ border-top:#fff solid 1px; font-size:15px; font-family:Î¢ÈíÑÅºÚ; padding:10px 0px 0px 0px; }
+
+/***************/
+.goodsContentTop .rightSide .goodsInfo { border: 1px solid #ddeacf; background: #f0f5ea; padding: 15px 15px 0; }
+.goodsContentTop .rightSide .goodsInfo dl { margin-bottom: 5px; }
+.goodsContentTop .rightSide .goodsInfo dl dt { float: left; display: inline; width: 60px; line-height: 20px; text-align: right; color: #3a3a3a; }
+.goodsContentTop .rightSide .goodsInfo dl dd { float: left; display: inline; width: 360px; }
+.goodsContentTop .rightSide .goodsInfo dl dd ul li { position: relative; float: left; display: inline; background: #FFFFFF; line-height: 20px; margin: 0 4px 4px 0; padding: 1px; }
+.goodsContentTop .rightSide .goodsInfo dl dd ul li b { background: #FFFFFF; border: 1px solid #b3b3b3; color: #7e7e7e; display: inline-block; min-width: 10px; padding: 0 6px; text-align: center; text-decoration: none; white-space: nowrap; cursor: pointer; font-size: 12px; font-weight: 100; }
+.goodsContentTop .rightSide .goodsInfo dl dd ul li.pic b { width: 32px; height: 32px; background: #FFFFFF; border: 1px solid #b3b3b3; color: #7e7e7e; display: block; min-width: 10px; padding: 0 0; text-align: center; text-decoration: none; white-space: nowrap; cursor: pointer; font-size: 12px; font-weight: 100; background-position: 1px 1px; background-repeat: no-repeat; }
+.goodsContentTop .rightSide .goodsInfo dl dd ul li b.hover { color: #789622; border: 2px solid #789622; margin: -1px; }
+.goodsContentTop .rightSide .goodsInfo dl dd ul li.selected b { color: #789622; border: 2px solid #789622; margin: -1px; }
+.goodsContentTop .rightSide .goodsInfo dl dd ul li.pic b span { display: block; width: 32px; height: 32px; padding: 0px; overflow: hidden; background-repeat: no-repeat; }
+.goodsContentTop .rightSide .goodsInfo dl dd ul li.pic b.hover span { padding: 0; }
+.goodsContentTop .rightSide .goodsInfo dl dd ul li b.deny { border: 1px dashed #D4D4D2; color: #CDCDCB; cursor: not-allowed; repeat;
+z-index: 100; }
+.goodsContentTop .rightSide .goodsInfo dl dd ul li b.deny span { background: url(../style/images/greyico.gif) }
+.goodsContentTop .rightSide .goodsInfo dl dd ul li i { display: none; }
+.goodsContentTop .rightSide .goodsInfo dl dd ul li.selected i { position: absolute; right: 0; bottom: 0; display: block; width: 10px; height: 10px; background: url(../style/images/bg_tuan_sprite.png) no-repeat -50px -690px; text-indent: -9999px; overflow: hidden; }
+.goodsContentTop .rightSide .goodsInfo dl dd .numSpan { line-height: 20px; }
+.goodsContentTop .rightSide .goodsInfo .notice { color: #b60005; display: none; }
+.goodsContentTop .rightSide .goodsInfo .noticeIco { float: left; width: 20px; height: 20px; background: #F0F5EA url(../style/images/bg_tuan_sprite.png) no-repeat -258px -688px; border: 1px solid #d1dac5; }
+.goodsContentTop .rightSide .goodsInfo .noticeText { float: left; margin-left: 5px; line-height: 20px; padding: 0 8px; border: 1px solid #d1dac5; background: #FFF; }
+.goodsContentTop .rightSide .goodsInfo .notice dd { line-height: 20px; }
+

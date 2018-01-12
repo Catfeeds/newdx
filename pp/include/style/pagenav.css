@@ -1,0 +1,4 @@
+/* CSS Document */
+a.pagelink{ color: #333; font-size: 12px; font-family: arial; text-align:center}
+a.pagelink:hover{ color: #ff0000; font-size: 12px; font-family: arial;  }
+.pagelink_now{ color: #ff0000; font-size: 12px; font-family: arial; text-align:center}

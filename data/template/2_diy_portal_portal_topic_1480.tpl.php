@@ -1,0 +1,721 @@
+<?php if(!defined('IN_DISCUZ')) exit('Access Denied'); ?>
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title><?php echo $topic['title'];?></title>
+<link href="http://static.8264.com/oldcms/moban/zt/2013ozark/css/reset.css" rel="stylesheet" type="text/css">
+<link href="http://static.8264.com/oldcms/moban/zt/2013ozark/css/style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/oldcms/moban/zt/2013ozark/css/grid-accordion.css" media="screen">
+<!--[if IE 6]>
+<script src="http://static.8264.com/oldcms/moban/zt/2013ozark/js/png.min.js" type="text/javascript"></script>
+<![endif]-->
+</head>
+<body>
+<div class="bg_top">
+<div class="adTop">
+<a href="javascript:void(0)" title="奖项说明" class="readme" id="readme">
+<img src="http://static.8264.com/oldcms/moban/zt/2013ozark/images/bg_readme.gif" />
+</a>
+<a href="http://ud.cd.qq.com/4936/" target="_blank" title="我要挑战" class="challenge">
+<img src="http://static.8264.com/oldcms/moban/zt/2013ozark/images/bg_challenge.gif" />
+</a>
+<div class="flash">
+<embed width="465" height="150" wmode="transparent" type="application/x-shockwave-flash" src="http://static.8264.com/oldcms/moban/zt/2013ozark/images/banner.swf"></embed>
+</div>
+</div>
+</div>
+<div class="nav">
+<div class="layout">
+||
+<a href="#adTop">活动概况</a>
+||
+<a href="#top_pic">活动招募</a>
+||
+<a href="#brandStory">品牌故事</a>
+||
+<a href="#photoShow">精彩瞬间</a>
+||
+<a href="#gear">徒步装备推荐</a>
+||
+<a href="#addr">如何购买装备</a>
+||
+</div>
+</div>
+<div class="layout pb20">
+<a name="adTop"></a>
+<a name="top_pic"></a>
+<div class="top_pic">
+<div class="areaL">
+<div class="lunbo">
+<div class="lunbo_lall" id="sh_ce_p">
+<div class="lunbo_l" id="ce_pic1" onMouseMove="slide_ty(1)">
+<div class="lunbo_img">
+<a href="http://bbs.8264.com/thread-1332124-1-1.html" target="_blank">
+<img  src="http://static.8264.com/oldcms/moban/zt/2013ozark/images/1.jpg" />
+</a>
+</div>
+</div>
+<div class="lunbo_l" id="ce_pic2" onMouseMove="slide_ty(2)">
+<div class="lunbo_img">
+<a href="http://bbs.8264.com/thread-1331035-1-1.html" target="_blank">
+<img src="http://static.8264.com/oldcms/moban/zt/2013ozark/images/3.jpg"/>
+</a>
+  </div>
+<div style="clear:both;"></div>
+</div>
+<div class="lunbo_l" id="ce_pic3" onMouseMove="slide_ty(3)">
+<div class="lunbo_img">
+<a>
+<img src="http://static.8264.com/oldcms/moban/zt/2013ozark/images/5.jpg"/>
+</a>
+  </div>
+<div style="clear:both;"></div>
+</div>
+</div>
+<div class="lunbo_r">
+<div class="lunbo_title1" id="sh_tip1" onMouseMove="slide_ty(1)">
+<img src="http://static.8264.com/oldcms/moban/zt/2013ozark/images/2.jpg"/>
+  </div>
+<div class="lunbo_title" id="sh_tip2" onMouseMove="slide_ty(2)">
+<img src="http://static.8264.com/oldcms/moban/zt/2013ozark/images/4.jpg"/>
+  </div>
+<div class="lunbo_title" id="sh_tip3" onMouseMove="slide_ty(3)">
+<img src="http://static.8264.com/oldcms/moban/zt/2013ozark/images/6.jpg"/>
+  </div>
+<div style="clear:both;"></div>
+</div>
+<div style="clear:both;"></div>
+</div>
+<script language="javascript">
+var _tnum;
+var tMyMar;
+var tSize=3;
+function slide_ty(v){
+for(i=1;i<=tSize;i++){
+document.getElementById("ce_pic"+i).style.display="none";
+document.getElementById("sh_tip"+i).className="lunbo_title";
+}
+document.getElementById("ce_pic"+v).style.display="";
+document.getElementById("sh_tip"+v).className="lunbo_title lunbo_title1";
+_tnum=v; 
+clearInterval(tMyMar);
+tMyMar=setInterval("tGunDong()",2500);
+}
+function tGunDong(){
+if((_tnum+1)>tSize)
+_tnum=1;
+else    
+_tnum=_tnum+1;
+slide_ty(_tnum);
+}
+slide_ty(1);
+</script>
+</div>
+<div class="areaR">
+<h3><a href="http://www.8264.com/viewnews-87852-page-1.html" target="_blank">15公里不停步2013奥索卡超级徒步赛将开启</a></h3>
+<p>奥索卡品牌将在2013年8月31日-成都-举办奥索卡超级徒步活动,举办此次徒步活动的目的...</p>
+<h3><a href="http://www.8264.com/viewnews-88004-page-4.html" target="_blank">跋山涉水皆可 奥索卡水陆两栖徒步鞋试用</a></h3>
+<p>穿着奥索卡水陆两栖徒步鞋在沙滩环境进行了集中体验，首先要说说鞋底的防滑性能。穿过登山鞋的朋友都知道...</p>
+<h3><a href="http://www.8264.com/viewnews-86080-page-1.html" target="_blank">拥抱未来旅程 随时随地奥索卡 奥索卡户外鞋</a></h3>
+<p>从冰雪消融的峡谷到春风拂面的山巅，神秘的大自然激发每一位登山者...</p>
+</div>
+</div>
+<a name="brandStory"></a>
+<div class="brandStory">
+<h1>品牌故事</h1>
+<div class="areaL">
+<p>
+奥索卡代表着最纯粹的户外精神，奥索卡品牌对户外运动的热忱及对大自然和谐相处的理念来源于纯净自然的山脉。 瑞士户外运动爱好者 Hans Schallenberger 在1996年创立奥索卡品牌，并立即投入对中国高海拔攀登探险的支持。今天，奥索卡的足迹已遍布世界，从90°s的南极点到8848m的珠穆朗玛之巅，奥索卡户外装备伴随探险家的脚步经历了各种严酷环境，也见证了一个又一个成功的时刻...
+<a href="http://www.8264.com/viewnews-88463-page-1.html" class="more">[查看详情]</a>
+</p>
+<div class="pic">
+<img src="http://static.8264.com/oldcms/moban/zt/2013ozark/images/story_l.jpg" />
+</div>
+</div>
+<div class="areaR">
+<p>
+<img src="http://static.8264.com/oldcms/moban/zt/2013ozark/images/story_r.jpg" />
+</p>
+<h2>Ozark Gear (奥索卡) 大事记</h2>
+<marquee direction="up" scrollamount="2" onMouseOver="this.stop();" onMouseOut="this.start();" class="news">
+2013年1月赞助运动员李宗利，地里夏提首登四姑娘山区日月宝镜峰并开辟攀登新路线
+<br />
+2012年10月赞助CMDI参与中法攀登交流活动，推动阿式攀登在中国的发展
+<br />
+2012年9月赞助CMDI教练古奇志以阿尔卑斯方式登顶四川省布达拉峰
+<br />
+2012年8月携手中国登山协会举办第二届格凸攀岩盛会
+<br />
+2012年7月奥索卡赞助中巴联合登山队登顶巴基斯坦境内斯潘蒂克峰
+<br />
+2012年6月第三届OZARK ROCKS南北争锋系列攀岩活动在北京、上海、常州、镇江开启
+<br />
+2012年6月赞助第八届"关爱秦岭净水鸟"大型环保活动
+<br />
+2012年5月赞助武汉地大登山队成功登顶珠峰
+<br />
+2012年5月奥索卡"雪山守护计划"，到达珠峰大本营，实际行动诠释"雪山"守护精神
+<br />
+2012年2月赞助全国冬季山地户外挑战赛
+<br />
+2012年2月奥索卡登山运动员李宗利，地力夏提以阿尔卑斯方式首登四川海子沟无名峰
+<br />
+2012年1月赞助北京牛二杯攀岩交流大赛
+<br />
+2011年10月携手中国登山协会举办首届格凸攀岩盛会
+<br />
+2011年8月26日上海-"巅峰印记"奥索卡品牌十五周年庆典暨吕玲珑摄影作品成就展
+<br />
+2011年7月28日北京-"巅峰印记"奥索卡品牌十五周年庆典暨雪山守护计划启动仪式
+<br />
+2011年6月第二届OZARK ROCKS"南北争锋"系列攀岩活动在北京、上海开幕
+<br />
+2011年6月赞助第七届"关爱秦岭净水鸟"大型环保活动
+<br />
+2011年5月奥索卡正式发布中国国家攀岩队"山猫"新装备，出征世界杯
+<br />
+2011年4月举办重走金山岭活动，奥索卡15周年品牌活动正式起航
+<br />
+2011年2月第七界亚洲运动用品与时尚展（ISPO China）上举办"巅峰印记---奥索卡15周年历程回顾展
+<br />
+2011年1月奥索卡与北京服装学院合作并成立"奥索卡奖学金"
+<br />
+2010年赞助中国国家攀岩队
+<br />
+2010年9月"Ozark Super Trek—2010 天堂寨之行"大型市场活动
+<br />
+2010年CMDI(中国登山高级人才培训班)探访登山运动发源地阿尔卑斯
+<br />
+2010年6月首届OZARK ROCKS"南北争锋"系列攀岩活动在北京、上海拉开帷幕赛
+<br />
+2010年3月上海第一家旗舰店淮海路店隆重开业
+<br />
+2009年12月赞助北京电视台BTV-7首届"鸟巢欢乐冰雪季"
+<br />
+2009年10月OZARK GEAR(奥索卡)携手 GORE-TEX（戈尔特斯TM）西藏真体验徒步纳木措活动圆满落幕
+<br />
+2009年7月赞助西藏登山学校10周年
+<br />
+2009年5月赞助西藏（春季）登山大会
+<br />
+2009年5月赞助上海国际攀岩大师赛
+<br />
+2009年1月赞助旅游卫视《勇闯南北极》栏目
+<br />
+2008年12月赞助首届全国青年攀岩锦标赛
+<br />
+2008年11月赞助第六届全国大学生攀岩锦标赛
+<br />
+2008年9月赞助中国重庆武隆国际山地户外运动公开赛
+<br />
+2008年7月赞助上海首届攀石精英赛
+<br />
+2008年5月8日9：17分OZARK GEAR形象代言人王勇峰作为奥运火炬手，成功登顶珠峰传递祥云圣火
+<br />
+2008年1月OZARK GEAR杯全国登山滑雪比赛在北大湖举行
+<br />
+2008年1月 "OZARK GEAR雪地嘉年华共享激情滑雪季"活动在长春莲花山雪场举行
+<br />
+2007年8月赞助全国第二届青少年攀岩赛
+<br />
+2007年7月赞助中国西藏攀登世界14座8000米以上高峰探险队登顶迦舒布卢姆一峰（海拔8068米）。完成14座计划。
+<br />
+2007年5月奥索卡形象代言人王勇峰再次登顶珠穆朗玛峰（海拔8848米）
+<br />
+2007年3月协助中国登山协会举办全国首届抱石大赛
+<br />
+2006年10月圆满完成"梦想珠峰"大型户外体验活动
+<br />
+2006年9月赞助中国农业大学峰云社登顶卓奥友峰（海拔8201米）
+<br />
+2006年8月28日OZARK GEAR品牌十周年庆典
+<br />
+2006年7月赞助全国首届青少年攀岩赛
+<br />
+2006年奥索卡形象代言人王勇峰成功完成"7+2"
+<br />
+2005年赞助中国第21次南极科考队到达南极最高点DOME-A
+<br />
+2004年赞助中国西藏攀登世界14座8000米以上高峰探险队登顶乔格里峰K2（海拔8611米）
+<br />
+2004年6月、9月、11月全国奥索卡户外嘉年华活动
+<br />
+2004年2月赞助国家海洋局极地办南、北极科考活动
+<br />
+2003年5月赞助"登上第三极"中国业余登山队登顶珠穆朗玛峰（海拔8848米）
+<br />
+2002年9月协助中国登山协会和西藏登山协会开展"珠穆朗玛峰世纪大清扫"活动
+<br />
+2002年8月邀请美国著名登山家Daniel Mazur和攀岩、攀冰专家John Otto来华举办第二届奥索卡系列登山讲座
+<br />
+2002年5月协助中国登山协会举办全国第三届玉珠峰登山节（海拔6178米）
+<br />
+2001年9月协同中国西藏登山队举办首届中国西藏登山节，登顶姜桑拉姆峰（海拔6536米）
+<br />
+2000年7月协助中国登山协会举办全国首届玉珠峰登山节（海拔6178米）
+<br />
+2000年1月举办全国第三届"奥索卡杯"攀岩锦标赛。
+<br />
+1999年9月赞助中日大学生联合攀登雪宝顶（海拔5588米）
+<br />
+1999年6月赞助中国登山队王勇峰、李致新登顶大洋洲最高峰查亚峰（海拔5030米）
+<br />
+1999年5月赞助西藏登山队登顶珠穆朗玛峰，成功采集民运圣火
+<br />
+1999年1月赞助首届"奥索卡杯"全国攀冰锦标赛
+<br />
+1998年10月赞助全国第六届攀岩锦标赛
+<br />
+1998年10月赞助中国西藏攀登世界14座8000米以上高峰探险队登顶洛子峰（海拔8516米）
+<br />
+1998年5月赞助中国西藏攀登世界14座8000米以上高峰探险队登顶干城章嘉峰（海拔8586米）
+<br />
+1998年4月赞助北京大学登顶卓奥友峰（海拔8201米）
+<br />
+1998年1月赞助中国登山协会王勇峰、李致新登顶非洲最高峰乞力马扎罗峰（海拔5895米）
+<br />
+1997年12月赞助中国登山队王勇峰、李致新登顶欧洲最高峰厄尔布鲁士峰(海拔5642米)和珠穆朗玛峰（海拔8848米）
+<br />
+1997年8月赞助中国青少年参加在日本举行的"环境保护体验登山活动"
+<br />
+1997年6月赞助香港及中国大学生登顶玉珠峰（海拔6178米）
+<br />
+1997年4月赞助中国西藏攀登世界14座8000米以上高峰探险队登顶南迦帕尔特峰（海拔8125米）
+<br />
+1996年赞助中韩联合登山活动登顶西藏境内的穷母岗日（海拔6100米）、冷布岗日峰（海拔7095米）
+<br />
+</marquee>
+</div>
+</div>
+<a name="gear"></a>
+<div class="gear" style="display:none;">
+<h1>徒步装备推荐</h1>
+<div class="bd">
+<ul class="accordion">
+<li>
+<a href="http://www.kroceus.com/">
+<img src="http://static.8264.com/oldcms/moban/zt/2013kroceus/images/test31.jpg" alt=""></a>
+<div class="caption"></div>
+</li>
+<li>
+<a href="http://www.myzmf.com/2013rbcd/">
+<img src="http://static.8264.com/oldcms/moban/zt/2013kroceus/images/test32.jpg" alt=""></a>
+</li>
+<li>
+<a>
+<img src="http://static.8264.com/oldcms/moban/zt/2013kroceus/images/test33.jpg" alt=""></a>
+</li>
+<li>
+<a>
+<img src="http://static.8264.com/oldcms/moban/zt/2013kroceus/images/test34.jpg" alt=""></a>
+</li>
+<li>
+<a>
+<img src="http://static.8264.com/oldcms/moban/zt/2013kroceus/images/test35.jpg" alt=""></a>
+</li>
+<li>
+<a>
+<img src="http://static.8264.com/oldcms/moban/zt/2013kroceus/images/test36.jpg" alt=""></a>
+</li>
+<li>
+<a>
+<img src="http://static.8264.com/oldcms/moban/zt/2013kroceus/images/test37.jpg" alt=""></a>
+</li>
+<li>
+<a>
+<img src="http://static.8264.com/oldcms/moban/zt/2013kroceus/images/test38.jpg" alt=""></a>
+</li>
+<li>
+<a>
+<img src="http://static.8264.com/oldcms/moban/zt/2013kroceus/images/test39.jpg" alt=""></a>
+</li>
+<li>
+<a>
+<img src="http://static.8264.com/oldcms/moban/zt/2013kroceus/images/test40.jpg" alt=""></a>
+</li>
+<li>
+<a>
+<img src="http://static.8264.com/oldcms/moban/zt/2013kroceus/images/test41.jpg" alt=""></a>
+</li>
+<li>
+<a>
+<img src="http://static.8264.com/oldcms/moban/zt/2013kroceus/images/test42.jpg" alt=""></a>
+</li>
+<li>
+<a>
+<img src="http://static.8264.com/oldcms/moban/zt/2013kroceus/images/test43.jpg" alt=""></a>
+</li>
+<li>
+<a>
+<img src="http://static.8264.com/oldcms/moban/zt/2013kroceus/images/test44.jpg" alt=""></a>
+</li>
+<li>
+<a>
+<img src="http://static.8264.com/oldcms/moban/zt/2013kroceus/images/test45.jpg" alt=""></a>
+</li>
+<li>
+<a>
+<img src="http://static.8264.com/oldcms/moban/zt/2013kroceus/images/test46.jpg" alt=""></a>
+</li>
+<li>
+<a>
+<img src="http://static.8264.com/oldcms/moban/zt/2013kroceus/images/test47.jpg" alt=""></a>
+</li>
+<li>
+<a>
+<img src="http://static.8264.com/oldcms/moban/zt/2013kroceus/images/test48.jpg" alt=""></a>
+</li>
+<li>
+<a>
+<img src="http://static.8264.com/oldcms/moban/zt/2013kroceus/images/test49.jpg" alt=""></a>
+</li>
+<li>
+<a>
+<img src="http://static.8264.com/oldcms/moban/zt/2013kroceus/images/test50.jpg" alt=""></a>
+</li>
+</ul>
+</div>
+</div>
+<a name="photoShow"></a>
+<div class="photoShow">
+<h1>精彩瞬间</h1>
+<div class="bd">
+<div class="area">
+<div class="photoBox"> <img src="http://static.8264.com/oldcms/moban/zt/2013ozark/images/7.jpg" class="pic" />
+  
+        <h2><a href="#" target="_blank">奥索卡水陆两栖徒步鞋</a></h2>
+<h3>产品款号：910333</h3>
+<div class="text">
+<p>帮面反毛皮耐磨、提升品质感；鞋身三明治网布透气性极佳，阻止泥沙进入；前包橡胶颗粒，提升耐磨性</p>
+</div>
+</div>
+<div class="photoBox">
+<a href="" target="_blank">
+<img src="http://static.8264.com/oldcms/moban/zt/2013ozark/images/10.jpg" class="pic" />
+</a>
+    <h2>奥索卡情侣款功能T恤</h2>
+<h3>产品款式：女式</h3>
+<div class="text">
+<p>速干面料 透气、排汗强性弹力</p>
+</div>
+</div>
+<div class="photoBox">
+<a href="" target="_blank">
+<img src="http://static.8264.com/oldcms/moban/zt/2013ozark/images/13.jpg" class="pic" />
+</a>
+    <h2>户外潮流40L徒步背包</h2>
+<h3>款号：920435</h3>
+<div class="text">
+<p>主袋采用创新的顶盖后开启设计；方便取物的正面大尺寸开发式弹力布口袋，同时配有垂直拉链的暗袋；双侧面带有可扩容设计的拉链侧袋； 两侧弹性水瓶袋水袋收纳仓及饮水管出口
+                      </p>
+</div>
+</div>
+</div>
+<div class="area">
+<div class="photoBox">
+<a href="" target="_blank">
+<img src="http://static.8264.com/oldcms/moban/zt/2013ozark/images/8.jpg" class="pic" />
+</a>
+    <h2><a href="#" target="_blank">vibram底网鞋超轻旅行鞋</a></h2>
+<h3>产品款号：910338</h3>
+<div class="text">
+<p>一款适用于户外郊游以及日常生活穿着的都市旅行鞋。LW3192 超轻格纹网布，质轻、不易变形，并具有防拨水性；PU
+皮支撑鞋身；前包橡胶颗粒，提升耐磨性</p>
+</div>
+</div>
+<div class="photoBox">
+<a href="" target="_blank">
+<img src="http://static.8264.com/oldcms/moban/zt/2013ozark/images/11.jpg" class="pic" />
+</a>
+    <h2>奥索卡多功能徒步鞋</h2>
+<h3>系列：越野徒步</h3>
+<div class="text">
+<p>拥有功能大地耐磨防化，平衡稳定适应复杂地形；防水透气网布，保持足部干爽舒适；TPU保护系统支撑足弓，减少冲击力</p>
+</div>
+</div>
+<div class="photoBox">
+<a href="" target="_blank">
+<img src="http://static.8264.com/oldcms/moban/zt/2013ozark/images/15.jpg" class="pic" />
+</a>
+  <h2>轻量款25L徒步背包</h2>
+<h3>款号：920545</h3>
+<div class="text">
+<p>适合一周内户外活动，旅行；"山峦"户外元素图案拉链拉头；舒适透气带有通风槽的网衬背板；拉链主袋配有带衬棉的笔记本水袋收纳隔层和标准整理袋</p>
+</div>
+  </div>
+</div>
+<div class="area">
+<div class="photoBox">
+<a href="" target="_blank">
+<img src="http://static.8264.com/oldcms/moban/zt/2013ozark/images/9.jpg" class="pic" />
+</a>
+    <h2>奥索卡情侣款功能T恤</h2>
+<h3>产品款式：男式</h3>
+<div class="text">
+<p>速干面料 透气、排汗强性弹力</p>
+</div>
+</div>
+<div class="photoBox">
+<a href="" target="_blank">
+<img src="http://static.8264.com/oldcms/moban/zt/2013ozark/images/12.jpg" class="pic" />
+</a>
+    <h2>奥索卡中性户外潮流35L徒步背包</h2>
+<h3>款号：920436</h3>
+<div class="text">
+<p>适合中低海拔地区登山徒步2-10天,应对突发的天气变化；舒适透气带有通风槽的加厚背板，配有PE 板，可为背部提供额外支撑；舒适流畅的人体工程学肩带；坡形包底设计大容积拉链次袋</p>
+</div>
+</div>
+<div class="photoBox">
+<a href="" target="_blank">
+<img src="http://static.8264.com/oldcms/moban/zt/2013ozark/images/14.jpg" class="pic" />
+</a>
+    <h2>轻装户外 自在如风—奥索卡梭织外套
+</h2>
+<h3>产品款式：男式</h3>
+<div class="text">
+<p>质轻整件衣服小于65克；防风、防泼水超轻面料锦纶；收纳体积小，穿着舒适，携带方便，外套颜色嫩芽绿，颜色鲜艳活泼</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<a name="addr"></a>
+<div class="addr">
+<h1>如何购买装备</h1>
+<div class="bd">
+<marquee direction="up" scrollamount="2" onMouseOver="this.stop();" onMouseOut="this.start();" class="shopAddr">
+<table width="960px" cellpadding="0" cellspacing="0" border="0">
+<tr style="background:#FFFFFF;">
+<td>美嘉森奥特莱斯</td>
+<td>成都高新区新会展美嘉森奥特莱斯3C1A远拓户外</td>
+<td>61554016</td>
+</tr>
+<tr style="background:#e2b46f;">
+<td>双流时代奥特莱斯</td>
+<td>成都双流县双楠大道中段633号时代奥特莱斯1楼a区33号奥索卡专柜</td>
+<td>61915365</td>
+</tr>
+<tr style="background:#FFFFFF;">
+<td>王府井百货</td>
+<td>成都市总府路15号王府井六楼奥索卡专柜</td>
+<td>64650108</td>
+</tr>
+<tr style="background:#e2b46f;">
+<td>春熙太平洋百货</td>
+<td>成都市总府路12号太平洋百货春熙店-1楼奥索卡专柜</td>
+<td>86911269</td>
+</tr>
+<tr style="background:#FFFFFF;">
+<td>远拓户外市体育场店</td>
+<td>成都市青羊区东华门街20号体育中心远拓户外奥索卡专柜</td>
+<td>183287516169</td>
+</tr>
+<tr style="background:#e2b46f;">
+<td>远东百货骡马市店</td>
+<td>成都市人民中路二段68号太平洋百货全兴店5楼奥索卡专柜</td>
+<td>61679285</td>
+</tr>
+<tr style="background:#FFFFFF;">
+<td>伊藤双楠店</td>
+<td>成都市武侯区逸都路6号伊藤双楠店4楼奥索卡专柜</td>
+<td>85032362</td>
+</tr>
+<tr style="background:#e2b46f;">
+<td>伊藤锦华店</td>
+<td>成都市二环路东五段29号万达广场伊藤洋华堂3楼奥索卡专柜</td>
+<td>62561638</td>
+</tr>
+<tr style="background:#FFFFFF;">
+<td>茂业百货</td>
+<td>成都市锦江区东御街19号茂业百货5楼奥索卡专柜</td>
+<td>86783598</td>
+</tr>
+<tr style="background:#e2b46f;">
+<td>伊藤首创店</td>
+<td>成都市成华区建设路2号伊藤洋华堂４楼奥索卡专柜</td>
+<td>62121916</td>
+</tr>
+<tr style="background:#FFFFFF;">
+<td>王府井购物中心</td>
+<td>成都市科华中路9号"王府井百货"3楼远拓户外奥索卡专柜</td>
+<td>61672379</td>
+</tr>
+<tr style="background:#e2b46f;">
+<td>万达百货（锦华店）</td>
+<td>成都锦江区锦华路一段8号万达锦华城万达百货负一楼</td>
+<td>84191112</td>
+</tr>
+<tr style="background:#FFFFFF;">
+<td>群光百货</td>
+<td>成都市锦江区春熙路南段8号群光百货6楼奥索卡专柜</td>
+<td>86654226</td>
+</tr>
+<tr style="background:#e2b46f;">
+<td>时代百盛</td>
+<td>成都市锦江区总府路2号时代百盛商场5楼奥索卡专柜</td>
+<td></td>
+</tr>
+<tr style="background:#FFFFFF;">
+<td>天府摩尔百货</td>
+<td>成都市东御街55号摩尔百盛5楼奥索卡专柜</td>
+<td></td>
+</tr>
+<tr style="background:#e2b46f;">
+<td>沙湾会展摩尔</td>
+<td>成都市沙湾路258号3楼奥索卡专柜</td>
+<td></td>
+</tr>
+<tr style="background:#FFFFFF;">
+<td>成都华联</td>
+<td>成都市建设路55号成都华联5楼奥索卡专柜</td>
+<td></td>
+</tr>
+</table>
+</marquee>
+</div>
+</div>
+</div>
+<div class="footer">
+<div class="layout">
+<p class="copyRight">
+8264 版权所有 津ICP备05004140号-10 ICP证 津B2-20110106
+<br>
+户外有风险，8264提醒您购买
+<a href="http://bx.8264.com" target="_blank" class="bx">户外保险</a>
+</p>
+<p class="link">
+<a target="_blank" href="http://www.8264.com/about-index.html">8264简介</a>
+|
+<a target="_blank" href="http://www.8264.com/about-contact.html">联系我们</a>
+|
+<a target="_blank" href="http://www.8264.com/about-adservice.html">广告服务</a>
+|
+<a target="_blank" href="http://www.8264.com/link/">户外网址大全</a>
+|
+<a target="_blank" href="http://www.8264.com/sitemap">网站地图</a>
+</p>
+</div>
+</div>
+<!-- 弹出 开始 -->
+<div class="blackLayout"></div>
+<div class="popBox">
+<div class="closeBtn"></div>
+<div class="popupTips">
+<div class="bd">
+<h2>【报名须知】</h2>
+<p>1、本次比赛以个人为单位接受报名（本次活动不接受团队报名）；</p>
+<p>2、主办方将为参赛人员进行统一编号，编号自报名确认之日起生效，活动解散后自动失效；</p>
+<p>3、赛程中的食物由参赛人员自行准备，主办方设置定点救援、补给；</p>
+<p>
+4、凡通过腾讯大成网（cd.qq.com）报名成功者，参赛者可凭大成网短信在成都任意奥索卡专柜领取活动手册和120元代金券；同时您还可以凭大成网短信在奥索卡各专柜现场正式填写报名卡参与徒步活动；
+</p>
+<p>
+5、此次活动主办方共设200个免费名额，前200名报名参赛者，主办方将免费为选手购买户外保险和免费巴士接送服务；200名之后的报名选手，如对比赛有兴趣可自行前往比赛地点签到参加比赛，但主办方将不负责自行前往参赛者的保险、接送等服务，敬请谅解！
+</p>
+<h2>【奖项设定】</h2>
+<p>一、超级奖：10000元人民币现金 1名</p>
+<p>二、一等奖： 5000元人民币现金 1名</p>
+<p>三、二等奖： 3000元人民币现金 1名</p>
+<p>四、三等奖： 2000元人民币现金 1名</p>
+<p>五、四等奖： 1000元人民币现金 1名</p>
+<p>六、五等奖： 价值800元人民币户外背包一个 10名</p>
+<p>七、六等奖：在规定时间内完成全程徒步者（前50名），每人可获500元购物代金券</p>
+<p>八、幸运奖：活动当日，参赛选手、拉拉队员、亲友团均可以主办方签到处签到领取抽奖券一张，活动结束后可参与现场抽奖；</p>
+<h2>【抽奖奖项】</h2>
+<p>1、第一名： 1名（价值800元装备）</p>
+<p>2、第二名： 2名（价值500元装备）</p>
+<p>3、第三名： 5名（从值200元装备）</p>
+<p>4、幸运奖： 10名（200元代金券）</p>
+<h2>【注意事项】</h2>
+<p>请用QQ号登录报名，免费名额有限，每人只限报名一次，点击报名之后会出现QQ登陆界面，登陆QQ号即可报名成功。</p>
+</div>
+</div>
+</div>
+<!-- 弹出 结束 -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<!-- 方格效果 Start -->
+<script src="js/jquery.gridAccordion.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+// 方格效果
+jQuery(document).ready(function($) {
+$('.accordion').gridAccordion({
+width: 960,
+height: 680,
+columns: 5,
+distance: 2,
+closedPanelWidth: 10,
+closedPanelHeight: 10,
+alignType: 'centerCenter',
+slideshow: true,
+panelProperties: {
+0: {
+captionWidth: 200,
+captionHeight: 35,
+captionTop: 30,
+captionLeft: 30
+},
+4: {
+captionWidth: 150,
+captionHeight: 100,
+captionTop: 30,
+captionLeft: 650
+},
+7: {
+captionWidth: 310,
+captionHeight: 35,
+captionTop: 350,
+captionLeft: 40
+},
+8: {
+captionWidth: 300,
+captionHeight: 40,
+captionTop: 150,
+captionLeft: 35
+},
+11: {
+captionWidth: 150,
+captionHeight: 120,
+captionTop: 300,
+captionLeft: 30
+},
+14: {
+captionWidth: 300,
+captionHeight: 40,
+captionTop: 30,
+captionLeft: 50
+},
+16: {
+captionWidth: 150,
+captionHeight: 120,
+captionTop: 150,
+captionLeft: 10
+},
+18: {
+captionWidth: 300,
+captionHeight: 40,
+captionTop: 130,
+captionLeft: 50
+}
+}
+});
+});
+// 点击弹出黑屏
+jQuery.noConflict();
+(function($) {
+$('.readme').click(function() {
+$('.blackLayout').show();
+$('.popBox').show();
+});
+$('.closeBtn').click(function() {
+$('.blackLayout').hide();
+$('.popBox').hide();
+});
+})(jQuery);
+</script>
+</body>
+</html>
+<!-- By Andes -->
+
+
+

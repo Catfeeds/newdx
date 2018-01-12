@@ -1,0 +1,139 @@
+/*对冲原来的样式*/
+.fwinmask { border:#d7d7d7 solid 1px;background-color: #fff; box-shadow: 0px 0px 3px rgba(0, 0, 0, .2); border-radius:3px; }
+.fwinmask .flb {height:auto;line-height:auto;padding:0;}
+.fwinmask .m_l,.fwinmask .m_r,.fwinmask .m_l,.fwinmask .t_l,.fwinmask .t_c,.fwinmask .t_r,.fwinmask .b_l,.fwinmask .b_c,.fwinmask .b_r {display:none;}	
+
+.fwinmask input,.fwinmask select,.fwinmask button{ font-family:"Microsoft Yahei",Tahoma,Helvetica,SimSun,sans-serif;}
+.popwarpten li:after,.clear_b:after{content: ""; display: block; clear: both; visibility: hidden;}
+.popwarpten li,.clear_b{ zoom: 1;}
+
+/*发帖-选择板块*/
+.popbox{padding-bottom:50px;}
+.popbox a:hover{ text-decoration:none;}
+.popbox.w570{ width:570px;}
+.popbox.w300{ width:300px;}
+.popbox.w450{ width:450px;}
+.popbox_title{ height:49px; background:#f4f4f4;}
+.popbox_title span{ font-size:16px; color:#949494; float:left; margin:13px 0px 0px 19px; display:inline;}
+.popbox_title a{ font-size:14px; color:#43a6df; margin:14px 0px 0px 10px; float:left;}
+.popbox_title em{ float:right; width:15px; height:15px; background:url(http://static.8264.com/static/images/icon/usercentericon24.png) -5px -194px no-repeat; cursor:pointer; margin:16px 20px 0px 0px;}
+.tagtitle{ height:45px; background:#768693; font-size:0px; padding:0px 19px 0px 19px;}
+.tagtitle span{ font-size:12px; color:#fff; text-align:center; display:inline-block; padding:0px 14px 0px 14px; margin-top:7px; height:38px; line-height:38px; cursor:pointer;}
+.tagtitle span.hover{ background:#fff; color:#585858;}
+.popwarpten{ }
+.popbbslist{ }
+.pl20{ padding-left:24px;}
+.popbbslist li{ float:left; width:94px; padding:6px; margin:9px 0px 0px 0px;}
+.popbbslist li:hover,.popbbslist li.active{ background:#f4f4f4; cursor:pointer;}
+.popbbslist .iconbox{ width:34px; height:34px; background:#43a6df; font-size:18px; color:#fff;  float:left; text-align:center; line-height:32px; overflow:hidden;}
+.popbbslist li:hover .iconbox{ background:#1a2b38; }
+.popbbslist li.active .iconbox{ background:#1a2b38; }
+.popbbslist .iconbox img{ width:34px; height:34px; display: block; /*margin-top:-3px;*/}
+.popbbslist.w165 li{ width:165px;}
+.popbbslist p{ float:left; padding-left:9px;}
+.popbbslist.w165 p{ width:102px;height:44px;overflow:hidden;}
+.popbbslist p .titlename{ font-size:14px; color:#585858; padding-top:6px; display:block;}
+.buttonbox{ padding:24px 0px 0px 30px;}
+.button_confirm{ width:119px; height:40px; background-color:#ff7e00; font-size:16px; color:#fff; line-height:40px; text-align:center; border:0 none; border-radius:2px; cursor:pointer;}
+.button_cancel{ width:119px; height:40px; background-color:#c2c2c2; font-size:16px; color:#fff; line-height:40px; text-align:center; border:0 none; border-radius:2px; cursor:pointer;*margin-right: 8px;vertical-align: middle;}
+.buttonbox .fn12{ font-size:12px; color:#949494; padding-left:10px;}
+.buttonbox .msg_tip{ color:red;margin-left:10px;display:none;*vertical-align:8px;}
+.popbbslist .iconbox44{ width:48px; height:48px; float:left;}
+.popbbslist .iconbox44 img{ width:48px; height:48px;}
+.popbbslist .notetxt{ font-size:12px; color:#949494;}
+.popbbslist p .pt0{ padding-top:0px;}
+.popbbslist p .pt12{ padding-top:12px;}
+
+.popbbslist li.createalbum a.iconbox44{width:46px;height:46px;border:1px solid #e0e0e0;position:relative;}
+.popbbslist li.createalbum a.iconbox44 .row{background-color:#ececec;width:26px;height:3px;display:block;position:absolute;left:10px;top:21px;overflow:hidden}
+.popbbslist li.createalbum a.iconbox44 .col{background-color:#ededed;width:3px;height:26px;display:block;position:absolute;left:21px;top:10px;overflow:hidden}
+.popbbslist li.createalbum p a{padding-top:12px;}
+
+/*编辑相册信息*/
+.albumform{ padding-top:26px;}
+.albumform li{ padding-bottom:17px; }
+.albumform li label{ font-size:14px; color:#767676; display:inline-block; width:150px; text-align:right;}
+.albumform li .inputtext{ border:#dfdfdf solid 1px; border-radius:2px; background:#fdfdfd; height:36px; line-height: 36px; width:330px; font-size:14px; text-indent:10px;}
+.albumform li select.h36{ height:36px; border:#dfdfdf solid 1px; border-radius:2px; font-size:14px; padding:0px; background:#fdfdfd;}
+.albumform li select.h36 option{ height:26px; padding:6px 0px 0px 0px; font-size:14px; display:block; text-indent:6px; }
+.albumform li .delalbum{ background:url(http://static.8264.com/static/images/icon/usercentericon24.png) -8px -75px no-repeat; color:#43a6df; font-size:12px; margin-left:10px; padding-left:16px; cursor:pointer;}
+
+/*活动报名者管理*/
+#applylistform .list{width:620px;}
+#applylistform .list td{padding:5px 2px;}
+
+.friendtitle{ font-size:12px; color:#949494; padding:20px 30px 13px 30px; overflow: hidden;}
+.friendtitle select.h26{ height:26px; border:#dfdfdf solid 1px; border-radius:2px; font-size:12px; padding:0px 10px 0px 0px; background:#fdfdfd; margin-right:10px;}
+.friendtitle select.h26 option{ height:20px; padding:4px 0px 0px 0px; font-size:12px; display:block; text-indent:6px; }
+.friendtitle label{  color:#949494; margin-left:3px;}
+.friendtitle i{ color:#43a6df; font-style:normal;}
+.friendtitle span{ padding-left:10px;}
+.friendtitle .float_l{ float:left; padding:4px 0px 0px 0px;}
+.friendtitle .left-box{ float:left;padding: 6px 0 5px;}
+.friendtitle .searchbox{ float:right;}
+.friendtitle .searchbox .searchtext{  border:#dfdfdf solid 1px; border-radius:2px; background:#fdfdfd; height:26px; width:330px; font-size:12px; text-indent:10px; width:158px; }
+.friendtitle .searchbox .searchbutton{ background:#72c4f4; padding:0px 5px; height:28px; border:0 none; border-radius:2px; margin-left:6px; color:#fff; font-size:12px;vertical-align:-1px;*vertical-align: middle;}
+.friendlistbox{ padding:0px 0px 0px 30px; margin-top:10px;}
+.friendlistbox li{ width:48px; padding:8px; float:left; margin-right:16px; display:inline; margin-bottom: 5px;}
+.friendlistbox li:hover{ background:#f4f4f4; cursor:pointer; }
+.friendlistbox li img{ width:48px; height:48px; border-radius:2px;}
+.friendlistbox li span{ height:20px; font-size:12px; color:#585858; text-align:center; padding-top:7px; overflow:hidden; display:block;}
+
+/*生成文章*/	
+.height400{ height:400px; overflow-x:hidden; overflow-y:scroll; margin-right:15px;}
+.articlelist .blue12{ font-size:12px; color:#1e6d9b; display:block; padding:15px 0px 0px 28px;}
+.sortlistonly{ padding-left:28px; }
+.sortlistonly .parentcat{ font-size:14px; color:#585858; font-weight:normal; margin:15px 0 0 0; padding:0px;}
+.sortlistonly .blueiconadd{ background:url(http://static.8264.com/static/images/icon/usercentericon24.png) -8px -17px no-repeat; display:block;width:15px;height:15px;margin-top:15px;}
+.sortlistonly .blueiconminus{ background:url(http://static.8264.com/static/images/icon/usercentericon24.png) -8px 3px no-repeat; display:block;width:15px;height:15px;margin-top:15px;}
+.sortlistonly .cat{font-size:12px; color:#949494;margin-top:5px;}
+.sortlistonly .cat a{color:#949494;padding:6px 0;}
+.sortlistonly .cat a:hover{ background:#f4f4f4}	
+.sortlistonly .childcat{margin-left:7px; font-size:12px; color:#949494;margin-top:5px;}
+.sortlistonly .childcat a{color:#949494;padding:6px;}
+.sortlistonly .childcat a:hover{ background:#f4f4f4}	
+.sortlistonly .grayiconadd{ background:url(http://static.8264.com/static/images/icon/usercentericon24.png) -7px -37px no-repeat;cursor:pointer;margin-left:-3px;width:15px;height:15px;display:inline-block;}
+.sortlistonly .grayiconminus{ background:url(http://static.8264.com/static/images/icon/usercentericon24.png) -7px -56px no-repeat;cursor:pointer;margin-left:-3px;width:15px;height:15px;display:inline-block;}
+.sortlistonly .frist_child_s .grayiconadd a:hover{ background:none;}
+
+/*确认及提示框*/
+.popbox.textcenter{ text-align:center; padding:30px 0px;}
+.dhinfo{ font-size:14px; color:#585858; text-align:center;position:relative;}
+.dhinfo.plr{padding:30px 0px!important;_height: 25px}
+.dhinfo .erroricon{ background:url(http://static.8264.com/static/images/icon/usercentericon24.png) 0px -98px no-repeat; padding:0px 0px 0px 26px; display:inline-block; *display: inline; *zoom: 1; height:25px;}
+.dhinfo .noteicon{ background:url(http://static.8264.com/static/images/icon/usercentericon24.png) 0px -129px no-repeat; padding:0px 0px 0px 26px; display:inline-block; *display: inline; *zoom: 1; height:25px;}
+.dhinfo .successicon{ background:url(http://static.8264.com/static/images/icon/usercentericon24.png) 0px -162px no-repeat; padding:0px 0px 0px 26px; display:inline-block; *display: inline; *zoom: 1; height:25px;}
+.dhinfo em{ display:block; color:#949494; font-size:12px; padding-bottom:37px;}
+.dhinfo em a{ color:#1e6d9b;}
+.dhinfo .closebtn{ position:absolute; right:20px;top:16px;width:15px; height:15px; background:url(http://static.8264.com/static/images/icon/usercentericon24.png) -5px -194px no-repeat;}
+
+.popbox .textareabox{ padding:35px 0px 0px 80px;}
+.popbox .textareabox span{ display:block; font-size:14px; color:#767676; padding-bottom:15px;}
+.popbox .textareabox span i{ color:#43a6df; font-style:normal;}
+.popbox .textareabox textarea{ width:400px; height:105px; border:#dfdfdf solid 1px; border-radius:2px; padding:5px 10px; margin-bottom:20px;}	
+
+/*添加关注*/
+.addfollowform{width:365px;margin:0 auto;margin-top:26px;}
+.addfollowform .avatar{float:left;width:120px;overflow:hidden;}
+.addfollowform ul{float:left;margin-left:10px;}
+.addfollowform li{ padding-bottom:12px; }
+.addfollowform li select.h36{ height:36px; border:#dfdfdf solid 1px; border-radius:2px; font-size:14px; padding:0px 10px 0px 0px; background:#fdfdfd;}
+.addfollowform li select.h36 option{ height:26px; padding:6px 0px 0px 0px; font-size:14px; display:block; text-indent:6px; }
+
+/*关注分组*/
+.followgroupform{width:300px;margin:0 auto;margin-top:26px;}
+.followgroupform li{ padding-bottom:17px; }
+.followgroupform li label{ font-size:14px; color:#767676; display:inline-block; width:150px;padding:3px 0;}
+
+/*百度分享样式*/											
+.share_bd{ width:200px; position:absolute; font-size:0px; display:none;}
+.share_bd a{ width:50px; height:50px; background:url(http://static.8264.com/static/images/icon/baidushare.jpg) no-repeat; display:inline-block; _display:inline; _zoom:1;}
+.share_bd a.sina{ background-position:0 -408px;}
+.share_bd a.sina:hover{ background-position:0 -612px;}
+.share_bd a.qq{ background-position: 0px -459px;}
+.share_bd a.qq:hover{ background-position: 0px -663px;}
+.share_bd a.wb{ background-position: 0px -510px;}
+.share_bd a.wb:hover{ background-position: 0px -714px;}
+.share_bd a.wx{ background-position: 0px -561px;}
+.share_bd a.wx:hover{ background-position: 0px -765px;}
+.bdshare-button-style0-32 a{padding:0;margin:0;}

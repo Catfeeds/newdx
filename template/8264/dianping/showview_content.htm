@@ -1,0 +1,36 @@
+<div class="review-intro">
+	<div class="ui-block ui-block-title">
+		<div class="ui-title ui-title-line" style="zoom:1;">
+			<h3>{$detail['subject']}{if $mod=='brand'}品牌{/if}简介</h3>
+                        <!--{if $detail['ispublish']!=0}-->
+			<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$tid}#write" class="ui-title-link"><i class="ui-icon ui-review-icon"></i>我要点评</a>
+                        <!--{/if}-->
+			<!--我要点评下拉开始-->
+			<div class="wydp_warpten">
+				<div class="wydp_arrow"></div>
+				<div class="wydp_bluebg">写点评兑换礼品</div>
+				<div class="wydp_info">
+					<ul>
+						<li><span class="num_blue">1</span><span class="wydp_info_con">请写下自己的真实感受，严禁抄袭</span></li>
+						<li>
+							<span class="num_blue">2</span>
+							<span class="wydp_info_con">点评被奖励8264币后，请到论坛兑换礼品</span>
+						</li>
+					</ul>
+				</div>
+				<a class="dh_bule" target="_blank" href="http://bbs.8264.com/forum-483-1.html">去兑换</a>
+			</div>
+			<!--我要点评下拉结束-->
+			<div style=" font-size:0px; clear:both; height:0px; line-height:0px;"></div>
+		</div>
+	</div>
+	<div class="ui-block ui-block-content">
+		<div class="intro-main">
+			$plug_content_top
+			<p>
+				{$detail['message']}
+			</p>
+			<div class="J-more view-more" style="display:none;"><a href="javascript:void(0)">查看更多</a></div>
+		</div>
+	</div>
+</div>

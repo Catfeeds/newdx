@@ -1,0 +1,78 @@
+
+/*清除样式开始*/
+.toolbar:after,
+.location:after,
+.listbox:after { content: ""; display: block; clear: both; visibility: hidden; }
+.toolbar,
+.location,
+.listbox { zoom: 1; }
+/*清除样式结束*/
+
+a:hover { text-decoration: none; }
+.eq_main { width: 980px; margin: 0 auto; }
+/* 导航筛选 */
+.conditionsbar { margin-top: 20px; }
+.toolbar { position: relative; padding-top: 5px; color:#fff; z-index: 2; height:30px; }
+
+.toolbar .name45,
+.toolbar .arrow45,
+.toolbar .list,
+.toolbar .downbtn,
+.toolbar .upbtn { height: 30px; line-height: 30px; }
+.toolbar .name45 { float: left; color: #FFF; width: 97px; text-align: center; }
+.toolbar .blue45 { background: #43a6df; }
+.toolbar .orange45 { background: #f98361; }
+.toolbar .black45 { background: #1a2b38; }
+.toolbar .arrow45 { position: absolute; background: #f7f7f7; left: 97px; width:7px; top: 5px; }
+.toolbar .blue55 { background: url(/static/images/dianping/arrow1.jpg) no-repeat; }
+.toolbar .orange55 { background: url(/static/images/dianping/arrow2.jpg) no-repeat; }
+.toolbar .black55 { background: url(/static/images/dianping/arrow3.jpg) no-repeat; }
+.toolbar .list { float:right; overflow: hidden; width: 848px; background: url(/static/images/dianping/t_bg.jpg) repeat-x;  padding-right: 29px;  }
+.toolbar .list a { padding-left: 20px; color: #585858; display: inline; white-space: nowrap; }
+.toolbar .list a:hover, .toolbar .list .cBlue { color: #43a6df; }
+
+.pm_box { position: absolute; color: #000000; background-color: #FFF; border: 1px solid #b7b7b7; padding: 2px 6px; display: none; width:140px; top: 30px; left: 570px; text-align: center; }
+.pm_box .pm_text { width: 46px; }
+.pm_box .pm_btn { width: 36px; height: 26px; margin: 0 auto; display: block; }
+.toolbar .downbtn,
+.toolbar .upbtn { position: absolute; right: 0; float: right; width: 29px; cursor: pointer; display: none; }
+.toolbar .downbtn { background: url(/static/images/dianping/down.png) #e4e4e4 no-repeat center; }
+.toolbar .upbtn { background: url(/static/images/dianping/up.png) #e4e4e4 no-repeat center; }
+/*  */
+.location { margin-top: 20px;  height: 34px; width: 100%; }
+.order,
+.conditions { float: left; margin-top: 10px; }
+.order a { float: left; width: 33px; height: 19px; padding: 2px 0px 0px 26px; margin-right: 8px; display: inline; color: #FFF; border-radius: 2px; }
+.order .blue { background: url(/static/images/dianping/index_bg.png) 7px 5px no-repeat #5faae3; }
+.order .gray { background: url(/static/images/dianping/index_bg.png) 7px -35px no-repeat #d5d5d5; }
+.conditions { margin-left: 35px; }
+.conditions a { float: left; background: #758591; color: #FFF; border-radius: 2px; height: 19px; padding: 2px 8px 0px 8px; margin-right: 8px; }
+.search { position: relative; float: right; width: 232px; height: 31px; border: 1px solid #D6D6D6; border-radius: 3px; }
+.search:hover { border: 1px solid #43A6DF; box-shadow: 0 0 3px #B8DDF3; }
+.search .text { float: left; border: 0; width: 190px; height: 20px; line-height: 20px; padding: 6px 2px 0px 5px; margin-left: 2px; background: transparent; }
+.search .button { float: left; width: 30px; height: 31px; background: url(/static/images/dianping/search.png) no-repeat center; border: 0; cursor: pointer; }
+.search .text:focus, .search .button:focus { outline: medium none; }
+.search label { position: absolute; top: 7px; left: 7px; color: #A8A8A8; z-index: -1; }
+/* 列表 */
+.listbox { padding-top: 26px; width:996px; }
+.listbox ul { width: 996px; }
+.listbox .item { position: relative; float: left; width: 231px; height: 365px; border: 1px solid #cfcfcf; box-shadow: 0 0 3px #cfcfcf; overflow: hidden; margin: 0px 16px 50px 0px; font-size:0px; }
+.item .pic { text-align: center; }
+.item img { width: 231px; height: 272px; }
+.item .star { height:23px; padding:7px 0px 0px 0px; overflow:hidden; text-align: center; }
+.item .star b { font-size: 14px; margin-left: 8px; }
+.item .star .redstar,
+.item .star .halfstar,
+.item .star .graystar { background: url(/static/images/star-1.png?1.1) no-repeat; width: 16px; height: 14px; display: inline-block; _display: inline; _zoom: 1; overflow: hidden; }
+.item .star .halfstar { background-position: 0 -20px; }
+.item .star .graystar { background-position: -17px 0; }
+.item .name { position: absolute; top: 302px; width: 199px; background-color: #43a6df; color: #FFF; padding: 0 16px 8px 16px; font-size:12px; }
+.item .name a { display: block; height: 25px; line-height: 25px; color: #FFF; font-weight: bold; overflow: hidden; font-size:12px; }
+.item .heat { position: absolute; width: 231px; height: 38px; line-height: 38px; background-color: #f7f7f7; bottom: 0; text-align: center; color: #758591; font-size:12px; }
+
+.item .reply { background: url(/static/images/dianping/reply.png) no-repeat 0px 14px; padding-left: 20px; height:38px; display:inline-block;}
+.item .view { background: url(/static/images/dianping/view.png) no-repeat left; padding-left: 20px; margin-left: 20px; height:38px; display:inline-block; }
+
+
+.edt .bar{ width:100%;}
+

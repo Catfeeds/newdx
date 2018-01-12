@@ -1,0 +1,1047 @@
+<script type="text/javascript" src="{$_G['setting']['jspath']}forum_post.js?{VERHASH}"></script>
+<!--<script type="text/javascript" src="{$_G['setting']['jspath']}jquery.md5.js"></script>
+<script type="text/javascript" src="{$_G['setting']['jspath']}jquery.base64.js"></script>-->
+<link rel="stylesheet" type="text/css" href="{$_G[siteurl]}{STATICURL}css/forum/fu.css?{VERHASH}" />
+<link rel="stylesheet" type="text/css" href="data/cache/style_{STYLEID}_forum_post.css?{VERHASH}" />
+<style type="text/css">
+.imgdeleted { opacity: 0.3; filter:alpha(opacity=30); }
+</style>
+<script type="text/javascript">
+function addAttach(){}
+function switchImagebutton(){}
+function getimagethumbbyauto(width, height, type, filepath){
+	/*var returnurl = '';
+	jQuery.noConflict();
+	;(function($){
+		var md5str = $.md5(filepath);
+		var base64code = $.base64.btoa(filepath, false);
+		returnurl = 'thumbimg/' + md5str[0] + '/' + md5str[3] + '/' + parseInt(width).toString() + '/' + parseInt(height).toString() + '/' + parseInt(type).toString() + '/' + base64code + '.auto.jpg';
+	})(jQuery);*/
+	return returnurl;
+}
+var attachserver = "{$_G[config][web][attach]}";
+var posonshow = false;
+function uploadsuccess(type, returndata) {
+	eval('var nattach = ' + returndata + ';');
+	jQuery.noConflict();
+	;(function($){                                       
+		if(nattach.nowcount < 50 || type != 3){
+			if(document.getElementById('image_td_' + nattach.fileid) == null){
+				$('#imagetemp').clone().attr('id', 'image_td_' + nattach.fileid).attr('title', nattach.filename).appendTo('#uploadimagelist').show();
+				if(! posonshow){
+					var attachobj = $('#image_td_' + nattach.fileid);
+					var show_Windows = $('#uploadimagelist').parent();
+					var show_WindowsPos = {top: show_Windows.offset().top, bottom: show_Windows.offset().top + show_Windows.height()};
+					var attachPos = {top: attachobj.offset().top, bottom: attachobj.offset().top + attachobj.height()};
+					var nowScroll = show_Windows.scrollTop();
+					/*if(show_WindowsPos.top > attachPos.top){
+						posonshow = true;
+						show_Windows.scrollTop(nowScroll - show_WindowsPos.top + attachPos.top)
+					}else*/ if(show_WindowsPos.bottom < attachPos.bottom){
+						posonshow = true;
+						show_Windows.scrollTop(nowScroll + attachPos.bottom - show_WindowsPos.bottom)
+					}
+				}
+			}
+		}
+		if(isUndefined(nattach.bigthumbpic) || nattach.bigthumbpic == ''){
+			//nattach.bigthumbpic = attachserver + getimagethumbbyauto(300, 300, 1, nattach.type + "/" + nattach.pic);
+			if(nattach.thumbpic.match(/t2w\d+h\d+/) != null){
+				nattach.bigthumbpic = nattach.thumbpic.replace(/t2w\d+h\d+/, "t1w300h300");
+			}else{
+				nattach.bigthumbpic = nattach.thumbpic.replace(/\/\d\d+\/\d\d+\/2\//, "/300/300/1/");
+			}
+		}
+		var attachobj = $('#image_td_' + nattach.fileid);
+		var show_Windows = $('#uploadimagelist').parent();
+		var show_WindowsPos = {top: show_Windows.offset().top, bottom: show_Windows.offset().top + show_Windows.height()};
+		var attachPos = {top: attachobj.offset().top, bottom: attachobj.offset().top + attachobj.height()};
+		var nowScroll = show_Windows.scrollTop();
+		switch(type){
+			case 1:
+			case 2:
+				posonshow = false;
+				attachobj.find('.temppercent').remove();
+				attachobj.find('img').attr('id', 'image_' + nattach.aid).attr('aid', nattach.aid).attr('src', nattach.thumbpic).attr('bigthumb', nattach.bigthumbpic).click(function(){
+					if(! $(this).parent().hasClass('imgdeleted')){
+						insertAttachimgTag(nattach.aid);
+						$('#{$editorid}_iframe').contents().trigger('keyup');
+					}
+				}).one('error', function(){
+					$(this).attr('src', ' ');
+					$(this).attr('src', nattach.thumbpic);
+				}).show();
+				nattach.rename_id_fun = function(){
+					attachobj.attr('id', 'image_td_' + nattach.aid);
+				}
+				attachobj.find('a.close14_14_24w').click(function(){
+					delImgAttach(nattach.aid);
+				});
+				attachobj.find('input.description').attr('name', 'attachnew[' + nattach.aid + '][description]').attr('id', 'image_desc_' + nattach.aid).end().show();
+				$('#uploadimagediv').show().prev().hide();
+				setTimeout(nattach.rename_id_fun, 2000);
+				break;
+			case 3:
+				var percent = Math.floor((nattach.nowcount * 100) / nattach.maxcount);
+				if(percent > 100){
+					percent = 100;
+				}
+				attachobj.find('.temppercent').children('h5').text(nattach.text).end().find('b').text(percent + ' %');
+				$('#uploadimagediv').show().prev().hide();
+				
+				break;
+		}
+		attachobj.find('input.albumabout').val(nattach.aid);
+		if($('#selectsavealbum input[name=insertall]').is(':checked')){
+			attachobj.find('input.albumabout').removeAttr('disabled');
+		}
+	})(jQuery);
+}
+</script>
+<script type="text/javascript">
+function addattachlist(returndata){
+	eval('var nattach = ' + returndata + ';');
+	jQuery.noConflict();
+	;(function($){
+		var extpos = nattach.filename.lastIndexOf('.');
+		nattach.fileext = extpos == -1 ? '' : nattach.filename.substr(extpos + 1, nattach.filename.length).toLowerCase();
+		var objcontent = nattach.old == 1 ? '#attachlist_old' : '#attachlist';
+		$('#attachlisttmp').clone().attr('id', 'newattach_id_' + nattach.aid).prependTo(objcontent);
+		var obj_attachlt = $('#newattach_id_' + nattach.aid);
+		obj_attachlt.find('a.linkicon').click(function(){
+			insertText('attach://' + nattach.aid + '.' + nattach.fileext );
+			$('#{$editorid}_iframe').contents().trigger('keyup');
+		});
+		obj_attachlt.find('input.description').attr('name', 'attachnew[' + nattach.aid + '][description]');
+		obj_attachlt.find('a.nameicon').text(nattach.filename).attr('title', nattach.filename + "\n上传日期: " + nattach.uploadtime).click(function(){
+			insertAttachTag(nattach.aid);
+			$('#{$editorid}_iframe').contents().trigger('keyup');
+		});
+		{if $_G['group']['allowsetattachperm'] && ($_G[gp_action] == 'newthread' || ($_G[gp_action] == 'edit' && $isfirstpost))}
+		obj_attachlt.children('.readpowercon').css('z-index', 100).children('input.readperm').attr('name', 'attachnew[' + nattach.aid + '][readperm]');
+		obj_attachlt.find('.readtext_out').attr('id', nattach.aid + '_readperm_menu').attr('faid', nattach.aid).hide().appendTo('#append_parent');
+		obj_attachlt.find('.readtext').attr('mid', nattach.aid + '_readperm_menu');
+		if(nattach.readperm > 0){
+			obj_attachlt.find('>.readpowercon>input.readperm').val(nattach.readperm);
+		}
+		{/if}
+		{if $_G[gp_action] == 'edit'}
+		if(nattach.old == 0){
+			obj_attachlt.find('a.updateattachlink').click(function(){
+				var myname = $(this).siblings('a.nameicon');
+				uploadWindow(function(aid, url, name){
+					if(document.getElementById("attachupdate" + nattach.aid) == null){
+						obj_attachlt.append("<input name='attachupdate[" + nattach.aid + "]' type='hidden' id='attachupdate" + nattach.aid + "' />");
+					}
+					$('#attachupdate' + nattach.aid).val(aid);
+					myname.attr('title', '').html(name);
+				}, 'file');	
+			}).show();
+		}
+		{/if}
+		obj_attachlt.find('span.del').click(function(event){
+			$('#listofattach').append("<input type='hidden' name='attachdel[]' value='" + nattach.aid + "'/>");
+			$(this).parent('li').remove();
+		});
+		if(nattach.descr != null){
+			obj_attachlt.find('>.miaoshu>input.description').val(nattach.descr);
+		}
+		obj_attachlt.show();
+		$('#noattachtips').appendTo('#alltemplateobj');
+		//$('.fujiancon>.fujian_list.listattach').show();
+		if($('#listofattach').find('li').length > 6){
+			$('#listofattach').css({'overflow-y':'scroll',height:'300px'});
+		}else{
+			$('#listofattach').css('height', 'auto');
+		}
+		$('#{$editorid}_attachn').show();
+	})(jQuery);
+}
+function check_subject(){
+	jQuery.noConflict();
+	;(function($){
+		if($('.pbt_title input[type=text]').val() == $('#subject_tips').val()){
+			$('.pbt_title input[type=text]').val('');
+			setTimeout(function(){
+				$('.pbt_title input[type=text]').val($('#subject_tips').val());
+			},1000);
+		}
+	})(jQuery);
+}
+</script>
+<!--layout fu-->
+<div class="layout">
+	<input type="hidden" name="formhash" id="formhash" value="{FORMHASH}" />
+	<input type="hidden" name="posttime" id="posttime" value="{TIMESTAMP}" />
+	<input style="display: none;" type="checkbox" id="allowimgcode" class="pc" disabled="disabled"{if $_G['forum']['allowimgcode']} checked="checked"{/if} />
+	<input type="hidden" name="usesig" id="usesig" class="pc" value="1" {if !$_G['group']['maxsigsize']}disabled {else}$usesigcheck {/if}/>
+	<!--{if !empty($_G['gp_modthreadkey'])}--><input type="hidden" name="modthreadkey" id="modthreadkey" value="$_G['gp_modthreadkey']" /><!--{/if}-->
+	<input type="hidden" name="wysiwyg" id="{$editorid}_mode" value="$editormode" />
+	<!--{if $_G[gp_action] == 'reply'}-->
+	<input type="hidden" name="noticeauthor" value="$noticeauthor" />
+	<input type="hidden" name="noticetrimstr" value="$noticetrimstr" />
+	<input type="hidden" name="noticeauthormsg" value="$noticeauthormsg" />
+		<!--{if $_G[gp_reppost]}-->
+		<input type="hidden" name="reppost" value="$_G[gp_reppost]" />
+		<!--{elseif $_G[gp_repquote]}-->
+		<input type="hidden" name="reppost" value="$_G[gp_repquote]" />
+		<!--{/if}-->
+	<!--{/if}-->
+	<!--{if $_G[gp_action] == 'edit'}-->
+	<input type="hidden" name="fid" id="fid" value="$_G[fid]" />
+	<input type="hidden" name="tid" value="$_G[tid]" />
+	<input type="hidden" name="pid" value="$pid" />
+	<input type="hidden" name="page" value="$_G[gp_page]" />
+	<!--{/if}-->
+	<!--{if $special}-->
+	<input type="hidden" name="special" value="$special" />
+	<!--{/if}-->
+	<!--{if $specialextra}-->
+	<input type="hidden" name="specialextra" value="$specialextra" />
+	<!--{/if}-->
+	<div class="bm bw0 cl"{if !$showthreadsorts && !$adveditor} id="editorbox"{/if}>			
+		<div id="postbox">
+			<!--{hook/post_top}-->
+			<!--{if $_G[gp_action] == 'edit' && $isfirstpost && $sortid}-->
+				<input type="hidden" name="sortid" value="$sortid" />
+			<!--{/if}-->
+			<!--{if $showthreadsorts}-->
+			<div class="exfm cl" id="threadsorts">
+				<span id="threadsortswait"></span>
+			</div>
+			<!--{elseif $adveditor}-->
+				<!--{if $special == 1}--><!--{template forum/post_poll}-->
+				<!--{elseif $special == 2 && ($_G[gp_action] != 'edit' || ($_G[gp_action] == 'edit' && ($thread['authorid'] == $_G['uid'] && $_G['group']['allowposttrade'] || $_G['group']['allowedittrade'])))}--><p class="xg1">{lang post_message1}</p><!--{template forum/post_trade}-->
+				<!--{elseif $special == 3}--><!--{template forum/post_reward}-->
+				<!--{elseif $special == 4}--><!--{template forum/post_activity}-->
+				<!--{elseif $special == 5}--><!--{template forum/post_debate}-->
+				<!--{elseif $specialextra}--><div class="specialpost s_clear">$threadplughtml</div>
+				<!--{/if}-->
+			<!--{/if}-->
+			<!--{if $_G[gp_action] == 'reply' && $quotemessage}-->
+			<div class="pbt cl">$quotemessage</div>
+			<!--{/if}-->
+			<div id="rstnotice" style="display:none"></div>
+			<!--{if $_G[gp_action] == 'edit' && $isorigauthor && ($isfirstpost && $thread['replies'] < 1 || !$isfirstpost) && !$rushreply && $_G['setting']['editperdel']}-->
+			<div class="xzgl clboth"><input type="checkbox" name="delete" id="delete" value="1" title="{lang post_delpost}{if $thread[special] == 3}{lang reward_price_back}{/if}" /><label for="delete"><span>勾选后，提交"保存"，即可删除本条帖子，删除后无法恢复。</span></label></div>
+			<!--{/if}-->
+		<div class="clboth" id="{$editorid}_body">
+			<div class="fu_l">
+				<div class="editerbox">
+					<div id="{$editorid}_controls" class="edierbar clboth">
+						<a id="{$editorid}_bold" title="{lang e_bold}" class="bold"></a>
+						<div class="font_size">
+							<a href="javascript:;" class="small" onclick="discuzcode('fontsize', 2);" title="小"  ></a>
+							<a href="javascript:;" class="medium" onclick="discuzcode('fontsize', 3);" title="中"  ></a>
+							<a href="javascript:;" class="large" onclick="discuzcode('fontsize', 4);" title="大"  ></a>
+						</div>
+
+						<div class="colorbox">
+							<a href="javascript:;" class="gray" title="灰色" onclick="discuzcode('forecolor', '#585858')" onmouseout="setEditorTip('')" onmouseover="setEditorTip('灰色')" ></a>
+							<a href="javascript:;" class="blue" title="蓝色" onclick="discuzcode('forecolor', 'Blue')" onmouseout="setEditorTip('')" onmouseover="setEditorTip('蓝色')" ></a>
+							<a href="javascript:;" class="red" title="红色" onclick="discuzcode('forecolor', 'Red')" onmouseout="setEditorTip('')" onmouseover="setEditorTip('红色')" ></a>
+						</div>
+						
+						<div class="text_align">
+							<a id="{$editorid}_justifyleft" class="text_left" title="{lang e_left}"></a>
+							<a id="{$editorid}_justifycenter" class="text_center" title="{lang e_center}"></a>
+						</div>
+						<div class="fjicon">
+							<a title="{lang e_url}" cate="link" class="linkicon" href="javascript:void(0);"></a>
+							<!--{if $_G['forum']['allowmediacode']}-->
+							<a class="shipinicon" cate="shipin" title="{lang e_video_title}" href="javascript:void(0);"></a>
+							<!--{/if}-->
+							<!--{if $_G['group']['allowpostattach']}-->
+							<a cate="fujian" class="fujianicon" title="{lang e_attach_title}" href="javascript:void(0);"><span class="tanhao" style="display: none;" id="{$editorid}_attachn"></span></a>
+							<!--{/if}-->
+							<div class="fujianout" cate="fujian" id="{$editorid}_attach_menu" style="display:none;{if ! $_G['forum']['allowmediacode']}left:40px;{/if}">
+								<div class="bqtitle">
+									<a cate='listattach' href="javascript:;" class="zhong" >{lang attachment_list}</a>
+									<!--{if $allowuploadnum}--><a cate='uploadattach' href="javascript:;">{lang common_upload}</a><!--{/if}-->
+									<span class="close14_14_24w closepostion"></span>
+								</div>
+								<div class="fujiancon">
+									<div id="noattachtips" class="fujinaup listattach" <!--{if empty($attachs['used']) && empty($attachs['unused'])}--> style="display:block;"<!--{/if}-->>
+										<div class="imgupcon">
+											<p>本帖还没有附件</p>
+											<input name="" type="button" class="imgfjbutton" />
+										</div>
+									</div>
+									<div class="fujian_list listattach" <!--{if empty($attachs['used']) && empty($attachs['unused'])}-->style="display:none;"<!--{/if}-->>
+										<ul>
+											<li class="fujian_list_th clboth">
+												<span class="filename">文件名</span>
+												<span class="readpower needdown">
+												{if $_G['group']['allowsetattachperm']}
+													阅读权限
+													<em class="notecon showdowndiv">阅读权限按由高到低排列，高于或等于选中组的用户才可以阅读。</em>
+												{/if}
+												</span>
+												<span class="info">描述</span>
+											</li>
+										</ul>
+										<span id="listofattach" style="display: block; position:relative">
+										<ul id="attachlist"></ul>
+										<div class="tsupfujian">以下是你上次上传但没有使用的附件</div>
+										<ul id="attachlist_old"></ul>
+										<div style="clear: both;"></div>
+										</span>
+										<div class="shuoming">点击文件名添加到帖子内容中，<em>"attach://"</em> 开头的附件地址支持任何人下载请谨慎添加</div>
+									</div>
+									<div class="fujinaup uploadattach" style="display:none;">
+										<ul class="clboth" id="attach_upload_body"></ul>
+										<div class="notice">
+											<p>
+												文件尺寸: 小于 8.7MB<br/>
+												可用扩展名: {eval echo str_replace(array('jpeg,','gif,','jpg,','png,') ,'' ,$_G['group']['attachextensions'])} <br/>
+												此处只允许上传除图片外的其他文件，上传图片请点击页面右侧上传按钮
+											</p>
+											<p id="attachbtn" style="text-align:center"></p>
+											<div class="noticetj" id="uploadbtn"><input name="" type="button" class="qxbutton" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="" type="button" class="tjbutton" /></div>
+											<span id="uploadingtips">
+											<p style="text-align: center;"><img src="static/image/common/uploading.gif" style="vertical-align: middle;"/></p>	
+											<div class="noticeshangchuan">上传中，请稍后，您可以暂时关闭小窗口，上传完成后会提示您。</div>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="shipinout" cate="shipin">
+								<div class="shipinclose"><span class="close14_14_24w closepostion"></span></div>
+								<div class="formshipin">
+									<span class="weblink"><input name="" type="text" class="input230" /><em>请输入视频文件地址</em></span>
+									<span class="w_h">
+										<em>宽：<input name="" type="text" class="input52" value="500" /></em>
+										<em>高：<input name="" type="text" class="input52" value="375" /></em>
+									</span>
+									<span class="fxauto clboth"><input name="" type="checkbox" value="" /><label>是否自动播放</label></span>
+									<span class="notice">支持优酷、土豆、56、酷六等视频网址<br>支持 wma avi rmvb mov swf flv 等音乐格式<br>示例：http://sever/movie.wma</span>
+								</div>
+								<div class="tjqx"><input name="" type="button" class="qxbutton" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="" type="button" class="tjbutton tjb" /></div>
+							</div>
+							<div class="linkout" cate="link">
+								<div class="linkoutclose"><span class="close14_14_24w closepostion"></span></div>
+								<div class="formlink">
+									<span class="weblink"><input type="text" class="input230" /><em>请输入链接地址</em></span>
+									<span class="weblink"><input type="text" class="input230" /><em>请输入链接文字</em></span>
+								</div>
+								<div class="tjqx"><input type="button" class="qxbutton" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="tjbutton tjb" /></div>
+							</div>
+						</div>	
+						<label id="{$editorid}_switcher" class="y" ><input id="{$editorid}_switchercheck" type="checkbox" class="pc" name="checkbox" value="0" {if !$editor[editormode]}checked="checked"{/if} onclick="switchEditor(this.checked?0:1)" />{lang code}</label>						
+						<div id="{$editorid}_button">
+							<div id="{$editorid}_adv_s0">
+								<a id="{$editorid}_paste"></a>
+							</div>
+						</div>
+					</div>
+					<div class="edt areatext" style="height: 400px;"><textarea name="$editor[textarea]" id="{$editorid}_textarea" class="pt" tabindex="2" rows="15">$editor[value]</textarea></div>
+					<!--{subtemplate common/editor}-->
+				</div>
+			</div>
+			<div class="fu_r">
+				<div class="imgfbbox" id="right_tools">
+					<div class="imgfbtitle">
+						<span class="zhong uploadpic">上传图片</span><span class="usealbum">使用相册</span>
+					</div>
+					<div class="uploadpicshow imgfbboxcon">
+						<div class="imgfbboxcon">
+							<div class="imgfbbox_1">
+								<div class="imgupbuttoncon">
+                                    <div id="{$editorid}_uploadimagebtn" class="imgupbutton">
+                                    	<p>此内容需要 Adobe Flash Player 11.1.0 或更高版本
+							            </p>
+							            <script type="text/javascript"> 
+							                var pageHost = ((document.location.protocol == "https:") ? "https://" : "http://"); 
+							                document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='" 
+							                                + pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" ); 
+							            </script>
+                                    	<script type="text/javascript" src="static/js/newswfobject.js"></script>
+										<script type="text/javascript">
+										    var params = {site:"{$_G[siteroot]}misc.php%3fmod=swfupload%26type=image%26fid=$_G[fid]%26twidth=112%26theight=112%26random=<!--{echo random(4)}-->", buttonimg:"{$_G[siteroot]}static/images/common/uploadbtn.jpg", buttonimgon:"{$_G[siteroot]}static/images/common/uploadbtnonmouse.jpg", fontsize:16};
+										    swfobject.embedSWF("static/flash/uploadforum.swf", "{$editorid}_uploadimagebtn", "160", "39", "10.0.0", "playerProductInstall.swf", params, {wmode:"transparent"});
+										</script>
+									</div>
+								</div>
+								<div class="imgmoreup">
+									<span class="imgmoreupicon"></span>
+									<span><img src="static/images/common/imglistbg.jpg"/></span>
+									<span class="note">可批量上传多张图片<br/>单张图片不超过8.7M<br/>图片边长小于2500像素<br/>支持jpg、jpeg、gif、png格式</span>
+								</div>
+								<div style="display:none" id="uploadimagediv">
+									<div class="imglistcon clboth">
+										<ul id="uploadimagelist">
+											<!--{if !empty($imgattachs['used'])}--><!--{eval $imagelist = $imgattachs['used'];}-->
+												<!--{template forum/ajax_imagelist}-->
+                    				        <!--{/if}-->
+                                            <!--{if !empty($imgattachs['unused'])}-->
+                                            	<!--{eval $imagelist = $imgattachs['unused'];}-->
+                                            	<!--{template forum/ajax_imagelist}-->
+                                            <!--{/if}-->
+										</ul>
+									</div>
+									<span class="djaddtz">点击图片插入帖子，请勿拖拽</span>
+									<div class="bcxc">
+										<a href="javascript:;" id="savetoalbum">保存相册</a>
+										<a href="javascript:;" id="insertallimage">全部添加</a>
+										<div class="bcxcout_selectout" id="selectsavealbum" style="display:none;">
+											<div class="bcxcout_selectoutclose"><span class="close14_14_24w closepostion"></span></div>
+											<div class="xcselect needdown">
+												<span>请选择相册</span><input type="hidden" name="uploadalbum" value="0" />
+												<div class="xcselectout showdowndiv">
+												<!--{loop $albumlist $album}-->
+													<a href="javascript:;" albumid="{$album[albumid]}">$album[albumname]</a>
+												<!--{/loop}-->
+													<a href="javascript:;" albumid="0">+创建新相册</a>
+												</div>
+											</div>
+											<div class="xcgx clboth"><input name="insertall" type="checkbox" value="" class="inputfx"/><em>勾选可保存图片到您的相册</em></div>
+										</div>
+										<div class="bcxcout_selectout" id="createnewalbum" style="display:none;">
+											<div class="bcxcout_selectoutclose"><span class="close14_14_24w closepostion"></span></div>
+											<span class="cjxctitle">创建相册</span>
+											<div class="cjxcinput">
+												<input name="newalbum" type="text" class="cjxctext" />
+											</div>
+											<div class="cjxcbutton"><input name="" type="button" class="cjbutton"/>&nbsp;&nbsp;&nbsp;&nbsp;<input name="" type="button" class="qxbutton" /></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="usealbumshow imgfbboxcon" style="display:none;">
+					<!--{if $albumlist}-->
+						<div class="xzxc needdown">
+							<span>选择相册</span>
+							<div class="xzxcout showdowndiv" style="display:none">
+								<!--{loop $albumlist $album}-->
+            					<a href="javascript:;" onclick="$('selectalbum_span').style.display = 'none';" albumid="$album[albumid]">$album[albumname]</a>
+            					<!--{/loop}-->
+							</div>
+						</div>
+						<div class="b_a_dox" id="selectalbum_span">
+							<span class="imgmoreupicon_on"></span>
+						</div>
+						<div id="albumphoto">
+							<div class="imgmoreup_no">
+								<span><img src="static/images/common/imglistbg_1.jpg"/></span>
+								<span class="cxwithoutimg_text">请从我的相册中选择图片</span>
+							</div>
+						</div>
+					<!--{else}-->
+						<div class="imgmoreup_no">
+							<span><img src="static/images/common/imglistbg_1.jpg"/></span>
+							<span class="cxwithoutimg_text">您的相册还没有照片</span>
+						</div>
+					<!--{/if}-->
+					</div>
+				</div>
+			</div>
+			<div style="clear: both;"></div>
+		</div>
+		<!--{hook/post_middle}-->
+
+		<!--{if $_G['group']['maxprice'] && ($_G[gp_action] == 'newthread' || $_G[gp_action] == 'edit' && $isfirstpost)}-->
+			<div class="mtm">
+				<!--{if $_G['setting']['maxincperthread']}--><img src="{IMGDIR}/arrow_right.gif" />{lang post_price_income_comment}<!--{/if}-->
+				<!--{if $_G['setting']['maxchargespan']}--><img src="{IMGDIR}/arrow_right.gif" />{lang post_price_charge_comment}<!--{if $_G[gp_action] == 'edit' && $freechargehours}-->{lang post_price_free_chargehours}<!--{/if}--><!--{/if}-->
+			</div>
+		<!--{/if}-->
+
+		<div class="tijiaobutton">						
+			<span style="color:#999; padding:0 5px;vertical-align:middle;display: none;">每个贴子最多只能上传三张图片</span>
+			<!--{if $special == 2}--><label><input type="checkbox" name="continueadd" value="yes" class="pc" /> {lang post_message2}</label><!--{/if}-->
+		</div>
+
+		<!--{if $_G[gp_action] == 'newthread' && $savethreads}-->
+			<div class="bm bmn mtm">
+				<div class="mbn pbn bbda">
+					<a href="home.php?mod=space&uid=$_G['uid']&do=thread&view=me&type=thread&from=&filter=save" class="y xi2">{lang post_message3} &rsaquo;</a>
+					<h2>{lang post_message4}<span class="xi1"> $savethreadcount </span>{lang post_message5} <span class="xw0">{lang post_message6}<em class="qsv">&nbsp;</em>{lang post_message7}</span></h2>
+				</div>
+				<ul>
+				<!--{loop $savethreads $savethread}-->
+					<li class="mtn"><em class="qsv" title="{lang reply_quote}" onclick="insertsave($savethread[pid])">&nbsp;</em> <a href="forum.php?mod=post&action=edit&fid=$savethread[fid]&tid=$savethread[tid]&pid=$savethread[pid]" class="xi2" target="_blank">$savethread[subject]</a> <span class="xg1">$savethread[dateline]</span></li>
+				<!--{/loop}-->
+				</ul>
+			</div>
+		<!--{/if}-->
+
+		<!--{if $_G[gp_action] == 'newthread' && $savethreadothers}-->
+			<div class="bm bmn mtm">
+				<div class="mbn pbn bbda">
+					<a href="home.php?mod=space&uid=$_G['uid']&do=thread&view=me&type=thread&from=&filter=save" class="y xi2">{lang post_message3} &rsaquo;</a>
+					<h2>{lang post_message4}<span class="xi1"> $savethreadothercount </span>{lang post_message5} <span class="xw0">{lang post_message6}<em class="qsv">&nbsp;</em>{lang post_message7}</span></h2>
+				</div>
+				<ul>
+					<!--{loop $savethreadothers $savethread}-->
+					<li class="mtn"><em class="qsv" title="{lang reply_quote}" onclick="insertsave($savethread[pid])">&nbsp;</em> <a href="forum.php?mod=post&action=edit&fid=$savethread[fid]&tid=$savethread[tid]&pid=$savethread[pid]" class="xi2" target="_blank">$savethread[subject]</a> <span class="xg1">$savethread[dateline]</span></li>
+					<!--{/loop}-->
+				</ul>
+			</div>
+		<!--{/if}-->
+		
+		<!--{if !empty($_G['setting']['pluginhooks']['post_sync_method'])}-->
+			<span>
+				{lang post_sync_method}:
+				<!--{hook/post_sync_method}-->
+			</span>
+		<!--{/if}-->
+
+		<!--{hook/post_bottom}-->
+	</div>
+	</div>
+<!--{hook/post_side_bottom}-->
+</div>
+<!--layout fu end-->
+
+<div id="{$editorid}_menus" class="editorrow" style="overflow: hidden; margin-top: -5px; height: 0; border: none; background: transparent;">
+	<!--{subtemplate forum/editor_menu_forum_newimage}-->
+</div>
+<div id="showbigpic" style="display: none;"><div id="tempimg"><img onload="thumbMyImg(this);" /></div></div>
+<!--{if $special}-->
+<script type="text/javascript" src="{$_G['setting']['jspath']}calendar.js?{VERHASH}"></script>
+<!--{/if}-->
+<script type="text/javascript" src="{$_G['setting']['jspath']}jquery.form.js"></script>
+<script type="text/javascript">
+	var editorsubmit = $('postsubmit');
+	var editorform = $('postform');
+	var allowpostattach = parseInt('{$_G['group']['allowpostattach']}');
+	var allowpostimg = parseInt('$allowpostimg');
+	var pid = parseInt('$pid');
+	var extensions = '{eval echo str_replace(array('jpeg,','gif,','jpg,','png,') ,'' ,$_G['group']['attachextensions'])}';
+	var imgexts = '$imgexts';
+	var postminchars = parseInt('$_G['setting']['minpostsize']');
+	var postmaxchars = parseInt('$_G['setting']['maxpostsize']');
+	var disablepostctrl = parseInt('{$_G['group']['disablepostctrl']}');
+	var seccodecheck = parseInt('<!--{if checkperm('seccode') && $seccodecheck}-->1<!--{else}-->0<!--{/if}-->');
+	var secqaacheck = parseInt('<!--{if checkperm('seccode') && $secqaacheck}-->1<!--{else}-->0<!--{/if}-->');
+	var typerequired = parseInt('{$_G[forum][threadtypes][required]}');
+	var sortrequired = parseInt('{$_G[forum][threadsorts][required]}');
+	var special = parseInt('$special');
+	var isfirstpost = <!--{if $isfirstpost}-->1<!--{else}-->0<!--{/if}-->;
+	var allowposttrade = parseInt('{$_G['group']['allowposttrade']}');
+	var allowpostreward = parseInt('{$_G['group']['allowpostreward']}');
+	var allowpostactivity = parseInt('{$_G['group']['allowpostactivity']}');
+	var sortid = parseInt('$sortid');
+	var fid = {$fid};
+	<!--{if $isfirstpost && !empty($_G[forum][threadtypes][types])}-->
+		//simulateSelect('typeid');
+	<!--{/if}-->
+	<!--{if !$isfirstpost && $thread['special'] == 5 && empty($firststand) && $_G[gp_action] != 'edit'}-->
+		//simulateSelect('stand');
+	<!--{/if}-->
+	<!--{if !$special && $_G[forum][threadsorts] && ($_G[gp_action] == 'newthread' || $_G[gp_action] == 'edit' && $isfirstpost && !$thread[sortid])}-->
+		//simulateSelect('sortid');
+		function switchsort() {
+			if($('sortid').value) {
+				saveData(1);
+				<!--{if $isfirstpost && $sortid}-->
+					ajaxget('forum.php?mod=post&action=threadsorts&sortid=' + $('sortid').value + '&fid=$_G[fid]<!--{if !empty($modelid)}-->&modelid=$modelid<!--{/if}--><!--{if !empty($_G[gp_modthreadkey])}-->&modthreadkey=$_G[gp_modthreadkey]<!--{/if}-->', 'threadsorts', 'threadsortswait', null, null, function () { seteditorcontrolpos(); });
+				<!--{else}-->
+					location.href = 'forum.php?mod=post&action=$_G[gp_action]&fid=$_G[fid]<!--{if !empty($_G[tid])}-->&tid=$_G[tid]<!--{/if}--><!--{if !empty($pid)}-->&pid=$pid<!--{/if}--><!--{if !empty($modelid)}-->&modelid=$modelid<!--{/if}-->&extra=$extra<!--{if !$sortid}-->&cedit=yes<!--{/if}-->&sortid=' + $('sortid').value;
+				<!--{/if}-->
+				Editorwin = 0;
+			}
+		}
+	<!--{/if}-->
+	<!--{if $isfirstpost}-->
+		<!--{if $sortid}-->
+			ajaxget('forum.php?mod=post&action=threadsorts&sortid=$sortid&fid=$_G[fid]<!--{if !empty($_G[tid])}-->&tid=$_G[tid]<!--{/if}-->&inajax=1<!--{if !empty($_G[gp_modthreadkey])}-->&modthreadkey=$_G[gp_modthreadkey]<!--{/if}-->', 'threadsorts', 'threadsortswait', null, null, function () { seteditorcontrolpos(); });
+		<!--{elseif $_G['forum']['threadsorts']['required'] && !$special}-->
+			<!--{eval $threadsortids = array_keys($threadsorts[types]);}-->
+			ajaxget('forum.php?mod=post&action=threadsorts&sortid={$threadsortids[0]}&fid=$_G[fid]<!--{if !empty($_G[tid])}-->&tid=$_G[tid]<!--{/if}-->&inajax=1<!--{if !empty($_G[gp_modthreadkey])}-->&modthreadkey=$_G[gp_modthreadkey]<!--{/if}-->', 'threadsorts', 'threadsortswait', null, null, function () { seteditorcontrolpos(); });
+		<!--{/if}-->
+	<!--{/if}-->
+
+	<!--{if $_G[gp_action] == 'newthread' && $_G['setting']['sitemessage'][newthread] || $_G[gp_action] == 'reply' && $_G['setting']['sitemessage'][reply]}-->
+		showPrompt('custominfo', 'mouseover', '<!--{if $_G[gp_action] == 'newthread'}--><!--{echo trim($_G['setting']['sitemessage'][newthread][array_rand($_G['setting']['sitemessage'][newthread])])}--><!--{elseif $_G[gp_action] == 'reply'}--><!--{echo trim($_G['setting']['sitemessage'][reply][array_rand($_G['setting']['sitemessage'][reply])])}--><!--{/if}-->', $_G['setting']['sitemessage'][time]);
+	<!--{/if}-->
+	<!--{if $_G['setting']['swfupload'] != 1 && $_G['group']['allowpostattach']}-->addAttach();<!--{/if}-->
+	<!--{if $_G['setting']['swfupload'] != 1 && $allowpostimg}-->addAttach('img');<!--{/if}-->
+	if($('subjectbox')) {
+		var tmp_obj = $('{$editorid}_textarea');
+		if(tmp_obj && tmp_obj.style.display == '') {
+			tmp_obj.focus();
+		}
+	} else if($('subject')) {
+		$('subject').focus();
+	}
+</script>
+<script>
+jQuery.noConflict();
+;(function($){
+	function newAttachFile(num){
+		$('#attachbtnhiddentmp').clone().attr('id', 'attachform_' + num).find('input[type=file]').attr('attnum', num).end().appendTo('#attachbtn').show();
+	}
+	newAttachFile(1);
+	$('.imgfbbox').on('click', '.imgfbtitle>span', function(event){
+		if(! $(this).hasClass('zhong')){
+			var myclassid = $(this).attr('class');
+			if(BROWSER.ie > 0 && BROWSER.ie <= 7){
+				$(this).addClass('zhong').siblings().removeClass('zhong').end().parent().siblings('.' + myclassid + 'show').show().siblings().not('.imgfbtitle').hide();
+			}else{	
+				$(this).addClass('zhong').siblings().removeClass('zhong').end().parent().siblings('.' + myclassid + 'show').show().css({height:'auto', 'overflow' : ''}).siblings().not('.imgfbtitle').css({height:'0px', 'overflow' : 'hidden'});
+			}
+		}
+	});
+	$('.needdown').hover(function(event){
+		$(this).children('.showdowndiv').show();
+	}, function(event){
+		$(this).children('.showdowndiv').hide();
+	});
+	$('.usealbumshow .xzxcout>a').on('click', function(event){
+		$(this).parent().siblings('span').text($(this).text());
+		var select_albumid = $(this).attr('albumid');
+		ajaxget('forum.php?mod=post&perpage=4&showpage=3&action=albumphoto&aid=' + select_albumid , 'albumphoto');
+		$(this).parent().hide();
+	});
+	$('#insertallimage').click(function(event){
+		var imagelistobj = $('#uploadimagelist>li:not(.imgdeleted) img');
+		var maximagepic = 3;
+		if(imagelistobj.length > maximagepic){
+			showDialog('你列表中的文件超过三张，超过三张的图片将会保存在列表内，您可以再次发帖时使用！');
+		}
+		var i = 0;
+		imagelistobj.each(function(){
+			i++;
+			if(i <= maximagepic){$(this).click();}
+
+		});
+	});
+	$('#savetoalbum').click(function(event){
+		$('#selectsavealbum').show();
+	});
+	$('.bcxcout_selectout>.bcxcout_selectoutclose>.close14_14_24w.closepostion').click(function(event){
+		$(this).parents('.bcxcout_selectout').hide();
+	});
+	$('#selectsavealbum>.xcgx.clboth>input[name=insertall]').click(function(event){
+		if($(this).is(':checked')){
+			$('#uploadimagelist>li>input.albumabout').removeAttr('disabled');
+		}else{
+			$('#uploadimagelist>li>input.albumabout').attr('disabled', true);
+		}
+	});
+	$('#selectsavealbum>.xcselect>.xcselectout>a').click(function(event){
+		$(this).parent().siblings('span').text($(this).text()).end().siblings('input[name=uploadalbum]').val($(this).attr('albumid')).end().hide();
+		if($(this).attr('albumid') == 0){
+			$('#createnewalbum').show();
+		}
+	});
+	$('#createnewalbum .cjxcbutton>input.cjbutton').click(function(event){
+		if($('#createnewalbum>div.cjxcinput>input.cjxctext').val().length < 3){
+			showDialog('您选择创建的新相册名不能为空或太短！');
+		}else{
+			$('#selectsavealbum').find('>div.xcselect>span').text($('#createnewalbum>div.cjxcinput>input.cjxctext').val());
+			$('#createnewalbum').hide();
+		}
+	})
+	$('#createnewalbum .cjxcbutton>input.qxbutton').click(function(event){
+		$('#createnewalbum').hide();
+		if($('#createnewalbum>div.cjxcinput>input.cjxctext').val().length > 0){$('#selectsavealbum').children('span').text('请选择相册').end().show();}
+	});
+	$('#{$editorid}_controls>.fjicon>div>div .weblink input').bind('focus blur', function(event){
+		switch(event.type){
+			case 'focus':
+				$(this).next('em').hide();break;
+			case 'blur':
+				if($(this).val().length == 0){$(this).next('em').show();}break;
+		}
+	});
+var sel, selection;
+	$('#{$editorid}_controls>.fjicon>a').on('click', function(event){
+		var mycate = $(this).attr('cate');
+		var mycateout = $(this).siblings('.' + mycate + 'out');
+		if(mycateout.is(':hidden')){
+			checkFocus();
+			var str = '';
+			var pos = [0, 0];
+			var opentag = '[' + mycate + ']';
+			var closetag = '[/' + mycate + ']';
+			if(BROWSER.ie) {
+				sel = wysiwyg ? editdoc.selection.createRange() : document.selection.createRange();
+				pos = getCaret();
+			}
+			selection = sel ? (wysiwyg ? sel.htmlText : sel.text) : getSel();
+			if(mycate == 'link'){
+				if(selection){
+					mycateout.find('.weblink:eq(1)').hide();
+				}else{
+					mycateout.find('.weblink:eq(1)').show();
+				}
+			}
+			$(this).addClass(mycate + 'icon_hover').siblings('div').hide().end().siblings('a').each(function(){
+				$(this).removeClass($(this).attr('cate') + 'icon_hover');
+			}).end().siblings('.' + mycate + 'out').show();
+			function click_function_handle(){
+				if($(this).hasClass('tjbutton')){
+					switch(mycate){
+						case 'link':
+							var href = mycateout.find('input[type=text]:first').val();
+							href = (isEmail(href) ? 'mailto:' : '') + href;
+							if(href != '') {
+								var v = selection ? selection : (mycateout.find('input[type=text]:eq(1)').val() ? mycateout.find('input[type=text]:eq(1)').val() : href);
+								str = wysiwyg ? ('<a href="' + href + '">' + v + '</a>') : '[url=' + href + ']' + v + '[/url]';
+								if(wysiwyg) insertText(str, str.length - v.length, 0, (selection ? true : false), sel);
+								else insertText(str, str.length - v.length - 6, 6, (selection ? true : false), sel);
+							}
+							break;
+						case 'shipin':
+							var mediaUrl = mycateout.find('input[type=text]:first').val();
+							var auto = '';
+							var ext = mediaUrl.lastIndexOf('.') == -1 ? '' : mediaUrl.substr(mediaUrl.lastIndexOf('.') + 1, mb_strlen(mediaUrl)).toLowerCase();
+							ext = in_array(ext, ['mp3', 'wma', 'ra', 'rm', 'ram', 'mid', 'asx', 'wmv', 'avi', 'mpg', 'mpeg', 'rmvb', 'asf', 'mov', 'flv', 'swf']) ? ext : 'x';
+							if(ext == 'x') {
+								if(/^mms:\/\//.test(mediaUrl)) {
+									ext = 'mms';
+								} else if(/^(rtsp|pnm):\/\//.test(mediaUrl)) {
+									ext = 'rtsp';
+								}
+							}
+							var auto = mycateout.find('input[type=checkbox]:first').is(':checked') ? ',1' : '';
+							var str = '[media=' + ext + ',' + mycateout.find('input[type=text]:eq(1)').val() + ',' + mycateout.find('input[type=text]:eq(2)').val() + auto +']' + mediaUrl + '[/media]';
+							insertText(str, str.length, 0, false, sel);
+							break;
+					}
+					mycateout.find('input[type=text]').each(function(){
+						if(($(this)).next('em').text().length > 0){
+							$(this).val('').next('em').show();
+						}
+					}).end().find('input:checked').removeAttr('checked');
+				}
+				$(this).parent().parent().find('.close14_14_24w.closepostion').click();
+			}
+			mycateout.find('.tjqx>input[type=button]').bind('click', null, click_function_handle); 
+		}else{
+			$(this).removeClass(mycate + 'icon_hover').siblings('.' + mycate + 'out').hide();
+		}
+	});
+	$('#{$editorid}_controls>.fjicon>div[class$=out] .close14_14_24w.closepostion').click(function(event){
+		var divshow = $(this).parent().parent();
+		divshow.hide().siblings('.' + divshow.attr('cate') + 'icon').removeClass(divshow.attr('cate') + 'icon_hover');
+	});
+	$('#{$editorid}_controls>.fjicon>div[class$=out] .weblink').mouseover(function(event){
+		$(this).children('input[type=text]').focus();
+	});
+	$('#{$editorid}_attach_menu').on('click', '>.bqtitle>a', function(event){
+		var cate = $(this).attr('cate');
+		$(this).addClass('zhong').siblings().removeClass('zhong').end().parent().next('.fujiancon').children('.' + cate + ':first').show().siblings().hide();
+	});
+	$('#attachbtn').on('change', 'input[type=file]', function(event){
+		var path = $(this).val();
+		var haveselect = false;
+		if($('#attachbtn>div:hidden>span>form').length >= 3){
+			showDialog('对不起，最多只能上传三个附件！');
+			haveselect = true;
+		}
+		if(! haveselect){
+			var extpos = path.lastIndexOf('.');
+			var ext = extpos == -1 ? '' : path.substr(extpos + 1, path.length).toLowerCase();
+			var re = new RegExp("(^|\\s|,)" + ext + "($|\\s|,)", "ig");
+			if(extensions != '' && (re.exec(extensions) == null || ext == '')) {
+				showDialog('对不起，不支持上传此类扩展名的附件。如果您需要上传图片，请使用右侧的图片上传。');
+				haveselect = true;
+			}
+		}
+		if(! haveselect){
+			$('#attachbtn>div:hidden>span>form>input[type=file]').each(function(){
+				if($(this).val() == path){
+					haveselect = true;
+					showDialog('您选择的附件文件刚刚已经选择过了');
+				}
+			});
+		}
+		if(haveselect){
+			$(this).val('');
+			return;
+		}else{
+			var file_form_num = $(this).attr('attnum');
+			$('#attachbodyhiddentmp').clone().attr('id', 'wattingupload_' + file_form_num).find('input[type=hidden]').val(file_form_num).end().find('>span').text(path).end().appendTo('#attach_upload_body').show();
+			$("#attachform_" + file_form_num).hide();
+			newAttachFile(parseInt(file_form_num) + 1);
+		}
+	});
+	$('#attach_upload_body').on('click', '>li>em', function(event){
+		var file_form_num = $(this).siblings('input[type=hidden]').val();
+		$("#wattingupload_" + file_form_num).remove();
+		$("#attachform_" + file_form_num).remove();
+	});
+	$('#uploadbtn').on('click', '>input[type=button]', function(event){
+		if($(this).hasClass('qxbutton')){
+			$('#{$editorid}_attach_menu>.bqtitle>.close14_14_24w.closepostion').click();
+		}else if($(this).hasClass('tjbutton')){
+			var _errorcount = 0;
+			var _successcount = 0;
+			var _errormessage = '';
+			var _uploadfunction = function(){
+				$('#attachbtn>div:hidden>span>form:first').ajaxSubmit({type:'post', success: successAjaxHandle, error: errorAjaxHandle});
+			}
+			var _uploadcomplete = function(){
+				if($('#attachbtn>div:hidden>span>form').length > 0){
+					setTimeout(_uploadfunction, 500);
+				}else{
+					$('#uploadingtips').hide();
+					$('#attach_upload_body li').remove();
+					showDialog('文件上传完毕，共上传 ' + (_errorcount + _successcount) + ' 个文件，成功 ' + _successcount + ' 个，失败 ' + _errorcount + ' 个。' + (_errorcount > 0 ? _errormessage : ''));
+					$('#{$editorid}_attach_menu .bqtitle a:first').click();
+				}
+			}
+			var successAjaxHandle = function(data){
+				var re = new RegExp("^DISCUZUPLOAD\|\d\|\d+\|\d$", "i");
+				if(data != '' && re.test(data)){
+					var attnum = $('#attachbtn>div:hidden>span>form:first input[type=file]').attr('attnum');
+					var result = data.split('|');
+					var aid = result[2];
+					var errormsg = result[1];
+					var filename = $('#attachbtn>div:hidden>span>form:first input[type=file]').val();
+					var filearr = filename.split('\\');
+					filename = filearr[filearr.length - 1];
+					if(errormsg != 0){
+						_errorcount++;
+						var _error = filename + '上传失败，原因：' + STATUSMSG[errormsg];
+						_errormessage += " \n" + _error;
+						$('#wattingupload_' + attnum).addClass('uploadattacherror').attr('title', _error);
+					}else{
+						_successcount++;
+						var d = new Date();
+						var v_Year = d.getFullYear();
+						var v_Mon = d.getMonth() + 1;
+						var v_Day = d.getDate();
+						var v_h = d.getHours(); 
+						var v_m = d.getMinutes();
+						var v_time = v_Year + '-' + v_Mon + '-' + v_Day + ' ' + v_h + ':' + v_m;
+						addattachlist("{aid: " + aid + ", filename:'" + filename + "', uploadtime:'" + v_time + "', descr: '', readperm: 0}");
+						$('#wattingupload_' + attnum).addClass('uploadattachok');
+					}
+					$('#attachform_' + attnum).remove();
+					_uploadcomplete();
+				}else{
+					showDialog('文件' + filename + '上传失败，原因：内部错误。');
+				}
+			}
+			var errorAjaxHandle = function(data){
+				_errorcount++;
+				var attnum = $('#attachbtn>div:hidden>span>form:first input[type=file]').attr('attnum');
+				var _error = $('#attachbtn>div:hidden>span>form:first input[type=file]').val() + '上传失败，原因：' + '文件过大或通讯错误';
+				_errormessage += " \n" + _error;
+				$('#wattingupload_' + attnum).addClass('uploadattacherror').attr('title', _error);
+				$('#attachform_' + attnum).remove();
+				_uploadcomplete();
+			}
+			if($('#attachbtn>div:hidden>span>form').length > 0){
+				$('#uploadingtips').show();
+				_uploadfunction();
+			}else{
+				showDialog('请选择通过上访浏览文件，选择需要上传的文件。');
+			}
+		}
+	})
+	$('#{$editorid}_attach_menu').on('click', '>.fujiancon>.fujian_list.listattach>ul>li.fujian_list_td.clboth>span.del', function(event){
+		$(this).parents('li.fujian_list_td.clboth').remove();
+	});
+	{if $_G['group']['allowsetattachperm'] && ($_G[gp_action] == 'newthread' || ($_G[gp_action] == 'edit' && $isfirstpost))}
+	$('#listofattach').on('click mouseleave', '.readtext', function(event){
+		var mid = $(this).attr('mid');
+		var listHeight = document.getElementById('listofattach').offsetHeight;
+		var jiange_cha = $(this).parents('li').offset().top + 45 - $('#listofattach').offset().top - listHeight + 15;
+		if(jiange_cha > 0){
+			var c_top = $(this).offset().top - 102;
+			$('#' + mid).css({borderTopWidth : '1px', borderBottomWidth : '0px'});
+		}else{
+			var c_top = $(this).offset().top + 23;
+			$('#' + mid).css({borderTopWidth : '0px', borderBottomWidth : '1px'});
+		}
+		var c_left = $(this).offset().left;
+		$('#' + mid).css({top:c_top, left:c_left});
+		switch(event.type){
+			case 'click' :
+				$('#append_parent .readtext_out:visible').hide();	
+				$('#' + mid).show();
+				break;
+			case 'mouseleave':
+				$('#' + mid).hide();break;
+		}
+	}).on('scroll', function(event){
+		$('#append_parent .readtext_out:visible').each(function(){
+			var fatobj = $('#newattach_id_' + $(this).attr('faid')).find('.readtext');
+			$(this).css({top: fatobj.offset().top + 23, left: fatobj.offset().left});
+		});
+	});
+	$('#append_parent .readtext_out').on('mouseenter mouseleave', function(event){
+		switch(event.type){
+			case 'mouseenter' :
+				$(this).show();break;
+			case 'mouseleave' :
+				$(this).hide();break;
+		}
+	}).on('click', 'a', function(event){
+		$(this).parent().hide();
+		$('#newattach_id_' + $(this).parent().attr('faid')).children('.readpowercon').children('.readtext').text($(this).text()).end().children('input.readperm').val($(this).attr('readperm'));
+	});
+	{/if}
+	$('#noattachtips input.imgfjbutton').click(function(event){
+		$('#{$editorid}_attach_menu>.bqtitle>a:eq(1)').click();
+	});
+	$('#postbox>.pbt.clboth>.pbt_select>.pbt_select_option_box>a').click(function(event){
+		$(this).parent().next('span').children('input[type=hidden]').val($(this).attr('hid')).siblings('span').text($(this).text());
+		$(this).parent().hide();
+	});
+	$('#uploadimagelist').on('mouseover mouseout mousemove', '>li>img', function(event){
+		var objclass = $(this).attr('aid');
+		switch(event.type){
+			case 'mouseover':
+				if($('#showbigpic_' + objclass).find('img').width() > 300 || $('#showbigpic_' + objclass).find('img').height() > 300){
+					$('#showbigpic_' + objclass).find('img').hide();
+					thumbMyImg($($('#showbigpic_' + objclass).find('img')));
+				}
+				if(document.getElementById('showbigpic_' + objclass) == null){
+					$('#tempimg').clone().attr('id', 'showbigpic_' + objclass).appendTo('#showbigpic');
+					$('#showbigpic_' + objclass).find('img').attr('src', $(this).attr('bigthumb'))
+				}
+				$('#showbigpic_' + objclass).siblings().hide().end().parent().css({top : event.pageY - 320, left : event.pageX - 320}).show().end().show();
+				break;
+			case 'mouseout':
+				$('#showbigpic_' + objclass).hide();
+				$('#showbigpic').hide();
+				break;
+			case 'mousemove':
+				if($('#showbigpic_' + objclass).find('img').width() > 300 || $('#showbigpic_' + objclass).find('img').height() > 300){
+					$('#showbigpic_' + objclass).find('img').hide();
+					thumbMyImg($($('#showbigpic_' + objclass).find('img')));
+				}
+				if(document.getElementById('showbigpic_' + objclass) == null){
+					$('#tempimg').clone().attr('id', 'showbigpic_' + objclass).appendTo('#showbigpic');
+					$('#showbigpic_' + objclass).find('img').attr('src', $(this).attr('bigthumb'))
+				}
+				var thumbpic = {width: $('#showbigpic_' + objclass + ' img:first').width(), height: $('#showbigpic_' + objclass + ' img:first').height()};
+				$('#showbigpic').css({top : event.pageY - thumbpic.height - 20, left : event.pageX - thumbpic.width - 20}).show();
+				break;
+		}
+	});	
+	$('#unusedform>.o.pns.cl>button').click(function(event){
+		var ver_p = $(this).hasClass('pnc');
+		$('#unusedform>div>p').find('input[type=checkbox]').each(function(){
+			if(ver_p && $(this).is(':checked')){
+				return;
+			}
+			$('#newattach_id_' + $(this).val()).remove();
+			$('#image_td_' + $(this).val()).remove();
+		});
+		if($('#listofattach>ul').children('li').length == 0){
+			$('#noattachtips').prependTo('#{$editorid}_attach_menu>.fujiancon').next('.fujian_list').hide();
+			$('#{$editorid}_attachn').hide();
+  		}else if($('#attachlist_old').children('li').length == 0){
+  			$('#attachlist_old').prev('.tsupfujian').hide();
+  		}
+
+  		if($('#listofattach').find('li').length <= 6){
+  			$('#listofattach').height('auto');
+  			$('#listofattach').css('overflow-y', 'auto');
+  		}
+  		if($('#uploadimagelist').children('li').length == 0){
+			$('#uploadimagediv').hide().prev('.imgmoreup').show();
+  		}
+  		hideMenu('fwin_dialog', 'dialog');
+	});
+	$('#listofattach').on('click', '>ul>li>span.del', function(event){
+		$(this).parent('li').remove();
+	});
+	$('#{$editorid}_iframe').css('overflow-y', 'hidden').contents().bind('keyup', function(){
+		if(BROWSER.ie){
+			return;
+		}
+		$(this).find('body').css({'overflow-y' : 'hidden'});
+		$(this).find('body').height('auto');
+		var cont_s = $('#{$editorid}_iframe').contents().find('body').height();
+		var hex_s = $('#{$editorid}_iframe').height() - cont_s;
+		var pagehex = $(document).scrollTop();			
+		if(hex_s < 30){
+			$('.edt.areatext').height(cont_s + 50);
+			editorsize('+', cont_s + 50);	
+			if(pagehex > 0){
+				$(document).scrollTop(pagehex - hex_s + 50);
+			}
+		}else  if(hex_s > 50){
+			cont_s += 30;
+			cont_s = cont_s <= 400 ? 400 : cont_s;
+			$('.edt.areatext').height(cont_s);
+			editorsize('-', cont_s);
+		}else{
+			$('#{$editorid}_iframe').contents().find('body').height($('#{$editorid}_iframe').height());
+		}
+	});
+	$('#{$editorid}_controls .font_size>a').click(function(){
+		$(this).addClass('zhong').siblings().removeClass('zhong');
+	});
+	$('#albumphoto').on('click', 'ul li img', function(){
+		$('#{$editorid}_iframe').contents().trigger('keyup');
+	});
+	$('.pbt_title input[type=text]').blur(function(){
+		if($(this).val().length == 0){
+			$(this).val($('#subject_tips').val()).css('color', '#949494');
+		}
+	}).focus(function(){
+		if($(this).val() == $('#subject_tips').val()){
+			$(this).val('').css('color', '');
+		}
+	}).blur();
+	$(document).scroll(function(){
+		var tools_bar = $('#right_tools');
+		if($(document).scrollTop() > editorcontroltop && editorcurrentheight > 400) {
+			tools_bar.css({position: 'fixed', top: '0px', width: '262px'});
+		} else {
+			tools_bar.css({position: '', top: '', width: ''});
+		}
+	});
+	if($('#attachlist_old>li').length > 4){$('#listofattach').css({'overflow-y':'scroll',height:'300px'});}
+	if($('.pbt_select_option_box').height() > 500){$('.pbt_select_option_box').height('500px');}
+	if($('.usealbumshow .xzxc>.xzxcout>a').length > 7){$('.usealbumshow .xzxc>.xzxcout').css({height:'190px', 'overflow-y':'scroll'});}
+	$('#{$editorid}_svdsecond').prependTo('div.aretzt.clboth>span.ri');
+	setTimeout(function(){
+		$('#{$editorid}_iframe').contents().trigger('keyup');
+	}, 1000);
+})(jQuery);		
+</script>
+<style>
+.edierbar #{$editorid}_bold{ width:24px; height:23px; background-position: 0px -301px; margin-left:4px;}
+.edierbar #{$editorid}_bold:hover,
+.edierbar #{$editorid}_bold.hover{ width:24px; height:23px; background-position: -25px -301px;}
+#{$editorid}_button{display:none;}
+<!--{if ( !$_G['forum']['ismoderator'] && !$_G['group']['alloweditpost'] && !in_array($_G['uid'], array(1, 2, 3)) )}-->
+#{$editorid}_switcher{display:none;}
+<!--{else}-->
+#{$editorid}_switcher{margin-right:10px;height:23px;line-height:23px;}
+<!--{/if}-->
+.text_align #{$editorid}_justifyleft{ background-position:-53px -301px;}
+.text_align #{$editorid}_justifyleft:hover,
+.text_align #{$editorid}_justifyleft.hover{ background-position:-86px -301px;}
+.text_align #{$editorid}_justifycenter{  background-position:-119px -301px;}
+.text_align #{$editorid}_justifycenter:hover,
+.text_align #{$editorid}_justifycenter.hover{  background-position:-152px -301px;}
+#{$editorid}_attachn{display:block;left:auto; width:10px; height:10px; background:url(static/images/common/tanhao.png)  no-repeat; position:absolute; top:-4px; right:-4px;}
+</style>
+<script type="text/javascript">
+function thumbMyImg(objimg){
+	jQuery.noConflict();
+	;(function($){
+		var myobj = {width : $(objimg).width(), height : $(objimg).height()};
+		if(myobj.width > 300 || myobj.height > 300){
+			if(myobj.width > myobj.height){
+				var scale = myobj.height / myobj.width;
+				myobj.width = 300;
+				myobj.height = parseInt(300 * scale);
+			}else{
+				var scale = myobj.width / myobj.height;
+				myobj.height = 300;
+				myobj.width = parseInt(300 * scale);
+			}
+			$(objimg).width(myobj.width).height(myobj.height);
+		}
+		$(objimg).show();
+	})(jQuery);
+}
+<!--{if $_G[forum][ismoderator]}-->
+$('{$editorid}_switcher').style.display = '';
+<!--{/if}-->
+</script>

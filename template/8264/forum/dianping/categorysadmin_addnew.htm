@@ -1,0 +1,10 @@
+<div id="addnewcate_windows" class="cate_windows">
+	<span id="tips_addstatus"></span>
+	<form action="admin.php?ctl=categorysadmin&act=newcate" method="post" id="newcateform" onsubmit="return false;">
+		<h3><span style="float:right;"><a title="关闭" onclick="hideWindow('cate', 0, 1);" class="flbc" href="javascript:;">关闭</a></span></h3>
+		<p>父类: <b>{$info[name]}</b></p>
+		<input name="parent" value="$info[cid]" type="hidden" />
+		<input name="cname" value="" type="text" />
+		<input id="newsubmit" name="submit" value="新增" type="submit" />
+	</form>
+</div>

@@ -1,0 +1,480 @@
+{eval 
+	$_G['home_tpl_titles'] = array($blog['subject'], '{lang blog}');
+	$_G['home_tpl_spacemenus'][] = "<a href=\"home.php?mod=space&uid=$space[uid]&do=$do&view=me\">{lang they_blog}</a>";
+	$_G['home_tpl_spacemenus'][] = "<a href=\"home.php?mod=space&uid=$space[uid]&do=blog&id=$blog[blogid]\">{lang view_blog}</a>";
+	$friendsname = array(1 => '{lang friendname_3}',2 => '{lang friendname_3}',3 => '{lang friendname_3}',4 => '{lang friendname_3}');
+}
+<!--{subtemplate common/header_8264_new}-->
+<!--{subtemplate home/space_header_uc}-->
+<!--main-content-->	
+<style type="text/css">
+.yzm {top:25px!important;}
+</style>	
+<div class="main-content layout-page">
+	<div class="layout-app">
+		<div class="blog-content-container mod-wrap">
+			<div class="ui-block ui-block-title blog-block-title">
+				<div class="ui-title">
+					<h3>{if $space[self]}我{else}$space[username]{/if}的日志</h3>
+					<a href="home.php?mod=space&uid=$space[uid]&do=blog&view=me&from=space" class="ui-list-link">返回日志列表 ></a>
+				</div>
+			</div>
+			<div class="ui-block ui-block-content">
+				<div class="blog-info-container">
+					<div class="blog-info-hd">
+						<div class="blog-title">
+							<h3 class="c-tx2">$blog[subject]</h3>
+						</div>
+						<div class="operate-toolbar">
+							<!--文章信息-->							
+							<div class="tit-other-info">
+								<span class="pub-time">
+									<i class="icon-b icon-time"></i>{date($blog[dateline])}
+								</span>
+								<span class="view-num">
+									<i class="icon-b icon-view"></i>{$blog[viewnum]}
+								</span>
+								{if $blog['friend']}<span class="view-num">{$friendsname[$blog[friend]]}</span>{/if}
+								{if $classarr[classname]}<span class="view-num">{lang personal_category}：<a href="home.php?mod=space&uid=$blog[uid]&do=blog&classid=$blog[classid]&view=me">{$classarr[classname]}</a></span>{/if}
+								{if $blog[hot]}<span class="view-num">{lang hot}：{$blog[hot]}</span>{/if}
+							</div>
+							<!--文章信息 end-->
+							<!--文章操作-->
+							<div class="blog-op-bar">
+								<div class="mod-interactive">
+									<ul>
+										<li class="op-list-item">
+											{if $_G['uid']}
+											<a href="home.php?mod=spacecp&ac=click&op=add&clickid=3&idtype=blogid&id={$blog[blogid]}&hash={$hash}&handlekey=clickhandle&is_uc=1" id="click_blogid_{$blog[blogid]}_3" onclick="showWindow(this.id, this.href);doane(event);">
+											{else}
+											<a href="member.php?mod=logging&action=login">
+											{/if}
+											赞(<span id="clicknum" class="clicknum">{echo $blog[click3]+$blog[click4];}</span>)</a>
+											<span id="return_click_blogid_{$blog[blogid]}_3"></span>
+										</li>
+										<li class="op-list-item">
+											<a class="btncomment" href="javascript:void(0);">评论(<span id="comment_replynum" class="comment_replynum">{$blog[replynum]}</span>)</a>
+										</li>
+										<li class="op-list-item shareBtn">
+											<a href="javascript:;" class="share">分享(<span class="shareCount"></span>)</a>
+											<div class="bdsharebuttonbox share-wrap-cust" data-tag="share_1">
+												<span class="share-arr"></span>
+												<a href="javascript:;" class="sina" data-cmd="tsina"></a>
+												<a href="javascript:;" class="qq" data-cmd="qzone"></a>
+												<a href="javascript:;" class="wb" data-cmd="tqq"></a>
+												<a href="javascript:;" class="wx" data-cmd="weixin"></a>
+												<a class="bds_count" data-cmd="count" style="display:none;">-1</a>
+											</div>
+										</li>
+										<li class="op-list-item">
+											{if $_G['uid']}
+											<a href="home.php?mod=spacecp&ac=favorite&type=blog&id=$blog[blogid]&spaceuid=$blog[uid]&is_uc=1&handlekey=favoritebloghk_{$blog[blogid]}" id="a_favorite" onclick="showWindow(this.id, this.href, 'get', 0);" >
+											{else}
+											<a href="member.php?mod=logging&action=login">
+											{/if}										
+											{lang favorite}</a>
+										</li>									
+										<li class="op-list-item moreli" style="z-index:102;">
+											{if $_G[uid] == $blog[uid] || checkperm('manageblog')}
+											<a class="drop-list" href="home.php?mod=spacecp&ac=blog&blogid=$blog[blogid]&op=edit">
+												<span class="adjust">编辑</span>
+												<span class="mod-arr"></span>
+											</a>	
+											{else}
+											<a class="drop-list" href="javascript:void(0);">
+												<span class="adjust">更多</span>
+												<span class="mod-arr"></span>
+											</a>
+											{/if}											
+											<div class="op-more op-drop op-extend" style="display:none;">
+												<ul>
+													{if $_G[uid] == $blog[uid] || checkperm('manageblog')}
+													<li>
+														<a href="home.php?mod=spacecp&ac=blog&blogid=$blog[blogid]&op=edit" class="drop-list">编辑</a>
+													</li>
+													<li>
+														<a href="home.php?mod=spacecp&ac=blog&blogid=$blog[blogid]&op=delete&handlekey=delbloghk_{$blog[blogid]}" onclick="showWindow(this.id, this.href, 'get', 0);" id="blog_delete_$blog[blogid]">删除</a>
+													</li>	
+													{/if}
+													{if $_G['uid'] != $blog['uid']}
+													<li>														
+														{if $_G['uid']}
+														<a href="javascript:;" onclick="showWindow('miscreport$blog[blogid]', 'misc.php?mod=report&rtype=blog&rid=$blog[blogid]&is_uc=1', 'get', -1);return false;">
+														{else}
+														<a href="member.php?mod=logging&action=login">
+														{/if}		
+														{lang report}</a>
+													</li>										
+													{/if}
+													{if checkperm('manageblog')}
+													<li class="op-list-item">
+														<a href="home.php?mod=spacecp&ac=blog&blogid=$blog[blogid]&op=edithot&handlekey=bloghothk_{$blog[blogid]}" id="blog_hot_$blog[blogid]" onclick="showWindow(this.id, this.href, 'get', 0);">{lang hot}</a>
+													</li>
+													{/if}	
+													{if !$blog['friend'] && !$blog['pushedaid'] && ($_G['group']['allowauthorizedarticle'] || $_G['group']['allowmanagearticle'])}
+													<li>
+														<a href="portal.php?mod=portalcp&ac=index&op=push&idtype=blogid&id=$blog[blogid]" onclick="showWindow('push', this.href, 'get', 0)">{lang article_push}</a>
+													</li>
+													{/if}
+												</ul>
+											</div>
+										</li>																
+									</ul>
+								</div>
+							</div>							
+							<!--文章操作 end-->
+						</div>
+					</div>
+					<div class="blog-info-bd">
+						<!--日志正文-->
+						<div class="blog-detail-content" id="blog_article">
+							<style type="text/css">
+							#blog_article a.keyword{color:#000 !important; text-decoration:none;}
+							#blog_article img{display:none;}
+							</style>
+							<!--{ad/blog/a_b}-->
+							<!--{if file_exists(DISCUZ_ROOT.'./source/plugin/articlekeywords/include.php')}-->
+								<!--{eval require_once DISCUZ_ROOT.'./source/plugin/articlekeywords/include.php';}-->
+								<!--{eval $articleKeywords = new ArticleKeywords();}-->
+								<!--{eval echo $articleKeywords->parseArticle($blog[message]);}-->
+							<!--{else}-->
+							$blog[message]
+							<!--{/if}-->
+						</div>
+						<!--日志正文 end-->					 	
+						<div class="operate-toolbar">
+							<div class="mod-links">
+								{if $prevBlog}
+								<span class="prev-blog">
+									<a href="home.php?mod=space&uid=$blog[uid]&do=blog&id=$prevBlog[blogid]" class="">上一篇</a>
+								</span>
+								{/if}
+								{if $nextBlog}
+								<span class="next-blog">
+									<a href="home.php?mod=space&uid=$blog[uid]&do=blog&id=$nextBlog[blogid]" class="">下一篇：{$nextBlog[subject]}</a>
+								</span>
+								{/if}
+							</div>
+							<!--文章操作-->
+							<div class="blog-op-bar">
+								<div class="mod-interactive">
+									<ul>
+										<li class="op-list-item">
+											{if $_G['uid']}
+											<a href="home.php?mod=spacecp&ac=click&op=add&clickid=3&idtype=blogid&id={$blog[blogid]}&hash={$hash}&handlekey=clickhandle&is_uc=1" id="click_blogid_{$blog[blogid]}_3" onclick="showWindow(this.id, this.href);doane(event);">
+											{else}
+											<a href="member.php?mod=logging&action=login">
+											{/if}
+											赞(<span id="clicknum" class="clicknum">{echo $blog[click3]+$blog[click4];}</span>)</a>
+										</li>
+										<li class="op-list-item">
+											<a class="btncomment" href="javascript:void(0);">评论(<span class="comment_replynum">{$blog[replynum]}</span>)</a>
+										</li>
+										<li class="op-list-item shareBtn">
+											<a href="javascript:;" class="share">分享(<span class="shareCount"></span>)</a>
+											<div class="bdsharebuttonbox share-wrap-cust" data-tag="share_1">
+												<span class="share-arr"></span>
+												<a href="javascript:;" class="sina" data-cmd="tsina"></a>
+												<a href="javascript:;" class="qq" data-cmd="qzone"></a>
+												<a href="javascript:;" class="wb" data-cmd="tqq"></a>
+												<a href="javascript:;" class="wx" data-cmd="weixin"></a>
+												<a class="bds_count" data-cmd="count" style="display:none;">-1</a>
+											</div>
+										</li>
+										<li class="op-list-item">
+											{if $_G['uid']}
+											<a href="home.php?mod=spacecp&ac=favorite&type=blog&id=$blog[blogid]&spaceuid=$blog[uid]&is_uc=1&handlekey=favoritebloghk_{$blog[blogid]}" id="a_favorite" onclick="showWindow(this.id, this.href, 'get', 0);" >
+											{else}
+											<a href="member.php?mod=logging&action=login">
+											{/if}										
+											{lang favorite}</a>
+										</li>									
+										<li class="op-list-item moreli" style="z-index:101;">
+											{if $_G[uid] == $blog[uid] || checkperm('manageblog')}
+											<a href="home.php?mod=spacecp&ac=blog&blogid=$blog[blogid]&op=edit" class="drop-list">
+												<span class="adjust">编辑</span>
+												<span class="mod-arr"></span>
+											</a>	
+											{else}
+											<a class="drop-list" href="javascript:void(0);">
+												<span class="adjust">更多</span>
+												<span class="mod-arr"></span>
+											</a>
+											{/if}											
+											<div class="op-more op-drop op-extend" style="display:none;">
+												<ul>
+													{if $_G[uid] == $blog[uid] || checkperm('manageblog')}
+													<li>
+														<a class="drop-list" href="home.php?mod=spacecp&ac=blog&blogid=$blog[blogid]&op=edit">编辑</a>
+													</li>
+													<li>
+														<a href="home.php?mod=spacecp&ac=blog&blogid=$blog[blogid]&op=delete&handlekey=delbloghk_{$blog[blogid]}" onclick="showWindow(this.id, this.href, 'get', 0);" id="blog_delete_$blog[blogid]">删除</a>
+													</li>	
+													{/if}
+													{if $_G['uid'] != $blog['uid']}
+													<li>														
+														{if $_G['uid']}
+														<a href="javascript:;" onclick="showWindow('miscreport$blog[blogid]', 'misc.php?mod=report&rtype=blog&rid=$blog[blogid]&is_uc=1', 'get', -1);return false;">
+														{else}
+														<a href="member.php?mod=logging&action=login">
+														{/if}		
+														{lang report}</a>
+													</li>										
+													{/if}
+													{if checkperm('manageblog')}
+													<li class="op-list-item">
+														<a href="home.php?mod=spacecp&ac=blog&blogid=$blog[blogid]&op=edithot&handlekey=bloghothk_{$blog[blogid]}" id="blog_hot_$blog[blogid]" onclick="showWindow(this.id, this.href, 'get', 0);">{lang hot}</a>
+													</li>
+													{/if}	
+													{if !$blog['friend'] && !$blog['pushedaid'] && ($_G['group']['allowauthorizedarticle'] || $_G['group']['allowmanagearticle'])}
+													<li>
+														<a href="portal.php?mod=portalcp&ac=index&op=push&idtype=blogid&id=$blog[blogid]" onclick="showWindow('push', this.href, 'get', 0)">{lang article_push}</a>
+													</li>
+													{/if}
+												</ul>
+											</div>
+										</li>										
+									</ul>
+								</div>
+							</div>							
+							<!--文章操作 end-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="height:0;line-height:0;font-size:0;clear:both;"></div>
+		<!--评论列表-->
+		<div class="comment-list-container mod-wrap" id="comment">
+			<div class="blog-comment">			
+				<span id="comment_blog" style="display:none;"></span>
+				<ul id="comment_ul">
+					{if $list}
+					{loop $list $k $value}
+					<li class="list-comment-item" id="comment_$value[cid]_li">
+						{template home/space_comment_li}
+					</li>	
+					{/loop}				
+					{/if}
+				</ul>			
+			</div>			
+		</div>
+		<!--{if $multi}-->
+		<div style="height:0;line-height:0;font-size:0;clear:both;"></div>
+		<div class="cust-page-list">$multi</div>
+		<!--{/if}-->
+		<!--评论列表 end-->
+		<div style="height:0;line-height:0;font-size:0;clear:both;"></div>
+		<!--发表评论-->
+		{if $_G['uid']}
+		<form id="quickcommentform_{$id}" action="home.php?mod=spacecp&ac=comment&is_uc=1" method="post" autocomplete="off">
+		<div class="post-comment-container">
+			<div class="post-cont">
+				<div class="author">
+					<p class="avatar">
+						<a href="javascript:void(0);">
+							{avatar($_G['uid'],middle)}
+						</a>
+					</p>
+				</div>	
+				<div class="post" style="height:246px;">
+					<div class="post-wrap">
+						<div class="textinput">
+							<textarea name="message" id="comment_message" cols="30" rows="5"></textarea>
+						</div>
+						<style type="text/css">
+						.code-wrap{
+							font-size: 12px;
+							float: left;
+							position: relative;
+						}
+						.code-wrap .que{
+							display: block;
+							float: left;
+							font-size: 12px!important;
+						}
+						.code-wrap [id^="checksec"]{
+							width: 0;
+							height: 0;
+							padding: 0!important;
+							margin: 0;
+						}
+						.code-wrap input{
+							padding: 3px 5px;
+							height: 18px;
+							margin-left: 5px;
+							border: 1px solid #d6d6d6;
+						}
+						.code-wrap .que{
+							margin-right: 10px;
+						}
+						.code-wrap span{
+							display: inline-block!important;
+							*display: inline!important;
+							*zoom: 1!important;
+						}
+						.code-wrap .mbm, .code-wrap .mtm{
+							margin: 0!important;
+						}
+						</style>
+						<!--{if checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
+						<div class="code-wrap">
+							<!--{block sectpl}--><sec> <span id="sec<hash>" class="que" onclick="showMenu(this.id);"><sec></span><div id="sec<hash>_menu" class="p_pop p_opt yzm" style="display:none;"><sec></div><!--{/block}-->
+							<div class="mtm mbm sec"><!--{subtemplate common/seccheck}--></div>
+						</div>							
+						<!--{/if}-->
+						<span class="num-count"><b class="num-hint" id="num_word">0</b>/500</span>
+						<div style="height:0;line-height:0;font-size:0;clear:both;"></div>
+						<a href="javascript:void(0);" class="btn-inner-reply" style="margin-top:20px;" onclick="subComment()">回复</a>
+					</div>
+				</div>
+			</div>
+		</div>	
+			<input type="hidden" name="referer" value="home.php?mod=space&uid=$blog[uid]&do=$do&id=$id" />
+			<input type="hidden" name="id" value="$id" />
+			<input type="hidden" name="idtype" value="blogid" />
+			<input type="hidden" name="handlekey" value="qcblog_{$id}" />
+			<input type="hidden" name="commentsubmit" value="true" />
+			<input type="hidden" name="quickcomment" value="true" />
+			<input type="hidden" name="formhash" value="{FORMHASH}" />
+			<span id="return_qcblog_{$id}" style="display:none;"></span>
+		</form>
+		<script type="text/javascript">
+			function succeedhandle_qcblog_$id(url, msg, values) {
+				if(values['cid']) {
+					comment_add(values['cid']);
+					var msg = jQuery('#return_qcblog_{$id}').html();
+					showDialog(msg, 'notice');
+				} else {
+					showDialog(msg);
+				}
+			}
+			function errorhandle_qcblog_$id(str) {
+				showDialog(str);
+			}
+			function subComment() {
+				ajaxpost('quickcommentform_{$id}', 'return_qcblog_$id');doane(event);
+			}
+			jQuery(function(){
+				jQuery("#comment_message").keyup(function(event){
+					var num = jQuery(this).val().length;
+					jQuery("#num_word").html(num);
+				});
+			});
+		</script>
+		{else}
+		<div class="post-comment-container" style="padding-left:0;">
+			<div class="post-cont">					
+				<div class="post" {if !$_G[uid]}style="width:980px;"{/if}>
+					<div class="post-wrap">
+						<div class="textinput" style="height:100px;line-height:100px;text-align:center;">
+							{lang login_to_comment} <a href="member.php?mod=logging&action=login" onclick="showWindow('login', this.href)" class="xi2">{lang login}</a> | <a href="member.php?mod={$_G[setting][regname]}" onclick="showWindow('register', this.href)" class="xi2">$_G['setting']['reglinkname']</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{/if}				
+		<!--发表评论 end-->
+	</div>
+</div>
+<script type="text/javascript">
+window._bd_share_config = {
+	common : {
+		//此处放置通用设置
+	},
+	share : [
+		//此处放置分享按钮设置
+		{"tag" : "share_1", "bdSize" : 32}
+	]
+}
+with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+jQuery(function(){
+	//鼠标移入分享后向左边弹出分享按钮
+	jQuery(".shareBtn").hover(
+		function () {
+			jQuery(".share-wrap-cust",this).show();
+		},
+		function () {
+			jQuery(".share-wrap-cust",this).hide();
+		}
+	);
+	var bdindex = 0;
+	bdcnt = setInterval(function(){
+		var tempCnt = parseInt(jQuery('.bds_count').html(), 10);
+		if (tempCnt >= 0) {
+			jQuery('.shareCount').html(tempCnt);
+			clearInterval(bdcnt);
+		}
+	},500);	
+	
+	//图片加载后算下宽高			
+	jQuery('#blog_article img').addClass('dealimg');	
+	img_handle = setInterval(dealPicWidth,10);
+	
+	//评论数同步
+	setInterval(function(){
+		jQuery('.comment_replynum').html(jQuery('#comment_replynum').html());
+	},1000);	
+	
+	//定位到评论列表    
+    jQuery(".btncomment").click(function(){
+		var top = jQuery('.headerNav').height() + jQuery('#header').height() + jQuery('.module').height() + jQuery('.blog-content-container').height() + 20 + 45;
+        jQuery('body,html').animate({scrollTop:top},300);
+        return false;
+    });
+    
+    //编辑按钮--更多|编辑
+    jQuery(".moreli").hover(
+		function () {
+			jQuery(this).find('.op-more').show();
+		},
+		function () {	
+			var obj = jQuery(this);	
+			obj.find('.op-more').hide();
+		}
+	);	
+	// jQuery(".moreli").css({'padding-bottom':'20px'});
+});
+</script>	
+<script type="text/javascript">
+
+//图片加载后算下宽高
+function dealPicWidth() {			
+	if (jQuery('.dealimg').length == 0) {
+		clearInterval(img_handle);
+		return false;
+	}												
+ 	jQuery('.dealimg').each(function(){
+ 		var tempObj 	= jQuery(this);
+ 		var tempWidth   = tempObj.width();
+ 		var tempHeight  = tempObj.height();
+ 		if (tempWidth > 100) {
+ 			if (tempWidth > 920) {
+ 				tempObj.attr('width', 920);
+ 			}
+			tempObj.removeClass('dealimg');
+			tempObj.show();
+ 		}
+ 	});
+}
+
+function succeedhandle_click_blogid_$blog[blogid]_3(url, msg, values) {
+	if (values['id']) {
+		var clicknum = parseInt(jQuery('#clicknum').html(), 10) + 1;
+		jQuery('.clicknum').html(clicknum);
+	}
+}
+
+jQuery(function(){
+	if (jQuery('.yzm').length > 0) {
+		setInterval(function(){
+			jQuery('.yzm').eq(0).css({'left':'53px'});
+			jQuery('.yzm').eq(1).css({'left':'256px'});
+		},10);	
+	}	
+});
+</script>
+<!--main-content end-->
+<!--{subtemplate home/space_footer_uc}-->
+<!--{subtemplate common/footer_8264_new}-->

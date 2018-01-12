@@ -1,0 +1,101 @@
+</div>
+<div class="bottomNav">
+	<div class="layout">
+		<div class="copyright">
+			<p>津ICP备05004140号-10 ICP证 津B2-20110106&nbsp;&nbsp;&nbsp;天津信一科技有限公司版权所有</p>
+			<p>户外有风险，8264提醒您购买<a href="http://bx.8264.com/?8264com" target="_blank">户外保险</a></p>
+		</div>
+		<div class="someLink">
+			<a target="_blank" href="http://bbs.8264.com/member-clearcookies-formhash-d64f4f90.html" rel="nofollow">清除COOKIE</a>
+			|
+			<!--{if $_G['group']['allowstatdata']}-->
+			<a target="_blank" href="http://bbs.8264.com/misc-stat.html" rel="nofollow">站点统计</a> |
+			<!--{/if}-->
+			<a target="_blank" href="http://www.8264.com/about-contact.html" rel="nofollow">联系我们</a>
+			|
+			<a href="http://www.8264.com/about-contact.html#q4" rel="nofollow">8264招聘</a>
+			|
+			<a href="http://bbs.8264.com/misc-faq.html" rel="nofollow">帮助</a>
+			<span class="app">
+				<a href="http://bbs.8264.com/thread-2317569-1-1.html" target="_blank" class="appIco_95x27" rel="nofollow"></a>
+			</span>
+		</div>
+	</div>
+</div>
+<!--{if $upgradecredit !== false}--><div id="g_upmine_menu" class="g_up" style="display:none;">
+    <div class="crly">
+        {lang credits} $_G[member][credits], {lang thread_groupupgrade} $upgradecredit {lang credits}
+    </div>
+    <div class="mncr"></div>
+    </div>
+<!--{/if}-->
+<!--{hook/global_footer}-->
+</div>
+
+<!--{if !$_G['setting']['bbclosed']}--> <!--{if $_G[uid] && !isset($_G['cookie']['checkpm'])}-->
+<script type="text/javascript" src="home.php?mod=spacecp&ac=pm&op=checknewpm&rand=$_G[timestamp]"></script>
+<!--{/if}-->
+<!--{/if}-->
+
+
+<!--{if $_GET['diy'] == 'yes' && ($_G[mod] == 'topic' || $_G[group][allowdiy]) && (empty($do) || $do != 'index') && !empty($_G['style']['tplfile'])}-->
+<script type="text/javascript" src="http://static.8264.com/static/js/common_diy.js?{VERHASH}"></script>
+<script type="text/javascript" src="http://static.8264.com/static/js/portal_diy.js?{VERHASH}"></script>
+<!--{/if}-->
+<!--{if $_GET['diy'] == 'yes' && $space['self'] && $_G[mod] == 'space' && $do == 'index'}-->
+    <script type="text/javascript" src="http://static.8264.com/static/js/common_diy.js?{VERHASH}"></script>
+    <script type="text/javascript" src="http://static.8264.com/static/js/space_diy.js?{VERHASH}"></script>
+<!--{/if}-->
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F49299785f8cc72bacc96c9a5109227da' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<!-- 链接自动推送 -->
+<script type="text/javascript">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- //链接自动推送 -->
+<!--{if ($_G['mod'] == 'viewthread' || $_GET['act'] == 'showview' || $_GET['act'] == 'commentdetail' || $_G['mod'] == 'view' || $_G['mod'] == 'readmodeltravel')}-->
+{if $_G['mod'] == 'readmodeltravel' && !empty($placeid)}<!--{eval $_G['tid'] = substr($placeid, -5, 5);}-->{/if}
+<script type="text/javascript">
+var _gaq = _gaq || [];
+{if $_G['mod'] == 'view'}
+_gaq.push(['tid', '{$_GET[aid]}']);
+_gaq.push(['type', '3']);
+{else}
+_gaq.push(['fid', '{$_G[fid]}']);
+_gaq.push(['tid', '{$_G[tid]}']);
+{/if}
+{if $_G['mod'] == 'viewthread'}
+_gaq.push(['type', '1']);
+{elseif $_GET['act'] == 'showview'}
+_gaq.push(['type', '2']);
+{elseif $_GET['act'] == 'commentdetail'}
+_gaq.push(['pid', '{$pid}']);
+_gaq.push(['type', '4']);
+{elseif $_G['mod'] == 'readmodeltravel'}
+_gaq.push(['type', '5']);
+{/if}
+
+(function(d, t) {
+	var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+	g.type = 'text/javascript'; g.async = true;
+	g.src = 'http://static.8264.com/static/js/ga.js?{VERHASH}';
+	s.parentNode.insertBefore(g, s);
+})(document, 'script');
+</script>
+<!--{/if}-->
+
+</body>
+</html><!--{eval output();}-->

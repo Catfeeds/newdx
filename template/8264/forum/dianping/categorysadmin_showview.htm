@@ -1,0 +1,13 @@
+{loop $childs $_k $_v}
+<ul multiple="1" fatherid="$_k" id="fatherid_$_k" {if $_k != 0} style="display:none;" {/if}>
+	<li class="newoption"><b>新建{$allNode[$_k]['name']}</b></li>
+	{loop $_v $_vk $_vv}
+	<li value="$_vk" {if $allNode[$_vk]['color']}style="color:{$allNode[$_vk]['color']};font-weight:bold;"{/if}>{if $_vv[enable] == 1}<b class="green">●</b>{else}<b class='red'>×</b>{/if}{$_vv['name']}<b class="edit">修改</b></li>
+	{/loop}
+</ul>
+{/loop}
+{loop $allnodeids $_id}
+<ul multiple="1" fatherid="$_id" class="dannew" id="fatherid_$_id" style="display: none;">
+	<li class="newoption"><b>新建{$allNode[$_id]['name']}</b></li>
+</ul>
+{/loop}

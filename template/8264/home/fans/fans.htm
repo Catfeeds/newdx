@@ -1,0 +1,102 @@
+<!--{template common/header_8264_new}-->
+<link href="http://static.8264.com/static/css/home/fan.css?{VERHASH}" rel="stylesheet" type="text/css">
+<link href="http://static.8264.com/static/css/home/home_space.css?{VERHASH}" rel="stylesheet" type="text/css" />
+{eval $opname = $isfollow ? '关注' : '粉丝';}
+<div class="container main-container">
+	<div class="module user-setting-wrap">
+		<!--{subtemplate home/fans/leftnav}-->
+		<div class="setting-form">
+			<div class="main-wrap">
+				<!--开始-->
+				<div class="form-box profile">
+					<div class="info-hd">
+						{if $space[self]}
+						<span class="caption">我</span>
+						{else}
+						<a href="home.php?mod=space&uid={$space[uid]}" class="caption" style="color:#1f6d9b;">$space[username]</a>
+						{/if}
+						<span class="caption">的{$opname}</span>
+						<em class="caption-info">({$fans_count}人)</em>
+						<div class="searchwarpten">
+							<input type="text" class="searchtext" placeholder="搜索" value="{$_G[gp_searchname]}">
+							<input type="button" class="searchbutton">
+						</div>
+					</div>
+					<div class="info-bd">
+						<div class="friend-fans-list">
+							<ul>
+								<!--{if $fans }-->
+								<!--{loop $fans $uid $value}-->
+								<li>
+									<a href="home.php?mod=space&uid={$uid}" class="tx60" target="_blank">{if $isfollow}<!--{avatar($value['fwuid'],small)}-->{else}<!--{avatar($value['fanuid'],small)}-->{/if}</a>
+									<div class="fans-info-warpten">
+										<div class="name-geographic">
+											<a href="home.php?mod=space&uid={$uid}" target="_blank">{$value['username']}</a>
+											<!--{if $residences[$uid]}--><span>{$residences[$uid]}</span><!--{/if}-->
+										</div>
+										<div class="attention-fans">
+											<span>关注<b>{$fans_statitic[$uid]['followee']}</b></span>
+											<span>|</span>
+											<span>粉丝<b>{$fans_statitic[$uid]['fans']}</b></span>
+										</div>
+										<!--{if $slogons[$uid]}-->
+										<div class="new-publish">最新动态: {$slogons[$uid]} !</div>
+										<!--{/if}-->
+									</div>
+									{if $space['self']}
+									<div class="fans-operate">
+										<!--{if $value['mutual'] == 1}-->
+										<em class="friend-mutualed">已关注</em>
+										<!--{elseif $value['mutual'] == 2}-->
+										<em class="friend-mutual">相互关注</em>
+										<!--{else}-->
+										<a href="javascript:void(0);" class="friend-nonmutualing ajax_follow_me" uid="{$uid}">关注</a>
+										<!--{/if}-->
+										<a href="javascript:void(0);" class="fans-operate-link send_message" uid="{$uid}">发私信</a>
+									</div>
+									{/if}
+								</li>
+								<!--{/loop}-->
+								<!--{/if}-->
+							</ul>
+						</div>
+					</div>
+					<!--{$multi}-->
+				</div>
+				<!--结束-->
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	//search by username
+	jQuery("div.searchwarpten :input.searchbutton").click(function(){
+		var searchtext = jQuery("div.searchwarpten :input.searchtext").val();
+		if(! searchtext || searchtext == '搜索') {
+			showDialog("<p>搜索 名称不能为空!</p>", 'notice', '','' , 0, '', '', '', '', 2);
+			return;
+		}
+
+		var isfollow = '{$isfollow}';
+		
+		var href = "home.php?mod=space&do=friend";
+		href    += !isfollow ? "&view=fans" : '';
+		href    += "&uid={$_GET[uid]}&searchname=" + searchtext;
+		href = href.replace(/&amp;/g, "&");
+		window.location.href = href;
+	});
+
+	/*send message*/
+	jQuery("a.send_message").off("click").click(function(e) {
+		var uid = jQuery(this).attr('uid');
+		if (! uid) return;
+		var href = "home.php?mod=spacecp&ac=pm&op=showmsg&handlekey=showmsg_%uid&touid=%uid&pmid=0&daterange=2";
+		href = href.replace(/%uid/g, uid).replace(/&amp;/g, "&");
+		showWindow('showMsgBox', href, 'get', 0);
+		e.preventDefault();
+	});
+});
+</script>
+<!--{subtemplate home/space_footer_2014}-->
+<!--{template common/footer_8264_new}-->

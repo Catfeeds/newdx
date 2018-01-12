@@ -1,0 +1,19 @@
+jQuery(document).ready(function($){
+	$("#btn_box").hover(function(){
+		if($("#btn_list>em>a").length){
+			$("#btn_list").show();
+		}
+	},function(){
+		$("#btn_list").hide();
+	});
+	$("#btn_box_down").hover(function(){
+		$("#btn_list_down").show();
+	},function(){
+		$("#btn_list_down").hide();
+	});
+	$("span[id^=ttype_]").hover(function(){
+		$(this).css("background","#1a2b38");
+	},function(){
+		$(this).css("background","#91c5e4");
+	});
+});

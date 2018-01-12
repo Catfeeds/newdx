@@ -1,0 +1,425 @@
+<!--{subtemplate common/header_8264}-->
+<!--{if $_G[gp_action] == 'edit'}--><!--{eval $editor[value] = $postinfo[message];}--><!--{else}--><!--{eval $editor[value] = $message;}--><!--{/if}-->
+<link rel="stylesheet" type="text/css" href="/template/8264/css/common/reset.css" />
+<link rel="stylesheet" type="text/css" href="/template/8264/css/common/new_common.css" />	
+<link rel="stylesheet" href="/source/plugin/skiing/css/style.css?v=1" />
+	
+<!--新版头-->
+<!--{subtemplate common/nav_8264_top}-->
+<!--{subtemplate common/nav_8264_jian}-->
+<!--新版头-->	
+<script type="text/javascript" src="static/js/jquery-1.6.1.min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2&services=true"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+function skiing_validate(theform) {
+	<!--{if $_G[gp_action] != 'edit'}-->	
+	if(($('postsubmit').name != 'replysubmit' && !($('postsubmit').name == 'editsubmit' && !isfirstpost) && theform.subject.value == "")) {		
+		showDialog('请填写滑雪场名称');	
+		return false;		
+	} else if(mb_strlen(theform.subject.value) > 80) {
+		showDialog('您的滑雪场名称超过 80 个字符的限制');
+		return false;
+	} else if(trim(theform.subject.value) == ""){
+		showDialog('请填写滑雪场名称');	
+		return false;
+	}	
+	if (!theform.upfile.value) {
+		showDialog('请上传滑雪场图片');		
+		return false;
+	}
+	if(!/\.(jpg|jpeg|png|JPG|JPEG|PNG)$/.test(theform.upfile.value)){
+		showDialog('您上传的图片格式不正确');		
+		return false;
+	}
+	
+	if (theform.address.value=="0") {
+		showDialog('请填写滑雪场的详细地址');		
+		return false;
+	}		
+	<!--{if $_G[gp_action] != 'edit' && checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
+	if (trim(theform.captcha.value)=="") {
+		showDialog('验证码不能为空');		
+		return false;
+	}
+	if (theform.yzm.value=='0') {
+		showDialog('验证码输入错误');
+		return false;
+	}
+	<!--{/if}-->
+	<!--{else}-->
+	if(($('postsubmit').name != 'replysubmit' && !($('postsubmit').name == 'editsubmit' && !isfirstpost) && theform.subject.value == "")) {		
+		showDialog('请填写滑雪场名称');	
+		return false;		
+	} else if(mb_strlen(theform.subject.value) > 80) {
+		showDialog('您的滑雪场名称超过 80 个字符的限制');
+		return false;
+	} else if(trim(theform.subject.value) == ""){
+		showDialog('请填写滑雪场名称');	
+		return false;
+	}	
+	if (theform.address.value=="0") {
+		showDialog('请填写滑雪场的详细地址');		
+		return false;
+	}	
+	<!--{/if}-->
+	if($('postsubmit').name == 'editsubmit') {	
+		return true;
+	}else if(in_array($('postsubmit').name, ['topicsubmit', 'replysubmit','postsubmit'])) {		
+		postsubmit(theform);		
+	}	
+	return false;
+}
+</script>
+<!--{block actiontitle}-->
+	<!--{if $_G['gp_action'] == 'newthread'}-->
+		<!--{if $special == 0}-->{lang post_newthread}
+		<!--{elseif $special == 1}-->{lang post_newthreadpoll}
+		<!--{elseif $special == 2}-->{lang post_newthreadtrade}
+		<!--{elseif $special == 3}-->{lang post_newthreadreward}
+		<!--{elseif $special == 4}-->{lang post_newthreadactivity}
+		<!--{elseif $special == 5}-->{lang post_newthreaddebate}
+		<!--{elseif $specialextra}-->{$_G['setting']['threadplugins'][$specialextra][name]}
+		<!--{/if}-->
+	<!--{elseif $_G['gp_action'] == 'reply' && !empty($_G['gp_addtrade'])}-->
+		{lang trade_add_post}
+	<!--{elseif $_G['gp_action'] == 'reply'}-->
+		{lang join_thread}
+	<!--{elseif $_G['gp_action'] == 'edit'}-->
+		<!--{if $special == 2}-->{lang edit_trade}<!--{else}-->{lang edit_thread}<!--{/if}-->
+	<!--{/if}-->
+<!--{/block}-->
+<!--{if $_G['gp_action'] != 'newthread'}-->
+	<!--{eval $subjectcut = cutstr($thread[subject], 30);}-->
+<!--{/if}-->
+<!--{block actionsubject}-->
+	<!--{if $_G['gp_action'] == 'reply'}-->
+		<em>&rsaquo;</em><a href="forum.php?mod=viewthread&tid=$thread[tid]">$subjectcut</a>
+	<!--{elseif $_G['gp_action'] == 'edit'}-->
+		<em>&rsaquo;</em><a href="forum.php?mod=redirect&goto=findpost&ptid=$thread[tid]&pid=$pid">$subjectcut</a>
+	<!--{/if}-->
+<!--{/block}-->
+
+<div class="wap_960">
+	<div class="hx_nav clearfix" style="border-bottom:2px solid #49b6e1;">
+    	<div class="fl"><a href="{PORTAL_HOST}xuechang" target="_blank"><h1>滑雪场</h1></a></div>
+        <div class="fl">
+			<span>全国滑雪场信息查询、口碑点评</span>
+        </div>
+        <div class="fr">
+        	<div class="sous">
+        	<form action="{PORTAL_HOST}xuechang" method="get">
+            	<input name="key" type="text"  class="sous_txt"/>
+				<input name="filter" type="hidden"  value="heats"/>
+                <input name="sub" type="submit"  class="sous_bn" value=""/>
+            </form>
+        </div>
+        </div>
+	</div>    
+    <div class="mian_fb yuanjiao clearfix">
+		<!--{if ($_G[gp_action]=='newthread'&&$isfirstpost)}-->
+		<h1>发布滑雪场</h1>
+		<!--{else}-->
+		<h1>编辑滑雪场</h1>
+		<!--{/if}-->   
+        <div class="bbsShopMain">		
+			<form method="post"  autocomplete="off" id="postform" 
+			{if $_G[gp_action] == 'newthread'}action="forum.php?mod=post&action={if $special != 2}newthread{else}newtrade{/if}&fid=$_G[fid]&extra=$extra&topicsubmit=yes"
+			{elseif $_G[gp_action] == 'reply'}action="forum.php?mod=post&action=reply&fid=$_G[fid]&tid=$_G[tid]&extra=$extra&replysubmit=yes"
+			{elseif $_G[gp_action] == 'edit'}action="forum.php?mod=post&action=edit&extra=$extra&editsubmit=yes" 
+			{/if} onsubmit="return skiing_validate(this);return false;" enctype="multipart/form-data">
+				
+				<!--{if ($_G[gp_action]=='newthread'&&$isfirstpost)}-->
+					<!--{if !empty($_G['gp_modthreadkey'])}--><input type="hidden" name="modthreadkey" id="modthreadkey" value="$_G['gp_modthreadkey']" /><!--{/if}-->
+					<input type="hidden" name="wysiwyg" id="{$editorid}_mode" value="$editormode" />
+					<input type="hidden" name="formhash" id="formhash" value="{FORMHASH}" />
+					<input type="hidden" name="posttime" id="posttime" value="{TIMESTAMP}" />					
+					
+					<table class="applyList">
+						<tr>
+							<td class="titleShop"><span class="tit">雪场名称:</span><input type="text" class="inputTxtShort borderEmbellish" name="subject" id="subject"> <b class="redStarIco"></b>&nbsp;&nbsp;&nbsp;<span id="subjectError"></span></td>
+						</tr>
+						<tr>
+							<td class="titleShop"><span class="tit">雪场图片:</span><input type="file" name="upfile" id="upfile" class="upFile">
+								<span class="remarks">图片尺寸不小于480px*360px(支持jpg,jpeg,png)</span> <b class="redStarIco"></b></td>
+						</tr>
+						<tr>
+							<td class="titleShop"><span class="tit">所在地区:</span>
+								<!--{eval $regionData = ForumOptionSkiing::getRegionListbySki();}-->
+								<!--{eval require_once libfile('function/misc');}-->	
+								<!--{eval $ip = $discuz->_get_client_ip();}-->			
+								<!--{eval $yj = $forumOption->getStateByIp($ip);}-->
+								<!--{eval $yj = $yj ? $yj : '北京';}-->
+								<!--{eval $region = ForumOptionSkiing::getProvince($yj);}-->
+								猜在<b id="dqtxt">$region['name']</b> , 猜错了? <a class="qh">切换城市</a>
+								<input type="hidden" name="province" id="province" value="$region['catid']" />	
+                            	<div class="yuanjiao shengf1" id="sf_select">
+								<b>省份：</b>
+								<!--{if $regionData}-->
+								<!--{loop $regionData $type}-->
+								<!--{if $type['upid'] == 0}-->  
+								<a href="javascript:void();" abc="$type['catid']">$type['name']</a>
+								<!--{/if}-->    
+								<!--{/loop}-->
+								<!--{/if}-->   
+								</div>
+                            </td>
+						</tr>
+						<tr>
+							<td class="titleShop"><span class="tit">详细地址:</span>
+								<span id="xqs">$region['name']-</span><input type="text" class="inputTxtMid borderEmbellish"  name="address" id="address" value="不需要重复填写省、市地区"><span class="bz">在地图上标注</span><b class="redStarIco"></b>
+                               
+								<div class="bzdt_box yuanjiao" style="display: none;" id="container"></div>
+								<input type="hidden" value="" id="longitude" name="longitude">
+								<input type="hidden" value="" id="latitude" name="latitude">
+															
+							</td>
+						</tr>											
+						{eval $list=array("1"=>"00:00","2"=>"00:30","3"=>"01:00","4"=>"01:30","5"=>"02:00","6"=>"02:30","7"=>"03:00","8"=>"03:30","9"=>"04:00","10"=>"04:30","11"=>"05:00","12"=>"05:30","13"=>"06:00","14"=>"06:30","15"=>"07:00","16"=>"07:30","17"=>"08:00","18"=>"08:30","19"=>"09:00","20"=>"09:30","21"=>"10:00","22"=>"10:30","23"=>"11:00","24"=>"11:30","25"=>"12:00","26"=>"12:30","27"=>"13:00","28"=>"13:30","29"=>"14:00","30"=>"14:30","31"=>"15:00","32"=>"15:30","33"=>"16:00","34"=>"16:30","35"=>"17:00","36"=>"17:30","37"=>"18:00","38"=>"18:30","39"=>"19:00","40"=>"19:30","41"=>"20:00","42"=>"20:30","43"=>"21:00","44"=>"21:30","45"=>"22:00","46"=>"22:30","47"=>"23:00","48"=>"23:30");}	
+						<tr>
+							<td class="titleShop"><span class="tit">官方网址:</span><span id="xq"></span>
+								<input type="text" class="inputTxtMid borderEmbellish"  name="url" id="url" value="">
+								&nbsp;&nbsp;(网址前请加：http://)
+							</td>
+						</tr>
+						<tr>
+							<td class="titleShop"><span class="tit">联系电话:</span>
+								<b id="dh" style="padding-left: 5px;display: none;"></b><input style="padding-left: 1px;" type="text" class="inputTxtShort borderEmbellish" name="link" id="link" size="30" value="">
+								&nbsp;&nbsp;(如：022-23708264)</td>
+						</tr>
+						<tr>
+							<td class="titleShop"><span class="tit">雪场介绍:</span></td>
+						</tr>
+						<tr>
+							<td><textarea class="shopTextareaText borderEmbellish" name="message" id="message">{if $editor[value]==""}可填写雪场规模、滑道类型、周边配套等，让人们更详细的了解雪场，字数不少于50字<!--{else}-->$editor[value]<!--{/if}--></textarea></td>
+						</tr>
+						
+						
+						<!--{if $_G[gp_action] != 'edit' && checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
+						<tr>
+							<td class="titleShop"><span class="tit">验证码:</span>
+							<input type="text" name="captcha" id="captcha" class="inputTxtShort borderEmbellish" style="width:50px;vertical-align: top;" />
+                            <a href="#" id="refreshCaptcha" title="点击刷新图片">
+                            <img src="/plugin.php?id=dailypicture:captcha" alt="点击刷新图片" />
+                            </a>
+							<input type="hidden" value="" id="yzm" name="yzm">
+							<span id="jg"></span>
+							</td>
+						</tr>
+						<!--{/if}-->
+						
+						<tr>
+							<td class="titleShop"><input type="submit" name="postsubmit" id="postsubmit" class="submit" value=""></td>
+						</tr>
+					</table>
+					<script type="text/javascript">
+					;(function($){
+							$('.qh').click(function(){	
+								$('#sf_select').show();
+							});
+							$('#sf_select a').click(function(){
+								var abc = $(this).attr('abc');
+								var txt = $(this).text();								
+								$('#province').val(abc);
+								$('#dqtxt').text(txt);
+								$('#xqs').text('');
+								$('#xqs').text(txt+"-");
+								$('#sf_select').hide();
+							});
+							$('#sf_select').mouseleave(function(){
+								$(this).hide();
+							});	
+							//验证码
+							$('#refreshCaptcha').click(function() {
+								$(this).children('img').attr('src', '/plugin.php?id=dailypicture:captcha&_='+(new Date().getTime()));
+								$('#jg').html("");
+								return false;
+							});							
+							$('#captcha').blur(function(){
+								 validate_captcha();								 
+							});							
+							function validate_captcha() {					
+								$.ajax({
+									async: false,
+									type: 'get',
+									url: '/plugin.php?id=dailypicture:validatecaptcha&inajax=1&captcha='+$('#captcha').val(),
+									success : function(data) {
+										if (data==1) {
+											$('#jg').html("");
+											$('#jg').append('<img width="16" height="16" class="vm" src="static/image/common/check_right.gif">');
+											$('#yzm').val('1');
+										}else{
+											$('#jg').html("");
+											$('#jg').append('<img width="16" height="16" class="vm" src="static/image/common/check_error.gif">');
+											$('#yzm').val('0');
+											$('#captcha').val('');
+										}
+									}
+								});						
+							};							
+							//加载地图	
+							$(".bz").click(function(){
+								var province = $("#xqs").text();			
+								var address = $("#address").val();
+								var map = new BMap.Map("container");            // 创建Map实例
+								var point = new BMap.Point(116.383, 39.973);
+								var opt = {type: BMAP_NAVIGATION_CONTROL_SMALL}
+								map.addControl(new BMap.NavigationControl(opt));  	
+								//map.centerAndZoom(point, 13);										
+								//创建地址解析器实例  
+								var myGeo = new BMap.Geocoder();  
+								//将地址解析结果显示在地图上，并调整地图视野  
+								myGeo.getPoint(address, function(point){  
+									if (point) {  
+										map.centerAndZoom(point, 16);
+										var marker = new BMap.Marker(point);  // 创建标注
+										map.addOverlay(marker);
+										marker.enableDragging(true); // 设置标注可拖拽
+										var opts = {
+											width : 110,     // 信息窗口宽度
+											height: 50,     // 信息窗口高度
+											title : "提示信息"  // 信息窗口标题
+										}
+										jQuery("#longitude").val(point['lng']);
+										jQuery("#latitude").val(point['lat']);												
+										var infoWindow = new BMap.InfoWindow("拖动此标注更改店铺默认位置", opts);  // 创建信息窗口对象
+										marker.addEventListener("mouseup", function(){
+											var position = marker.getPosition();
+											var s = confirm("是否将新位置设置为此店铺的默认位置？");
+											if(s==true){
+												jQuery("#longitude").val(position['lng']);
+												jQuery("#latitude").val(position['lat']);											
+												marker.disableDragging(true); // 设置标注不可拖拽
+												marker.removeEventListener("mouseup"); 
+											}else{
+												jQuery("#longitude").val(point['lng']);
+												jQuery("#latitude").val(point['lat']);	
+											}													
+										});								
+										marker.openInfoWindow(infoWindow);
+										$("#container").css("display","");
+									}else{				
+										alert("地图数据加载失败！");
+									} 
+								}, province);
+								return false;
+							});
+							//验证店铺是否有重复数据						
+							$("#subject").keyup(function(){
+								var sub = $("#subject").val();								
+								$.ajax({'type': 'GET',
+									'url': '/plugin.php?id=skiing:ajax_getskiingByName&inajax=1',
+									'data': {'sub': sub},
+									'success': function(html){
+											   switch (html) {
+														case 'repeat':
+															jQuery('#subjectError').text('您输入的滑雪场名称己经存在').css({'color': '#db0000'}).show();
+															break;
+														case 'norepeat':
+															jQuery('#subjectError').text('').show();								
+															break;
+														default:
+															break;
+												}
+									}
+								});								
+							});
+					})(jQuery);			
+					</script>					
+					<!--{elseif ($_G[gp_action]=='edit'&&$isfirstpost)}-->    
+					<input type="hidden" name="fid" id="fid" value="$_G[fid]" />
+					<input type="hidden" name="tid" value="$_G[tid]" />
+					<input type="hidden" name="pid" value="$pid" />
+					<input type="hidden" name="page" value="$_G[gp_page]" />
+						<!--{if !empty($_G['gp_modthreadkey'])}--><input type="hidden" name="modthreadkey" id="modthreadkey" value="$_G['gp_modthreadkey']" /><!--{/if}-->
+						<input type="hidden" name="wysiwyg" id="{$editorid}_mode" value="$editormode" />
+						<input type="hidden" name="formhash" id="formhash" value="{FORMHASH}" />
+						<input type="hidden" name="posttime" id="posttime" value="{TIMESTAMP}" />
+						<!--{eval $edit_skiing = ForumOptionSkiing::getEditSkiingByTid($_G['tid']);}-->						
+						<table class="applyList">
+							<tr>
+								<td class="titleShop"><span class="tit">雪场名称:</span><input type="text" class="inputTxtShort borderEmbellish" name="subject" id="subject" value="$edit_skiing['subject']"> <b class="redStarIco"></b>&nbsp;&nbsp;&nbsp;<span id="subjectError"></span></td>
+							</tr>
+							<tr>
+								<td class="titleShop"><span class="tit">雪场图片:</span><input type="file" name="upfile" id="upfile" class="upFile">
+									<span class="remarks">图片尺寸不小于480px*360px(支持jpg,jpeg,png)</span> <b class="redStarIco"></b></td>
+							</tr>
+							<tr>
+								<td class="titleShop"><span class="tit">所在地区:</span>
+									<!--{eval $regionData = ForumOptionSkiing::getRegionListbySki();}-->									
+									<!--{eval $region = ForumOptionSkiing::getProvincebycatid($edit_skiing['provinceid']);}-->
+									滑雪场在<b id="dqtxt">$region['name']</b> , 填错了? <a class="qh">切换城市</a>
+									<input type="hidden" name="province" id="province" value="$region['catid']" />	
+									<div class="yuanjiao shengf1" id="sf_select" style="top: 23%;left: 25%;">
+									<b>省份：</b>
+									<!--{if $regionData}-->
+									<!--{loop $regionData $type}-->
+									<!--{if $type['upid'] == 0}-->  
+									<a href="javascript:void();" abc="$type['catid']">$type['name']</a>
+									<!--{/if}-->    
+									<!--{/loop}-->
+									<!--{/if}-->   
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="titleShop"><span class="tit">详细地址:</span>
+									<span id="xqs">$region['name']-</span><input type="text" class="inputTxtMid borderEmbellish"  name="address" id="address" value="$edit_skiing['kAddress']"><b class="redStarIco"></b>
+								   	<div class="bzdt_box yuanjiao" style="display: none;" id="container"></div>			
+																
+								</td>
+							</tr>
+														
+							{eval $list=array("1"=>"00:00","2"=>"00:30","3"=>"01:00","4"=>"01:30","5"=>"02:00","6"=>"02:30","7"=>"03:00","8"=>"03:30","9"=>"04:00","10"=>"04:30","11"=>"05:00","12"=>"05:30","13"=>"06:00","14"=>"06:30","15"=>"07:00","16"=>"07:30","17"=>"08:00","18"=>"08:30","19"=>"09:00","20"=>"09:30","21"=>"10:00","22"=>"10:30","23"=>"11:00","24"=>"11:30","25"=>"12:00","26"=>"12:30","27"=>"13:00","28"=>"13:30","29"=>"14:00","30"=>"14:30","31"=>"15:00","32"=>"15:30","33"=>"16:00","34"=>"16:30","35"=>"17:00","36"=>"17:30","37"=>"18:00","38"=>"18:30","39"=>"19:00","40"=>"19:30","41"=>"20:00","42"=>"20:30","43"=>"21:00","44"=>"21:30","45"=>"22:00","46"=>"22:30","47"=>"23:00","48"=>"23:30");}	
+							<tr>
+								<td class="titleShop"><span class="tit">官方网址:</span><span id="xq"></span>
+									<input type="text" class="inputTxtMid borderEmbellish"  name="url" id="url" value="$edit_skiing['kUrl']">
+									&nbsp;&nbsp;(网址前请加：http://)
+								</td>
+							</tr>
+							<tr>
+								<td class="titleShop"><span class="tit">联系电话:</span>
+									<b id="dh" style="padding-left: 5px;display: none;"></b><input style="padding-left: 1px;" type="text" class="inputTxtShort borderEmbellish" name="link" id="link" size="30" value="$edit_skiing['kLink']">
+									&nbsp;&nbsp;(如：022-23708264)</td>
+							</tr>
+							<tr>
+								<td class="titleShop"><span class="tit">雪场介绍:</span></td>
+							</tr>
+							<tr>
+								<td><textarea class="shopTextareaText borderEmbellish" name="message" id="message">{if $editor[value]==""}可填写雪场规模、滑道类型、周边配套等，让人们更详细的了解雪场，字数不少于50字<!--{else}-->$editor[value]<!--{/if}--></textarea></td>
+							</tr>
+														
+							<tr>
+								<td class="titleShop"><input type="submit" name="postsubmit" id="postsubmit" class="submit" value=""></td>
+							</tr>
+					</table>
+					<script type="text/javascript">		
+						;(function($){								
+							$('.qh').click(function(){	
+								$('#sf_select').show();
+							});
+							$('#sf_select a').click(function(){
+								var abc = $(this).attr('abc');
+								var txt = $(this).text();								
+								$('#province').val(abc);
+								$('#dqtxt').text(txt);
+								$('#xqs').text('');
+								$('#xqs').text(txt+"-");
+								$('#sf_select').hide();
+							});
+							$('#sf_select').mouseleave(function(){
+								$(this).hide();
+							});							
+						})(jQuery);				
+					</script>			
+						
+					<!--{/if}-->    
+				</div>                		
+			</form>						
+		</div>
+	</div>    
+</div>
+
+
+<!--{subtemplate common/footer_8264lw}-->
+

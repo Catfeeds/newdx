@@ -1,0 +1,240 @@
+<!--{subtemplate forum/dianping/header}-->
+<script type="text/javascript" src="{$_G['setting']['jspath']}/dianping/equipment_list.js?{VERHASH}"></script>
+
+<div class="eq_main">
+	<!--{ad/custom_312}-->
+	<div class="conditionsbar">
+		<div class="toolbar" id="typelist_tb" style="z-index:3;">
+			<div class="name45 blue45">装备类型</div>
+			<div class="arrow45 blue55"></div>
+			<div class="list" id="typelist" style="height: auto;">
+				<a href="{$url}&act=showlist&order={$order}&pcid=0&cid=0&bid={$bid}{if $min || $max}&min=$min&max=$max{/if}&page=1"{if !$pcid && !$cid} class="cBlue"{/if}>全部</a><!-- {$sidebar_tcount} -->
+
+				<!--{loop $typelist $temptype}-->
+				<!--{loop $temptype $ptype}-->
+				<a id="cbtn_{$ptype['cid']}" href="{$url}&act=showlist&order={$order}&pcid={$ptype['cid']}&cid=0&bid={$bid}{if $min || $max}&min=$min&max=$max{/if}&page=1"{if $pcid == $ptype['cid']} class="cBlue"{/if}>{$ptype['name']}</a>
+					<!--{if $ptype['children']}-->
+					<div class="sub_clist" id="sub_list_{$ptype['cid']}">
+						<a href="{$url}&act=showlist&order={$order}&pcid={$ptype['cid']}&cid=0&bid={$bid}{if $min || $max}&min=$min&max=$max{/if}&page=1"{if $pcid == $ptype['cid'] && !$cid} class="cBlue"{/if}>全部</a>
+					<!--{loop $ptype['children'] $type}-->
+						<a href="{$url}&act=showlist&order={$order}&pcid={$ptype['cid']}&cid={$type['cid']}&bid={$bid}{if $min || $max}&min=$min&max=$max{/if}&page=1"{if $cid == $type['cid']} class="cBlue"{/if}>{$type['name']}</a>
+					<!--{/loop}-->
+					</div>
+					<!--{/if}-->
+				<!--{/loop}-->
+				<!--{/loop}-->
+			</div>
+			<div class="downbtn" id="tl_btn"></div>
+		</div>
+		<div class="toolbar">
+			<div class="name45 orange45">装备价格</div>
+			<div class="arrow45 orange55"></div>
+			<div class="list">
+				<a href="{$url}&act=showlist&order={$order}&pcid={$pcid}&cid={$cid}&bid={$bid}&page=1"{if !$min && !$max} class="cBlue"{/if}>全部</a>
+				<a href="{$url}&act=showlist&order={$order}&pcid={$pcid}&cid={$cid}&bid={$bid}&min=0&max=100&page=1"{if !$min && $max==100} class="cBlue"{/if}>100元以下</a>
+				<a href="{$url}&act=showlist&order={$order}&pcid={$pcid}&cid={$cid}&bid={$bid}&min=100&max=500&page=1"{if $min==100 && $max==500} class="cBlue"{/if}>100~500元</a>
+				<a href="{$url}&act=showlist&order={$order}&pcid={$pcid}&cid={$cid}&bid={$bid}&min=500&max=1000&page=1"{if $min==500 && $max==1000} class="cBlue"{/if}>500~1000元</a>
+				<a href="{$url}&act=showlist&order={$order}&pcid={$pcid}&cid={$cid}&bid={$bid}&min=1000&max=2000&page=1"{if $min==1000 && $max==2000} class="cBlue"{/if}>1000~2000元</a>
+				<a href="{$url}&act=showlist&order={$order}&pcid={$pcid}&cid={$cid}&bid={$bid}&min=2000&max=3000&page=1"{if $min==2000 && $max==3000} class="cBlue"{/if}>2000~3000元</a>
+				<a href="{$url}&act=showlist&order={$order}&pcid={$pcid}&cid={$cid}&bid={$bid}&min=3000&max=4000&page=1"{if $min==3000 && $max==4000} class="cBlue"{/if}>3000~4000元</a>
+				<a href="{$url}&act=showlist&order={$order}&pcid={$pcid}&cid={$cid}&bid={$bid}&min=4000&max=5000&page=1"{if $min==4000 && $max==5000} class="cBlue"{/if}>4000~5000元</a>
+				<a href="{$url}&act=showlist&order={$order}&pcid={$pcid}&cid={$cid}&bid={$bid}&min=5000&max=0&page=1"{if $min==5000 && !$max} class="cBlue"{/if}>5000元以上</a>
+				<a href="javascript:;" id="pm_show">自定义</a>
+				<div class="pm_box" id="pm_box">
+				<form method="get" action="{$url}&act=showlist&order={$order}&pcid={$pcid}&cid={$cid}&bid={$bid}&page=1">
+					<input type="text" class="pm_text" name="min" maxlength="5" /> ~ <input type="text" class="pm_text" name="max" maxlength="5" /> 元
+					<input type="submit" class="pm_btn" value="确认" />
+				</form>
+				</div>
+			</div>
+			<div class="downbtn"></div>
+		</div>
+		<div class="toolbar" id="blist_tb">
+			<div class="name45 black45">装备品牌</div>
+			<div class="arrow45 black55"></div>
+			<div class="list" id="blist" style="height: auto;">
+				<a href="{$url}&act=showlist&order={$order}&pcid={$pcid}&cid={$cid}&bid=0{if $min || $max}&min=$min&max=$max{/if}&page=1"{if !$bid} class="cBlue"{/if}>全部</a>
+				<!--{if $show_brand}-->
+					<!--{loop $show_brand $s_brand}-->
+					<a href="{$url}&act=showlist&order={$order}&pcid={$pcid}&cid={$cid}&bid={$s_brand['id']}{if $min || $max}&min=$min&max=$max{/if}&page=1"{if $bid == $s_brand['id']} class="cBlue"{/if}>{$s_brand['brandname']}</a>
+					<!--{/loop}-->
+				<!--{elseif $show_all_brand}-->
+					<!--{loop $show_all_brand $s_brand}-->
+					<a href="{$url}&act=showlist&order={$order}&pcid={$pcid}&cid={$cid}&bid={$s_brand['id']}{if $min || $max}&min=$min&max=$max{/if}&page=1"{if $bid == $s_brand['id']} class="cBlue"{/if}>{$s_brand['brandname']}</a>
+					<!--{/loop}-->
+				<!--{/if}-->
+				<!--{if $show_brand}-->
+					<a href="javascript:;" id="bshow">更多品牌</a>
+				<!--{else}-->
+					<!--{if $has_other}--><a href="{$url}&act=showlist&order={$order}&pcid={$pcid}&cid={$cid}&bid=other{if $min || $max}&min=$min&max=$max{/if}&page=1"{if $bid == 'other'} class="cBlue"{/if}>其他品牌</a><!--{/if}-->
+				<!--{/if}-->
+			</div>
+			<!--{if $show_brand}-->
+			<div class="brand_tan_warpten at_list" id="bbox">
+				<div class="brand_tan_title" id="bnav">
+					<!--{loop $letterlist $key $letter}-->
+					<a href="javascript:;"{if $key == 0}  class="select_z"{/if}>{$letter}</a>
+					<!--{/loop}-->
+					<a href="javascript:;" style="width: 36px; font-size: 14px;">其他</a>
+				</div>
+				<div class="brandlist" id="bdiv">
+					<!--{loop $letterlist $key $letter}-->
+					<div{if $key != 0} style="display:none;"{/if}>
+						<!--{loop $brandlist $brand}-->
+							<!--{if $brand['letter']-1 == $key}-->
+							<a href="{$url}&act=showlist&order={$order}&pcid={$pcid}&cid={$cid}&bid={$brand['id']}{if $min || $max}&min=$min&max=$max{/if}&page=1"{if $bid == $brand['id']} class="cBlue"{/if}>{$brand['brandname']}</a>
+							<!--{/if}-->
+						<!--{/loop}-->
+					</div>
+					<!--{/loop}-->
+					<div style="display:none;"><!--{if $has_other}--><a href="{$url}&act=showlist&order={$order}&pcid={$pcid}&cid={$cid}&bid=other{if $min || $max}&min=$min&max=$max{/if}&page=1"{if $bid == 'other'} class="cBlue"{/if}>其他品牌</a><!--{/if}--></div>
+				</div>
+			</div>
+			<!--{/if}-->
+			<div class="downbtn" id="bl_btn"></div>
+		</div>
+	</div>
+	<div class="location">
+		<div class="order">
+			<a href="{$url}&act=showlist&order=lastpost&pcid={$pcid}&cid={$cid}&bid={$bid}{if $min || $max}&min=$min&max=$max{/if}&page=1" class="{if $order==lastpost}blue{else}gray{/if}">默认</a>
+			<a href="{$url}&act=showlist&order=heats&pcid={$pcid}&cid={$cid}&bid={$bid}{if $min || $max}&min=$min&max=$max{/if}&page=1" class="{if $order==heats}blue{else}gray{/if}">热度</a>
+			<a href="{$url}&act=showlist&order=score&pcid={$pcid}&cid={$cid}&bid={$bid}{if $min || $max}&min=$min&max=$max{/if}&page=1" class="{if $order==score}blue{else}gray{/if}">评分</a>
+		</div>
+		<div class="conditions">
+			{if $pcname}
+			<a href="javascript:;" class="blue">{$pcname}</a>
+			{/if}
+			{if $cname}
+			<a href="javascript:;" class="blue">{$cname}</a>
+			{/if}
+			{if $min && $max}
+			<a href="javascript:;" class="blue">{$min}~{$max}元</a>
+			{elseif $min}
+			<a href="javascript:;" class="blue">{$min}元以上</a>
+			{elseif $max}
+			<a href="javascript:;" class="blue">{$max}元以下</a>
+			{/if}
+			{if $bname}
+			<a href="javascript:;" class="blue">{$bname}</a>
+			<a href="{$brandUrl}pinpai-{$btid}" target="_blank"  style="background:none; color: #585858;" title="{$bname}品牌介绍">{$bname}品牌介绍</a>
+			{/if}
+		</div>
+		<div class="search"><a href="/forum.php?ctl=equipment&act=dopost&do=new" target="_blank" class="zbfbbuttom"></a><a href="http://bbs.8264.com/thread-2227876-1-1.html" target="_blank">点评赢装备</a></div>
+	</div>
+	{if $list}
+	<div class="listbox">
+		<ul>
+			<!--{loop $list $ski}-->
+			<li class="item" id="item">
+				<div class="pic"><a href="{$url}&act=showview&tid={$ski['tid']}" target="_blank" title="{$ski['name']}"><img src="{eval echo getimagethumb(231,231,2,$ski['picpath'], $ski['aid'], $ski['serverid']);}" /></a></div>
+				<div class="iteminfo">
+					<div class="star">
+						{eval for ($i = 0; $i < 5; $i++):}
+						<span class="{if $i < $ski['score']/2}{if $ski['score']/2-$i<1}halfstar{else}redstar{/if}{else}graystar{/if}"></span>
+						{eval endfor;}
+						{if $ski['score']!='0.0'}<b style="color:#F98361;">{$ski['score']}</b>{else}<b style="color:#a8a8a8;">暂无评分</b>{/if}
+					</div>
+					<h3 class="bname"><a href="{$url}&act=showview&tid={$ski['tid']}" target="_blank">{$ski['bname']}</a></h3>
+					<div class="i_name"><h2><a href="{$url}&act=showview&tid={$ski['tid']}" target="_blank" title="{$ski['name']}">{$ski['name']}</a></h2></div>
+					<div class="i_info">
+						<div class="i_btn"><a href="{$url}&act=showview&tid={$ski['tid']}" target="_blank"></a></div>
+						<div class="i_heat"><span class="reply" title="已有{$ski['replies']}人参与点评">{$ski['replies']}</span><span class="view">{$ski['views']}</span></div>
+					</div>
+				</div>
+			</li>
+			<!--{/loop}-->
+		</ul>
+	</div>
+	{else}
+	<div class="layout mt50" style="text-align: center; height: 400px;">
+		<img src="/static/images/dianping/nonezb.png" />
+		<span style="font-size:24px; text-align:center; display:block; padding:10px 0px;">暂时没有{$modname}信息</span>
+	</div>
+	{/if}
+	<div class="pageBox">{$multipage}</div>
+</div>
+
+
+<style>
+.share_bd_warpten{ width:50px; position:absolute; float:right; position: fixed !important;  position: absolute; z-index: 1; bottom:20px; right: 30px; background:#fff;}
+.bbs_share_sc{ width:50px;}
+.bbs_share_sc li{ width:50px; height:51px;}
+.bbs_share_sc li.ps_re{ position:relative;}
+.bbs_share_sc li a{ background:url('http://www.8264.com/static/images/common/baidushare.jpg') no-repeat; display:block; }
+.bbs_share_sc li .share{ width:50px; height:50px; background-position:0px 0px;}
+.bbs_share_sc li .share:hover{ width:50px; height:50px; background-position:0px -204px;}
+.bbs_share_sc li .sc{ width:50px; height:50px; background-position:0px -51px;}
+.bbs_share_sc li .sc:hover{ width:50px; height:50px; background-position:0px -255px;}
+.bbs_share_sc li .bbsli{ width:50px; height:50px; background-position:0px -102px;}
+.bbs_share_sc li .bbsli:hover{ width:50px; height:50px; background-position:0px -306px;}
+.bbs_share_sc li .gotop_50{ width:50px; height:50px; background-position:0px -153px;}
+.bbs_share_sc li .gotop_50:hover{ width:50px; height:50px; background-position:0px -357px;}
+.share_bd{ width:200px; position:absolute; height:50px; top:0px; right:50px; font-size:0px; display:none;}
+.bbs_share_sc li .share_bd a{ width:50px; height:50px; background:url('http://www.8264.com/static/images/common/baidushare.jpg') no-repeat; display:inline-block; _display:inline; _zoom:1;}
+.bbs_share_sc li .share_bd a.sina{ background-position:0 -408px;}
+.bbs_share_sc li .share_bd a.sina:hover{ background-position:0 -612px;}
+.bbs_share_sc li .share_bd a.qq{ background-position: 0px -459px;}
+.bbs_share_sc li .share_bd a.qq:hover{ background-position: 0px -663px;}
+.bbs_share_sc li .share_bd a.wb{ background-position: 0px -510px;}
+.bbs_share_sc li .share_bd a.wb:hover{ background-position: 0px -714px;}
+.bbs_share_sc li .share_bd a.wx{ background-position: 0px -561px;}
+.bbs_share_sc li .share_bd a.wx:hover{ background-position: 0px -765px;}
+.bdshare-button-style0-32 a{padding:0;margin:0;}
+.h2Tit span {color: #43A6E1;font-size: small;}
+</style>
+<div class="share_bd_warpten">
+	<ul class="bbs_share_sc">
+		<li class="ps_re" id="share">
+			<a href="javascript:;" class="share"></a>
+			<div class="bdsharebuttonbox share_bd" data-tag="share_1">
+				<a href="javascript:;" class="sina" data-cmd="tsina"></a>
+				<a href="javascript:;" class="qq" data-cmd="qzone"></a>
+				<a href="javascript:;" class="wb" data-cmd="tqq"></a>
+				<a href="javascript:;" class="wx" data-cmd="weixin"></a>
+			</div>
+		</li>
+		<li><a href="http://www.8264.com/zhuangbei.html" class="bbsli" title="返回户外用品点评首页"></a></li>
+		<li id="gotop_50"><a style="display: none;" href="javascript:;" class="gotop_50"></a></li>
+	</ul>
+</div>
+<script>
+window._bd_share_config = {
+	common : {
+		//此处放置通用设置
+	},
+	share : [
+		//此处放置分享按钮设置
+		{"tag" : "share_1", "bdSize" : 32}
+	]
+}
+with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+(function($){
+	var ww=$(window).width();
+	var s_bd_r=Math.max((ww-980)/2-60,0);
+	$(".share_bd_warpten").css("right",s_bd_r);
+
+	if($(window).scrollTop() > 10){$("#gotop_50 a").show();}
+	$(window).scroll( function(){
+		if($(window).scrollTop()>10){
+			$("#gotop_50 a").show();
+		}else{
+			$("#gotop_50 a").hide();
+		}
+	});
+	$("#gotop_50").click(function(){
+		$("html,body").animate({ scrollTop: 0 },500);
+	});
+	$("#share").hover(
+		function () {
+		$(".share_bd",this).show();
+		},
+		function () {
+		$(".share_bd",this).hide();
+		}
+	);
+})(jQuery);
+</script>
+
+
+
+<!--{subtemplate forum/dianping/footer}-->

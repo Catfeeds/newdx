@@ -1,0 +1,195 @@
+{subtemplate common/header_8264_new}
+	<style type="text/css">
+		.radio_style{width:14px;padding:0;margin:0;}
+	</style>
+    <div class="tm_c" fwin="mods" style="width:320px; overflow:hidden;">
+        <h3 class="flb"><em fwin="mods">选择相应的景区</em> <span><a title="关闭" onclick="hideWindow('pubguide')" class="flbc" href="javascript:;">关闭</a></span></h3>
+        <form onsubmit="return false;" action="" autocomplete="off" method="post" fwin="mods" id="pubguide_form">
+            <div class="c">
+                <div class="tplw" style="padding-top:10px;overflow:hidden;width:310px;">
+                    <span class="ftid" id="area_select_box">
+						<label for="area_radio_1" style="display:block;float:left;margin-right:3px;">
+							<input type="radio" name="area_radio" id="area_radio_1" class="radio_style" value="1" checked="checked" style="vertical-align:top;margin-top:3px;display:block;float:left;padding:0;margin:0;width:14px;height:14px;margin-right:3px;" />
+							<span class="name" style="display:block;float:left;">国内</span>
+						</label>
+						<label for="area_radio_2" style="display:block;float:left;">
+							<input type="radio" name="area_radio" id="area_radio_2" class="radio_style" value="2" style="vertical-align:top;margin-top:3px;display:block;float:left;padding:0;margin:0;width:14px;height:14px;margin-right:3px;" />
+							<span class="name" style="display:block;float:left;">国外</span>
+						</label>
+					</span>
+					<span class="ftid">
+						<select name="areaSelect" id="areaSelect" width="38" class="ps" style="display:none;">
+						</select>
+					</span>
+					<span class="ftid">
+						<select name="scapeareaSelect" id="scapeareaSelect" width="38" class="ps" style="display:none;">
+						</select>
+					</span>
+                </div>
+				<div class="tplw" id="scapeSelectBox" style="overflow:hidden;width:310px;">
+					<div id="notHasScape" style="display:none;">
+					</div>
+					<div id="hasScape" style="display:none;">
+						<span id="hasScapeTitle" style="display:block;float:left;width:85px;text-align:right;margin-right:6px;"></span>
+						<select name="scapeSelect" id="scapeSelect" width="38" class="ps" style="display:block;float:left;">
+						</select>
+					</div>
+                </div>
+                <p class="error" style="color:#f00; display:none;">请选择您要推到的景区或景点</p>
+            </div>
+
+            <p class="o pns" style="text-align:center;">
+                <button type="button" value="提交" class="pn pnc" name="modsubmit" fwin="mods" style="margin:0;" onclick="javascript:submit_pubguide_form();return false;"><span>提交</span></button>
+            </p>
+        </form>
+        <script type="text/javascript">
+		<!--{eval $mudidi_region_data = $forumoption_mudidi->getAreaData();}-->
+		<!--{eval $mudidi_region_jsondata = json_encode($mudidi_region_data)}-->
+		var mudidi_region_data = eval({$mudidi_region_jsondata});
+		;(function($){
+			$('#area_radio_1').change(function(){
+				$('#scapeareaSelect').empty().hide();
+				$('#areaSelect').empty().show();
+				hideScape();
+				$('<option>', {
+					value: 0,
+					text: "请选择"
+				}).appendTo('#areaSelect');
+				for (var i in mudidi_region_data[0]) {
+					$('<option>', {
+						value: i,
+						text: mudidi_region_data[0][i]['name']
+					}).appendTo('#areaSelect');
+				}
+			});
+
+			$('#area_radio_2').change(function(){
+				$('#scapeareaSelect').empty().hide();
+				$('#areaSelect').empty().show();
+				hideScape();
+				$('<option>', {
+					value: 0,
+					text: "请选择"
+				}).appendTo('#areaSelect');
+				for (var i in mudidi_region_data[1]) {
+					$('<option>', {
+						value: i,
+						text: mudidi_region_data[1][i]['name']
+					}).appendTo('#areaSelect');
+				}
+			});
+			$('#area_radio_1').change();
+
+			$('#areaSelect').change(function(){
+				hideScape();
+				if ($(this).val() == 0) {
+					$('#scapeareaSelect').empty().hide();
+					return;
+				}
+
+				area_num = $('#area_radio_1:checked').size() ? 0 : 1;
+				sn_num = $(this).val();
+
+				$('#scapeareaSelect').empty().show();
+				$('<option>', {
+					value: 0,
+					text: "请选择"
+				}).appendTo('#scapeareaSelect');
+				{loop $scapetypes $scapetype}
+				$('<option>', {
+					value: 0,
+					text: "{$scapetype['name']}",
+					'class': "{$scapetype['id']}"
+				}).appendTo('#scapeareaSelect');
+				{/loop}
+				for (var i in mudidi_region_data[area_num][sn_num]['child']) {
+					$('<option>', {
+						value: i,
+						text: mudidi_region_data[area_num][sn_num]['child'][i]['name']
+					}).appendTo('#scapeareaSelect');
+				}
+			});
+
+			$('#scapeareaSelect').change(function(){
+				var sn,
+				    scapetype_id = $(this).children(':selected').attr('class'),
+					scapetype_name = $(this).children(':selected').text();
+
+				if (scapetype_id != undefined && scapetype_id != "" && typeof (scapetype_id - 0) == 'number') {
+					sn = $('#areaSelect').val();
+					$.ajax({
+						type: 'post',
+						dataType: 'json',
+						url: '/plugin.php?id=whither:ajaxgetscapebytypeid',
+						data: 'sn=' + sn + '&scapetypeid=' + scapetype_id,
+						success: function(html){
+							if (html.length == 0) {
+								$('#hasScape').hide();
+								$('#notHasScape').text('此景区下暂无'+scapetype_name).show();
+							} else {
+								$('#hasScapeTitle').text(scapetype_name);
+								$('#notHasScape').hide();
+								$('#hasScape').show();
+
+								$('#scapeSelect').empty();
+								$('<option>', {
+									value: 0,
+									text: "请选择"
+								}).appendTo('#scapeSelect');
+								for (var i in html) {
+									var item = html[i];
+									$('<option>', {
+										value: item['sn'],
+										text: item['name']
+									}).appendTo('#scapeSelect');
+								}
+							}
+						}
+					});
+				} else {
+					hideScape();
+				}
+			});
+
+			function hideScape() {
+				$('#hasScape').hide();
+				$('#notHasScape').hide();
+			}
+		})(jQuery);
+
+
+        function submit_pubguide_form() {
+			var sn;
+
+			if (jQuery('#scapeSelect').val()) {
+				sn = jQuery('#scapeSelect').val();
+			} else if (jQuery('#scapeareaSelect').val()) {
+				sn = jQuery('#scapeareaSelect').val();
+			}
+
+            if (sn == 0 || !sn) {
+                jQuery('#pubguide_form .error').show();
+                return false;
+            }
+            jQuery('#pubguide_form .error').hide();
+            jQuery.ajax({
+                type: 'post',
+                url: '/plugin.php?id=whither:pubguideajax&type={$type}&typeid={$typeid}',
+                data: 'sn=' + sn,
+                success: function(html){
+                    if (html == '1') {
+						hideWindow('pubguide');
+						showPrompt(null , null, '<span style="color:#fff;">推荐成功</span>', 1500);
+					} else {
+						hideWindow('pubguide');
+						showPrompt(null , null, '<span style="color:#fff;">推荐失败, 请稍后再试</span>', 1500);
+					}
+                }
+            });
+            return false;
+        }
+        </script>
+    </div>
+
+
+{subtemplate common/footer_8264_new}

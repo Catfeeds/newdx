@@ -1,0 +1,198 @@
+<style>
+#container ul li{float: left; margin-left: 10px;}
+fieldset{padding: 10px;}
+.selected{font-weight: bold;}
+.tdLimitWidth { word-break: break-all; overflow: hidden; }
+.tb2 td { vertical-align: top; }
+</style>
+<div id="container">
+<fieldset>
+	<h3>{$mod}列表</h3>
+	<legend>搜索选项</legend>
+	<div>
+		<div style="margin-left:10px;">
+			<form action="" method="POST">
+				<input type="hidden" name="search" value="1" />
+				<select name="search_type" id="search_type">
+					<option value="message" <!--{if $search_type=='message' }-->selected="selected"<!--{/if}-->>综合</option>
+					<option value="threadName" <!--{if $search_type=='threadName' }-->selected="selected"<!--{/if}-->>主题</option>
+					<option value="author" <!--{if $search_type=='author' }-->selected="selected"<!--{/if}-->>作者</option>
+					<option value="reply_origin" <!--{if $search_type=='reply_origin' }-->selected="selected"<!--{/if}-->>模块</option>	
+				</select>
+				<input type="text" name="search_key" value="$search_key">
+				<input type="submit" class="btn" value="搜索">&nbsp;&nbsp;&nbsp;(共检索到<span style="color:red">$count</span>条记录)
+				<!--{if $nowmodule=='line'}-->
+				<span style="padding-left:15px;cursor: pointer;font-weight: bold;color:blue" id="resetHtmlall" url="admin.php?ctl=lineadmin&act=resetHtml&kid=all">重新生成所有</span>
+				<!--{/if}-->
+				<span><a href="javascript:void(0);" id="checkAll">全选</a>/<a href="javascript:void(0);" id="invert">反选</a></span>
+				<span><a href="javascript:void(0);" id="deleteCheck">删除选中</a></span>
+			</form>
+		</div>
+	</div>
+	<span style="clear: both;"></span>
+</fieldset>
+</div>
+
+
+<form action="" method="post" id="guideForm">
+<table class="tb tb2">
+<tr class="header">
+	<th  width="2%"></th>
+	<th>序号</th>
+	<th>作者</th>	
+	<th style="width:5%">模块</th>
+	<th style="width:15%">优点</th>
+	<th style="width:15%">缺点</th>
+	<th style="width:22%">综合</th>
+	<th style="width:10%">主题</th>
+	<th style="width:10%">来源</th>
+	<th style="width:5%">评分</th>
+	<th style="width:7%">发布时间</th>
+	<th style="width:13%">操作</th>
+</tr>
+<!--{if $array}-->
+<!--{loop $array $val}-->
+<tr>
+	<td><input type="checkbox" name="checkPid[]" value="{$val[id]}" id="checkPid{$val[id]}"></td>
+	<td>
+		$val['id']
+	</td>
+	<td>
+		<a href="http://u.8264.com/home-space-uid-$val[authorid]-do-thread-view-me-from-space.html" target="_blank">$val[authorname]</a>			 
+	</td>	
+	<td>
+        <div class="tdLimitWidth">$val['fname']</div>
+    </td>
+	<td>
+		<div class="tdLimitWidth">$val['data3']</div>
+	</td>
+	<td>
+		<div class="tdLimitWidth">$val['data2']</div>
+	</td>
+	<td>
+		<div class="tdLimitWidth">$val['data4']</div>
+	</td>
+	<td>
+		<div class="tdLimitWidth">$val['subject']</div>
+	</td>
+	
+	<td>
+        <div class="tdLimitWidth">$val['data1']</div>
+    </td>
+	
+	<td>
+		<span style="color:red">$val['starnum']</span>
+	</td>
+	<td>
+		$val['dateline']
+	</td>
+	<td>
+	   <a href="$urls&quick_id=$val[id]&del=1" onclick="return confirm('确定删除此点评信息吗？');">删除</a>
+	   <!--{if $val[tid]}-->
+	       $val['tid']
+	   <!--{else}-->
+	   <input type="text" id="fb_tid_$val[id]" name="fb_tid_val" value="" size="7"/>
+       <input type="button" name="fb_button" id="fb_button_$val[id]" value="发布" onClick="fb_dianping($val[id],'fb_tid_$val[id]');"/>
+	   <!--{/if}-->
+	 </td>
+</tr>	
+<!--{/loop}-->
+<!--{/if}-->
+</table>
+<div style="overflow:hidden;width:99%;clear:both;padding:5px;border-top:1px solid #deeffb;">
+	<div style="float:left;">
+		
+	</div>
+	<div style="float:right;">
+	$multi
+	</div>
+</div>
+</form>
+<script src="static/js/jquery-1.6.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+function fb_dianping(id,m){		
+	if(document.getElementById(m).value==""){
+		alert('请输入要发布的tid');
+        return false;
+	}else{
+		var tid = document.getElementById(m).value;
+        if(isNaN(tid)){
+            alert("您填的不是一个数字");
+            return false;
+        }else{
+        	var str_url = 'plugin.php?id=dianping:ajax_fb&quick_id='+id+'&tid='+tid;
+        	jQuery.ajax({
+                url: str_url,
+                type: "get",
+                success: function(msg){
+                    if(msg=="re_authorid"){
+                    	alert("该用户已提交过评价");
+                    }else if(msg=="no_tid"){
+                    	alert("无效的tid");
+                    }else if(msg=="ok"){
+                    	jQuery("#fb_button_"+id).after(tid);
+                        jQuery("#fb_tid_"+id).remove();
+                        jQuery("#fb_button_"+id).remove();
+                    }else if(msg=="error"){
+                        alert("无操作权限");
+                    }
+                }               
+            });
+        }
+	}
+}
+jQuery(function(){
+	jQuery('#checkAll').click(function(){
+		jQuery('input[name="checkPid[]"]').attr('checked','checked');
+	});
+	jQuery('#invert').click(function(){
+		jQuery("input[name='checkPid[]']").each(function() {
+			jQuery(this).attr("checked", !jQuery(this).attr("checked"));
+		});
+	});
+	jQuery('#deleteCheck').click(function(){
+		if(jQuery("input[name='checkPid[]']:checked").length>0){
+			if(confirm("您确认要删除吗？", function() { }, null)){
+				 jQuery("#guideForm").submit();
+			}else{
+				return false;
+			}
+		}else{
+			alert('请选择要删除的信息！');
+		}
+		
+	});
+	
+});
+function checkvalue(m){
+	if(document.getElementById(m).value==""){
+		alert('请输入排序号，数字越大排名越高');
+		return false;
+	}else{
+		var order = document.getElementById(m).value;
+		if(isNaN(order)){
+			alert("您填的不是一个数字");
+			return false;
+		}
+		var id = jQuery("#"+m).next().next().val();
+		var str_url = 'plugin.php?id=dianping:ajax_updateskiing&tid='+id;
+		jQuery.ajax({
+				url: str_url + '&type=pl&order='+order,
+				type: "get",
+				success: function(msg){
+					if (msg=="success") {
+						jQuery("#tip"+id).html('');
+						jQuery("#tip"+id).css("padding-left","5px").css("color","blue").html('修改成功！');
+					}else if(msg=="error"){
+						jQuery("#tip"+id).html('');
+						jQuery("#tip"+id).css("padding-left","5px").css("color","blue").html('修改失败！');
+					}else if(msg=="cunzai"){
+						jQuery("#tip"+id).html('');
+						jQuery("#tip"+id).css("padding-left","5px").css("color","blue").html('名称已存在，修改失败！');						
+					}
+					jQuery('#submit_'+id).css("visibility","hidden");
+				}				
+		});
+	}		
+}
+</script>

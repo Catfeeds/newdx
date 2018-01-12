@@ -1,0 +1,444 @@
+DIV {
+	BORDER-RIGHT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-TOP: 0px; BORDER-BOTTOM: 0px
+}
+FORM {
+	BORDER-RIGHT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-TOP: 0px; BORDER-BOTTOM: 0px
+}
+IMG {
+	BORDER-RIGHT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-TOP: 0px; BORDER-BOTTOM: 0px
+}
+UL {
+	BORDER-RIGHT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-TOP: 0px; BORDER-BOTTOM: 0px
+}
+OL {
+	BORDER-RIGHT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-TOP: 0px; BORDER-BOTTOM: 0px
+}
+LI {
+	BORDER-RIGHT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-TOP: 0px; BORDER-BOTTOM: 0px
+}
+DL {
+	BORDER-RIGHT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-TOP: 0px; BORDER-BOTTOM: 0px
+}
+DT {
+	BORDER-RIGHT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-TOP: 0px; BORDER-BOTTOM: 0px
+}
+DD {
+	BORDER-RIGHT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-TOP: 0px; BORDER-BOTTOM: 0px
+}
+H1 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: normal; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H2 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: normal; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H3 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: normal; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H4 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: normal; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H5 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: normal; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H6 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: normal; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+TABLE {
+	FONT-SIZE: 12px
+}
+TD {
+	FONT-SIZE: 12px
+}
+TR {
+	FONT-SIZE: 12px
+}
+TH {
+	FONT-SIZE: 12px
+}
+LI {
+	LIST-STYLE-TYPE: none
+}
+.rightTitle {
+	CLEAR: both; BACKGROUND: url(http://cimg2.163.com/tech/img07/bg3.gif) repeat-x 0px 0px; MARGIN: 9px auto 3px; WIDTH: 230px; HEIGHT: 18px
+}
+.rightTitle H2 {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 0px; FONT-WEIGHT: bold; FONT-SIZE: 12px; BACKGROUND: #fafafa; FLOAT: left; PADDING-BOTTOM: 0px; COLOR: #c90300; PADDING-TOP: 0px
+}
+.rightTitle H2 A {
+	COLOR: #c90300
+}
+.rightTitle H2 A:visited {
+	COLOR: #c90300
+}
+.rightTitle H2 A:hover {
+	COLOR: #bc2931
+}
+.rightTitle SPAN {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 10px; BACKGROUND: url(http://cimg2.163.com/tech/img07/i6.gif) #fafafa no-repeat 0px 4px; FLOAT: right; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+.rightTitle SPAN A {
+	COLOR: #000
+}
+.rightTitle SPAN A:visited {
+	COLOR: #000
+}
+.rightTitle SPAN A:hover {
+	COLOR: #bc2931
+}
+.rightTitle2 {
+	CLEAR: both; BACKGROUND: url(http://cimg2.163.com/tech/img07/tech01.gif) no-repeat 0px 0px; FLOAT: left; WIDTH: 270px; HEIGHT: 26px
+}
+.rightTitle2 H2 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 37px; FONT-WEIGHT: bold; FLOAT: left; PADDING-BOTTOM: 0px; COLOR: #c90300; PADDING-TOP: 3px
+}
+.rightTitle2 H3 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: bold; FLOAT: left; PADDING-BOTTOM: 0px; COLOR: #000; PADDING-TOP: 3px
+}
+.rightTitle2 .c2 {
+	BORDER-RIGHT: #d9d9d9 1px solid; BORDER-TOP: #d9d9d9 1px solid; FLOAT: right; MARGIN: 3px 0px 0px; BORDER-LEFT: #d9d9d9 1px solid; BORDER-BOTTOM: #d9d9d9 1px solid
+}
+.rightTitle2 .c2 H4 {
+	BORDER-RIGHT: #fff 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #fff 1px solid; PADDING-LEFT: 5px; BACKGROUND: #ececec; PADDING-BOTTOM: 0px; BORDER-LEFT: #fff 1px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #fff 1px solid
+}
+.rightTitle2 .c2 H4 A {
+	COLOR: #1f3a87
+}
+.rightTitle2 .c2 H4 A:visited {
+	COLOR: #1f3a87
+}
+.rightTitle2 .c2 H4 A:hover {
+	COLOR: #bc2931
+}
+.rightTitle3 {
+	CLEAR: both; MARGIN: 9px auto 3px 14px; WIDTH: 240px; HEIGHT: 23px; repeat-x: 
+}
+.rightTitle3 H2 {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 0px; FONT-WEIGHT: bold; FONT-SIZE: 12px; BACKGROUND: #fafafa; FLOAT: left; PADDING-BOTTOM: 0px; COLOR: #c90300; PADDING-TOP: 5px
+}
+.rightTitle3 SPAN {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 10px; BACKGROUND: url(http://cimg2.163.com/tech/img07/i6.gif) #fafafa no-repeat 0px 4px; FLOAT: right; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+.rightTitle3 .c2 {
+	BORDER-RIGHT: #d9d9d9 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #d9d9d9 1px solid; PADDING-LEFT: 0px; FLOAT: right; PADDING-BOTTOM: 4px; MARGIN: 0px 1px; BORDER-LEFT: #d9d9d9 1px solid; PADDING-TOP: 0px
+}
+.rightTitle3 .c2 H4 {
+	BORDER-RIGHT: #fff 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #fff 1px solid; PADDING-LEFT: 5px; BACKGROUND: #c90300 50% bottom; PADDING-BOTTOM: 0px; BORDER-LEFT: #fff 1px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #d9d9d9 1px solid
+}
+.rightTitle3 .c2 H4 A {
+	COLOR: #fff
+}
+.rightTitle3 .c2 H4 A:visited {
+	COLOR: #fff
+}
+.rightTitle3 .c2 H4 A:hover {
+	COLOR: #ff0
+}
+.rightTitle3 .c3 {
+	BORDER-RIGHT: #d9d9d9 1px solid; BORDER-TOP: #d9d9d9 1px solid; FLOAT: right; MARGIN: 0px 1px; BORDER-LEFT: #d9d9d9 1px solid; BORDER-BOTTOM: #d9d9d9 1px solid
+}
+.rightTitle3 .c3 H4 {
+	BORDER-RIGHT: #fff 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #fff 1px solid; PADDING-LEFT: 5px; BACKGROUND: #dde5f5; PADDING-BOTTOM: 0px; BORDER-LEFT: #fff 1px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #fff 1px solid
+}
+.rightTitle3 .c3 H4 A {
+	COLOR: #1f3a87
+}
+.rightTitle3 .c3 H4 A:visited {
+	COLOR: #1f3a87
+}
+.rightTitle3 .c3 H4 A:hover {
+	COLOR: #bc2931
+}
+.rightContent {
+	CLEAR: both
+}
+.rightContent .list {
+	CLEAR: both
+}
+.rightContent .list UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 3px
+}
+.rightContent .list LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 20px; BACKGROUND: url(http://cimg2.163.com/tech/img07/i1.gif) no-repeat 12px 7px; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; LIST-STYLE-TYPE: none; TEXT-ALIGN: left
+}
+.rightContent .list H3 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 12px; FONT-WEIGHT: bold; FONT-SIZE: 14px; PADDING-BOTTOM: 2px; PADDING-TOP: 3px; TEXT-ALIGN: left
+}
+.rightContent .list2 {
+	CLEAR: both
+}
+.rightContent .list2 .bg1 {
+	BACKGROUND: url(/images/paihang_number/tech11.gif) no-repeat 10px 4px
+}
+.rightContent .list2 .bg2 {
+	BACKGROUND: url(/images/paihang_number/tech12.gif) no-repeat 10px 4px
+}
+.rightContent .list2 .bg3 {
+	BACKGROUND: url(/images/paihang_number/tech13.gif) no-repeat 10px 4px
+}
+.rightContent .list2 .bg4 {
+	BACKGROUND: url(/images/paihang_number/tech14.gif) no-repeat 10px 4px
+}
+.rightContent .list2 .bg5 {
+	BACKGROUND: url(/images/paihang_number/tech15.gif) no-repeat 10px 4px
+}
+.rightContent .list2 .bg6 {
+	BACKGROUND: url(/images/paihang_number/tech16.gif) no-repeat 10px 4px
+}
+.rightContent .list2 .bg7 {
+	BACKGROUND: url(/images/paihang_number/tech17.gif) no-repeat 10px 4px
+}
+.rightContent .list2 .bg8 {
+	BACKGROUND: url(/images/paihang_number/tech18.gif) no-repeat 10px 4px
+}
+.rightContent .list2 .bg9 {
+	BACKGROUND: url(/images/paihang_number/tech19.gif) no-repeat 10px 4px
+}
+.rightContent .list2 .bg10 {
+	BACKGROUND: url(/images/paihang_number/tech110.gif) no-repeat 10px 4px
+}
+.rightContent .list2 LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 30px; PADDING-BOTTOM: 2px; PADDING-TOP: 4px; LIST-STYLE-TYPE: none; TEXT-ALIGN: left
+}
+.rightContent .list3 {
+	CLEAR: both
+}
+.rightContent .list3 LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 20px; BACKGROUND: url(http://cimg2.163.com/tech/img07/i1.gif) no-repeat 12px 7px; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; LIST-STYLE-TYPE: none; TEXT-ALIGN: left
+}
+.rightContent .list3 H3 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 12px; FONT-WEIGHT: bold; FONT-SIZE: 14px; PADDING-BOTTOM: 2px; PADDING-TOP: 3px; TEXT-ALIGN: left
+}
+.rightContent .list4 {
+	CLEAR: both; BORDER-RIGHT: #ededed 1px solid; BACKGROUND: #fff; MARGIN: 0px auto; BORDER-LEFT: #ededed 1px solid; WIDTH: 230px
+}
+.rightContent .list4 UL {
+	CLEAR: both; MARGIN: 0px auto; WIDTH: 228px
+}
+.rightContent .list4 LI {
+	CLEAR: both; BACKGROUND: #fff; FLOAT: left; WIDTH: 228px; BORDER-BOTTOM: #f1f1f1 1px solid
+}
+.rightContent .list4 .c1 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FLOAT: left; PADDING-BOTTOM: 2px; WIDTH: 30px; PADDING-TOP: 4px
+}
+.rightContent .list4 .c2 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FLOAT: left; PADDING-BOTTOM: 2px; WIDTH: 110px; PADDING-TOP: 5px; TEXT-ALIGN: left
+}
+.rightContent .list4 .c3 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FLOAT: left; PADDING-BOTTOM: 2px; WIDTH: 30px; PADDING-TOP: 5px
+}
+.rightContent .list4 .c4 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FLOAT: left; PADDING-BOTTOM: 2px; WIDTH: 55px; PADDING-TOP: 5px
+}
+.rightContent .list5 {
+	CLEAR: both; PADDING-RIGHT: 15px; PADDING-LEFT: 15px; PADDING-BOTTOM: 10px; PADDING-TOP: 10px
+}
+.rightContent .list5 UL {
+	
+}
+.rightContent .list5 LI {
+	CLEAR: both; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 2px; PADDING-TOP: 3px; TEXT-ALIGN: left
+}
+.rightContent .list5 LI H3 {
+	PADDING-RIGHT: 25px; PADDING-LEFT: 0px; BACKGROUND: url(http://cimg2.163.com/tech/img07/tech33.gif) no-repeat right 2px; FLOAT: left; PADDING-BOTTOM: 0px; COLOR: #c90300; PADDING-TOP: 0px; TEXT-ALIGN: left
+}
+.rightContent .list5 LI SELECT {
+	FONT-SIZE: 12px
+}
+.rightContent .list6 {
+	CLEAR: both; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 10px; MARGIN: 0px auto; WIDTH: 230px; PADDING-TOP: 10px
+}
+.rightContent .list6 .list6L {
+	BORDER-RIGHT: #cdcdcd 1px solid; PADDING-RIGHT: 1px; BORDER-TOP: #cdcdcd 1px solid; PADDING-LEFT: 1px; FLOAT: left; PADDING-BOTTOM: 1px; BORDER-LEFT: #cdcdcd 1px solid; WIDTH: 28px; PADDING-TOP: 1px; BORDER-BOTTOM: #cdcdcd 1px solid
+}
+.rightContent .list6 .list6L H3 {
+	PADDING-RIGHT: 7px; PADDING-LEFT: 7px; BACKGROUND: #0d5aac; PADDING-BOTTOM: 7px; COLOR: #fff; PADDING-TOP: 7px
+}
+.rightContent .list6 .list6R {
+	FLOAT: left; WIDTH: 193px
+}
+.rightContent .list6 .list6R UL {
+	
+}
+.rightContent .list6 .list6R LI {
+	CLEAR: both
+}
+.rightContent .list6 .list6R .c1 {
+	BORDER-RIGHT: #cdcdcd 1px solid; PADDING-RIGHT: 1px; BORDER-TOP: #cdcdcd 1px solid; PADDING-LEFT: 1px; FLOAT: left; PADDING-BOTTOM: 1px; MARGIN: 0px 0px 3px 3px; BORDER-LEFT: #cdcdcd 1px solid; PADDING-TOP: 1px; BORDER-BOTTOM: #cdcdcd 1px solid
+}
+.rightContent .list6 .list6R .c1 H4 {
+	PADDING-RIGHT: 8px; PADDING-LEFT: 8px; BACKGROUND: #dde5f5; PADDING-BOTTOM: 1px; PADDING-TOP: 3px
+}
+.rightContent .list7 {
+	CLEAR: both
+}
+.rightContent .list7 UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 3px
+}
+.rightContent .list7 LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 20px; BACKGROUND: url(http://cimg2.163.com/tech/img07/i2.gif) no-repeat 12px 7px; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; LIST-STYLE-TYPE: none; TEXT-ALIGN: left
+}
+.rightContent .list7 H3 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 12px; FONT-WEIGHT: bold; FONT-SIZE: 14px; PADDING-BOTTOM: 2px; PADDING-TOP: 3px; TEXT-ALIGN: left
+}
+.rightContent .pic {
+	
+}
+.rightContent .pic IMG {
+	BORDER-RIGHT: #000 1px solid; BORDER-TOP: #000 1px solid; BORDER-LEFT: #000 1px solid; BORDER-BOTTOM: #000 1px solid
+}
+.rightContent .pic H6 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px auto; WIDTH: 220px; PADDING-TOP: 3px; TEXT-ALIGN: left
+}
+.rightContent .listText {
+	CLEAR: both
+}
+.rightContent .listText DL {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 12px; PADDING-BOTTOM: 6px; PADDING-TOP: 0px
+}
+.rightContent .listText DT {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 180%; PADDING-TOP: 3px; TEXT-ALIGN: left
+}
+.rightContent .listText DD {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 3px; PADDING-TOP: 5px; TEXT-ALIGN: left
+}
+.rightContent .digest {
+	CLEAR: both; PADDING-RIGHT: 8px; PADDING-LEFT: 13px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 150%; PADDING-TOP: 0px; TEXT-ALIGN: left
+}
+.rightContent .digest2 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 6px; MARGIN: 0px auto; WIDTH: 220px; LINE-HEIGHT: 150%; PADDING-TOP: 8px; TEXT-ALIGN: left
+}
+.rightContent .digest H2 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: 100; FONT-SIZE: 18px; PADDING-BOTTOM: 6px; PADDING-TOP: 8px; FONT-FAMILY: "ºÚÌå" ,Arial Black,sans-serif; TEXT-ALIGN: left
+}
+.rightContent .text2 {
+	CLEAR: both; BORDER-RIGHT: #eaeaea 1px solid; PADDING-RIGHT: 1px; BORDER-TOP: #eaeaea 1px solid; PADDING-LEFT: 1px; BACKGROUND: #fff; PADDING-BOTTOM: 1px; MARGIN: 0px auto; BORDER-LEFT: #eaeaea 1px solid; WIDTH: 218px; PADDING-TOP: 1px; BORDER-BOTTOM: #eaeaea 1px solid
+}
+.rightContent .text2 H2 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 20px; BACKGROUND: #c40001; PADDING-BOTTOM: 2px; COLOR: #fff; PADDING-TOP: 3px; TEXT-ALIGN: left
+}
+.rightContent .text2 .content {
+	CLEAR: both; PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 6px; PADDING-TOP: 8px
+}
+.rightContent .text2 .content SELECT {
+	FONT-SIZE: 12px; MARGIN: 0px 2px
+}
+.rightContent .text3 {
+	CLEAR: both; PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 3px; MARGIN: 0px auto; COLOR: #66696b; LINE-HEIGHT: 160%; PADDING-TOP: 3px; TEXT-ALIGN: left
+}
+.rightContent .text4 {
+	CLEAR: both; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 3px; MARGIN: 0px auto; WIDTH: 230px; PADDING-TOP: 3px
+}
+.rightContent .text4 .text4L {
+	FLOAT: left; WIDTH: 66px
+}
+.rightContent .text4 .text4R {
+	FLOAT: left; WIDTH: 164px; COLOR: #66696b; LINE-HEIGHT: 160%; TEXT-ALIGN: left
+}
+.rightContent .text5 {
+	CLEAR: both; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(http://cimg2.163.com/tech/img07/bg2.gif) repeat-x 0px bottom; PADDING-BOTTOM: 7px; MARGIN: 0px auto; WIDTH: 230px; COLOR: #66696b; PADDING-TOP: 3px; TEXT-ALIGN: left
+}
+.rightContent .text5 .input04 {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; FONT-SIZE: 12px; BACKGROUND: #fff; MARGIN: 0px 3px; BORDER-LEFT: #cccccc 1px solid; BORDER-BOTTOM: #cccccc 1px solid
+}
+.rightContent .text6 {
+	CLEAR: both; PADDING-RIGHT: 12px; PADDING-LEFT: 12px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+.rightContent .text6 H4 {
+	CLEAR: both; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: 100; FONT-SIZE: 18px; PADDING-BOTTOM: 0px; PADDING-TOP: 12px; FONT-FAMILY: "ºÚÌå" ,Arial Black,sans-serif; TEXT-ALIGN: left
+}
+.rightContent .text6 P {
+	PADDING-RIGHT: 8px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; COLOR: #999; LINE-HEIGHT: 160%; PADDING-TOP: 4px; TEXT-ALIGN: left
+}
+.rightContent .text6 P A {
+	COLOR: #1f3a87
+}
+.rightContent .text6 P A:hover {
+	COLOR: #bc2931
+}
+.rightContent .picText {
+	CLEAR: both; PADDING-RIGHT: 12px; PADDING-LEFT: 12px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 160%; PADDING-TOP: 0px; TEXT-ALIGN: left
+}
+.rightContent .picText H3 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: bold; FONT-SIZE: 14px; PADDING-BOTTOM: 5px; PADDING-TOP: 0px; TEXT-ALIGN: left
+}
+.rightContent .picText IMG {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; FLOAT: left; MARGIN: 0px 6px 0px 0px; BORDER-LEFT: #cccccc 1px solid; BORDER-BOTTOM: #cccccc 1px solid
+}
+.rightContent .picText2 {
+	CLEAR: both; PADDING-RIGHT: 8px; PADDING-LEFT: 12px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 160%; PADDING-TOP: 10px; TEXT-ALIGN: left
+}
+.rightContent .picText2 IMG {
+	BORDER-RIGHT: #000 1px solid; BORDER-TOP: #000 1px solid; FLOAT: left; MARGIN: 0px 8px 0px 0px; BORDER-LEFT: #000 1px solid; BORDER-BOTTOM: #000 1px solid
+}
+.rightContent .picText2 H3 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 14px; PADDING-BOTTOM: 5px; PADDING-TOP: 0px; TEXT-ALIGN: left
+}
+.rightContent .picList2 {
+	CLEAR: both
+}
+.rightContent .picList2 UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 10px
+}
+.rightContent .picList2 LI {
+	FLOAT: left; WIDTH: 50%; LIST-STYLE-TYPE: none
+}
+.rightContent .picList2 LI IMG {
+	BORDER-RIGHT: #000 1px solid; BORDER-TOP: #000 1px solid; MARGIN: 0px 0px 3px; BORDER-LEFT: #000 1px solid; BORDER-BOTTOM: #000 1px solid
+}
+.rightContent A {
+	COLOR: #1f3a87
+}
+.rightContent A:hover {
+	COLOR: #bc2931
+}
+.rightContent2 {
+	CLEAR: both; FLOAT: left; WIDTH: 270px
+}
+.rightContent2 .text {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 6px; COLOR: #666666; LINE-HEIGHT: 160%; PADDING-TOP: 6px; TEXT-ALIGN: left
+}
+.rightContent2 .text IMG {
+	MARGIN: 3px 0px 0px
+}
+.rightContent2 .text H3 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 3px; PADDING-TOP: 0px
+}
+.friendLink {
+	MARGIN: 0px auto; WIDTH: 750px
+}
+.friendLink .text1 {
+	BORDER-TOP: #fff 1px solid; BACKGROUND: #f1f1f1; FLOAT: left; WIDTH: 750px
+}
+.friendLink .text1 .title {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: bold; FLOAT: left; PADDING-BOTTOM: 0px; WIDTH: 70px; PADDING-TOP: 8px
+}
+.friendLink .text1 .content {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FLOAT: left; PADDING-BOTTOM: 5px; WIDTH: 680px; LINE-HEIGHT: 160%; PADDING-TOP: 5px; TEXT-ALIGN: left
+}
+.friendLink .text1 A {
+	COLOR: #000; TEXT-DECORATION: none
+}
+.friendLink .text1 A:hover {
+	COLOR: #f00; TEXT-DECORATION: underline
+}
+.friendLink .text2 {
+	FLOAT: left; WIDTH: 750px
+}
+.friendLink .text2 .title {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: bold; FLOAT: left; PADDING-BOTTOM: 0px; WIDTH: 70px; PADDING-TOP: 8px
+}
+.friendLink .text2 .content {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FLOAT: right; PADDING-BOTTOM: 2px; WIDTH: 680px; LINE-HEIGHT: 160%; PADDING-TOP: 2px; TEXT-ALIGN: left
+}
+.friendLink .border {
+	BORDER-BOTTOM: #fff 1px solid
+}
+.rightTitle3 .c2 H4 {
+	COLOR: #ffffff; BACKGROUND-COLOR: #ff0000
+}
+.rightContent .list2 LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 30px; PADDING-BOTTOM: 2px; PADDING-TOP: 4px; LIST-STYLE-TYPE: none; TEXT-ALIGN: left
+}
+.rightContent a:visited{
+color:#1f3a87;
+}

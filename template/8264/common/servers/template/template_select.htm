@@ -1,0 +1,9 @@
+<!--{if $templates}-->
+<select id="templatesrv_{$usemodel}_{$typename}" name="{$formname}">
+	<!--{loop $templates $tmp}-->
+	<option value="{$tmp[template]}" <!--{if $tmp[template] == $selected}-->selected<!--{/if}--> title="路径文件:{$tmp[template]} | 最后更新时间{$tmp[lastupdate]} | 版本{$tmp[version]} | 创建时间{$tmp[createtime]}">{$tmp[name]}</option>
+	<!--{/loop}-->
+</select>
+<!--{else}-->
+当前选择的{$usemodel}模块{$typname}类型不存在可选模板
+<!--{/if}-->

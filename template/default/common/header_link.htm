@@ -1,0 +1,220 @@
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset={CHARSET}" />
+	<title>__title__</title>
+	$_G['setting']['seohead']
+
+	<meta name="keywords" content="__keyword__" />
+	<meta name="description" content="__description__" />
+	<meta name="generator" content="qiaoqiao.net" />
+	<meta name="author" content="qiaoqiao.net" />
+	<meta name="copyright" content="2010-2011 qiaoqiao.net" />
+	<meta name="MSSmartTagsPreventParsing" content="True" />
+	<meta http-equiv="MSThemeCompatible" content="Yes" />
+	<base href="$_G['siteurl']" />	
+    <link href="{$s_url}/public/home/base.css" rel="stylesheet" type="text/css" />
+	
+	<!--{csstemplate}-->
+	<script type="text/javascript">var STYLEID = '{STYLEID}', STATICURL = '{STATICURL}', IMGDIR = '{IMGDIR}', VERHASH = '{VERHASH}', charset = '{CHARSET}', discuz_uid = '$_G[uid]', cookiepre = '{$_G[config][cookie][cookiepre]}', cookiedomain = '{$_G[config][cookie][cookiedomain]}', cookiepath = '{$_G[config][cookie][cookiepath]}', showusercard = '0', attackevasive = '{$_G[config][security][attackevasive]}', disallowfloat = '{$_G[setting][disallowfloat]}', creditnotice = '<!--{if $_G['setting']['creditnotice']}-->$_G['setting']['creditnames']<!--{/if}-->', defaultstyle = '$_G[style][defaultextstyle]', REPORTURL = '$_G[currenturl_encode]', SITEURL = '$_G[siteurl]';</script>
+	<script type="text/javascript" src="{$_G[setting][jspath]}common.js?{VERHASH}"></script>
+	<!--{if defined('CURMODULE') && ($_G['basescript'] == 'forum' || $_G['basescript'] == 'group') && (CURMODULE == 'index' || CURMODULE == 'forumdisplay' || CURMODULE == 'group')}-->$rsshead<!--{/if}-->
+	<!--{if $_G['basescript'] == 'forum' || $_G['basescript'] == 'group'}-->
+		<!--{if $_G['basescript'] == 'forum' && !empty($_G['cookie']['widthauto']) && empty($_G['disabledwidthauto'])}-->
+			<link rel="stylesheet" id="css_widthauto" type="text/css" href="data/cache/style_{STYLEID}_widthauto.css?{VERHASH}" />
+			<script type="text/javascript">HTMLNODE.className += ' widthauto'</script>
+		<!--{/if}-->
+		<script type="text/javascript" src="{$_G[setting][jspath]}forum.js?{VERHASH}"></script>
+	<!--{elseif $_G['basescript'] == 'home' || $_G['basescript'] == 'userapp'}-->
+		<script type="text/javascript" src="{$_G[setting][jspath]}home.js?{VERHASH}"></script>
+	<!--{elseif $_G['basescript'] == 'portal'}-->
+		<script type="text/javascript" src="{$_G[setting][jspath]}portal.js?{VERHASH}"></script>
+	<!--{/if}-->
+	<!--{if $_G['basescript'] != 'portal' && $_GET['diy'] == 'yes' && ($_G[mod] == 'topic' || $_G[group][allowdiy]) && !empty($_G['style']['tplfile'])}-->
+		<script type="text/javascript" src="{$_G[setting][jspath]}portal.js?{VERHASH}"></script>
+	<!--{/if}-->
+	<!--{if $_GET[diy] == 'yes' && ($_G[mod] == 'topic' || $_G[group][allowdiy]) && !empty($_G['style']['tplfile'])}-->
+	<link rel="stylesheet" type="text/css" href="data/cache/style_{STYLEID}_css_diy.css?{VERHASH}" />
+	<!--{/if}-->
+<style>
+body #wp{ font-size:14px}
+#templeBox .btn {
+    background:url(static/image/yingyong/temple_bg.gif) no-repeat scroll 0 -113px transparent;
+    cursor: pointer;
+    height: 24px;
+    position: absolute;
+    top: 30px;
+    width: 25px;
+}
+#templeBox .pre {
+    cursor: default;
+    left: 10px;
+}
+#templeBox .next {
+    background-position: 0 -88px;
+    right: 10px;
+}
+
+
+
+</style>
+
+<script type="text/javascript">
+function showyanse(){
+	if(document.getElementById('tempconntent').style.display=="none")
+	{
+		document.getElementById('tempconntent').style.display="block";
+		document.getElementById('templeBox').style.display="block";
+		document.getElementById('tempconntent').style.height="146px";
+	}else{
+		document.getElementById('tempconntent').style.display="none";
+		document.getElementById('templeBox').style.display="none";
+		document.getElementById('tempconntent').style.height="0px";
+	}
+}
+function showpre(){	
+	if(parseInt(document.getElementById('preview').style.left)<0)
+	{
+		document.getElementById('preNextBtn').style.backgroundPosition="0px -88px";
+		document.getElementById('preNextBtn').style.cursor="pointer";
+		document.getElementById('prePreBtn').style.backgroundPosition="0px -113px";
+		document.getElementById('prePreBtn').style.cursor="pointer";
+		document.getElementById('preview').style.left=(parseInt(document.getElementById('preview').style.left)+880)+"px";
+		
+	}
+	if(parseInt(document.getElementById('preview').style.left)==0 && parseInt(document.getElementById('preview').style.width)>880){
+		document.getElementById('prePreBtn').style.backgroundPosition="0px -163px";
+		document.getElementById('preNextBtn').style.backgroundPosition="0px -88px";
+		document.getElementById('prePreBtn').style.cursor="default";
+		document.getElementById('preNextBtn').style.cursor="pointer";
+	}
+	//document.getElementById('pageN').innerHTML=Math.abs(parseInt(document.getElementById('preview').style.left))/880+1;
+}
+function shownext(){
+	
+	if(parseInt(document.getElementById('preview').style.left)<0&&Math.abs(parseInt(document.getElementById('preview').style.left))<parseInt(document.getElementById('preview').style.width)-880)
+	{
+		document.getElementById('preNextBtn').style.backgroundPosition="0px -88px";
+		document.getElementById('prePreBtn').style.backgroundPosition="0px -113px";
+		document.getElementById('preNextBtn').style.cursor="pointer";
+		document.getElementById('prePreBtn').style.cursor="pointer";
+		document.getElementById('preview').style.left=(parseInt(document.getElementById('preview').style.left)-880)+"px";
+		
+	}
+	if(parseInt(document.getElementById('preview').style.left)==0 && parseInt(document.getElementById('preview').style.width)>880)
+	{
+		document.getElementById('preNextBtn').style.backgroundPosition="0px -88px";
+		document.getElementById('prePreBtn').style.backgroundPosition="0px -113px";
+		document.getElementById('preNextBtn').style.cursor="pointer";
+		document.getElementById('prePreBtn').style.cursor="pointer";
+		document.getElementById('preview').style.left=(parseInt(document.getElementById('preview').style.left)-880)+"px";
+	}
+	if(Math.abs(parseInt(document.getElementById('preview').style.left))>=Math.abs(parseInt(document.getElementById('preview').style.width)-880) && Math.abs(parseInt(document.getElementById('preview').style.left))!=0)
+	{
+		
+		document.getElementById('preNextBtn').style.backgroundPosition="0px -138px";
+		document.getElementById('prePreBtn').style.backgroundPosition="0px -113px";
+		document.getElementById('preNextBtn').style.cursor="default";
+		document.getElementById('prePreBtn').style.cursor="pointer";
+		
+	}
+	//document.getElementById('pageN').innerHTML=Math.abs(parseInt(document.getElementById('preview').style.left))/880+1;
+}
+</script>
+</head>
+
+<body id="nv_{$_G[basescript]}" class="pg_{CURMODULE}" onkeydown="if(event.keyCode==27) return false;">
+	<div id="append_parent"></div><div id="ajaxwaitid"></div>
+	<!--{if empty($topic) || $topic[useheader]}-->
+	<!--{ad/headerbanner/wp a_h}-->
+   
+	<div id="hd">
+		<div class="wp">
+			<div class="hdc cl">
+				<h2><a href="./" title="$_G['setting']['bbname']">{BOARDLOGO}</a></h2>
+				<div id="login_info" >
+					<script type="text/javascript">ajaxget('fav.php?mod=ajax&op=login_info_fav','login_info');</script>
+				</div>
+			</div>
+            <!--{if !($_G['style']['extstyle'] && count($_G['style']['extstyle'])>0)}-->
+			<div id="qmenu_menu" class="p_pop" style="display: none; zoom: 1;">
+				<script type="text/javascript">ajaxget('fav.php?mod=ajax&op=mycenter','qmenu_menu','ajaxwaitid','','none');</script>
+			</div>
+            <!--{/if}-->
+			<div id="nv">
+				 <!--{if $_G['style']['extstyle'] && count($_G['style']['extstyle'])>0}--><a href="javascript:;" id="qmenu" onClick="showyanse()"><table width="100%"><tr><td>更换风格</td><td><img src="$_G[siteurl]static/image/yingyong/style.gif" width="16" height="16"></td></tr></table></a>
+                <!--{else}-->
+                <a href="{if $_G['uid']}home.php{else}javascript:;{/if}" id="qmenu" onMouseOver="showMenu(this.id)">{lang my_center}</a>
+				<!--{/if}-->
+				<ul>
+					<!--{eval $mnid = getcurrentnav();}-->
+					<!--{loop $_G['setting']['navs'] $nav}-->
+						<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}--><li {if strpos($nav[nav],$nav_string)!==false}class="a" {/if}$nav[nav]></li><!--{/if}-->
+					<!--{/loop}-->
+				</ul>
+			</div>
+			<!--{if !empty($_G['setting']['plugins']['jsmenu'])}-->
+				<ul class="p_pop h_pop" id="plugin_menu" style="display: none">
+				<!--{loop $_G['setting']['plugins']['jsmenu'] $module}-->
+					 <!--{if !$module['adminid'] || ($module['adminid'] && $_G['adminid'] > 0 && $module['adminid'] >= $_G['adminid'])}-->
+					 <li>$module[url]</li>
+					 <!--{/if}-->
+				<!--{/loop}-->
+				</ul>
+			<!--{/if}-->
+			$_G[setting][menunavs]
+			<!--{if $_G['setting']['subnavs']}--><div id="mu" class="cl">
+			
+				<!--{loop $_G[setting][subnavs] $navid $subnav}-->
+					<!--{if $_G['setting']['navsubhover'] || $mnid == $navid}-->
+					<ul class="cl {if $mnid == $navid}current{/if}" id="snav_$navid" style="display:{if $mnid != $navid}none{/if}">
+					$subnav
+					</ul>
+					<!--{/if}-->
+				<!--{/loop}-->
+			
+			</div><!--{/if}-->
+			<!--{ad/subnavbanner/a_mu}-->
+		</div>
+       
+	</div>
+
+	<!--{hook/global_header}-->
+	<!--{/if}-->
+   
+	<div id="wp" class="wp"> 
+    <!--{if $_G['style']['extstyle'] && count($_G['style']['extstyle'])>0}-->
+    <script type="text/javascript">extstyle(getcookie('extstyle')?getcookie('extstyle'):defaultstyle);</script>
+     <div id="templeBox" >
+            <div id="tempconntent" style="height: 0px; display:none ;">
+                <div class="bm" >
+                    <div class="bm_h cl">
+                      <h2 >
+                      <table width="100%"><tr>
+                            <td>选择主题</td>
+                             <td >&nbsp;</td>
+                              <td  align="right" onClick="showyanse()"><img title="关闭" alt="关闭" src="static/image/yingyong/guanbi.gif" style="cursor:pointer;"  /></td>
+                        </tr>
+                       </table>
+                      </h2>
+                	</div>
+                    <div style=" margin:0; padding:0;height:100px;position:relative; ">
+                    
+                    <div  style="margin:0 auto 0; width:880px;overflow:hidden;position:relative;left:0px;" >
+                        <ul id="preview" class=" cl" style="margin-top:10px; margin-bottom:10px; position:relative; left:0px; width:{eval echo 
+            count($_G['style']['extstyle'])*110}px">     
+                            <!--{if !empty($_G['style']['extstyle'])}-->  
+                                 <!--{loop $_G['style']['extstyle'] $key $extstyle}-->
+                                <li style="text-align:center;float:left;height:100px; width:110px;">
+                                    <div class="mlp cl" style="cursor:pointer"><img src="$extstyle[0]/110.jpg" width="90" height="60" onClick="extstyle('$extstyle[0]')" onMouseOver="this.style.background='green'" onMouseout="this.style.background='#FFF'" /></div>
+                                    <div class="cl"   onClick="extstyle('$extstyle[0]')" title="$extstyle[1]" style="font-size:12px;cursor:pointer">$extstyle[1]</div>
+                                </li>
+                                <!--{/loop}-->
+                            <!--{/if}-->
+                        </ul>
+                    </div>
+                    <div title="向左翻一页" class="btn pre" id="prePreBtn" onClick="showpre()" style="background-position: 0px -163px; cursor: default;"></div>
+                    <div title="向右翻一页" class="btn next" id="preNextBtn" onClick="shownext()" style="<!--{if count($_G['style']['extstyle'])>8}-->background-position: 0px -88px;<!--{else}-->background-position: 0px -138px;<!--{/if}--> cursor: pointer;"></div>
+                </div>
+                </div>
+            </div> 
+		</div>
+        <!--{/if}--> 

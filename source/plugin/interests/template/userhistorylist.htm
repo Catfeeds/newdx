@@ -1,0 +1,81 @@
+<style>
+fieldset{padding:10px 8px;}
+fieldset table td{padding:3px 5px;}
+fieldset table input{margin-right:10px;}
+#keywordshow table{width:100%;}
+#keywordshow table tbody{border-bottom:2px black solid; margin: 20px 10px;}
+#keywordshow table td, table th{text-align: center; border-bottom:1px #CCC dotted; padding: 5px 10px;}
+#keywordshow table td{background:#EEE}
+#keywordshow table th{background: #4DD7F4;}
+</style>
+<fieldset>
+	<legend>功能区</legend>
+	<form action="/admin.php?action=plugins&operation=config&do={$pluginid}&identifier=interests&pmod=userhistory" method="POST">
+		<table>
+			<tr>
+				<td>
+					<span>请输入查询用户UID或用户名：</span>
+				</td>
+				<td>
+					<input name="searchuid" type="text" value="{$searchuid}" />
+				</td>
+				<td rowspan="2">
+					{if $messagetip}<b>{$messagetip}</b>{/if}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span>请输入查询的IP：</span>
+				</td>
+				<td>
+					<input name="searchip" type="text" value="{$searchip}" />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input name="submit" type="submit" value="查询" />
+					<input type="hidden" name="submitsearch" value="1" />
+				</td>
+			</tr>
+		</table>
+	</form>
+</fieldset>
+{if $_G['gp_submitsearch'] == 1}
+<div id="keywordshow">
+	<table>
+			<tbody>
+				<tr>
+					<th>时间</th>
+					<th>浏览帖子</th>
+					<th>浏览版块</th>
+					<th>IP</th>
+					<th>用户名</th>
+					<th>浏览器</th>
+				</tr>
+			</tbody>
+			<tbody>
+			{if $showdata}
+			{loop $showdata $k $val}
+				<tr>
+					<td>{eval echo date('Y-m-d H:i:s', $val[recordmodel::_TIME]);}</td>
+					<td><a target="_blank" href="http://bbs.8264.com/thread-{eval echo $val[recordmodel::_TID];}-1-1.html">{eval echo $val[recordmodel::_TITLE];}</a></td>
+					<td><a href="http://bbs.8264.com/forum-{eval echo $val[recordmodel::_FID]}-1.html" target="_blank">{eval echo $fidname[$val[recordmodel::_FID]];}</a></td>
+					<td>{eval echo $val[recordmodel::_IP];}</td>
+					<td>{if $val[recordmodel::_UID] > 0}<a href="http://u.8264.com/{eval echo $val[recordmodel::_UID]}" target="_blank">{eval echo $allusername[$val[recordmodel::_UID]];}</a>{/if}</td>
+					<td>{eval echo $val[recordmodel::_BROWSER_NAME];}({eval echo $val[recordmodel::_BROWSER_VERSION];})</td>
+				</tr>
+			{/loop}
+			{if $multi}
+				<tr>
+					<td colspan="6">{$multi}</td>
+				</tr>
+			{/if}
+			{else}
+				<tr>
+					<td colspan="6">当前用户或ip没有任何记录。</td>
+				</tr>
+			{/if}
+			</tbody>
+		</table>
+</div>
+{/if}

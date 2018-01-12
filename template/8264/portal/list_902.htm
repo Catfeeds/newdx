@@ -1,0 +1,119 @@
+<!--{subtemplate common/header_8264_new}-->
+<!--[name]图说户外[/name]-->
+<link href="template/8264/css/channel/style_902.css?20141023" rel="stylesheet" type="text/css">
+<style id="diy_style" type="text/css"></style>
+<div class="topHead">
+	<div class="w980 clearfix">
+		<div class="titLeft">
+			<h2>数据图说</h2>
+			<h3>信息爆炸的时代，我们希望用简明的图表，让您轻松阅读。</h3>
+		</div>
+		<div class="shareRight">
+			<!-- Baidu Button BEGIN -->
+			<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare" style="float:left; padding-top:1px;">
+				<a class="bds_qzone"></a>
+				<a class="bds_tsina"></a>
+				<a class="bds_tqq"></a>
+				<a class="bds_renren"></a>
+				<span class="bds_more"></span>
+				<a class="shareCount"></a>
+			</div>
+			<script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
+			<script type="text/javascript" id="bdshell_js"></script>
+			<script type="text/javascript">
+			document.getElementById("bdshell_js").src = "http://news.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+			</script>
+			<!-- Baidu Button END -->
+		</div>
+	</div>
+</div>
+
+	<!--通栏8264产品广告-->
+    <div style="margin: 0 auto 10px auto; width:980px">
+    <div style="display:none"><!--{eval $bottom_ads = array('416', '409', '417'); $bottom_ad = rand(0, 2); $bottom_ad_id = $bottom_ads[$bottom_ad]; }-->
+<!--{ad/custom_$bottom_ad_id}--></div>
+<!-- 值得买 -->
+<!--{eval include(DISCUZ_ROOT.'./source/plugin/skiing/hd_zw.php');}-->
+<!--{eval $zhidemai_list = ForumOptionHuoDong::pianyi_sidebar(6, 'top', 'jiu', '10027');}-->
+<!--{if $zhidemai_list}-->
+<div>
+<style>
+.zhidemaiwidth{ width:980px;}
+.zhidemaibox .zhidemailist_new li{width:144px; overflow:hidden;}
+.zhidemaibox .zhidemailist_new li img{ width:144px;}
+</style>
+<!--{subtemplate common/zhidemai}-->
+</div>
+<!--{/if}-->
+<!-- //值得买 -->
+
+    </div>
+
+
+
+<div class="w980">
+	{eval $arrs = $arr['list'];}
+	{eval $pic_array = array(array(), array()); $i = 0;}
+	{if count($arrs) >= 2}
+	{eval $pic_array[0][] = $arrs[0]; unset($arrs[0]);}
+	{eval $pic_array[1][] = $arrs[1]; unset($arrs[1]);}
+	{eval $pics = array_merge($arrs,array());}
+	{/if}
+	{eval foreach ($pics as $pic):}
+	{eval $pic_array[$i%2][] = $pic;}
+	{eval $i++;}
+	{eval endforeach;}
+	<div class="layoutLeft">
+		<!--{loop $pic_array[0] $key $value}-->
+		<!-- 循环 开始 -->
+		<dl class="dateList">
+			<dd class="pic">
+				<a href="portal.php?mod=view&aid=$value['aid']" target="_blank">
+					<img src="$value['pic']" />
+				</a>
+			</dd>
+			<dt>
+				<a href="portal.php?mod=view&aid=$value['aid']" target="_blank">$value['title']</a>
+				<span class="line">黑线</span>
+			</dt>
+			<dd class="text">
+				<p>
+				$value['summary']
+				</p>
+			</dd>
+		</dl>
+		<!--{/loop}-->
+		<!-- 循环 结束 -->
+
+	</div>
+	<div class="layoutRight">
+		<!-- 循环 开始 -->
+		<!--{loop $pic_array[1] $value}-->
+		<dl class="dateList">
+			<dd class="pic">
+				<a href="portal.php?mod=view&aid=$value['aid']" target="_blank">
+					<img src="$value['pic']" />
+				</a>
+			</dd>
+			<dt>
+				<a href="portal.php?mod=view&aid=$value['aid']" target="_blank">$value['title']</a>
+				<span class="line">黑线</span>
+			</dt>
+			<dd class="text">
+				<p>
+					$value['summary']
+				</p>
+			</dd>
+		</dl>
+		<!--{/loop}-->
+		<!-- 循环 结束 -->
+	</div>
+	<!--{if $arr[multi]}-->
+	<div class="listPageBox clearfix">
+		<div class="pg">
+			{$arr[multi]}
+		</div>
+	</div>
+	<!--{/if}-->
+</div>
+<!--{subtemplate common/footer_8264_new}-->

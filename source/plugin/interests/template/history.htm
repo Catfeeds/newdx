@@ -1,0 +1,42 @@
+<style>
+#historydiv table{width:100%;}
+#historydiv table tbody{border-bottom:2px black solid; margin: 20px 10px;}
+#historydiv table td, table th{text-align: center; border-bottom:1px #CCC dotted; padding: 5px 10px;}
+#historydiv table td{background:#EEE}
+#historydiv table th{background: #4DD7F4;}
+</style>
+<div id="historydiv">
+	<table style="width: 100%;">
+		<tbody>
+			<tr>
+				<th>访问时间</th>
+				<th>访问用户</th>
+				<th>访问线路</th>
+				<th>推送位置</th>
+				<th>访问动作</th>
+				<th>IP地址</th>
+			</tr>
+	{if $datalist}
+	{loop $datalist $val}
+	        <tr>
+				<td>{$val['showtime']}</td>
+				<td><a href="{$_G[config][web][home]}{$val['uid']}" target="_blank">{$usernamearr[$val['uid']]}</a></td>
+				<td><a href="{$val['lineurl']}" target="_blank">{$val['linename']}</a></td>
+				<td>{$val[linepos]}</td>
+				<td><b>{$val[actiontype]}</b></td>
+				<td>{$val[ip]}</td>
+			</tr>
+	{/loop}
+	{if $multi}
+			<tr>
+				<td colspan="6">{$multi}</td>
+			</tr>
+	{/if}
+	{else}
+			<tr>
+				<td colspan="6">当前线路没有访问记录，请<a href="/admin.php?action=plugins&operation=config&do={$pluginid}&identifier=interests&pmod=linemanagerment&method=list">返回列表</a>重新选择。</td>
+			</tr>
+	{/if}
+		</tbody>
+	</table>
+</div>

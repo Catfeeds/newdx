@@ -1,0 +1,43 @@
+<!--底部封平广告开始-->
+<style>
+	.adfoot{ height:195px; background:url(http://static.8264.com/hd/pc/images/ad/bottomadbg.png) bottom center no-repeat; position:fixed; border:0px; left:0px; right:0px; width:100%; bottom:0px; display:none; z-index:20000000;}
+	.adfootcon{ width:955px; margin:0 auto; position:relative; height:195px;}
+	.closead{ width:24px; height:24px; background:url(http://static.8264.com/hd/pc/images/ad/closebg.png) center center no-repeat; position:absolute; display:block; top:50px; right:0px; cursor:pointer;}
+</style>
+<div class="adfoot">
+	<div class="adfootcon"><a href="https://8264.tmall.com/" target="_blank"><img src="http://static.8264.com/hd/pc/images/ad/zhuzhanad.png?20160817"></a><span class="closead"></span></div>
+</div>
+<script>	
+function addCookie_(name, value, expires, path, domain) {
+    var str = name + "=" + escape(value);
+    if (expires != "") {
+        var date = new Date();
+        date.setTime(date.getTime() + expires * 24 * 3600 * 1000);//expires单位为天
+        str += ";expires=" + date.toGMTString();
+    }
+    if (path != "") {
+        str += ";path=" + path;//指定可访问cookie的目录
+    }
+    if (domain != "") {
+        str += ";domain=" + domain;//指定可访问cookie的域
+    }
+    document.cookie = str;
+}
+function getCookie_(name){
+    var str=document.cookie.split(";");
+    for(var i=0;i<str.length;i++){
+        var str2=str[i].split("=");
+        if(str2[0].replace(/(^\s*)|(\s*$)/g, "")==name)return unescape(str2[1]);
+    }
+}
+	jQuery(document).ready(function() {
+		if(!getCookie_("layerClose1")) {
+			jQuery(".adfoot").show();
+		}
+		jQuery(".adfoot img , .closead").click( function (){
+			jQuery(".adfoot").hide();			
+			addCookie_('layerClose1',1,1,'/','8264.com');
+		});
+	});
+</script>
+<!--底部封平广告结束-->

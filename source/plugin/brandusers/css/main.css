@@ -1,0 +1,19 @@
+#brandUsers{ padding:15px 0 10px; overflow:hidden; text-align:center;}
+.brandUsers_button{overflow:hidden;}
+.brandUsers_button a{display:inline-block; height:87px; width:70px; margin:0 5px 0; padding:20px 0 0; overflow:hidden;}
+.brandUsers_button a .pillar{ position:relative; width:20px; height:60px; margin:0 auto 5px; overflow:visible;}
+.brandUsers_button a .pillar .pillar_inner{ position:absolute; bottom:0px; width:20px; height:0%; left:0; background:#0d9ee9; overflow:visible;}
+.brandUsers_button a .pillar .pillar_inner em{ position:absolute; left:-25px;top:-20px; width:70px; height:20px; line-height:20px; text-align:center;}
+.brandUsers_button a .text{ height:20px; line-height:20px; border-color:#C2D5E3 #336699 #336699 #C2D5E3; border-width:1px; border-style:solid; color:#369; background:#E5EDF2;}
+.brandUsers_button a:hover{text-decoration:none;}
+.brandUsers_button a:hover div{ cursor:pointer;}
+#likeitUsers{ overflow:hidden; width:100%;margin-bottom:15px;}
+#likeitUsers h6{ padding-bottom:5px; color:#666;}
+#likeitUsers h6 .person_num{ color:#069;}
+#likeitUsers .user_list{ overflow:hidden;}
+#likeitUsers .user_list li{ float:left; margin-right:12px; width:54px; overflow:hidden;}
+#likeitUsers .user_list li .img img{ width:48px; height:48px; padding:2px; border:1px solid #ccc;}
+#likeitUsers .user_list li .text{ text-align:center; width:100%; height:18px; line-height:18px; overflow:hidden;}
+
+#publiced_alert{ padding:15px; border:1px solid #ddd; background:#fefefe; position:absolute; z-index:302; display:none;}
+#likeitUsers_myface{ display:none;}

@@ -1,0 +1,70 @@
+<!--{if !empty($uploadResponse)}-->
+<uploadResponse>
+	<message><!--{if $status=="success"}-->{lang done}<!--{else}-->$uploadfiles<!--{/if}--></message>
+	<status>$status</status>
+	<albumid>$albumid</albumid>
+	<!--{if $fileurl}--><filepath>$fileurl</filepath><!--{/if}-->
+</uploadResponse>
+<!--{else}-->
+<parameter>
+		<allowsExtend>
+			<extend depict="All Image File(*.jpg,*.jpeg,*.gif,*.png)">*.jpg,*.gif,*.png,*.jpeg</extend>
+		</allowsExtend>
+	<config>
+		<debugmod>$debugmod</debugmod>
+		<userid>$_G[uid]</userid>
+		<hash>$hash</hash>
+		<maxupload>$max</maxupload>
+        <quality>$_G[setting][thumbquality]</quality>
+        <maxwidth><!--{if $_G[config][cdns][opend]}-->9999<!--{else}-->$_G[setting][maxthumbwidth]<!--{/if}--></maxwidth>
+        <maxheight><!--{if $_G[config][cdns][opend]}-->9999<!--{else}-->$_G[setting][maxthumbheight]<!--{/if}--></maxheight>
+        <back>homeuploadsuccess</back>
+		<uploadurl>$uploadurl</uploadurl>
+		<feedurl>$feedurl</feedurl>
+		<albumurl>$albumurl</albumurl>
+		<albumidselect>$_G[gp_albumid]</albumidselect>
+		<categoryStat>$categorystat</categoryStat>
+		<categoryRequired>$categoryrequired</categoryRequired>
+		<!--{if $iscamera}-->
+			<countdown>3</countdown>
+			<countBy>2000</countBy>
+		<!--{/if}-->
+	</config>
+	<!--{if $isdoodle}-->
+	<filters>
+		<filter id="0">{lang filter_disable}</filter>
+		<filter id="1">{lang filter_shadow}</filter>
+		<filter id="2">{lang filter_fuzzy}</filter>
+		<filter id="3">{lang filter_light}</filter>
+		<filter id="4">{lang filter_watercolor}</filter>
+		<filter id="5">{lang filter_splash}</filter>
+		<filter id="6">{lang filter_gyrosigma}</filter>
+	</filters>
+	<!--{/if}-->
+	<albums>
+		<album id="-1" image="">{lang select_album_please}</album>
+        
+        <album id="add" image="">+{lang create_new_album}</album>
+        
+		<!--{loop $albums $key $value}-->
+			<album id="$value[albumid]" image="$value[albumcover]" >$value['albumname']</album>
+		<!--{/loop}-->
+	</albums>
+	<!--{if $_G['setting']['albumcategorystat'] && $categorys}-->
+	<categorys>
+		<category catid="0">{lang select_type}</category>
+		<!--{loop $categorys $key $value}-->
+			<!--{if $value[level] == 0}-->
+			<category catid="$key">$value[catname]</category>
+			<!--{loop $value['children'] $catid}-->
+				<category catid="$categorys[$catid][catid]">--$categorys[$catid][catname]</category>
+				<!--{loop $categorys[$catid]['children'] $catid2}-->
+				<category catid="$categorys[$catid2][catid]">----$categorys[$catid2][catname]</category>
+				<!--{/loop}-->
+			<!--{/loop}-->
+			<!--{/if}-->
+		<!--{/loop}-->
+	</categorys>
+	<!--{/if}-->
+</parameter>
+<!--{/if}-->

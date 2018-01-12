@@ -1,0 +1,577 @@
+@charset "gb2312";
+/* Andes 2013-09-02 */
+/* Global 全局样式 Start */
+body { background-color: #f1f1f1; background-image: none; color: #555; font-size: 12px; font-family: "Microsoft YaHei", Tahoma, Helvetica, SimSun, sans-serif; }
+a { text-decoration: none; color: #555; }
+a:hover { text-decoration: none; color: #2a85e8; }
+em { font-style: normal; }
+li { list-style: none outside none; }
+input,
+textarea,
+select { font-size: 12px; color: #7b7b7b; }
+/* Global 全局样式 End */
+/* Clear Start */
+.clear { clear: both; display: block; overflow: hidden; visibility: hidden; width: 0; height: 0; }
+.clearfix:before,
+.clearfix:after { content: '.'; display: block; overflow: hidden; visibility: hidden; font-size: 0; line-height: 0; width: 0; height: 0; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+/* Clear End */
+/* 清除浮动 Start*/
+/* 首页 Start */
+.layout:after,
+.hd:after,
+.bd:after,
+.ft:after,
+.leftAreaContent:after,
+.rightAreaContent:after,
+.picArt150 dd:after,
+.picArt150:after,
+.greyTabs h3.topNewTit:after,
+.greyTabs .theFirstUl:after,
+.picArt110:after,
+.halfArtIndex:after,
+.colLRIndex:after,
+.footer:after,
+.footerNav:after,
+.shopSpaceTitTab dl:after,
+.adBox:after { content: ""; display: block; clear: both; visibility: hidden; }
+.layout,
+.hd,
+.bd,
+.ft,
+.leftAreaContent,
+.rightAreaContent,
+.picArt150 dd,
+.picArt150,
+.greyTabs h3.topNewTit,
+.greyTabs .theFirstUl,
+.picArt110,
+.halfArtIndex,
+.colLRIndex,
+.footer,
+.footerNav,
+.shopSpaceTitTab dl,
+.adBox { zoom: 1; }
+/* 首页 End */
+/* 清除浮动 End */
+/* 公共样式 Start */
+.undis { display: none; }
+.dis { display: block; }
+.ind { text-indent: 2em; }
+.ind10 { text-indent: 10px; }
+.noborder { border: 0 none; }
+.Q-red a,
+a.Q-red { color: #BD0A01 !important; }
+.Q-black a,
+a.Q-black { color: #000 !important; }
+.Q-bold { font-weight: 700 !important; }
+.floatL,
+.layout .floatL { float: left; display: inline; }
+.fr,
+.layout .fr { float: right; display: inline; }
+.fn { font-weight: 400; }
+.pieCss { behavior: url(http://www.8264.com/template/default/common/pie.htc); } /* css3插件 */
+.shadowBlack { box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2); behavior: url(http://www.8264.com/template/default/common/pie.htc); } /* 阴影 */
+.bRadius2px { border-radius: 2px; behavior: url(http://www.8264.com/template/default/common/pie.htc); } /* 圆角 */
+.minHeightTuan { min-height: 680px; _height: 680px; }
+.wp { width: auto; }
+.nav960 { margin: auto; width: 960px; }
+/* 公共样式 End */
+/* 门户首页 Start */
+/* 公共样式 Start */
+.layout { margin: 0 auto; width: 960px; }
+.layoutLeft { float: left; display: inline; width: 182px; }
+.leftAreaContent { border: 1px solid #d4d4d4; box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2); background: #FFF; }
+.leftAreaContent .hd { }
+.leftAreaContent .bd { }
+/* */
+.artList12 li {
+color:; float: left; font-size: 12px; height: 22px; line-height: 22px; overflow: hidden; text-indent: 10px; width: 100%; }
+.artList14 li {
+color:; float: left; font-size: 14px; height: 24px; line-height: 24px; overflow: hidden; text-indent: 11px; width: 100%; }
+.artListIndex14 li {
+color:; float: left; font-size: 14px; height: 24px; line-height: 24px; overflow: hidden; text-indent: 11px; width: 360px; }
+/* */
+.layoutRight { float: right; display: inline; width: 765px; }
+.layoutRightCont { width: 375px; }
+.rightArea { }
+.rightAreaAll { border: 1px solid #d4d4d4; box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2); background: #FFF; }
+.rightAreaContent { border: 1px solid #d4d4d4; box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2); background: #FFF; }
+.rightAreaContent .hd { height: 30px; }
+.rightAreaContent .bd { }
+.adRightAll { float: left; display: inline; border: 1px solid #d4d4d4; font-size: 0; }
+/* */
+.blueLeftAreaCol { }
+.blueLeftAreaCol .hd { height: 25px; line-height: 25px; background: #6e8fb5; color: #FFF; }
+.blueLeftAreaCol .hd h2 { text-indent: 30px; background: url("http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png") no-repeat scroll -165px -1847px transparent; }
+.blueLeftAreaCol .hd h2 a { color: #FFF; }
+.tyindex .hd h2 { text-indent: 30px; background: url("http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png") no-repeat scroll -176px -1879px transparent; }
+.tyindex .hd h2 a { color: #FFF; }
+.blueLeftAreaCol .hwd { height: 25px; line-height: 25px; background: #6e8fb5; color: #FFF; }
+.blueLeftAreaCol .hwd h2 { text-indent: 30px; background: url("http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png") no-repeat scroll 7px -1935px transparent; }
+.blueLeftAreaCol .hwd h2 a { color: #FFF; }
+.blueLeftAreaCol .ft { padding-top: 7px; padding-bottom: 7px; }
+.blueLeftAreaCol .ft .artList12 { width: 175px; }
+/* */
+.blueLeftAreaTab { }
+.blueLeftAreaTab .hd { background: #6e8fb5; padding-top: 5px; padding-left: 5px; height: 20px; line-height: 20px; }
+.blueLeftAreaTab .hd h2 { text-indent: 0; }
+.blueLeftAreaTab .hd h2 a { float: left; display: inline; padding-right: 20px; padding-left: 10px; color: #2d435d; background: #6e8fb5 url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat right -123px; }
+.blueLeftAreaTab .hd h2 a.active { background: #FFF url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat right -83px; color: #184e8a; }
+.blueLeftAreaTab .ft { padding-top: 7px; padding-bottom: 7px; }
+.blueLeftAreaTab .ft li { width: 175px; }
+/* */
+.greyCol { }
+.greyCol .hd { height: 35px; line-height: 30px; background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) repeat-x 0 -490px; }
+.greyCol .hd h2 { background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat scroll -168px -641px transparent; text-indent: 35px; }
+.greyCol .hd h2 a { color: #323232; }
+.greyCol .ft { padding-top: 3px; padding-bottom: 7px; }
+/* */
+.greyTabs { }
+.greyTabs .hd { height: 35px; line-height: 30px; background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) repeat-x 0 -490px; }
+.greyTabs .hd h2 { }
+.greyTabs .hd h2 a { float: left; display: inline; width: 93px; height: 35px; line-height: 30px; text-align: center; background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -5px -390px; color: #323232; }
+.greyTabs .hd h2 a:hover,
+.greyTabs .hd h2 a.active { background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -5px -440px; color: #5e5e5e; }
+.greyTabs .hd h2 a.last { width: 90px; }
+.greyTabs .ft { padding-top: 3px; padding-bottom: 7px; }
+.greyTabs h3.topNewTit { height: 38px; line-height: 38px; font-size: 16px; font-weight: 700; color: #000; text-align: center; overflow: hidden; }
+.greyTabs h3.topNewTit a { color: #000; }
+.greyTabs h3.topNewTit a:hover { color: #F00; }
+.greyTabs .theFirstUl { border-bottom: 1px dashed #d4d4d4; padding-bottom: 7px; margin-bottom: 5px; }
+/* */
+.layoutThreeCont { border: 1px solid #d4d4d4; box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2); background: #FFF; }
+.layoutThreeCont .hd { height: 30px; }
+.layoutThreeCont .bd { }
+.layoutThreeCont .ft { padding-top: 2px; padding-bottom: 7px; }
+.layoutThreeCont .ft li { }
+/* */
+.threeColIndex { width: 310px; }
+.threeColIndex .hd { height: 35px; line-height: 30px; background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) repeat-x 0 -490px; }
+.threeColIndex .hd h2 { text-indent: 35px; background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -168px -641px; }
+/* 三角 前标 */
+.ft .triangleIndex li { background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -184px -153px; text-indent: 15px; }
+/* */
+.imgTxtArea { padding: 15px 0; }
+.imgArea { float: left; height: 90px; width: 150px; }
+.imgArea img { height: 90px; width: 150px; border: 1px solid #CCCCCC; }
+.txtArea { float: right; }
+.txtArea dt { font-size: 14px; font-weight: bold; height: 16px; line-height: 16px; margin-bottom: 2px; width: 100%; overflow: hidden; }
+.txtArea dt a { color: #2a85e8; }
+.txtArea dd { line-height: 18px; width: 100%; }
+.txtArea dd a { color: #3B639F; }
+.txtArea dd a:hover { color: #CD0200; }
+/* */
+.mt8 { margin-top: 8px; }
+.mt10 { margin-top: 10px; }
+.mt12 { margin-top: 12px; }
+.mt15 { margin-top: 15px; }
+.mb10 { margin-bottom: 10px; }
+.mb15 { margin-bottom: 15px; }
+.mb20 { margin-bottom: 20px; }
+.ml13 { margin-left: 13px; }
+.pd15 { padding: 0 15px; }
+.adBox { border: 1px solid #d4d4d4; box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2); font-size: 0; }
+.ad960 { border: 1px solid #d4d4d4; box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2); font-size: 0; }
+/* 蛇签 */
+.sheqian2 a { }
+.sheqian2 a.active { }
+.sheqianbody .hide { display: none; }
+.sheqianbody .active { display: block; }
+/* */
+dl.picArt150 { margin: 0 15px; }
+dl.picArt150 dd { padding-bottom: 5px; }
+dl.picArt150 .txtArea { width: 180px; }
+/* */
+.colLRIndex { margin: 5px 15px 5px; padding-bottom: 7px; border-bottom: 1px dashed #d4d4d4; }
+.colLRIndex .lArea { float: left; display: inline; width: 112px; }
+.colLRIndex .lArea p { line-height: 18px; height: 36px; overflow: hidden; }
+.colLRIndex .lArea img { width: 110px; height: 65px; border: 1px solid #CCC; margin-bottom: 5px; }
+.colLRIndex .rArea { float: right; display: inline; width: 230px; }
+/* 公共样式 End */
+/* header Start */
+/* top1 开始 */
+.header .topNav { background: url(/template/8264/css/moban/1024newslw/images/nav_bg.png) 0 0 repeat-x;  }
+.header .topNav .top1 { height: 24px; width: 100%; padding: 5px 0;}
+.top1_l { float: left; display: inline; }
+
+
+.top1_l .top1_la { font-size: 12px; color: #ccc; text-decoration: none; display: block; float: left; margin-right: 10px; padding: 5px 10px 5px 5px; background: url(/template/8264/css/moban/1024newslw/images/newnav_bg.png) right -47px no-repeat; }
+.top1_l .top1_la:hover { font-size: 12px; text-decoration: none; display: block; float: left; margin-right: 10px; padding: 5px 10px 5px 5px; color: #fff; background: url(/template/8264/css/moban/1024newslw/images/newnav_bg.png) right 12px no-repeat; }
+.top1_l .top1_la_1 { font-size: 12px; color: #ccc; text-decoration: none; display: block; float: left; margin-right: 10px; padding: 5px 10px 5px 5px; }
+.top1_l .top1_la_1:hover { font-size: 12px; text-decoration: none; display: block; float: left; margin-right: 10px; padding: 5px 10px 5px 5px; color: #fff;}
+.top1_l li { float: left; position: relative; z-index: 100; }
+.top1_lxl { border: 1px solid #ddd; width: 103px; background: #fff; position: absolute; top: 25px; left: 0; display: none; padding: 5px 5px 0px 5px; z-index: 1000000000; }
+.top1_lxl a { height: 20px; padding: 5px 0; text-align: center; display: block; margin-bottom: 5px; text-decoration: none; color: #fff; }
+.top1_lxl a:hover { text-decoration: none; color: #fff; }
+.top1_lxl a.red { background: #e31f21 url(/template/8264/css/moban/1024newslw/images/newnav_bg.png) -103px -78px no-repeat; }
+.top1_lxl a.lan { background: #04a3f5 url(/template/8264/css/moban/1024newslw/images/newnav_bg.png) -103px -78px no-repeat; }
+.top1_lxl a.lv { background: #81b930 url(/template/8264/css/moban/1024newslw/images/newnav_bg.png) -103px -78px no-repeat; }
+.top1_lxl a.huang { background: #f7c200 url(/template/8264/css/moban/1024newslw/images/newnav_bg.png) -103px -78px no-repeat; }
+/*8264项目结束*/
+.top1_l .hzwz a { background: #999999 }
+.top1_l .hzwz a:hover { background: #05a6f8 }
+/* 合作网站结束*/
+.top1_l .sjb a { background: #999999 url(/template/8264/css/moban/1024newslw/images/newnav_bg.png) no-repeat; padding-left: 10px; }
+.top1_l .sjb a:hover { padding-left: 10px; }
+.top1_l .sjb .ip { background-position: -186px -105px; }
+.top1_l .sjb .ip:hover { background: #ccc url(/template/8264/css/moban/1024newslw/images/newnav_bg.png) -186px -105px no-repeat; }
+.top1_l .sjb .andr { background-position: -186px -160px; }
+.top1_l .sjb .andr:hover { background: #81b930 url(/template/8264/css/moban/1024newslw/images/newnav_bg.png) -186px -160px no-repeat; }
+.top1_l .sjb .lvt { background-position: -186px -224px; }
+.top1_l .sjb .lvt:hover { background: #feb31f url(/template/8264/css/moban/1024newslw/images/newnav_bg.png) -186px -224px no-repeat; }
+/* 手机版结束 */
+/* top1_l 结束   */
+.top1_r { float: right; margin-top: 3px; }
+.top1_r a { font-size: 12px; color: #ccc; text-decoration: none; padding: 0px 5px 0px 5px; margin-right: 5px; }
+.top1_r a:hover { font-size: 12px; color: #fff; text-decoration: none; }
+.top1_r .new { padding-left: 15px; background: no-repeat; }
+.top1_r strong .vwmy { padding-left: 25px; background: url(/template/8264/css/moban/1024newslw/images/newnav_bg.png) -189px -285px no-repeat; }
+.top1_r .showmenu { padding-right: 5px; padding-left: 10px; background: url(/template/8264/css/moban/1024newslw/images/newnav_bg.png) -159px -351px no-repeat; }
+ul#usersetup_menu.p_pop { background: #fff; border: 1px solid #ccc; width: 100px; padding: 5px 5px 0px 5px; }
+ul#usersetup_menu.p_pop li { width: 100px; height: 30px; margin-bottom: 5px; display: block; }
+ul#usersetup_menu.p_pop li a { background: url(/template/8264/css/moban/1024newslw/images/newnav_bg.png) no-repeat #989898; color: #FFF; text-align: center; padding: 5px 0 5px 10px; display: block; height: 20px; }
+ul#usersetup_menu.p_pop li a:hover { background: url(/template/8264/css/moban/1024newslw/images/newnav_bg.png) no-repeat #05a6f8; text-align: center; padding: 5px 0 5px 10px; display: block; height: 20px; }
+ul#usersetup_menu.p_pop li a.touxiang { background-position: 5px 6px; }
+ul#usersetup_menu.p_pop li a.touxiang:hover { background-position: 5px 6px; }
+ul#usersetup_menu.p_pop li a.ziliao { background-position: 5px -43px; }
+ul#usersetup_menu.p_pop li a.ziliao:hover { background-position: 5px -43px; }
+ul#usersetup_menu.p_pop li a.jifen { background-position: 5px -94px; }
+ul#usersetup_menu.p_pop li a.jifen:hover { background-position: 5px -94px; }
+ul#usersetup_menu.p_pop li a.yonghuzu { background-position: 5px -154px; }
+ul#usersetup_menu.p_pop li a.yonghuzu:hover { background-position: 5px -154px; }
+ul#usersetup_menu.p_pop li a.yinsishaixuan { background-position: 5px -280px; }
+ul#usersetup_menu.p_pop li a.yinsishaixuan:hover { background-position: 5px -280px; }
+ul#usersetup_menu.p_pop li a.youjiantixing { background-position: -106px -11px; }
+ul#usersetup_menu.p_pop li a.youjiantixing:hover { background-position: -106px -11px; }
+ul#usersetup_menu.p_pop li a.mimaanquan { background-position: 5px -217px; }
+ul#usersetup_menu.p_pop li a.mimaanquan:hover { background-position: 5px -217px; }
+ul#usersetup_menu.p_pop li a.majia { background-position: 5px -336px; }
+ul#usersetup_menu.p_pop li a.majia:hover { background-position: 5px -336px; }
+ul#usersetup_menu.p_pop li a.qq { background-position: 5px -399px; }
+ul#usersetup_menu.p_pop li a.qq:hover { background-position: 5px -399px; }
+ul#usersetup_menu.p_pop li a.sina { background-position: 5px -468px; }
+ul#usersetup_menu.p_pop li a.sina:hover { background-position: 5px -468px; }
+/* 设置结束 */
+.top1_r #myprompt { background: url(/template/8264/css/moban/1024newslw/images/newnav_bg.png) -188px -405px no-repeat; padding-left: 20px; }
+.top1_r #pm_ntc { background: url(/template/8264/css/moban/1024newslw/images/newnav_bg.png) -193px -462px no-repeat; padding-left: 20px; }
+.top1_r a.log_qq { background: url(/template/8264/css/moban/1024newslw/images/newnav_bg.png) 0px -528px no-repeat; width: 57px; height: 21px; display: block; padding: 2px 0 0 23px; float: right; }
+.top1_r a.log_qq:hover { background: url(/template/8264/css/moban/1024newslw/images/newnav_bg.png) 0px -575px no-repeat; width: 57px; height: 21px; display: block; float: right; padding: 2px 0 0 23px }
+.top1_r a.log_wb { background: url(/template/8264/css/moban/1024newslw/images/newnav_bg.png) 0px -624px no-repeat; width: 57px; height: 21px; display: block; padding: 2px 0 0 23px; float: right; }
+.top1_r a.log_wb:hover { background: url(/template/8264/css/moban/1024newslw/images/newnav_bg.png) 0px -678px no-repeat; width: 57px; height: 21px; display: block; float: right; padding: 2px 0 0 23px }
+/* top1_r 结束*/
+/* top1 结束*/
+.header { }
+.header .topNav { }
+.header .navSlide { height: 80px; background: url(http://www.8264.com/template/8264/css/moban/index2013/images/bg-index-x.png) repeat-x 0 -330px; }
+.header .navSlide .logo { float: left; display: inline; width: 180px; padding-top: 20px; }
+.header .navSlide .logo a { display: block; width: 170px; height: 45px; background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat 0 -1330px; text-indent: -9999px; overflow: hidden; }
+.header .navSlide .headerNav { float: right; display: inline; width: 775px; padding-top: 10px; }
+.headerNav dl { float: left; display: inline; margin-right: 10px; }
+.headerNav dl dt { float: left; display: inline; width: 35px; #width: 36px; _width: 35px; height: 20px; margin: 0px 10px 0px 5px; padding-top: 42px; background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat 0 -745px; }
+.headerNav dl dd { float: left; display: inline; border-right: 1px solid #d4d4d4; line-height: 20px; }
+.headerNav dl dd li { float: left; display: inline; margin-right: 20px; #margin-right: 5px; _margin-right: 8px; white-space: nowrap; }
+.headerNav dl.last { margin-right: 0; }
+.headerNav dl.last dd { border-right: 0 none; }
+.headerNav .news dd { width: 188px; }
+.headerNav .business dt { background-position: -60px -745px; }
+.headerNav .business dd { width: 42px; }
+.headerNav .travel dt { background-position: 0 -865px; }
+.headerNav .travel dd { width: 144px; }
+.headerNav .equi dt { background-position: 0 -975px; }
+.headerNav .equi dd { width: 57px; }
+.headerNav .inter dt { background-position: -60px -865px; }
+.headerNav .inter dd { width: 40px; }
+/* header End */
+/* 地方论坛 Start */
+.ciytorz { position: relative; }
+.ciytorz ul { }
+.ciytorz ul span { float: left; display: inline; }
+.ciytorz ul li { float: left; display: inline; white-space: nowrap; margin-right: 11px; +margin-right: 5px; _margin-right: 7px; }
+.ciytorz ul li a { }
+.ciytorz .cityout { position: absolute; top: 0px; right: 7px; z-index:100; }
+.ciytorz .cityout ul { padding: 5px 0; background: #FFF; }
+.ciytorz .cityout li { display: block; float: none; line-height: 20px; padding: 0 10px; margin-right: 0; text-align: center; }
+/* 地方论坛 End */
+/* 第一通栏 广告 Start */
+.top1ColLIndex { height: 172px; overflow: hidden; }
+.top1ColLIndex .ft li { height: 20px; line-height: 20px; width: 175px; }
+/* 第一通栏 广告 End */
+/* 首页专题 Start */
+.specialIndex { height: 215px; overflow: hidden; }
+.specialIndex .hd { height: 25px; line-height: 25px; background: url(http://www.8264.com/template/8264/css/moban/index2013/images/bg-index-x.png) repeat-x 0 -100px; font-size: 14px; color: #84a20d; border-bottom: 1px solid #93ad2c; }
+.specialIndex .hd h2 { float: left; line-height: 25px; background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -160px 3px; text-indent: 35px; }
+.specialIndex .hd h2 a { color: #84a20d; }
+.specialIndex .ft { padding-top: 7px; padding-bottom: 7px; }
+.specialIndex .ft li { width: 175px; }
+/* 首页专题 End */
+/* 首页打折信息 Start */
+.shopSallInforIndex { height: 215px; overflow: hidden; }
+.shopSallInforIndex ul { margin-left: 4px; padding-top: 5px; }
+.shopSallInforIndex ul li { float: left; height: 22px; line-height: 22px; width: 188px; border-right: 1px solid #efefef; border-bottom: 1px solid #efefef; text-indent: 10px; overflow: hidden; margin-bottom: 5px; box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1); }
+.shopSallInforIndex .red { color: #FF0000; }
+.shopSallInforIndex .ad { margin: 0 5px; font-size: 0; }
+/* 首页打折信息 End */
+/* 经理人论坛 Start */
+.handlerBbsIndex { height:178px; overflow: hidden; }
+.handlerBbsIndex .hd h2 { background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -162px -45px; }
+.handlerBbsIndex .hd .ispo { float: right; display: block; width: 70px; height: 20px; margin-top: 3px; margin-right: 3px; background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat 0 -50px; text-indent: -9999px; overflow: hidden; }
+/* 经理人论坛 End */
+/* 招聘求职 Start */
+.jobIndexTab { height: 173px; overflow: hidden; }
+/* 招聘求职 End */
+/* 装备分享 列表 Start */
+.zbShareIcoList { }
+.zbShareIcoList li { float: left; display: inline; height: 22px; line-height: 22px; margin-right: 10px; width: auto; }
+.zbShareIcoList li a { display: block; white-space: nowrap; }
+.share-ico-27 { background-position: 0 0; padding-left: 22px; }
+.share-ico-28 { background-position: 0 -50px; padding-left: 28px; }
+.share-ico-29 { background-position: 0 -100px; padding-left: 18px; }
+.share-ico-30 { background-position: 0 -150px; padding-left: 28px; }
+.share-ico-31 { background-position: 0 -200px; padding-left: 29px; }
+.share-ico-32 { background-position: 0 -250px; padding-left: 24px; }
+.share-ico-33 { background-position: 0 -300px; padding-left: 32px; }
+.share-ico-34 { background-position: 0 -350px; padding-left: 25px; }
+.share-ico-35 { background-position: 0 -400px; padding-left: 29px; }
+.share-ico-37 { background-position: 0 -450px; padding-left: 34px; }
+.share-ico-38 { background-position: 0 -500px; padding-left: 28px; }
+.share-ico-39 { background-position: 0 -550px; padding-left: 25px; }
+.share-ico-40 { background-position: 0 -600px; padding-left: 23px; }
+.share-ico-41 { background-position: 0 -650px; padding-left: 29px; }
+.share-ico-71 { background-position: 0 -700px; padding-left: 29px; }
+.share-ico-72 { background-position: 0 -750px; padding-left: 18px; }
+.share-ico-73 { background-position: 0 -800px; padding-left: 34px; }
+/* 装备分享 列表 Start */
+/* 装备 Start */
+.equipIndexTab { height: 195px; overflow: hidden; }
+.equipIndexTab .ft .zbShareIcoList { padding: 0 10px; }
+.equipIndexTab .ft .zbShareIcoList li { width: auto; text-indent: 0; margin-right: 15px; }
+.equipIndexTab #sq-shopTit p { float: left; width: 165px; padding-left: 10px; line-height: 22px; overflow: hidden; zoom: 1; }
+.equipIndexTab #sq-tuanTit { text-align: center; line-height: 25px; }
+.equipIndexTab #sq-tuanTit .pic { width: 160px; height: 100px; }
+.equipIndexTab #sq-tuanTit b { color: #FF6600; font-size: 14px; }
+.equipIndexTab #sq-tuanTit span { text-decoration: line-through; }
+.equipIndexTab #sq-tuanTit .tuan { background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat scroll 0 -130px transparent; display: block; height: 33px; width: 121px; margin: 0 auto; }
+/* 装备 End */
+/* 点击排行 Start */
+.clickLeftIndexTab { height:201px; overflow: hidden; }
+.clickLeftIndexTab ul { background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -176px -1914px; }
+.clickLeftIndexTab .ft li { text-indent: 20px; }
+/*体验*/
+.tyLeftIndexTab { height: 124px; overflow: hidden; }
+/* 店铺排行 Start */
+.dpLeftIndexTab { height: 170px; overflow: hidden; }
+.dpLeftIndexTab ul { background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -176px -172px; }
+.dpLeftIndexTab .ft li { text-indent: 20px; }
+/* 点击排行 End */
+/* 搜索 Start */
+.baiduSearch { height: 32px; padding: 5px 0 0 5px; }
+.searchbuttom { float: left; display: inline; background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat scroll 0 -350px transparent; border: 0 none; cursor: pointer; height: 26px; width: 53px; }
+.searchtext { float: left; display: inline; background: #FFFFFF; border-color: #8C8C8C -moz-use-text-color #CCCCCC #8C8C8C; border-style: solid none solid solid; border-width: 1px 0 1px 1px; height: 14px; line-height: 14px; padding: 5px; width: 119px; }
+/* 搜索 End */
+/* 广告 Start */
+.ad375Mid { text-align: center; padding: 8px 0; border-bottom: 1px dashed #d4d4d4; font-size: 0; }
+/* 广告 End */
+/* 首页头部新闻 Start */
+.mainNewsIndex { height: 607px; overflow: hidden; }
+.mainNewsIndex .topNews { height: 115px; background: #f0f0f0; }
+.mainNewsIndex .topNews h3 { margin: 0 10px; height: 38px; line-height: 38px; font-size: 18px; font-weight: 700; text-align: center; border-bottom: 1px dashed #d4d4df; overflow: hidden; }
+.mainNewsIndex .topNews h3 a { color: #ff0000; }
+.mainNewsIndex .topNews .topNewsCont { padding: 5px 0px 5px 20px; line-height: 22px; }
+.mainNewsIndex .ft { padding: 7px 0; }
+.mainNewsIndex .fistUl { border-bottom: 1px dashed #d4d4d4; }
+/* 首页头部新闻 End */
+/* 户外资讯、户外论剑 Start */
+.outdoorIndexTab { height:426px; overflow: hidden; }
+.lunJianOld h3 { position: relative; border-top: 1px solid #d4d4d4; margin: 10px 15px 10px; font-size: 0; }
+.lunJianOld h3 span { position: absolute; top: -13px; left: 130px; display: block; padding: 0 10px; background: #FFF; font-size: 16px; color: #829b1d; }
+.outdoorIndexTab .hd .ispo { float: right; width:137px; height: 15px; margin-right: 10px; }
+/* 户外资讯、户外论剑 End */
+/* 人物专访、数据分析、公益爱心 Start */
+.interViewIndexTab { height: 116px; overflow: hidden; }
+/* 人物专访、数据分析、公益爱心 End */
+/* 户外装备、导购、装备体验、装备分享 Start */
+.guideIndexTab { height:540px; overflow: hidden; }
+.guideIndexTab .ft { height: 365px; overflow: hidden; }
+/* */
+.colBottomAd { text-align: center; margin: 0 5px; }
+.colBottomAd .txt { line-height: 27px; border-top: 1px dashed #d4d4d4; }
+.colBottomAd .txt .tit { color: #2a85e8; }
+.colBottomAd .pic { padding: 10px 0 5px; border-top: 1px solid #d4d4d4; }
+.colBottomAd .red { color: #e60012; }
+/* */
+.guideIndexTab .tiYan2 { background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -160px -1630px; margin-top: 10px; }
+.guideIndexTab .tiYan2 li { text-indent: 40px; }
+/* 户外装备、导购、装备体验、装备分享 End */
+/* 装备测评室、装备论坛 Start */
+.equiEvaTab { height:540px; overflow: hidden; }
+.equiEvaTab .ft { height: 365px; overflow: hidden; }
+.equiEvaTab .ft .picArt150 dd { padding-bottom: 6px; }
+/* 装备测评室、装备论坛 End */
+/* 登山攀岩专题 Start */
+.climProIndex { height: 195px; overflow: hidden; }
+.climProIndex .hd h2 { background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -173px -545px; }
+/* 登山攀岩专题 End */
+/* 山峰查询系统 Start */
+.mountainIndex { height: 240px; overflow: hidden; }
+.mountainIndex .hd h2 { background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat 8px -593px; }
+.mountainIndex .ft li { width: auto; text-indent: 0; }
+.mountainIndex .ft li a { padding: 2px 5px; white-space: nowrap; word-wrap: normal; }
+.mountainIndex .ft li a:hover { }
+.mountainIndex .artList12 li { height: 23px; line-height: 22px; display: inline; white-space: nowrap; }
+/* 山峰查询系统 End */
+/* 登山频道、登山论坛 Start */
+.climbingIndexTab { height: 446px; overflow: hidden; }
+.climbingIndexTab .ft { height: 372px; }
+.climbingIndexTab .hd .climbSpecial,
+.climbingIndexTab .hd .hillSpecial { float: left; display: inline; background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat scroll -5px -390px; width: 93px; text-align: center; color: #323232; font-weight: 700; }
+.climbingIndexTab .hd .climbSpecial:hover,
+.climbingIndexTab .hd .hillSpecial:hover { color: #5E5E5E; }
+/* 登山频道、登山论坛 End */
+/* 攀岩频道、攀岩论坛 Start */
+/* 攀岩频道、攀岩论坛 End */
+/* 铿锵玫瑰 Start */
+.roseIndex { height:231px; overflow: hidden; }
+.roseIndex .hd h2 { background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -162px -985px; }
+.roseIndex .ft { padding-top: 3px; }
+/* 铿锵玫瑰 End */
+/* 有奖活动 Start */
+.awardIndex { height: 147px; overflow: hidden; }
+.awardIndex .hd h2 { background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -162px -1025px; }
+/* 有奖活动 End */
+/* 论坛精华、品牌空间 Start */
+.actTab { height: 390px; overflow: hidden; }
+.shopSpaceTitTab { }
+.shopSpaceTitTab dl { margin-bottom: 10px; }
+.shopSpaceTitTab dl dt { float: left; display: inline; width: 56px; }
+.shopSpaceTitTab dl dt img { width: 48px; height: 48px; padding: 3px; border: 1px solid #CCC; }
+.shopSpaceTitTab dl dd { float: left; position: relative; border: 1px solid #CCCCCC; display: inline; height: 43px; line-height: 17px; margin-left: 10px; padding: 10px 5px 0; width: 270px; }
+.shopSpaceTitTab dl dd span { color: #6E8FB5; }
+.shopSpaceTitTab dl dd i { position: absolute; top: 10px; left: -6px; width: 6px; height: 9px; font-size: 0; line-height: 0; background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat 0 -1410px; }
+/* 论坛精华、品牌空间 End */
+/* 出行在线预订箱 Start */
+.onlineOrderIndex { height: 218px; overflow: hidden; }
+.onlineOrderIndex .hd h2 { background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -163px -1066px; }
+.onlineOrderIndex .artList12 li { text-indent: 20px; }
+.onlineOrderIndex .ju { background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -177px -1457px; }
+.onlineOrderIndex .shop { background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -175px -1427px; }
+.onlineOrderIndex .tiYan { background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -174px -1397px; }
+.onlineOrderIndex .tuan { background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -176px -1487px; }
+/* 出行在线预订箱 End */
+/* 保险、旅社 Start */
+.insureIndexTab { height: 195px; overflow: hidden; }
+.hotelList { }
+.hotelList li { float: left; height: 25px; line-height: 25px; }
+.hotelList li .left { float: left; text-indent: 10px; }
+.hotelList li .right { float: right; display: block; line-height: 18px; margin-top: 2px; border: 1px solid #4695eb; color: #4695eb; padding: 0px 2px; }
+.hotelList li .right:hover { }
+#sq-hotelTit { text-align: center; }
+#sq-hotelTit .country { color: #184e8a; padding-top: 25px; margin-bottom: 15px; }
+#sq-hotelTit .tel { padding-top: 40px; background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat 2px -1220px; margin-top: 10px; overflow: hidden; }
+/* 保险、旅社 End */
+/* 勇者先行 Start */
+.braveIndex { height: 195px; overflow: hidden; }
+.braveIndex .hd h2 { background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -168px -420px; }
+.picBrave { }
+.picBrave li { float: left; display: inline; width: 165px; margin-left: 8px; margin-bottom: 7px; padding-bottom: 7px; border-bottom: 1px dashed #CCC; }
+.picBrave li img { float: left; width: 40px; height: 40px; border: 1px solid #CCC; margin-right: 10px; box-shadow: 0 0 4px rgba(0, 0, 0, 0.30); }
+.picBrave li h3 { margin-bottom: 5px; }
+.picBrave li h3 a { color: #2A85E8; }
+.picBrave li p { height: 16px; line-height: 16px; overflow: hidden; font-size: 12px; }
+/* 勇者先行 End */
+/* 滑雪 Start */
+.skiingIndex { height: 195px; overflow: hidden; }
+.skiingIndex .hd h2 { background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -164px -376px; }
+/* 滑雪 End */
+/* 游记攻略 Start */
+.lineColIndex { height: 447px; overflow: hidden; }
+.lineColIndex .theFirstUl { border-bottom: 1px dashed #d4d4d4; margin-bottom: 7px; padding-bottom: 7px; }
+/* 游记攻略 End */
+/* 水上运动 Start */
+.waterSportIndex { height: 217px; overflow: hidden; }
+.waterSportIndex .hd h2 { background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -163px -1103px; }
+/* 水上运动 End */
+/* 骑行论坛 Start */
+.rideIndex { height: 150px; overflow: hidden; }
+.rideIndex .hd h2 { background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -163px -1135px; }
+/* 骑行论坛 End */
+/* 钓鱼论坛 Start */
+.fishIndex { height: 150px; overflow: hidden; }
+.fishIndex .hd h2 { background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -163px -1173px; }
+/* 钓鱼论坛 End */
+/* 户外知识 Start */
+.outdoorKnoIndex { height: 493px; overflow: hidden; }
+/* 户外知识 End */
+/* pic110 Start */
+.picArt110 { }
+.picArt110 li { float: left; display: inline; width: 112px; height: 120px; margin-left: 10px; }
+.picArt110 li img { width: 110px; height: 76px; border: 1px solid #CCC; margin-bottom: 3px; }
+.picArt110 li p { height: 32px; line-height: 16px; overflow: hidden; font-size: 12px; }
+/* pic110 End */
+/* pic45 Start */
+.picArt45 { }
+.picArt45 li { float: left; display: inline; width: 50px; height: 70px; margin-left: 8px; }
+.picArt45 li img { width: 45px; height: 45px; border: 1px solid #CCC; margin-bottom: 3px; box-shadow: 0 0 4px rgba(0, 0, 0, 0.30); }
+.picArt45 li p { height: 16px; line-height: 16px; overflow: hidden; font-size: 12px; }
+/* pic110 End */
+/* */
+.ft .halfArtIndex li { width: 180px; }
+/* */
+/* */
+.artDate360 { font-size: 12px; }
+.artDate360 li { float: left; height: 24px; line-height: 24px; width: 360px; background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -181px -683px; }
+.artDate360 li a.left { float: left; display: inline; width: 280px; height: 24px; text-indent: 20px; overflow: hidden; }
+.artDate360 span.right { float: right; display: inline; color: #6e8fb5; }
+/* */
+/* 排行 Start */
+.artRankIndex { height: 405px; overflow: hidden; }
+/* */
+.artDate300 { }
+.artDate300 li { float: left; height: 24px; line-height: 24px; width: 300px; background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -181px -683px; }
+.artDate300 li a.left { float: left; display: inline; height: 24px; text-indent: 20px; overflow: hidden; }
+.artDate300 span.right { float: right; display: inline; color: #6e8fb5; }
+/* 排行 End */
+/* Diy数据限制高 Start*/
+#lunJianPicDiy { height: 195px; overflow: hidden; }
+#tiYanDiy { height: 235px; overflow: hidden; }
+#cePingPicDiy { height: 290px; overflow: hidden; }
+/* Diy数据限制高 End*/
+/* 首页广告样式 Start */
+.l12 { width: 100px; height: 300px; float: left; position: fixed !important; top/**/: 130px; position: absolute; z-index: 1; top:expression(offsetParent.scrollTop+130);
+left: 0px; cursor: pointer; }
+.r12 { display: none; width: 40px; height: 360px; float: right; position: fixed !important; top/**/: 130px; position: absolute; z-index: 1; top:expression(offsetParent.scrollTop+130);
+right: 0px; cursor: pointer; }
+/* 首页广告样式 End */
+/* 门户首页 End */
+.ad_index_box { text-align: center; padding: 10px 0px 0px 0px; border-top: #ccc solid 1px; width: 357px; margin: auto; }
+.ad_index_box div { text-align: center; width: 350px; margin: auto; }
+/* 论坛推荐 Start */
+.forumBest { background: #FFFFFF; border: 1px solid #D4D4D4; box-shadow: 0 0 4px rgba(0, 0, 0, 0.2); }
+.forumBest .hd { height: 32px; line-height: 32px; background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) repeat-x 0 -490px; }
+.forumBest .hd h2 { text-indent: 35px; background: url(http://www.8264.com/template/8264/css/moban/index2013/images/icobg_1.1.png) no-repeat -160px -2191px; }
+.forumBest .ft { padding-bottom: 11px; }
+.pic_180x135 { margin-left: 2px; }
+.pic_180x135 li { position: relative; float: left; display: inline; width: 180px; height: 135px; margin-top: 9px; margin-left: 9px; }
+.pic_180x135 .pic { width: 180px; height: 135px; }
+.pic_180x135 .tit { position: absolute; left: 0; bottom: 0; width: 100%; height: 25px; line-height: 25px; background: #000; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)"; opacity: 0.7; FILTER: alpha(opacity=70); text-align: center; }
+.pic_180x135 .tit a { color: #FFF; }
+.pic_180x135 .tit a:hover { color: #FFF; text-decoration: underline; }
+/* 论坛推荐 End */
+/* 左侧数据图说 Start */
+.dataPicLeft { height: 160px; border: 1px solid #D4D4D4; overflow: hidden; box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2); background: #FFF;}
+/* 左侧数据图说 End */
+/* 线路攻略 Start*/
+.clear_b:after{content: ""; display: block; clear: both; visibility: hidden;}
+.clear_b{ zoom: 1;}
+.indexxllist{ width:100%;}
+.indexxllist li{ width:100%; margin:5px 0px 18px 0px;}
+.indexxllist li img{ width:120px; height:70px; float:left; margin:0px 10px 0px 15px;}
+.indexxllist li p{ margin:0px 10px 0px 0px; padding:0;}
+.indexxllist li p .xllistname{ display:block; height:50px; font-size:14px;}
+.indexxllist li p .info{ display:block;}
+.indexxllist li p .fenlei{ float:left;}
+.indexxllist li p .nyr{ float:right;}
+/* 线路攻略 End */
+
+.zbkicon{float: right; height: 15px; margin-right: 10px; display:inline; }

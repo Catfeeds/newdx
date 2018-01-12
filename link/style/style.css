@@ -1,0 +1,37 @@
+/* CSS Document */
+.top{ height:115px; background:url(../images/top.jpg) top center no-repeat;}
+
+
+/*上线后要的样式*/
+body{ background:#f1f1f1;}
+/*清除浮动开始*/
+.linktitle:after { content: ""; display: block; clear: both; visibility: hidden; }
+.linktitle { zoom: 1; }
+/*清除浮动结束*/
+.linkwarpten{ width:960px; margin:auto; font-family:"Microsoft YaHei",Tahoma,Helvetica,SimSun,sans-serif; color:#555;}
+.linktitle{ padding:20px 0px 10px 0px;}
+.linktitle b{ float:left; font-size:20px; text-indent:12px;}
+.linktitle span{ float:right;}
+.sm { border-bottom: #fff solid 1px; border-top: #D9E0D5 solid 1px; }
+.sm_n { border-top: #fff solid 1px; border-bottom: #D9E0D5 solid 1px; line-height: 1.5; font-size: 13px; padding: 10px 0px 10px 10px;}
+.sm_n b{ display:block; padding:10px 0px 0px 0px;}
+
+.bigtitle{ font-size:16px; padding:8px 0px; border-bottom:#CCC solid 1px; border-radius:3px; font-weight:bold; text-indent:12px; color:#6E8FB5; margin:10px 0px; }
+.linklist b{ display:block; margin:0px 10px 10px 0px; font-size:14px; text-indent:12px;}
+.linklist a{ display: inline-block; margin:0px 10px 10px 0px; font-size:14px; color:#555; text-decoration:none; text-indent:12px;}
+.linklist a:hover{  font-size:14px; color:#6E8FB5;  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

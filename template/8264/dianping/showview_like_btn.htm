@@ -1,0 +1,62 @@
+<div class="brand-vote">
+	<a href="javascript:void(0);" class="vote-item-link like">
+		<div class="pillar">
+			<div style="height: 60px;" class="pillar-bar"  id="likenum"><em>$likenum</em></div>
+		</div>
+		<span class="vote-btn" id="addlike">我喜欢</span>
+	</a>
+	<a href="javascript:void(0);" class="vote-item-link want">
+		<div class="pillar">
+			<div style="height: 15.8582px;" class="pillar-bar" id="wantnum"> <em>$wantnum</em>
+			</div>
+		</div>
+		<span class="vote-btn" id="wantuse">我想用</span>
+	</a>
+</div>
+<script>
+	(function($){
+		$(function(){
+			$('#addlike').click(function(){
+				if({$_G['uid']}==''){
+					alert('你需要登陆后才能表态');
+					window.location.href = 'http://www.8264.com/member.php?mod=logging&action=login';
+					return false;
+				}
+				var url = 'http://www.8264.com/dianping.php?mod=misc&act=comment&do=addlike&tid={$detail['tid']}';
+				$.post(url,{uid:'{$_G[uid]}',type:'likeit'},
+							function(data){
+								if(data=='-2'){
+									alert('你已经表态过了！');
+									return false;
+								}else if(data=='false'){
+									alert('操作错误！');
+									return false;
+								}else if(data){
+									$('#likenum').html('<em>'+data+'</em>');
+									$('#like_users').show();
+								}
+							});
+			});
+			$('#wantuse').click(function(){
+				if({$_G['uid']}==''){
+					alert('你需要登陆后才能表态');
+					window.location.href = 'http://www.8264.com/member.php?mod=logging&action=login';
+					return false;
+				}
+				var url = 'http://www.8264.com/dianping.php?mod=misc&act=comment&do=addlike&tid={$detail['tid']}';
+				$.post(url,{uid:'{$_G[uid]}',type:'wantuse'},
+							function(data){
+								if(data=='-2'){
+									alert('你已经表态过了！');
+									return false;
+								}else if(data=='false'){
+									alert('操作错误！');
+									return false;
+								}else if(data){
+									$('#wantnum').html('<em>'+data+'</em>');
+								}
+							});
+			});
+		});
+	})(jQuery);
+</script>

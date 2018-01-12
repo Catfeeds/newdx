@@ -1,0 +1,60 @@
+/* CSS Document */
+body { margin:0 0 0 0; font-size:12px; color:#585858; font-family: "Microsoft YaHei",Tahoma,Helvetica,SimSun,sans-serif;}
+li,ul{ list-style:none; margin:0px; letter-spacing:0; word-spacing:0; padding:0;}
+a{text-decoration:none; color:#585858; font-size:12px;}
+a:hover{text-decoration:none; color:#585858; font-size:12px;}
+em,i{ font-style:normal;}
+img{ border:0;}
+.clear_b:after{content: ""; display: block; clear: both; visibility: hidden;}
+.clear_b{ zoom: 1;}
+h1{ margin:0px; padding:0px;}
+/*天气公用头部开始*/
+.layout{ width:980px; margin:0 auto;}
+.bigtitle{ font-size:24px; padding-top:20px;}
+.bigtitle a{ font-size:14px; color:#ff6600; float:right; padding:7px 0px 0px 0px;}
+.dituimg{ width:100%; overflow:hidden; text-align:center; padding:20px 0px 40px 0px;}
+.dituimg img{ width:100%;}
+
+
+.liebiaotitle{ font-size:20px;  padding:15px 0px;}
+.liebiaotitle a{ font-size:14px; float:right; }
+
+.zbcitylist{}
+.zbcitylist a{ font-size:14px; color:#585858; float:left; margin:0px 20px 10px 0px; display:inline;}
+.mb40{ margin-bottom:40px;}
+
+
+
+.btitle{ font-size:24px; padding:20px 0px;}
+.btitle h1{ float:left; font-size:24px; margin:0px; padding:0px; font-weight:normal;}
+.btitle div{ float:right;}
+.btitle div a{ font-size:12px; margin:0px 0px 0px 10px;}
+.citylist{}
+.citylist a{ float:left; width:195px; font-size:14px; color:#fff; margin-bottom:10px;}
+
+
+/*切换城市列表开始*/
+.citylistbox{ width:900px; background:#fbfbfb; position: fixed; right:0px; top:0px; bottom:0px; overflow:hidden; opacity:0;  filter: alpha(opacity=0);  z-index:-111;}
+.minicity_content{ padding:0 50px; color:#555; font-size:14px; overflow-x:hidden; overflow-y:scroll;}
+.minicity_content a{ color:#555; font-size:14px; margin:0px 0px 0px 0px;}
+.citytitle{ height:70px; line-height:70px; font-size:24px; background:#5199c8 ;}
+.citytitle span{ float:left; height:70px; padding:0px 0px 0px 40px;}
+.citytitle i{ float:right; height:70px; width:70px; background:url(../images/close70.png) no-repeat; cursor:pointer;}
+.loacdcity{ border-bottom:1px solid #dddddd; padding:15px 0px 15px 0px;  overflow:hidden;}
+.loacdcity dt{ float:left; margin:0px; padding:0px; width:75px;}
+.loacdcity dd{ float:left; margin:0px; width:645px; padding:3px 0px 0px 0px;}
+.loacdcity dd a{ font-size:14px; margin:0px 12px 8px 0px; display: inline; white-space: nowrap; float:left;}
+.loacdcity.othercity dt a{ font-size:20px; color:#c8c8c8;}
+
+/*城市列表页面*/
+.citylistbody{ color:#555;}
+.citylistbody a{ color:#555;}
+.citylistpagy{ margin:25px 0px 0px 0px;}
+.citylistpagy a{ color:#555;}
+.citylistpagy dl{ width:100%; margin:0px 0px 15px 0px; padding:20px 0px 0px 0px; border-top:#dddddd solid 1px; height:90px; overflow:hidden;}
+.citylistpagy dt{ float:left; margin:0px; padding:0px 40px 0px 0px;}
+.citylistpagy dt a{ font-size:20px; font-weight:bold;}
+.citylistpagy dt a.morecity{ font-size:14px; text-align:center; display:block; padding:15px 0px 0px 0px; font-weight:normal;}
+.citylistpagy dd{ float:left; margin:0px; padding:3px 0px 0px 0px; overflow:hidden; width:1070px;}
+.citylistpagy dd a{ font-size:14px; margin:0px 0px 10px 0px; width:178px; float:left;}
+

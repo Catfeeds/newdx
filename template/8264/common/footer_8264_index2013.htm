@@ -1,0 +1,135 @@
+<!-- 顶部通栏设置下拉 Start -->
+<ul id="usersetup_menu" class="p_pop" style="display:none;">
+	<li>
+		<a href="home.php?mod=spacecp&ac=avatar" class="touxiang">{lang modify_avatar}</a>
+	</li>
+	<li>
+		<a href="home.php?mod=spacecp&ac=profile" class="ziliao">{lang personal_profile}</a>
+	</li>
+	<!--{if $_G['setting']['verify']['enabled'] || $_G['setting']['my_app_status'] && $_G['setting']['videophoto']}-->
+	<li>
+		<a href="{if $_G['setting']['verify']['enabled']}home.php?mod=spacecp&ac=profile&op=verify{else}home.php?mod=spacecp&ac=videophoto{/if}">{lang certification}</a>
+	</li>
+	<!--{/if}-->
+	<li>
+		<a href="home.php?mod=spacecp&ac=credit" class="jifen">{lang credits}</a>
+	</li>
+	<li>
+		<a href="home.php?mod=spacecp&ac=usergroup" class="yonghuzu" >{lang usergroup}</a>
+	</li>
+	<li>
+		<a href="home.php?mod=spacecp&ac=privacy" class="yinsishaixuan" >{lang privacy_filter}</a>
+	</li>
+	<!--{if $_G['setting'][sendmailday]}-->
+	<li>
+		<a href="home.php?mod=spacecp&ac=sendmail" class="youjiantixing">{lang mail_notifier}</a>
+	</li>
+	<!--{/if}-->
+	<li>
+		<a href="home.php?mod=spacecp&ac=profile&op=password" class="mimaanquan">{lang password_security}</a>
+	</li>
+	<!--{if !empty($_G['setting']['plugins']['spacecp'])}-->
+	<!--{loop $_G['setting']['plugins']['spacecp'] $id $module}-->
+	<!--{if !$module['adminid'] || ($module['adminid'] && $_G['adminid'] >
+	0 && $module['adminid'] >= $_G['adminid'])}-->
+	<li {if $_G[gp_id] == $id} class="a"{/if} >
+		<a href="home.php?mod=spacecp&ac=plugin&id=$id" {if  $id=='myrepeats:memcp'} class="majia"{elseif $id=='sina_xweibo:home_binding'}class="sina"{elseif $id}class="qq"{/if}>
+			<!--{if $id=='sina_xweibo:home_binding'}-->
+			新浪绑定
+			<!--{else}-->
+			$module[name]
+			<!--{/if}-->
+		</a>
+	</li>
+	<!--{/if}-->
+	<!--{/loop}-->
+	<!--{/if}-->
+</ul>
+<!-- 顶部通栏设置下拉 End -->
+<script type="text/javascript" src="static/js/jquery-1.6.1.min.js"></script>
+<!-- 底部注册人数调用 Start -->
+<script type="text/javascript">
+jQuery.noConflict();;
+(function($) {
+	$.getJSON("/plugin.php?id=api:counter_num", function(json) {
+		if (json != 0) {
+			$('#numAll').text(json['posts']);
+			$('#regNum').text(json['register_num']);
+			$('#yestNum').text(json['yesterday']);
+			$('#todayNum').text(json['todayposts']);
+		}
+	});
+})(jQuery);
+</script>
+<!-- 底部注册人数调用 End -->
+<!-- 原头部js Start -->
+<script type="text/javascript" src="{$_G[setting][jspath]}common.js?{VERHASH}"></script>
+<script type="text/javascript" src="{$_G[setting][jspath]}portal.js?{VERHASH}"></script>
+<!-- 原头部js End -->
+<script type="text/javascript" src="http://www.8264.com/template/8264/js/common.js"></script>
+<!--{if !$_G['setting']['bbclosed']}-->
+<!--{if $_G[uid] && !isset($_G['cookie']['checkpm'])}-->
+<script type="text/javascript" src="home.php?mod=spacecp&ac=pm&op=checknewpm&rand=$_G[timestamp]"></script>
+<!--{/if}-->
+<!--{if !isset($_G['cookie']['sendmail'])}-->
+<script type="text/javascript" src="home.php?mod=misc&ac=sendmail&rand=$_G[timestamp]"></script>
+<!--{/if}-->
+<!--{/if}-->
+<!--{if $_GET['diy'] == 'yes' && ($_G[mod] == 'topic' || $_G[group][allowdiy]) && (empty($do) || $do != 'index') && !empty($_G['style']['tplfile'])}-->
+<script type="text/javascript" src="{$_G[setting][jspath]}common_diy.js?{VERHASH}"></script>
+<script type="text/javascript" src="{$_G[setting][jspath]}portal_diy.js?{VERHASH}"></script>
+<!--{/if}-->
+<!--{if $_GET['diy'] == 'yes' && $space['self'] && $_G[mod] == 'space' && $do == 'index'}-->
+<script type="text/javascript" src="{$_G[setting][jspath]}common_diy.js?{VERHASH}"></script>
+<script type="text/javascript" src="{$_G[setting][jspath]}space_diy.js?{VERHASH}"></script>
+<!--{/if}-->
+<!--{eval output();}-->
+<script charset="gbk" src=" http://www.baidu.com/js/opensug.js"></script>
+
+<script type="text/javascript">
+jQuery.noConflict();;
+(function($) {
+	$(".top1 ul li:has(div.nav_xl)").hover(function() {
+		$(this).children("div.nav_xl").stop(true, true).show();
+	}, function() {
+		$(this).children("div.nav_xl").stop(true, true).hide();
+	});
+	<!--// 网站头部 下拉//-->
+	$(".top2 ul li:has(div.nav_xl)").hover(function() {
+		$(this).children("div.nav_xl").stop(true, true).show();
+	}, function() {
+		$(this).children("div.nav_xl").stop(true, true).hide();
+	});
+	<!--// 网站头部简版nav 下拉//-->	
+})(jQuery);
+<!-- baidu 搜索 Start --> 
+function g(formname) {
+	var url = "http://www.baidu.com/baidu";
+	if (formname.s[1].checked) {
+		formname.ct.value = "2097152";
+	} else {
+		formname.ct.value = "0";
+	}
+	formname.action = url;
+	return true;
+}
+<!-- baidu 搜索 End -->
+<!-- 头部论坛更多 Start --> 
+function showcityorz98() {
+	if (document.getElementById('cityorz98')) {
+		document.getElementById('cityorz98').style.display = '';
+	}
+}
+function hiddencityorz98() {
+	if (document.getElementById('cityorz98')) {
+		document.getElementById('cityorz98').style.display = 'none';
+	}
+}
+<!-- 头部论坛更多 End -->
+</script>
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F49299785f8cc72bacc96c9a5109227da' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+</html>

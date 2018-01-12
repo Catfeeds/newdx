@@ -1,0 +1,79 @@
+{subtemplate common/header}
+    <div class="tm_c" fwin="mods" style="width:420px;">
+        <h3 class="flb"><em fwin="mods">我用过这款装备
+</em> <span><a title="关闭" onclick="hideWindow('productadd')" class="flbc" href="javascript:;">关闭</a></span></h3>
+        
+            <div class="c">
+                <div class="tplw">
+                	<form onsubmit="return false;" action="" autocomplete="off" method="post" fwin="mods" id="product_select_form">
+                   	价&nbsp;&nbsp;&nbsp;格：<input id="facilityId" style="font-size:12px;"class="px" name="price" type="text" size="25"/>￥<br><br>
+                    </form>
+					<form method="post" autocomplete="off" id="product_select_message_form" action="">
+					<input type="hidden" name="formhash" value="{FORMHASH}" />
+					<input type="hidden" name="subject" value="" />
+					<label style="vertical-align:top;">点&nbsp;&nbsp;&nbsp;评：</label><textarea id="add" class="px" style="height:60px; font-size:12px;" name="message" rows="3" cols="60"></textarea><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#a9a8a8">(您可以分享装备在哪里购买的，以及您的使用感受和评价)</font>
+					<!--{if checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
+						<!--{block sectpl}--><sec> <span id="sec<hash>" onclick="showMenu(this.id)"><sec></span><div id="sec<hash>_menu" class="p_pop p_opt" style="display:none"><sec></div><!--{/block}-->
+						<div class="mtm sec"><!--{subtemplate common/seccheck}--></div>
+					<!--{/if}-->
+                   </form>
+                   
+                </div>
+                <p class="tip" style="color:#f00; display:none;">请正确填写您的价格！</p>
+                <p class="error" style="color:#f00; display:none;">请把信息填写完整！</p>
+            </div>
+            <div id="product_iframe_div" style="display:none;">
+                <iframe loading="1" id="product_iframe" name="product_iframe"></iframe>
+            </div>
+            <p class="o pns" style="text-align:center;">
+            <button type="button" value="提交" class="pn pnc" name="modsubmit" fwin="mods" style="margin:0;" onclick="javascript:submit_product_select_form();return false;"><span>提交</span></button>
+            </p>
+       
+       <script type="text/javascript">        
+        function submit_product_select_form() {	
+			var diping=trim(jQuery("#add").val());	
+			var price =parseInt(jQuery("#facilityId").val());	
+				
+			if(price!=""&&!isNaN(price)&&price<0){	
+		       jQuery('.tip').show();
+			   return false;
+			}			
+			if (diping==null||diping==""){
+				 jQuery('.tip').hide();
+			     jQuery('.error').show();
+				 return false;	
+			}	           
+			
+			try {
+				script = $('product_iframe').contentWindow.document.XMLDocument.text;
+			} catch(e) {
+				try {
+					script = $('product_iframe').contentWindow.document.documentElement.firstChild.wholeText;
+				} catch(e) {
+					try {
+						script = $('product_iframe').contentWindow.document.documentElement.firstChild.nodeValue;
+					} catch(e) {
+						script = '内部错误，无法显示此内容';
+					}
+				}
+			}
+         				
+			params = jQuery('#product_select_form').serialize();
+			params += '&message='+jQuery("#add").val();
+			
+            jQuery.ajax({
+                type: 'post',
+                url: '/plugin.php?id=brandusers:produceattention&op=new&type={$type}&tid={$tid}',
+                data: params,
+                success: function(html){					    		
+					jQuery('#product_select_message_form').attr('action', jQuery('#fastpostproduceform').attr('action').replace(/\&inajax\=1/g, '')+'&inajax=1').attr('target', 'product_iframe').submit();
+										
+					setTimeout(function(){window.location.reload();}, 500);                  
+                    //hideWindow('productadd');
+                }
+            });
+            return false;
+        }
+        </script>
+    </div>
+{subtemplate common/footer}

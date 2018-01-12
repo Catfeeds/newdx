@@ -1,0 +1,547 @@
+/* CSS Document */
+
+/*全局总体样式*/
+
+body { margin:0 0 0 0;font-size:12px; color:#333333; background:url(/template/8264/css/moban/indexnew/images/2011wrap_img.jpg) top center no-repeat; padding-top:61px;}
+
+ul{ list-style:none; margin:auto 0px;letter-spacing:0; word-spacing:0; padding:0;}
+
+a{text-decoration:none; color:#333333; font-size:14px;}
+
+a:hover{text-decoration:underline; color:#5c8b17; font-size:14px;}
+
+form{ padding:0 0 0 0; margin:0 0 0 0;}
+
+em{ font-style:normal;}
+
+.warpper{ width:960px; text-align:center; margin:0 auto; background:#FFFFFF;}
+
+li b{ font-weight: normal; color:#5c8b17; font-size:14px;}
+
+li span{ color:#5c8b17;}
+
+li span a{ color:#5c8b17;}
+
+li span a:hover{ color:#5c8b17;}
+
+.l12{ width:100px;height:300px; float:left; position:fixed !important; top/**/:130px; position:absolute; z-index:1; top:expression(offsetParent.scrollTop+130);left:0px; cursor:pointer;}
+
+.r12{DISPLAY: none; width:40px;height:360px; float:right; position:fixed !important; top/**/:130px; position:absolute; z-index:1; top:expression(offsetParent.scrollTop+130);right:0px; cursor:pointer;}
+
+/*新版 专题全部开始*/
+
+.zzrtitle{ width:182px; height:47px; background:url(/template/8264/css/moban/indexnew/images/index.png) -19px -176px no-repeat; position:relative;}
+
+.zzrtitle a{ width:182px; height:47px; display:block;}
+
+.zzrcon11{ width:180px; background:#e6f3e2; border:#ccc solid 1px; border-top:0;}
+
+.zzrcon11 li{ padding:0px 0px 0px 20px; width:160px; height:23px; text-align:left; background:url(/template/8264/css/moban/indexnew/images/index.png) -365px -380px no-repeat; line-height:23px; overflow:hidden;}
+
+.zzrcontitle{ width:15px; height:33px; position:absolute; top:13px; left:-15px; background:url(/template/8264/css/moban/indexnew/images/index.png) 0 -176px no-repeat;}
+
+.zzrcon{ width:170px; padding-left:10px; position:relative;}
+
+.zzrcon li{ padding:0px 0px 0px 10px; width:160px; height:23px; text-align:left; background:url(/template/8264/css/moban/indexnew/images/index.png) -375px -380px no-repeat; line-height:23px; overflow:hidden;}
+
+/*新版 专题全部结束*/
+
+.right1{ width:765px; float:right; border:#ccc solid 1px;}
+
+.right1top{ width:765px; margin:4px 0px 4px 0px;}
+
+.right1topleft{ width:375px; float:left; margin-left:2px;}
+
+.right1topright{ width:375px; float:right;}
+
+.right1bottom{ width:765px; background:#f4faec;}
+
+.right1bottom a{ font-size:12px; color:#333333; text-decoration:none;}
+
+.right1bottom a:hover{ font-size:12px; color:#686868;}
+
+.right1bottom li{ width:178px; float:left; text-align:left; height:20px; line-height:20px; overflow:hidden; margin:3px 2px 3px 8px!important; margin:3px 3px 3px 5px; border-bottom: #cccccc solid 1px; border-right:#cccccc solid 1px; padding-left:2px;}
+
+/*横条第二块样式*/
+
+.left2{ width:180px; float:left; border:#cccccc solid 1px;}
+
+.left2 a{ font-size:12px; color:#296b09; text-decoration:none;}
+
+.left2 a:hover{ font-size:12px; color:#686868;}
+
+.right2{ width:769px; float:right;}
+
+/*横条第三块样式*/
+
+.mid3{ width:960px; margin-top:10px;}
+
+/*left3*/
+
+.left3{ width:182px; float:left;}
+
+.left3 a{ font-size:12px;}
+
+.left3 a:hover{ font-size:12px;}
+
+.left3top{width:180px; border:#cccccc solid 1px;}
+
+.left3title{ width:150px; height:24px; line-height:24px; overflow:hidden; font-weight:bold; text-align:left; background:url(/template/8264/css/moban/indexnew/images/index.png) -355px -226px no-repeat #e6f2e1; padding-left:30px; color:#53792e;}
+
+.left3title a{color:#53792e;}
+
+.left3title a:hover{color:#53792e;}
+
+.left3con{ width:180px; border-bottom:#CCCCCC dashed 1px;}
+
+.left3con li{ display:inline; line-height:20px; float:left; margin-left:5px;}
+
+/*center3*/
+
+.searchbuttom{ width:67px; height:26px; background:url(/template/8264/css/moban/indexnew/images/index.png) 0 -102px no-repeat; border:0; cursor:pointer;}
+
+.searchtext{ width:117px; height:24px; border-top:#8c8c8c solid 1px; border-left:#8c8c8c solid 1px; border-bottom:#ccc solid 1px; border-right:0; background:#fff;}
+
+.center3{ width:377px; float:left; margin-left:11px;}
+
+.center3bottom{ width:375px; border:#a9b4a0 solid 1px; margin-top:6px;}
+
+.center3bottomtitle{ width:100%; border-bottom:#cccccc solid 1px; height:25px; line-height:25px; text-align:left; background:#f4faec;}
+
+.center3bottomlunbo{ width:375px; margin-top:8px; border-bottom:#ccc dashed 1px; padding-bottom:8px;}
+
+.center3bottomnewsall{ width:375px;}
+
+.center3bottomnews{ width:375px;}
+
+.center3bottomnews li{ width:365px; text-align:left; height:24px; line-height:24px; overflow:hidden; padding-left:10px; font-size:14px;}
+
+/*right3*/
+
+.right3{ width:377px; float:right;}
+
+.right3bottom{ width:375px; border:#cccccc solid 1px; margin-top:5px;}
+
+.right3bottom1{ width:375px; border:#bfbfbf solid 1px; padding-bottom:2px;}
+
+.right3bottomtitle{ width:377px; height:24px; color:#FFFFFF; margin:0px auto; text-align:left; font-weight:bold; background:url(/template/8264/css/moban/indexnew/images/index.png) 0px -784px no-repeat; }
+
+.right3bottomtitle li{ width:63px; margin-right:3px; text-align:center; float:left;}
+
+.right3bottomtitle .sheqian2 a{ float:left; width:63px; height:20px; padding-top:4px; background:url(/template/8264/css/moban/indexnew/images/index.png)    -317px -176px; font-size:12px; color:#366800;}
+
+.right3bottomtitle .sheqian2 a.active { float:left; width:63px; height:20px; padding-top:4px;  background:url(/template/8264/css/moban/indexnew/images/index.png) -250px -176px; font-size:12px; color:#366800;}
+
+.sheqianbody div.neirong{ display:none; }
+
+.sheqianbody div.active{ display:block;}
+
+.sheother{ width:47px; height:20px; padding-top:4px; float:left; text-align:right;}
+
+.sheother a{color:#366800; font-size:12px;}
+
+.sheother a:hover{color:#366800; font-size:12px;}
+
+.longtitlenew{ width:347px; height:25px; padding:5px 0px 0px 30px; color:#FFFFFF; margin:0px auto; text-align:left; background:url(/template/8264/css/moban/indexnew/images/index.png) 0 0 no-repeat; font-weight:bold; font-size:14px; }
+
+.longtitlenew a{ color:#fff;}
+
+.longtitlenew a:hover{ color:#fff;}
+
+.right3bottomtitle4{ width:377px; height:30px; color:#FFFFFF; margin:0px auto; text-align:left; background:url(/template/8264/css/moban/indexnew/images/index.png) 0 0 no-repeat; font-weight:bold; font-size:14px; }
+
+.right3bottomtitle4 li{ width:96px; text-align:center; float:left;}
+
+.right3bottomtitle4 .sheqian2 a{ float:left; width:96px; height:25px; padding-top:5px; background:url(/template/8264/css/moban/indexnew/images/index.png) -102px -32px no-repeat; font-size:14px; color:#fff;  text-decoration:none; }
+
+.right3bottomtitle4 .sheqian2 a.active { float:left; width:96px; height:25px; padding-top:5px; background:url(/template/8264/css/moban/indexnew/images/index.png) 0px -32px no-repeat; font-size:14px; color:#000;}
+
+.right3bottomcon{ width:375px; }
+
+.right3bottomcon li{ width:365px; text-align:left; height:27px; line-height:27px; overflow:hidden; padding-left:10px;}
+
+.right3bottomcon33{ width:340px; float:right; }
+
+.right3bottomcon33 li{ width:340px; text-align:left; height:24px; *height:19px!important; *height:19px; overflow:hidden;}
+
+.right3bottomcon33 a{ color:#333; font-size:12px;}
+
+.right3bottomcon33 a:hover{ color:#333; font-size:12px;}
+
+/*.right3bottomcon4{ width:375px; padding:7px 0px 7px 0px; border:#a9b4a0 solid 1px; border-top:0;}*/
+
+
+
+
+
+.right3bottomcon4{ width:375px; padding:5px 0px 4px 0px; border:#a9b4a0 solid 1px; border-top:0;}
+
+
+
+
+
+
+
+.right3bottomcon4 li{ width:365px; text-align:left; height:22px; padding-top:3px; overflow:hidden; padding-left:10px;}
+
+.bzns{ width:375px; padding:7px 0px 7px 0px; border:#a9b4a0 solid 1px; border-top:0;}
+
+.bzns li{ width:170px; float:left; height:24px; line-height:24px; overflow:hidden; text-align:left; padding-left:13px;}
+
+.bzns li a{ font-size:12px;}
+
+.bzns li a:hover{ font-size:12px;}
+
+.ppkj{ width:375px; padding-top:4px; border:#a9b4a0 solid 1px; border-top:0;}
+
+/*横条第四块样式*/
+
+.left4con{ width:180px;}
+
+.left4con a{ font-size:12px; color:#296b09; text-decoration:none;}
+
+.left4con a:hover{ font-size:12px; color:#686868;}
+
+.left4con li{ width:165px; text-align:left; height:23px; line-height:23px; *height:19px!important; *line-height:19px!important; *height:19px; *line-height:19px; overflow:hidden; padding-left:10px;}
+
+/*团购商城聚便宜*/
+
+.sjt{ width:180px; height:183px; border:#ccc solid 1px;  border-top:0; overflow:hidden}
+
+.tuango{ width:180px; height:173px; padding:5px 0px; border:#ccc solid 1px;  border-top:0; overflow:hidden;}
+
+.tuangodiy{ padding:5px;}
+
+.tuango img{ width:160px; height:102px; border:0;}
+
+.tuango span{ text-decoration:line-through;}
+
+.tuango b{ color:#ff6600; font-size:14px;}
+
+.tuangobutton{ width:121px; height:33px; margin:auto}
+
+.tuangobutton a{ width:121px; height:33px; background:url(/template/8264/css/moban/indexnew/images/index.png) -77px -99px no-repeat; display:block;}
+
+.scbiaoqian{ padding:0px 0px 0px 10px;}
+
+.scbiaoqian a{ float:left; padding:4px 5px 0px 0px; color:#296b09;  display:inline; white-space:nowrap;}
+
+.scbiaoqian b{ float:left; padding:4px 5px 0px 0px; color:#296b09;}
+
+.center4con{ width:375px;  padding:8px 0px 8px 0px; *padding:7px 0px 0px 0px;}
+
+.center4conleft{ width:80px; height:90px; float:left; margin:0px 3px 0px 5px}
+
+.center4conleft77{ width:132px; float:left; margin-left:4px; }
+
+.center4conleft77 a{ font-size:12px; color:#000000; text-decoration:none;}
+
+.center4conleft77 a:hover{ font-size:12px; color:#000000; text-decoration:none;}
+
+.center4conright77{ width:235px; float:right;}
+
+.center4conright77 li{ width:227px; text-align:left; height:25px; line-height:25px; overflow:hidden; padding-left:8px;}
+
+.center4conright77 li a{ font-size:12px;}
+
+.center4conright77 li a:hover{ font-size:12px;}
+
+/*头条链接*/
+
+.center4con2gray{ width:100%; border-top:#cccccc dashed 1px; background:url(/template/8264/css/moban/indexnew/images/index.png) 0px -811px no-repeat; height:30px; margin-top:4px;}
+
+.center4con2gray a{ font-size:12px; color:#000000;}
+
+.center4con2gray a:hover{ font-size:12px; color:#000000;}
+
+.center4con2gray li{ font-size:12px; text-align:left; float:left; height:20px; line-height:20px; display:inline; margin-left:8px; margin-top:5px; white-space:nowrap;}
+
+/*特殊样式*/
+
+.center4conleft88{ width:112px; float:left; margin:4px 0px 4px 10px; *margin:5px 4px 5px 5px;}
+
+.center4conleft88 a{ text-decoration:none; font-size:12px;}
+
+.center4conleft88 a:hover{ text-decoration:none; font-size:12px;}
+
+.center4conleft66{ width:112px; float:left; margin:11px 0px 0px 10px!important; margin:12px 4px 3px 5px; }
+
+.center4conleft66 a{ text-decoration:none; font-size:12px;}
+
+.center4conleft66 a:hover{ text-decoration:none; font-size:12px;}
+
+.lwen{ width:109px; text-align:left; line-height:1.5; padding-left:3px; background:#f7f7f7; margin-top:2px; overflow:hidden; height:37px;}
+
+.panyanwen{background:#f7f7f7; margin:2px 0px 5px 0px; width:124px; padding-left:8px; line-height:1.6; text-align:left; overflow:hidden; height:37px;}
+
+.luntan{ width:375px; padding:1px 0px 1px 0px;  *padding:4px 0px 1px 0px!important; *padding:7px 0px;}
+
+.luntan li{ width:170px; float:left; height:23px; line-height:23px; overflow:hidden; text-align:left; padding-left:13px;}
+
+.luntan li a{ font-size:12px;}
+
+.luntan li a:hover{ font-size:12px;}
+
+.bottom3{ width:958px; border:#cfdab8 solid 1px;}
+
+.bottom3 a{ color:#686868; font-size:12px;}
+
+.bottom3 a:hover{ font-size:12px; color:#5c8b17;}
+
+/**/
+
+.toutiao{ width:360px; height:100px; border:#ccc solid 1px; background:#ebf6e6; font-size:12px; line-height:1.8; margin:6px auto 7px auto; text-align:left;}
+
+.toutiao a{ font-size:12px;}
+
+.toutiao a:hover{ font-size:12px; color:#FF0000;}
+
+.toutiao span{ padding-left:7px;}
+
+.toutiao h1{ margin:0px 0px 0px 0px; text-align:center;}
+
+.toutiao h1 a{ font-family:"黑体"; color:#FF0000; font-size:18px; font-weight:normal; color:#ff0000; text-decoration:none;}
+
+.toutiao h1 a:hover{ font-family:"黑体"; color:#FF0000; font-size:18px; font-weight:normal; color:#ff0000; text-decoration:underline;}
+
+.brandlogo{ width:54px; float:left; margin:10px 3px 3px 3px!important; margin:9px 2px 0px 3px;}
+
+.brandlogo img{ width:46px; height:46px; border:0; padding:4px; background:url(/template/8264/css/moban/indexnew/images/index.png) -326px -32px no-repeat;}
+
+.brandlogoname{ width:100%; height:19px; overflow:hidden; line-height:1.5;}
+
+/*新开始*/
+
+.bltitle{ width:182px; height:24px; background:url(/template/8264/css/moban/indexnew/images/index.png) 0px -784px no-repeat;}
+
+.bltitle li{ width:58px; height:24px; float:left;}
+
+.bltitle .sheqian2 a{ float:left; width:58px; height:20px; padding:4px 0px 0px 0px; background:url(/template/8264/css/moban/indexnew/images/index.png) 0px -355px no-repeat; font-size:12px; color:#366800; font-weight:bold;}
+
+.bltitle .sheqian2 a.active { float:left; width:58px; height:20px; padding:4px 0px 0px 0px; background:url(/template/8264/css/moban/indexnew/images/index.png) -66px -355px no-repeat; font-size:12px; color:#366800; font-weight:bold;}
+
+.blcon{ width:180px; padding:5px 0px; border:#ccc solid 1px;  border-top:0;}
+
+.blcon1{ width:180px; height:150px; padding:10px 0px 0px 0px; border:#ccc solid 1px;  border-top:0; overflow:hidden;}
+
+.blcon1 li{ width:170px; text-align:left; height:25px; *height:22px; padding:0px 5px 0px 5px;}
+
+.blcon1 li span{ float:left; padding-top:2px;}
+
+.blcon1 li a{ color:#ff6600; text-decoration:none; padding:0px 1px 0px 1px!important; *padding:0px 0px 0px 0px!important; *padding:0px 1px 0px 1px; font-size:12px; border:#ff6600 solid 1px; float:right;}
+
+.blcon1 li a:hover{ color:#ff6600; text-decoration:none; padding:0px 1px 0px 1px!important; *padding:0px 0px 0px 0px!important; *padding:0px 1px 0px 1px; font-size:12px; border:#ff6600 solid 1px; float:right;}
+
+.submit { color:#000; cursor:pointer; letter-spacing:1px; line-height:12px; padding:4px 1px 0px 1px;}
+
+
+
+/*新加活动页*/
+
+.baoxiangall { border:1px solid #ccc; width:180px;}
+
+.baoxiangalltitle { background:url(/template/8264/css/moban/indexnew/images/index.png) -355px -226px no-repeat #e6f2e1; color:#53792E; font-weight:bold; height:24px; line-height:24px; overflow:hidden; padding-left:30px; text-align:left; width:150px;}
+
+.baoxiangalltitle b { float:left;}
+
+.baoxiangcon { padding:3px 0 8px; width:180px;}
+
+
+
+
+
+.baoxiangcon li { color:#333333; height:20px; line-height:20px; overflow:hidden; padding:4px 0px 0px 20px; width:155px; text-align:left;}
+
+
+
+.baoxiangcon li a {color:#5C8B17; font-size:12px;}
+
+.baoxiangcon li a:hover {color:#686868; text-decoration:none; font-size:12px;}
+
+
+
+.baoxiangcon li.ju{ background:url(/template/8264/css/moban/indexnew/images/index.png) -359px -309px no-repeat;}
+
+.baoxiangcon li.shop{ background:url(/template/8264/css/moban/indexnew/images/index.png) -359px -277px no-repeat;}
+
+.baoxiangcon li.ttyy{ background:url(/template/8264/css/moban/indexnew/images/index.png) -359px -251px no-repeat;}
+
+.baoxiangcon li.tuan{ background:url(/template/8264/css/moban/indexnew/images/index.png) -359px -341px no-repeat;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*改变成目的地关键字*/
+
+.baoxiangcon .words{ padding-left:10px; line-height:20px; text-align:left;}
+
+.words a{ color:#376800; padding:0px 10px 0px 0px;}
+
+.ad_l{margin:5px 0px 5px 0px; border:#a9b4a0 solid 1px;}
+
+.ad_l_{margin:0px 0px 5px 0px; border:#a9b4a0 solid 1px;}
+
+/*供求部分*/
+
+.gongqiu{ padding:2px 0px 0px 10px; width:170px; text-align:left; border:#ccc solid 1px;  border-top:0;}
+
+.gongqiu li{ padding:0px 0px 0px 10px; width:150px; height:23px; text-align:left; background:url(/template/8264/css/moban/indexnew/images/index.png) -375px -380px no-repeat; line-height:23px; overflow:hidden;}
+
+.gongqiu li a{ font-size:12px; color:#296b09; text-decoration:none;}
+
+.gongqiu li a:hover{ font-size:12px; color:#686868;}
+
+.brandlogoname a{font-size:12px;}
+
+.actlist{  width:375px; padding:4px 0px 0px 0px; border:#a9b4a0 solid 1px; border-top:0;}
+
+.actlist li{ width:355px; text-align:left; height:27px; line-height:27px; *height:23px!important; *line-height:23px!important; *height:23px; *line-height:23px; overflow:hidden; padding:0px 10px; }
+
+.actlist li a{ font-size:12px;}
+
+.actlist li a:hover{ font-size:12px;}
+
+.actlist em{ float:left;}
+
+.actlist span{ float:right;}
+
+/*底部排行榜*/
+
+.phbone_l{ width:312px; float:left; margin-right:12px;}
+
+.phbone_m{ width:312px; float:left;}
+
+.phbone_r{ width:312px; float:right;}
+
+.phbtitle{ width:282px;  background:url(/template/8264/css/moban/indexnew/images/index.png) 0px -65px no-repeat;  text-align:left; font-weight:bold; color:#fff; font-size:14px; font-weight:bold; color:#fff; height:25px; padding:5px 0px 0px 30px; }
+
+.phbcon{ width:310px; padding:10px 0px 0px 0px; border:#a9b4a0 solid 1px;}
+
+.phbcon li{ width:281px; padding-left:25px; height:25px; overflow:hidden; background:url(/template/8264/css/moban/indexnew/images/index.png) 8px -457px no-repeat}
+
+.phbcon a{ float:left; font-size:12px;}
+
+.phbcon a:hover{ font-size:12px;}
+
+.phbcon span{ float:right; color:#C03;}
+
+.phbcon em{ float:right; color:#999;}
+
+/*底部统计*/
+
+.tongji{ width:960px; height:43px; padding:7px 0px 0px 0px; background:#dcdcdc; margin-top:10px;}
+
+.tongji li{ padding:0px 10px 0px 10px; float:left;}
+
+.tongji li em{ height:34px; margin:0px 5px 0px 0px; float:left;}
+
+.tongji li em.bg1{ width:65px; background:url(/template/8264/css/moban/indexnew/images/index.png) -237px -407px no-repeat;}
+
+.tongji li em.bg2{ width:65px; background:url(/template/8264/css/moban/indexnew/images/index.png) -158px -407px no-repeat;}
+
+.tongji li em.bg3{ width:65px; background:url(/template/8264/css/moban/indexnew/images/index.png) -79px -407px no-repeat;}
+
+.tongji li em.bg4{ width:66px; background:url(/template/8264/css/moban/indexnew/images/index.png) 0px -407px no-repeat;}
+
+.tongji li em.bg5{ width:64px; background:url(/template/8264/css/moban/indexnew/images/index.png) -316px -407px no-repeat;}
+
+.tongji li span{ height:37px; padding:0px 0px 0px 6px; background:url(/template/8264/css/moban/indexnew/images/index.png) 0 -134px no-repeat; float:left; overflow:hidden; color:#000;}
+
+.tongji li b{ height:37px; width:6px; background:url(/template/8264/css/moban/indexnew/images/index.png) -223px -134px no-repeat; display:block; float:left;}
+
+.tongji li span p{ margin:-10px 0px 10px 0px; padding:0px 0px 10px 0px; font-size:24px; font-weight:bold; font-family:Arial, Helvetica, sans-serif;}
+
+.tongji li span th{ border-right:0;}
+
+.tongji li span.cl{ display:inline;}
+
+.tongji li span.tns table{ width:auto;}
+
+.warbox{ width:375px; border:#a9b4a0 solid 1px; border-top:0;}
+
+.kjall{ width:375px; padding:4px 0px 1px 0px; border:#a9b4a0 solid 1px; border-top:0; }
+
+.kjone{ width:350px; margin:6px auto 6px auto;}
+
+.kjoneimg{ width:48px; height:48px; border:#ccc solid 1px; padding:3px; float:left;}
+
+.kjoneimg img{ width:48px; border:0; height:48px;}
+
+.kjonearrow{ width:6px; padding:0px 0px 0px 7px; height:56px; background:url(/template/8264/css/moban/indexnew/images/index.png) 7px -247px no-repeat; float:left;}
+
+.kjonewen{ width:270px; height:49px; border:#ccc solid 1px; border-left:0; float:right; padding:5px 5px 0px 5px; line-height:1.8; overflow:hidden; text-align:left;}
+
+.kjonewen a{ font-size:12px;}
+
+.kjonewen a:hover{ font-size:12px;}
+
+.kjonewen span{ padding-left:5px; color:#5c8b17;}
+
+.tyone{ width:112px; float:left; margin:4px 0px 4px 10px; *margin:5px 4px 5px 5px;}
+
+.tyoneimg{ width:110px; height:76px; border:#ccc solid 1px; position:relative;}
+
+.tyoneimg img{ width:110px; height:76px; border:0;}
+
+.tyonename{  width:109px; text-align:left; line-height:1.5; padding-left:3px; background:#f7f7f7; margin-top:2px; overflow:hidden; height:37px; color:#F00;}
+
+.tyonename a{ font-size:12px; }
+
+.tyonename a:hover{ font-size:12px; }
+
+.tyba{ width:21px; height:120px; *height:117px!important; *height:117px; float:left; background:url(/template/8264/css/moban/indexnew/images/index.png) 0px -575px no-repeat; margin:0px 0px 0px 10px!important;  margin:0px 0px 0px 5px; }
+
+.tyba a{ width:21px; height:120px; *height:117px!important; *height:117px;}
+
+.shanfeng{ width:180px; height:137px; padding:5px 0px 5px 0px; overflow:hidden;}
+
+.shanfeng li{ height:18px; float:left; white-space:nowrap; display:inline; background:url(/template/8264/css/moban/indexnew/images/index.png) right -453px no-repeat; margin:3px 5px 2px 5px;}
+
+.shanfeng li a{ height:18px; background:url(/template/8264/css/moban/indexnew/images/index.png) 0px -386px no-repeat; float:left; padding:0px 0px 0px 5px; margin-right:3px; color:#fff;}
+
+/*首页左侧品牌*/
+
+.indexbrandcon1{ padding:5px 0px 1px 0px!important; padding:5px 0px 3px 0px; border:#ccc solid 1px; border-top:0;}
+
+.ceng{ width:26px; height:94px; position:absolute; top:-1px; left:-22px!important; left:-112px; background:url(/template/8264/css/moban/indexnew/images/index.png) right -488px no-repeat;}
+
+.ceng a{ width:26px; height:94px; display:block;}
+
+.indexbrandcon1 li{ width:165px; height:19px!important; height:16px; overflow:hidden; padding:5px 5px 0px 10px;}
+
+.indexbrandcon1 li img{ float:left; margin-right:8px;}
+
+.indexbrandcon1 li a{ float:left; font-size:12px;}
+
+.indexbrandcon1 li span{ float:right; color:#999;}
+
+/*导购*/
+
+.right3bottomtitle45{ width:377px; height:30px; color:#FFFFFF; margin:0px auto; text-align:left; background:url(/template/8264/css/moban/indexnew/images/index.png) 0 0 no-repeat; font-weight:bold; font-size:14px; }
+
+.right3bottomtitle45 li{ width:94px; text-align:center; float:left;}
+
+.right3bottomtitle45 .sheqian2 a{ float:left; width:94px; height:25px; padding-top:5px; background:url(/template/8264/css/moban/indexnew/images/index.png) -102px -32px no-repeat; font-size:14px; color:#fff;  text-decoration:none; }
+
+.right3bottomtitle45 .sheqian2 a.active { float:left; width:94px; height:25px; padding-top:5px; background:url(/template/8264/css/moban/indexnew/images/index.png) 0px -32px no-repeat; font-size:14px; color:#000;}

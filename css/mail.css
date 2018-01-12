@@ -1,0 +1,64 @@
+#fileview TR {
+	BACKGROUND: window
+}
+#fileview TD {
+	COLOR: windowtext; FONT-SIZE: 9pt; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#fileview TABLE {
+	BORDER-BOTTOM: buttonhighlight 0px solid; BORDER-LEFT: buttonshadow 0px solid; BORDER-RIGHT: buttonhighlight 0px solid; BORDER-TOP: buttonshadow 0px solid; MARGIN: 0px
+}
+#fileview THEAD TD {
+	BACKGROUND: buttonface; BORDER-BOTTOM: buttonshadow 1px solid; BORDER-LEFT: buttonhighlight 1px solid; BORDER-RIGHT: buttonshadow 1px solid; BORDER-TOP: buttonhighlight 1px solid; CURSOR: default; FONT-SIZE: 9pt; HEIGHT: 18px; PADDING-TOP: 0px
+}
+#fileview THEAD .arrow {
+	COLOR: black; FONT-FAMILY: webdings; FONT-SIZE: 10px; HEIGHT: 11px; MARGIN-BOTTOM: 2px; MARGIN-TOP: -3px; OVERFLOW: hidden; PADDING-BOTTOM: 2px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px; WIDTH: 10px
+}
+#searchResult TBODY TD {
+	BORDER-BOTTOM: 1px; BORDER-LEFT: 1px; BORDER-RIGHT: 1px; BORDER-TOP: 1px; CURSOR: default; FONT-SIZE: 9pt; HEIGHT: 20px; PADDING-BOTTOM: 1px; PADDING-LEFT: 1px; PADDING-RIGHT: 1px; PADDING-TOP: 1px
+}
+.selectItem {
+	BORDER-BOTTOM: gray 1px solid; FONT-SIZE: 9pt
+}
+.mailico {
+	PADDING-LEFT: 2px; PADDING-RIGHT: 2px; WIDTH: 36px
+}
+.flagico {
+	PADDING-LEFT: 2px; PADDING-RIGHT: 2px; WIDTH: 40px
+}
+.sentico {
+	OVERFLOW: hidden; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; WIDTH: 100px
+}
+.mailsize {
+	OVERFLOW: hidden; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; WIDTH: 50px
+}
+.subjectico {
+	OVERFLOW: hidden; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; WIDTH: 200px
+}
+.dateico {
+	OVERFLOW: hidden; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; WIDTH: 120px
+}
+.smallborder {
+	
+}
+#nav_site TABLE {
+	BACKGROUND: gray; COLOR: white; FONT-FAMILY: ms shell dlg; FONT-SIZE: 12px; FONT-WEIGHT: bold; HEIGHT: 18px; MARGIN: 0px; PADDING-BOTTOM: 3px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; PADDING-TOP: 3px
+}
+#addrg_site TABLE {
+	BACKGROUND: gray; COLOR: white; FONT-FAMILY: ms shell dlg; FONT-SIZE: 12px; HEIGHT: 18px; MARGIN: 0px; PADDING-BOTTOM: 3px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; PADDING-TOP: 3px
+}
+a:link {
+	font-size: 10pt;
+	color: #000000;
+}
+a:visited {
+	font-size: 10pt;
+	color: #333333;
+}
+a:hover {
+	font-size: 10pt;
+	color: #000000;
+	text-decoration: underline;
+}
+td {
+	font-size: 10pt;
+}

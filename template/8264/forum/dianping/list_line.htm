@@ -1,0 +1,367 @@
+<!--{subtemplate forum/dianping/header}-->
+<div class="linelayout980">
+	<!--筛选条开始-->
+	<div class="linefl">
+		<!--第一个条开始-->		
+		<div class="line_l_t_d">
+			<span class="qian_lx">线路类型</span>
+			<div class="line_con_gray clboth">
+				<a href="{$myurl}&act=showlist{if $order != 'heats' || $province || $city || $lTime}&order={$order}&lType=0&lTime={$lTime}&province={$province}&city={$city}&page=1{/if}"{if $lType==0} class="blue"{/if}>全部</a>
+				{loop $typelist $k $v}
+				<a href="{$myurl}&act=showlist&order={$order}&lType={$k}&lTime={$lTime}&province={$province}&city={$city}&page=1"{if $lType == $k} class="blue"{/if}>{$v["name"]}</a>
+				{/loop}
+			</div>
+		</div>
+		<!--第一个条结束-->
+		<!--第二个条开始-->
+		<div class="line_l_t_d">
+			<span class="qian_time">线路时长</span>
+			<div class="line_con_gray clboth">
+				<a href="{$myurl}&act=showlist{if $order != 'heats' || $province || $city ||$lType}&order={$order}&lType={$lType}&lTime=0&province={$province}&city={$city}&page=1{/if}"{if !$lTime} class="blue"{/if} rel="nofollow">全部</a>
+				{loop $timelist $k $v}
+				<a href="{$myurl}&act=showlist&order={$order}&lType={$lType}&lTime={$k}&province={$province}&city={$city}&page=1"{if $lTime == $k} class="blue"{/if} rel="nofollow">{$v["name"]}</a>
+				{/loop}
+			</div>
+		</div>
+		<!--第二个条结束-->
+		<!--第三个条开始-->
+		<div class="line_l_t_d" style="position:relative;z-index:10;">
+			<span class="qian_dy">经过地域</span>
+			<div class="line_con_gray clboth p_r div_region">
+				<span class="arrow_d"></span>
+				<a href="{$myurl}&act=showlist{if $order != 'heats' || $lTime ||$lType}&order={$order}&lType={$lType}&lTime={$lTime}&province=0&city=0&page=1{/if}"{if !$province} class="blue"{/if} rel="nofollow">全部</a>
+				{loop $regionSort $k $v}	
+				<a href="{$myurl}&act=showlist&order={$order}&lType={$lType}&lTime={$lTime}&province={$k}&city=0&page=1" value="{$k}" class="province {if $province == $k} blue{/if}" rel="nofollow">{$regionsList[$k]['cityname']}</a>
+				{/loop}
+			</div>
+			<span class="tc_dq clboth" style="z-index:10000;width:450px;">
+				{if $regionCity}
+					{loop $regionCity $key $value}
+					<span id='province_{$key}' class='div_city'>
+					{loop $cityList[$key] $k $v}
+					{if $value[$k]}
+					<a href="{$myurl}&act=showlist&order={$order}&lType={$lType}&lTime={$lTime}&province={$key}&city={$k}&page=1" class="city {if $city == $k} blue{/if}" rel="nofollow">{$v["name"]}</a>
+					{/if}
+					{/loop}
+					</span>
+					{/loop}
+				{else}
+					{loop $cityList $key $value}
+					<span id='province_{$key}' class='div_city'>
+					{loop $value $k $v}
+					<a href="{$myurl}&act=showlist&order={$order}&lType={$lType}&lTime={$lTime}&province={$key}&city={$k}&page=1" class="city {if $city == $k} blue{/if}" rel="nofollow">{$v["name"]}</a>
+					{/loop}
+					</span>
+					{/loop}
+				{/if}				
+			</span>
+		</div>
+		<!--第三个条结束-->		
+	</div>
+	<!--筛选条结束-->
+	<!--主体内容开始-->
+	<div class="clboth w980">
+		<!--左侧开始-->
+		<div class="line_l">
+			<!--筛选全部开始-->
+			<div class="sxwarpten clboth">
+				<div class="selectjg" id="search_condition">
+					<span class="name">{if ! $lType &&  ! $lTime && ! $province && ! $city}所有线路{/if}</span>				
+					{if $lType}<span class="option" name="lType">{$typelist[$lType]['name']}</span>{/if}
+					{if $lTime}<span class="option"  name="lTime">{$timelist[$lTime]['name']}</span>{/if}
+					{if $province}<span class="option" name="province">{$regionsList[$province]["cityname"]}</span>{/if}
+					{if $city}<span class="option" name="city">{$cityList[$province][$city]["name"]}</span>{/if}
+				</div>
+				<script type="text/javascript">
+				jQuery(document).ready(function() {
+					jQuery('#search_condition span.option').click(function(e) {
+						//http://www.8264.com/forum.php?ctl=line&act=showlist&order=lastpost&lType=0&lTime=169&province=450000&city=1558&page=1
+						var cancel_condition = jQuery(this).attr('name');
+						var url = '';
+						switch(cancel_condition) {
+							case 'lType' :
+								url = "{$myurl}&act=showlist&order={$order}&lType=0&lTime={$lTime}&province={$province}&city={$city}&page=1";
+								break;
+							case 'lTime' :
+								url = "{$myurl}&act=showlist&order={$order}&lType={$lType}&lTime=0&province={$province}&city={$city}&page=1";
+								break;
+							case 'province' :
+								url = "{$myurl}&act=showlist&order={$order}&lType={$lType}&lTime={$lTime}&province=0&city=0&page=1";
+								break;
+							case 'city' :
+								url = "{$myurl}&act=showlist&order={$order}&lType={$lType}&lTime={$lTime}&province={$province}&city=0&page=1";
+								break;
+						}
+
+						if(url) {
+							window.location.href = url;
+						}
+					});
+				});
+				</script>
+				<div class="hot_pf">					
+					<a href="{$myurl}&act=showlist&order=latest&lType={$lType}&lTime={$lTime}&province={$province}&city={$city}&page=1" class="{if $order=='latest'}latest{else}latest_g{/if}"></a>
+					<a href="{$myurl}&act=showlist&order=score&lType={$lType}&lTime={$lTime}&province={$province}&city={$city}&page=1" class="{if $order=='score'}pf{else}pf_g{/if}"></a>
+					<a href="{$myurl}&act=showlist&order=heats&lType={$lType}&lTime={$lTime}&province={$province}&city={$city}&page=1" class="{if $order=='heats'}hot{else}hot_g{/if}"></a>
+					<a href="{$myurl}&act=showlist{if $lTime || $province || $city}&order=lastpost&lType={$lType}&lTime={$lTime}&province={$province}&city={$city}&page=1{/if}" class="{if $order=='lastpost'}mr{else}mr_g{/if}"></a>
+				</div>
+			</div>
+			<!--筛选全部结束-->
+			<!--主体列表开始-->
+			<div class="line_con_new">
+				{if $list}
+				<ul>					
+					<!--单条循环开始-->
+					{loop $list $v}
+					<li>
+						<a href="{$myurl}&act=showlist&order=lastpost&lType={$v[type]}&lTime=0&province={$v[province]}&city=0&page=1" class="biaoqian">
+							<span class="g_b">{$v[typename_area]}</span>
+							<span class="white">{$v[typename_category]}</span>
+						</a>
+						<div class="title570">
+							<h2><a class="title14_b" target="_blank" title="{$v[name]}" href="{$myurl}&act=showview&tid={$v[tid]}">{$v[name]}</a></h2>
+							{if $v[cityids]}
+							{eval $tempCross = array();}							
+							<span class="jgdy">经过地域：
+							{eval foreach ($v[cityids] as $key=>$val):}
+							<label style="display:none;">{$onlycity[$key][name]}</label>
+							{eval $tempCross[] = '<a href="'.$myurl.'&act=showlist&order=lastpost&lType=0&lTime=0&province='.$val.'&city='.$key.'&page=1">'.$onlycity[$key][name].'</a>';}
+							{eval endforeach;}
+							{echo implode(" -- ", $tempCross);}
+							</span>								
+							{/if}
+							<div class="starbox_new">
+								<span class="star">
+									{eval for ($i = 0; $i < 5; $i++):}
+									<span class="{if $i < $v['score']/2}{if $v['score']/2-$i<1}halfstar2{else}redstar2{/if}{else}graystar2{/if}"></span>
+									{eval endfor;}
+								</span>
+								<span class="orange">{if $v['score'] < 10}{$v['score']}{else}{echo intval($v['score']);}{/if}</span>
+								<a href="{$myurl}&act=showview&tid={$v[tid]}" class="gary12" target="_blank">（{$v[replies]}人参与点评）</a>
+							</div>
+						</div>
+					</li>								
+					{/loop}
+					<!--单条循环结束-->
+				</ul>
+				{else}
+				<div style="text-align:center;">暂没有{$modname}信息</div>
+				{/if}
+				<div class="pageBox">{$multipage}</div>
+			</div>
+			<!--主体列表结束-->
+		</div>
+		<!--左侧结束-->
+		<!--右侧开始-->
+		<div class="line_r">			
+			<!--搜索开始-->			
+			<!--<form method="GET" autocomplete="off" action="/forum.php">
+			<div class="search_260 clboth mb15" style="z-index:1;">
+				<input type="hidden" name="ctl" value="{$modstr}" />
+				<input type="hidden" name="act" value="showlist" />
+				<input type="text" name="key" value="{$gp_key}" class="input220 searchBox"/>
+				<label {if $gp_key}style="display:none;"{/if} class="searchBox">请输入路线经过区域...</label>
+				<input name="" type="submit" class="search28_27" value=" " />
+			</div>	
+			</form>-->
+			<!--搜索结束-->
+			<!--发布按钮开始-->
+			<div class="line_fb mb15">
+				{if $_G['uid']}
+				<a href="{$myurl}&act=dopost&do=new" target="_blank"></a>
+				{else}
+				<a onclick="showWindow('login', 'member.php?mod=logging&action=login&guestmessage=yes')" target="_blank"></a>
+				{/if}				
+			</div>
+			<!--发布按钮结束-->
+
+			<!--右侧list1结束-->
+			{if $provinceLine}		
+			<div class="r_list mb15">
+				<h4 class="r_title_h4">同省{$modname}</h4>				
+				<ul id="tdqli">				
+					{loop $provinceLine $v}
+					<li >						
+						<p>
+							<a href="{$myurl}&act=showview&tid={$v[tid]}" title="{$v['name']}" target="_blank" class="t_c_s">{$v['subject']}</a>
+							<div class="title570 starbox_new">
+								<span class="star">
+									{eval for ($i = 0; $i < 5; $i++):}
+									<span class="{if $i < $v['score']/2}{if $v['score']/2-$i<1}halfstar2{else}redstar2{/if}{else}graystar2{/if}"></span>
+									{eval endfor;}
+								</span>
+								<span class="orange">{if $v['score'] < 10}{$v['score']}{else}{echo intval($v['score']);}{/if}</span>
+								<a href="{$myurl}&act=showview&tid={$v[tid]}" class="gary12" target="_blank">（{$v[replies]}人参与点评）</a>
+							</div>
+						</p>
+					</li>
+					{/loop}			
+				</ul>
+			</div>		
+			{/if}
+			<!--右侧list1结束-->
+			<!--首页右侧list开始-->
+			{if $jcdpList}
+			<div class="r_list mb15 r_list_without_b">
+				<h4 class="r_title_h4" style="margin-bottom:4px;">精彩点评</h4>				
+				<ul>
+					{loop $jcdpList $v}					
+					<li>
+						<div class="r_nr">
+							<div class="arr"></div>
+							<a href="home.php?mod=space&uid={$v['authorid']}" class="name" target="_blank">{$v[author]}：</a><a href="{$myurl}&act=showview&tid={$v['tid']}" target="_blank">{$v[message]}</a>
+						</div>
+						<div class="r_pl">评论于：<a href="{$myurl}&act=showview&tid={$v['tid']}" target="_blank" title="{$titleList[$v[tid]][subject]}">{$titleList[$v[tid]][subject]}</a></div>
+					</li>					
+					{/loop}					
+				</ul>			
+			</div>
+			{/if}
+			<!--首页右侧list结束-->
+
+			<!--contact us start-->
+			<div class="r_list mb15 r_list_without_b contUs">
+				<h4 class="r_title_h4">联系我们</h4>				
+				<ul>
+					<li>QQ： {lang contact_us_with_qq}</li>
+					<li>论坛ID: {lang contact_us_with_id}</li>
+				</ul>			
+			</div>
+			<!--contact us end-->
+		</div>
+		<!--右侧结束-->
+	</div>
+	<!--主体内容结束-->
+</div>
+
+<div class="share_bd_warpten">
+	<ul class="bbs_share_sc">
+		<li class="ps_re" id="share">
+			<a href="javascript:;" class="share"></a>
+			<div class="bdsharebuttonbox share_bd" data-tag="share_1">
+				<a href="javascript:;" class="sina" data-cmd="tsina"></a>
+				<a href="javascript:;" class="qq" data-cmd="qzone"></a>
+				<a href="javascript:;" class="wb" data-cmd="tqq"></a>
+				<a href="javascript:;" class="wx" data-cmd="weixin"></a>
+			</div>
+		</li>
+		<li><a href="http://www.8264.com/xianlu" class="bbsli" title="返回线路首页"></a></li>
+		<li id="gotop_50"><a style="display: none;" href="javascript:;" class="gotop_50"></a></li>
+	</ul>
+</div>
+<script>
+window._bd_share_config = {
+	common : {
+		//此处放置通用设置
+	},
+	share : [
+		//此处放置分享按钮设置
+		{"tag" : "share_1", "bdSize" : 32}	
+	]
+}
+with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+(function($){
+	var ww=$(window).width();
+	var s_bd_r=Math.max((ww-980)/2-60,0);
+	$(".share_bd_warpten").css("right",s_bd_r);
+	
+	if($(window).scrollTop() > 10){$("#gotop_50 a").show();}	
+	$(window).scroll( function(){
+		if($(window).scrollTop()>10){
+			$("#gotop_50 a").show();
+		}else{
+			$("#gotop_50 a").hide();	
+		}
+	});
+	$("#gotop_50").click(function(){ 
+		$("html,body").animate({ scrollTop: 0 },500);
+	});	
+	$("#share").hover(
+		function () {
+		$(".share_bd",this).show();
+		},
+		function () {
+		$(".share_bd",this).hide();
+		}
+	);
+})(jQuery);
+</script>
+
+
+
+
+<script type="text/javascript">
+var ie6=false;
+if(/msie/.test(navigator.userAgent.toLowerCase()) && 'undefined' == typeof(document.body.style.maxHeight)){
+	ie6=true;
+}
+</script>
+<script type="text/javascript">	
+jQuery(document).ready(function($) {		
+	var tc_dq_maxW  = $(".tc_dq").width();
+	var maxW   	= $(".tc_dq").parent().width();
+	$('.province').hover(function(){
+		$(".tc_dq").hide();
+		$(".div_city").hide();	
+		clearTimeout(window.subbox_show);
+		var catid = $(this).attr("value");
+		if ($("#province_"+catid).length > 0) {
+			$("#province_"+catid).show();
+			$(".tc_dq").show();
+		}		
+		$(".tc_dq").css({"width":"auto"});
+		var tc_dqW = $(".tc_dq").width() + 1;
+		tc_dqW = tc_dqW > tc_dq_maxW ? tc_dq_maxW : tc_dqW;
+		$(".tc_dq").css({"width":tc_dqW});
+		var left   = $(this).position().left + Math.floor($(this).width() / 2) - Math.floor(tc_dq_maxW / 4) + (tc_dq_maxW - tc_dqW) / 2;
+		left       = left < 0 ? 0 : left;
+		left       = left + Math.floor(tc_dqW / 4) * 5 > maxW ? maxW - tc_dqW - 22 : left;
+		$(".tc_dq").css({"top":$(this).position().top+24,'left':left+"px"});
+	},function(){
+		window.subbox_show=setTimeout(function(){$(".tc_dq").hide();$(".div_city").hide();},300);
+	});
+	$('.tc_dq').hover(function(){	
+		clearTimeout(window.subbox_show);
+	},function(){
+		window.subbox_show=setTimeout(function(){$(".tc_dq").hide();$(".div_city").hide();},300);
+	});	
+
+	//下拉菜单展开缩起
+	
+	var anum = $(".line_con_gray>a").size();
+	if(anum>17){
+		$(".line_con_gray").delegate(".arrow_d","click",function(){
+			$(this).removeClass("arrow_d").addClass("arrow_u");						
+			$(this).parent().animate({
+				height: 55
+			}, 300);				
+		});
+		$(".line_con_gray").delegate(".arrow_u","click",function(){
+			$(this).removeClass("arrow_u").addClass("arrow_d");
+			$(this).parent().animate({
+				height: 30
+			}, 300);
+		});
+	}else{
+		$(".arrow_u").hide();
+		$(".arrow_d").hide();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	$(".searchBox").click(function(){
+		$("label.searchBox").hide();
+		$("input.searchBox").focus();
+	});	
+});		
+</script>
+<!--{subtemplate forum/dianping/footer}-->

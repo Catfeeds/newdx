@@ -1,0 +1,123 @@
+<?php foreach($messages as $msg) : ?>
+	<li id="pmlist_<?php echo $msg['touid'] ? $msg['touid'] : $msg['pmid'];  ?>">
+		<?php if($msg['msgfromid']) : ?>
+		<a href="home.php?mod=space&uid=<?php echo $msg['msgfromid']; ?>" class="tx"><?php echo avatar($msg['msgfromid'], 'small'); ?>
+			<?php if($msg['new']) : ?><i class="wd"> </i> <?php endif; ?>
+		</a>
+		<?php else : ?>
+		<a href="javascript:;" class="tx">
+			<img src="http://static.8264.com/static/image/common/systempm.png" alt="systempm" />
+			<?php if($msg['new']) :?><i class="wd"> </i><?php endif;?>
+		</a>
+		<?php endif; ?>
+		<div>
+			<span class="graydb"><?php echo dgmdate($msg['dateline'], 'u'); ?></span>
+			<span class="fl blueall">
+				<?php if($msg['msgfromid']) : ?>
+					<a href="home.php?mod=space&uid=<?php echo $msg['msgfromid']; ?>" class="name"><?php echo $msg['msgfrom']; ?></a>
+				<?php endif; ?>
+				<span><?php echo $msg['message']; ?></span>
+				<?php if($msg['touid']) : ?>
+				<a href="home.php?mod=space&do=pm&subop=view&pmid=<?php echo $msg['pmid'] . "&touid={$msg['touid']}&daterange={$msg['daterange']}"; ?>#f_pst">
+					查看</a>
+				<?php else : ?>
+				<a href="home.php?mod=space&do=pm&subop=view&pmid=<?php echo $msg['pmid']; echo $msg['new'] ? '&new=1' : '';?>&ajax=1" class="ajax_get_detail">
+					查看</a>
+				<?php endif; ?>
+			</span>
+			<span class="fr">
+				<a href="home.php?mod=space&do=notice&type=smessage&action=delete&folder=inbox&<?php echo $msg['touid'] ? "deluid={$msg['touid']}" : "pmid={$msg['pmid']}";
+				echo $msg['new'] ? '&new=1' : '';?>"
+					class="remove_smessage" title="<?php echo lang('home/template', 'delete'); ?>">
+					<?php echo lang('home/template', 'delete'); ?></a>
+			</span>
+		</div>
+	</li>
+<?php endforeach; ?>
+<?php if($messages) : ?>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	jQuery("a.ajax_get_detail").click(function() {
+		var href = jQuery(this).attr('href');
+		var src = jQuery(this);
+		jQuery.get(href, function(data) {
+			src.hide().prev('span').html(data);
+			if(href.indexOf('new') > 0) {
+				var sm_num = (parseInt(jQuery('em.smessage_number').text()) > 0) ? (parseInt(jQuery('em.smessage_number').text())- 1) : '';
+				jQuery('em.smessage_number').text(sm_num);
+				src.parents('li:first').find('i.wd').remove();
+				var delete_a = src.parent('span').next('span').children('a');
+				delete_a.attr('href', delete_a.attr('href').replace(/new\s*[-=]?\s*1/gi, ''));
+				if(jQuery('#usermessagetips span.newimg').text() != '99+') {
+					var tol_num = (parseInt(jQuery('#usermessagetips span.newimg').text()) > 0) ? (parseInt(jQuery('#usermessagetips span.newimg').text()) - 1) : '';
+					jQuery('#usermessagetips span.newimg').html(tol_num +'<i></i>');
+				}
+			}
+		});
+		return false;
+	});
+
+	var totalPage = 1;
+	var curPage = 1;
+	if(jQuery('span.mulitpage').length == 1) {
+		if(jQuery('span.mulitpage strong').length == 1) {
+			curPage = parseInt(jQuery('span.mulitpage strong').text());
+		}
+		if(jQuery('span.mulitpage *:last').prop("tagName") != 'STRONG') {
+			totalPage = parseInt(jQuery('span.mulitpage a[class!=nxt]:last').text().replace(/[^0-9]/gi, ''));
+		}
+		else {
+			totalPage = curPage;
+		}
+	}
+	var pageCount = <?php echo count($messages); ?>;
+	jQuery('a.remove_smessage').click(function() {
+			var sure = dconfirm('忽略消息', '确定忽略消息吗？', function(src) {
+				if(! src) return;
+				src = jQuery(src);
+				var url = src.attr('href');
+				if(! url) return false;
+				jQuery.get(url, function(data) {
+					if(data == 'success') {
+						var li = src.parents('li:first');
+						var ul = li.parents('ul:first');
+						if(li.length == 1) {
+							if(url.indexOf('new') > 0) {
+								var sm_num = (parseInt(jQuery('em.smessage_number').text()) > 0) ? (parseInt(jQuery('em.smessage_number').text())- 1) : '';
+								if(sm_num > 0) {
+									jQuery('em.smessage_number').text(sm_num);
+								}
+								else {
+									jQuery('em.smessage_number').remove();
+								}
+								if(jQuery('#usermessagetips span.newimg').text() != '99+') {
+									var tol_num = (parseInt(jQuery('#usermessagetips span.newimg').text()) > 0) ? (parseInt(jQuery('#usermessagetips span.newimg').text()) - 1) : '';
+									jQuery('#usermessagetips span.newimg').html(tol_num +'<i></i>');
+								}
+							}
+							li.remove();
+							showDialog("<p>删除成功</p>", 'notice', '','' , 0, '', '', '', '', 2);
+						}
+						pageCount--;
+						if(pageCount == 0) {
+							if(totalPage == 1) {
+								ul.html('<li id="more_tips_new" style="text-align:center;"><div style="font-size:14px; text-align:center; padding:10px 0px;"><img src="http://static.8264.com/static/images/no_new_notice.png"/><span style="padding-top:10px; display:block;"><p>您当前没有 <em>短消息</em> 可以显示</p></span></div></li>');
+							}
+							else {
+								var page = curPage < totalPage ? curPage : (totalPage - 1);
+								window.location.href = "home.php?mod=space&do=notice&type=smessage&action=show&page=" + page + "&refresh=" + new Date().getTime();
+								return;
+							}
+						}
+					}
+					else {
+						alert('删除出错, 麻烦报告我们, 我们将会立即处理!');
+					}
+				});
+			}, this);
+			return false;
+	});
+
+});
+</script>
+<?php endif; ?>

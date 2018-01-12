@@ -1,0 +1,178 @@
+/* 新版头部样式开始 */
+/* Clear Start */
+.clear { clear: both; display: block; overflow: hidden; visibility: hidden; width: 0; height: 0; }
+.clearfix:before, .clearfix:after { content: '.'; display: block; overflow: hidden; visibility: hidden; font-size: 0; line-height: 0; width: 0; height: 0; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+/* Clear End */
+.layout { margin: 0 auto; width: 960px; }
+.footerNav:after,
+.layout:after { content: ""; display: block; clear: both; visibility: hidden; }
+.footerNav,
+.layout { zoom: 1; }
+.fl,
+.layout .fl { float: left; display: inline; }
+.fr,
+.layout .fr { float: right; display: inline; }
+
+
+.wp{ width:auto;}
+.nav960{ width:960px; margin:auto;}
+.nav960 a { font-family:"Microsoft Yahei", "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti; font-size:12px;}
+/* 头部黑条开始 */
+.top1{ height:24px; width:100%; padding:5px 0;background:url(http://static.8264.com/static/images/moban/1024newslw/images/nav_bg.png) 0 0 repeat-x; z-index:10000;}
+.top1_l { float:left; display:inline;}
+.top1_l .top1_la { font-size:12px; color:#ccc; text-decoration:none; display:block; float:left; margin-right:10px; padding:5px 10px 5px 5px;background:url(http://static.8264.com/static/images/moban/1024newslw/images/newnav_bg.png) right -47px no-repeat;}
+.top1_l .top1_la:hover { font-size:12px;text-decoration:none; display:block; float:left; margin-right:10px; padding:5px 10px 5px 5px; color:#fff;background:url(http://static.8264.com/static/images/moban/1024newslw/images/newnav_bg.png) right 12px no-repeat;}
+
+.top1_l li { float:left; position:relative; z-index:100;}
+.top1_lxl { border:1px solid #ddd; width:103px; background:#fff; position:absolute; top:25px; left:0; display:none; padding:5px 5px 0px 5px;}
+.top1_lxl a { height:20px; padding:5px 0; text-align:center; display:block; margin-bottom:5px; text-decoration:none; color:#fff;}
+.top1_lxl a:hover { text-decoration:none; color:#fff;}
+.top1_lxl a.red { background:#e31f21 url(http://static.8264.com/static/images/moban/1024newslw/images/newnav_bg.png) -103px -78px no-repeat;}
+.top1_lxl a.lan { background:#04a3f5 url(http://static.8264.com/static/images/moban/1024newslw/images/newnav_bg.png) -103px -78px no-repeat;}
+.top1_lxl a.lv { background:#81b930 url(http://static.8264.com/static/images/moban/1024newslw/images/newnav_bg.png) -103px -78px no-repeat;}
+.top1_lxl a.huang { background:#f7c200 url(http://static.8264.com/static/images/moban/1024newslw/images/newnav_bg.png) -103px -78px no-repeat;}
+/*8264项目结束*/
+.top1_l .hzwz a { background:#999999}
+.top1_l .hzwz a:hover { background:#05a6f8}
+/* 合作网站结束*/
+.top1_l .sjb a{ background:#999999 url(http://static.8264.com/static/images/moban/1024newslw/images/newnav_bg.png) no-repeat;padding-left:10px;}
+.top1_l .sjb a:hover { padding-left:10px;}
+.top1_l .sjb .ip {background-position:-186px -105px; }
+.top1_l .sjb .ip:hover {background:#ccc url(http://static.8264.com/static/images/moban/1024newslw/images/newnav_bg.png) -186px -105px no-repeat;}
+.top1_l .sjb .andr {background-position:-186px -160px;}
+.top1_l .sjb .andr:hover{background:#81b930 url(http://static.8264.com/static/images/moban/1024newslw/images/newnav_bg.png) -186px -160px no-repeat;}
+.top1_l .sjb .lvt{background-position:-186px -224px;}
+.top1_l .sjb .lvt:hover{ background:#feb31f url(http://static.8264.com/static/images/moban/1024newslw/images/newnav_bg.png) -186px -224px no-repeat;}
+/* 手机版结束 */
+/* top1_l 结束   */
+.top1_r { float:right; margin-top:3px; }
+.top1_r a { font-size:12px; color:#ccc; text-decoration:none; padding:0px 5px 0px 5px; margin-right:5px;}
+.top1_r a:hover { font-size:12px; color:#fff; text-decoration:none;}
+.top1_r .new{ padding-left:15px; background:no-repeat;}
+.top1_r strong .vwmy{ padding-left:25px; background:url(http://static.8264.com/static/images/moban/1024newslw/images/newnav_bg.png) -189px -285px no-repeat;}
+.top1_r .showmenu { padding-right:5px; padding-left:10px; background:url(http://static.8264.com/static/images/moban/1024newslw/images/newnav_bg.png) -159px -351px no-repeat;}
+ul#usersetup_menu.p_pop{ background:#fff; border:1px solid #ccc; width:100px; padding:5px 5px 0px 5px;}
+ul#usersetup_menu.p_pop li { width:100px; height:30px; margin-bottom:5px; display:block;}
+ul#usersetup_menu.p_pop li a { background:url(http://static.8264.com/static/images/moban/1024newslw/images/newnav_bg.png) no-repeat #989898; color:#FFF; text-align:center; padding:5px 0 5px 10px; display:block; height:20px; }
+ul#usersetup_menu.p_pop li a:hover { background:url(http://static.8264.com/static/images/moban/1024newslw/images/newnav_bg.png) no-repeat #05a6f8; text-align:center; padding:5px 0 5px 10px; display:block; height:20px;}
+
+ul#usersetup_menu.p_pop li a.touxian{ background-position:5px 6px; }
+ul#usersetup_menu.p_pop li a.touxian:hover{ background-position:5px 6px; }
+ul#usersetup_menu.p_pop li a.ziliao{ background-position:5px -43px; }
+ul#usersetup_menu.p_pop li a.ziliao:hover{ background-position:5px -43px; }
+ul#usersetup_menu.p_pop li a.jifen{ background-position:5px -94px; }
+ul#usersetup_menu.p_pop li a.jifen:hover{ background-position:5px -94px; }
+ul#usersetup_menu.p_pop li a.yonghuzu{ background-position:5px -154px; }
+ul#usersetup_menu.p_pop li a.yonghuzu:hover{ background-position:5px -154px; }
+ul#usersetup_menu.p_pop li a.yinsishaixuan{ background-position:5px -280px; }
+ul#usersetup_menu.p_pop li a.yinsishaixuan:hover{ background-position:5px -280px; }
+ul#usersetup_menu.p_pop li a.youjiantixing{ background-position:-106px -11px;}
+ul#usersetup_menu.p_pop li a.youjiantixing:hover{ background-position:-106px -11px;}
+ul#usersetup_menu.p_pop li a.mimaanquan{ background-position:5px -217px;}
+ul#usersetup_menu.p_pop li a.mimaanquan:hover{ background-position:5px -217px;}
+ul#usersetup_menu.p_pop li a.majia{background-position:5px -336px;}
+ul#usersetup_menu.p_pop li a.majia:hover{background-position:5px -336px;}
+ul#usersetup_menu.p_pop li a.qq{background-position:5px -399px;}
+ul#usersetup_menu.p_pop li a.qq:hover{background-position:5px -399px;}
+ul#usersetup_menu.p_pop li a.sina{background-position:5px -468px;}
+ul#usersetup_menu.p_pop li a.sina:hover{background-position:5px -468px;}
+/* 设置结束 */
+.top1_r #myprompt{background:url(http://static.8264.com/static/images/moban/1024newslw/images/newnav_bg.png) -188px -405px no-repeat; padding-left:20px;}
+.top1_r #pm_ntc{background:url(http://static.8264.com/static/images/moban/1024newslw/images/newnav_bg.png) -193px -462px no-repeat; padding-left:20px;}
+.top1_r a.log_qq{background:url(http://static.8264.com/static/images/moban/1024newslw/images/newnav_bg.png) 0px -528px no-repeat; width:57px; height:21px; display:block; padding:2px 0 0 23px; float:right;}
+.top1_r a.log_qq:hover{background:url(http://static.8264.com/static/images/moban/1024newslw/images/newnav_bg.png) 0px -575px no-repeat;width:57px; height:21px; display:block; float:right;padding:2px 0 0 23px}
+.top1_r a.log_wb{background:url(http://static.8264.com/static/images/moban/1024newslw/images/newnav_bg.png) 0px -624px no-repeat; width:57px; height:21px; display:block; padding:2px 0 0 23px; float:right;}
+.top1_r a.log_wb:hover{background:url(http://static.8264.com/static/images/moban/1024newslw/images/newnav_bg.png) 0px -678px no-repeat;width:57px; height:21px; display:block; float:right;padding:2px 0 0 23px}
+/* top1_r 结束*/
+/* top1 结束*/
+
+/* 简版头 样式开始 */
+.top2{ width:100%;padding-top:1px;background:url(http://static.8264.com/static/images/moban/1024newslw/images/nav_bg.png) 0 -33px repeat-x; height:80px;}
+.top2_l { float:left; margin-right:30px;}
+.top2_r { float:left; padding-top:25px; font-family:微软雅黑,Arial,Helvetica,sans-serif;}
+.top2_r ul li { float:left; position:relative; z-index:10;}
+.top2_r ul li a { font-size:18px; text-decoration:none; color:#999; margin:0 20px; background:url(http://static.8264.com/static/images/moban/1024newslw/images/nav_bg.png) right -158px no-repeat; *+background:url(http://static.8264.com/static/images/moban/1024newslw/images/nav_bg.png) right -162px no-repeat; _background:url(http://static.8264.com/static/images/moban/1024newslw/images/nav_bg.png) right -158px no-repeat; padding-right:20px; display:inline;}
+
+.top2_r ul li a:hover { font-size:18px; text-decoration:none; color:#2a85e8; margin:0 20px; background:url(http://static.8264.com/static/images/moban/1024newslw/images/nav_bg.png) right -193px no-repeat; *+background:url(http://static.8264.com/static/images/moban/1024newslw/images/nav_bg.png) right -197px no-repeat; _background:url(http://static.8264.com/static/images/moban/1024newslw/images/nav_bg.png) right -192px no-repeat;padding-right:20px;display:inline;}
+
+
+.top2_r ul li .nav_xl { position:absolute; z-index:10;left:20px; top:27px; background:#fff; border:1px solid #CCC;overflow:hidden; display:none;}
+.top2_r ul li .nav_xl .zx{ width:115px; padding-left:6px; _padding:0; _padding-bottom:5px;}
+.top2_r ul li .nav_xl .zx a { font-size:12px; color:#999; display:block; float:left; background:none; padding:0; margin:5px;}
+.top2_r ul li .nav_xl .zx a:hover { font-size:12px; color:#2a85e8; display:block; float:left; background:none; padding:0; margin:5px; text-decoration:underline;}
+.top2_r ul li .nav_xl .sy{ width:53px;  padding-left:6px; _padding:0;}
+.top2_r ul li .nav_xl .sy a { font-size:12px; color:#999; display:block; float:left; background:none; padding:0; margin:5px;}
+.top2_r ul li .nav_xl .sy a:hover { font-size:12px; color:#2a85e8; display:block; float:left; background:none; padding:0; margin:5px; text-decoration:underline;}
+.top2_r ul li .nav_xl .cx{ width:130px;  padding-left:6px;  _padding:0;_padding-bottom:5px;}
+.top2_r ul li .nav_xl .cx a { font-size:12px; color:#999; display:block; float:left; background:none; padding:0; margin:5px;}
+.top2_r ul li .nav_xl .cx a:hover { font-size:12px; color:#2a85e8; display:block; float:left; background:none; padding:0; margin:5px; text-decoration:underline;}
+.top2_r ul li .nav_xl .zb{ width:60px;  padding-left:8px;  _padding:0;_padding-bottom:5px;}
+.top2_r ul li .nav_xl .zb a { font-size:12px; color:#999; display:block; float:left; background:none; padding:0; margin:5px;}
+.top2_r ul li .nav_xl .zb a:hover { font-size:12px; color:#2a85e8; display:block; float:left; background:none; padding:0; margin:5px; text-decoration:underline;}
+.top2_r ul li .nav_xl .sq{ width:53px;  padding-left:6px;  _padding:0;}
+.top2_r ul li .nav_xl .sq a { font-size:12px; color:#999; display:block; float:left; background:none; padding:0; margin:5px;}
+.top2_r ul li .nav_xl .sq a:hover { font-size:12px; color:#2a85e8; display:block; float:left; background:none; padding:0; margin:5px; text-decoration:underline;}
+/* 简版头样式 结束  */
+/* 新版头部样式结束 */
+
+
+/* 旧尾部样式开始 */
+.bottom { border-top: #666 solid 2px; margin: 3px 0px 0px 0px; width: 100%; background: #f1f1f1; text-align: center; font-size:12px; font-family:"宋体"; margin-top:10px;}
+.bottomcon { width: 960px; margin: 15px auto; line-height: 2; text-align: center; }
+.bottomcon a:hover { color: #333; }
+.bottom2 { line-height: 2; margin: 15px auto; text-align: center; width: 960px; }
+/* 旧尾部样式结束 */
+
+
+/* 新尾部样式开始 */
+.footer { background: #f9f8f8 url(http://static.8264.com/static/images/moban/index2013/images/bg_bottom_top.png) repeat-x top center; padding-top: 15px; font-size:12px; color:#7b7b7b; margin-top:20px;font-family: "Microsoft YaHei", Tahoma, Helvetica, SimSun, sans-serif;}
+.footer p { font-size:12px; line-height:1.8; margin:0;color: #7b7b7b;}
+.footer a { text-decoration: none; color:#7b7b7b; font-size:12px;}
+.footer a:hover { text-decoration: none; color: #2a85e8; }
+/* */
+.counterOut { height: 50px; border-bottom: 1px solid #d4d4d4; margin-bottom: 15px; }
+.footerCounter dl { float: left; display: inline; margin-right: 70px; height: 50px; padding-left: 50px; background-image: url(http://static.8264.com/static/images/moban/index2013/images/icobg_1.1.png); background-repeat: no-repeat; background-position: -170px -790px; }
+.footerCounter .all { background-position: -140px -790px; margin-left: 105px; }
+.footerCounter .people { background-position: -140px -730px; }
+.footerCounter .yesterday { background-position: -140px -850px; }
+.footerCounter .today { background-position: -140px -910px; padding-left: 60px; }
+.footerCounter dl dt { color: #000; }
+.footerCounter dl dd { font-size: 22px; line-height: 20px; color: #184e8a; }
+/* */
+.footerNav { margin-bottom: 15px; }
+.footerNav dl { float: left; display: inline; padding-right:10px; margin-right:35px; border-right: 1px solid #d4d4d4; }
+.footerNav dl dt { font-size: 14px; color: #000; margin-bottom: 5px; }
+.footerNav dl dd { line-height: 19px; }
+.footerNav dl dd li { float: left; display: inline; margin-right: 12px; white-space: nowrap; }
+.footerNav dl dd a { }
+.footerNav .news { width: 210px; }
+.footerNav .business { width:80px; }
+.footerNav .travel { width: 140px; }
+.footerNav .equi { width: 60px; }
+.footerNav .inter { width: 60px; }
+.footerNav .appArea { float: right; display: inline; width: 160px; margin:18px 0px 0px 0px; }
+.footerNav .appArea .appIco { background: #e4e4e4; width: 150px; height: 40px; border-radius: 5px; }
+.footerNav .appArea .appIco li { float: left; display: inline; margin-top: 6px; margin-left: 6px; }
+.appIco .mobile,
+.appIco .apple,
+.appIco .android,
+.appIco .lvTu { display: block; width: 30px; height: 30px; overflow: hidden; background-image: url(http://static.8264.com/static/images/moban/index2013/images/icobg_1.1.png); background-repeat: no-repeat; background-position: -10px -640px; text-indent: -9999px; overflow: hidden; }
+.appIco .mobile { background-position: -6px -640px; }
+.appIco .apple { background-position: -50px -640px; }
+.appIco .android { background-position: -10px -690px; }
+.appIco .lvTu { background-position: -50px -690px; }
+.footerNav .appArea .share { margin-top: 10px; }
+.footerNav .appArea .share span { float: left; display: inline; line-height: 26px; }
+.footerNav .appArea .share #bdshare { float: left; display: inline; width: 110px; height: 20px; overflow: hidden; }
+.bds_tools a { padding-left:20px;}
+/* */
+.footer .friendLink { border-bottom: 1px solid #d4d4d4; padding:0 0 15px 0; margin-bottom: 15px; line-height: 22px; }
+/* */
+.footer .copyRight { line-height: 22px; padding-bottom: 20px;}
+.footer .copyRight .goToTop { display: inline-block; background: url(http://static.8264.com/static/images/moban/index2013/images/icobg_1.1.png) no-repeat; width: 10px; height: 10px; text-indent: -9999px; overflow: hidden; vertical-align: middle; }
+
+/* 尾部样式结束 */
+
+

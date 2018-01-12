@@ -1,0 +1,34 @@
+{if $comments}
+<ul>
+<!--{loop $comments[$forum_post[pid]] $comment}-->	
+<li id="comments_{$comment['id']}">
+                  <div class="reply-misc-main">
+                      <a href="home.php?mod=space&uid={$comment['authorid']}" class="author-face" c="1">		
+                          {$comment['avatar']}
+                          {$comment['author']}
+                      </a>
+                      <span class="reply-cont">{echo cutstr($comment['comment'],30,'')}</span>
+                  </div>
+              
+</li>				
+  <!--{if !empty($comment['replyComment'])}-->
+      <!--{loop $comment['replyComment'] $reply}-->
+
+       <li id="comments_{$reply['id']}">
+                  <div class="reply-misc-main">
+                      <a href="home.php?mod=space&uid={$comment['authorid']}" class="author-face" c="1">		
+                          {$reply['avatar']}
+                          {$reply['author']}
+                      </a>
+                      <span class="reply-cont"></span>
+                      <span class="reply-date">{$reply['dateline']}</span>
+                  </div>
+              
+        </li>
+      <!--{/loop}-->
+  <!--{/if}-->
+<!--{/loop}-->
+</ul>
+{$multipage}
+{/if}
+<!--{eval output();}-->

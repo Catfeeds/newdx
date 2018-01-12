@@ -1,0 +1,67 @@
+<!--{template common/servers/comment/comment_style}-->
+<div class="newcomment cid_{$comment[cid]}">
+	<div class="bm_h cl">
+		<a href="javascript:;" name="postcomment_{$comment[cid]}">最新评论</a>
+	</div>
+	<div class="commentlist">
+		<!--{if $commentlist}-->
+		<ul>
+		<!--{loop $commentlist $cm}-->
+			<dt>
+				<div class="userheader">
+					<a class="xi2 xw1" target="_blank" c="1" href="{$_G[config][web][home]space-uid-{$cm[authorid]}.html">
+						{$cm[avatar]}
+					</a>
+				</div>
+				<div class="usercomment">
+					<div>
+						<span style="float:left">
+						<a class="xi2 xw1" href="{$_G[config][web][home]}space-uid-{$cm[authorid]}.html" target="_blank">{$cm[author]}</a>
+						<span class="xg1 xw0">{$cm[time]}</span>
+						</span>
+						<span class="y xw0 xi2" style="float:right;">
+						<a class="quote_topic" href="javascript:;">引用</a>
+						<a target="_blank" href="{$_G[config][web][forum]}forum.php?mod=post&action=edit&tid={$comment[tid]}&pid={$cm[pid]}">编辑</a>
+						</span>
+						<div style="clear:both"></div>
+					</div>
+					<div>
+					{$cm[message]}
+					</div>
+				</div>
+				<div style="clear:both"></div>
+			</dt>
+		<!--{/loop}-->
+		</ul>
+		<div class="commentinfo">
+			<span><a target="_blank" href="forum.php?mod=viewthread&tid={$comment[tid]}">查看全部评论({$commentcount})</a></span>
+			<!--{if $multi}-->
+			{$multi}
+			<div style="clear:both;"></div>
+			<!--{/if}-->
+		</div>
+		<!--{else}-->
+			<p>当前没有评论者，来做第一个评论者吧！</p>
+		<!--{/if}-->
+	</div>
+	<div class="commentreply">
+		<p id="postreturn_{$comment[tid]}"></p>
+		<form id="commentform_{$comment[tid]}" onsubmit="return comment_validate(this ,'{$comment[tid]}', '{$comment[cid]}');" name="replyform_{$comment[tid]}" autocomplete="off" action="forum.php?mod=post&infloat=yes&action=reply&fid={$commentfid}&extra=&tid={$comment[tid]}&replysubmit=yes&handlekey=fastpost&inajax=1" method="post">
+		<div class="tedt">
+			<div class="area">
+				<textarea name="message" rows="3" title="请输入您的评论" class="pt" id="message_{$comment[tid]}" onkeydown="ctrlEnter(event, 'commentsubmit_btn');"></textarea>
+			</div>
+		</div>
+		<p class="ptn">
+			<button type="submit" name="commentsubmit_btn" id="postsubmit_{$comment[tid]}" value="true" class="pn"><strong> 评 论 </strong></button>
+		</p>
+		<input id="formhash" type="hidden" value="$_G['formhash']" name="formhash" fwin="reply"/>
+		<input type="hidden" value="reply" name="handlekey"/>
+		<input type="hidden" value="" name="noticeauthor"/>
+		<input type="hidden" value="" name="subject"/>
+		<input type="hidden" value="" name="noticetrimstr"/>
+		<input type="hidden" value="" name="noticeauthormsg"/>
+		<input type="hidden" value="" name="portal_referer"/>
+		</form>
+	</div>
+</div>

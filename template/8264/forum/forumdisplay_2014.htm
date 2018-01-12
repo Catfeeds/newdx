@@ -1,0 +1,525 @@
+<!--{subtemplate common/header_8264_new}-->
+<link href="http://static.8264.com/static/css/forum/forum_forumdisplay.css?{VERHASH}" rel="stylesheet" type="text/css">
+<link href="http://static.8264.com/static/css/common/style.css?{VERHASH}" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="http://static.8264.com/static/js/common/forumdisplay.js?{VERHASH}"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($){
+	var body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
+	var go_top=0;
+<!--{if $_G['gp_typeid'] || $_G['gp_sortid'] || $filter || $_G['gp_digest'] || $_G['gp_orderby'] == 'dateline'}-->
+	go_top=$("#threadlist").position().top;
+<!--{/if}-->
+<!--{if $page>1}-->
+	go_top=$("#threadlist_top").position().top;
+<!--{/if}-->
+	go_top&&body.animate({scrollTop:go_top},0);
+});
+</script>
+
+<div class="header">
+	<div class="layout">
+		<style>
+			.dsad{ position:absolute; left:168px; top:18px;}
+			.dsad1{ position:absolute; left:432px; top:18px;}
+		</style>
+		<div class="dsad"><!--{ad/custom_252}--></div>
+		<div class="dsad1"><!--{ad/custom_322}--></div>
+		<div class="icoHill">山</div>
+		<div class="headerL">
+			<!--{if $_G['forum']['extra']['localname']}-->
+			<div class="whereIs" style="display: none;">{$_G['forum']['extra']['localname']}</div>
+			<!--{/if}-->
+			<!--{if $_G['gp_typeid']}-->
+			<h5><span class="country"><a href="{$forumnameurl}">{$_G['forum']['name']}</a></span></h5>
+			<!--{else}-->
+			<h1><span class="country"><a href="{$forumnameurl}">{$_G['forum']['name']}</a></span></h1>
+			<!--{/if}-->
+			<div class="site">
+				<a href="{$_G['config']['web']['portal']}" title="{lang homepage}" id="fjump"{if $_G['setting']['forumjump'] == 1} onmouseover="showMenu({'ctrlid':this.id})"{/if}>{lang homepage}</a>
+				$navigation
+				<!--{if $thistypefatherid > 0}-->
+				 <em>&rsaquo;</em> <a href="{$_G[forum][threadtypes][url][$thistypefatherid]}">{$_G['forum']['threadtypes']['types'][$thistypefatherid]}</a>
+				<!--{if $_G['gp_typeid'] > 0 && $_G['gp_typeid'] != $thistypefatherid}-->
+				 <em>&rsaquo;</em> <a href="{$_G[forum][threadtypes][url][$_G['gp_typeid']]}">{$_G['forum']['threadtypes']['childtypes'][$thistypefatherid][$_G['gp_typeid']]}</a>
+				<!--{/if}-->
+				<!--{/if}-->
+			</div>
+		</div>
+		<div class="headerR">
+			<div class="bbsNumCount">
+				<div class="numBox">
+					<p class="num">{$_G['forum']['threads']}</p>
+					<p class="day">主题</p>
+				</div>
+				<div class="numBox">
+					<p class="num">{$_G['forum']['todayposts']}</p>
+					<p class="day">今日</p>
+				</div>
+			</div>
+		</div>
+		<!--{subtemplate common/fastnavigation}-->
+	</div>
+</div>
+<!--{if $_G['forum']['ismoderator']}-->
+<script type="text/javascript" src="http://static.8264.com/static/js/forum_moderate.js?{VERHASH}"></script>
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/forum/forum_moderator.css?{VERHASH}" />
+<!--{/if}-->
+
+
+<!--//头部广告//-->
+<div style="padding:0px 0px 0px 0px; width:980px; margin:0 auto;">
+<!--{ad/custom_374}-->
+</div>
+<div class="layout mt10" style=" position:relative">
+<!--{ad/custom_486}-->
+</div>
+<!--{if $_GET['typeid']==1080}-->
+<div class="layout mt10" style=" position:relative">
+<!--{ad/custom_418}-->
+<span style="width:26px; height:13px; position:absolute; bottom:0px; right:0px; font-size:0px; line-height:0px;"><img src="http://static.8264.com/static/images/common/ad_logo_update_IAB.gif"></span>
+</div>
+<!--{/if}-->
+<!-- 文字广告 -->
+<div class="layout mt10">
+	<!--{ad/text/layout}-->
+</div>
+
+
+<div class="layout mt10" style=" position:relative; ">
+<!--{ad/custom_476}-->
+</div>
+
+
+
+
+
+<style id="diy_style" type="text/css"></style>
+<!--//通栏广告//-->
+
+<div class="wp"></div>
+
+<!--{if ($_G['cookie']['widthauto']==2)}-->
+<link rel="stylesheet" href="http://static.8264.com/static/plugin/produce/css/style.css" />
+<div id="goTop"><a href="#" class="cursor" onclick="javascript:void(0)"></a></div>
+<script type="text/javascript" src="http://static.8264.com/static/plugin/produce/js/jQuery-gotop.js"></script>
+<script type="text/javascript">jQuery('#goTop').goTop();</script>
+<!--{/if}-->
+
+<div class="layout mt10" style="display:none;">
+	<div class="list_forum_explain">
+		<h3>
+			<div class="bt">本版必读</div>
+<div class="bdsharebuttonbox" style="display:none;">
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina"></a>
+	<a href="#" class="bds_qzone" data-cmd="qzone"></a>
+	<a href="#" class="bds_tqq" data-cmd="tqq"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin"></a>
+	<a class="bds_count" data-cmd="count" style="display: none;"></a>
+</div>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};
+with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<style type="text/css">
+.bdsharebuttonbox{float:right; padding-left:10px; *margin-top:-37px;}
+.bdsharebuttonbox a,.bdsharebuttonbox a:hover{ float:left!important;  margin-top:6px!important;}
+a.bds_more,a.bds_more:hover{ margin-right:0px!important; }
+</style>
+
+			<!--{if $_G['forum']['ismoderator']}-->
+			<!--{if $_G['forum']['modworks']}-->
+			<!--{if $modnum}--><a href="forum.php?mod=modcp&action=moderate&op=threads&fid=$_G[fid]" target="_blank">{lang mod_works_modpost_existence}</a><!--{/if}-->
+			<!--{if $modusernum}--><a href="forum.php?mod=modcp&action=moderate&op=members&fid=$_G[fid]" target="_blank">{lang mod_works_moduser_existence}</a><!--{/if}-->
+			<!--{/if}-->
+			<!--{hook/forumdisplay_modlink}-->
+			<!--{if !$_G['gp_archiveid']}-->
+			<strong><!--{if $_G['forum']['status'] != 3}--><a href="forum.php?mod=modcp&fid=$_G[fid]">{lang modcp}</a><!--{else}--><a href="forum.php?mod=group&action=manage&fid=$_G[fid]">{lang modcp}</a><!--{/if}--></strong>
+			<!--{/if}-->
+			<!--{if $_G['forum']['recyclebin']}-->
+			<a href="{if $_G['adminid'] == 1}admin.php?mod=forum&action=recyclebin&frames=yes{elseif $_G['forum']['ismoderator']}forum.php?mod=modcp&action=recyclebins&fid=$_G[fid]{/if}" target="_blank" style="display: none;">{lang forum_recyclebin}</a>
+			<!--{/if}-->
+			<!--{/if}-->
+			<a href="home.php?mod=spacecp&ac=favorite&type=forum&id=$_G[fid]&handlekey=favoriteforum" id="a_favorite" onclick="showWindow(this.id, this.href, 'get', 0);" style="display: none;">{lang forum_favorite}</a>
+			<div style="clear:both;"></div>
+		</h3>
+		<!--{hook/forumdisplay_forumaction}-->
+		<!--{hook/forumdisplay_modlink}-->
+
+		<p>{$_G['forum']['rules']}</p>
+
+<!--{if !empty($_G[forum][domain]) && !empty($_G['setting']['domain']['root']['forum'])}-->
+	<b>{lang forum_domain}:<a href="http://{$_G[forum][domain]}.{$_G['setting']['domain']['root']['forum']}" id="group_link" title="{$_G[forum][domain]}">http://{$_G[forum][domain]}.{$_G['setting']['domain']['root']['forum']}</a></b>
+<!--{/if}-->
+<!--{if $nowtype_moderator['moderator_type']}-->
+	<b>$nowtype_moderator[name]{lang forum_modedby}: <span class="xi2">$nowtype_moderator['moderator_type']</span></b>
+<!--{elseif $fathertype_moderator['moderator_type']}-->
+	<b>$fathertype_moderator[name]{lang forum_modedby}: <span class="xi2">$fathertype_moderator['moderator_type']</span></b>
+<!--{elseif $moderatedby}-->
+	<b>{if !empty($bkname)}{$bkname}{/if}{lang forum_modedby}: <span class="xi2">$moderatedby</span></b>
+<!--{/if}-->
+	</div>
+	<div class="list_forum_explain_r_ad">
+		<div class="ad_l_260">
+			<!-- 广告位：论坛列表页——飞耐时 -->
+
+		</div>
+		<div class="ad_r_260">
+			<!-- 广告位：论坛列表页LA -->
+
+		</div>
+	</div>
+	<div id="forumarchive_menu" class="p_pop" style="display:none">
+		<ul>
+			<li><a href="forum.php?mod=forumdisplay&fid=$_G[fid]">{lang threads_all}</a></li>
+			<!--{loop $forumarchive $id $info}-->
+			<li><a href="forum.php?mod=forumdisplay&fid=$_G[fid]&archiveid=$id">{$info['displayname']} ({$info['threads']})</a></li>
+			<!--{/loop}-->
+		</ul>
+	</div>
+</div>
+<!--{hook/forumdisplay_top}-->
+
+<!--{if $_G['fid'] == 483}-->
+<style>
+	.dhlp{ width:980px; height:84px; font-family:"Microsoft Yahei",Tahoma,Helvetica,SimSun,sans-serif; overflow:hidden; margin:16px auto 0px auto;}
+	.dhlp .f_l{ float:left; width:640px; font-size:22px; color:#fff; background:#1e6d9b; height:84px; line-height:84px; text-align:center;}
+	.dhlp .see_details{ background:#e3e3e3; color:#949494; font-size:16px; width:85px; float:left; position:relative; height:65px; padding-top:19px; position:relative; text-align:center; text-decoration:none; font-weight:bold;}
+	.dhlp .see_details:before{ content:""; border-color: transparent #e3e3e3  transparent transparent ; border-style:solid; border-width:10px; top:50%; left:-17px; position:absolute; margin-top:-10px; }
+	.dhlp .see_details:hover{ color:#1e6d9b;}
+	.dhlp .f_r{ float:right; text-align:right; font-size:0;}
+	.dhlp .f_r b{ font-weight:normal; color:#949494; font-size:24px; display:block;}
+	.dhlp .f_r span{ display:block; padding-top:2px;}
+	.dhlp .f_r i{ width:46px; height:45px; line-height:44px; border-radius:50%; background:#e3e3e3; display:block; float:left; text-align:center; font-size:28px; color:#949494; font-style:normal; margin-right:17px; font-weight:900;}
+	.dhlp .f_r i.orange{ background:#ff7e00; color:#fff;}
+	.dhlp .f_r em{ font-size:36px; color:#949494; font-style:normal; font-weight:600;}
+</style>
+<div class="dhlp">
+	<!--{eval $myextcredits5 = sprintf("%03d",$_G['member']['extcredits5']);$myec5 = str_split($myextcredits5);}-->
+	<div class="f_l">在本版可以使用8264币兑换各种精美礼品，如何获得8264币</div>
+	<a href="http://bbs.8264.com/thread-1641700-1-1.html" target="_blank" class="see_details">查看<br>详情</a>
+
+	<div class="f_r">
+		<b>您现在共拥有8264币</b>
+		<span>
+			<i{if $myec5['0'] > 0} class="orange"{/if}>$myec5['0']</i>
+			<i{if $myec5['1'] > 0} class="orange"{/if}>$myec5['1']</i>
+			<i{if $myec5['2'] > 0} class="orange"{/if}>$myec5['2']</i>
+			<em>枚</em>
+		</span>
+	</div>
+</div>
+<!--{/if}-->
+
+<!--{if $_G['fid'] == 186 }-->
+	<div style="width: 960px; margin: 0 auto 10px;">
+		<div style="float: left;"><!--{ad/custom_222}--></div>
+		<div style="float: right"><!--{ad/custom_223}--></div>
+		<div style="clear:both;"></div>
+	</div>
+<!--{/if}-->
+
+<!--{if $_G['fid'] == 58 }-->
+<div style="padding: 8px 0px 0px 0px;text-align: center;"><!--{ad/custom_143}--></div>
+<!--{/if}-->
+
+<!--{if !empty($_G['forum']['recommendlist'])}-->
+<div class="bm bmw">
+	<div class="bm_h cl"><h2>{lang forum_recommend}</h2></div>
+	<div class="bm_c cl"><!--{subtemplate forum/recommend}--></div>
+</div>
+<!--{/if}-->
+
+<!--{hook/forumdisplay_middle}-->
+<!--{if !$subforumonly}-->
+	<!--{if $recommendgroups && !$_G['forum']['allowside']}-->
+	<div class="bm">
+		<div class="bm_h cl"><h2>{lang recommended_groups}</h2></div>
+		<div class="bm_c">
+			<ul class="ml mls cl">
+				<!--{loop $recommendgroups $key $group}-->
+				<li>
+					<a href="forum.php?mod=group&fid=$group[fid]" title="$group[name]" target="_blank" class="avt"><img src="$group[icon]" alt="$group[name]"></a>
+					<p><a href="forum.php?mod=group&fid=$group[fid]" target="_blank">$group[name]</a></p>
+				</li>
+				<!--{/loop}-->
+			</ul>
+		</div>
+	</div>
+	<!--{/if}-->
+
+	<!--{if $threadmodcount}--><div class="layout mt10"  style="border:1px #C2D5E3  solid; background:#E5EDF2; text-align:center; padding:10px 0px; color:#1e6d9b; font-size:12px;"><strong>{lang forum_moderate_unhandled}</strong></div><!--{/if}-->
+
+	<!--{if $_G['fid'] == 107 }-->
+		<div style="margin-bottom: 8px;text-align: center;"><!--{ad/custom_199}--></div>
+	<!--{/if}-->
+
+	<!--{if $_G['mod'] == 'forumdisplay' && $_G['fid'] == 56}-->
+		<!--{block/6906}-->
+
+	<!--{elseif $_G['mod'] == 'forumdisplay' && $_G['fid'] == 39}-->
+		<!--{block/7035}-->
+
+	<!--{elseif $_G['mod'] == 'forumdisplay' && $_G['fid'] == 186}-->
+
+		<!--{eval include(DISCUZ_ROOT.'./source/plugin/skiing/skiing.php');}-->
+		<!--{eval $hxc=ForumOptionSkiing::getSkiiingHeatsby(5);}-->
+		<!--{if $hxc}-->
+		<div class="layout warpten980" style="display:none;">
+			<h5 class="tt_title">
+				<b style="color: #1a2b38;font-size: 16px;">滑雪场</b>
+				<span style="padding-top:4px;">全国滑雪场信息查询、口碑点评</span>
+				<a href="http://www.8264.com/xuechang" target="_blank" class="bkmore" style="color:#7b94a4;">更多滑雪场</a>
+			</h5>
+			<div class="clboth">
+				<ul class="hxccon">
+					<!--{loop $hxc $xc}-->
+					<li>
+						<a href="{PORTAL_HOST}xuechang-$xc['tid']" target="_blank" title="$xc['subject']"><img src="$xc['showimg']"/></a>
+						<a href="{PORTAL_HOST}xuechang-$xc['tid']" target="_blank" title="$xc['subject']" class="name">$xc['subject']</a>
+						<span class="q_x p_t_hx">$xc['score']</span>
+						<div class="d_h clboth">$xc['replies']点评</div>
+					</li>
+					<!--{/loop}-->
+				</ul>
+			</div>
+		</div>
+		<style>
+			.hxccon li { height:200px;}
+		</style>
+		<!--{ad/custom_315}-->
+		<!--{/if}-->
+	<!--{else}-->
+        <div class="layout mt10">
+        	<div style="display:none;">
+        	<!--{eval $bottom_ads = array('416', '409', '417'); $bottom_ad = rand(0, 2); $bottom_ad_id = $bottom_ads[$bottom_ad]; }-->
+<!--{ad/custom_$bottom_ad_id}-->
+			</div>
+			<!-- 值得买 -->
+            <!--{eval include(DISCUZ_ROOT.'./source/plugin/skiing/hd_zw.php');}-->
+            <!--{eval $zhidemai_list = ForumOptionHuoDong::pianyi_sidebar(6, 'top', 'jiu', '10027');}-->
+            <!--{if $zhidemai_list}-->
+            <div>
+            <style>
+                .zhidemaiwidth{ width:980px;}
+                .zhidemaibox .zhidemailist_new li{width:144px; overflow:hidden;}
+                .zhidemaibox .zhidemailist_new li img{ width:144px;}
+            </style>
+            <!--{subtemplate common/zhidemai}-->
+            </div>
+            <!--{/if}-->
+            <!-- //值得买 -->
+        </div>
+	<!--{/if}-->
+    
+    
+
+    
+    
+    
+    
+    
+	<div class="layout ptb16 hght" id="threadlist_top" style="position:relative;">
+		<div class="forum_post">
+				<!--{if $_G['group']['allowpost'] || ($_G['group']['allowposttrade'] || $_G['group']['allowpostpoll'] || $_G['group']['allowpostreward'] || $_G['group']['allowpostactivity'] || $_G['group']['allowpostdebate'] || $_G['setting']['threadplugins'] || $_G['forum']['threadsorts'])}-->
+				<span class="forum_post_button" id="btn_box">
+					<a href="forum.php?mod=post&action=newthread&fid=$_G[fid]" style="display: block; width:133px; height:43px;"></a>
+					<em class="forum_post_outcon" id="btn_list">
+						<em class="forum_post_out">
+							<!--{if !$_G['forum']['allowspecialonly']}--><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]">{lang post_newthread}</a><!--{/if}-->
+							<!--{if $_G['group']['allowpostpoll'] && $_G['forum']['allowpostspecial']}--><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=1">{lang post_newthreadpoll}</a><!--{/if}-->
+							<!--{if $_G['group']['allowpostreward'] && $_G['forum']['allowpostspecial']}--><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=3">{lang post_newthreadreward}</a><!--{/if}-->
+							<!--{if $_G['group']['allowpostdebate'] && $_G['forum']['allowpostspecial']}--><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=5">{lang post_newthreaddebate}</a><!--{/if}-->
+							<!--{if $_G['group']['allowposttrade'] && $_G['forum']['allowpostspecial']}--><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=2">{lang post_newthreadtrade}</a><!--{/if}-->
+							<!--{if $_G['setting']['threadplugins']}-->
+								<!--{loop $_G['forum']['threadplugin'] $tpid}-->
+								<!--{if array_key_exists($tpid, $_G['setting']['threadplugins']) && @in_array($tpid, $_G['group']['allowthreadplugin'])}-->
+								<a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&specialextra=$tpid">{$_G[setting][threadplugins][$tpid][name]}</a>
+								<!--{/if}-->
+								<!--{/loop}-->
+							<!--{/if}-->
+							<!--{if $_G['forum']['threadsorts'] && !$_G['forum']['allowspecialonly']}-->
+								<!--{loop $_G['forum']['threadsorts']['types'] $id $threadsorts}-->
+								<!--{if $_G['forum']['threadsorts']['show'][$id]}-->
+								<a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&extra=$extra&sortid=$id">$threadsorts</a>
+								<!--{/if}-->
+								<!--{/loop}-->
+							<!--{/if}-->
+						</em>
+					</em>
+				</span>
+				<!--{if $_G['group']['allowpostactivity'] && $_G['forum']['allowpostspecial']}--><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=4" class="fbhdbutton"></a><!--{/if}-->
+				<!--{/if}-->
+				<!--{hook/forumdisplay_postbutton_top}-->
+		</div>
+		<!--{subtemplate forum/forumdisplay_difangxianlu}-->
+
+        <span style="position:absolute; top:30px; right:450px; display:block; width:15px; height:15px; overflow:hidden;"><script type='text/javascript'><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://ads.8264.com/www/delivery/ajs.php':'http://ads.8264.com/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=40");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script></span>
+
+		<div class="list_pager">$multipage</div>
+	</div>
+
+	<!--{subtemplate forum/forumdisplay_list}-->
+<!--{/if}-->
+<!--[diy=diyfastposttop]--><div id="diyfastposttop" class="area"></div><!--[/diy]-->
+
+
+<div id="fastpost" style="display: none;">
+	<!--{if $fastpost && $_G['group']['allowpost']}-->
+	<!--{template forum/forumdisplay_fastpost}-->
+	<!--{/if}-->
+</div>
+
+<!--{hook/forumdisplay_bottom}-->
+<!--[diy=diyforumdisplaybottom]--><div id="diyforumdisplaybottom" class="area"></div><!--[/diy]-->
+<!-- </div></div> -->
+
+	<!--{if $_G['setting']['visitedforums'] || $oldthreads}-->
+	<div id="visitedforums_menu" class="{if $oldthreads}visited_w {/if}p_pop blk cl" style="display: none;">
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<!--{if $_G['setting']['visitedforums']}-->
+				<td id="v_forums"><h3 class="mbn pbn bbda xg1">{lang viewed_forums}</h3><ul>$_G['setting']['visitedforums']</ul></td>
+				<!--{/if}-->
+				<!--{if $oldthreads}-->
+				<td id="v_threads"><h3 class="mbn pbn bbda xg1">{lang viewd_threads}</h3>
+					<ul class="xl">
+					<!--{loop $oldthreads $oldtid $oldsubject}-->
+						<li><a href="forum.php?mod=viewthread&tid=$oldtid">$oldsubject</a></li>
+					<!--{/loop}-->
+					</ul>
+				</td>
+				<!--{/if}-->
+			</tr>
+		</table>
+	</div>
+	<!--{/if}-->
+	<!--{if $_G['setting']['forumjump']}--><div class="p_pop" id="fjump_menu" style="display: none">$forummenu</div><!--{/if}-->
+	<!--{if $_G['setting']['threadmaxpages'] > 1 && $page}-->
+	<script type="text/javascript">
+	document.onkeyup = function(e){
+		keyPageScroll(e, {if $page > 1}1{else}0{/if}, {if $page < $_G['setting']['threadmaxpages'] && $page < $_G['page_next']}1{else}0{/if}, 'forum.php?mod=forumdisplay&fid={$_G[fid]}&filter={$filter}&orderby={$_G[gp_orderby]}{$forumdisplayadd[page]}&{$multipage_archive}', $page);
+	}
+	</script>
+	<!--{/if}-->
+	<div class="wp mtn"><!--[diy=diy3]--><div id="diy3" class="area"></div><!--[/diy]--></div>
+
+<!--{if $fiter_string}-->
+<script type="text/javascript">
+var hidden_id = new Array();
+var display_or_not=1;
+var tipstring = "个新人报道未显示";
+window.onload=checkcookie();
+function checkcookie(){
+	if(getcookie('hidden_fiter')==1){
+		changestyle(0);
+	}else{
+		fiter_forum();
+	}
+}
+function changestyle(stated){
+    if(stated == 1){
+        document.getElementById("fiter_forum").style.backgroundPosition = " 0 2px";
+        display_or_not = 0;
+    }else{
+        document.getElementById("fiter_forum").style.backgroundPosition = "0 -37px";
+        display_or_not = 1;
+    }
+}
+function getClassName(n) {
+    var arr = document.getElementById("moderate").getElementsByTagName("a");
+	var retarr = new Array();
+	var num=0;
+	for(i=0;i<arr.length;i++){
+		var fff = arr.item(i);
+		if(fff.className==n){
+			retarr[num]=fff;
+			num++;
+		}
+	}
+	return retarr;
+}
+function display_fiternum(){
+    if(document.getElementById("fiter_forum").getAttribute("title")!="" && document.getElementById("fiter_forum").getAttribute("title")!="0"+tipstring){
+
+	} else{
+		document.getElementById("fiter_forum").removeAttribute("title");
+	}
+}
+function fiter_forum(){
+	if(display_or_not == 1){
+		var classname = getClassName("xst");
+		var len = classname.length;
+		var fiterstr = [{$fiter_string}];
+		var hidden_len = 0;
+		for(i={$startnum};i<len;i++){
+			var thissubject = classname[i];
+			for(j=0;j<fiterstr.length;j++){
+				if(thissubject.innerHTML.indexOf(fiterstr[j])!=-1){
+					thissubject.parentNode.parentNode.parentNode.setAttribute("style","display:none");
+					hidden_id[hidden_len] = thissubject.parentNode.parentNode.parentNode
+					hidden_len++;
+					j=fiterstr.length;
+				}
+			}
+		}
+        changestyle(1);
+		document.getElementById("fiter_forum").setAttribute("title",hidden_id.length+tipstring);
+        display_fiternum();
+		setcookie('hidden_fiter', 0, 86400);
+	}
+}
+
+function get_display_len(){
+	var num=0;
+	for(i=0;i<hidden_id.length;i++){
+		var hid_or_vi = hidden_id[i];
+		if(hid_or_vi.getAttribute("style")=="display:none"){
+			num++;
+		}
+	}
+	return num;
+}
+function display_hidden(){
+	var h_len = hidden_id.length;
+	if(h_len>0){
+		for(i=0;i<h_len;i++){
+			var hid_or_vi = hidden_id[i];
+				hid_or_vi.setAttribute("style","display:table-row-group")
+		}
+		hidden_id=[];
+		document.getElementById("fiter_forum").setAttribute("title",get_display_len()+tipstring);
+        display_fiternum();
+		setcookie('hidden_fiter', 1, 86400);
+        changestyle(0);
+	} else {
+		fiter_forum();
+	}
+}
+</script>
+
+
+<!--{if ($_G['fid']==53||$_G['fid']==169)}-->
+<div><div style="text-align:center;"><iframe src="/plugin.php?id=tuaninvoke:goods" frameBorder=0 name="iframe"  scrolling="no" height="260" width="100%" marginheight="0" marginwidth="0"></iframe></div></div>
+<!--{/if}-->
+
+<!--{/if}-->
+
+</div><!-- End wp -->
+<!--{subtemplate common/weixin_share}-->
+<!--{subtemplate common/camel_ad}-->
+<!--{subtemplate common/footer_forum_8264_new}-->

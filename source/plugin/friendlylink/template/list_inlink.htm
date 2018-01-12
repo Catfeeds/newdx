@@ -1,0 +1,166 @@
+<table id="tips" class="tb tb2 ">
+	<tbody>
+		<tr><th class="partition">开发人员提示</th></tr>
+		<tr><td class="tipsblock">
+				<ul id="tipslis">
+					<li>父级分类需要手动添加到数据库和页面，已经做好预留，父级分类id将作为子分类的group值</li>
+					<li>父级分类要和 friendlylink.class.php 中设置一致</li>
+					<li>不填标识符的内页将不初始化内链</li>
+					<li>【其他】分类统一不用填标识符，也不会分配内链和展示友情链接</li>
+				</ul>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<form method="post" action="{$url}&op=addsubmit" id="addform">
+	<table class="tb tb2 ">
+		<tbody>
+			<tr><th class="partition" colspan="6">添加</th></tr>
+			<tr class="header">
+				<th>父级分类</th>
+				<th>关键字</th>
+				<th>内链</th>
+				<th>标识符</th>
+				<th>随机权重</th>
+				<th>设置内链?(数据初始化时生效)</th>
+			</tr>
+			<tr>
+				<td>
+					<select name="group[]">
+						{loop $plugin_fk_relation $key $val}
+						<option value="{$key}">$val</option>
+						{/loop}
+					</select>
+				</td>
+				<td><input type="text" name="keyword[]" style="width:200px;"></td>
+				<td><input type="text" name="url[]" style="width:350px;"></td>
+				<td><input type="text" name="identifie[]" style="width:150px;"></td>
+				<td><input type="text" name="weight[]" value="1" style="width:50px;"></td>
+				<td><input type="checkbox" value="1" name="setinlink[]"></td>
+			</tr>
+			<tr>
+				<td colspan="6">
+					<div class="lastboard">
+						<a class="addtr" onclick="addrow(this, 0, {$key})" href="javascript:void(0);">添加新内链</a>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="6">
+					<div class="fixsel">
+						<input type="button" value="提交" title="按 Enter 键可随时提交你的修改" id="submit_editsubmit" class="btn">
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</form>
+
+<table style="min-width:910px; _width:910px;" class="tb tb2">
+	<tbody>
+		<tr><th class="partition" colspan="8">列表</th></tr>
+		<tr class="header">
+			<th width="55"></th>
+			<th>父级分类</th>
+			<th width="230" style="text-align:center">关键字</th>
+			<th style="width:380px;">内链</th>
+			<th style="width:200px;">标识符</th>
+			<th>随机权重</th>
+			<th>设置内链(数据初始化时生效)</th>
+			<th>操作</th>
+		</tr>
+	</tbody>
+	<!--{if $links}-->
+		<!--{loop $links $key $val}-->
+		<tbody>
+			<tr id="cat{$key}" class="hover">
+				<td onclick="toggle_group2('group_$key')">
+					<a href="javascript:void(0);" id="a_group_{$key}">[-]</a>
+				</td>
+				<td class="td25">$plugin_fk_relation[$key]</td>
+				<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="{$val[keyword]}" name="keyword[{$key}][{$key}]" class="txt" onchange="editfield(this,'keyword',$key)"></td>
+				<th colspan="5">{if $val[sum]}内链总数：$val[sum]{/if}&nbsp;&nbsp;&nbsp;&nbsp;{if $val[setinlink]} 设置内链总数：$val[setinlink]{/if}</th>
+			</tr>
+		</tbody>
+		<tbody id="group_{$key}">
+			<!--{loop $val[child] $val2}-->
+			<tr id="cat{$val2[id]}" class="hover">
+				<td>&nbsp;</td>
+				<td class="td25">&nbsp;</td>
+				<td>
+					<div class="board"><input type="text" value="{$val2[keyword]}" name="keyword[{$key}][{$val2[id]}]" style="width:200px;" onchange="editfield(this,'keyword',$val2[id])"></div>
+				</td>
+				<td><input type="text" value="{$val2[url]}" name="url[{$key}][{$val2[id]}]" style="width:350px;" onchange="editfield(this,'url',$val2[id])"></td>
+				<td><input type="text" value="{$val2[identifie]}" name="identifie[{$key}][{$val2[id]}]" style="width:150px;" onchange="editfield(this,'identifie',$val2[id])"></td>
+				<td><input type="text" value="{$val2[weight]}" name="weight[{$key}][{$val2[id]}]" style="width:50px;" onchange="editfield(this,'weight',$val2[id])"></td>
+				<td><input type="checkbox" value="1" name="setinlink[{$key}][{$val2[id]}]" {if $val2[setinlink] == 1}checked{/if} onchange="editfield(this,'setinlink',$val2[id])"></td>
+				<td><a onclick="del({$val2[id]},this);" href="javascript:void(0);">删除</a></td>
+			</tr>
+			<!--{/loop}-->
+		</tbody>
+		<!--{/loop}-->
+		<tr>
+			<td colspan="7"></td>
+			<td><a onclick="return dz_comfirm('执行此操作，以上内链页的内链列表将被初始化');" href="{$url}&op=init&type=update_table">内链页友情链接初始化</a></td>
+		</tr>
+	<!--{else}-->
+	<!--{/if}-->
+</table>
+<script src="static/js/jquery-1.6.1.min.js"></script>
+<script>
+var option = '';
+{loop $plugin_fk_relation $k $v}
+option+='<option value="{$k}">{$v}</option>';
+{/loop}
+
+var rowtypedata = [
+	[[1, '<select name="group[]">'+option+'</select>'], [1, '<input type="text" name="keyword[]" style="width:200px;">'], [1, '<input type="text" name="url[]" style="width:350px;">'], [1, '<input type="text" name="identifie[]" style="width:150px;">'], [1, '<input type="text" name="weight[]" value="1" style="width:50px;">'], [1, '<input type="checkbox" value="1" name="setinlink[]">']]
+];
+function del(id,obj){
+	if(confirm("确定要删除这条内链吗，删除操作不可恢复")){
+		$.ajax({
+			type : 'GET',
+			url : "{$url}&op=del&id="+id,
+			success:function(html){
+				$(obj).parents('tr').remove();
+			}
+		});
+	}
+}
+function editfield(obj,field,id,type){
+	if(field == 'setinlink'){
+		obj.value = 0;
+		if(obj.checked){
+			obj.value = 1;
+		}
+	}
+	var url = "{$url}&op=editsubmit";
+	$.ajax({
+		type : 'POST',
+		url : url,
+		data : {id:id,field:field,val:obj.value},
+		success:function(html){}
+	});
+}
+function toggle_group2(oid) {
+	var conf = {'show':'[-]','hide':'[+]'};
+	var obody = document.getElementById(oid);
+	var obj = document.getElementById('a_'+oid);
+	if(obody.style.display == 'none') {
+		obody.style.display = '';
+		obj.innerHTML = conf.show;
+	} else {
+		obody.style.display = 'none';
+		obj.innerHTML = conf.hide;
+	}
+}
+$("#submit_editsubmit").click(function(){
+	$("#addform").find("input[name^=setinlink]").each(function(){
+		if($(this).attr("checked") == undefined){
+			$(this).attr("checked","checked");
+			$(this).val(0);
+		}
+	});
+	$("#addform").submit();
+});
+</script>

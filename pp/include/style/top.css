@@ -1,0 +1,82 @@
+/* CSS Document */
+/********************************主体样式***********************************/
+.top99{ width:980px; height:112px; background:url(/pp/images/topbg.jpg) repeat-x;}
+.logo99{ width:220px; height:83px; margin:10px 0 0 4px; float:left;}
+.nav99{ width:745px; float:right; height:112px;}
+.navup99{ width:727px; height:22px; float:left; background:url(/pp/images/shoucang.jpg) center right no-repeat; margin:5px 0 0 0; color:#b93310; padding:12px 8px 0 0; text-align:right;}
+.navup99 a{ color:#b93310;}
+.navup99 a:hover{ color:#b93310; text-decoration:none;}
+.navdown99{ width:745px; float:right; text-align:left; color:#b93310; padding-top:5px;}
+.navdown99 a{ font-size:14px; color:#b93310;}
+.navdown99 a:hover{ font-size:14px; color:#b93310; text-decoration:none;}
+
+.newtop{ height:112px; background:url(/pp/images/newtop_b.jpg); width:980px;}
+
+.newtop_main{ height:104px;}
+.newtop_l{ float:left; width:218px; background:#000; height:99px; text-align:center; padding-top:5px;}
+.newtop_m{ float:left; width:89px; background:url(/pp/images/newtop_m.jpg) no-repeat; height:104px;}
+.newtop_r{ float:left; width:653px;}
+.favorite{ height:31px;}
+.index_nav{ float:right;margin-top:15px; padding-right:15px; color:#FFF;}
+.index_nav a{color:#FFF; font-size:12px; font-weight:bold;}
+.index_nav a:hover{color:#FFF;}
+.favorite_c{ width:146px; float:right; margin-top:5px;}
+.favorite_c a{color:#040700;}
+.newnav{ margin-top:10px; line-height:1.8; text-align:left;}
+.newnav a{ color:#040700;}
+.newtop_bottom{ height:8px; font-size:1px;}
+.newtop_bottom_left{ float:left; width:304px; background:#000; height:8px; font-size:1px;}
+.newtop_bottom_right{ float:left; width:16px; background:url(/pp/images/newtop_bottom_right.jpg) no-repeat right #000;; height:8px; font-size:1px;}
+.count{line-height:1.6; text-align:right; color:#999; float:left;}
+
+.xtop {
+	DISPLAY: block; FONT-SIZE: 1px; BACKGROUND: none transparent scroll repeat 0% 0%
+}
+.xbottom {
+	DISPLAY: block; FONT-SIZE: 1px; BACKGROUND: none transparent scroll repeat 0% 0%
+}
+.xb1 {
+	DISPLAY: block; OVERFLOW: hidden
+}
+.xb2 {
+	DISPLAY: block; OVERFLOW: hidden
+}
+.xb3 {
+	DISPLAY: block; OVERFLOW: hidden
+}
+.xb4 {
+	DISPLAY: block; OVERFLOW: hidden
+}
+.xb1 {
+	HEIGHT: 1px
+}
+.xb2 {
+	HEIGHT: 1px
+}
+.xb3 {
+	HEIGHT: 1px
+}
+.xb2 {
+	BORDER-RIGHT: #f1f8fb 1px solid; BORDER-TOP: #f1f8fb 0px solid; BORDER-LEFT: #f1f8fb 1px solid; BORDER-BOTTOM: #f1f8fb 0px solid; BACKGROUND-COLOR: #fad666
+}
+.xb3 {
+	BORDER-RIGHT: #f1f8fb 1px solid; BORDER-TOP: #f1f8fb 0px solid; BORDER-LEFT: #f1f8fb 1px solid; BORDER-BOTTOM: #f1f8fb 0px solid; BACKGROUND-COLOR: #fad666
+}
+.xb4 {
+	BORDER-RIGHT: #f1f8fb 1px solid; BORDER-TOP: #f1f8fb 0px solid; BORDER-LEFT: #f1f8fb 1px solid; BORDER-BOTTOM: #f1f8fb 0px solid; BACKGROUND-COLOR: #fad666
+}
+.xb1 {
+	MARGIN: 0px 5px; BACKGROUND-COLOR: #fad666
+}
+.xb2 {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 2px; BORDER-BOTTOM-WIDTH: 0px; MARGIN: 0px 3px; BORDER-RIGHT-WIDTH: 2px
+}
+.xb3 {
+	MARGIN: 0px 2px
+}
+.xb4 {
+	MARGIN: 0px 1px; HEIGHT: 2px
+}
+.xboxcontent {
+	BORDER-RIGHT: #fad666 1px solid; BORDER-TOP: #fad666 0px solid; DISPLAY: block; BORDER-LEFT: #fad666 1px solid; BORDER-BOTTOM: #fad666 0px solid; BACKGROUND-COLOR: #fad666; text-align:center;
+}

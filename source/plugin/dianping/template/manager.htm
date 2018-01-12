@@ -1,0 +1,53 @@
+<style>
+#container ul li{float: left; margin-left: 10px;}
+fieldset{padding: 10px;}
+.selected{font-weight: bold;}
+</style>
+
+<form action="" method="post" id="guideForm">
+<table class="tb tb2">
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><a href="$url&op=new">添加系统</a></td>
+</tr>
+<tr class="header">
+	<th>系统名称</th>
+	<th>状态</th>
+	<th>申请时间</th>
+	<th>操作</th>
+</tr>
+
+<!--{if $modules}-->
+<!--{loop $modules $val}-->
+<tr>
+	<td>
+		<a href="$url&op=edit&mid=$val['mid']">$val[mname]</a>						 
+	</td>
+	<td>
+		$val[status]
+	</td>	
+	<td>
+		$val[asktime]		
+	</td>	
+	<td>			
+	   <a href="$url&op=edit&mid=$val['mid']">查看</a>
+	</td>		
+</tr>	
+<!--{/loop}-->
+<!--{/if}-->
+</table>
+<div style="overflow:hidden;width:99%;clear:both;padding:5px;border-top:1px solid #deeffb;">
+	<div style="float:left;">
+		
+	</div>
+	<div style="float:right;">
+	
+	</div>
+</div>
+</form>
+
+
+
+

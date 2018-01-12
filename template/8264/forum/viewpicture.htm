@@ -1,0 +1,301 @@
+<!--{subtemplate common/header_common}-->
+<link href="http://static.8264.com/static/css/forum/photo.css?{VERHASH}" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="http://static.8264.com/static/js/jquery-1.9.1.min.js?{VERHASH}"></script>
+<script type="text/javascript" src="http://static.8264.com/static/js/jquery.nicescroll.min.js?{VERHASH}"></script>
+<script type="text/javascript" src="http://static.8264.com/static/js/common/viewthread.js?{VERHASH}"></script>
+<script type="text/javascript">jQuery.noConflict();</script>
+<script type="text/javascript">var fid = parseInt('$_G[fid]'), tid = parseInt('$_G[tid]');</script>
+<!--{if $modmenu['thread'] || $modmenu['post']}-->
+	<script type="text/javascript" src="http://static.8264.com/static/js/forum_moderate.js?{VERHASH}"></script>
+<!--{/if}-->
+
+<script type="text/javascript" src="http://static.8264.com/static/js/forum_viewthread.js?{VERHASH}"></script>
+<script type="text/javascript">zoomstatus = parseInt($_G['setting']['zoomstatus']);var imagemaxwidth = '{IMAGEMAXWIDTH}';var aimgcount = new Array();</script>
+
+<script>
+
+jQuery(document).ready(function($) {
+	var tid = {$_G['tid']};
+	jQuery("#commentsList .pg").addClass("gallery-reply-pager");
+	jQuery("#commentsList").on('click',".pg>a",function(e){
+		e.preventDefault();
+		var tempArr = this.href.split('-');
+		if(tempArr[2]){
+			getpage(tempArr[2]);
+		}else{
+			var tempArr2 = this.href.split('&');
+			var page=tempArr2[2].split('=');
+			getpage(page[1]);
+		}
+
+	});
+	jQuery('#fastreplysubmit').click(function(){
+		var ajaxurl = jQuery('#fastreplyform').attr('action');
+		var message = jQuery('#f_message').val();
+		if(message=="这张照片太漂亮啦，快来点评一下！" || message==""){
+			return false;
+		}
+		jQuery.ajax({
+            type: "POST",
+            url:ajaxurl,
+            data:jQuery('#fastreplyform').serialize(),
+            async: false,
+            contentType : "application/x-www-form-urlencoded; charset=utf-8",
+            error: function(request) {
+                alert("Connection error");
+            },
+            success: function(data) {
+            	if(data==1){
+            		getpage(1);
+            	}
+            }
+        });
+
+	});
+	{if !$_G[uid]}
+	$(document).on('keydown', '#f_message', saveUnLoginData);
+	function saveUnLoginData() {
+		saveUserdata(this.id + tid, this.value);
+	}
+	{/if}
+});
+function getpage(page){
+	jQuery.get('{$geturl}',{tid:'{$_G[tid]}',page:page,inajax:1},function(data){
+		jQuery("#commentsList").nextAll().remove();
+		jQuery("#commentsList").html(data);
+		jQuery("#commentsList .pg").addClass("gallery-reply-pager");
+	});
+	jQuery("#commentsList>.h2Tit").after('<div style="padding: 0 0 10px 6px;"><img src="http://static.8264.com/static/image/common/loading.gif" style="vertical-align: top;"> 数据读取中...</div>');
+	jQuery("#f_message").val('');
+	jQuery(document).scrollTop(jQuery('#commentsList').offset().top-60);
+}
+function loadUnloginData(name,id){
+	var ld = loadUserdata(name);
+	if(ld != '' && ld != null){
+		$(id).value = ld;
+	}
+}
+</script>
+</head>
+
+<body>
+<div id="append_parent"></div>
+<div id="ajaxwaitid"></div>
+<div class="container dy-container">
+		<div class="dy-left">
+			<div class="dy-head">
+				<div class="dy-head-right">
+					<a href="javascript:void(0);" class="link-share"><i>分享</i></a>
+					<a href="home.php?mod=spacecp&ac=favorite&type=thread&id=$_G[tid]" id="m_k_favorite" class="link-fav" onClick="showWindow(<!--{if $_G['uid']}-->this.id, this.href, 'get', 0<!--{else}-->'login','member.php?mod=logging&action=login'<!--{/if}-->); "><i>收藏</i></a>
+					<b id="favoritenumber" style="display: none;">{$forum_picture['favtimes']}</b>
+					<a href="{$pic_url}" class="link-orimg" target="brank_"><i>查看原图</i></a>
+					<ul class="share-list share_bd bdsharebuttonbox" data-tag="share_1">
+						<li>
+							<a class="wb" href="javascript:void(0);" data-cmd="tsina">新浪微博</a>
+						</li>
+						<li>
+							<a class="qz" href="javascript:void(0);" data-cmd="qzone">QQ空间</a>
+						</li>
+						<li>
+							<a class="qwb" href="javascript:void(0);" data-cmd="tqq">腾讯微博</a>
+						</li>
+						<li>
+							<a class="wx" href="javascript:void(0);" data-cmd="weixin">微信</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<script>
+			window._bd_share_config = {
+				common : {
+					//此处放置通用设置
+				},
+				share : [
+					//此处放置分享按钮设置
+					{"tag" : "share_1", "bdSize" : 32}
+				]
+			}
+			with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+			(function($){
+				var ww=$(window).width();
+				var s_bd_r=Math.max((ww-980)/2-60,0);
+				//$(".dy-head-right").css("right",s_bd_r);
+			})(jQuery);
+			</script>
+			<script type="text/javascript" id="bdshare_js" data="type=button&amp;mini=1&amp;uid=39357" ></script>
+			<script type="text/javascript" id="bdshell_js"></script>
+			<script type="text/javascript">
+				document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+			</script>
+			<div class="dy-original">
+				<div class="dy-original-wrapper">
+					<div class="gallery-image-original">
+						<img title="{$forum_picture['subject']}"  src="{$pic_url}" data-large="{$pic_url}"/>
+					</div>
+					<a href="{$weburl}&paging=prev&tid={$_G['tid']}" class="image-original-prev"><i class="dy-sprite"></i></a>
+					<a href="{$weburl}&paging=next&tid={$_G['tid']}" class="image-original-next"><i class="dy-sprite"></i></a>
+				</div>
+			</div>
+		</div>
+		<div class="dy-right">
+			<div class="dy-anchors">
+				<div class="dy-notification">
+					<a href="javascript:void(0);" class="logo"><i class="dy-sprite"></i>每日一图</a>
+					<a href="http://www.8264.com/list/842" class="dy-close-button"><i class="dy-sprite"></i>关闭</a>
+				</div>
+			</div>
+			<div class="dy-info-scroller">
+				<div class="dy-info-wrapper">
+					<div class="gallery-title">
+						<h3>{$forum_picture['subject']}</h3>
+					</div>
+					<div class="gallery-art-info">
+						<span class="pub-date">{$forum_post[dateline]}</span>
+						<span class="view-desc"><i class="dy-sprite"></i>{$forum_picture['views']}</span>
+						<span class="comment-desc"><i class="dy-sprite"></i>{$forum_picture['replies']}</span>
+					</div>
+					<div class="gallery-explain">
+						{$forum_post['message']}
+					</div>
+				</div>
+				<div class="dy-reply-wrapper">
+					<div class="gallery-reply-editor">
+                        <!--{if $forum_post['first']==1}-->
+                        <form method="post" autocomplete="off" id="fastreplyform"  action="forum.php?mod=post&infloat=yes&action=reply&fid={$forum_post['fid']}&pid={$forum_post['pid']}&page={$_G['page']}&way=picturereply&extra={$_G['gp_extra']}&tid={$forum_post['tid']}&replysubmit=yes">
+	                        <input type="hidden" name="formhash" id="formhash" value="{FORMHASH}" fwin="reply">
+	                        <input type="hidden" name="handlekey" id="handlekey" value="picreply">
+	                        <input type="hidden" name="noticeauthor" id="noticeauthor" value="q|{$forum_post['authorid']}|{$forum_post['author']}">
+	                        <input type="hidden" name="noticetrimstr" id="noticetrimstr" value="{$fastreply_noticetrimstr}" />
+	                        <input type="hidden" name="noticeauthormsg" id="noticeauthormsg" value="{$fastreply_noticeauthormsg}" />
+	                        <input type="hidden" name="reppost" id="reppost" value="{$forum_post['pid']}">
+	                        <div class="reply-editor-entry">
+	                        	<div id="return_fastreply"></div>
+	                            <textarea name="message" class="t_note" cols="30" rows="10" id="f_message" >这张照片太漂亮啦，快来点评一下！</textarea>
+                                    {if checkperm('seccode') && ($secqaacheck || $seccodecheck)}
+                                    <div style="margin-bottom:15px;">
+                                        <script type="text/javascript" src="http://api.geetest.com/get.php?gt=273df89437f54dac2bfb5b69afe1c318&r=<?=time()?>"></script>
+                                    </div>
+                                    {/if}
+                                    <button class="btn-comment" value="true" name="replysubmit" id="fastreplysubmit" type="button"  {if !$_G['uid']}onclick="showWindow('login', 'member.php?mod=logging&action=login&guestmessage=yes')"{/if}>点评图片</button>
+                                   <a href="forum.php?mod=post&action=reply&fid={$forum_post['fid']}&page={$_G['page']}&way=reply&extra={$_G['gp_extra']}&tid={$forum_post['tid']}&repquote={$forum_post['pid']}" target="_brand" onClick="switchAdvanceMode(this.href);doane(event);" class="adv-mode">高级模式</a>
+
+                                </div>
+                        </form>
+                        <script type="text/javascript">
+                        jQuery("#f_message").focus(function(){
+                            if(jQuery(this).attr('class')=='t_note' && jQuery(this).val()=="这张照片太漂亮啦，快来点评一下！"){
+                                jQuery(this).removeClass('t_note');
+                                jQuery(this).val('');
+                            }
+                        });
+                        var tta = document.getElementsByTagName('textarea');
+                        for(var i=0; i<tta.length; i++){
+                        	if(!isUndefined(tta[i].id)){
+                        		loadUnloginData(tta[i].id + tid, tta[i].id);
+                        	}
+                        }
+                        </script>
+                        <!--{/if}-->
+					</div>
+					<div class="gallery-reply-list-wrapper">
+						<div class="gallery-reply-head">
+							<div class="gallery-reply-title">
+								<span class="gallery-reply-count"><i class="dy-sprite"></i>{$count}人 点评</span>
+							</div>
+						</div>
+						<div class="gallery-reply-list" id="commentsList">
+							<ul >
+                                <!--{loop $comments[$forum_post[pid]] $comment}-->
+                                 <li id="comments_{$comment['id']}">
+                                    <div class="reply-misc-main">
+                                        <a href="home.php?mod=space&uid={$comment['authorid']}" rel="nofollow" class="author-face" c="1">
+                                            {$comment['avatar']}
+                                            {$comment['author']}
+                                        </a>
+                                        <span class="reply-cont">{echo cutstr($comment['comment'],30,'')}</span>
+                                    </div>
+                                 </li>
+								<!--{/loop}-->
+							</ul>
+           					{$multipage}
+						</div>
+					</div>
+				</div>
+				<div class="divider-line"></div>
+				<div class="gallery-conbte-wrapper">
+					<div class="gallery-conbte-entry">
+						<a href="http://www.8264.com/plugin.php?id=dailypicture:public" class="btn-conbte"><i class="dy-sprite"></i>我要投稿</a>
+						<span class="pub-reward">每幅刊登作品奖励10枚8264币</span>
+					</div>
+				</div>
+				<div class="dy-info-scroll-area">
+					<div class="dy-info-scroll-bar"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var adjustImgSize = function(img, boxWidth, boxHeight) {
+			console.log("boxWidth:"+boxWidth,"boxHeight:"+boxHeight);
+	        var tempImg = new Image();
+	        tempImg.src = img.attr('src');
+	        var imgWidth=tempImg.width;
+	        var imgHeight=tempImg.height;
+
+	        if((boxWidth/boxHeight)>=(imgWidth/imgHeight))
+	        {
+	            img.width((boxHeight*imgWidth)/imgHeight);
+	            img.height(boxHeight);
+	            var margin=(boxWidth-img.width())/2;
+	            img.css("margin-left",margin);
+	        }
+	        else if((boxWidth/boxHeight)<(imgWidth/imgHeight))
+	        {
+	            img.width(boxWidth);
+	            img.height((boxWidth*imgHeight)/imgWidth);
+	            var margin=(boxHeight-img.height())/2;
+	            img.css("margin-top",margin);
+	        }
+	    };
+		jQuery(window).load(function() {
+			var wH = jQuery(".dy-container").height();
+			var nH = wH-56;
+			jQuery(".dy-info-scroller").height(nH);
+		});
+		jQuery(window).resize(function(){
+			var wH = jQuery(".dy-container").height();
+			var nH = wH-56;
+			jQuery(".dy-info-scroller").height(nH);
+			adjustImgSize(jQuery(".gallery-image-original img"), jQuery(".gallery-image-original img").parent().width(), jQuery(".gallery-image-original img").parent().height());
+		});
+		jQuery(".dy-info-scroller").niceScroll({
+			cursorcolor:"#333",
+			cursorwidth:"4px",
+			cursorborderradius:"2px",
+			cursorborder:"none",
+			boxzoom:false,
+			touchbehavior:false
+		});
+		jQuery(function(){
+			jQuery(".link-share").click(function() {
+				jQuery(".share-list").toggle();
+			});
+			jQuery('.gallery-image-original img').load(function() {
+				adjustImgSize(jQuery(this), jQuery(this).parent().width(), jQuery(this).parent().height());
+			});
+			jQuery(".dy-left").hover(function() {
+				jQuery(".dy-head").show();
+			}, function() {
+				jQuery(".dy-head").hide();
+			});
+		});
+	</script>
+	<script type="text/javascript">
+		var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+		document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F49299785f8cc72bacc96c9a5109227da' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+</body>
+</html>
+
+<!--{eval output();}-->

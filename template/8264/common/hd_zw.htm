@@ -1,0 +1,79 @@
+<style>
+	.clear_b:after{content: ""; display: block; clear: both; visibility: hidden;}
+	.clear_b{ zoom: 1;}
+	.hd980{ width:978px; height:220px; margin:0 auto; background:#f6f8fa; border:#eeeeee solid 1px; font-family:"Microsoft YaHei",Tahoma,Helvetica,SimSun,sans-serif;}
+	.hdleft{ width:244px; height:171px; float:left;  margin:31px 15px 0px 19px; padding:0px 0px 0px 0px;}
+	.hdlogo{ height:50px; background:url("http://static.8264.com/static/images/logo8264_38.png") no-repeat 0px 4px; padding:0px 0px 0px 47px;}
+	.hdlogo a{ text-decoration:none;}
+	.hdlogo b{ font-size:20px; color:#333; display:block; line-height:1.3;}
+	.hdlogo em{ font-size:12px; color:#999; display:block; font-style:normal;}
+	.hdleftlist{ width:244px; height:121px; background:url("http://static.8264.com/static/images/hdad1.png") no-repeat; padding:0px 0px 0px 0px;}
+	.hdleftlist a{ width:61px; height:59px; float:left; text-align:center;}
+	.hdright{ overflow:hidden;}
+	.hdone{ width:220px;; height:184px; float:left; margin:18px 12px 0px 0px;}
+	.hdone a{ font-size:14px; color:#333; line-height:1.5; text-decoration:none;}
+	.hdone img{ width:220px;; height:122px;}
+	.hdimg{ width:220px; height:122px; position:relative;}
+	.hdinfobox{ border:#ebebeb solid 1px; height:53px; background:#fff; padding:7px 13px 0px 13px;}
+	.hdjiadate{ position: absolute; bottom:0px; left:0px; background: url("http://static.8264.com/static/images/lte9bg.png") left bottom no-repeat; height:34px; width:100%;}
+	.hdjiadate span{ float:left; color:#fff; font-size:12px; padding:9px 0px 0px 9px;}
+	.hdjiadate em{ float:right; color:#fff; font-size:20px; font-style:normal;  padding:0px 9px 0px 0px;}
+	.hdjiadate i{ font-size:18px; padding:0px 3px 0px 0px;  font-style:normal;}
+</style>
+<script type="text/javascript">
+	function nofind(obj,image){
+		obj.src=image;
+		obj.onerror=null; //控制不要一直跳动
+	}
+</script>
+<div class="hd980 clear_b">
+	<div class="hdleft">
+    	<div class="hdlogo">
+        	<a href="http://hd.8264.com/all" target="_blank">
+                <b>户外活动平台</b>
+                <em>收录上万条线路，50多种玩法任您选</em>
+            </a>
+        </div>
+    	<div class="hdleftlist">
+            <a href="http://hd.8264.com/xianlu-4-0-0-0" target="_blank"></a>
+            <a href="http://hd.8264.com/xianlu-7-0-0-0" target="_blank"></a>
+            <a href="http://hd.8264.com/xianlu-16-0-0-0" target="_blank"></a>
+            <a href="http://hd.8264.com/xianlu-51-0-0-0" target="_blank"></a>
+            <a href="http://hd.8264.com/xianlu-48-0-0-0" target="_blank"></a>
+            <a href="http://hd.8264.com/xianlu-5-0-0-0" target="_blank"></a>
+            <a href="http://hd.8264.com/xianlu-36-0-0-0" target="_blank"></a>
+            <a href="http://hd.8264.com/all" target="_blank"></a>
+        </div>
+    </div>
+	<div class="hdright clear_b">
+		<!--{loop $huodong_zaiwai $k $hd}-->
+    <!--{if $k == 1}-->
+    <div class="hdone">
+      <a href="http://bbs.8264.com/thread-5318385-1-1.html" target="_blank">
+        <div class="hdimg">
+        <img src="http://img.qunawan.com/ecmme/wan/xl/goods/20160719/201607190938014953.jpg!list2016325" alt="8264第六届露营大会（贵州凯里站）暨庆祝黔东南成立60周年" title="8264第六届露营大会（贵州凯里站）暨庆祝黔东南成立60周年" />
+        <div class="hdjiadate">
+          <span>07/30 贵州出发</span>
+          <em><i>￥</i>1</em>
+        </div>
+        </div>
+        <div class="hdinfobox">8264第六届露营大会（贵州凯里站）</div>
+      </a>
+    </div>
+    <!--{else}-->
+		<div class="hdone">
+			<a href="$hd['url_pc']" target="_blank">
+				<div class="hdimg">
+				<img src="$hd['default_image']!list2016325" alt="$hd['title']" title="$hd['title']" onerror="nofind(this,'$hd[default_image2]!list2016325');">
+				<div class="hdjiadate">
+					<span>{echo date("m/d", $hd['start_time']);} $hd['start_place']出发</span>
+					<em><i>￥</i>$hd['price']</em>
+				</div>
+				</div>
+				<div class="hdinfobox">{echo cutstr($hd['title'], 52);}</div>
+			</a>
+		</div>
+    <!--{/if}-->
+		<!--{/loop}-->
+	</div>
+</div>

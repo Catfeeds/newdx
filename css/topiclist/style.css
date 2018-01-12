@@ -1,0 +1,22 @@
+/* CSS Document */
+body { margin:0 0 0 0;text-align:center;font-size:12px; color:#000000;}
+ul{ list-style:none; margin:auto 0px;letter-spacing:0; word-spacing:0; padding:0;}
+a{text-decoration:none; color:#333333; font-size:12px;}
+a:hover{text-decoration:underline; color:#333333; font-size:12px;}
+form{ padding:0 0 0 0; margin:0 0 0 0;}
+em{ font-style:normal;}
+.warpper{ width:960px; text-align:center; margin:0 auto;}
+.top{ width:960px;}
+.mid{ width:960px; margin-top:9px;}
+.left{ width:782px; float:left; text-align:left; border:#CCCCCC solid 1px; padding-bottom:5px;}
+.con1{ width:246px; float:left; margin:10px 5px 15px 5px;}
+.img1{ width:240px; height:120px; padding:3px; border:#CCCCCC solid 1px;}
+.title1{ width:226px; background: url(/images/topic_coin.gif) left center no-repeat; height:25px; line-height:25px; overflow:hidden; font-weight:bold; margin-top:3px; padding-left:20px;}
+.fenye{ width:100%; padding:5px 0px; text-align:center;}
+
+a.no:link{ font-size:12px; background:#e6f2e1; font-weight:bold; padding:2px 8px;} 
+a.no:visited{ font-size:12px; background:#e6f2e1; font-weight:bold; padding:2px 8px;} 
+a.no:hover{ font-size:12px; background:#FFFF33; font-weight:bold; padding:2px 8px; text-decoration:none;} 
+a.no:active{ font-size:12px; background:#e6f2e1; font-weight:bold; padding:2px 8px;} 
+
+.right{ width:162px; background:#f1f1f1; float:right; text-align:left; border:#CCCCCC solid 1px; height:763px;}

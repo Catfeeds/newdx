@@ -1,0 +1,21 @@
+{eval $listcnt = $listcnt ? $listcnt : count($list);}
+{if !($page == 1 && $listcnt < $perpage)}
+<div class="cust-page-list">
+	<div class="pg">
+		{if $page > 1}
+		<a href="{$theurl}" class="prev simple">首页</a>
+		{/if}
+		{if $prevpage > 0}
+		<a href="{$theurl}&page={$prevpage}" class="prev simple">上一页</a>
+		{else}
+		<a href="javascript:void(0);" class="prev simple" style="cursor:auto;">上一页</a>
+		{/if}
+		<!-- <strong>{$page}</strong> -->
+		{if $listcnt >= $perpage}
+		<a href="{$theurl}&page={$nextpage}" class="nxt">下一页</a>
+		{else}
+		<a href="javascript:void(0);" class="nxt" style="cursor:auto;">下一页</a>
+		{/if}
+	</div>
+</div>
+{/if}

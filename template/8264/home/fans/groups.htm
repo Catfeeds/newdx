@@ -1,0 +1,66 @@
+<!--{template common/header_8264_new}-->
+{if !$_G[gp_is_uc]}
+<link href="http://static.8264.com/static/css/home/home_space.css?{VERHASH}" rel="stylesheet" type="text/css" />
+<h3 class="flb">
+	<em id="return_$_G[gp_handlekey]">{lang set_friend_group}</em>
+	<span><a href="javascript:;" onclick="hideWindow('$_G[gp_handlekey]');" class="flbc" title="{lang close}">{lang close}</a></span>
+</h3>
+<form method="post" autocomplete="off" id="changegroupform_{$uid}" name="changegroupform_{$uid}" action="home.php?mod=spacecp&ac=friend&op=changegroup&uid=$uid" {if $_G[inajax]}onsubmit="ajaxpost(this.id, 'return_$_G[gp_handlekey]');"{/if}>
+	<input type="hidden" name="referer" value="$_G[referer]">
+	<input type="hidden" name="changegroupsubmit" value="true" />
+	<input type="hidden" name="handlekey" value="$_G[gp_handlekey]" />
+	<input type="hidden" name="formhash" value="{FORMHASH}" />
+	<div class="c">
+		<p>{lang set_friend_group}</p>
+		<table><tr>
+		<!--{eval $i=0;}-->
+		<!--{loop $groups $key $value}-->
+		<td style="padding:8px 8px 0 0;"><label><input type="radio" name="group" value="$key" <!--{if $key == $selected_group}-->checked="checked"<!--{/if}-->>{$value}</label></td>
+		<!--{if $i%2==1}--></tr><tr><!--{/if}-->
+		<!--{eval $i++;}-->
+		<!--{/loop}-->
+		</tr></table>
+	</div>
+	<p class="o pns">
+		<button type="submit" name="changegroupsubmit_btn" class="pn pnc" value="true"><strong>{lang determine}</strong></button>
+	</p>
+</form>
+<script type="text/javascript">
+function succeedhandle_$_G[gp_handlekey](url, msg, values) {
+	jQuery("#group_name_" + values.uid).html(values.gname);
+}
+</script>
+{else}	
+<form method="post" autocomplete="off" id="changegroupform_{$uid}" name="changegroupform_{$uid}" action="home.php?mod=spacecp&ac=friend&op=changegroup&uid=$uid&is_uc=1" {if $_G[inajax]}onsubmit="ajaxpost(this.id, 'return_$_G[gp_handlekey]');"{/if}>
+	<div class="popbox" style="width:380px;">
+		<div class="flb">
+		<div class="popbox_title clearfix">
+			<span>{lang set_friend_group}</span>
+			<!--{if $_G[inajax]}--><em onclick="hideWindow('$_G[gp_handlekey]');"></em><!--{/if}-->
+		</div>
+		</div>
+		<div>
+			<ul class="followgroupform">
+				<li>
+					<!--{eval $i=0;}-->
+					<!--{loop $groups $key $value}-->
+					<label><input type="radio" name="group" value="$key" <!--{if $key == $selected_group}-->checked="checked"<!--{/if}-->>&nbsp;{$value}</label>					
+					<!--{eval $i++;}-->
+					<!--{/loop}-->	
+				</li>	
+				<li>					
+					<button type="submit" name="changegroupsubmit_btn" value="true" class="button_confirm">{lang determine}</button>
+				</li>
+			</ul>
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+	
+	<input type="hidden" name="changegroupsubmit" value="true" />
+	<input type="hidden" name="formhash" value="{FORMHASH}" />	
+	<input type="hidden" name="referer" value="$_G[referer]" />
+	<!--{if $_G[inajax]}--><input type="hidden" name="handlekey" value="$_G[gp_handlekey]" /><!--{/if}-->
+	<div id="return_$_G[gp_handlekey]" style="display:none;"></div>
+</form>
+{/if}
+<!--{template common/footer_8264_new}-->

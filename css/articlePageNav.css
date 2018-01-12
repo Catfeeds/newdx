@@ -1,0 +1,39 @@
+/**
+ *文章的页脚样式
+ */
+a.pagelink{ 
+float:left;
+text-decoration:none;
+color: blue; 
+font-size: 12px  arial; font-weight: bold; 
+background: url(/images/2007/top_a_4.gif)  no-repeat right 0; 
+width: 20px; line-height: 18px; height:20px; 
+margin-left: 2px;
+margin-right: 2px;
+padding:0 4 0 4px;  
+display:block;
+}
+a.pagelink:hover{
+float:left;
+text-decoration:underline;
+color: red; 
+background: url(/images/2007/top_a.gif) no-repeat right 0;
+margin-left: 2px;
+margin-right: 2px;
+padding:0 4 0 4px; 
+display:block
+}
+.pagelink_now{
+float:left;
+text-decoration:none;
+color: red; 
+background: url(/images/2007/top_a.gif) no-repeat right 0;
+margin-left: 2px;
+margin-right: 2px;
+width:20px;
+padding:0 4 0 4px; 
+display:block
+}
+.float{
+float:left;
+}

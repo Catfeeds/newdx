@@ -1,0 +1,302 @@
+<!--{subtemplate common/header_8264_new}-->
+<style id="diy_style" type="text/css"></style>
+<link href="http://static.8264.com/static/css/forum/forum_index.css?{VERHASH}" rel="stylesheet" type="text/css">
+<link href="http://static.8264.com/static/css/common/discuz_index.css?{VERHASH}" rel="stylesheet" type="text/css">
+<script src="http://static.8264.com/static/js/header_index.js?{VERHASH}" type="text/javascript"></script>
+<div class="wFull_">
+		<!-- 头部 -->
+		<div class="header">
+			<div class="layout">
+				<div class="icoHill">山</div>
+				<style>
+					.dsad{ position:absolute; left:168px; top:18px;}
+					.dsad1{ position:absolute; left:432px; top:18px;}
+				</style>
+				<div class="dsad"><!--{ad/custom_252}--></div>
+				<div class="dsad1"><!--{ad/custom_301}--></div>
+				<div class="headerL">
+					<h1>
+						<span class="country">驴友论坛</span>
+					</h1>
+					<div class="site">
+						<a href="$_G[config][web][portal]">首页</a>
+						<em>&rsaquo;</em>
+						<span class="xlsj">驴友论坛</span>
+					</div>
+				</div>
+				<div class="headerR">
+					<div class="bbsNumCount">
+						<div class="numBox">
+							<p class="num">$_G['cache']['userstats']['totalmembers']</p>
+							<p class="day">{lang index_members}</p>
+						</div>
+						<div class="numBox">
+							<p class="num">$posts</p>
+							<p class="day">{lang index_posts}</p>
+						</div>
+						<div class="numBox" style="display:none;">
+							<p class="num">$postdata[0]</p>
+							<p class="day">{lang index_yesterday}</p>
+						</div>
+						<div class="numBox" style="display:none;">
+							<p class="num">$todayposts</p>
+							<p class="day">{lang index_today}</p>
+						</div>
+					</div>
+				</div>
+				<!--{subtemplate common/fastnavigation}-->
+			</div>
+		</div>
+
+        <div class="layout mt10" style="background:#fff; position:relative">
+			<script type='text/javascript'><!--//<![CDATA[
+               var m3_u = (location.protocol=='https:'?'https://stats.8264.com/www/delivery/ajs.php':'http://stats.8264.com/www/delivery/ajs.php');
+               var m3_r = Math.floor(Math.random()*99999999999);
+               if (!document.MAX_used) document.MAX_used = ',';
+               document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+               document.write ("?zoneid=73");
+               document.write ('&amp;cb=' + m3_r);
+               if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+               document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+               document.write ("&amp;loc=" + escape(window.location));
+               if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+               if (document.context) document.write ("&context=" + escape(document.context));
+               if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+               document.write ("'><\/scr"+"ipt>");
+            //]]>--></script>
+            <span style="width:26px; height:13px; position:absolute; bottom:0px; right:0px; font-size:0px; line-height:0px;"><img src="http://static.8264.com/static/images/common/ad_logo_update_IAB.gif"></span>
+		</div>
+
+
+
+
+
+
+		<!-- 文字广告 -->
+		<div class="layout mt10" style="background:#fff; position:relative;">
+			<!--{ad/text/layout}-->
+            <span style="width:26px; height:13px; position:absolute; bottom:0px; right:0px; font-size:0px; line-height:0px;"><img src="http://static.8264.com/static/images/common/ad_logo_update_IAB.gif"></span>
+		</div>
+
+
+
+
+
+        <div class="layout mt10" style="background:#fff; position:relative;">
+<script type='text/javascript'><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://stats.8264.com/www/delivery/ajs.php':'http://stats.8264.com/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=85");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script><noscript><a href='http://stats.8264.com/www/delivery/ck.php?n=a4e559a6&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://stats.8264.com/www/delivery/avw.php?zoneid=85&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a4e559a6' border='0' alt='' /></a></noscript>
+            <span style="width:26px; height:13px; position:absolute; bottom:0px; right:0px; font-size:0px; line-height:0px;"><img src="http://static.8264.com/static/images/common/ad_logo_update_IAB.gif"></span>
+		</div>
+
+		<!--[diy=diy0]-->
+		<div id="diy0" class="area"></div>
+		<!--[/diy]-->
+		<!--{eval $alldomainwithfid = $forumOption->getdomainbyfid('all');}-->
+		<!--{loop $catlist $key $cat}-->
+		<div class="layout mt10" id="category_$cat[fid]">
+			<div <!--{if $cat[extra][classname]}-->class="$cat[extra][classname]"<!--{/if}--> >
+				<div class="hd">
+					<h1 class="indexH1"{if $cat[fid] == 76} style="position: relative;"{/if}>{$cat[name]}{if $cat[fid] == 76}{/if}</h1>
+				</div>
+				<div class="bd">
+					<!--{if $cat[forumcolumns] == 0}-->
+					<div class="spRecIcon">
+						<!--{loop $cat[forums] $forumid}-->
+						<!--{eval $forum['domain']=$alldomainwithfid[$forumid];}-->
+						<!--{eval $forumurl = !empty($forum['domain']) && !empty($_G['setting']['domain']['root']['forum']) ? 'http://'.$forum['domain'].'.'.$_G['setting']['domain']['root']['forum'] : 'forum.php?mod=forumdisplay&fid='.$forumid;}-->
+							<a href="$forumurl" <!--{if $forumlist[$forumid][extra][classname]}-->class="$forumlist[$forumid][extra][classname]"<!--{/if}--> >
+								<i>$forumlist[$forumid][name]($forumlist[$forumid][todayposts])</i>
+								<br>
+								<em>$forumlist[$forumid][description]</em>
+							</a>
+						<!--{/loop}-->
+					</div>
+					<!--{else}-->
+					<ul class="<!--{if $cat[forumcolumns] >=5}-->localForumList<!--{else}-->row_{$cat[forumcolumns]}_980_list<!--{/if}-->">
+						<!--{loop $cat[forums] $forumid}-->
+						<!--{eval $forum['domain']=$alldomainwithfid[$forumid];}-->
+						<!--{eval $forumurl = !empty($forum['domain']) && !empty($_G['setting']['domain']['root']['forum']) ? 'http://'.$forum['domain'].'.'.$_G['setting']['domain']['root']['forum'] : 'forum.php?mod=forumdisplay&fid='.$forumid;}-->
+						<li>
+							<!--{if $forumlist[$forumid][extra][localname] != ''}-->
+							<a class="leftPic" href="<!--{if $forumlist[$forumid][redirect]}-->$forumlist[$forumid][redirect]" target="_blank<!--{else}-->$forumurl<!--{/if}-->" <!--{if $cat[extra][backpicclass]}-->class="$cat[extra][backpicclass]"<!--{/if}--> >
+								$forumlist[$forumid][extra][localname]
+							</a>
+							<!--{else}-->
+							<a href="<!--{if $forumlist[$forumid][redirect]}-->$forumlist[$forumid][redirect]" target="_blank<!--{else}-->$forumurl<!--{/if}-->" <!--{if $cat[extra][backpicclass]}-->class="$cat[extra][backpicclass]"<!--{/if}--> >
+								<img src="$forumlist[$forumid][iconsrc]" <!--{if !$cat[extra][backpicclass]}-->class="leftPic"<!--{/if}--> />
+							</a>
+							<!--{/if}-->
+							<div class="titText" <!--{if $forumid == 493}-->style="height:52px;"<!--{/if}-->>
+								<h2>
+									<a href="<!--{if $forumlist[$forumid][redirect]}-->$forumlist[$forumid][redirect]" target="_blank"<!--{else}-->$forumurl"<!--{/if}--> >$forumlist[$forumid][name] <!--{if $forumid == 493 || $forumid == 169 || $forumid == 504 || $forumid == 489 || $forumid == 505}--><!--{else}--><span>($forumlist[$forumid][todayposts])</span><!--{/if}--></a>
+								</h2>
+								<h3>$forumlist[$forumid][description]</h3>
+							</div>
+							<!--{if $cat[forumcolumns] <4}-->
+							<div class="countNum">
+                <!--{if $forumid == 504 || $forumid == 489 || $forumid == 505}-->
+								<!--{elseif $forumid == 493}-->
+									<a target="_blank" href="http://tuan.7jia2.com/?from=8264daohang"><img src="{$_G[config][web][static]}common/otherweb/lvyoumall_38x25.jpg" /></a>
+								<!--{elseif $forumid == 169}-->
+									<a href="https://detail.tmall.com/item.htm?id=536408071204" target="_blank">爆款三合一冲锋衣疯抢</a>
+								<!--{else}-->
+									<span class="cmt">$forumlist[$forumid][threads]</span>
+									<span class="read">$forumlist[$forumid][posts]</span>
+								<!--{/if}-->
+							</div>
+							<!--{/if}-->
+						</li>
+						<!--{/loop}-->
+					</ul>
+					<!--{/if}-->
+				</div>
+			</div>
+		</div>
+
+        <!--{if $cat[fid] == 180 && $gid == 0}-->
+		<div class="layout" style="position:relative">
+        	<!-- 论坛地方版上面 户外装备下面 位置广告 -->
+			<!--{ad/custom_437}-->
+            <span style="width:26px; height:13px; position:absolute; bottom:0px; right:0px; font-size:0px; line-height:0px;"><img src="http://static.8264.com/static/images/common/ad_logo_update_IAB.gif"></span>
+		</div>
+		<!--{/if}-->
+
+
+		<!--{if $cat[fid] == 67 && $gid == 0}-->
+		<!--{eval $arr = gettasklistbyindex();}-->
+		<!--{if $arr}-->
+		<style>
+		.bbsrwlist li:after,.bbsrwlist b:after{content: ""; display: block; clear: both; visibility: hidden;}
+		.bbsrwlist li,.bbsrwlist b{ zoom: 1;}
+		.bbsrwlist li{ width:184px; height:84px; float:left; display:inline; font-size:12px; margin:0px 12px 0px 0px; display:inline;}
+		.bbsrwlist li a{ display:block; height:84px; color:#fff; font-size:}
+		.bbsrwlist li a:hover{ background:#1a2b38}
+		.bbsrwlist li .blue_1{ background:#43A6DF;}
+		.bbsrwlist .end{ margin-right:0px;}
+		.bbsrwlist span{ height:38px; padding:12px 15px 0px 15px; display:block; overflow:hidden;}
+		.bbsrwlist b{ display:block; font-weight:normal; font-size:18px; padding:0px 15px;}
+		.bbsrwlist b em{ color:#9cd5f5; font-style:normal; font-size:12px; float:left; padding:6px 5px 0px 0px;}
+		.bbsrwlist strong{ font-weight:normal; float:right; padding-right:5px;}
+		.bbsrwlist .fr{ float:right;}
+		</style>
+		<div class="layout mt10">
+			<ul class="bbsrwlist">
+				<!--{loop $arr $task}-->
+				<li>
+					<a href="home.php?mod=task&do=view&id=$task[taskid]" class="blue_1">
+						<span>$task[name]</span>
+						<b>
+							<em>奖励</em>
+							<em class="fr">枚</em>
+							<strong>$task[rnum]</strong>
+							<em class="fr">$task[reward]</em>
+						</b>
+					</a>
+				</li>
+				<!--{/loop}-->
+			</ul>
+		</div>
+		<!--{/if}-->
+		<!--{/if}-->
+		<!--{if $cat[fid] == 38 && $gid == 0}-->
+		<div class="layout mt10 mb26">
+        	<ul class="jxtj">
+            	<li>论坛精选<!--{if $newlistcount[871] > 0}--><span class="number" >{$newlistcount[871]}</span><!--{/if}--><a href="$_G[config][web][portal]list/871" onclick="newtipsban('871', {$portallist_array[871]});" class="first"></a></li>
+                <li>每日一图<!--{if $newlistcount[842] > 0}--><span class="number">{$newlistcount[842]}</span><!--{/if}--><a href="$_G[config][web][portal]list/842" onclick="newtipsban('842', {$portallist_array[842]});" class="second"></a></li>
+                <li>户外摄影师<!--{if $newlistcount[912] > 0}--><span class="number">{$newlistcount[912]}</span><!--{/if}--><a href="$_G[config][web][portal]list/912" onclick="newtipsban('912', {$portallist_array[912]});"  class="third"></a></li>
+                <li>铿锵玫瑰<!--{if $newlistcount[878] > 0}--><span class="number">{$newlistcount[878]}</span><!--{/if}--><a href="$_G[config][web][portal]pp" onclick="newtipsban('878', {$portallist_array[878]});" class="forth"></a></li>
+                <li>线路推荐<!--{if $newlistcount[881] > 0}--><span class="number" style="display:none;">{$newlistcount[881]}</span><!--{/if}--><a href="$_G[config][web][portal]list/881" onclick="newtipsban('881', {$portallist_array[881]});" class="fifth"></a></li>
+                <li  class="end">勇者先行<a href="http://www.8264.com/list/880" target="_blank" class="sixth"></a></li>
+            </ul>
+        </div>
+        <!--{/if}-->
+		<!--{/loop}-->
+		<!--[diy=diy1]-->
+		<div id="diy1" class="area"></div>
+		<!--[/diy]-->
+		<!--{hook/index_middle}-->
+		<!-- 彩色广告 -->
+		<!--{hook/index_bottom}-->
+</div>
+<script>
+	function newtipsban(listid, newnum){
+		setcookie('8264portallistcount_' + listid, newnum, 2592000);
+	}
+</script>
+<!--{ad/custom_446}-->
+<!-- 右侧客服 -->
+<style type="text/css">
+.share_bd_warpten{ width:50px; position:absolute; float:right; position: fixed !important;  position: absolute; z-index: 1; bottom:60px; right: 30px; background:#fff;}
+.bbs_share_sc{ width:50px;}
+.bbs_share_sc li{ width:50px; height:51px;}
+.bbs_share_sc li.ps_re{ position:relative;}
+.bbs_share_sc li a{ background:url(http://static.8264.com/static/images/common/baidushare.jpg) no-repeat; display:block; }
+.bbs_share_sc li .share{ width:50px; height:50px; background-position:0px 0px;}
+.bbs_share_sc li .share:hover{ width:50px; height:50px; background-position:0px -204px;}
+.bbs_share_sc li .sc{ width:50px; height:50px; background-position:0px -51px;}
+.bbs_share_sc li .sc:hover{ width:50px; height:50px; background-position:0px -255px;}
+.bbs_share_sc li .bbsli{ width:50px; height:50px; background-position:0px -102px;}
+.bbs_share_sc li .bbsli:hover{ width:50px; height:50px; background-position:0px -306px;}
+.bbs_share_sc li .gotop_50{ width:50px; height:50px; background-position:0px -153px;}
+.bbs_share_sc li .gotop_50:hover{ width:50px; height:50px; background-position:0px -357px;}
+.bbs_share_sc li .kfhelf{ width:50px; height:50px; background-position:0 -867px;}
+.bbs_share_sc li .kfhelf:hover{ width:50px; height:50px; background-position:0 -816px;}
+.share_bd{ width:200px; position:absolute; height:50px; top:-6px; right:50px; font-size:0px; display:none;}
+.bbs_share_sc li .share_bd a{ width:50px; height:50px; background:url(http://static.8264.com/static/images/common/baidushare.jpg) no-repeat; display:inline-block; _display:inline; _zoom:1;}
+.bbs_share_sc li .share_bd a.sina{ background-position:0 -408px;}
+.bbs_share_sc li .share_bd a.sina:hover{ background-position:0 -612px;}
+.bbs_share_sc li .share_bd a.qq{ background-position: 0px -459px;}
+.bbs_share_sc li .share_bd a.qq:hover{ background-position: 0px -663px;}
+.bbs_share_sc li .share_bd a.wb{ background-position: 0px -510px;}
+.bbs_share_sc li .share_bd a.wb:hover{ background-position: 0px -714px;}
+.bbs_share_sc li .share_bd a.wx{ background-position: 0px -561px;}
+.bbs_share_sc li .share_bd a.wx:hover{ background-position: 0px -765px;}
+.bdshare-button-style0-32 a{padding:0;margin:0;}
+</style>
+<div class="share_bd_warpten">
+  <ul class="bbs_share_sc">
+    <li>
+      <a href="http://bbs.8264.com/forum-post-action-newthread-fid-12.html" class="p-btn-c btn-28">
+        <img src="http://static.8264.com/static/images/common/yjdp1.gif?{VERHASH}"/>
+      </a>
+    </li>
+    <li><a href="http://bbs.8264.com/thread-791154-1-1.html" target="_blank" class="kfhelf"></a></li>
+    <li id="gotop_50"><a style="display: none;" href="javascript:;" class="gotop_50"></a></li>
+  </ul>
+</div>
+<script>
+(function($){
+  var ww=$(window).width();
+  var s_bd_r=Math.max((ww-980)/2-60,0);
+  $(".share_bd_warpten").css("right",s_bd_r);
+  //返回顶部按钮
+  if($(window).scrollTop() > 10){$("#gotop_50 a").show();}
+  $(window).scroll( function(){
+    if($(window).scrollTop()>10){
+      $("#gotop_50 a").show();
+    }else{
+      $("#gotop_50 a").hide();
+    }
+  });
+  $("#gotop_50").click(function(){
+    $("html,body").animate({ scrollTop: 0 },500);
+  });
+})(jQuery);
+</script>
+<!-- //右侧客服 -->
+<!--{subtemplate common/weixin_share_bottom}-->
+<!--{subtemplate common/camel_ad}-->
+<!--{subtemplate common/footer_forum_8264_new}-->

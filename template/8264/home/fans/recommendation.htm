@@ -1,0 +1,38 @@
+<!--{template common/header_8264_new}-->
+<link href="http://static.8264.com/static/css/home/fan.css?{VERHASH}" rel="stylesheet" type="text/css">
+<link href="http://static.8264.com/static/css/home/home_space.css?{VERHASH}" rel="stylesheet" type="text/css" />
+<div class="container main-container">
+	<div class="module user-setting-wrap">
+		<!--{subtemplate home/fans/leftnav}-->
+		<div class="setting-form">
+			<div class="main-wrap">
+				<div class="form-box profile">
+					<div class="info-hd">
+						<em class="caption-info">{if $space[self]}你{else}他{/if}还没有{if $view== 'fans'}任何粉丝{else}关注任何人{/if}，以下用户你可能感兴趣：</em>
+					</div>
+					<div class="info-bd">
+						<div class="friend-attention-list friend-attention-list">
+							<ul>
+								<!--{loop $recommended_users  $uid $value}-->
+								<li>
+									<a href="home.php?mod=space&uid={$uid}" target="_blank"><!--{avatar($value['uid'],small)}--></a>
+									<div class="friend-attention-info">
+										<div class="nameinfo"><a href="home.php?mod=space&uid={$uid}" target="_blank">{$value['username']}</a></div>
+										<div class="friend-button mt-10">
+											<div class="friend-state">
+												<a href="javascript:void(0);" class="friend-nonmutualing ajax_follow_me" uid="{$value['uid']}">关注</a>
+											</div>
+										</div>
+									</div>
+									<div class="tagging">惊喜！他就在你附近！</div>
+								</li>
+								<!--{/loop}-->
+							</ul>
+						</div>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</div>
+</div>
+<!--{template common/footer_8264_new}-->

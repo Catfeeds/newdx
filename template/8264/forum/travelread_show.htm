@@ -1,0 +1,484 @@
+<!--{subtemplate common/header_8264_1170_new}-->
+<!--<link rel="stylesheet" href="http://192.168.1.227/static.css.com/global/1.0.1/css/layout-forum.css">-->
+<link rel="stylesheet" href="http://static.8264.com/static/css/forum/readmodel.css">
+<style type="text/css">
+.newswarpten {display:none!important;}
+.art-content p {text-align:left!important;}
+</style>
+<script type="text/javascript" src="http://static.8264.com/static/js/forum_viewthread.js?{VERHASH}"></script>
+
+<script src="http://static.8264.com/static/js/jquery.lazyload.min.js" type="text/javascript"></script>
+
+<!--头部 end-->
+<div class="strategy-banner">
+	<div class="lazy-showBG">
+		<div class="header-bg" style="background-image:url({$_G['config']['web']['static']}/static/images/forum/readmodelTravel/bg{$travelShow[bgpic]}.jpg);"></div>
+	</div>
+	<div class="strategy-header">
+		<div class="layout">
+			<div class="blk-crumbNav">
+				<a href="http://www.8264.com/" class="cate-name">首页</a><em>|</em>
+				<a href="http://www.8264.com/youji/" class="cate-name">游记攻略</a>
+				{loop $placeList $v}
+				<em>|</em>
+				<a href="$v[url]" class="cate-name">$v[name]</a>
+				{/loop}
+			</div>
+			<div class="stragy-titbar">
+				<div class="stragy-title">
+					<h1>{$travelShow[subject]}</h1>
+				</div>
+				<div class="stragy-thumb">
+					<p><a href="home.php?mod=space&uid={$travelShow['authorid']}" class="user-name">{$travelShow[author]}</a></p>
+					<!-- <p class="pb-time">{echo date('m-d H:i', $threadShow[dateline])}</p> -->
+					<!--{if $_G['groupid'] ==1}-->
+					<script src="http://static.8264.com/static/js/pushoriginaltobaidu.js" type="text/javascript"></script>
+					<p><a href="javascript:;" onclick="pushOriginalToBaidu();" style="color: #FFF;">[推送到百度原创]</a></p>
+					<!--{/if}-->
+				</div>
+			</div>
+			<div class="attent-wrapper">
+				<div class="left-joint"></div>
+				<div class="attentList-content">
+					<div class="attentList-inner">
+						<span class="attent-num"><em>{$threadShow[views]}</em>人关注</span>
+						{loop $viewsuids $v}
+						<a href="home.php?mod=space&uid={$v}">
+							{avatar($v, small)}
+						</a>
+						{/loop}
+						<a href="javascript:void(0);" class="more-link">更多</a>
+					</div>
+				</div>
+				<div class="right-joint"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--头部 end-->
+<div id="content">
+
+	<div class="main-rect">
+		<!--正文-->
+		<div class="col-main">
+			<div class="blk-container">
+				<div class="art-content">
+					<!--{eval require_once DISCUZ_ROOT.'./source/plugin/articlekeywords/include.php';}-->
+					<!--{eval $articleKeywords = new ArticleKeywords();}-->
+					<!--{eval echo $articleKeywords->parseArticle($message);}-->
+				</div>
+				<div class="art-page">
+					{if $multi}<div class="art-page">$multi</div>{/if}
+				</div>
+				<div style="text-align:center;"><img src="http://static.8264.com/static/images/moban/1024newslw/images/newewm2.png" width="180"><img src="http://static.8264.com//static/images/moban/1024newslw/images/newewm.png" width="180"></div>
+			</div>
+		</div>
+		<!--正文 end-->
+		<!--右侧工具栏-->
+		<div class="side-float">
+			<div class="mui-tab">
+				<a href="forum.php?mod=viewthread&tid={$travelShow[tid]}" class="icon-history" title="查看原帖"></a>
+				<div class="mui-tab-tip">
+					<div class="mui-tab-tip-t">返回原帖</div>
+					<div class="mui-tab-tip-arr"></div>
+				</div>
+			</div>
+			<div class="mui-tab">
+				<a onclick="showWindow(this.id, this.href, 'get', 0);" id="m_k_favorite" href="home.php?mod=spacecp&ac=favorite&type=thread&id={$travelShow[tid]}" class="icon-favorites"></a>
+				<span id="favoritenumber" style="display:none;"></span>
+				<div class="mui-tab-tip">
+					<div class="mui-tab-tip-t">收藏本帖</div>
+					<div class="mui-tab-tip-arr"></div>
+				</div>
+			</div>
+			<div class="mui-tab">
+				<a href="javascript:void(0);" class="icon-gotop" id="gotop"></a>
+			</div>
+		</div>
+		<!--右侧工具栏 end-->
+	</div>
+	<div class="main-extra-v3">
+		<div class="col-sub">
+			<div class="author-profile">
+				<h3 class="sub-title">本文作者</h3>
+				<div class="pf-wrap">
+					<div class="pf-photo">
+						<p class="photo-wrap">
+							<a href="home.php?mod=space&uid={$travelShow[authorid]}" target="_blank">
+								{avatar($travelShow['authorid'], middle)}
+							</a>
+						</p>
+					</div>
+					<div class="pf-username">
+						<h1 class="username"><a href="home.php?mod=space&uid={$travelShow[authorid]}" target="_blank">{$travelShow[author]}</a></h1>
+					</div>
+					<p class="pf-intro"><a href="home.php?mod=space&uid={$travelShow[authorid]}" target="_blank">{$space[group][grouptitle]}</a></p>
+					<div class="pf-opt">
+						<div class="opt-box">
+							<div class="btn-bed">
+								<a href="home.php?mod=space&uid=$travelShow[authorid]&do=thread&view=me&from=space" class="btn-d btn-30px" target="_blank"><em class="icon-square"></em>帖子</a>
+							</div>
+							<div class="btn-bed">
+								<a href="home.php?mod=spacecp&ac=pm&op=showmsg&handlekey=showmsg_$travelShow[authorid]&touid=$travelShow[authorid]&pmid=0&daterange=2" onclick="showWindow('sendpm', this.href)" class="btn-d btn-30px"><em class="icon-mess"></em>发私信</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{if $releList}
+			<div class="subImg-list">
+				<h3 class="sub-title">相关游记</h3>
+				<ul>
+					{eval $index = 0;}
+					{loop $tids2 $v}
+					{eval $temp = $releList[$v];}
+					{if $temp && $index < 3}
+					<li>
+						<a href="{$_G[config][web][portal]}youji/$temp[tid].html" class="targ-img">
+							<img src="$temp[pic]" alt="{$temp[subject]}">
+						</a>
+						<p><a href="{$_G[config][web][portal]}youji/$temp[tid].html">{$temp[subject]}</a></p>
+						<div class="view-num"><i class="icon-view"></i>{$temp[views]}</div>
+					</li>
+					{eval $index++;}
+					{/if}
+					{/loop}
+				</ul>
+			</div>
+			{/if}
+			<div class="appAdv-wrap">
+				<div class="zw-qr">
+					<!--{ad/custom_367}-->
+				</div>
+			</div>
+            <div class="appAdv-wrap appAdv-wrap_1">
+				<div class="zw-qr">
+					<!--{ad/custom_419}-->
+				</div>
+			</div>
+
+			<!--JD广告开始-->
+			<!--{subtemplate common/adv_jd_300}-->
+      <!--JD广告结束-->
+
+      <!--户外学校广告-->
+      <div style="height: 300px;width:263px;overflow: hidden;">
+      <!--{subtemplate dianping/showview_credit_narrow}-->
+      </div>
+
+		</div>
+	</div>
+</div>
+<!--评论-->
+<div id="comment">
+	<div class="layout">
+		<div class="blk-comment">
+			<h1 class="blkc-title">网友评论</h1>
+			<div class="comment-form">
+				{if $_G[uid]}
+				<div class="avatar">
+					<a href="home.php?mod=space&uid={$_G['uid']}">
+						{avatar($_G['uid'], small)}
+					</a>
+				</div>
+				<form method="post" autocomplete="off" id="fastpostform" name="fastpostform" action="forum.php?mod=post&action=reply&fid=$_G[fid]&tid=$_G[tid]&extra=$_G[gp_extra]&replysubmit=yes&infloat=yes" onsubmit="return commentPost(this.id, 'return_fastpost')">
+					<div class="post-box-cont">
+						<textarea name="message" id="message" class="comment-notes" placeholder=""></textarea>
+						<button type="submit" class="btn-comment" id="fastpostsubmit">评论</button>
+					</div>
+					<input type="hidden" name="formhash" value="{FORMHASH}" />
+					<input type="hidden" name="subject" value="" />
+					<input type="hidden" name="is_readmodel" value="1" />
+					<input type="hidden" name="handlekey" value="fastpost" />
+					<div id="return_fastpost" style="display:none;"></div>
+				</form>
+				{else}
+				<div class="avatar">
+					<a href="javascript:void(0);" style="cursor:auto;">
+						{avatar($_G['uid'], small)}
+					</a>
+				</div>
+				<div class="post-box-cont">
+					<div class="hm" style="line-height:68px;">
+						{lang login_to_reply}
+						<a href="member.php?mod=logging&action=login" onclick="showWindow('login', this.href)" class="xi2">{lang login}</a>
+						| <a href="member.php?mod={$_G[setting][regname]}" onclick="showWindow('register', this.href)" class="xi2">$_G['setting']['reglinkname']</a>
+						<!--{if $_G['setting']['connect']['allow']}-->
+						| <a href="$_G[connect][login_url]&statfrom=viewthread_fastpost" target="_top" rel="nofollow"><img src="{IMGDIR}/qq_login.gif" class="vm" /></a>
+						<!--{/if}-->
+						<button type="submit" class="btn-comment" id="fastpostsubmit">评论</button>
+					</div>
+				</div>
+				{/if}
+			</div>
+			<div class="comment-content">
+				<ul class="comment-navbar-nav">
+					<li {if $travelShow[rcnt]}class="active"{/if}>推荐评论</li>
+					<li {if !$travelShow[rcnt]}class="active"{/if}>全部评论</li>
+				</ul>
+				<!--推荐评论-->
+				<div id="tabs-recommendComment" class="commentContainer">
+					{eval $commentList  = $rList;}
+					{eval $multiComment = $multiR;}
+					{eval $page = 1;}
+					{eval $type = 'rList';}
+					<!--{subtemplate forum/travelread_comment_body}-->
+				</div>
+				<!--推荐评论 end-->
+				<!--所有评论-->
+				<div id="tabs-allComments" class="commentContainer" style="display:none;">
+					{eval $commentList  = $cList;}
+					{eval $multiComment = $multiC;}
+					{eval $page = 1;}
+					{eval $type = 'cList';}
+					<!--{subtemplate forum/travelread_comment_body}-->
+				</div>
+				<!--所有评论 end-->
+			</div>
+		</div>
+	</div>
+</div>
+<!--评论 end-->
+<div id="J-share" class="fx-share">
+	<div class="share-standard">
+		<div class="" style="position:relative;">
+			<p class="share-num"><em>{$shareCnt}</em>分享</p>
+			{loop $shareuids $v}
+			<a href="home.php?mod=space&uid={$v}">
+				{avatar($v, small)}
+			</a>
+			{/loop}
+			<a href="javascript:void(0);" class="share-link">我要分享</a>
+			<div style="width:0;height:200px;position:absolute;top:270px;left:60px;overflow:hidden;" id="qrcodediv"><img src="qrcode.php?output=1&url={$shareurl}&size=9" style="width:200px!important;height:200px!important;"></div>
+		</div>
+	</div>
+</div>
+<!--底部浮动层-->
+<div class="fl-open-wrap">
+	<div class="fl-open-wrap-cntr" id="appd-wrap-open-cnt"></div>
+</div>
+<div id="J-popLogin" class="pop-comment-wrap">
+<div id="fl-pop-wrap-cntr" class="fl-pop-wrap-cntr">
+	<div class="fl-pop-wrap-cntr-bg"></div>
+	<div class="pcw-content">
+		<div class="comment-main">
+			<h1>作者写的很辛苦，随手赏个<em>评论</em>吧！</h1>
+			<div class="userlist-wrap">
+				{loop $commentuids $v}
+				<a href="home.php?mod=space&uid={$v}">
+					{avatar($v, small)}
+				</a>
+				{/loop}
+				<a href="javascript:void(0);" class="more-link">更多</a>
+				<span class="comment-num"><em>{$travelShow[ccnt]}</em>人已评</span>
+			</div>
+		</div>
+		<div class="commentLogin-body">
+			{if $_G[uid]}
+			<form method="post" autocomplete="off" id="fastpostform1" name="fastpostform1" action="forum.php?mod=post&action=reply&fid=$_G[fid]&tid=$_G[tid]&extra=$_G[gp_extra]&replysubmit=yes&infloat=yes" onsubmit="return commentPost(this.id, 'return_fastpost')">
+				<div class="fl-pop-form">
+					<textarea name="message" id="message" placeholder=""></textarea>
+				</div>
+				<button type="submit" class="btn-d-r" id="fastpostsubmit" style="cursor:pointer;">评论</button>
+				<input type="hidden" name="formhash" value="{FORMHASH}" />
+				<input type="hidden" name="subject" value="" />
+				<input type="hidden" name="is_readmodel" value="1" />
+				<input type="hidden" name="handlekey" value="fastpost" />
+			</form>
+			{else}
+			<div class="fl-pop-form">
+			<p>你需要登录后才可以评论<a href="member.php?mod=logging&action=login" onclick="showWindow('login', this.href)">登录</a>|<a href="member.php?mod={$_G[setting][regname]}" onclick="showWindow('register', this.href)">注册</a></p>
+			</div>
+			<a href="javascript:void(0);" class="btn-d-r">评论</a>
+			{/if}
+		</div>
+		<a href="javascript:void(0);" id="appd-wrap-close" class="pop-close has-closed"><span class="close-x">关闭</span></a>
+	</div>
+</div>
+</div>
+<!--底部浮动层 end-->
+<script type="text/javascript">
+jQuery(function (){
+    //图片延时加载
+    jQuery(".lazy").lazyload({
+    	effect:"fadeIn",
+    	appear: function(){
+		}
+    });
+    jQuery('.comment-navbar-nav li').click(function(){
+    	jQuery(this).siblings().removeClass('active');
+    	jQuery(this).addClass('active');
+    	var index = jQuery(this).index();
+    	var obj   = jQuery('.commentContainer');
+    	obj.hide();
+    	obj.eq(index).show();
+    });
+    jQuery(".commentContainer").delegate("a[ajaxtarget=allPage]","click",function(){
+    	var href = jQuery(this).attr('href').match(/\d+/g);
+    	var page = parseInt(href, 10);
+    	var obj = jQuery('#cList_'+page);
+    	if (obj.length > 0) {
+    		obj.show();
+    		obj.siblings().hide();
+    		return true;
+    	}
+    	jQuery.post('forum.php?mod=readmodeltravel&action=incComment&tid={$tid}&type=cList&page='+page, '', function(data){
+    		jQuery('#tabs-allComments').append(data);
+    		var obj = jQuery('#cList_'+page);
+    		obj.show();
+    		obj.siblings().hide();
+    		jQuery('.pg a.prev').html('上一页');
+    	});
+	});
+	jQuery(".commentContainer").delegate("a[ajaxtarget=recommendPage]","click",function(){
+    	var href = jQuery(this).attr('href').match(/\d+/g);
+    	var page = parseInt(href, 10);
+    	var obj = jQuery('#rList_'+page);
+    	if (obj.length > 0) {
+    		obj.show();
+    		obj.siblings().hide();
+    		return true;
+    	}
+    	jQuery.post('forum.php?mod=readmodeltravel&action=incComment&tid={$tid}&type=rList&page='+page, '', function(data){
+    		jQuery('#tabs-recommendComment').append(data);
+    		var obj = jQuery('#rList_'+page);
+    		obj.show();
+    		obj.siblings().hide();
+    		jQuery('.pg a.prev').html('上一页');
+    	});
+	});
+    jQuery('.pg a.prev').html('上一页');
+
+	jQuery(".commentContainer").delegate(".pl-post-body", "mouseenter", function (event) {
+    	jQuery(this).children().find(".pl-btn-reply").show();
+    }).delegate(".pl-post-body", "mouseleave", function (event) {
+      	jQuery(this).children().find(".pl-btn-reply").hide();
+    });
+
+	jQuery(".commentContainer").delegate(".pl-btn-reply","click",function(){
+		var uid = '{$_G[uid]}';
+		uid = parseInt(uid, 10);
+		if (uid == 0) {
+			location.href = 'member.php?mod=logging&action=login';
+		}
+		jQuery(this).hasClass("open") ? jQuery(this).removeClass("open") + jQuery(this).parents(".pl-post-body").find(".pl-reply-box").hide() : jQuery(this).addClass("open") + jQuery(this).parents(".pl-post-body").find(".pl-reply-box").show();
+	});
+
+	jQuery("#fastpostform").keyup(function(){
+		var tempobj = jQuery(this).find('#fastpostsubmit');
+		jQuery(this).find('#message').val() == '' ? tempobj.css({'background-color':'#aeaeae'}) : tempobj.css({'background-color':'#ff8d6a'});
+	});
+	jQuery(document).ready(function($) {
+		jQuery("#appd-wrap-open-cnt").on('click', function() {
+			var e = jQuery(this);
+			$("#appd-wrap-close").addClass("has-closed");
+			setcookie("showreadtravelreply", 0, 1*3600);
+			jQuery("#appd-wrap-open-cnt").animate({
+				left: "-100%"
+			},300,function(){
+				jQuery(this).parent().hide();
+				jQuery("#fl-pop-wrap-cntr").animate({
+					left: "0%"
+				},800,function(){
+				}).parent().show();
+			});
+		});
+		jQuery("#appd-wrap-close").on('click', function() {
+			var e = jQuery(this);
+			jQuery(this).removeClass("has-closed");
+			setcookie("showreadtravelreply", 1, 1*3600);
+			jQuery("#fl-pop-wrap-cntr").animate({
+				left: "-100%"
+			},300,function(){
+				jQuery(this).parent().hide();
+				jQuery("#appd-wrap-open-cnt").animate({
+					left: "0%"
+				},800,function(){
+				}).parent().show();
+			});
+		});
+	});
+
+	jQuery('.share-link').click(function(){
+		var btnObj = jQuery('.share-link');
+		var actObj = jQuery('#qrcodediv');
+		if (btnObj.hasClass('show')) {
+			actObj.css({'border':'0'});
+			actObj.animate({
+				width: "0%"
+			},300,function(){
+				btnObj.removeClass('show');
+			});
+		} else {
+			actObj.css({'border':'1px solid #999'});
+			actObj.animate({
+				width: "200px"
+			},300,function(){
+				btnObj.addClass('show');
+			});
+		}
+	});
+});
+</script>
+<script type="text/javascript">
+	function succeedhandle_fastpost (url, message, values) {
+		location.reload();
+	}
+	function succeedhandle_reply (url, message, values) {
+		location.reload();
+	}
+
+	function commentPost(id, returnobj) {
+		var uid = '{$_G[uid]}';
+		uid = parseInt(uid, 10);
+		if(jQuery('#'+id+' #message').val() == '' || uid == 0){return false;}
+		jQuery('#'+id+' #fastpostsubmit').attr('disabled', true);
+		ajaxpost(id, returnobj);
+	}
+</script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		var ie6=!-[1,]&&!window.XMLHttpRequest;
+		if (!ie6) {
+			var navtop = $(".appAdv-wrap_1").offset().top + 400;
+			$(window).scroll(function(){
+				scrollfun();
+			});
+			function scrollfun(){
+				var s_top = $(window).scrollTop();
+				$("#J-popLogin").is(":hidden") ? $(".side-float").css("bottom","20px") : $(".side-float").css("bottom","140px");
+				s_top > navtop ? $(".side-float").animate({opacity: 'show'}, 500) + $(".w8h6-list-1").css({"position":"fixed", "top": 0 ,"width": "310px"}) : $(".side-float").animate({opacity: 'hide'}, 500) + $(".w8h6-list-1").removeAttr("style");
+				s_top > 410 ? $("#J-share").css("top", "10px") : $("#J-share").removeAttr("style");
+
+				//if($("#appd-wrap-close").hasClass("has-closed")&&getcookie('showreadtravelreply') != 1){
+				//	s_top > 1500 ? $("#J-popLogin").show() + $("#fl-pop-wrap-cntr").css("left","0%") : "";
+				//}
+
+				if(s_top > 1500){
+					if($("#appd-wrap-close").hasClass("has-closed")&&getcookie('showreadtravelreply') != 1){
+						$("#J-popLogin").show();
+						$("#fl-pop-wrap-cntr").css("left","0%");
+					}else{
+						$("#J-popLogin").hide();
+						$("#appd-wrap-close").removeClass("has-closed");
+						$("#fl-pop-wrap-cntr").css("left","-100%");
+						$("#appd-wrap-open-cnt").parent().show();
+						$("#appd-wrap-open-cnt").css("left","0%");
+					}
+				}
+
+			}
+		}
+		$(".mui-tab").hover(function() {
+			$(".mui-tab-tip", this).addClass('animated shake').show();
+		}, function() {
+			$(".mui-tab-tip", this).removeClass('animated shake').hide();
+		});
+		$("#gotop").click(function() {
+			var body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
+			body.animate({scrollTop: 0}, 80);
+		});
+	});
+
+</script>
+<!--{subtemplate common/footer_8264_1170_new}-->

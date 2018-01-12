@@ -1,0 +1,221 @@
+/* CSS Document */
+body { font-size:12px; margin:0 auto; padding:0;}
+div,h1,h2,h3,h4,h5,p{ padding:0; margin:0;}
+.clear { clear:both; font-size:0px;}
+ul{ list-style:none; padding:0; margin:0;}
+
+.wai { margin:auto; width:960px;}
+.ad{ margin:10px 0;}
+.weizhiall{ border-bottom:#009933 solid 2px; padding-top:5px;}
+.weizhi{ width:570px; height:19px; padding:13px 0px 0px 10px; float:left;}
+.search{ width:360px; float:right;  padding:5px 0px 8px 0px; height:25px;}
+.schbtn{ width:51px; height:26px; background:url(/template/8264/css/moban/1024news/images/newsviewbg.png) 0px -3px no-repeat; border:0; }
+
+
+
+.mid { width:960px; background:url(/template/8264/css/moban/1024news/images/img/midbg.jpg) 0 0 repeat-y;}
+/*左侧开始*/
+.midl{ width:580px; margin:auto; float:left;  overflow:hidden; }
+
+/*左侧头开始*/
+.midl1 { border-top:5px solid #000;  border-bottom:1px dashed #CCC; padding:20px 0 15px 10px; margin-top:10px; }
+.newstitle{ width:100%; text-align:center; padding:20px 0px 8px 0px; border-bottom:#ccc dashed 1px; margin:0 auto; font-size:18px; font-weight:bold;}
+.newstitlecon{ margin-top:10px;}
+#content_left_ad2_top{ width:466px;border:1px solid #BFBFBF; margin:auto}
+#content_left_ad2_bottom{ width:466px;border:1px solid #BFBFBF; border-top:0; height:25px; margin:auto;}
+.content_left_ad2_bottom_l{float:left; width:232px; text-align:center;border-right:1px solid #BFBFBF; height:20px; padding-top:5px;}
+.content_left_ad2_bottom_l a{ color:#0000ff; font-weight:bold; }
+.content_left_ad2_bottom_l a:hover{ color:#0000ff;  font-weight:bold; }
+.content_left_ad2_bottom_r{float:right; width:233px; text-align:center; height:20px; padding-top:5px;}
+.content_left_ad2_bottom_r a{ color:#ff0000; font-weight:bold; }
+.content_left_ad2_bottom_r a:hover{ color:#ff0000;  font-weight:bold; }
+/*左侧头结束*/
+
+/*左侧文章*/
+.newstext {font-family: "Microsoft Yahei","Helvetica Neue","Luxi Sans","DejaVu Sans",Tahoma,"Hiragino Sans GB",STHeiti !important; font-size:16px; color:#555; margin-top:10px;}
+.newstext p{ padding:10px 0 0px 10px; line-height:1.7; font-family: "Microsoft Yahei","Helvetica Neue","Luxi Sans","DejaVu Sans",Tahoma,"Hiragino Sans GB",STHeiti !important; font-size:16px; color:#555; }
+
+.newstext div{ padding:10px 0 0px 10px; line-height:1.7; font-family: "Microsoft Yahei","Helvetica Neue","Luxi Sans","DejaVu Sans",Tahoma,"Hiragino Sans GB",STHeiti !important; font-size:16px; color:#555; }
+
+.newstext a{ padding:10px 0 0px 10px; line-height:1.7; font-family: "Microsoft Yahei","Helvetica Neue","Luxi Sans","DejaVu Sans",Tahoma,"Hiragino Sans GB",STHeiti !important; font-size:16px; color:#555; }
+
+.newstext b{ padding:10px 0 0px 10px; line-height:1.7; font-family: "Microsoft Yahei","Helvetica Neue","Luxi Sans","DejaVu Sans",Tahoma,"Hiragino Sans GB",STHeiti !important; font-size:16px; color:#555; }
+
+/*相关图文、文章开始*/
+.xgtw { padding-left:10px;}
+.xgtwt { font-size:14px; font-weight:bold; margin-bottom:5px;}
+
+.xgwz{ padding-left:10px; margin-top:20px;}
+.xgwzt { font-size:14px; color:#000; font-weight:bold;}
+.xiangguancon{ padding-left:15px;}
+.xiangguancon span { float:right; padding-right:30px; color:#004276; text-align:left;}
+.xiangguancon li{  padding:3px 0px 3px 0px;font-size:14px;}
+.xiangguancon li a{ font-size:14px; color:#004276; float:left;}
+.xiangguancon li a:hover{ font-size:14px; color:#004276; float:left;}
+/*关键字*/
+.xiangguankeywords{ padding:0 32px 5px 25px;overflow:hidden;}
+.xiangguankeywords li{ float:left; margin-right:8px;height:24px;line-height:24px;overflow:visible;white-space:nowrap;color:#004276;font-size:14px;}
+.xiangguankeywords li a{color:#004276;font-size:14px;}
+.kanfa .article_control { float:left; margin-left:15px;}
+
+/*相关图文、文章结束*/
+
+/*评论开始*/
+.zxpl { border-top:5px solid #000; margin-bottom:10px;}
+.zxpltit { font-size:14px; padding:10px 10px 10px 0;  margin-bottom:15px;}
+.zxpltit a { font-size:12px; color:#004276; float:right; text-decoration:none;}
+.zxpltit a:hover { font-size:12px; color:#004276; float:right; text-decoration:underline;}
+.zxpltit a span { color:#b9253b;}
+.fbpl { background:#f4f4f4; padding:10px 10px 10px 15px; width:560px;}
+.fbpl1 { border:0;}
+.bm_c1 { padding:0;}
+/*评论结束*/
+
+/*点击排行开始*/
+.djph { border:1px solid #CCC; margin-bottom:10px;}
+.djphtit { border-bottom:1px solid #ccc; font-size:14px; color:#000; padding:10px;}
+
+.djphmin { padding:10px;}
+.djphmin li{ line-height:1.8; float:left; width:270px; height:20px; overflow:hidden; margin:5px 5px 3px 0;}
+.djphmin li span {  margin-right:10px;}
+.djphmin li a { font-size:12px; color:#004276; text-decoration:none;}
+.djphmin li a:hover { font-size:12px; color:#004276; text-decoration:underline;}
+/*点击排行结束*/
+
+/*推荐图文开始*/
+.tj{ border:1px solid #CCC; width:578px; overflow:hidden;}
+.tjtit { border-bottom:1px solid #ccc; font-size:14px; color:#000; padding:10px; }
+.tjmin { padding:10px 0 10px 10px;}
+
+.tjtw { width:136px; float:left; margin:0 5px 5px 0;}
+.tjtwt { width:136px; height:89px; background:url(/template/8264/css/moban/1024news/images/img/xk.png) 0 0 no-repeat; text-align:center; padding-top:9px;}
+.tjtwt img { width:120px; height:80px;}
+.tjtww { padding:0 5px 0 5px; font-size:12px; line-height:1.8; height:40px; overflow:hidden; }
+.tjtww a { font-size:12px; color:#416571; text-decoration:none;}
+.tjtww a:hover { font-size:12px; color:#416571; text-decoration:underline;}
+/*推荐图文结束*/
+
+/*分页*/
+.pages div {text-align:center;}
+.pages{ padding:0px 0px 20px 0px;}
+.pages strong{ background:#036cb4; color:#fff; font-size:14px; padding:6px 7px 3px 7px; text-decoration:none; border:#036cb4 solid 1px; margin:0px 0px 0px 3px; float:left;}
+.pages a { border:#ccc solid 1px; color:#036cb4; font-size:14px; font-weight:bold; padding:6px 7px 3px 7px; background:#fff; margin:0px 0px 0px 3px; float:left;}
+.pages a:hover{ border:#036cb4 solid 1px; color:#fff; font-size:14px; font-weight:bold; padding:6px 7px 3px 7px; background:#036cb4; margin:0px 0px 0px 3px; float:left;}
+.pg { margin-top:10px;
+    font-size: 18px;
+    text-align: center;
+}
+.pg a {
+	font-family: simhei;
+    background: none repeat scroll 0 0 #2877C6;
+    border: 1px solid #2877C6;
+    color: #FFFFFF;
+    font-weight: bold;
+    margin-right: 3px; 
+	font-size: 18px;
+	padding: 4px 10px 0px 10px; height:26px; display:block;
+}
+.pg a:hover {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #DD0505;
+	font-size: 18px;
+	font-weight: bold;
+	padding: 4px 10px 0px 10px; height:26px; display:block;
+	
+}
+.pg strong {
+	font-family: simhei;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #2877C6;
+    color: #DD0505;
+    padding: 4px 10px 0px 10px;
+	font-size: 18px; height:26px; display:block;
+}
+
+.pg a.nxt { background-image: none; height:26px; padding:4px 10px 0px 10px;}
+.pg a.nxt:hover { background-image: none; height:26px; padding:4px 10px 0px 10px;}
+
+
+.pg a.prev { background:url(/template/8264/css/moban/1024news/images/newsviewbg.png) -942px -3px no-repeat; text-decoration:none;}
+
+.pg a.prev:hover { background:url(/template/8264/css/moban/1024news/images/newsviewbg.png) -942px -3px no-repeat; text-decoration:none;}
+
+
+/*左侧结束*/
+.midr { width:370px; margin:auto; float:right;  padding-top:5px;}
+.midr_ad1 { text-align:center;width:350px; margin:auto;margin-bottom:10px; overflow:hidden;}
+.midr_box { padding:5px; border:1px solid #CCC; width:338px; margin:auto; margin-bottom:10px; background:#FFF; overflow:hidden;}
+.midr_box li { float:left; width:160px; line-height:1.8; margin:0 5px 0 4px;}
+.midr_box li a { color:#416571; text-decoration:none; margin-left:15px;}
+.midr_box li a:hover { color:#416571; text-decoration:underline; margin-left:15px;}
+.midr_box h3 { font-size:12px; color:#416571; margin-bottom:5px;}
+
+.midr_box li.ju{ background:url(/template/8264/css/moban/1024news/images/newsviewbg.png) -945px -36px no-repeat;}
+.midr_box li.shop{ background:url(/template/8264/css/moban/1024news/images/newsviewbg.png) -603px -37px no-repeat;}
+.midr_box li.ty{ background:url(/template/8264/css/moban/1024news/images/newsviewbg.png) 3px -36px no-repeat;}
+.midr_box li.tuan{ background:url(/template/8264/css/moban/1024news/images/newsviewbg.png) -297px -36px no-repeat;}
+
+/*装备分享开始*/
+.goods_share { border:1px solid #ccc; margin:0 10px 10px 10px;width:348px;   background:#FFF;}
+.rtit {  padding:10px 0 0 15px;}
+.rtit a { font-size:12px; font-weight:bold; color:#416571;}
+.productSelectBox{ padding:0 10px;}
+.productSelectBox .pro_button_list{ width:234px; overflow:hidden;}
+.productSelectBox .pro_button_list li{ float:left; margin-right:5px; margin-bottom:5px; white-space:nowrap; overflow:visible; display:block;}
+.productSelectBox .pro_button_list li a{ background:url(/source/plugin/produce/css/images/pro_button_bg.gif) 0 0 no-repeat; display:block; height:26px; overflow:visible; float:left;}
+.productSelectBox .pro_button_list li a span{ display:block; float:left; height:24px; padding:1px 14px; line-height:24px; *line-height:26px; _line-height:24px; color:#bababa; background:url(/source/plugin/produce/css/images/pro_button_bg.gif) right -26px no-repeat; cursor:pointer;}
+.productSelectBox .pro_button_list li a:hover{ text-decoration:none;}
+.productSelectBox .pro_button_list li a.on{ background:url(/source/plugin/produce/css/images/pro_button_bg.gif) 0 -52px no-repeat;}
+.productSelectBox .pro_button_list li a.on span{ background:url(/source/plugin/produce/css/images/pro_button_bg.gif) right -78px no-repeat; color:#fff; *line-height:26px; _line-height:24px;}
+.productSelectBox .pro_button_list li a.on:hover span{ color:#fff;}
+.productSelectBox .pro_condition{ width:100%; overflow:hidden; padding:10px 0 5px; border-bottom:1px dashed #ccc;}
+.productSelectBox .pro_condition li a:hover{ background:url(/source/plugin/produce/css/images/pro_button_bg.gif) 0 -52px no-repeat;}
+.productSelectBox .pro_condition li a:hover span{ background:url(/source/plugin/produce/css/images/pro_button_bg.gif) right -78px no-repeat; color:#fff;}
+.productSelectBox .pro_class{ width:100%; overflow:hidden; padding:10px 0;}
+.productSelectBox .pro_class li{ margin-right:1px;}
+.productSelectBox .pro_class li a span{ line-height:24px; padding-left:10px; padding-right:10px;}
+.productSelectBox .pro_class li a:hover span{ color:#416571;}
+.productSelectBox .pro_class li a.all span{ padding-left:25px; padding-right:25px;}
+.productSelectBox .pro_class li img{ vertical-align:-7px; margin-right:5px;}
+/*装备分享结束*/
+
+.midr_box1 { border-top:5px solid #000;  border-left:1px solid #CCC; border-right:1px solid #CCC; background:#FFF; width:348px; margin:auto; padding:10px 0 0px 0;}
+.midr_box1t { font-size:14px; padding:0 0 10px 10px; color:#416571; }
+.midr_box1m { padding:10px 10px 10px 20px; background:#FFF; border:1px solid #ccc; width:318px; margin:auto; margin-bottom:10px;}
+.midr_box1m p { color:#416571; font-size:12px; font-weight:bold; padding-bottom:10px;}
+.midr_box1m li { line-height:1.8; }
+.midr_box1m li a { color:#416571; text-decoration:none; font-size:12px;}
+.midr_box1m li a:hover { color:#416571; text-decoration:underline; font-size:12px;}
+.midr_box1m li em { float:left; font-style:normal;}
+.midr_box1m li span { float:right; color:#ccc;}
+.midr_box1m li strong {  font-weight: normal;}
+.midr_box1m li b { font-weight: normal; color:#ccc;}
+
+/*推荐专题开始*/
+.zhuangti { width:348px; padding:10px 0 10px 0; margin:auto; margin-bottom:10px; background:#FFF; border:1px solid #CCC;}
+.zhuanti{ width:162px; float:left;  margin:8px 0px 8px 6px!important; margin:8px 5px 8px 6px; overflow:hidden; display:inline;}
+.zhuantiimg{ width:160px; border:#ccc solid 1px;}
+.zhuantiwen{ width:100%; margin-top:5px; text-align:center;}
+.zhuantiwen a {color:#416571; font-size:12px; text-decoration:none;}
+.zhuantiwen a:hover {color:#416571; font-
+ize:12px; text-decoration:underline;}
+/*推荐专题结束*/
+
+/*旅社开始*/
+.bl{ width:350px; margin:auto; margin-bottom:10px;  background:#FFF;  overflow:hidden;}
+.bltitle{ width:350px; }
+.bltitle li{ float:left;  text-align:center;}
+.bltitle .sheqian2 a{ float:left; width:174px; height:20px; padding:10px 0px 0px 0px; background:url(/template/8264/css/moban/1024news/images/img/label_1.jpg) -182px 0 no-repeat; font-size:12px; color:#416571; font-weight:bold; text-decoration:none;}
+.bltitle .sheqian2 a.active { float:left; width:175px; height:20px; padding:10px 0px 0px 0px; background:url(/template/8264/css/moban/1024news/images/img/label_1.jpg) 0px 0 no-repeat; font-size:12px; color:#000; font-weight:bold; text-decoration:none;}
+
+.sheqianbody { width:348px; border:1px solid #CCC; border-top:0;}
+.sheqianbody div.neirong{ display:none; }
+.sheqianbody div.active{ display:block;}
+.blcon{ width:350px; padding:5px 0px; color:#416571;}
+.blcon a {  color:#416571; text-decoration:none;}
+.blcon a:hover {  color:#416571; text-decoration:underline;}
+.blcon td{ padding-left:5px; height:30px;}
+.textlj{ width:120px;}
+.search-field{ float:left; width:170px; padding:3px 0px 0px 5px; height:27px;}
+.search-field1{ width:98%; text-align:center;}
+/*旅社结束*/

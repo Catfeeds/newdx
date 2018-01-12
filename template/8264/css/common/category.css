@@ -1,0 +1,214 @@
+/* CSS Document */
+
+/*全局样式*/
+
+body { margin:0 auto; font-size:12px; color:#33333;}
+
+ul{ list-style:none; margin:auto 0px; letter-spacing:0; word-spacing:0; padding:0;}
+
+a{text-decoration:none; color:#333333; font-size:12px;}
+
+a:hover{text-decoration:underline; font-size:12px;}
+
+form{ padding:0 0 0 0; margin:0 0 0 0;}
+
+em{ font-style:normal;}
+
+.warpper{ width:960px; margin:auto;}
+
+/*中间样式*/
+
+.mid{ width:960px; margin-top:8px; font-size:12px;}
+
+.mid a{ font-size:12px; color:#000000;}
+
+.mid a:hover{ font-size:12px; color:#000000;}
+
+.search{ width:958px; border:#CCCCCC solid 1px; height:30px; background:#f1efd6;}
+
+.weizhi{ width:400px; float:left; margin-top:8px; text-align:left; padding-left:10px;}
+
+.text{ width:300px; font-size:12px;}
+
+.mid2{ width:960px; margin-top:10px;}
+
+.left{ width:652px; float:left; text-align:left;}
+
+.tuwen{ width:958px; border:#CCCCCC solid 1px; margin-top:10px;}
+
+.title1{ width:948px; margin:1px auto 1px auto; background:#9fbc80; height:17px; padding:4px 0px 4px 8px;; text-align:left; color:#FFFFFF; font-size:12px; font-weight:bold;}
+
+.con{ width:958px;}
+
+.imgall{ width:138px; float:left; float:left; margin:5px 0px 5px 19px!important; margin:5px 9px 5px 9px;}
+
+.img{ width:130px; border:#CCCCCC solid 1px; padding:3px;}
+
+.wenzi{ width:122px; line-height:1.5; padding:4px 7px 0px 7px; text-align:left;}
+
+.title_8264{ width:640px; margin:1px auto 1px auto; background:#9fbc80; height:17px; padding:4px 0px 4px 8px;; text-align:left; color:#FFFFFF; font-size:12px; font-weight:bold;}
+
+.con1{ width:650px; border:#CCCCCC solid 1px;}
+
+.list{ width:650px; font-family:SimSun; font-size:12px;}
+
+.list li{ border-bottom:#ccc dashed 1px; padding:5px 0px 5px 10px; text-align:left; line-height:1.6; color:#999;}
+
+.list li h1{ margin:0px 0px 0px 0px; padding:0px 0px 0px 0px; line-height:30px;}
+
+.list li h1 a{ color:#000; font-size:14px; font-weight:bold;}
+
+.list li h1 a:hover{ color:#ba2636; font-size:14px; font-weight:bold;}
+
+.list li h1 span{ color:#999; font-size:12px; font-weight:normal;}
+
+.list li a{ color:#ba2636;}
+
+.list li a:hover{ color:#ba2636;}
+
+.right{ width:302px; float:right; text-align:left; word-break:break-all;}
+
+.right1{ width:300px; border:#CCCCCC solid 1px;}
+
+.righttitle{ width:290px; margin:1px auto 1px auto; background:#9fbc80; height:17px; padding:4px 0px 4px 8px; text-align:left; color:#FFFFFF; font-size:12px; font-weight:bold;}
+.righttitle a { color:#FFF;}
+.righttitle a:hover { color:#FFF;}
+
+.right1con{ width:290px;}
+
+.right1con li{ width:282px; height:24px!important; line-height:24px!important; *height:20px!important; *line-height:20px!important; height:20px; line-height:20px; overflow:hidden; padding-left:8px; color:#999999; }
+
+.right2{ width:300px; margin-top:8px; border:#CCCCCC solid 1px;}
+
+.right2title{ width:290px; background:#9fbc80; margin:1px auto 1px auto; height:17px; padding:4px 0px 4px 8px; text-align:left; color:#FFFFFF; font-size:12px; font-weight:bold;}
+
+.right2qian{ width:45px; height:21px; line-height:21px; background:#FFFFFF; float:right; text-align:center;}
+
+.right2qian a{ color:#9fbc80; font-weight:bold; font-size:12px; text-decoration:none;}
+
+.right2qian a:hover{ color:#9fbc80; font-weight:bold; font-size:12px; text-decoration:none;}
+
+.right2qian1{ width:45px; height:20px; line-height:21px; background:#9fbc80; color:#FFFFFF; float:right; text-align:center;}
+
+.right2qian1 a{ color:#ffffff; font-weight:bold; font-size:12px; text-decoration:none;}
+
+.right2qian1 a:hover{ color:#ffffff; font-weight:bold; font-size:12px; text-decoration:none;}
+
+.right2con{ width:298px;}
+
+.right2con li{ width:298px; float:left; text-align:left; height:25px; color:#999999;}
+
+.right4con{ width:298px; padding:5px 0px 5px 0px;}
+
+.right4con li{display:inline; white-space: nowrap; line-height:20px; float:left; margin-left:8px;}
+
+
+
+
+
+.indexbrandcon1{ border-top:0;}
+.indexbrandcon1 li{ width:270px; height:19px;overflow:hidden; padding:5px 5px 0px 0px;}
+.indexbrandcon1 li img{ float:left; margin:4px 8px 0px 0px;}
+.indexbrandcon1 li a{ float:left; font-size:12px;}
+
+
+/*图库*/
+
+.tuku{ width:958px; border:#bfbfbf solid 1px; margin:10px 0px 10px 0px;}
+
+.tukutitle{ width:953px; background: url(./template/8264/css/moban/companylist/images/titlebggray.jpg) repeat-x; height:24px; line-height:24px; overflow:hidden; color:#FFFFFF; margin:1px auto 0 auto; text-align:left; font-weight:bold; padding-left:5px;}
+
+.tukutitle a{ font-size:12px; color:#000000;}
+
+.tukutitle a:hover{ font-size:12px; color:#000000;}
+
+.tukucon{ width:100%;}
+
+.tukucon a{ color:#000000; font-size:12px; text-decoration:none;}
+
+.tukucon a:hover{ color:#000000; font-size:12px; text-decoration:underline;}
+
+/*底部具体样式*/
+
+.bottom1{border:#cfdab8 solid 1px; height:30px;}
+
+.bottom1 a{ color:#686868; font-size:12px;}
+
+.bottom1 a:hover{ font-size:12px; color:#5c8b17;}
+
+.bottom3{ border:#cfdab8 solid 1px; height:107px;}
+
+.bottom3 a{ color:#686868; font-size:12px;}
+
+.bottom3 a:hover{ font-size:12px; color:#5c8b17;}
+
+.bottom2{ width:960px; color:#53792e; line-height:2; padding-top:5px;}
+
+.bottom2 a{ font-size:12px;}
+
+.bottom2 a:hover{ font-size:12px; color:#686868;}
+
+/*头部具体样式*/
+
+
+
+
+
+.pg{margin:0 10px auto;}
+
+.topic-content{ width:630px; margin:10px auto; padding:0px 5px 15px 5px; background:url(/template/8264/css/moban/companylist/images/580x10.jpg) bottom center no-repeat;}
+
+.post-date{ width:38px; height:40px; padding:2px 0px 0px 0px; margin-top:3px; float:left; background:url(/template/8264/css/moban/companylist/images/post-date-bg-lusongsong.png) top no-repeat; text-align:center;}
+
+.post-date b{ font-size:12px; color:#FFF;}
+
+.post-date span{ font-size:14px;}
+
+.post-title{ width:580px; float:right; position:relative;}
+
+
+
+.post-title h2{ padding:0px 0px 0px 0px; margin:0px 0px 0px 0px;}
+
+.post-title h2 a{ font-size:20px; font-weight:bold; font-family:Microsoft YaHei,Verdana,Arial;}
+
+.post-title h2 a:hover{ font-size:20px; font-weight:bold; font-family:Microsoft YaHei,Verdana,Arial; text-decoration:none}
+
+.edier{ padding:3px 0px 0px 0px 0px; position:absolute; top:19px;}
+
+.edier{ width:100%;}
+
+.edier em{ float:left; padding-top:10px;}
+
+.edier span{ float:right;}
+
+.edier b{ color:#c81f1f; font-size:20px; font-family:Arial,Helvetica,sans-serif;}
+
+.post-list-info{}
+
+.post-list-info p{ margin-top:10px; line-height:1.7; font-size:14px;}
+
+.post-list-info p img{ float:right; width:130px; height:90px; border:#ccc solid 1px; padding:3px; margin-left:5px;}
+
+
+/*文章列表页右侧装备分享*/
+.productSelectBox{ padding:0 10px;}
+.productSelectBox .pro_button_list{ width:234px; overflow:hidden;}
+.productSelectBox .pro_button_list li{ float:left; margin-right:5px; margin-bottom:5px; white-space:nowrap; overflow:visible; display:block;}
+.productSelectBox .pro_button_list li a{ background:url(/source/plugin/produce/css/images/pro_button_bg.gif) 0 0 no-repeat; display:block; height:26px; overflow:visible; float:left;}
+.productSelectBox .pro_button_list li a span{ display:block; float:left; height:24px; padding:1px 14px; line-height:24px; *line-height:26px; _line-height:24px; color:#bababa; background:url(/source/plugin/produce/css/images/pro_button_bg.gif) right -26px no-repeat; cursor:pointer;}
+.productSelectBox .pro_button_list li a:hover{ text-decoration:none;}
+.productSelectBox .pro_button_list li a.on{ background:url(/source/plugin/produce/css/images/pro_button_bg.gif) 0 -52px no-repeat;}
+.productSelectBox .pro_button_list li a.on span{ background:url(/source/plugin/produce/css/images/pro_button_bg.gif) right -78px no-repeat; color:#fff; *line-height:26px; _line-height:24px;}
+.productSelectBox .pro_button_list li a.on:hover span{ color:#fff;}
+.productSelectBox .pro_condition{ width:100%; overflow:hidden; padding:10px 0 5px; border-bottom:1px dashed #ccc;}
+.productSelectBox .pro_condition li a:hover{ background:url(/source/plugin/produce/css/images/pro_button_bg.gif) 0 -52px no-repeat;}
+.productSelectBox .pro_condition li a:hover span{ background:url(/source/plugin/produce/css/images/pro_button_bg.gif) right -78px no-repeat; color:#fff;}
+.productSelectBox .pro_class{ width:100%; overflow:hidden; padding:10px 0;}
+.productSelectBox .pro_class li{ margin-right:1px;}
+.productSelectBox .pro_class li a span{ line-height:24px; padding-left:10px; padding-right:10px;}
+.productSelectBox .pro_class li a:hover span{ color:#000;}
+.productSelectBox .pro_class li a.all span{ padding-left:25px; padding-right:25px;}
+.productSelectBox .pro_class li img{ vertical-align:-7px; margin-right:5px;}
+
+

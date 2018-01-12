@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>$topic['title']</title>
+<meta name="Description" content="{echo htmlspecialchars($_G['seodescription'])} {if !empty($metadescription)}{echo htmlspecialchars($metadescription)}{/if} Discuz! Board" />
+<meta name="Keywords" content="{if $_G['seokeywords']}{echo htmlspecialchars($_G['seokeywords'])}{/if} {if !empty($metakeywords)}{echo htmlspecialchars($metakeywords)}{/if}" />
+<!--[if IE 6]>
+<script src="http://static.8264.com/oldcms/moban/zt/2011kailas_siguniang/js/DD_belatedPNG_0.0.8a.js"></script>
+<script src="http://static.8264.com/oldcms/moban/zt/2011kailas_siguniang/js/DD_belatedPNG_css.js"></script>
+<![endif]-->
+<!-- diy 开始 -->
+<style id="diy_style" type="text/css"></style>
+<base href="$_G['siteurl']" />
+<!--{csstemplate}-->
+<script type="text/javascript">var STYLEID = '{STYLEID}', STATICURL = '{STATICURL}', IMGDIR = '{IMGDIR}', VERHASH = '{VERHASH}', charset = '{CHARSET}', discuz_uid = '$_G[uid]', cookiepre = '{$_G[config][cookie][cookiepre]}', cookiedomain = '{$_G[config][cookie][cookiedomain]}', cookiepath = '{$_G[config][cookie][cookiepath]}', showusercard = '{$_G[setting][showusercard]}', attackevasive = '{$_G[config][security][attackevasive]}', disallowfloat = '{$_G[setting][disallowfloat]}', creditnotice = '<!--{if $_G['setting']['creditnotice']}-->$_G['setting']['creditnames']<!--{/if}-->', defaultstyle = '$_G[style][defaultextstyle]', REPORTURL = '$_G[currenturl_encode]', SITEURL = '$_G[siteurl]';</script>
+<script type="text/javascript" src="{$_G[setting][jspath]}common.js?{VERHASH}"></script>
+<!--{if defined('CURMODULE') && ($_G['basescript'] == 'forum' || $_G['basescript'] == 'group') && (CURMODULE == 'index' || CURMODULE == 'forumdisplay' || CURMODULE == 'group')}-->
+$rsshead<!--{/if}-->
+<!--{if $_G['basescript'] == 'forum' || $_G['basescript'] == 'group'}-->
+<!--{if $_G['basescript'] == 'forum' && !empty($_G['cookie']['widthauto']) && empty($_G['disabledwidthauto'])}-->
+<link rel="stylesheet" id="css_widthauto" type="text/css" href="data/cache/style_{STYLEID}_widthauto.css?{VERHASH}" />
+<script type="text/javascript">HTMLNODE.className += ' widthauto'</script>
+<!--{/if}-->
+<script type="text/javascript" src="{$_G[setting][jspath]}forum.js?{VERHASH}"></script>
+<!--{elseif $_G['basescript'] == 'home' || $_G['basescript'] == 'userapp'}-->
+<script type="text/javascript" src="{$_G[setting][jspath]}home.js?{VERHASH}"></script>
+<!--{elseif $_G['basescript'] == 'portal'}-->
+<script type="text/javascript" src="{$_G[setting][jspath]}portal.js?{VERHASH}"></script>
+<!--{/if}-->
+<!--{if $_G['basescript'] != 'portal' && $_GET['diy'] == 'yes' && ($_G[mod] == 'topic' || $_G[group][allowdiy]) && !empty($_G['style']['tplfile'])}-->
+<script type="text/javascript" src="{$_G[setting][jspath]}portal.js?{VERHASH}"></script>
+<!--{/if}-->
+<!--{if $_GET[diy] == 'yes' && ($_G[mod] == 'topic' || $_G[group][allowdiy]) && !empty($_G['style']['tplfile'])}-->
+<link rel="stylesheet" type="text/css" href="data/cache/style_{STYLEID}_css_diy.css?{VERHASH}" />
+<!--{/if}-->
+<!-- diy 结束 -->
+</head>
+<body id="nv_{$_G[basescript]}" class="pg_{CURMODULE}" onkeydown="if(event.keyCode==27) return false;">
+<!-- diy 开始 -->
+<!--{if ($_G[mod]!='topic' && $_G[group][allowdiy] && !empty($_G['style']['tplfile'])) || (!empty($_G['style']['tplfile']) && $_G[mod]=='topic' && (($_G['group']['allowaddtopic'] && $topic[uid]==$_G[uid]) || $_G[group][allowmanagetopic]))}-->
+<a id="diy-tg" href="javascript:openDiy();" title="{lang open_diy}"><img src="{STATICURL}image/diy/panel-toggle.png" alt="DIY" /></a>
+<!--{/if}-->
+<div id="append_parent"></div>
+<div id="ajaxwaitid"></div>
+<!--{if $_GET['diy'] == 'yes' && (CURMODULE == 'topic' || $_G[group][allowdiy]) && !empty($_G['style']['tplfile'])}-->
+<!--{template common/header_diy}-->
+<!--{/if}-->
+<!--{if empty($topic) || $topic[useheader]}-->
+<!--{ad/headerbanner/wp a_h}-->
+<!--{hook/global_header}-->
+<!--{/if}-->
+<!-- diy 结束 -->
+<!-- header_zt start -->
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/oldcms/moban/zt/2011kailas_siguniang/css/reset.css"/>
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/oldcms/moban/zt/2011kailas_siguniang/css/style.css"/>
+<div id="header_zt">
+	<div class="big_box">
+		<a href="http://www.500to5000.com/about.php" target="_blank" class="tit_a">四姑娘登山节介绍</a>
+		<a href="http://www.8264.com/portal.php?mod=view&aid=68995" target="_blank" class="tit_b">雪山音乐会</a>
+		<a href="#" target="_blank" class="tit_c">跨越雪山之巅</a>
+		<a href="http://www.8264.com/portal.php?mod=view&aid=68996" target="_blank" class="tit_d">志愿者招募</a>
+	</div>
+</div>
+<!-- header_zt end -->
+<!-- main_zt start -->
+<div id="main_zt">
+	<div class="slide_box">
+		<div class="main_slide">
+			<!-- 大小 306x276 -->
+			<!--//hd幻灯//-->
+			<!--[diy=hd]-->
+			<div id="hd" class="area"></div>
+			<!--[/diy]-->
+			<!--//hd幻灯//-->
+		</div>
+	</div>
+	<div class="news_box">
+		<h2>
+			<a href="http://www.8264.com/viewnews-70367-page-1.html" target="_blank">2011四姑娘山登山节落幕 众山友圆雪山梦</a>
+		</h2>
+		<ul class="art_list">
+        <!--
+         <li>·
+				<a href="#" target="_blank">法渥贸易有限公司诚招品牌法渥贸易有限公司诚招品牌</a>
+				|
+				<a href="#" target="_blank">法渥贸易有限公司诚招品牌</a>
+			</li>
+             -->
+			&nbsp&nbsp&nbsp&nbsp由四姑娘山风景名胜区管理局主办、四川省登山户外运动协会支持，著名户外品牌KAILAS和VAUDE赞助的“2011四姑娘山登山节”于2011年十一黄金周期间在美丽的四姑娘山成功举办，有近千名驴友参与到了本次登山节中...
+            <br>
+            <br>
+            <!--
+         <li>·
+				<li>·
+				<a href="#" target="_blank">法渥贸易有限公司诚招品牌法渥贸易有限公司诚招品牌</a>
+				|
+				<a href="#" target="_blank">法渥贸易有限公司诚招品牌</a>
+			</li>
+			<li>·
+				<a href="#" target="_blank">法渥贸易有限公司诚招品牌法渥贸易有限公司诚招品牌</a>
+				|
+				<a href="#" target="_blank">法渥贸易有限公司诚招品牌</a>
+			</li>
+			</li>
+             -->
+			
+		</ul>
+		<h3>
+        <!--<a href="#" target="_blank">四姑娘登山节登山节热点动态</a>-->
+			<a  target="_blank">登山节热点动态</a>
+		</h3>
+		<!--//news_list列表//-->
+		<!--[diy=news_list]-->
+		<div id="news_list" class="area"></div>
+		<!--[/diy]-->
+		<!--//news_list列表//-->
+	</div>
+	<div class="news_r_box">
+		<div class="mod_tit"><a href="http://www.500to5000.com/">2011四姑娘山登山节官网</a></div>
+		<div class="mod_cont">
+			<a href="http://www.500to5000.com/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2011kailas_siguniang/img/news_r.jpg" /></a>
+		</div>
+	</div>
+	<div class="mod_all">
+		<div class="mod_tit">图文报道区</div>
+		<div class="mod_cont pic_170px">
+			<!--//twpic常用图片列表样式一ByAndes//-->
+			<!--[diy=twpic]-->
+			<div id="twpic" class="area"></div>
+			<!--[/diy]-->
+			<!--//twpic常用图片列表样式一ByAndes//-->
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="mod_all">
+		<div class="mod_tit">驴友们在四姑娘山上</div>
+		<div class="mod_cont pic_170px">
+			<!--//lypic常用图片列表样式一ByAndes//-->
+			<!--[diy=lypic]-->
+			<div id="lypic" class="area"></div>
+			<!--[/diy]-->
+			<!--//lypic常用图片列表样式一ByAndes//-->
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="mod_all">
+		<div class="mod_tit"></div>
+		<div class="mod_cont tc_zt">
+			<div class="friend_link"></div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<!-- main_zt end -->
+<!-- footer_zt start -->
+<div id="footer_zt">
+	<p class="top_m">
+		<a href="http://www.8264.com/template/8264/about/aboutus.htm" target="_blank">8264简介</a>
+		|
+		<a href="http://www.8264.com/template/8264/about/ggservice/index.html" target="_blank">广告服务</a>
+		|
+		<a href="http://www.8264.com/list/531/" target="_blank">编辑部的故事</a>
+		|
+		<a href="http://www.8264.com/template/8264/about/sitemap.html" target="_blank">站点地图</a>
+		|
+		<a href="http://www.8264.com/zhuanti" target="_blank">户外热点</a>
+		|
+		<a href="http://www.8264.com/template/8264/about/aboutus.htm" target="_blank">联系方式</a>
+		|
+		<a href="http://bbs.8264.com/plugin.php?id=drc_qqgroup:main" target="_blank">QQ群联盟</a>
+		|
+		<a href="http://8.8264.com/job/" target="_blank">8264招聘</a>
+		|
+		<a href="http://www.8264.com/link/" target="_blank">友情链接</a>
+	</p>
+	<p> 服务热线：022-23708264 | 传真：022-23857291 | 地址：天津市华苑产业园区鑫茂民营科技园C2座6层AB单元</p>
+	<p>
+		<a href="http://bx.8264.com" target="_blank">户外活动有风险，8264提醒您购买</a>
+		<a href="http://bx.8264.com">户外保险</a>
+	</p>
+	<p> 除了脚印什么都不留下 除了摄影什么都不带走，欢迎各种媒体转载我们的原创作品[转载请注明出处]。8264 版权所有
+		<a href="http://www.miibeian.gov.cn/" target="_blank">津ICP备05004140号-10</a>
+		<a href="http://www.8264.com/template/8264/image/icp.jpg" target="_blank">ICP证 津B2-20110106</a>
+	</p>
+</div>
+<!-- footer_zt end -->
+<!-- diy 开始 -->
+<!--{if $_GET['diy'] == 'yes' && ($_G[mod] == 'topic' || $_G[group][allowdiy]) && (empty($do) || $do != 'index') && !empty($_G['style']['tplfile'])}-->
+<script type="text/javascript" src="{$_G[setting][jspath]}common_diy.js?{VERHASH}"></script>
+<script type="text/javascript" src="{$_G[setting][jspath]}portal_diy.js?{VERHASH}"></script>
+<!--{/if}-->
+<!--{if $_GET['diy'] == 'yes' && $space['self'] && $_G[mod] == 'space' && $do == 'index'}-->
+<script type="text/javascript" src="{$_G[setting][jspath]}common_diy.js?{VERHASH}"></script>
+<script type="text/javascript" src="{$_G[setting][jspath]}space_diy.js?{VERHASH}"></script>
+<!--{/if}-->
+<!-- diy 结束 -->
+</body>
+</html>
+<!-- Andes Edition:2011-08-16 -->

@@ -1,0 +1,348 @@
+<!--{subtemplate common/header_8264_new}-->
+<style id="diy_style" type="text/css"></style>
+<link href="http://static.8264.com/static/css/forum/forum_forumdisplay.css?{VERHASH}" rel="stylesheet" type="text/css">
+<link href="http://static.8264.com/static/css/common/style.css?{VERHASH}" rel="stylesheet" type="text/css">
+<link href="http://static.8264.com/static/css/forum/forumdisplay_489.css?{VERHASH}" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="http://static.8264.com/static/js/common/forumdisplay.js?{VERHASH}"></script>
+<script type="text/javascript" src="http://static.8264.com/static/js/forum_489.js?{VERHASH}"></script>
+<!--{if $_G['forum']['ismoderator']}--><script type="text/javascript" src="http://static.8264.com/static/js/forum_moderate.js?{VERHASH}"></script><!--{/if}-->
+<div class="layout w980 mt20">
+	<div class="branner">
+		<div class="id487p_a">
+			<span class="jrdate">{$_G['forum']['todayposts']}<br>今日</span>
+			<span class="ztdate">{$_G['forum']['posts']}<br>总贴</span>
+		</div>
+	</div>
+	<div class="layout mt20" id="threadlist" style="position: relative;">
+		<div class=" f_l w660">
+			<div class="clear_b">
+				<div class="lunbocon">
+					<!--[diy=gorelb]-->
+					<div id="gorelb" class="area"></div>
+					<!--[/diy]-->
+				</div>
+				<div class="geerinfo">
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;户外先锋营是由戈尔公司、8264及巅峰户外运动学校三方联合组织，旨在通过品牌的力量和广大户外精英的积极推动，帮助户外爱好者提高自我户外技术及户外知识，并通过集体的努力让中国的户外运动文化得到更好的传递和分享。</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;户外先锋是指具备一定户外经验的户外爱好者，只要你热爱户外且渴望提升户外知识与技能即可申请加入户外先锋营。 <a href="http://bbs.8264.com/thread-1917397-1-1.html" target="_blank">详情</a></p>
+					<div class="clear_b cz_buttoncon">
+					<!--{if $xianfeng_vip}-->
+						<!--{if $level_is_upgrade}-->
+						<a href="home.php?mod=medal" target="_blank" class="sj_b153_43">去升级</a>
+						<!--{else}-->
+						<a class="sj_g153_43">已加入</a>
+						<!--{/if}-->
+					<!--{else}-->
+						<a href="http://bbs.8264.com/thread-5194634-1-1.html" target="_blank" class="sq153_43" rel="nofollow">申请加入</a>
+					<!--{/if}-->
+						<a href="http://bbs.8264.com/thread-2426934-1-1.html" class="gz153_43" target="_blank">活动规则</a>
+					</div>
+				</div>
+			</div>
+			<!--版块列表begin-->
+			<form method="post" autocomplete="off" name="moderate" id="moderate" action="forum.php?mod=topicadmin&action=moderate&fid=$_G[fid]<!--{if $_G[gp_typeid]}-->&typeid={$_G[gp_typeid]}{/if}&infloat=yes&nopost=yes">
+				<input type="hidden" name="formhash" value="{FORMHASH}" />
+				<input type="hidden" name="listextra" value="$extra" />
+			<!--{loop $forum_threadlist $typeid $forum}-->
+			<div class="bbscon_geer mt20">
+				<div class="bbscon_geer_title clear_b">
+					<span class="title16_1a2b38_b">$forum['typename']</span>
+					<!--{if $_G['forum']['threadtypes']['childtypes'][$typeid]}-->
+						<!-- $forum['typename']子分类 -->
+						<!--{loop $_G['forum']['threadtypes']['childtypes'][$typeid] $id $name}-->
+						<a href="{$_G[forum][threadtypes][url][$id]}" target="_blank" class="zlei">$name</a>
+						<!--{/loop}-->
+					<!--{/if}-->
+					<div class="bbsfb_geer">
+						<a href="forum.php?mod=post&action=newthread&fid=$_G[fid]" class="fxtbutton_93_28">发新帖</a>
+						<em class="forum_post_out89">
+							<em class="forum_post_out w89">
+							<!--{if !$_G['forum']['allowspecialonly']}--><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]">{lang post_newthread}</a><!--{/if}-->
+							<!--{if $_G['group']['allowpostpoll']}--><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=1">{lang post_newthreadpoll}</a><!--{/if}-->
+							<!--{if $_G['group']['allowpostreward']}--><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=3">{lang post_newthreadreward}</a><!--{/if}-->
+							<!--{if $_G['group']['allowpostdebate']}--><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=5">{lang post_newthreaddebate}</a><!--{/if}-->
+							<!--{if $_G['group']['allowpostactivity']}--><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=4">{lang post_newthreadactivity}</a><!--{/if}-->
+							<!--{if $_G['group']['allowposttrade']}--><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=2">{lang post_newthreadtrade}</a><!--{/if}-->
+							<!--{if $_G['setting']['threadplugins']}-->
+								<!--{loop $_G['forum']['threadplugin'] $tpid}-->
+								<!--{if array_key_exists($tpid, $_G['setting']['threadplugins']) && @in_array($tpid, $_G['group']['allowthreadplugin'])}-->
+								<a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&specialextra=$tpid">{$_G[setting][threadplugins][$tpid][name]}</a>
+								<!--{/if}-->
+								<!--{/loop}-->
+							<!--{/if}-->
+							<!--{if $_G['forum']['threadsorts'] && !$_G['forum']['allowspecialonly']}-->
+								<!--{loop $_G['forum']['threadsorts']['types'] $id $threadsorts}-->
+								<!--{if $_G['forum']['threadsorts']['show'][$id]}-->
+								<a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&extra=$extra&sortid=$id">$threadsorts</a>
+								<!--{/if}-->
+								<!--{/loop}-->
+							<!--{/if}-->
+							</em>
+						</em>
+					</div>
+				</div>
+				<!--{if $typeid == 1550}-->
+					<!--[diy=goreimg1]-->
+					<div id="goreimg1" class="area"></div>
+					<!--[/diy]-->
+				<!--{elseif $typeid == 1551}-->
+					<!--[diy=goreimg2]-->
+					<div id="goreimg2" class="area"></div>
+					<!--[/diy]-->
+				<!--{elseif $typeid == 1552}-->
+					<!--[diy=goreimg3]-->
+					<div id="goreimg3" class="area"></div>
+					<!--[/diy]-->
+				<!--{elseif $typeid == 1553}-->
+					<!--[diy=goreimg4]-->
+					<div id="goreimg4" class="area"></div>
+					<!--[/diy]-->
+				<!--{elseif $typeid == 1590}-->
+					<!--[diy=goreimg6]-->
+					<div id="goreimg6" class="area"></div>
+					<!--[/diy]-->
+				<!--{elseif $typeid == 1554}-->
+					<!--[diy=goreimg5]-->
+					<div id="goreimg5" class="area"></div>
+					<!--[/diy]-->
+				<!--{/if}-->
+				<div class="bbslistcongeer mt20">
+					<ul>
+					<!--{loop $forum['thread'] $k $v}-->
+						<li<!--{if $k==0}--> class="withoutbt"<!--{/if}-->>
+							<div class="upline clear_b">
+								<a href="forum.php?mod=viewthread&tid=$v[icontid]&{if $_G['gp_archiveid']}archiveid={$_G['gp_archiveid']}&{/if}extra=$extra" title="{if in_array($v['displayorder'], array(1, 2, 3, 4,'p'))}{if $v['displayorder'] == 1}{lang thread_type1} - {elseif $v['displayorder'] == 2}{lang thread_type2} - {elseif $v['displayorder'] == 3}{lang thread_type3} - {elseif $v['displayorder'] == 4}{lang thread_type4} - {elseif $v['displayorder'] == 'p'}{lang thread_typep} - {/if}{/if}{lang target_blank}" target="_blank" class="icon17_17">
+								<!--{if $v[folder] == 'lock'}-->
+									<img src="http://static.8264.com/static/image/common/folder_lock.gif" />
+								<!--{elseif $v['special'] == 1}-->
+									<img src="http://static.8264.com/static/image/common/pollsmall.gif" alt="{lang thread_poll}" />
+								<!--{elseif $v['special'] == 2}-->
+									<img src="http://static.8264.com/static/image/common/tradesmall.gif" alt="{lang thread_trade}" />
+								<!--{elseif $v['special'] == 3}-->
+									<img src="http://static.8264.com/static/image/common/rewardsmall.gif" alt="{lang thread_reward}" />
+								<!--{elseif $v['special'] == 4}-->
+									<img src="http://static.8264.com/static/image/common/activitysmall.gif" alt="{lang thread_activity}" />
+								<!--{elseif $v['special'] == 5}-->
+									<img src="http://static.8264.com/static/image/common/debatesmall.gif" alt="{lang thread_debate}" />
+								<!--{elseif in_array($v['displayorder'], array(1, 2, 3, 4,'p'))}-->
+									<img src="http://static.8264.com/static/image/common/pin_$v[displayorder].gif" alt="$_G[setting][threadsticky][3-$v[displayorder]]" />
+								<!--{else}-->
+									<img src="http://static.8264.com/static/image/common/folder_$v[folder].gif" />
+								<!--{/if}-->
+								</a>
+								<!--{if !$_G['gp_archiveid'] && $_G['forum']['ismoderator']==1}-->
+								<span class="czcheckbox">
+								<!--{if $v['fid'] == $_G[fid]}-->
+									<!--{if $v['displayorder'] <= 3 || $v['displayorder']=='p' || $_G['adminid'] == 1}-->
+									<input onclick="tmodclick(this)" type="checkbox" name="moderate[]" value="$v[tid]" />
+									<!--{else}-->
+									<input type="checkbox" disabled="disabled" />
+									<!--{/if}-->
+								<!--{else}-->
+									<input type="checkbox" disabled="disabled" />
+								<!--{/if}-->
+								</span>
+								<!--{/if}-->
+								<a href="{$_G[forum][threadtypes][url][$v['typeid']]}" target="_blank" class="zfenlei">[{if $_G['forum']['threadtypes']['types'][$v['typeid']]}$_G['forum']['threadtypes']['types'][$v['typeid']]{else}$_G['forum']['threadtypes']['childtypes'][$_G['forum']['threadtypes']['fatherid'][$v['typeid']]][$v['typeid']]{/if}]</a><a href="forum.php?mod=viewthread&tid=$v[tid]&{if $_G['gp_archiveid']}archiveid={$_G['gp_archiveid']}&{/if}extra=$extra"$v[highlight] target="_blank" class="title14">$v[subject]</a>
+								<!--{if $v[multipage]}--><span class="tps">$v[multipage]</span><!--{/if}-->
+								<!--{if $v['readperm']}--> [{lang readperm} <span class="bold">$v[readperm]</span>]<!--{/if}-->
+								<!--{if $v['price'] > 0}-->
+									<!--{if $v['special'] == '3'}-->
+									<span style="color: #C60">
+										{lang thread_reward}{$v['price']}{$_G[setting][extcredits][$_G['setting']['creditstransextra'][2]][title]}
+										{$_G[setting][extcredits][$_G['setting']['creditstransextra'][2]][unit]}
+									</span>
+									<!--{else}-->
+									[{lang price} {$_G[setting][extcredits][$_G['setting']['creditstransextra'][1]][title]}
+									<span class="bold">$v[price]</span>
+									{$_G[setting][extcredits][$_G['setting']['creditstransextra'][1]][unit]}]
+									<!--{/if}-->
+								<!--{elseif $v['special'] == '3' && $v['price'] < 0}-->
+									<span style="color: #C60">[{lang reward_solved}]</span>
+								<!--{/if}-->
+
+								<!--{if $v['attachment'] == 2}-->
+									<img src="http://static.8264.com/static/image/common/th_img.jpg" title="{lang attach_img}" style="display: none;" />
+								<!--{elseif $v['attachment'] == 1}-->
+									<img src="http://static.8264.com/static/image/common/th_fj.jpg" title="{lang attachment}" style="display: none;" />
+								<!--{/if}-->
+								<!--{if $v['stamp']==0 && $v['rate']>0}--><img src="http://static.8264.com/static/image/common/th_b.jpg" title="奖励8264币" /><!--{/if}-->
+								<!--{if $v['weeknew']}--><a href="forum.php?mod=redirect&tid=$thread[tid]&goto=lastpost#lastpost" class="newicon" style="display: none;" target="_blank">NEW</a><!--{/if}-->
+							</div>
+							<div class="downline clear_b">
+								<em>作者：<a href="home.php?mod=space&uid=$v[authorid]" target="_blank">$v[author]</a></em>
+								<em>发表于：<a $v[color]>$v[dateline]</a></em>
+								<em>最后回复：<!--{if $v['lastposter']}--><a href="home.php?mod=space&username=$v[lastposterenc]" target="_blank">$v[lastposter]</a><!--{else}-->{lang anonymous}<!--{/if}--> <a href="forum.php?mod=redirect&tid=$v[tid]&goto=lastpost#lastpost" class="dateend" target="_blank">$v[lastpost]</a></em>
+								<em class="review">$v[views]</em>
+								<a href="forum.php?mod=viewthread&tid=$v[tid]&extra=$extra" class="hfs" target="_blank">$v[replies]</a>
+							</div>
+						</li>
+					<!--{/loop}-->
+					<div id="threadmore_{$typeid}">
+						<a href="javascript:void(0);" onclick="ajaxget('forum.php?mod=ajax&action=loadthreadlist&fid=$_G[fid]&typeid=$typeid&page=2', 'threadmore_{$typeid}');" class="addmore">点击加载更多</a>
+					</div>
+					</ul>
+				</div>
+			</div>
+			<!--{/loop}-->
+			<!--{if $_G['forum']['ismoderator'] && $_G['forum_threadcount']}--><!--{template forum/topicadmin_modlayer}--><!--{/if}-->
+			</form>
+			<!--版块列表end-->
+		</div>
+		<div class=" f_r w260" id="f_r_h">
+		<div id="f_r_p">
+			<!--{if $_G[uid] && $xianfeng_vip && $_G['member']['extcredits6'] >= 20}-->
+			<div class="rwtop clear_b">
+				<a href="home.php?mod=space&uid=$_G[uid]" target="_blank" class="txgeer"><!--{avatar($_G[uid], 'middle')}--></a>
+				<p>
+					<a href="home.php?mod=space&uid=$_G[uid]" class="name141a2b38">$_G[username]</a>
+					<span>已活跃 <i>$_G['member']['activedate']</i> 天</span>
+					<span>先锋币 <i class="orange">$_G['member']['extcredits6']</i> 枚</span>
+					<img src="http://static.8264.com/static/image/common/{$xianfeng_medal['image']}"/>
+				</p>
+			</div>
+			<!--{/if}-->
+			<div class="geerlogo mt20 clear_b">
+				<a href="http://www.gore-tex.com.cn/" target="_blank"><img src="http://static.8264.com/static/images/xianfengying/logo1.jpg"/></a>
+				<a href="http://www.8264.com/" target="_blank"><img src="http://static.8264.com/static/images/xianfengying/logo2.jpg"/></a>
+				<a href="http://www.summitedu.org/" target="_blank" class="f_r mr0"><img src="http://static.8264.com/static/images/xianfengying/logo3.jpg"/></a>
+			</div>
+			<div class="mt20">
+				<div class="bbscon_geer_title clear_b">
+					<span class="title16_1a2b38">特邀导师</span>
+				</div>
+				<div class="tx84 clear_b mt20">
+					<ul>
+						<li><img src="http://static.8264.com/static/images/xianfengying/ds-1.jpg" /><span>王鑫</span><a href="http://bbs.8264.com/thread-2163469-1-1.html" title="王鑫" target="_blank"><img src="http://static.8264.com/static/images/xianfengying/yziconsmall.png"/></a></li>
+						<li><img src="http://static.8264.com/static/images/xianfengying/ds-2.jpg" /><span>孙灵野</span><a href="http://bbs.8264.com/thread-2163469-1-1.html#pid49326279" title="孙灵野" target="_blank"><img src="http://static.8264.com/static/images/xianfengying/yziconsmall.png"/></a></li>
+						<li><img src="http://static.8264.com/static/images/xianfengying/ds-3.jpg" /><span>孙斌</span><a href="http://bbs.8264.com/thread-2163469-1-1.html#pid49326228" title="孙斌" target="_blank"><img src="http://static.8264.com/static/images/xianfengying/yziconsmall.png"/></a></li>
+						<li><img src="http://static.8264.com/static/images/xianfengying/ds-4.jpg" /><span>十一郎</span><a href="http://bbs.8264.com/thread-2163469-1-1.html#pid49326321" title="十一郎" target="_blank"><img src="http://static.8264.com/static/images/xianfengying/yziconsmall.png"/></a></li>
+						<li><img src="http://static.8264.com/static/images/xianfengying/ds-5.jpg" /><span>赵嘉</span><a href="http://bbs.8264.com/thread-2163469-1-1.html#pid49326379" title="赵嘉" target="_blank"><img src="http://static.8264.com/static/images/xianfengying/yziconsmall.png"/></a></li>
+						<li><img src="http://static.8264.com/static/images/xianfengying/ds-6.jpg" /><span>蔡石</span><a href="http://bbs.8264.com/thread-2163469-1-1.html#pid49326424" title="蔡石" target="_blank"><img src="http://static.8264.com/static/images/xianfengying/yziconsmall.png"/></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="mt20">
+				<div class="bbscon_geer_title clear_b">
+					<span class="title16_1a2b38">先锋导师</span>
+				</div>
+				<div class="tx48 clear_b mt20">
+					<ul>
+						<li><a href="home.php?mod=space&uid=16833910" title="绝情坑坑主" target="_blank"><!--{avatar(16833910, 'middle')}--></a></li>
+						<li><a href="home.php?mod=space&uid=106876" title="野战军" target="_blank"><!--{avatar(106876, 'middle')}--></a></li>
+						<li><a href="home.php?mod=space&uid=127363" title="老尹" target="_blank"><!--{avatar(127363, 'middle')}--></a></li>
+						<li><a href="home.php?mod=space&uid=126956" title="老橡皮" target="_blank"><!--{avatar(126956, 'middle')}--></a></li>
+						<li><a href="home.php?mod=space&uid=38999202" title="王七叔叔" target="_blank"><!--{avatar(38999202, 'middle')}--></a></li>
+						<li><a href="home.php?mod=space&uid=95958" title="断肠草" target="_blank"><!--{avatar(95958, 'middle')}--></a></li>
+						<li><a href="home.php?mod=space&uid=16768067" title="heibao_07" target="_blank"><!--{avatar(16768067, 'middle')}--></a></li>
+						<li><a href="home.php?mod=space&uid=33756332" title="古袅袅" target="_blank"><!--{avatar(33756332, 'middle')}--></a></li>
+                        <li><a href="home.php?mod=space&uid=35898890" title="黑里透着辉" target="_blank"><!--{avatar(35898890, 'middle')}--></a></li>
+                        <li><a href="home.php?mod=space&uid=33775843" title="柴达木人" target="_blank"><!--{avatar(33775843, 'middle')}--></a></li>
+                        <li><a href="home.php?mod=space&uid=40067960" title="phip" target="_blank"><!--{avatar(40067960, 'middle')}--></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="mt20">
+				<div class="bbscon_geer_title clear_b">
+					<span class="title16_1a2b38">最新活动</span>
+				</div>
+				<div class="h170img mt20">
+					<a href="forum.php?mod=viewthread&tid={$thread_active[0][tid]}" target="_blank"><img src="$attachpath"></a>
+					<span>{echo cutstr($thread_active[0][subject],36)}</span>
+				</div>
+				<div class="list_news_25 clear_b mt20">
+					<ul>
+					<!--{loop $thread_active $k $v}-->
+						<!--{if $k>0}-->
+						<li><a href="forum.php?mod=viewthread&tid=$v[tid]" target="_blank">{echo cutstr($v['subject'],36)}</a></li>
+						<!--{/if}-->
+					<!--{/loop}-->
+					</ul>
+				</div>
+			</div>
+			<div class="mt20">
+				<div class="bbscon_geer_title clear_b">
+					<span class="title16_1a2b38">新加入</span>
+				</div>
+				<div class="tx32 clear_b mt20">
+					<ul>
+					<!--{loop $vip_new $k $v}-->
+						<li><a href="home.php?mod=space&uid=$v[uid]" title="$v[username]" target="_blank"><!--{avatar($v[uid], 'small')}--></a></li>
+					<!--{/loop}-->
+					</ul>
+				</div>
+			</div>
+			<div class="mt20">
+				<div class="bbscon_geer_title clear_b">
+					<span class="title16_1a2b38">活跃先锋</span>
+				</div>
+				<div class="tx32 clear_b mt20">
+					<ul>
+					<!--{loop $vip_active $k $v}-->
+						<li><a href="home.php?mod=space&uid=$v[uid]" title="$v[username]" target="_blank"><!--{avatar($v[uid], 'small')}--></a></li>
+					<!--{/loop}-->
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="dignwei"></div>
+	</div>
+	</div>
+</div>
+<!-- 广告位：戈尔先锋营旗版块帜广告 403 -->
+<script type="text/javascript">
+jQuery(function(){
+	var isiOS 	  = navigator.userAgent.match('iPad') || navigator.userAgent.match('iPhone') || navigator.userAgent.match('iPod');
+    var isAndroid = navigator.userAgent.match('Android');
+    if (!isiOS && !isAndroid) {
+    	jQuery(".ewmbox").show();
+		jQuery(".close_ewm").click(function(){
+			jQuery(".ewmbox").hide();
+		});
+    }
+
+	jQuery('.close_ewm').click(function(){
+		jQuery(".ewmbox").hide();
+	});
+
+	var ww = jQuery(window).width();
+	var r_z = (ww-980)/2 -120;
+
+	if(r_z<0){
+		jQuery(".ewmbox").css("left",'0px');
+	}else{
+		jQuery(".ewmbox").css("left",r_z);
+	}
+});
+</script>
+<!--天猫广告开始-->
+<style>
+	.clear_b:after{content: ""; display: block; clear: both; visibility: hidden;}
+	.clear_b{ zoom: 1;}
+	.h13_ewm{ height:13px;}
+	.ewmbox{ width:100px; position: fixed !important; top: 215px; position: absolute; z-index: 10; float:right; color:#585858; display:none;}
+	.close_ewm{ width:11px; height:11px; background:url(http://static.8264.com/static/images/common/ewmclose.jpg) left top no-repeat; float:right; margin-bottom:2px;}
+	.close_ewm:hover{  background:url(http://static.8264.com/static/images/common/ewmclose_hover.jpg) left top no-repeat;}
+</style>
+<div class="ewmbox" style="display:none;">
+<div class="clear_b h13_ewm"><a href="javascript:void(0)" class="close_ewm"></a></div>
+<!-- 论坛先锋营_左侧浮动403 -->
+<div style="position:relative;">
+<script type='text/javascript'><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://ads.8264.com/www/delivery/ajs.php':'http://ads.8264.com/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=37");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script>
+<span style="width:26px; height:13px; position:absolute; bottom:0px; right:0px; font-size:0px; line-height:0px;"><img src="http://static.8264.com/static/images/common/ad_logo_update_IAB.gif"></span>
+</div>
+</div>
+<!--{subtemplate common/footer_forum_8264_new}-->

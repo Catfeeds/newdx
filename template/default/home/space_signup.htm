@@ -1,0 +1,418 @@
+<!--{subtemplate common/header}-->
+<link href="http://static.8264.com/static/css/home/home_space.css?{VERHASH}" rel="stylesheet" type="text/css">
+<!--{ad/text/wp a_t}-->
+<style id="diy_style" type="text/css"></style>
+<div class="wp">
+	<!--[diy=diy1]--><div id="diy1" class="area"></div><!--[/diy]-->
+</div>
+<script type="text/javascript" src="http://static.8264.com/static/js/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+</script>
+<link rel="stylesheet" type="text/css" href="/template/8264/css/space-signup/main.css?v=2" media="all" />
+<div class="page">
+	<div class="sidebar">
+		<div class="login_pane">
+			<div class="inner">
+				<form id="login" action="member.php?mod=logging&action=login&loginsubmit=yes{if !empty($_G['gp_handlekey'])}&handlekey=$_G[gp_handlekey]{/if}{if isset($_G['gp_frommessage'])}&frommessage{/if}&loginhash=$loginhash" method="post" autocomplete="off">
+					<input type="hidden" name="handlekey" value="lostpwform" />
+					<div class="row">
+						<label for="username">{lang username}:</label>
+						<input type="text" name="username" id="username" autocomplete="off" class="text" />
+					</div>
+					<div class="row">
+						<label for="password">{lang login_password}:</label>
+						<input type="password" name="password" id="password" autocomplete="off" class="text" />
+					</div>
+					<div class="row">
+						<label for="questionid">{lang security_q}:</label>
+						<select id="questionid" width="213" name="questionid"{if !$questionexist} onchange="if($('questionid').value > 0) {$('answer_box').style.display='';} else {$('answer_box').style.display='none';$('answer').value='';}"{/if}>
+							<option value="0"><!--{if $questionexist}-->{lang security_question_0}<!--{else}-->{lang security_question}<!--{/if}--></option>
+							<option value="1">{lang security_question_1}</option>
+							<option value="2">{lang security_question_2}</option>
+							<option value="3">{lang security_question_3}</option>
+							<option value="4">{lang security_question_4}</option>
+							<option value="5">{lang security_question_5}</option>
+							<option value="6">{lang security_question_6}</option>
+							<option value="7">{lang security_question_7}</option>
+						</select>
+
+					</div>
+					<div class="row" id="answer_box" style="display:none;">
+						<label for="answer">{lang security_a}:</label>
+						<input type="text" name="answer" id="answer" autocomplete="off" size="30" tabindex="1" class="text" />
+					</div>
+					<div class="row">
+						<div class="sublit_box">
+							<button class="submit" type="submit" name="loginsubmit" value="true" tabindex="1"><strong>{lang login}</strong></button>
+							<a href="#" class="forget_passwd">忘记密码?</a>
+						</div>
+						<div class="login_box">
+							<a href="http://bbs.8264.com/connect-login-op-init-referer-index.php-statfrom-login_simple.html" class="qq_login">
+								<em></em>
+								QQ登录
+							</a>
+							<a href="http://bbs.8264.com/connect.php?method=sina&action=login&op=init" class="weibo_login">
+								<em></em>
+								微博登录
+							</a>
+						</div>
+					</div>
+				</form>
+				<div class="register">
+					<p class="help-info">还没有帐号?</p>
+					<button class="regist-button" onclick="location='http://u.8264.com/member.php?mod=register'"><strong>立即注册</strong></button>
+				</div>
+				<div class="phone">
+					<p class="help-info">手机客户端</p>
+					<ul class="phone-list">
+						<li class="iphone">
+							<a href="http://www.8264.com/app/"><em></em>iphone版</a>
+						</li>
+						<li class="android">
+							<a href="http://www.8264.com/app/"><em></em>android版</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="bm brand_user">
+			<div class="bm_h cl">
+				<span class="y"></span>
+                  <h2>品牌用户</h2>
+			</div>
+			<div class="bm_c">
+				<ul class="ml mls cl">
+					<li>
+						<a href="http://u.8264.com/space-uid-6111.html" title="" class="avt" c="1"><img src="http://ucenter.8264.com/avatar.php?uid=6111&size=small" onerror="this.onerror=null;this.src='http://ucenter.8264.com/images/noavatar_small.gif'" /></a>
+						<p><a href="http://u.8264.com/space-uid-6111.html" title="极星户外">极星户外</a></p>
+					</li>
+					<li>
+						<a href="http://bbs.8264.com/group-404-1.html" title="" class="avt" c="1"><img src="http://ucenter.8264.com/avatar.php?uid=50811&size=small" onerror="this.onerror=null;this.src='http://ucenter.8264.com/images/noavatar_small.gif'" /></a>
+						<p><a href="http://bbs.8264.com/group-404-1.html" title="thenorthface">thenorthface</a></p>
+					</li>
+					<li>
+						<a href="http://u.8264.com/space-uid-16828241.html" title="" class="avt" c="1"><img src="http://ucenter.8264.com/avatar.php?uid=16828241&size=small" onerror="this.onerror=null;this.src='http://ucenter.8264.com/images/noavatar_small.gif'" /></a>
+						<p><a href="http://u.8264.com/space-uid-16828241.html" title="狼一匹">狼一匹</a></p>
+					</li>
+					<li>
+						<a href="http://u.8264.com/space-uid-33848522.html" title="" class="avt" c="1"><img src="http://ucenter.8264.com/avatar.php?uid=33848522&size=small" onerror="this.onerror=null;this.src='http://ucenter.8264.com/images/noavatar_small.gif'" /></a>
+						<p><a href="http://u.8264.com/space-uid-33848522.html" title="KOLUMB">KOLUMB</a></p>
+					</li>
+					<li>
+						<a href="http://u.8264.com/space-uid-33884732.html" title="" class="avt" c="1"><img src="http://ucenter.8264.com/avatar.php?uid=33884732&size=small" onerror="this.onerror=null;this.src='http://ucenter.8264.com/images/noavatar_small.gif'" /></a>
+						<p><a href="http://u.8264.com/space-uid-33884732.html" title="Gregory-China">Gregory-China</a></p>
+					</li>
+					<li>
+						<a href="http://u.8264.com/space-uid-33999664.html" title="" class="avt" c="1"><img src="http://ucenter.8264.com/avatar.php?uid=33999664&size=small" onerror="this.onerror=null;this.src='http://ucenter.8264.com/images/noavatar_small.gif'" /></a>
+						<p><a href="http://u.8264.com/space-uid-33999664.html" title="探路者">探路者</a></p>
+					</li>
+					<li>
+						<a href="http://u.8264.com/space-uid-34130126.html" title="" class="avt" c="1"><img src="http://ucenter.8264.com/avatar.php?uid=34130126&size=small" onerror="this.onerror=null;this.src='http://ucenter.8264.com/images/noavatar_small.gif'" /></a>
+						<p><a href="http://u.8264.com/space-uid-34130126.html" title="戈尔梦想计划">戈尔梦想计划</a></p>
+					</li>
+					<li>
+						<a href="http://u.8264.com/space-uid-34142905.html" title="" class="avt" c="1"><img src="http://ucenter.8264.com/avatar.php?uid=34142905&size=small" onerror="this.onerror=null;this.src='http://ucenter.8264.com/images/noavatar_small.gif'" /></a>
+						<p><a href="http://u.8264.com/space-uid-34142905.html" title="奥索卡品牌">奥索卡品牌</a></p>
+					</li>
+					<li>
+						<a href="http://u.8264.com/space-uid-34646504.html" title="" class="avt" c="1"><img src="http://ucenter.8264.com/avatar.php?uid=34646504&size=small" onerror="this.onerror=null;this.src='http://ucenter.8264.com/images/noavatar_small.gif'" /></a>
+						<p><a href="http://u.8264.com/space-uid-34646504.html" title="CORDURA-Brand">CORDURA-Brand</a></p>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+
+	</div>
+
+	<div class="container">
+		<div class="banner">
+			<div class="counter" id="counter">
+				<div class="head">
+					<div class="headbg"></div>
+					<div class="headtext">当前注册会员</div>
+				</div>
+				<div class="num_box">
+					{eval $member_num = (string)$member_num;}
+					{eval $num_count = strlen($member_num);}
+					{eval for ($i=0;$i<$num_count;++$i): }
+						<div class="num num{eval echo $member_num[$i];}"></div>
+					{eval endfor;}
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+		;(function($) {
+			var num = $('#counter .num_box .num'),
+				box_width = num.length * num.outerWidth(1) + 6;
+			$('#counter').width(box_width);
+
+			var cur_num = getNumArr($member_num);
+			setTimeout(timeout_run, 1000);
+			function timeout_run() {
+				$.getJSON('/plugin.php?id=api:register_num', function(data) {
+					if (data && data['register_num'] > 0) {
+						var new_num = getNumArr(data['register_num']);
+						counter_animate(cur_num, new_num);
+						cur_num = new_num;
+					}
+				});
+			}
+
+			function counter_animate(cur_num, new_num) {
+				var digit_diff = new_num.length - cur_num.length;
+				if (digit_diff > 0) {
+					for (var i = 0; i < digit_diff; i++) {
+						$('#counter').width($('#counter').width()+$('#counter .num').eq(0).outerWidth(1));
+						cur_num.push(0);
+						$('#counter .num_box').prepend('<div class="num num0"></div>');
+					}
+				}
+
+				var length = $('#counter .num').length,
+					item;
+
+				for (var i = 0; i < length; i++) {
+					item = $('#counter .num').eq(length - i - 1);
+					animate_item(item, cur_num[i], new_num[i]);
+				}
+				setTimeout(timeout_run, 20000);
+			}
+
+			function animate_item(dom, old_num, new_num) {
+				var speed = 100;
+				if (old_num == new_num) {
+					return;
+				}
+				setTimeout(function() {
+					$(dom).css('background-position', '-20px -'+(32*(old_num))+'px');
+					setTimeout(function() {
+						$(dom).css('background-position', '-40px -'+(32*(old_num))+'px');
+						setTimeout(function() {
+							old_num++;
+							if (old_num > 9) {
+								old_num = 0;
+							}
+							clear_class(dom);
+							dom.css('background-position', '0px -'+(32*(old_num))+'px');
+							$(dom).addClass('num'+old_num);
+							setTimeout(function() {
+								animate_item(dom, old_num, new_num);
+							}, speed);
+						}, speed);
+					}, speed);
+				}, speed);
+			}
+
+			function clear_class(dom) {
+				$(dom).removeClass('num0 num1 num2 num3 num4 num5 num6 num7 num8 num9');
+			}
+
+			/**
+			 * 将数字打散成数组, 并倒置放置
+			 * @param intager num
+			 * @return array
+			 */
+			function getNumArr(num) {
+				num = num + '';
+				var length = num.length,
+				    num_arr = [],
+					i = 0;
+				for (;i < length; i++) {
+					num_arr.unshift(num.slice(i, i + 1) - 0);
+				}
+				return num_arr;
+			}
+		})(jQuery);
+		</script>
+		<ul class="info-box">
+			<li class="friend">
+				<em></em>
+				<h6>资深驴友</h6>
+				<p>带你认识户外领域骨灰级的驴友们</p>
+			</li>
+			<li class="brand">
+				<em></em>
+				<h6>品牌空间</h6>
+				<p>知名户外品牌，口碑塑造品牌</p>
+			</li>
+			<li class="activity">
+				<em></em>
+				<h6>精彩活动</h6>
+				<p>独乐乐不如众乐乐，快来参加活动吧</p>
+			</li>
+			<li class="gear">
+				<em></em>
+				<h6>装备分享</h6>
+				<p>看看驴友们用的装备，分享你的装备</p>
+			</li>
+		</ul>
+		<div class="section_box">
+			<div class="hot_blogs">
+				<div class="head">
+					<a href="http://bbs.8264.com/misc-ranklist-type-blog-orderby-heats-before-thisweek.html" class="more" target="_blank">更多</a>
+					<h5>热门日志:</h5>
+				</div>
+				<div class="content">
+					<ul>
+						{loop $hot_blogs $blog}
+						<li>
+							<div class="blog_box">
+								<a href="home.php?mod=space&uid=&do=home&view=all&appid=0&icon=blog" target="_blank" class="icon"><img src="http://static.8264.com/static/image/feed/blog.gif" alt="" /></a>
+
+								<div class="hot"><a href="http://u.8264.com/home-space-uid-{$blog['uid']}-do-blog-id-{$blog['blogid']}.html" target="_blank"><em>{$blog['viewnum']}</em>马上参与</a></div>
+								<p class="info">
+									<a href="http://u.8264.com/space-uid-{$blog['uid']}.html" target="_blank">{$blog['username']}</a>
+									发表了新日志
+									<span class="datetime">{eval echo dgmdate($blog['dateline'], 'u');}</span>
+									(<a href="http://u.8264.com/home-space-uid-{$blog['uid']}-do-blog-id-{$blog['blogid']}.html" target="_blank">评论</a>)
+								</p>
+								<h6><a href="http://u.8264.com/home-space-uid-{$blog['uid']}-do-blog-id-{$blog['blogid']}.html" target="_blank">{$blog['subject']}</a></h6>
+								<p class="comments">
+									{$blog['message']}
+								</p>
+							</div>
+						</li>
+						{/loop}
+					</ul>
+				</div>
+			</div>
+
+			<div class="hot_doing">
+				<div class="head">
+					<a href="http://u.8264.com/home-space-do-doing.html" target="_blank" class="more">更多</a>
+					<h5>驴友说:</h5>
+				</div>
+				<div class="content">
+					<div id="hot_doing">
+						{loop $doings $doing}
+						<div class="item">
+							<div class="inner">
+								<p class="info">
+									<span class="datetime">
+										{eval echo dgmdate($doing['dateline'], 'u');}
+										<a href="http://u.8264.com/home-space-uid-{$doing['uid']}-do-doing-view-me-from-space.html" class="his_doing" target="_blank">他的记录</a>
+									</span>
+									<span class="user">
+										{eval echo avatar($doing['uid'], 'small');}
+										&nbsp;
+										<a href="http://u.8264.com/space-uid-{$doing['uid']}.html" target="_blank">{$doing['username']}</a>
+									</span>
+								</p>
+								<p class="message">
+									{$doing['message']}
+								</p>
+							</div>
+						</div>
+						{/loop}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="section_box">
+			<div class="best_peoples" id="best_peoples">
+				<div class="head">
+					<a href="/home-space-do-identity.html" class="more" target="_blank">更多</a>
+					<h5>强驴推荐:</h5>
+					<ul class="control_pane">
+						<li class="prev"><a href="#">上一组</a></li>
+						<li class="next"><a href="#">下一组</a></li>
+					</ul>
+				</div>
+				<div class="content">
+					<div class="page_list">
+						<div class="inner">
+							<ul class="page mls">
+								{loop $best_peoples[0] $people}
+								<li>
+									<a href="http://u.8264.com/space-uid-{$people['uid']}.html" class="avt" target="_blank">
+									    {eval echo avatar($people['uid'], 'small');}
+									</a>
+									<span class="text">
+										<a href="http://u.8264.com/space-uid-{$people['uid']}.html" class="name" target="_blank">{$people['username']}</a>
+										<span class="skill">技能: {$people['skill']}</span>
+									</span>
+								</li>
+								{/loop}
+							</ul>
+							<ul class="page mls">
+								{loop $best_peoples[1] $people}
+								<li>
+									<a href="http://u.8264.com/space-uid-{$people['uid']}.html" class="avt" target="_blank">
+									    {eval echo avatar($people['uid'], 'small');}
+									</a>
+									<span class="text">
+										<a href="http://u.8264.com/space-uid-{$people['uid']}.html" class="name" target="_blank">{$people['username']}</a>
+										<span class="skill">技能: {$people['skill']}</span>
+									</span>
+								</li>
+								{/loop}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+;(function() {
+	$('login').onsubmit = function() {
+		if ($('username').value == '') {
+			alert('{lang username}不可为空');
+			return false;
+		}
+		if ($('password').value == '') {
+			alert('{lang login_password}不可为空');
+			return false;
+		}
+		return true;
+	}
+
+	;(function($) {
+		function roll() {
+			var item = $('#hot_doing .item').eq(-1);
+			var _height = item.children('.inner').outerHeight(1);
+			item.height(0).css('visibility', 'hidden').prependTo('#hot_doing')
+				.animate({height: _height}, 1000, 'linear', function() {
+					$(this).css('visibility', '').fadeIn(200);
+				});
+			setTimeout(roll, 2500);
+		}
+		roll();
+	})(jQuery);
+
+	;(function($) {
+		var inner = $('#best_peoples .page_list .inner'),
+		    item_width = inner.children().outerWidth(1),
+			lock = false;
+		inner.width(item_width * inner.children().length);
+		$('#best_peoples .page_list').scrollLeft(0);
+		$('#best_peoples .next a').click(function() {
+			if (lock) return false;
+			lock = true;
+			$('#best_peoples .page_list').stop(1, 1).animate({
+			    scrollLeft: inner.scrollLeft() + item_width
+			}, 500, function(){lock = false;});
+			return false;
+		});
+		$('#best_peoples .prev a').click(function() {
+			if (lock) return false;
+			lock = true;
+			$('#best_peoples .page_list').stop(1, 1).animate({
+			    scrollLeft: inner.scrollLeft() - item_width
+			}, 500, function(){lock = false;});
+			return false;
+		});
+	})(jQuery);
+})();
+</script>
+<div class="wp mtn">
+	<!--[diy=diy3]--><div id="diy3" class="area"></div><!--[/diy]-->
+</div>
+<!--{eval my_checkupdate();}-->
+<!--{subtemplate common/footer}-->

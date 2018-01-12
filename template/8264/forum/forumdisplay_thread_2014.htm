@@ -1,0 +1,109 @@
+<tr id="{$thread['id']}">
+	<td class="tb_">
+		<a href="forum.php?mod=viewthread&tid=$thread[icontid]&{if $_G['gp_archiveid']}archiveid={$_G['gp_archiveid']}&{/if}extra=$extra" title="{if in_array($thread['displayorder'], array(1, 2, 3, 4,'p'))}{if $thread['displayorder'] == 1}{lang thread_type1} - {elseif $thread['displayorder'] == 2}{lang thread_type2} - {elseif $thread['displayorder'] == 3}{lang thread_type3} - {elseif $thread['displayorder'] == 4}{lang thread_type4} - {elseif $thread['displayorder'] == 'p'}{lang thread_typep} - {/if}{/if}{lang target_blank}" target="_blank">
+		<!--{if $thread[folder] == 'lock'}-->
+			<img src="http://static.8264.com/static/image/common/folder_lock.gif" />
+		<!--{elseif $thread['special'] == 1}-->
+			<img src="http://static.8264.com/static/image/common/pollsmall.gif" alt="{lang thread_poll}" />
+		<!--{elseif $thread['special'] == 2}-->
+			<img src="http://static.8264.com/static/image/common/tradesmall.gif" alt="{lang thread_trade}" />
+		<!--{elseif $thread['special'] == 3}-->
+			<img src="http://static.8264.com/static/image/common/rewardsmall.gif" alt="{lang thread_reward}" />
+		<!--{elseif $thread['special'] == 4}-->
+			<img src="http://static.8264.com/static/image/common/activitysmall.gif" alt="{lang thread_activity}" />
+		<!--{elseif $thread['special'] == 5}-->
+			<img src="http://static.8264.com/static/image/common/debatesmall.gif" alt="{lang thread_debate}" />
+		<!--{elseif in_array($thread['displayorder'], array(1, 2, 3, 4,'p'))}-->
+			<img src="http://static.8264.com/static/image/common/pin_$thread[displayorder].gif" alt="$_G[setting][threadsticky][3-$thread[displayorder]]" />
+		<!--{else}-->
+			<img src="http://static.8264.com/static/image/common/folder_$thread[folder].gif" />
+		<!--{/if}-->
+		</a>
+	</td>
+	<!--{if !$_G['gp_archiveid'] && $_G['forum']['ismoderator']==1}-->
+	<td class="glfx">
+	<!--{if $thread['fid'] == $_G[fid]}-->
+		<!--{if $thread['displayorder'] <= 3 || $thread['displayorder']=='p' || $_G['adminid'] == 1}-->
+		<input onclick="tmodclick(this)" type="checkbox" name="moderate[]" value="$thread[tid]" />
+		<!--{else}-->
+		<input type="checkbox" disabled="disabled" />
+		<!--{/if}-->
+	<!--{else}-->
+		<input type="checkbox" disabled="disabled" />
+	<!--{/if}-->
+	</td>
+	<!--{/if}-->
+	<td class="w660">
+		<table width="0" border="0" cellspacing="0" cellpadding="0" class="titletable">
+		<tr>
+			<!--{if !in_array($thread['displayorder'], array(2,3,4))}-->
+			<td class="fl_17_no">{$thread['sorthtml']}</td>
+			<td class="fl_17_no">{$thread['typehtml']}</td>
+			<!--{/if}-->
+			<td>
+			<div class="title_o_t_s">
+				<!--{hook/forumdisplay_thread $key}-->
+				<!--{if $thread['moved']}-->{lang thread_moved}:<!--{eval $thread[tid]=$thread[closed];}--><!--{/if}-->
+				<!--{if $thread['isgroup'] == 1}-->
+				<!--{eval $thread[tid]=$thread[closed];}-->
+				[<a href="forum.php?mod=forumdisplay&action=list&fid={$groupnames[$thread[tid]][fid]}" target="_blank">{$groupnames[$thread[tid]][name]}</a>]
+				<!--{/if}-->
+
+				<h2 style="display:inline"><a href="forum.php?mod=viewthread&tid=$thread[tid]&{if $_G['gp_archiveid']}archiveid={$_G['gp_archiveid']}&{/if}extra=$extra"$thread[highlight] target="_blank" class="f_16">{$thread['subject']}</a></h2>
+				<!--{if $thread[multipage]}--><span class="tps">{$thread['multipage']}</span><!--{/if}-->
+
+				<!--{if $stemplate && $sortid}-->$stemplate[$sortid][$thread[tid]]<!--{/if}-->
+				<!--{if $thread['readperm']}--> [{lang readperm} <span class="bold">$thread[readperm]</span>]<!--{/if}-->
+				<!--{if $thread['price'] > 0}-->
+					<!--{if $thread['special'] == '3'}-->
+					<span style="color: #C60">
+						{lang thread_reward}{$thread['price']}{$_G[setting][extcredits][$_G['setting']['creditstransextra'][2]][title]}
+						{$_G[setting][extcredits][$_G['setting']['creditstransextra'][2]][unit]}
+					</span>
+					<!--{else}-->
+					[{lang price} {$_G[setting][extcredits][$_G['setting']['creditstransextra'][1]][title]}
+					<span class="bold">$thread[price]</span>
+					{$_G[setting][extcredits][$_G['setting']['creditstransextra'][1]][unit]}]
+					<!--{/if}-->
+				<!--{elseif $thread['special'] == '3' && $thread['price'] < 0}-->
+					<span style="color: #C60">[{lang reward_solved}]</span>
+				<!--{/if}-->
+
+				<!--{if $thread['attachment'] == 2}-->
+					<img src="http://static.8264.com/static/image/common/th_img.jpg" title="{lang attach_img}" style="display: none;" />
+				<!--{elseif $thread['attachment'] == 1}-->
+					<img src="http://static.8264.com/static/image/common/th_fj.jpg" title="{lang attachment}" style="display: none;" />
+				<!--{/if}-->
+				<!--{if $thread['stamp']==0 && $thread['rate']>0}--><img src="http://static.8264.com/static/image/common/th_b.jpg" title="½±Àø8264±Ò" /><!--{/if}-->
+				<!--{if $thread['weeknew']}--><a href="forum.php?mod=redirect&tid=$thread[tid]&goto=lastpost#lastpost" class="newicon" style="display: none;">NEW</a><!--{/if}-->
+			</div>
+			</td>
+		</tr>
+		</table>
+	</td>
+	<td class="w105">
+		<span class="d_block">
+		<!--{if $thread['authorid'] && $thread['author']}-->
+			<a href="home.php?mod=space&uid=$thread[authorid]" rel="nofollow">$thread[author]</a>
+			<!--{if !empty($verify[$thread['authorid']])}-->$verify[$thread[authorid]]<!--{/if}-->
+		<!--{else}-->
+			<!--{if $_G['forum']['ismoderator']}--><a href="home.php?mod=space&uid=$thread[authorid]" rel="nofollow">{lang anonymous}</a><!--{else}-->{lang anonymous}<!--{/if}-->
+		<!--{/if}-->
+		</span>
+		<em class="d_block" <!--{if $thread['color']}-->$thread[color]<!--{/if}-->>{$thread['dateline']}</em>
+	</td>
+	<td class="w70">
+		<span class="d_block"><a class="blue">{$thread['replies']}</a></span>
+		<em class="d_block"><!--{if $thread['isgroup'] != 1}-->{$thread['views']}<!--{else}-->{$groupnames[$thread['tid']]['views']}<!--{/if}--></em>
+	</td>
+	<td class="w105">
+		<span class="d_block">
+			<!--{if $thread['lastposter']}-->
+			<a href="{if $thread[digest] != -2}home.php?mod=space&username=$thread[lastposterenc]{else}forum.php?mod=viewthread&tid=$thread[tid]&page={echo max(1, $thread[pages]);}{/if}" class="blue" c="1" rel="nofollow">{$thread['lastposter']}</a>
+			<!--{else}-->
+			{lang anonymous}
+			<!--{/if}-->
+		</span>
+		<span class="d_block"><a href="{if $thread[digest] != -2}forum.php?mod=redirect&tid=$thread[tid]&goto=lastpost$highlight#lastpost{else}forum.php?mod=viewthread&tid=$thread[tid]&page={echo max(1, $thread[pages]);}{/if}" class="gray" rel="nofollow">{$thread['lastpost']}</a></span>
+	</td>
+</tr>

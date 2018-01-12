@@ -1,0 +1,76 @@
+<!--{subtemplate common/header_8264_new}-->
+<!--{subtemplate home/space_header_uc}-->
+{eval 
+	$ua 	= strtolower($_SERVER['HTTP_USER_AGENT']);
+	$isIE6  = strpos($ua, 'msie 6.0') !== false ? true : false;
+}
+<!--main-content-->		
+<div class="main-content layout-page">
+	<div class="layout-app">
+		<div class="col-main">
+		<div class="main-wrap">
+		<div class="ui-block ui-block-content">
+		<div class="page-container-review">
+		<div class="list-area">
+		{if $list}
+		<ul>
+			{loop $list $v}
+			<li class="list-row">
+			<!--{subtemplate home/space_dianping_inc}-->				
+			</li>
+			{/loop}
+		</ul>
+		<!--分页-->
+		{if $multi}<div class="cust-page-list">{$multi}</div>{/if}	
+		<!--分页 end-->
+		{else}
+		<div class="page-container-empty">
+			<div class="empty-tips">
+				<p><i class="icon-warn"></i>{if $space[self]}您还没有发表点评{else}没有可浏览的点评{/if}</p>
+			</div>
+		</div>
+		{/if}
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+		<!--左侧 end-->
+		<!--左侧 end-->
+		<!--右侧-->
+		<div class="col-sub">
+			<!--点评(已套程序)-->
+			<div class="category-nav-container mod-wrap">
+				<div class="category-menu-nav">
+					<ul class="menu-nav-tree">
+						<li class="menu-nav {if !$fid}menu-nav-current{/if}">
+							<a href="home.php?mod=space&uid=$space[uid]&do=dianping">
+								<i class="menu-nav-icon icon-all-review"></i>
+								<em>全部点评</em>
+								<span class="number">$allcount</span>
+							</a>
+						</li>
+						{loop $dpModList $v}
+						{if $v[count]}
+						<li class="menu-nav {if $v[fid] == $fid}menu-nav-current{/if}">
+							<a href="home.php?mod=space&do=dianping&uid=$space[uid]&fid=$v[fid]">
+								<i class="menu-nav-icon icon-{$v[mname]}"></i>
+								<em>$v[cname]</em>
+								<span class="number">$v[count]</span>
+							</a>
+						</li>
+						{/if}
+						{/loop}
+					</ul>
+				</div>
+			</div>
+			<!--点评(已套程序) end-->
+            <div style="padding:20px 0px 0px 0px;;"><!--{ad/custom_465}--></div>
+		</div>
+		<!--右侧 end-->
+	</div>
+</div>
+<!--main-content end-->
+<script type="text/javascript" src="http://static.8264.com/static/js/home_dianping.js?{VERHASH}"></script>
+<!--{subtemplate home/space_footer_uc}-->
+<!--{subtemplate common/footer_8264_new}-->

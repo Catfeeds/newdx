@@ -1,0 +1,321 @@
+<!--{template common/header_8264_new}-->
+<link href="http://static.8264.com/static/css/home/notice.css?{VERHASH}" rel="stylesheet" type="text/css">
+
+<div class="w980">
+	<div class="t_980">好友</div>
+	<div class="clear_b">
+		<!--{subtemplate home/space_left_2014_old}-->
+		<div class="clear_b" style="float:right; width:760px;">
+
+			<div<!--{if $_GET['view']=='me'}--> class="l_525"<!--{/if}-->>
+				<!--{if $space[self]}-->
+					<div class="top_q_d clear_b">
+						<a href="home.php?mod=space&uid=$space[uid]&do=friend" class="zhong">{lang friend_list}</a>
+						<a href="home.php?mod=spacecp&ac=search">{lang search_friend}</a>
+						<a href="home.php?mod=spacecp&ac=friend&op=find">{lang people_might_know}</a>
+						<a href="home.php?mod=space&do=notice&type=friend">{lang friend_request}</a>
+						<!--{if $count && $_GET['view']=='me'}--><span>共<i>$count</i>个好友</span><!--{/if}-->
+					</div>
+					<div class="xfq clear_b">
+						<!--{if $_GET['view']!='me'}-->
+							<div class="hy_fl">
+						<!--{/if}-->
+						
+						<a href="home.php?mod=space&uid=$space[uid]&do=friend"{if $a_actives[me]} class="zhong"{/if}>{lang all_friend_list}</a>
+						<a href="home.php?mod=space&uid=$space[uid]&do=friend&view=online&type=near"{if $a_actives[onlinenear]} class="zhong"{/if}>{lang online_near}</a>
+						<a href="home.php?mod=space&uid=$space[uid]&do=friend&view=visitor"{if $a_actives[visitor]} class="zhong"{/if}>{lang my_visitor}</a>
+						<a href="home.php?mod=space&uid=$space[uid]&do=friend&view=trace"{if $a_actives[trace]} class="zhong"{/if}>{lang my_trace}</a>
+						<a href="home.php?mod=space&uid=$space[uid]&do=friend&view=blacklist"{if $a_actives[blacklist]} class="zhong"{/if}>{lang my_blacklist}</a>
+						
+						<!--{if $_GET['view']!='me'}-->
+							</div>
+							<div class="hy_fr">
+								<div class="search_190 clear_b">
+									<form method="get" autocomplete="off" action="home.php">
+										<input type="text" name="searchkey" class="input150" size="15" value="{lang search_people}" onclick="if(this.value=='{lang search_people}')this.value='';" />
+										<button type="submit" class="button28"></button>
+										
+										<input type="hidden" name="mod" value="spacecp" />
+										<input type="hidden" name="ac" value="friend" />
+										<input type="hidden" name="op" value="search" />
+										<input type="hidden" name="searchmode" value="1" />
+										<input type="hidden" name="searchsubmit" value="1" />
+									</form>
+								</div>
+							</div>
+						<!--{/if}-->
+					</div>
+
+					<!--{if $_GET['view']=='blacklist'}-->
+					<div class="clear_b">
+						<div class="kuang_gray">
+							<div class="hyadd clear_b">
+								<form method="post" autocomplete="off" name="blackform" action="home.php?mod=spacecp&ac=friend&op=blacklist&start=$_GET[start]">
+									<input name="username" type="text" class="input404_30" size="15" value="" />
+									<button type="submit" name="blacklistsubmit_btn" id="moodsubmit_btn" value="true" class="button104_31"></button>
+									<input type="hidden" name="blacklistsubmit" value="true" />
+									<input type="hidden" name="formhash" value="{FORMHASH}" />
+								</form>
+							</div>
+							<div class="hyaddwz">{lang blacklist_message}</div>
+						</div>
+						<!--{if $space[self]}-->
+							<!--{if $list}-->
+							<div class="blackname">
+								<ul>
+									<!--{loop $list $key $value}-->
+									<li id="friend_{$value[uid]}_li">
+										<div class="blackname_t">
+											<!--{if $value[username] == ''}-->
+											<img src="http://static.8264.com/static/image/magic/hidden.gif" alt="{lang anonymity}" />
+											<!--{else}-->
+											<a href="home.php?mod=space&uid=$value[uid]"><!--{avatar($value[uid],small)}--></a>
+											<!--{/if}-->
+											<p>
+												<!--{if $value[username] == ''}-->
+													<a href="javascript:;" class="name_pr10">{lang anonymity}</a>
+												<!--{else}-->
+													<a href="home.php?mod=space&uid=$value[uid]" class="name_pr10">$value[username]</a>
+													<!--{if $space[self]}--><span id="friend_note_$value[uid]" class="maxh note xw0" title="$value[note]">$value[note]</span><!--{/if}-->
+													<!--{eval g_icon($value[groupid]);}-->
+													<!--{if $value['videostatus']}--><img src="http://static.8264.com/static/image/common/videophoto.gif" alt="videophoto" class="vm" /><!--{/if}-->
+													<!--{if $value[recentnote]}--><span class="qianming" title="$value[recentnote]">$value[recentnote]</span><!--{/if}-->
+												<!--{/if}-->
+											</p>
+											<!--{if $ols[$value[uid]]}--><span class="online" title="{lang online} {date($ols[$value[uid]], 'H:i')}"></span><!--{/if}-->
+										</div>
+										<a href="home.php?mod=spacecp&ac=friend&op=blacklist&subop=delete&uid=$value[uid]&start=$_GET[start]" class="blackname_c">{lang delete_blacklist}</a>
+									</li>
+									<!--{/loop}-->
+								</ul>
+							</div>
+							<!--{else}-->
+							<div class="withouthy"><img src="http://static.8264.com/static/images/home/withoutyh.jpg"/><br><span>没有相关用户列表</span></div>
+							<!--{/if}-->
+						<!--{/if}-->
+					</div>
+					<!--{/if}-->
+				<!--{/if}-->
+				
+				<!--{if $space[self]}-->
+					<!--{if $_GET['view']=='trace' || $_GET['view']=='visitor' || $_GET['view']=='online'}-->
+						<!--{if $list}-->
+							<div class="hylist hylist_p_r clear_b">
+								<ul>
+									<!--{loop $list $key $value}-->
+									<li id="friend_{$value[uid]}_li">
+										<!--{if $value[username] == ''}-->
+										<img src="http://static.8264.com/static/image/magic/hidden.gif" alt="{lang anonymity}" />
+										<!--{else}-->
+										<a href="home.php?mod=space&uid=$value[uid]"><!--{avatar($value[uid],small)}--></a>
+										<!--{/if}-->
+										<p>
+											<!--{if $value[username] == ''}-->
+												<a href="javascript:;" class="name_t">{lang anonymity}</a>
+											<!--{else}-->
+												<a href="home.php?mod=space&uid=$value[uid]" class="name_t">$value[username]</a>
+												<!--{if $space[self]}--><span id="friend_note_$value[uid]" class="maxh note xw0" title="$value[note]">$value[note]</span><!--{/if}-->
+												<!--{eval g_icon($value[groupid]);}-->
+												<!--{if $value['videostatus']}--><img src="http://static.8264.com/static/image/common/videophoto.gif" alt="videophoto" class="vm" /><!--{/if}-->
+												<!--{if $value[recentnote]}--><span class="qianming" title="$value[recentnote]">$value[recentnote]</span><!--{/if}-->
+											<!--{/if}-->
+											<span class="rqdate">
+												<!--{if $_GET['view']=='online'}-->
+													<!--{date($ols[$value[uid]], 'H:i')}-->
+												<!--{else}-->
+													<!--{date($value[dateline], 'n{lang month}j{lang day}')}-->
+												<!--{/if}-->
+											</span>
+										</p>
+										<!--{if $ols[$value[uid]]}--><span class="online" title="{lang online} {date($ols[$value[uid]], 'H:i')}"></span><!--{/if}-->
+									</li>
+									<!--{/loop}-->
+								</ul>
+							</div>
+						<!--{else}-->
+							<div class="withouthy"><img src="http://static.8264.com/static/images/home/withoutyh.jpg"/><br><span>没有相关用户列表</span></div>
+						<!--{/if}-->
+					<!--{/if}-->
+				
+					<!--{if $_GET['view']!='blacklist' && $_GET['view']!='trace' && $_GET['view']!='visitor' && $_GET['view']!='online'}-->
+					<div class="hylf<!--{if $_GET['view']!='me'}--> hylf_c<!--{/if}--> clear_b">
+						<!--{if $list}-->
+						<ul>
+							<!--{loop $list $key $value}-->
+							<li id="friend_{$value[uid]}_li">
+								<div class="w_48">
+									<!--{if $value[username] == ''}-->
+									<img src="http://static.8264.com/static/image/magic/hidden.gif" alt="{lang anonymity}" />
+									<!--{else}-->
+									<a href="home.php?mod=space&uid=$value[uid]"><!--{avatar($value[uid],small)}--></a>
+									<!--{if $_GET['view']=='me'}--><a href="home.php?mod=spacecp&ac=friend&op=changenum&uid=$value[uid]&handlekey=hotuserhk_{$value[uid]}" id="friendnum_$value[uid]" onclick="showWindow(this.id, this.href, 'get', 0);"><span id="spannum_$value[uid]">$value[num]</span></a><!--{/if}-->
+									<!--{/if}-->
+								</div>
+								<div class="r_w125">
+									<!--{if $value[username] == ''}-->
+										<a href="javascript:;" class="nameid">{lang anonymity}</a>
+									<!--{else}-->
+										<a href="home.php?mod=space&uid=$value[uid]" class="nameid">$value[username]</a>
+										<!--{if $space[self]}--><span id="friend_note_$value[uid]" class="maxh note xw0" title="$value[note]">$value[note]</span><!--{/if}-->
+										<!--{if $ols[$value[uid]]}--><img src="http://static.8264.com/static/image/common/ol.gif" alt="online" title="{lang online} {date($ols[$value[uid]], 'H:i')}" class="vm" /><!--{/if}-->
+										<!--{eval g_icon($value[groupid]);}-->
+										<!--{if $value['videostatus']}--><img src="http://static.8264.com/static/image/common/videophoto.gif" alt="videophoto" class="vm" /><!--{/if}-->
+										<!--{if $value[recentnote]}--><span class="ms" title="$value[recentnote]">$value[recentnote]</span><!--{/if}-->
+									<!--{/if}-->
+									
+									<div class="cz clear_b">
+									<!--{if $_GET['view']=='blacklist'}-->
+									<!--{elseif $_GET['view']=='visitor' || $_GET['view'] == 'trace'}-->
+									<!--{elseif $_GET['view']=='online'}-->
+									<!--{else}-->
+										<span class="ghcon" id="ma_opfrd_$value[uid]">
+											<!--{if !$value[isfriend]}-->
+											<a href="home.php?mod=spacecp&ac=friend&op=add&uid=$value[uid]&handlekey=adduserhk_{$value[uid]}" id="a_friend_$key" onclick="showWindow(this.id, this.href, 'get', 0);" class="glname">{lang add_friend}</a>
+											<!--{else}-->
+											<a href="javascript:;" class="glname">{lang manage}</a>
+											<span class="tc_gh" style="display:none;">
+												<a href="home.php?mod=spacecp&ac=friend&op=changegroup&uid=$value[uid]&handlekey=editgrouphk_{$value[uid]}" id="friend_group_$value[uid]" onclick="showWindow(this.id, this.href, 'get', 0);">{lang set_friend_group}</a>
+												<a href="home.php?mod=spacecp&ac=friend&op=editnote&uid=$value[uid]&handlekey=editnote_{$value[uid]}" id="friend_editnote_$value[uid]" onclick="showWindow(this.id, this.href, 'get', 0);">{lang friend_editnote}</a>
+												<a href="home.php?mod=spacecp&ac=friend&op=ignore&uid=$value[uid]&handlekey=delfriendhk_{$value[uid]}" id="a_ignore_$key" onclick="showWindow(this.id, this.href, 'get', 0);" class="bgray">{lang delete}</a>
+											</span>
+											<!--{/if}-->
+										</span>
+										<span class="ghcon" id="ma_interaction_$value[uid]">
+											<a href="javascript:;" class="glname">{lang interactive}</a>											
+											<span class="tc_gh" style="display: none;">
+												<a href="home.php?mod=spacecp&ac=poke&op=send&uid=$value[uid]" id="a_poke_$key" onclick="showWindow(this.id, this.href, 'get', 0);" title="{lang say_hi}">{lang say_hi}</a>
+												<a href="home.php?mod=spacecp&ac=pm&op=showmsg&handlekey=showmsg_$value[uid]&touid=$value[uid]&pmid=0&daterange=2" id="a_sendpm_$key" class="bgray" onclick="showWindow('showMsgBox', this.href, 'get', 0)">{lang send_pm}</a>
+												<!--{hook/space_interaction_extra}-->
+											</span>
+										</span>
+									<!--{/if}-->
+									</div>
+								</div>
+							</li>
+							<!--{/loop}-->
+						</ul>
+						<script type="text/javascript">
+						(function($){
+							$("span[id^=ma_]").hover(function(){
+								$(this).children("span").show();
+							},function(){
+								$(this).children("span").hide();
+							});
+						})(jQuery);
+						</script>
+						<!--{else}-->
+						<div class="emp">{lang no_friend_list}</div>
+						<!--{/if}-->
+					</div>
+					<!--{/if}-->
+					<!--{if $multi}-->
+						<div class="fenyewarpten clear_b">$multi</div>
+					<!--{else}-->
+						<div class="fheight"></div>
+					<!--{/if}-->
+				<!--{else}-->
+					<p class="tbmu">{lang count_member}</p>
+					<!--{template home/space_list}-->
+				<!--{/if}-->
+			</div>
+			<!--{if $_GET['view']=='me'}-->
+			<div class="r_190">
+				<div class="search_190 clear_b mb18">
+					<form method="get" autocomplete="off" action="home.php">
+						<input type="hidden" name="mod" value="space" />
+						<input type="hidden" name="do" value="friend" />
+						<input type="hidden" name="searchmode" value="1" />
+						<input type="hidden" name="searchsubmit" value="1" />
+						<input type="text" name="searchkey" class="input150" size="15" value="{lang search_friend}" onclick="if(this.value=='{lang search_friend}')this.value='';" />
+						<button type="submit" class="button28"></button>
+					</form>
+				</div>
+				
+				<!--{if $groups}-->
+				<h4 class="h4title clear_b"><span>好友分组</span><a href="home.php?mod=spacecp&ac=friend&op=group">{lang volume_group}</a></h4>
+				<div class="hyczlist">
+					<ul id="hylist">
+						<li><a href="home.php?mod=space&do=friend&group=-1" class="t_name">全部好友</a></li>
+						<!--{loop $groups $key $value}-->
+						<li>
+							<a href="home.php?mod=space&do=friend&group=$key" class="t_name{if $groupselect[$key]}_z{/if}" groupname="$value" id="friend_groupname_$key"><!--{if isset($space['privacy']['filter_gid'][$key])}--><span class="xg1">[{lang shield}]</span><!--{/if}-->$value</a>
+							<span class="cz">
+								<!--{if $key}-->
+								<a href="home.php?mod=spacecp&ac=friend&op=groupname&group=$key&handlekey=edithk_{$key}" id="c_edit_$key" onclick="showWindow(this.id, this.href, 'get', 0);" title="{lang edit_group_name}">编辑</a>
+								<!--{/if}-->
+								<a href="home.php?mod=spacecp&ac=friend&op=groupignore&group=$key&handlekey=ignorehk_{$key}" id="c_ignore_$key" onclick="showWindow('ignoregroup', this.href, 'get', 0);" title="{lang ignore_group_feed}"><!--{if isset($space['privacy']['filter_gid'][$key])}-->{lang cancel}<!--{else}-->{lang shield}<!--{/if}--></a>
+							</span>
+							<span class="clicon"></span>
+						</li>
+						<!--{/loop}-->
+					</ul>
+				</div>
+				<script type="text/javascript">
+				(function($){
+					$("#hylist>li").hover(function(){
+						$(this).find('.cz').show();
+						$(this).find('.clicon').hide();
+					},function(){
+						$(this).find('.cz').hide();
+						$(this).find('.clicon').show();
+					});
+				})(jQuery);
+				function succeedhandle_ignoregroup(url, msg, values) {
+					var liObj = $('friend_groupname_'+values['group']);
+					var prefix = '';
+					if(values['ignore']) {
+						prefix = '<span class="xg1">[{lang shield}]</span>';
+					}
+					$('c_ignore_'+values['group']).innerHTML = values['ignore'] ? '{lang cancel}' : '{lang shield}';
+					liObj.innerHTML = prefix + liObj.getAttribute('groupname');
+				}
+				</script>
+				<!--{/if}-->
+				<h4 class="h4title clear_b">提示</h4>
+				<div class="hywenzi">
+					<p><b>好友列表</b><br>是按照好友热度高低排序</p>
+					<p><b>好友热度</b><br>是系统根据你与好友之间交互的动作自动累计的一个参考值数值越大表示你与这位好友互动越频繁</p>
+					<!--{if $maxfriendnum}-->
+						({lang max_friend_num})
+						<p>
+							<!--{if $_G['setting']['magicstatus'] && $_G[setting][magics][friendnum]}-->
+								<img src="http://static.8264.com/static/image/magic/friendnum.small.gif" alt="friendnum" class="vm" />
+								<a id="a_magic_friendnum" href="home.php?mod=magic&mid=friendnum" onclick="showWindow('magics', this.href, 'get', 0);return false;">{lang expansion_friend}</a>
+								({lang expansion_friend_message})
+							<!--{/if}-->
+						</p>
+					<!--{/if}-->
+				</div>
+			</div>
+			<!--{/if}-->
+
+		</div>
+	</div>
+</div>
+<!--{subtemplate home/space_footer_2014}-->
+
+<!--{if $space[self]}-->
+	<!--{if $_G['setting']['my_app_status']}-->
+		<script type="text/javascript">
+			function my_sync_tip(msg, close_time) {;
+				showDialog(msg, 'notice');
+			}
+			function my_sync_friend() {
+				my_sync_tip('{lang syn_friend}', 0);
+				var my_scri = document.createElement("script");
+				document.getElementsByTagName("head")[0].appendChild(my_scri);
+				my_scri.charset = "UTF-8";
+				var url = "http://uchome.manyou.com/user/syncFriends";
+				my_scri.src = url + "?sId=$_G['setting'][my_siteid]&uUchId=$space[uid]&ts=$_G[timestamp]&key=<!--{eval echo md5($_G['setting'][my_siteid] . $_G['setting'][my_sitekey] . $space[uid] . $_G[timestamp]);}-->";
+			}
+		</script>
+		<hr class="da" />
+		<div class="bn">
+			<h2>{lang cannot_find_friend}</h2>
+			<p>{lang click_syn}</p>
+			<p class="pns pnn mtm"><button type="button" onclick="my_sync_friend(); return false;" title="{lang friend_manyou_message}" class="pn"><em>{lang refresh_friend}</em></button></p>
+		</div>
+	<!--{/if}-->
+<!--{/if}-->
+
+<!--{template common/footer_8264_new}-->

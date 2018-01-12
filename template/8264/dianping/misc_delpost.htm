@@ -1,0 +1,18 @@
+<div>
+	<input type="hidden" name="formhash" id="formhash" value="{FORMHASH}" />
+	<input type="hidden" name="pid" id="pid" value="$_G[gp_pid]" />
+	<div class="c mark">
+		<div>注意：删除后不可恢复，谨慎操作</div>
+		<div class="tpclg">
+			<h4>
+				<a onclick="showselect(this, 'reason', 'reasonselect')" class="dpbtn" href="javascript:;">^</a>
+				操作说明:
+			</h4>
+			<p><textarea id="reason" name="reason" class="pt"></textarea></p> <ul id="reasonselect" style="display: none"><!--{echo modreasonselect()}--></ul>
+		</div>
+	</div>
+	<p class="o pns">
+		<button name="delpostbtn" type="submit" class="pn pnc" onclick="delpostbtn();"><span>确定</span></button>
+		<input type="checkbox" name="sendreasonpm" id="sendreasonpm" class="pc"{if $_G['group']['reasonpm'] == 2 || $_G['group']['reasonpm'] == 3} checked="checked" disabled="disabled"{/if} /> <label for="sendreasonpm" />通知作者</label>
+	</p>
+</div>

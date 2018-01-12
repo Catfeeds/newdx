@@ -1,0 +1,24 @@
+<div class="rows-content row-color-6 review-op-bar">
+	<ul class="review-op-list">
+	<!--{if $_G['adminid'] == 1}-->
+		<!-- <li>
+			<a href="javascript:;" onclick="stickreply($comment[pid]);">置顶</a>
+		</li>
+		<li>
+			<a href="javascript:;" onclick="delpost($comment[pid]);">删除</a>
+		</li> -->
+		<li><input type="checkbox" id="manage{$comment[pid]}" class="pc" onclick="pidchecked(this);modclick(this, $comment[pid])" value="$comment[pid]" autocomplete="off"> 管理</li>
+		<li>
+			<a href="javascript:;" id="k_rate" onclick="showWindow('rate', 'forum.php?mod=misc&action=rate&tid=$comment[tid]&pid=$comment[pid]', 'get', -1);return false;">评分</a>
+		</li>
+		{if $comment['rate']}
+		<li>
+			<a href="javascript:;" onclick="showWindow('rate', 'forum.php?mod=misc&action=removerate&tid=$comment[tid]&pid=$comment[pid]', 'get', -1);return false;">撤销评分</a>
+		</li>
+		{/if}
+	<!--{/if}-->
+		<li>
+			<a href="javascript:void(0);" id="$comment['pid']" class="editclick"><i class="icon-m icon-edit-m"></i>修改</a>
+		</li>
+	</ul>
+</div>

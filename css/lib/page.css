@@ -1,0 +1,9 @@
+body {margin:50px 0px 50px 15px;width:95%}
+h5 {color:#ff0000;text-align:center}
+h6 {color:#336699;text-align:center}
+p {width:100%;font-size:15px;text-indent:30px;line-height:1.8;text-align:left}
+div.sign {margin-right:100px;font-size:15px;float:right;clear:both;text-align:left}
+div.note {color:#999;margin-bottom:100px;font-size:13px;line-height:2.0;text-indent:30px;text-align:left}
+div.title {margin:30px 0px -10px 0px;font-size:15px;text-indent:30px;text-align:left}
+div.block {margin-left:50px;font-size:14px;line-height:2.0;clear:both;text-align:left}
+div.author {font-size:15px;text-align:center}

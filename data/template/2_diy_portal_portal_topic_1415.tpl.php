@@ -1,0 +1,150 @@
+<?php if(!defined('IN_DISCUZ')) exit('Access Denied'); ?>
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title><?php echo $topic['title'];?></title>
+<link href="http://static.8264.com/oldcms/moban/zt/2012leader/css/reset.css" rel="stylesheet" type="text/css">
+<link href="http://static.8264.com/oldcms/moban/zt/2012leader/css/style1.1.css" rel="stylesheet" type="text/css">
+<!--[if IE 6]>
+<script src="http://static.8264.com/oldcms/moban/zt/2012leader/js/DD_belatedPNG_0.0.8a.js" type="text/javascript"></script>
+<script src="http://static.8264.com/oldcms/moban/zt/2012leader/js/DD_belatedPNG_css.js" type="text/javascript"></script>
+<![endif]-->
+</head>
+<body>
+<div class="wrapper">
+<div class="header"></div>
+<!-- .header End -->
+<div class="main">
+<div class="signUp">
+<div style="display:none"><a href="http://bbs.8264.com/thread-1403041-1-1.html" target="_blank" class="signUpA"></a><a href="http://bbs.8264.com/thread-1403041-1-1.html" target="_blank" class="signUpB"></a></div>
+</div>
+<div class="intro">
+<div class="introCont">
+<p>由8264与“巅峰”户外运动学校发起的领队公益培训招募（免费培训）第四期现已开始招募。本次报名由2012年9月11日起，至2012年10月30日止。8264将根据报名领队的经历、发帖数量，活跃程度，影响力等资质择优选取20名，参加第四期领队培训班的培训。本次培训教练由孙斌、赵兴政、李赞、祝瑞兰等拥有多年攀登经验的国内顶尖攀登高手组成。全国领队培训已经培训过三期，得到历届领队和版主们的大力支持！应领队版主们要求，现启动第四期培训。（因课程内容较多，培训时间调整为4天）</p>
+</div>
+</div>
+<div class="leader clearfix">
+<h2></h2>
+<div class="leaderCont">
+<div class="L"> <img src="http://static.8264.com/oldcms/moban/zt/2012leader/img/leader-1.png" class="pic">
+<p>the north face运动员、国家一级登山运动员、户外领队公益培训总教练</p>
+</div>
+<div class="leaderContIntro">
+<ul class="listLeader clearfix">
+<li><img src="http://image1.8264.com/album/201209/07/1523563geh9k3gg3uzofkp.jpg"><span>赵兴政</span></li>
+<li><img src="http://image1.8264.com/album/201209/07/1523530s99033wsq6sbfz8.jpg"><span>李赞</span></li>
+<li><img src="http://image1.8264.com/album/201209/07/15235592x9pw9fgxzgbwvk.jpg"><span>二姐</span></li>
+</ul>
+</div>
+</div>
+</div>
+        <div class="leaderList">
+<h2><span class="four"></span></h2>
+<ul class="listLeader clearfix">
+<li><a href="javascript:void(0)"><img src="http://static.8264.com/oldcms/moban/zt/2012leader/images/img1.jpg"></a><span><a href="http://u.8264.com/?33820343" >保定-北岳驴</a></span></li>
+<li><a href="javascript:void(0)"><img src="http://static.8264.com/oldcms/moban/zt/2012leader/images/img2.jpg"></a><span><a href="javascript:void(0)" >本溪-小辛辛</a></span></li>
+<li><a href="javascript:void(0)" ><img src="http://static.8264.com/oldcms/moban/zt/2012leader/images/img3.jpg"></a><span><a href="javascript:void(0)" >大连-海月0007</a></span></li>
+<li><a href="javascript:void(0)" ><img src="http://static.8264.com/oldcms/moban/zt/2012leader/images/img4.jpg"></a><span><a href="javascript:void(0)" >福州-福州石头</a></span></li>
+<li><a href="javascript:void(0)" ><img src="http://static.8264.com/oldcms/moban/zt/2012leader/images/img5.jpg"></a><span><a href="javascript:void(0)" >哈尔滨-青山绿水</a></span></li>
+<li><a href="javascript:void(0)" ><img src="http://static.8264.com/oldcms/moban/zt/2012leader/images/img6.jpg"></a><span><a href="javascript:void(0)" >哈尔滨-三杯</a></span></li>
+<li><a href="javascript:void(0)" ><img src="http://static.8264.com/oldcms/moban/zt/2012leader/images/img7.jpg"></a><span><a href="javascript:void(0)" >呼伦贝尔-迷失的森林</a></span></li>
+<li><a href="javascript:void(0)" ><img src="http://static.8264.com/oldcms/moban/zt/2012leader/images/img8.jpg"></a><span><a href="javascript:void(0)" >湖南-风沙</a></span></li>
+<li><a href="javascript:void(0)" ><img src="http://static.8264.com/oldcms/moban/zt/2012leader/images/img9.jpg"></a><span><a href="javascript:void(0)" >焦作-揽月户外</a></span></li>
+<li><a href="javascript:void(0)" ><img src="http://static.8264.com/oldcms/moban/zt/2012leader/images/img10.jpg"></a><span><a href="javascript:void(0)" >盘锦-辽河大漠</a></span></li>
+<li><a href="javascript:void(0)" ><img src="http://static.8264.com/oldcms/moban/zt/2012leader/images/img11.jpg"></a><span><a href="javascript:void(0)" >厦门-初阳</a></span></li>
+<li><a href="javascript:void(0)" ><img src="http://static.8264.com/oldcms/moban/zt/2012leader/images/img12.jpg"></a><span><a href="javascript:void(0)" >商丘-春天胡杨</a></span></li>
+<li><a href="javascript:void(0)" ><img src="http://static.8264.com/oldcms/moban/zt/2012leader/images/img13.jpg"></a><span><a href="javascript:void(0)" >沈阳-沈阳宣言</a></span></li>
+<li><a href="javascript:void(0)" ><img src="http://static.8264.com/oldcms/moban/zt/2012leader/images/img14.jpg"></a><span><a href="javascript:void(0)" >沈阳-纵横波波</a></span></li>
+<li><a href="javascript:void(0)" ><img src="http://static.8264.com/oldcms/moban/zt/2012leader/images/img15.jpg"></a><span><a href="javascript:void(0)" >石家庄-仙姐</a></span></li>
+<li><a href="javascript:void(0)" ><img src="http://static.8264.com/oldcms/moban/zt/2012leader/images/img16.jpg"></a><span><a href="javascript:void(0)" >邢台-柴王爷</a></span></li>
+<li><a href="javascript:void(0)" ><img src="http://static.8264.com/oldcms/moban/zt/2012leader/images/img17.jpg"></a><span><a href="javascript:void(0)" >张家界-谦山万水</a></span></li>
+<li><a href="javascript:void(0)" ><img src="http://static.8264.com/oldcms/moban/zt/2012leader/images/img18.jpg"></a><span><a href="javascript:void(0)" >长治-火车头</a></span></li>
+<li><a href="javascript:void(0)" ><img src="http://static.8264.com/oldcms/moban/zt/2012leader/images/img19.jpg"></a><span><a href="javascript:void(0)" >驻马店-风行户外</a></span></li>
+</ul>
+</div>
+<div class="leaderList">
+<h2><span class="three"></span></h2>
+<ul class="listLeader clearfix">
+<li><a href="http://u.8264.com/?33820343" target="_blank"><img src="http://image1.8264.com/album/201209/06/141038w3xkricwwnttw2mf.jpg"></a><span><a href="http://u.8264.com/?33820343" target="_blank">延边-无言</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201209/06/1410380dwvfyjfnv7yyyyk.jpg"></a><span><a href=" " target="_blank">西宁-瓶子里的浪花</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201209/06/141036wcx3uur5krh57c75.jpg"></a><span><a href=" " target="_blank">台湾-宝姐</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201209/06/1410353shths66x31ljbhh.jpg"></a><span><a href=" " target="_blank">沈阳-巨人</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201209/06/141031xcwg6gggxwpg6mk8.jpg"></a><span><a href=" " target="_blank">沈阳-都给我躲了</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201209/06/141029gb9hp4cpch65252p.jpg"></a><span><a href=" " target="_blank">山西-漩涡</a></span></li>
+<li><a href=" e" target="_blank"><img src="http://image1.8264.com/album/201209/06/141029a8okuo1p5mg7a1u0.jpg"></a><span><a href=" " target="_blank">秦皇岛-小脾气</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201209/06/141028t7ivdxi6bcittczt.jpg"></a><span><a href=" " target="_blank">秦皇岛-若尘</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201209/06/141027pp7alpn7nlng7zig.jpg"></a><span><a href=" " target="_blank">济南-烟瘾</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201209/06/141027yw5gmlgkw3325ow4.jpg"></a><span><a href=" " target="_blank">哈尔滨-老橡皮</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201209/06/141026fhn7znm99xn99xyd.jpg"></a><span><a href=" " target="_blank">哈尔滨-抽烟赶寂寞</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201209/06/141025f4rh4oa6wp2bzp8o.jpg"></a><span><a href=" " target="_blank">贵州-老蛇</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201209/06/1410242yn2c527zyu73ug5.jpg"></a><span><a href=" " target="_blank">大连-五哥</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201209/06/141024ve7r44e44rbqluu3.jpg"></a><span><a href=" " target="_blank">大连-老马</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201209/06/1410236be91z194re06452.jpg"></a><span><a href=" " target="_blank">北京-丫头百合</a></span></li>
+<li><a href="http://u.8264.com/?33820343" target="_blank"><img src="http://image1.8264.com/album/201209/06/141022qsgej5gqsaekrqbb.jpg"></a><span><a href="http://u.8264.com/?33820343" target="_blank">北京-星旧</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201209/06/1410217bshs20ll026b4sh.jpg"></a><span><a href=" " target="_blank">北京-娜小猫</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201209/06/141021qh7iyjrirmzm55rd.jpg"></a><span><a href=" " target="_blank">北京-风火连城</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201209/06/141020ldla4l7a4mcmulcu.jpg"></a><span><a href=" " target="_blank">包头-新游牧人</a></span></li>
+</ul>
+</div>
+<div class="leaderList">
+<h2><span class="two"></span></h2>
+<ul class="listLeader clearfix">
+<li><a href="http://u.8264.com/?33820343" target="_blank"><img src="http://image1.8264.com/album/201208/30/153649wy1z51mwqq5qhb5b.jpg"></a><span><a href="http://u.8264.com/?33820343" target="_blank">挥剑抉浮云</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201208/30/153645xxpharsdc650pvep.jpg"></a><span><a href=" " target="_blank">小纪</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201208/30/153642gygymwii0q6ai9iz.jpg"></a><span><a href=" " target="_blank">夏天</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201208/30/153639w6tffpttfatj84f9.jpg"></a><span><a href=" " target="_blank">顺顺</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201208/30/153635lq1mlgqf215mmoyh.jpg"></a><span><a href=" " target="_blank">鹏傲九霄</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201208/30/153630gdhgmaqdl9tdtvbn.jpg"></a><span><a href=" " target="_blank">楠瓜</a></span></li>
+<li><a href=" e" target="_blank"><img src="http://image1.8264.com/album/201208/30/153624l2mid2zg2ry6m22m.jpg"></a><span><a href=" " target="_blank">老9</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201208/30/1536196nb8awwniitd3lwt.jpg"></a><span><a href=" " target="_blank">坑主</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201208/30/153615f2f7yl585rypmjpe.jpg"></a><span><a href=" " target="_blank">脚掌</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201208/30/153612xzhxr0xzj0r2malf.jpg"></a><span><a href=" " target="_blank">黑哨</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201208/30/153609q090u43qwnku09ko.jpg"></a><span><a href=" " target="_blank">孤燕</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201208/30/153604vz9laq75v9v8ua0t.jpg"></a><span><a href=" " target="_blank">大连铁蛋</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201208/30/153600ojq9mjgkq5jjz977.jpg"></a><span><a href=" " target="_blank">大肚楠</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201208/30/153556atazr51a11rsm3la.jpg"></a><span><a href=" " target="_blank">爱睡觉的猫左面</a></span></li>
+<li><a href=" " target="_blank"><img src="http://image1.8264.com/album/201208/30/153551fi1jksyyis1ft11k.jpg"></a><span><a href=" " target="_blank">心跳</a></span></li>
+</ul>
+</div>
+<div class="leaderList">
+<h2><span class="one"></span></h2>
+<ul class="listLeader clearfix">
+<li><a href="u.8264.com/home-space-uid-33900095-do-blog-id-400836.html" target="_blank"><img src="http://image1.8264.com/portal/201208/02/134758yhi7dmrokc1o2boh.jpg"></a><span><a href="http://u.8264.com/home-space-uid-33900095-do-blog-id-400836.html" target="_blank">安全盾</a></span></li>
+<li><a href="http://u.8264.com/home.php?mod=space&amp;uid=33752751&amp;do=profile" target="_blank"><img src="http://image1.8264.com/album/201209/04/1057396b31on1nz6ogb6gg.jpg"></a><span><a href="http://u.8264.com/home.php?mod=space&amp;uid=33752751&amp;do=profile" target="_blank">鱼游天</a></span></li>
+<li><a href="http://bbs.8264.com/thread-1218086-1-1.html" target="_blank"><img src="http://image1.8264.com/album/201209/04/105742n2zcbk2jva6pxpxz.jpg"></a><span><a href="http://bbs.8264.com/thread-1218086-1-1.html" target="_blank">文耕</a></span></li>
+<li><a href="http://bbs.8264.com/thread-1218776-1-1.html" target="_blank"><img src="http://image1.8264.com/album/201209/04/105745vhjivql9z99l0aq2.jpg"></a><span><a href="http://bbs.8264.com/thread-1218776-1-1.html" target="_blank">火柴</a></span></li>
+<li><a href="http://bbs.8264.com/thread-1221370-1-1.html" target="_blank"><img src="http://image1.8264.com/album/201209/04/105749epxem500kfeul179.jpg"></a><span><a href="http://bbs.8264.com/thread-1221370-1-1.html" target="_blank">布衣</a></span></li>
+<li><a href="http://bbs.8264.com/thread-1238847-7-1.html" target="_blank"><img src="http://image1.8264.com/album/201209/04/105752lxeigg3gx26gxqqp.jpg"></a><span><a href="http://bbs.8264.com/thread-1238847-7-1.html" target="_blank">北纬</a></span></li>
+<li><a href="http://bbs.8264.com/home.php?mod=space&amp;uid=33768872&amp;do=profile" target="_blank"><img src="http://image1.8264.com/album/201209/04/105756xftfauukxvkyc9xa.jpg"></a><span><a href="http://bbs.8264.com/home.php?mod=space&amp;uid=33768872&amp;do=profile" target="_blank">天天无痕</a></span></li>
+<li><a href="http://u.8264.com/home.php?mod=space&amp;uid=34971686&amp;do=profile" target="_blank"><img src="http://image1.8264.com/album/201209/04/105759xq7lzq9x6267ef9q.jpg"></a><span><a href="http://u.8264.com/home.php?mod=space&amp;uid=34971686&amp;do=profile" target="_blank">山西脚印</a></span></li>
+<li><a href="http://u.8264.com/home.php?mod=space&amp;uid=34116391&amp;do=profile" target="_blank"><img src="http://image1.8264.com/album/201209/04/115743zmmz2k1qkttt3ouz.jpg"></a><span><a href="http://u.8264.com/home.php?mod=space&amp;uid=34116391&amp;do=profile" target="_blank">玩的心跳</a></span></li>
+<li><a href="http://u.8264.com/home.php?mod=space&amp;uid=33743121&amp;do=profile" target="_blank"><img src="http://image1.8264.com/album/201209/04/105803polpprlild5r35uz.jpg"></a><span><a href="http://u.8264.com/home.php?mod=space&amp;uid=33743121&amp;do=profile" target="_blank">死猫一只</a></span></li>
+</ul>
+</div>
+<div class="tidbits">
+<h2><span></span></h2>
+<ul class="listTidbits clearfix">
+<li><a href="http://u.8264.com/home-space-uid-33900095-do-blog-id-400836.html" target="_blank"><img src="http://image1.8264.com/album/201209/04/1122265np3nz1nuu2nxe2n.jpg"></a><span><a href="http://u.8264.com/home-space-uid-33900095-do-blog-id-400836.html" target="_blank">颁发证书</a></span></li>
+<li><a href="http://bbs.8264.com/thread-1217292-1-1.html" target="_blank"><img src="http://image1.8264.com/album/201209/04/112229ryrz6r9rdghq6yz5.jpg"></a><span><a href="http://bbs.8264.com/thread-1217292-1-1.html" target="_blank">岩壁飞舞</a></span></li>
+<li><a href="http://bbs.8264.com/thread-1217292-1-1.html" target="_blank"><img src="http://image1.8264.com/album/201209/04/1122347rzfhrfrpf7c27ce.jpg"></a><span><a href="http://bbs.8264.com/thread-1217292-1-1.html" target="_blank">黄埔一期</a></span></li>
+<li><a href="http://bbs.8264.com/thread-1218086-1-1.html" target="_blank"><img src="http://image1.8264.com/album/201209/04/112237f9bbhvxqqlq9wl80.jpg"></a><span><a href="http://bbs.8264.com/thread-1218086-1-1.html" target="_blank">巅峰校长</a></span></li>
+<li><a href="http://bbs.8264.com/thread-1218086-1-1.html" target="_blank"><img src="http://image1.8264.com/album/201209/13/100236j7d1kfe7pjcjf322.jpg"></a><span><a href="http://bbs.8264.com/thread-1218086-1-1.html" target="_blank">毕业证书</a></span></li>
+<li><a href="http://bbs.8264.com/thread-1218776-1-1.html" target="_blank"><img src="http://image1.8264.com/album/201209/04/112245r6ugqujmucngnnmz.jpg"></a><span><a href="http://bbs.8264.com/thread-1218776-1-1.html" target="_blank">连夜培训</a></span></li>
+<li><a href="http://bbs.8264.com/thread-1238847-1-1.html" target="_blank"><img src="http://image1.8264.com/album/201209/04/112248155pgblx54qbg4bb.jpg"></a><span><a href="http://bbs.8264.com/thread-1238847-1-1.html" target="_blank">培训教程</a></span></li>
+<li><a href="http://u.8264.com/home-space-uid-33900095-do-blog-id-400836.html" target="_blank"><img src="http://image1.8264.com/album/201209/04/112251p1gvq6m74qjd6qq6.jpg"></a><span><a href="http://u.8264.com/home-space-uid-33900095-do-blog-id-400836.html" target="_blank">基础练习</a></span></li>
+</ul>
+</div>
+</div>
+<!-- .main End -->
+<div class="footer">
+<p class="top_m"> <a href="http://www.8264.com/template/8264/about/aboutus.htm" target="_blank">8264简介</a> | <a href="http://www.8264.com/template/8264/about/ggservice/index.html" target="_blank">广告服务</a> | <a href="http://www.8264.com/list/531/" target="_blank">编辑部的故事</a> | <a href="http://www.8264.com/template/8264/about/sitemap.html" target="_blank">站点地图</a> | <a href="http://www.8264.com/zhuanti" target="_blank">户外热点</a> | <a href="http://www.8264.com/template/8264/about/aboutus.htm" target="_blank">联系方式</a> | <a href="http://bbs.8264.com/plugin.php?id=drc_qqgroup:main" target="_blank">QQ群联盟</a> | <a href="http://8.8264.com/job/" target="_blank">8264招聘</a> | <a href="http://www.8264.com/link/" target="_blank">友情链接</a> </p>
+<p> 服务热线：022-23708264 | 传真：022-23857291 | 地址：天津市华苑产业园区鑫茂民营科技园C2座6层AB单元</p>
+<p> <a href="http://bx.8264.com" target="_blank">户外活动有风险，8264提醒您购买</a> <a href="http://bx.8264.com">户外保险</a> </p>
+<p> 除了脚印什么都不留下 除了摄影什么都不带走，欢迎各种媒体转载我们的原创作品[转载请注明出处]。8264 版权所有 <a href="http://www.miibeian.gov.cn/" target="_blank">津ICP备05004140号-10</a> <a href="http://www.8264.com/template/8264/image/icp.jpg" target="_blank">ICP证 津B2-20110106</a> </p>
+</div>
+<!-- .footer End --> 
+</div>
+<!-- .wrapper End -->
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!--{subtemplate common/header_8264_new}-->
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/map/style/style.css?20140411">
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/common/common_head_bottom.css?20140411">
+<div class="header">
+    <div class="layout">
+        <div class="icoHill">&nbsp;</div>
+        <div class="headerL">
+            <h1><span class="country">地图</span></h1>
+            <div class="site">
+                <a href="http://www.8264.com" target="_blank">首页</a><a href="http://www.8264.com/ditu/" target="_blank">地图</a><!--{if $result_detail['continent']!=''}--><!--{if $continent_nav[0]['link']!=''}--><a href="http://www.8264.com/ditu/{$continent_nav[0]['link']}.htm" target="_blank">$result_detail['continent']</a><!--{else}--><a href="http://www.8264.com/ditu/{$continent_id}.htm" target="_blank">$result_detail['continent']</a><!--{/if}--><!--{/if}--><!--{if $result_detail['nation']!=''}--><!--{if $nation_nav[0]['link']!=''}--><a href="http://www.8264.com/ditu/{$nation_nav[0]['link']}.htm" target="_blank">$result_detail['nation']</a><!--{else}--><a href="http://www.8264.com/ditu/{$nation_id}.htm" target="_blank">$result_detail['nation']</a><!--{/if}--><!--{/if}--><!--{if $result_detail['provience']!=''}--><!--{if $provience_nav[0]['link']!=''}--><a href="http://www.8264.com/ditu/{$provience_nav[0]['link']}.htm" target="_blank">$result_detail['provience']</a><!--{else}--><a href="http://www.8264.com/ditu/{$provience_id}.htm" target="_blank">$result_detail['provience']</a><!--{/if}--><!--{/if}--><!--{if $result_detail['city']!=''}--><!--{if $result_detail['link']!=''}--><a href="http://www.8264.com/ditu/{$result_detail['link']}.htm">$result_detail['city']</a><!--{else}--><a href="http://www.8264.com/ditu/{$result_detail['id']}.htm">$result_detail['city']</a><!--{/if}--><!--{/if}--><!--{if $result_detail['area']!=''}--><a href="#">$result_detail['area']</a><!--{/if}-->{$result_detail['map_name']}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="layout">
+    <!-- 值得买 -->
+    <!--{eval include(DISCUZ_ROOT.'./source/plugin/skiing/hd_zw.php');}-->
+    <!--{eval $zhidemai_list = ForumOptionHuoDong::pianyi_sidebar(6, 'top', 'jiu', '10027');}-->
+    <!--{if $zhidemai_list}-->
+    <div style="margin: 20px auto 10px auto;">
+    <style>
+        .zhidemaiwidth{ width:980px;}
+        .zhidemaibox .zhidemailist_new li{width:144px; overflow:hidden;}
+        .zhidemaibox .zhidemailist_new li img{ width:144px;}
+    </style>
+    <!--{subtemplate common/zhidemai}-->
+    </div>
+    <!--{/if}-->
+    <!-- //值得买 -->
+    <!-- 活动推荐 -->
+    <!--{eval $huodong_zaiwai = ForumOptionHuoDong::categoryData();}-->
+    <!--{if $huodong_zaiwai}-->
+    <div style="margin: 10px auto 0 auto;">
+    <!--{subtemplate common/hd_zw_new}-->
+    </div>
+    <!--{/if}-->
+    <!-- //活动推荐 -->
+    <div class="bigtitle clear_b">{$result_detail['map_name']}
+        <!-- 活动二维码 -->
+        <style>
+        .gzhboxheardbox{float:right; cursor:pointer;position:relative; line-height:1.1; margin-right:15px;}
+        .gzhboxheardbox .gzhspan{color:#585858;font-size:14px;display:inline-block;margin:0px 0 0 10px;background:url(http://static.8264.com/hd/pc/images/tps/v1/gzhdownarrow.png) right center no-repeat;padding:0 14px 0px 10px; line-height:1}
+        .gzhboxheardbox:hover .gzhpopcon{display:none;}
+        .gzhpopcon{width:250px;height:120px;position:absolute;top:34px;right:0px;background:rgba(242,242,242,.8);display:block;box-shadow:0 12px 10px rgba(12,4,7,.4)}
+        .gzhpopcon img{width:100px;height:100px;float:left;margin:10px 0 0 10px}
+        .gzhpopcon p{text-align:center;overflow:hidden;padding:22px 0 0 0;color:#666; font-size:14px;}
+        .gzhpopcon b{font-size:18px;font-weight:700;display:block;padding:0 0 8px 0;color:#000}
+        </style>
+        <div class="gzhboxheardbox">
+            <span class="gzhspan" style="color: #000;">{$result_detail['provience']}精彩活动推荐</span>
+            <div class="gzhpopcon">
+                <img src="http://static.8264.com/hd/pc/images/tps/v1/gzh8264.jpg" height="100" width="100">
+                <p><b>扫一扫</b>关注微信号<br>精彩活动每天看</p>
+            </div>
+        </div>
+        <!-- //活动二维码 -->
+        <a href="javascript:void(0);" id="download_btn" title="{$result_detail['map_name']}" {if $result_detail['provience'] =='天津'||$result_detail['provience'] =='台湾'}style="display:none;"{/if}>{$down_load_name}下载</a>
+    </div>
+    <div class="dituimg" {if $result_detail['provience'] =='天津'||$result_detail['provience'] =='台湾'}style="display:none;"{/if} >
+        <a href="{$result_detail['map_img']}" target="_blank"><img src="{$result_detail['map_img']}"/></a>
+        <div class="updatebox">{$update_date}更新</div>
+    </div>
+
+    <!--{if $other_list_res}-->
+    <div class="zbcitylistover4 clear_b">
+        <!--{loop $other_list_res $others}-->
+        <!--{if $others['from']==1}-->
+        <a href="http://www.8264.com/ditu/{$others['link']}.htm" title="{$others['map_name']}" target="_blank">{$others['map_name']}</a>
+        <!--{else}-->
+        <a href="http://www.8264.com/ditu/{$others['id']}.htm" title="{$others['map_name']}" target="_blank">{$others['map_name']}</a>
+        <!--{/if}-->
+
+        <!--{/loop}-->
+    </div>
+    <!--{/if}-->
+    <!--{if $is_continent==true}-->
+    <div class="liebiao">
+        <div class="liebiaotitle clear_b">
+            <span>$result_detail['continent']各国地图</span>
+        </div>
+        <div class="zbcitylistover4 clear_b">
+            <!--{loop $nation_list $nations}-->
+            <!--{if $nations['from']==1}-->
+            <a href="http://www.8264.com/ditu/{$nations['link']}.htm" title="{$nations['nation']}地图" target="_blank">{$nations['nation']}地图</a>
+            <!--{else}-->
+            <a href="http://www.8264.com/ditu/{$nations['id']}.htm" title="{$nations['nation']}地图" target="_blank">{$nations['nation']}地图</a>
+            <!--{/if}-->
+            <!--{/loop}-->
+        </div>
+    </div>
+    <!--{/if}-->
+    <!--{if $is_nation==true}-->
+    <div class="liebiao">
+        <div class="liebiaotitle clear_b">
+            <span>$result_detail['nation']各省地图</span><a href="http://www.8264.com/ditu/" target="_blank">更多</a>
+        </div>
+        <div class="zbcitylistover4 clear_b">
+            <!--{loop $provience_list $provience}-->
+            <!--{if $provience['from']==1}-->
+            <a href="http://www.8264.com/ditu/{$provience['link']}.htm" title="{$provience['provience']}地图" target="_blank">{$provience['provience']}地图</a>
+            <!--{else}-->
+            <a href="http://www.8264.com/ditu/{$provience['id']}.htm" title="{$provience['provience']}地图" target="_blank">{$provience['provience']}地图</a>
+            <!--{/if}-->
+            <!--{/loop}-->
+        </div>
+    </div>
+    <!--{/if}-->
+    <!--{if $is_provience==true}-->
+    <div class="liebiao">
+        <div class="liebiaotitle clear_b">
+            <span>$result_detail['provience']各市地图</span><a href="http://www.8264.com/ditu/" target="_blank">更多</a>
+        </div>
+        <div class="zbcitylistover4 clear_b">
+            <!--{loop $city_list $city}-->
+            <!--{if $city['from']==1}-->
+            <a href="http://www.8264.com/ditu/{$city['link']}.htm" title="{$city['city']}地图" target="_blank">{$city['city']}地图</a>
+            <!--{else}-->
+            <a href="http://www.8264.com/ditu/{$city['id']}.htm" title="{$city['city']}地图" target="_blank">{$city['city']}地图</a>
+            <!--{/if}-->
+            <!--{/loop}-->
+        </div>
+    </div>
+    <!--{/if}-->
+    <!--{if $other_rec_list}-->
+    <div class="liebiao mb40">
+        <div class="liebiaotitle clear_b">
+            <span>热门地图</span><a href="http://www.8264.com/ditu/" target="_blank">更多</a>
+        </div>
+        <div class="zbcitylistover4 clear_b">
+            <!--{loop $other_rec_list $others}-->
+            <!--{if $others['from']==1}-->
+            <a href="http://www.8264.com/ditu/{$others['link']}.htm" title="{$others['map_name']}" target="_blank">{$others['map_name']}</a>
+            <!--{else}-->
+            <a href="http://www.8264.com/ditu/{$others['id']}.htm" title="{$others['map_name']}" target="_blank">{$others['map_name']}</a>
+            <!--{/if}-->
+            <!--{/loop}-->
+        </div>
+    </div>
+    <!--{/if}-->
+</div>
+<!--嵌入公用底部开始-->
+<!--{subtemplate common/footer_8264_new}-->
+<script type="text/javascript">
+    //特殊字符转换方法，兼容模式
+    function escape2Html(str) {
+        var arrEntities={'lt':'<','gt':'>','nbsp':' ','amp':'&','quot':'"'};
+        return str.replace(/&(lt|gt|nbsp|amp|quot);/ig,function(all,t){return arrEntities[t];});
+    }
+jQuery(document).ready(function(){
+  jQuery("#download_btn").click(function(){
+      var gourl = "http://www.8264.com/map.php?ctl=download&map_name="+(jQuery(this).attr("title"))+"&map_img="+(jQuery(".dituimg img").attr("src"));
+      window.location.href=escape2Html(gourl);
+  });
+});
+</script>
+<!--广告代码开始-->
+<div style=" position: absolute; top:140px; left:0px; width:160px;">
+<script type="text/javascript"><!--
+
+google_ad_client = "pub-1295541823364623";
+
+/* 160x600, 创建于 10-4-16 */
+
+google_ad_slot = "0916668078";
+
+google_ad_width = 160;
+
+google_ad_height = 600;
+
+//-->
+
+</script>
+<script type="text/javascript"
+
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+
+</script>
+</div>
+<div style=" position: absolute; top:140px; right:0px; width:160px;">
+<script type="text/javascript"><!--
+
+google_ad_client = "pub-1295541823364623";
+
+/* 160x600, 创建于 10-4-16 */
+
+google_ad_slot = "0916668078";
+
+google_ad_width = 160;
+
+google_ad_height = 600;
+
+//-->
+
+</script>
+<script type="text/javascript"
+
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+
+</script>
+</div>
+<!--广告代码结束-->
+
+
+
+
+
+
+
+

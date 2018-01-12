@@ -1,0 +1,263 @@
+<!--{subtemplate forum/dianping/header}-->
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	var f_height = $("#index_classification ul").height();
+	if(f_height>260){
+		$("#index_classification").height(260);
+		$("#index_classification_more").click(function() {
+			if ($("#index_classification").height() > 260) {
+				$("#index_classification").animate({
+					height: 260
+				}, 300);
+				$("#index_classification_more").text("查看更多").removeClass("index_classification_more_1");
+			} else {
+				$("#index_classification").animate({
+					height: f_height
+				}, 300);
+				$("#index_classification_more").text("收起").addClass("index_classification_more_1");
+			}
+		});
+	} else {
+		$("#index_classification").height(f_height);
+		$("#index_classification_more").hide();
+	}
+});
+</script>
+
+
+
+
+<div class="mt50"></div>
+<div class="layout" style="padding-bottom:10px;">
+	<div style="width:320px; height:60px; float:left; overflow:hidden; border:1px solid #e5e5e5;">
+	<!--{ad/custom_305}-->
+	</div>
+	<div style="width:320px; height:60px; float:left; overflow:hidden; margin-left:7px; border:1px solid #e5e5e5; ">
+	<!--{ad/custom_306}-->
+	</div>
+	<div style="width:320px; height:60px; float:right; overflow:hidden; border:1px solid #e5e5e5;">
+	<!--{ad/custom_307}-->
+	</div>
+</div>
+<div class="layout">
+	<div class="layoutLeft">
+		<div class="index_location">
+			<span>排行榜 - </span>
+			<!--{if $_GET['pro']}-->
+			<a class="topa" href="{$myurl}&act=showlist&order=lastpost&page=1&pro={$_GET[pro]}" title="{$shorttitle}滑雪场">{$shorttitle}滑雪场</a>
+			<!--{else}-->
+			<a class="topa" href="{$myurl}&act=showlist&order=lastpost&page=1" title="{$shorttitle}滑雪场">{$shorttitle}滑雪场</a>
+			<!--{/if}-->
+			<a href="{$myurl}&act=showlist&order=score&page=1&pro={$pro}" class="{if $order==score}blue{else}gray{/if}">评分</a>
+			<a href="{$myurl}&act=showlist&order=heats&page=1&pro={$pro}" class="{if $order==heats}blue{else}gray{/if}">热度</a>
+			<a href="{$myurl}&act=showlist&order=lastpost&page=1&pro={$pro}" class="{if $order==lastpost}blue{else}gray{/if}">默认</a>
+		</div>
+		<div class="index_list">
+			{if $list}
+			<ul>
+				<!--{loop $list $ski}-->
+				<li>
+					<a href="{$myurl}&act=showview&tid={$ski[tid]}" target="_blank" title="$ski[name]"><img src="<!--{eval echo getimagethumb(60,60,2,$ski['picpath'], $ski['aid'], $ski['serverid']);}-->" /></a>
+					
+					<h2><a href="{$myurl}&act=showview&tid={$ski[tid]}" target="_blank" title="$ski[name]" class="linktitle">$ski[name]</a></h2>
+					{if $ski['score']!='0.0'}<b>{$ski['score']}</b>{else}<b style="color:#a8a8a8;">暂无评分</b>{/if}
+					<span class="star">
+						{eval for ($i = 0; $i < 5; $i++):}
+						<span class="{if $i < $ski['score']/2}{if $ski['score']/2-$i<1}halfstar{else}redstar{/if}{else}graystar{/if}"></span>
+						{eval endfor;}
+					</span>
+				</li>
+				<!--{/loop}-->
+			</ul>
+			{else}
+			<div>暂没有{$modname}信息</div>
+			{/if}
+		</div>
+		<div class="index_list_fenye">
+			{if $prev}
+			<a href="{$prev}" class="pre_blue"></a>
+			{else}
+			<b class="pre_gray"></b>
+			{/if}
+			{if $next}
+			<a href="{$next}" class="next_blue"></a>
+			{else}
+			<b class="next_gray"></b>
+			{/if}
+		</div>
+		<div class="commentBox">
+			<h2 class="h2Tit">点评</h2>
+			{loop $reply $r}
+			<dl class="cmtDl">
+				<dd class="avatar"><a href="home.php?mod=space&uid={$r['uid']}">{avatar($r['uid'], small)}</a></dd>
+				<dd class="cmtCont">
+					<div class="tit">
+						<span class="usrName"><a href="home.php?mod=space&uid={$r['uid']}">{$r['username']}</a></span>
+						<span class="textGrey">点评了</span>
+						<span class="usrName"><a href="{$myurl}&act=showview&tid={$r['tid']}" target="_blank">{$r['subject']}</a></span>
+						<span class="starBox">
+							{eval for ($i = 0; $i < 5; $i++):}
+							<span class="{if $i < $r['starnum']}redstar{else}graystar{/if}"></span>
+							{eval endfor;}
+						</span>
+					</div>
+					<ul class="goodBad">
+						<!--{if $r['weakpoint']}-->
+						<li>
+							<span class="leftIco bad">缺点</span>
+							<div class="cont"><p>{$r['weakpoint']}</p></div>
+						</li>
+						<!--{/if}-->
+						<!--{if $r['goodpoint']}-->
+						<li>
+							<span class="leftIco good">优点</span>
+							<div class="cont"><p>{$r['goodpoint']}</p></div>
+						</li>
+						<!--{/if}-->
+						<li>
+							<span class="leftIco all">综合</span>
+							<div class="cont"><p>{$r['message']}</p></div>
+						</li>
+					</ul>
+				</dd>
+			</dl>
+			{/loop}
+		</div>
+	</div>
+	<div class="layoutRight">
+		<div class="index_fbbutton_box mb25"><a href="{$myurl}&act=dopost&do=new" target="_blank" class="index_fbbutton"></a></div>
+		<div class="lastSki mb25">
+			<h2 class="h2Tit">分类</h2>
+			<div class="index_classification" id="index_classification">
+				<ul>
+					<li><a href="{$myurl}&act=showlist&order=lastpost&page=1"{if !$_GET['pro']} class="cBlue"{/if}>中国</a><span class="blue">{$regions_count}</span></li>
+					<!--{eval $i = 1;}-->
+					<!--{loop $regions $k $v}-->
+					<!--{if $v['count'] > 0}-->
+					<li><a href="{$myurl}&act=showlist&order=lastpost&page=1&pro={$v[pro]}"{if $_GET['pro'] == $v['pro']} class="cBlue"{/if} title="{$v['name']}滑雪场">{$v['name']}</a><span class="{if $i>0 && $i<6}blue{elseif $i==6 || $i==7}orange{else}gray{/if}">{$v['count']}</span></li>
+					<!--{eval $i++;}-->
+					<!--{/if}-->
+					<!--{/loop}-->
+				</ul>
+			</div>
+			<div class="index_classification_more" id="index_classification_more">查看更多</div>
+		</div>
+		<div class="lastSki">
+			<h2 class="h2Tit">最多点评</h2>
+			<div class="index_dp">
+				<ul>
+					<!--{eval $j=1;}-->
+					<!--{loop $listreply $lr}-->
+					<li>
+						<a href="{$myurl}&act=showview&tid={$lr['tid']}" target="_blank" class="{eval if($j==1) echo "cBlue";if($j==2||$j==3) echo "cOrange";if($j>3) echo "cGray";}"><img src="<!--{eval echo getimagethumb(60, 60, 2, $lr['picpath'], $lr['aid'], $lr['serverid']);}-->" class="pic" /></a>
+						<p><a href="{$myurl}&act=showview&tid={$lr['tid']}" target="_blank" title="{$lr['name']}" class="{eval if($j==1) echo "cBlue";if($j==2||$j==3) echo "cOrange";if($j>3) echo "cGrey";}">{$lr['shortsubject']}</a><em>{$lr['num']}参与点评</em></p>
+						<span class="{eval if($j==1) echo "blue";if($j==2||$j==3) echo "orange";if($j>3) echo "gray";}"></span>
+					</li>
+					<!--{eval $j++;}-->
+					<!--{/loop}-->
+				</ul>
+			</div>
+		</div>
+		<div class="sameArea">
+			<h2 class="h2Tit">最新{$modname}</h2>
+			<ul class="artLRList">
+				<!--{eval $i=1;}-->
+				<!--{loop $listnew $ln}-->
+				<li>
+					<span class="tit"><a href="{$myurl}&act=showview&tid={$ln['tid']}" target="_blank" title="{$ln['name']}"{eval if($i==1) echo ' class="cOrange"';if($i==2||$i==3) echo ' class="cBlue"';if($j>3) echo "gray";}>{$ln['shortsubject']}</a></span>
+					<span class="right">{$ln['dateline']}</span>
+				</li>
+				<!--{eval $i++;}-->
+				<!--{/loop}-->
+			</ul>
+		</div>
+
+		<div class="lastSki contUs">
+			<h4 class="h2Tit">联系我们</h4>
+			<ul>
+				<li>QQ： {lang contact_us_with_qq}</li>
+				<li>论坛ID: {lang contact_us_with_id}</li>
+			</ul>
+		</div> 
+	</div>
+</div>
+<style>
+.share_bd_warpten{ width:50px; position:absolute; float:right; position: fixed !important;  position: absolute; z-index: 1; bottom:20px; right: 30px; background:#fff;}
+.bbs_share_sc{ width:50px;}
+.bbs_share_sc li{ width:50px; height:51px;}
+.bbs_share_sc li.ps_re{ position:relative;}
+.bbs_share_sc li a{ background:url('http://www.8264.com/static/images/common/baidushare.jpg') no-repeat; display:block; }
+.bbs_share_sc li .share{ width:50px; height:50px; background-position:0px 0px;}
+.bbs_share_sc li .share:hover{ width:50px; height:50px; background-position:0px -204px;}
+.bbs_share_sc li .sc{ width:50px; height:50px; background-position:0px -51px;}
+.bbs_share_sc li .sc:hover{ width:50px; height:50px; background-position:0px -255px;}
+.bbs_share_sc li .bbsli{ width:50px; height:50px; background-position:0px -102px;}
+.bbs_share_sc li .bbsli:hover{ width:50px; height:50px; background-position:0px -306px;}
+.bbs_share_sc li .gotop_50{ width:50px; height:50px; background-position:0px -153px;}
+.bbs_share_sc li .gotop_50:hover{ width:50px; height:50px; background-position:0px -357px;}
+.share_bd{ width:200px; position:absolute; height:50px; top:0px; right:50px; font-size:0px; display:none;}
+.bbs_share_sc li .share_bd a{ width:50px; height:50px; background:url('http://www.8264.com/static/images/common/baidushare.jpg') no-repeat; display:inline-block; _display:inline; _zoom:1;}
+.bbs_share_sc li .share_bd a.sina{ background-position:0 -408px;}
+.bbs_share_sc li .share_bd a.sina:hover{ background-position:0 -612px;}
+.bbs_share_sc li .share_bd a.qq{ background-position: 0px -459px;}
+.bbs_share_sc li .share_bd a.qq:hover{ background-position: 0px -663px;}
+.bbs_share_sc li .share_bd a.wb{ background-position: 0px -510px;}
+.bbs_share_sc li .share_bd a.wb:hover{ background-position: 0px -714px;}
+.bbs_share_sc li .share_bd a.wx{ background-position: 0px -561px;}
+.bbs_share_sc li .share_bd a.wx:hover{ background-position: 0px -765px;}
+.bdshare-button-style0-32 a{padding:0;margin:0;}
+.h2Tit span {color: #43A6E1;font-size: small;}
+</style>
+<div class="share_bd_warpten">
+	<ul class="bbs_share_sc">
+		<li class="ps_re" id="share">
+			<a href="javascript:;" class="share"></a>
+			<div class="bdsharebuttonbox share_bd" data-tag="share_1">
+				<a href="javascript:;" class="sina" data-cmd="tsina"></a>
+				<a href="javascript:;" class="qq" data-cmd="qzone"></a>
+				<a href="javascript:;" class="wb" data-cmd="tqq"></a>
+				<a href="javascript:;" class="wx" data-cmd="weixin"></a>
+			</div>
+		</li>
+		<li><a href="http://www.8264.com/xuechang" class="bbsli" title="返回滑雪场首页"></a></li>
+		<li id="gotop_50"><a style="display: none;" href="javascript:;" class="gotop_50"></a></li>
+	</ul>
+</div>
+<script>
+window._bd_share_config = {
+	common : {
+		//此处放置通用设置
+	},
+	share : [
+		//此处放置分享按钮设置
+		{"tag" : "share_1", "bdSize" : 32}	
+	]
+}
+with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+(function($){
+	var ww=$(window).width();
+	var s_bd_r=Math.max((ww-980)/2-60,0);
+	$(".share_bd_warpten").css("right",s_bd_r);
+	
+	if($(window).scrollTop() > 10){$("#gotop_50 a").show();}	
+	$(window).scroll( function(){
+		if($(window).scrollTop()>10){
+			$("#gotop_50 a").show();
+		}else{
+			$("#gotop_50 a").hide();	
+		}
+	});
+	$("#gotop_50").click(function(){ 
+		$("html,body").animate({ scrollTop: 0 },500);
+	});	
+	$("#share").hover(
+		function () {
+		$(".share_bd",this).show();
+		},
+		function () {
+		$(".share_bd",this).hide();
+		}
+	);
+})(jQuery);
+</script>
+<!--{subtemplate forum/dianping/footer}-->

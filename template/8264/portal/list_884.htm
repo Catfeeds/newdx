@@ -1,0 +1,117 @@
+<!--{subtemplate common/header_8264}-->
+<!--[name]最新文章列表页专用[/name]-->
+<!--{eval $list = array();}-->
+<!--{eval $wheresql = getCatid_byupid('201','204','224','232','238','751');}-->
+<!--{eval $list = getNewArticles($page,100,$wheresql);}-->
+<link href="/template/8264/css/channel/list_884.css" rel="stylesheet" type="text/css">
+<style id="diy_style" type="text/css"></style>
+<div class="warpten_list" style="width:100%; z-index:96; top:0; left:0px;  position: fixed !important; position: absolute; top/**/:0px; top:expression(offsetParent.scrollTop+0);">
+	<!--//导航条//-->
+	<!--{subtemplate common/nav_8264_top}-->
+	<!--{subtemplate common/nav_8264_jian}-->
+</div>
+<div class="listtitlename" style="padding:115px 0px 0px 0px;">8264最新要闻</div>
+<div class="warpten_list">
+	<div class="list_l shadowBlack">
+		<!--循环开始-->
+		<!--{loop $list['list'] $value}-->
+		<!--{eval
+            $datearr1 = explode(" ",$value[dateline]);
+            $datearr2 = explode("-",$datearr1[0]);
+            $value['summary'] = str_replace("　　","",$value['summary']);
+        }-->
+		<div class="listconone">
+			<!--作者时间开始-->
+			<div class="name_date">
+				<div class="list_name">
+					作者：
+					<!--{if $value[author]}-->
+					$value[author]
+					<!--{else}-->
+					$value[username]
+					<!--{/if}-->
+					&nbsp;|&nbsp;来源于：
+					<!--{if $value[from]}-->
+					$value[from]
+					<!--{else}-->
+					8264
+					<!--{/if}-->
+					<!--{if $value['commentnum']}-->|
+					<span>$value['commentnum']</span>
+					人评论<!--{/if}-->
+				</div>
+				<div class="list_date">$datearr2[0].".".$datearr2[1].".".$datearr2[2]</div>
+			</div>
+			<!--作者时间结束-->
+			<h2>
+				<a href="portal.php?mod=view&amp;aid=$value[aid]" target="_blank">$value[title]</a>
+			</h2>
+			<div class="listconmain">
+				<div class="listconmainimg">
+					<a href="portal.php?mod=view&amp;aid=$value[aid]" target="_blank">
+						<img src="$value[pic]"></a>
+				</div>
+				<p>$value[summary]</p>
+			</div>
+			<div class="list_8264logo"></div>
+		</div>
+		<!--{/loop}-->
+		<!--循环结束-->
+		<!--{if $list['multi']}-->
+		<div class="listPageBox">
+			<div class="pg">{$list['multi']}</div>
+		</div>
+		<!--{/if}-->
+	</div>
+	<div class="list_r">
+		<div id="fix-layer1">
+			<div class="sidecon shadowBlack" style="display:none">
+				<h3>焦点资讯</h3>
+				<!--[diy=hwgcimg]-->
+				<div id="hwgcimg" class="area"></div>
+				<!--[/diy]-->
+				<ul>
+					<!--[diy=hwgclist]-->
+					<div id="hwgclist" class="area"></div>
+					<!--[/diy]-->
+				</ul>
+			</div>
+			<!--[diy=shuju]-->
+			<div id="shuju" class="area"></div>
+			<!--[/diy]-->
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+(function($) {
+	var btns_top1 = $('#fix-layer1').offset().top;
+	$(window).scroll(function() {
+		if ($(document).scrollTop() > btns_top1) {
+			if ($.browser.msie && $.browser.version == '6.0') {
+				var top = ($(document).scrollTop() + 135) + 'px';
+				$('#fix-layer1').css({
+					'position': 'absolute',
+					'top': top
+				});
+			} else {
+				$('#fix-layer1').css({
+					'position': 'fixed',
+					'top': '120px'
+				});
+			}
+		} else {
+			$('#fix-layer1').css({
+				'position': 'static'
+			});
+		}
+	});
+})(jQuery);
+</script>
+<div id="goTop">
+	<a onclick="javascript:void(0)" href="#"></a>
+</div>
+<script type="text/javascript" src="http://www.8264.com/source/plugin/produce/js/jQuery-gotop.js"></script>
+<script type="text/javascript">
+jQuery('#goTop').goTop();
+</script>
+<!--{subtemplate common/footer_8264lw}-->

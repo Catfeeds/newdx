@@ -1,0 +1,123 @@
+<script src="http://www.8264.com/static/js/jquery-1.6.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	jQuery.noConflict();
+	var str_url = 'plugin.php?id=useridentity:admincp_ajax';
+	jQuery(function () {
+		jQuery("#btn_search").click(function () {
+			var str_uid = jQuery.trim(jQuery("#txt_uid").val());
+			var str_name = jQuery.trim(jQuery("#txt_name").val());
+			if (!str_uid && !str_name) {
+				jQuery('#td_username').text('');
+				comp_ctrl();
+				return;
+			}
+			jQuery.ajax({
+				url: str_url + '&op=user_search&uid=' + str_uid + '&username=' + str_name,
+				type: 'get',
+				dataType: 'text',
+				success: function (msg) {
+					if (msg == 'exists') {
+						jQuery('#td_username').text('用户已存在，请返回列表查找、编辑！');
+						comp_ctrl();
+					} else if(msg == 'param_err') {
+						jQuery('#td_username').text('参数错误');
+						comp_ctrl();
+					} else if(msg == 'no_user') {
+						jQuery('#td_username').text('用户不存在！');
+						comp_ctrl();
+					} else {
+						var arr_user = msg.split('~_~');
+						jQuery("#hid_uid").val(arr_user[0]);
+						jQuery("#hid_username").val(arr_user[1]);
+						jQuery('#td_username').text(arr_user[1]);
+						jQuery('#tbl_form').show();
+					}
+				},
+				error: function (msg) {
+					jQuery('#td_username').text('查找失败');
+					jQuery('#td_username').text('');
+					comp_ctrl();
+				}
+			});
+		});
+		jQuery('#chk_b').click(function () {
+			jQuery(':checkbox[id^=chk_identity_]').attr('checked', false);
+			jQuery('#tbl_form tr[name=tr_identity]').fadeToggle(0);
+		});
+	});
+
+	// 如果默认选项取消则其下所有子选项全部取消且不可用
+	function change_sub (iid) {
+		if (!jQuery('#chk_identity_' + iid).attr('checked')) {
+			jQuery(':checkbox[id^=chk_detail_' + iid + ']').attr('checked', false).attr('disabled', true);
+		} else {
+			jQuery(':checkbox[id^=chk_detail_' + iid + ']').removeAttr('disabled');
+		}
+	}
+
+	function comp_ctrl () {
+		jQuery("#hid_uid").val('');
+		jQuery("#hid_username").val('');
+		jQuery("#tbl_form").hide();
+	}
+</script>
+<table class="tb tb2">
+	<tr><th class="partition" colspan="15">新增用户到身份组</th></tr>
+	<tr>
+		<td class="td27" colspan="2">
+			UID：
+			<input type="text" name="txt_uid" id="txt_uid" size="15" value="{$str_uid}" />
+			用户名：
+			<input type="text" name="txt_name" id="txt_name" size="15" value="{$str_name}" />
+			<input type="submit" value="搜索" class="btn" id="btn_search" />
+			<b style="font-style:normal; margin-left:10px;">当前用户</b>
+			<span id="td_username" style=" margin-left:5px; color:red"></span>
+		</td>
+	</tr>
+</table>
+<form action="admin.php?action=plugins&operation=config&do={$pluginid}&identifier=useridentity&pmod=admincp_user&op=add" method="post">
+<input type="hidden" value="" name="hid_uid" id="hid_uid" />
+<input type="hidden" value="" name="hid_username" id="hid_username" />
+<table style="display: none" id="tbl_form" class="aaa">
+	{loop $arr_identity $identity}
+	<tr class="hover" {if $identity['type'] == 2}style="display:none"{/if} type="{$identity['type']}" name="tr_identity">
+		<td style="color:red;">
+			<span style="display: inline-block; text-align: right;">
+				{$identity['identity_name']}:
+			</span>
+			<input type="checkbox" value="" name="chk_identity[{$identity['id']}]" id="chk_identity_{$identity['id']}" style=" border:0;" onclick="change_sub({$identity['id']})" /><label for="chk_identity_{$identity['id']}"><span style=" padding-left:5px;">{$identity['identity_entity']}</span></label>
+		</td>
+		{loop $identity[sub] $sub}
+		<td>
+			<input type="checkbox" value="" name="chk_detail[{$identity['id']}][{$sub['id']}]" id="chk_detail_{$identity['id']}_{$sub['id']}" disabled style=" border:0;" /><label for="chk_detail_{$identity['id']}_{$sub['id']}">{$sub['subname']}</label>
+		</td>
+		{/loop}
+	</tr>
+	{/loop}
+	<tr class="noborder bbb" id="tr_chk_b">
+		<td class="vtop">
+			<input type="checkbox" name="chk_b" id="chk_b" style="border:0;" />
+			<label for="chk_b">
+				企业
+			</label>
+		</td>
+		<td></td>
+	</tr>
+	<tr class="noborder bbb" id="tr_sort">
+		<td class="vtop">
+			排序:<input type="text" value="" name="txt_sort" id="txt_sort" />
+		</td>
+		<td></td>
+	</tr>
+	<tr class="bbb" id="tr_submit">
+		<td colspan="15" >
+			<input type="submit" value="提交" title="按 Enter 键可随时提交你的修改" name="addsubmit" id="submit_editsubmit" class="btn">
+		</td>
+		<td></td>
+	</tr>
+</table>
+</form>
+<style>
+.aaa td{ height:30px; border-bottom:1px dashed #dbeffb;}
+.bbb td { border:0;}
+</style>

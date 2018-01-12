@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Version"><![CDATA[X1.5.1]]></item>
+	<item id="Time"><![CDATA[2014-05-06 17:34]]></item>
+	<item id="From"><![CDATA[»§Íâ×ÊÁÏÍø (http://bbs.8264.com/)]]></item>
+	<item id="Data">
+		<item id="plugin">
+			<item id="available"><![CDATA[1]]></item>
+			<item id="adminid"><![CDATA[1]]></item>
+			<item id="name"><![CDATA[ÑùÊ½¹ÜÀí]]></item>
+			<item id="identifier"><![CDATA[StyleManager]]></item>
+			<item id="description"><![CDATA[Ä£°åÑùÊ½µÄµ¼³ö£¬Éú³É]]></item>
+			<item id="datatables"><![CDATA[]]></item>
+			<item id="directory"><![CDATA[StyleManager/]]></item>
+			<item id="copyright"><![CDATA[8264]]></item>
+			<item id="version"><![CDATA[0.11]]></item>
+			<item id="__modules">
+				<item id="0">
+					<item id="name"><![CDATA[StyleManager]]></item>
+					<item id="menu"><![CDATA[¹ÜÀí]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="1">
+					<item id="name"><![CDATA[StyleVersion]]></item>
+					<item id="menu"><![CDATA[°æ±¾¹ÜÀí]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[1]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+			</item>
+		</item>
+		<item id="version"><![CDATA[X1.5.1]]></item>
+		<item id="language">
+			<item id="scriptlang">
+				<item id="styleid"><![CDATA[Ä£°åID]]></item>
+				<item id="stylename"><![CDATA[Ä£°åÃû³Æ]]></item>
+				<item id="stylecontrol"><![CDATA[²Ù×÷]]></item>
+				<item id="stylestatus"><![CDATA[×´Ì¬]]></item>
+				<item id="stylelasttime"><![CDATA[×îºó¸üÐÂÊ±¼ä]]></item>
+				<item id="style_on"><![CDATA[<b><font color="green">Ê¹ÓÃÖÐ</font></b>]]></item>
+				<item id="style_off"><![CDATA[<b><font color="red">Î´Ê¹ÓÃ</font></b>]]></item>
+				<item id="control_update"><![CDATA[<b><font color="blue">¸üÐÂÖ÷css(28¸ö)</font></b>]]></item>
+				<item id="control_export"><![CDATA[<b><font color="blue">·Ö½âmodulcss²¢µ¼³ö</font></b>]]></item>
+			</item>
+		</item>
+		<item id="installfile"><![CDATA[install.php]]></item>
+	</item>
+</root>

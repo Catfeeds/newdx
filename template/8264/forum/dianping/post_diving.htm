@@ -1,0 +1,422 @@
+<!--{subtemplate forum/dianping/header}-->
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/dianping/xl_detail.css?{VERHASH}" />
+<style type="text/css">
+#imglist .overlimit{display:none;}
+#pic_upload_multiimg { vertical-align: middle; }
+#div_kml { float:left; }
+#kmllist {clear:both;+margin:20px 0 0;_margin:20px 0 0;display:block;}
+#kmllist .delkml {margin-left:15px;}
+.mapLabel { display: inline-block; *display: inline; *zoom: 1; width: 103px; height: 27px; cursor: pointer; vertical-align: middle;
+	background: url("http://static.8264.com/static/images/dianping/ski_sprite.png") no-repeat -90px 0; text-indent: -9999px; margin-left: 8px; }
+</style>
+<!--{subtemplate forum/dianping/editor_2014_second}-->
+<div id="wp">
+<div class="layout mt50">
+<div class="pubWeb">
+	<h1 class="tit20 mb45">{if ($action=='new')}发布{$modname}{else}编辑{$modname}{/if}</h1>
+	<div class="bd">
+	<form method="post" autocomplete="off" id="postform"  action="
+	{if $action=='new'}
+	forum.php?ctl={$modstr}&act=dopost&do=new
+	{elseif $action=='reply'}
+	forum.php?ctl={$modstr}&act=dopost&do=reply&tid={$_G['tid']}
+	{elseif $action=='edit'}
+	forum.php?ctl={$modstr}&act=dopost&do=edit&tid={$_G['tid']}
+	{/if}" onsubmit="return modform_validate(this);">
+
+		{if !empty($_G['gp_modthreadkey'])}<input type="hidden" name="modthreadkey" id="modthreadkey" value="{$_G['gp_modthreadkey']}" />{/if}
+		<input type="hidden" name="wysiwyg" id="{$editorid}_mode" value="{$editor['editormode']}" />
+		<input type="hidden" name="formhash" id="formhash" value="{FORMHASH}" />
+		<input type="hidden" name="posttime" id="posttime" value="{TIMESTAMP}" />
+		{if $action == 'edit'}<input type="hidden" name="pid" value="{$editdata['pid']}" />{/if}
+		<dl class="pubDt50">
+			<dt><span class="icoName48x43"></span></dt>
+			<dd>
+				<span class="inputTipsText">
+					{if $action=='new'}<label class="fs16">{$modname}{$modsetting[mc]}</label>{/if}
+					<input type="text" class="inputText w270" name="subject" id="subject" value="{$editdata['subject']}" />
+				</span>
+				<span class="icoRedStar">*</span>
+			</dd>
+		</dl>
+
+		<!--<dl class="pubDt50">
+			<dt><span class="icoGps48x43"></span></dt>
+			<dd>
+				<span class="inputTipsText2">
+					<div class="tp selectdown" >
+						<input type="hidden" name="type" id="type" value="{$editdata['type']}" />
+						<input type="text" value="{if $editdata['type']}已选择类型：{$typelist[$editdata['type']]['name']} {else}请选择{$modname}类型{/if}" class="diqu js"
+						id="climb_type_value" readonly="readonly"/>
+						<div class="tp_down">
+							{loop $typelist $k $v}
+							<a href="javascript:void(0);" rel="{$k}" >{$v['name']}</a>
+							{/loop}
+						</div>
+					</div>
+				</span>
+				<span class="icoRedStar">*</span>
+			</dd>
+		</dl>-->
+        <dl class="pubDt50">
+            <dt><span class="icoGps48x43"></span></dt>
+            <dd>
+				<span class="inputTipsText2">
+					{loop $typelist $k $v}
+                        <span style="padding-right: 20px;"><input type="checkbox" name="type[]" value="$k" rel="{$v['name']}" class="check" {if $typelists[$k]}checked{/if}><span style="padding-left: 8px;">{$v['name']}</span></span>
+                    {/loop}
+				</span>
+                <span class="icoRedStar">*</span>
+            </dd>
+        </dl>
+        <input type="hidden" name="sel_address" value="{$regionsList[$editdata['pro']]['cityname']}{$cities[$editdata['city']]['cityname']}" id="addr" />
+		<dl class="pubDt50">
+			<dt><span class="icoUpPic48x43"></span></dt>
+			<dd>
+				<input id="numimage" type="hidden" name="uploadfile" value="0"/>
+				<div id="pic_upload_multiimg">
+				此内容需要 Adobe Flash Player 10.0.0 或更高版本
+				<script type="text/javascript">
+					var pageHost = ((document.location.protocol == "https:") ? "https://" : "http://");
+					document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='"
+									+ pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" );
+				</script>
+				</div>
+				<span class="icoRedStar">*</span>
+				<span id="imagelisttemp" style="display: none;" class="attachpic">
+					<b class="deleteimg">删除</b>
+					<input type="hidden" name="imgselect[]" value="" disabled="true"/>
+				</span>
+				<div id="imglist" class="readyPic"></div>
+			</dd>
+		</dl>
+        <dl class="pubDt50 getRegion">
+            <dt><span class="icoWeb48x43"></span></dt>
+            <dd>
+				<span class="inputTipsText2">
+					<div class="qy selectdown" style="z-index:501;">
+                        <input type="text" id="country_text" value="{if $editdata['pro']>=820000}位于国外{else}位于国内{/if}" class="diqu js" readonly="readonly"/>
+                        <div class="qy_down" style="height: 82px;">
+                            <a  href="javascript:void(0);"  myid="internal_country">位于国内</a>
+                            <a  href="javascript:void(0);"  myid="internal_country">位于国外</a>
+                        </div>
+                    </div>
+				</span>
+
+            </dd>
+        </dl>
+		<dl class="pubDt50 getRegion internal">
+			<dt><span class="icoWeb48x43"></span></dt>
+			<dd>
+				<span class="inputTipsText2">
+					<div class="qy selectdown" style="z-index:500;">
+						<input type="hidden" name="province" value="{$editdata['pro']}" id="province" />
+						<input type="text" id="province_text" value="{if $editdata['pro']}已选择省份：{$regionsList[$editdata['pro']]['cityname']} {else}请选择所在省份{/if}" class="diqu js" readonly="readonly"/>
+						<div class="qy_down">
+							{loop $regionsList $k $v}
+							<a rel="{$k}" href="javascript:void(0);" execute="ajaxGetCity" myid="pro">{$v['cityname']}</a>
+							{/loop}
+						</div>
+					</div>
+				</span>
+				<span class="inputTipsText2">
+					<div class="qy selectdown" style="z-index:500;" >
+						<input type="hidden" name="city" value="{$editdata['cityid']}" id="city" />
+						<input type="text" name="cityname" value="{if $editdata['cityid']}已选择城市：{$cities[$editdata['cityid']]['cityname']}{else}请选择城市{/if}" id="select_city" class="diqu js" readonly="readonly"/>
+						<div class="qy_down">
+							{if $cities}
+							{loop $cities $city}
+							<a href="javascript:void(0);" rel="{$city['codeid']}" name="cityid">{$city['cityname']}</a>
+							{/loop}
+							{/if}
+						</div>
+					</div>
+				</span>
+			</dd>
+		</dl>
+
+        <dl class="pubDt50 internalmap">
+            <dt><span style="display: block; height: 43px; width: 48px;"></span></dt>
+            <dd>
+                <span id="xq"></span>
+				<span class="inputTipsText">
+					<label class="fs16">{if ! $editdata[addr]} {$modsetting[address]}：不要重复填写省、市地区{/if}</label>
+					<input type="text" class="inputText w360" name="addr" id="address" value="{$editdata['addr']}" />
+				</span>
+                <span class="mapLabel" id="mapBtn">地图标注</span><span class="icoRedStar">*</span>
+                <div class="googleMap" style="display: none;height:400px;" id="container"></div>
+                <input type="hidden" value="{$editdata['longitude']}" id="longitude" name="longitude">
+                <input type="hidden" value="{$editdata['latitude']}" id="latitude" name="latitude">
+            </dd>
+        </dl>
+        <dl class="pubDt50 foreign" style="display: none;">
+            <dt><span style="display: block; height: 43px; width: 48px;"></span></dt>
+            <dd>
+                <span id="xq"></span>
+				<span class="inputTipsText">
+					<label class="fs16">{if ! $editdata[addr]} 请填写所在国家{/if}</label>
+					<input type="text" class="inputText w360" name="con_province" id="countryprovince" value="{$foreign_countrys[$editdata['pro']]['cityname']}" style="width: 200px;"/>
+                    <label class="fs16" style="left: 239px;">{if ! $editdata[addr]} 请填写具体地址{/if}</label>
+					<input type="text" class="inputText w360" name="con_address" id="countryaddress" value="{$editdata['addr']}" />
+				</span>
+                <span class="icoRedStar">*</span>
+            </dd>
+        </dl>
+		<dl class="pubDt50" style="margin-bottom:0;">
+			<dt>&nbsp;</dt>
+			<dd>
+			<!--{eval $editor['value'] = $editdata['message'];
+	            }-->
+			<!--{subtemplate forum/dianping/editor_2014_first}-->
+			</dd>
+		</dl>
+    {if $action != 'edit' && checkperm('seccode') && ($secqaacheck || $seccodecheck)}
+    <span>验证码：</span>
+		<div style="margin-top:-20px;margin-left:50px;margin-bottom:20px;">
+			<script type="text/javascript" src="http://api.geetest.com/get.php?gt=273df89437f54dac2bfb5b69afe1c318&r=<?=time()?>"></script>	
+		</div>
+    {/if}
+		<dl class="pubDt50" style="clear:both;">
+			<dt>&nbsp;</dt>
+			<dd>
+				<input type="submit" class="publish182x43" name="{$action}post" id="postsubmit" value=""/>
+				<input type="hidden" name="{$action}postsubmit" value="yes" />
+			</dd>
+		</dl>
+		<dl class="pubDt50" style="clear:both;">
+			<dt>&nbsp;</dt>
+			<dd></dd>
+		</dl>
+	</div>
+</div>
+</div>
+</div>
+<script type="text/javascript" src="http://static.8264.com/static/js/dianping/validate_element.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&services=true&ak=dCS4gu0EpLStfWTvGRuD1SSB"></script>
+
+<script type="text/javascript">
+
+function callback_ajaxGetCity(params) {
+
+	if(typeof params == 'object') {
+		var provinceid = params.select_value;
+
+		var src = params.element ? jQuery('.' + params.element) : '';
+		if(provinceid && src && src.length) {
+			var objcity  = src.parents(".inputTipsText2").next().find(".qy_down");
+
+			objcity.siblings('input[type=hidden]').val("{$editdata['city']}").siblings('input.js')
+			.val("{if $editdata['cityName']}{else}请选择城市{/if}").end();
+			var postData = "provinceid="+provinceid;
+			jQuery.ajax({
+				type: 'post',
+				dataType: 'html',
+				url: '/forum.php?ctl={$modstr}&act=ajaxGetRegion',
+				data: postData,
+				success: function(data){
+					if(data) {
+						objcity.html(data);
+						var aNum = objcity.find("a").length;
+						if (aNum < 9) {
+							objcity.css({"height":"auto"});
+						} else {
+							objcity.css({"height":"240px"});
+						}
+					}
+				}
+			});
+		}
+
+	}
+}
+
+
+maxpicnumber = 0;
+jQuery(document).ready(function($) {
+    focus_blur('#subject','prev');
+    focus_blur('#address', 'prev', '');
+    focus_blur('#countryprovince', 'prev', '');
+    focus_blur('#countryaddress', 'prev', '');
+    //加载地图
+    jQuery('#mapBtn').click(function(){
+        var region = jQuery('#province_text').val() + jQuery('#select_city').val();
+
+        var address = jQuery('#address').val();
+
+        if(! address) {
+            _showmsg("请填写{$modname}详细地址！");
+        }
+        loadMap(region, address, 'container', 0, 0, function(position) {
+            jQuery("#longitude").val(position['lng']);
+            jQuery("#latitude").val(position['lat']);
+        });
+
+    });
+    if($('#country_text').val() == '位于国外'){
+        $('.internal').hide();
+        $('.internalmap').hide();
+        $('.foreign').show();
+    }else{
+        $('#countryaddress').val('');
+    }
+    $('.inputTipsText2').delegate( '[class$=_down]>a[myid=pro]','click',function(){
+          var province = $(this).html();
+        $('.inputTipsText2').delegate( '[class$=_down]>a[myid=cityid]','click',function(){
+            var cityname = $(this).html();
+            $('#addr').val(province+cityname);
+        });
+    });
+    $('.inputTipsText2').delegate( '[class$=_down]>a[myid=internal_country]','click',function(){
+       if ($(this).html()=='位于国外'){
+           $('.internal').hide();
+           $('.internalmap').hide();
+           $('.foreign').show();
+       }else{
+           $('.internal').show();
+           $('.internalmap').show();
+           $('.foreign').hide();
+       }
+    });
+
+    <!--{if $action != 'edit' && checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
+    $('#refreshCaptcha').click(function() {
+      $(this).children('img').attr('src', '/plugin.php?id=dailypicture:captcha&_='+(new Date().getTime()));
+      $('#jg').html("");
+      return false;
+    });
+    $('#captcha').focus(function(){
+      !$(this).val() && $(this).prev().hide();
+    });
+    $('#captcha').blur(function(){
+      !$(this).val() && $(this).prev().show();
+       validate_captcha();
+    });
+    function validate_captcha() {
+      $.ajax({
+        async: false,
+        type: 'get',
+        url: '/plugin.php?id=dailypicture:validatecaptcha&inajax=1&captcha='+$('#captcha').val(),
+        success : function(data) {
+          if (data==1) {
+            $('#jg').html('<img width="16" height="16" class="vm" src="static/image/common/check_right.gif">');
+            $('#yzm').val('1');
+          }else{
+            $('#jg').html('<img width="16" height="16" class="vm" src="static/image/common/check_error.gif">');
+            $('#yzm').val('0');
+            $('#captcha').val('');
+          }
+        }
+      });
+    };
+    <!--{/if}-->
+
+    $(document).on("click", "#imglist .deleteimg", function() {
+        $(this).parent().remove();
+        if($("#imglist .overlimit").length > 0){
+            $("#imglist .overlimit:first").removeClass('overlimit').find('input:hidden').removeAttr('disabled');
+        }else{
+            $("#numimage").val($("#numimage").val() - 1);
+        }
+    });
+
+    //控制下拉菜单
+	delegate_selectdown('.inputTipsText2', '.selectdown', '[class$=_down]>a', '[class$=_down]');
+
+});
+
+
+</script>
+<script type="text/javascript">
+function modform_validate(theform) {
+	{eval //使用编辑器后, 编写的内容在body中, 需要通过该代码将内容放在textarea中, (editor.js)}
+	var message = wysiwyg ? html2bbcode(getEditorContents()) : (!theform.parseurloff.checked ? parseurl(theform.message.value) : theform.message.value);
+	theform.message.value = message;
+
+	if(theform.subject.value == '') {
+		_showmsg('请填写{$modname}{$modsetting[mc]}');
+		return false;
+	} else if(mb_strlen(theform.subject.value) > 80) {
+		_showmsg('您的{$modname}{$modsetting[mc]}超过 80 个字符的限制');
+		return false;
+	}
+
+//	if (trim(theform.addr.value) == '') {
+//		_showmsg('请填写{$modname}地址');
+//		return false;
+//	}
+
+
+	if(trim(theform.province.value) == '') {
+		_showmsg('请选择{$modname}经过省份');
+		return false;
+	}
+
+	if(trim(theform.cityname.value) == '') {
+		_showmsg('请选择或填写{$modname}所在城市');
+		return false;
+	}
+
+	if(trim(theform.message.value) == '') {
+		_showmsg('请填写{$modname}简介');
+		return false;
+	}
+
+  <!--{if $action != 'edit' && checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
+  if (trim(theform.captcha.value)=="") {
+    _showmsg('验证码不能为空');
+    return false;
+  }
+  if (theform.yzm.value=='0') {
+    _showmsg('验证码输入错误');
+    return false;
+  }
+  <!--{/if}-->
+
+	if($('postsubmit').name == 'editpost') {
+		return true;
+	}else if(in_array($('postsubmit').name, ['replypost','newpost'])) {
+		postsubmit(theform);
+	}
+	return false;
+}
+</script>
+
+<script type="text/javascript" src="static/js/newswfobject.js"></script>
+<script type="text/javascript">
+{eval /*it will make a request to misc.php, as far as the callback is concerned, 'uploadsuccess' is the default. because the 'editor' also set 'uploadsuccess' as the default callback,
+	   * so there are two functions of uploadsuccess, it is confused. transmit 'back' parameter to specify one of the callback functions is 'upload_image_success'
+	 */
+}
+var params = {site:"{$_G[siteroot]}misc.php%3fmod=swfupload%26type=image%26fid=$fid%26mtype=plugin%26twidth=60%26theight=60%26random=<!--{echo random(4)}-->%26back=upload_image_success",buttonimg:"{$_G[siteroot]}static/image/common/uploadnew.png"};
+swfobject.embedSWF("static/flash/uploadforum.swf", "pic_upload_multiimg", "208", "50", "10.0.0", "playerProductInstall.swf", params, {wmode:"transparent"});
+swfobject.createCSS("#pic_upload_multiimg", "text-align:left;");
+ajaxget('forum.php?ctl={$modstr}&act=getimglist{if $editdata[tid]}&tid={$editdata[tid]}{/if}{if {$editdata[pid]}}&pid={$editdata[pid]}{/if}', 'imglist');
+
+var maxpic = <!--{$imgselectlimit}-->;
+function upload_image_success(type, returndata) {
+	eval("var nattach = " + returndata + ";");
+	jQuery.noConflict();
+	;(function($){
+		if(nattach.nowcount < 50 || type != 3){
+			if(document.getElementById('image_' + nattach.fileid) == null){
+				$('#imagelisttemp').clone().attr('id', 'image_' + nattach.fileid).attr('title', nattach.filename).prependTo('#imglist');
+			}
+		}
+		var attachobj = $('#image_' + nattach.fileid);
+		switch(type){
+			case 1:
+				attachobj.prepend('<img src="' + nattach.thumbpic + '" />').find('input').val(nattach.aid).removeAttr('disabled').end().attr('id', 'image_' + nattach.aid).show();
+				break;
+			case 2:
+				attachobj.prepend('<img src="' + nattach.thumbpic + '" />').find('input').val(nattach.aid).removeAttr('disabled').end().attr('id', 'image_' + nattach.aid).show();
+				break;
+			case 3:
+				break;
+		}
+		$('#imglist').find('span:gt(' + (maxpic - 1) + ')').addClass("overlimit").find('input').attr('disabled', true);
+		var num = $('#imglist>span:not(".overlimit")').length;
+		$('#numimage').val(num);
+	})(jQuery);
+}
+</script>
+<!--{subtemplate forum/dianping/footer}-->

@@ -1,0 +1,22 @@
+<!--{loop $array_gengduo $item}-->
+                	<div class="jxone clear_b">
+                            <a href="$item['url']" target="_blank"><img src="$item['pic']"></a>
+                            <div class="jxrightcon">
+                                <h3><a href="$item['url']" target="_blank">$item['subject']</a></h3>
+                                <p>{$item['summary']}<span class="boxtm"></span></p>
+                                <div class="name_hf_date">
+                                    <div class="namebox">
+                                        <!--{loop $item['arr_zuozhe'] $img}-->
+                                        <a href="{$img['uid']}" target="_blank">{$img['tx']}
+                                            by<span class="username">{$img[uname]}</span></a>
+                                            <!--{/loop}-->
+                                        <!--{loop $item['arr']  $com}-->    
+                                            <span class="hfcon">{$com['uname']}  {$com['lastpost']}»Ø¸´</span>
+                                        <!--{/loop}--> 
+                                            
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--{/loop}-->

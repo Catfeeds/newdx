@@ -1,0 +1,68 @@
+<fieldset style="padding: 15px 20px;">
+	<legend>信息区</legend>
+	{if is_array($_G['config']['cdn'])}
+	<h3>请选择一个CDN空间<b style="margin-left: 10px;">当前CDN状态[{if $_G['config'][cdns][opend] === true}<font color="green">开启中</font>{else}<font color="red">关闭中</font>{/if}]</b></h3>
+	<ul class="cdnlist">
+	{loop $_G['config']['cdn'] $_k $_cdn}
+		<li><a href="admin.php?action=plugins&operation=config&do={$pluginid}&identifier=attachment_server&pmod=upyun_manage&cdnname={$_k}">$_cdn['name']</a>{if in_array($_k, $_G[config][cdns][config][file]) || $_k == $_G[config][cdns][config][file]}<b>[<font color="blue">文件</font><font color="green">使用中</font>]</b>{elseif in_array($_k, $_G[config][cdns][config][image]) || $_k == $_G[config][cdns][config][image]}<b>[<font color="blue">图片</font><font color="green">使用中</font>]</b>{/if}</li>
+	{/loop}
+		<div style="clear: both;"></div>
+	</ul>
+	<div style="clear: both;"></div>
+	{/if}
+	{if $config}
+	<h3>空间名：{$config['name']}</h3>
+	<p>服务器ID：{$config['serverid']}</p>
+	<p>自定义缩略图版本：<b>{eval echo implode('</b> , <b>', $config['custom']);}</b></p>
+	{/if}
+	{if $message}
+	<p><b>{$message}</b></p>
+	{/if}
+</fieldset>
+<fieldset style="padding: 15px 20px;margin-top: 10px;">
+	<legend>显示区</legend>
+	<table style="width: 100%;">
+		<tr>
+			<td width="60%">名称</td>
+			<td width="20%">文件大小</td>
+			<td width="20%">创建时间</td>
+		</tr>
+	{if $folder || $file}
+	<tbody class="fflist">
+		<tr class="opend"><td class="firstcol"><a href="admin.php?action=plugins&operation=config&do={$pluginid}&identifier=attachment_server&pmod=upyun_manage&cdnname={$cdnname}&path={$path}">{$path}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+	{if $path != '/'}
+		<a href="admin.php?action=plugins&operation=config&do={$pluginid}&identifier=attachment_server&pmod=upyun_manage&cdnname={$cdnname}&path={$upfolder}">返回上一级</a>
+	{/if}
+		</td><td></td><td></td></tr>
+	{if $folder}
+		{eval $j = 0;}
+		{loop $folder $_fdr}
+		{eval $j++;}
+		<tr{if !$file && $j == $fd_length} class="lasttree"{/if}><td class="firstcol"><b class="folder"><a href="admin.php?action=plugins&operation=config&do={$pluginid}&identifier=attachment_server&pmod=upyun_manage&cdnname={$cdnname}&path={$path}{$_fdr['name']}">{$_fdr['name']}</a></b></td><td></td><td>{eval echo timeshow($_fdr['time']);}</td></tr>
+		{/loop}
+	{/if}
+	{if $file}
+		{eval $j = 0;}
+		{loop $file $_fle}
+		{eval $j++;}
+		<tr{if $j == $fl_length} class="lasttree"{/if}><td class="firstcol"><b class="file"><a href="http://{$config['name']}.b0.upaiyun.com{$path}{$_fle['name']}" target="_blank">{$_fle['name']}&nbsp;&nbsp;<b style="color: red;">[如果无法打开则为加密原图]</b></a></b></td><td>{eval echo sizecal($_fle['size']);}</td><td>{eval echo timeshow($_fle['time']);}</td></tr>
+		{/loop}
+	{/if}
+	</tbody>
+	{else}
+	<p>暂时没有文件夹和文件</p>
+	{/if}
+	</table>
+</fieldset>
+<style>
+ul.cdnlist li{float:left; margin: 2px 3px;padding: 2px 5px;line-height: 30px;border:1px solid #ccc;}
+ul.cdnlist{margin:10px 0;}
+.fflist .firstcol{background: url(static/image/common/tree_linemiddle.gif) no-repeat;}
+.firstcol{margin-top:10px; font-size: 14px; padding-left:25px;margin-left:20px;}
+.firstcol b{padding-left:25px;font-weight: normal;}
+.opend .firstcol{padding-left:30px;}
+.folder{background: url(static/image/common/tree_folder.gif) no-repeat;}
+.opend .firstcol{background: url(static/image/common/tree_folderopen.gif) no-repeat;}
+.file{background: url(static/image/common/tree_file.gif) no-repeat;}
+.fflist .lasttree .firstcol{background: url(static/image/common/tree_linebottom.gif) no-repeat;}
+</style>

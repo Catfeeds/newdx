@@ -1,0 +1,106 @@
+<!--{subtemplate forum/dianping/header_ajax}-->
+{if $list}
+<div class="bd">
+	{loop $list $comment}
+	<dl class="commentListDl" id="post_$comment[pid]">
+		<dd class="face"><a href="home.php?mod=space&uid={$comment['authorid']}"><!--{avatar($comment[authorid], small)}--></a></dd>
+		<dt>
+			<div class="toplist">
+				<span class="name"><a href="home.php?mod=space&uid=$comment[authorid]" target="_blank" class="xi2">$comment[author]</a></span> {eval $star = $comment[starnum];}
+				{if $star} <span class="star"> {eval for ($i = 0; $i < 5; $i++):}
+				{if $i < $star}<span class="redstar"></span>{else}<span class="graystar"></span>{/if}
+				{eval endfor;} </span>
+				{/if}
+				<span class="date">发表于 $comment[dateline]</span>
+				<input type="hidden" name="" id="starnum" value="{$comment['starnum']}" />
+				<!--{if $comment['rate']}-->
+				&nbsp;&nbsp;&nbsp;<span class="bi"><a href="http://bbs.8264.com/forum-483-1.html" target="blank"><img align="absmiddle" title="奖励8264币" alt="奖励8264币" src="static/image/common/8264b.gif"></a></span>
+				<!--{/if}-->
+			</div>
+			<ul class="goodBad">
+				<!--{if $comment['goodpoint']}-->
+				<li>
+					<span class="leftIco good">优点</span>
+					<div class="conts"><p id="goodpoint">{$comment['goodpoint']}</p></div>
+				</li>
+				<!--{/if}-->
+				<!--{if $comment['weakpoint']}-->
+				<li>
+					<span class="leftIco bad">缺点</span>
+					<div class="conts"><p id="weakpoint">{$comment['weakpoint']}</p></div>
+				</li>
+				<!--{/if}-->
+				{if $star&&$comment['goodpoint']&&$comment['weakpoint']}
+				<li>
+					<span class="leftIco all">综合</span>
+					<div class="conts"><p id="message"><!--{eval $comment['message']=str_replace('thumbImg(this)','thumbImg(this,null,757)',$comment["message"]);}-->$comment[message]</p></div>
+				</li>
+				{else}
+				<dd class="cont" style="margin-top: 10px;" id="message"> <!--{eval $comment['message']=str_replace('thumbImg(this)','thumbImg(this,null,757)',$comment["message"]);}-->$comment[message]</dd>
+				{/if}
+			</ul>
+			<dd class="control">
+				{if $_G['adminid'] == 1 && !$comment['first']}
+				<span class="normal">
+					<label for="manage$comment[pid]">
+					<input type="checkbox" id="manage$comment[pid]" class="pc" {if !empty($modclick)}checked="checked" {/if}onclick="pidchecked(this);modclick(this, $comment[pid])" value="$comment[pid]" autocomplete="off" />
+					{lang manage}
+					</label>
+					<!--{if $_G['group']['raterange'] && $comment['authorid']}-->
+						<a id="k_rate" style="color: #666;" href="javascript:;" onclick="showWindow('rate', 'forum.php?mod=misc&action=rate&tid=$_G[tid]&pid=$comment[pid]', 'get', -1);return false;" title="加8264币">{lang rate}&nbsp;</a>
+					<!--{/if}-->
+					<!--{if $comment['rate'] && $_G['forum']['ismoderator']}-->
+						<a href="forum.php?mod=misc&action=removerate&tid=$_G[tid]&pid=$comment[pid]&page=$page" onclick="showWindow('rate', this.href, 'get', -1)">{lang removerate}</a>
+					<!--{/if}-->
+
+				</span>
+				{/if}
+				<span {if $_G['uid']}{if $supportlist[$comment['pid']]}title="你已经评价过了"{else} title="有用"{/if}{else} title="登录后才能进行评价" {/if} {if $_G['uid'] && $_G['uid']!=$comment['authorid'] && !$supportlist[$comment['pid']]} id="supportBtn_{$comment['pid']}"{/if} class="useful{if $comment['supports']>0} active{/if}"><i></i>有用{if !$comment['supports']}{else}({$comment['supports']}){/if}</span>
+				{if $_G['adminid'] == 1 && $star}
+				<span class="ans" id="editBtn_{$comment['pid']}"><a href="javascript:;">修改</a></span>
+				{/if}
+			</dd>
+		</dt>
+	</dl>
+	{/loop}
+	<div id="postlistreply">
+		<div id="post_new" style="display:none;border: none;">
+			<dl class="commentListDl" id="pid">
+				<dd class="face"><a href="home.php?mod=space&uid=$_G[uid]"><!--{avatar($_G[uid], small)}--></a></dd>
+				<dt>
+					<div class="toplist">
+					<span class="name"><a href="home.php?mod=space&uid=$_G[uid]" target="_blank" class="xi2">$_G[username]</a></span> {eval $star =2;}
+
+					<span class="star">
+
+					</span>
+					<span class="date">
+
+					</span>
+					</div>
+					<ul class="goodBad">
+						{if $myrate!=1 && $_G['uid']}
+						<li>
+							<span class="leftIco good">优点</span>
+							<div class="conts"><p id="goodpoint"></p></div>
+						</li>
+						<li>
+							<span class="leftIco bad">缺点</span>
+							<div class="conts"><p id="weakpoint"></p></div>
+						</li>
+						<li>
+							<span class="leftIco all">综合</span>
+							<div class="conts"><p id="message"></p></div>
+						</li>
+						{else}
+						<dd class="cont" style="margin-top: 10px;"> <p id="message"></p></dd>
+						{/if}
+					</ul>
+				</dt>
+			</dl>
+		</div>
+	</div>
+	<div class="listPageBox">{$multipage}</div>
+</div>
+{/if}
+<!--{subtemplate forum/dianping/footer_ajax}-->

@@ -1,0 +1,54 @@
+<style>
+#add_container table{width:800px;}
+#add_container table tbody{border-bottom:2px black solid; margin: 20px 10px;}
+#add_container table th{text-align: center; border-bottom:1px #CCC dotted; padding: 5px 10px;}
+#add_container table td{text-align: left; border-bottom:1px #CCC dotted; padding: 5px 10px;}
+#add_container table td{background:#EEE;}
+#add_container table th{background: #4DD7F4;}
+#add_container table input{width:350px; margin: 5px 2px 5px 0px;}
+</style>
+
+<script src="http://static.8264.com/static/js/calendar.js"></script>
+<div id="add_container">
+	<form action="/admin.php?action=plugins&operation=config&do={$pluginid}&identifier=interests&pmod=linemanagerment&method={$method}" method="POST">
+		<table>
+			<tr>
+				<th colspan="{if $messagetips}3{else}2{/if}">续期线路</th>
+				<input type="hidden" name="editid" value="{eval echo $nowinfo[linemod::_ID];}" />
+			</tr>
+			<tr>
+				<td width="20%">线路名称</td>
+				<td><a target="_blank" href="{eval echo $nowinfo[linemod::_URL];}">{eval echo $nowinfo[linemod::_NAME];}</a></td>
+			</tr>
+			<tr>
+				<td>线路URL地址</td>
+				<td><a target="_blank" href="{eval echo $nowinfo[linemod::_URL];}">{eval echo $nowinfo[linemod::_URL];}</a></td>
+			</tr>
+			<tr>
+				<td>线路活动开始时间</td>
+				<td><input name="linestart" type="text" value="{$_POST['linestart']}" onclick="showcalendar(event, this, false, false, false, 30)" /></td>
+				{if $messagetips[linestart]}<td><b style="color: red;">{$messagetips[linestart]}</b></td>{elseif $messagetips}<td></td>{/if}
+			</tr>
+			<tr>
+				<td>线路提前报名时间</td>
+				<td>{eval echo $nowinfo[linemod::_TIME_BEFORE];}天</td>
+			</tr>
+			<tr>
+				<td>线路活动行程</td>
+				<td>{eval echo $nowinfo[linemod::_TIME_USED];}天</td>
+			</tr>
+			<tr>
+				<td>推送位置</td>
+				<td>
+					{eval echo linemod::$pos_type[$nowinfo[linemod::_POS]];}
+				</td>
+			</tr>
+			<tr>
+				<th colspan="{if $messagetips}3{else}2{/if}">
+					<button type="submit">续期</button>
+					<input type="hidden" name="submit" value="1"/>
+				</th>
+			</tr>
+		</table>
+	</form>
+</div>

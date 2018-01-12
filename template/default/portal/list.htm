@@ -1,0 +1,183 @@
+<!--{subtemplate common/header}-->
+
+
+
+
+<style>
+.ciytorz{ width:958px; height:30px; border:#dadada solid 1px; border-top:0; background:url(/template/8264/css/moban/indexnew/images/citybg.png) top repeat-x; margin:0px auto; position:relative; font-size:12px; margin-bottom:10px;}
+.ciytorz a{ color:#333; text-decoration:none; font-size:12px;}
+.ciytorz a:hover{ color:#333; font-size:12px;}
+.ciytorzul{}
+.ciytorzul li{ float:left; display:inline; margin:8px 6px 0px 5px;}
+.ciytorzul span{ float:left; display:inline; margin:8px 0px 0px 10px;}
+.arroworz{ padding-right:10px; background:url(/template/8264/css/moban/indexnew/images/123.gif) right center no-repeat;}
+.cityout{ width:50px; position:absolute; right:-1px; top:0; border-bottom:#dadada solid 1px; background:#fff;}
+.cityouttop{ height:22px; padding:8px 0px 0px 6px; background:url(/template/8264/css/moban/indexnew/images/citybg.png) repeat-x; text-align:left; border-right:#dadada solid 1px;}
+.cityout li{ height:25px; text-align:center; border:#dadada solid 1px; border-top:0; border-bottom:0;}
+.cityout li a{ height:20px; padding:7px 0px 0px 0px; text-align:center; display:block; }
+.cityout li a:hover{ height:19px; padding:6px 0px 0px 0px; text-align:center; background:url(/template/8264/css/moban/indexnew/images/cityin.png) bottom repeat-x; border-top:#dadada solid 1px; border-top:#dadada solid 1px;}
+</style>
+<SCRIPT language=javascript>
+function showcityorz98()
+{
+	if(document.getElementById('cityorz98'))
+	{
+		document.getElementById('cityorz98').style.display = '';
+	}	
+}
+function hiddencityorz98()
+{
+	if(document.getElementById('cityorz98'))
+	{
+		document.getElementById('cityorz98').style.display = 'none';
+	}	
+}
+</SCRIPT>
+<div class="ciytorz">
+	<ul class="ciytorzul">
+        <span><a href="http://bbs.8264.com/" target="_blank">地方论坛：</a></span>
+        <li><a href="http://bj.8264.com" target="_blank" style="color:#ff6600;">北京</a></li>
+        <li><a href="http://gx.8264.com" target="_blank">广西</a></li>
+        <li><a href="http://ln.8264.com" target="_blank">辽宁</a></li>
+        <li><a href="http://hb.8264.com" target="_blank">河北</a></li>
+        <li><a href="http://nx.8264.com" target="_blank">宁夏</a></li>
+        <li><a href="http://cq.8264.com" target="_blank">重庆</a></li>
+        <li><a href="http://sd.8264.com" target="_blank">山东</a></li>
+        <li><a href="http://tj.8264.com" target="_blank">天津</a></li>        
+        <li><a href="http://ah.8264.com" target="_blank">安徽</a></li>
+        <li><a href="http://gd.8264.com" target="_blank">广东</a></li>
+        <li><a href="http://fj.8264.com" target="_blank">福建</a></li>
+        <li><a href="http://hn.8264.com" target="_blank">河南</a></li>
+        <li><a href="http://hunan.8264.com" target="_blank">湖南</a></li>
+        <li><a href="http://hubei.8264.com" target="_blank">湖北</a></li>
+        <li><a href="http://gz.8264.com" target="_blank">贵州</a></li>
+        <li><a href="http://js.8264.com" target="_blank">江苏</a></li>
+        <li><a href="http://qh.8264.com" target="_blank">青海</a></li>
+        <li><a href="http://zj.8264.com" target="_blank">浙江</a></li>
+        <li><a href="http://sc.8264.com" target="_blank">四川</a></li>
+        <li><a href="http://yn.8264.com" target="_blank">云南</a></li>
+        <li><a href="http://sh.8264.com" target="_blank">上海</a></li>
+        <li><a href="http://jl.8264.com" target="_blank">吉林</a></li>
+        <li><a href="http://hainan.8264.com" target="_blank">海南</a></li>
+        <li><a href="http://shanxi.8264.com" target="_blank">陕西</a></li>
+        <li class="arroworz"><a href="http://sc.8264.com" target="_blank" onmouseover=showcityorz98(); onmouseout=hiddencityorz98();>更多</a></li>
+    </ul>
+    <div class="cityout" id="cityorz98" onmouseover=showcityorz98(); style="display: none" onmouseout=hiddencityorz98();>
+    	<div class="cityouttop"><span class="arroworz">更多</span></div>
+        <ul>
+        	<li><a href="http://sx.8264.com" target="_blank">山西</a></li>
+        	<li><a href="http://hlj.8264.com" target="_blank">黑龙江</a></li>
+        	<li><a href="http://gs.8264.com" target="_blank">甘肃</a></li>
+        	<li><a href="http://nmg.8264.com" target="_blank">内蒙古</a></li>
+        	<li><a href="http://jx.8264.com" target="_blank">江西</a></li>
+            <li><a href="http://xz.8264.com" target="_blank">西藏</a></li>
+            <li><a href="http://xj.8264.com" target="_blank">新疆</a></li>
+        </ul>
+    </div>
+    <div style="clear:both;"></div>
+</div>
+
+<!--[name]{lang portalcategory_listtplname}[/name]-->
+<!--{eval $list = array();}-->
+<!--{eval $wheresql = category_get_wheresql($cat);}-->
+<!--{eval $list = category_get_list($cat, $wheresql, $page);}-->
+<div id="pt" class="bm cl">
+	<!--{subtemplate common/simplesearchform}-->
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> <em>&rsaquo;</em>
+		<a href="$_G[setting][navs][1][filename]">{lang portal}</a> <em>&rsaquo;</em>
+		<!--{loop $cat[ups] $value}--> <a href="{echo getportalcategoryurl($value[catid])}">$value[catname]</a><em>&rsaquo;</em><!--{/loop}-->
+		$cat[catname]
+	</div>
+</div>
+
+<!--{ad/text/wp a_t}-->
+<style id="diy_style" type="text/css"></style>
+<div class="wp">
+	<!--[diy=diy1]--><div id="diy1" class="area"></div><!--[/diy]-->
+</div>
+
+<div id="ct" class="ct2 wp cl">
+	<div class="mn">
+		<!--{ad/articlelist/mbm hm/1}--><!--{ad/articlelist/mbm hm/2}-->
+		<!--[diy=listcontenttop]--><div id="listcontenttop" class="area"></div><!--[/diy]-->
+		<div class="bm">
+			<div class="bm_h cl">
+				<!--{if ($_G['group']['allowpostarticle'] || $_G['group']['allowmanagearticle'] || $categoryperm[$catid]['allowmanage'] || $categoryperm[$catid]['allowpublish']) && empty($cat['disallowpublish'])}-->
+				<a href="portal.php?mod=portalcp&ac=article&catid=$cat[catid]" class="y xi2 xw1">{lang article_publish}</a>
+				<!--{/if}-->
+				<h1 class="xs2">$cat[catname]</h1>
+			</div>
+			<!--{if $cat[subs]}-->
+			<div class="bm_c bbda">
+				{lang sub_category}:&nbsp;&nbsp;
+				<!--{eval $i = 1;}-->
+				<!--{loop $cat[subs] $value}-->
+				<!--{if $i != 1}--><span class="pipe">|</span><!--{/if}--><a href="{echo getportalcategoryurl($value[catid]);}" class="xi2">$value[catname]</a><!--{eval $i--;}-->
+				<!--{/loop}-->
+			</div>
+			<!--{/if}-->
+			<div class="bm_c xld">
+			<!--{loop $list['list'] $value}-->
+				<dl class="bbda cl">
+					<dt class="xs2"><a href="portal.php?mod=view&aid=$value[aid]" target="_blank">$value[title]</a> <!--{if $value[status] == 1}-->({lang moderate_need})<!--{/if}--></dt>
+					<!--{if $value[pic]}--><dd class="atc"><a href="portal.php?mod=view&aid=$value[aid]" target="_blank"><img src="$value[pic]" alt="$value[title]" /></a></dd><!--{/if}-->
+					<dd class="xs2">
+						$value[summary]
+					</dd>
+					<dd>
+						<!--{if $value[catname] && $cat[subs]}-->{lang category}: <label><a href="{echo getportalcategoryurl($value[catid]);}" class="xi2">$value[catname]</a></label>&nbsp;&nbsp;<!--{/if}-->
+						<span class="xg1"> $value[dateline]</span>
+						<!--{if $_G['group']['allowmanagearticle'] || ($_G['group']['allowpostarticle'] && $value['uid'] == $_G['uid'] && (empty($_G['group']['allowpostarticlemod']) || $_G['group']['allowpostarticlemod'] && $value['status'] == 1)) || $categoryperm[$value['catid']]['allowmanage']}-->
+						<span class="xg1">
+							<span class="pipe">|</span>
+							<label><a href="portal.php?mod=portalcp&ac=article&op=edit&aid=$value[aid]">{lang edit}</a></label>
+							<span class="pipe">|</span>
+							<label><a href="portal.php?mod=portalcp&ac=article&op=delete&aid=$value[aid]" id="article_delete_$value[aid]" onclick="showWindow(this.id, this.href, 'get', 0);">{lang delete}</a></label>
+						</span>
+						<!--{/if}-->
+					</dd>
+				</dl>
+			<!--{/loop}-->
+			</div>
+			<!--[diy=listloopbottom]--><div id="listloopbottom" class="area"></div><!--[/diy]-->
+		</div>
+		<!--{ad/articlelist/mbm hm/3}--><!--{ad/articlelist/mbm hm/4}-->
+		<!--{if $list['multi']}--><div class="pgs cl">{$list['multi']}</div><!--{/if}-->
+		
+		<!--[diy=diycontentbottom]--><div id="diycontentbottom" class="area"></div><!--[/diy]-->
+
+	</div>
+	<div class="sd pph">
+		
+		<div class="drag">
+			<!--[diy=diyrighttop]--><div id="diyrighttop" class="area"></div><!--[/diy]-->
+		</div>
+
+<!--{if $cat[others]}-->
+		<div class="bm">
+			<div class="bm_h cl">
+				<h2>{lang category_related}</h2>
+			</div>
+			<div class="bm_c">
+				<ul class="xl xl2 cl">
+					<!--{loop $cat[others] $value}-->
+					<li>&bull; <a href="{echo getportalcategoryurl($value[catid]);}">$value[catname]</a></li>
+					<!--{/loop}-->
+				</ul>
+			</div>
+		</div>
+<!--{/if}-->
+
+		<div class="drag">
+			<!--[diy=diy2]--><div id="diy2" class="area"></div><!--[/diy]-->
+		</div>
+
+	</div>
+</div>
+
+<div class="wp mtn">
+	<!--[diy=diy3]--><div id="diy3" class="area"></div><!--[/diy]-->
+</div>
+
+<!--{subtemplate common/footer}-->

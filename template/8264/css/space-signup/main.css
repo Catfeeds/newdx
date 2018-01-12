@@ -1,0 +1,527 @@
+.page {
+    width: 960px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.sidebar {
+    width: 244px;
+    overflow: hidden;
+    float:left;
+}
+.sidebar .login_pane {
+    width: 242px;
+    overflow: hidden;
+    background: #f6f6f6;
+    border: 1px solid #eaeaea;
+    margin-bottom: 10px;
+}
+.sidebar .login_pane .inner {
+    width: 218px;
+    border:2px solid #fff;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.brand_user li {
+    width: 74px;
+}
+
+#login {
+    width: 200px;
+    margin:0 auto 5px;
+}
+#login .row {
+    padding: 6px 0;
+    overflow: hidden;
+    width: 200px;
+}
+#login label {
+    display: block;
+    height: 20px;
+    line-height: 20px;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+#login .text {
+    background: url(images/input-text.png) no-repeat;
+    width: 189px;
+    height: 18px;
+    padding: 5px;
+    border: none;
+}
+
+#login select {
+    width: 199px;
+    -moz-border-radius: 5px; 
+    -khtml-border-radius: 5px; 
+    -webkit-border-radius: 5px; 
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+#login .sublit_box {
+    overflow: hidden;
+    height: 30px;
+}
+#login .submit {
+    display: block;
+    float: left;
+    width: 100px;
+    height: 30px;
+    border: none;
+    background: url(images/main.gif) -223px 0 no-repeat;
+    overflow: hidden;
+    text-indent: -9999px;
+    cursor: pointer;
+}
+#login .forget_passwd {
+    margin-left: 10px;
+    line-height: 30px;
+}
+#login .login_box {
+    text-align: center;
+    margin: 8px 0 0;
+}
+#login .qq_login {
+    display: inline-block;
+    margin-right: 5px;
+}
+#login .qq_login em {
+    display: inline-block;
+    width: 15px;
+    height: 16px;
+    background: url(images/main.gif) -208px -30px no-repeat;
+    vertical-align: middle;
+}
+#login .weibo_login {
+    display: inline-block;
+}
+#login .weibo_login em {
+    display: inline-block;
+    width: 19px;
+    height: 15px;
+    background: url(images/main.gif) -204px -46px no-repeat;
+    vertical-align: -2px;
+}
+.register {
+    border-top: 1px dashed #ccc;
+    padding: 10px 0;
+}
+.register .help-info {
+    padding: 5px 0;
+    text-align: center;
+}
+.register .regist-button {
+    width: 109px;
+    height: 30px;
+    display: block;
+    margin:0 auto;
+    border: none;
+    background: url(images/main.gif) -223px -30px no-repeat;
+    overflow: hidden;
+    text-indent: -9999px;
+    cursor: pointer;
+}
+
+.phone {
+    border-top: 1px dashed #ccc;
+    padding: 10px 0;
+}
+
+.phone .phone-list {
+    overflow: hidden;
+    margin: 5px 0 0 34px;
+}
+.phone .phone-list li {
+    float: left;
+    width: 65px;
+    padding: 5px;
+    text-align: center;
+}
+
+.phone .help-info {
+    padding-left: 10px;
+}
+
+.phone .phone-list li a {
+    display: block;
+    float: left;
+}
+.phone .phone-list li em {
+    background-image: url(images/phone.gif);
+    background-repeat: no-repeat;
+    display: block;
+    margin: 0 auto;
+    width: 32px;
+    height: 31px;
+    cursor: pointer;
+}
+
+.phone .phone-list .iphone em {
+    background-position: 0 0;
+    
+}
+.phone .phone-list .android em {
+    background-position: 0 -31px;
+}
+
+.container {
+    float: right;
+    width: 705px;
+    overflow: hidden;
+}
+.container .banner {
+    width: 705px;
+    height: 246px;
+    background: url(images/banner.jpg);
+    position: relative;
+}
+.container .banner .counter {
+    position: absolute;
+    right: 44px;
+    top: 20px;
+    width: 200px;
+}
+.container .banner .counter .head {
+    width: 100%;
+    height: 20px;
+    position: relative;
+}
+.container .banner .counter .head .headbg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background: #000;
+    filter: alpha(opacity=30);
+    -moz-opacity: 0.3;
+    -khtml-opacity: 0.3;
+    opacity: 0.3;
+}
+.container .banner .counter .head .headtext {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+    white-space: nowrap;
+}
+.container .banner .counter .num_box {
+    height: 32px;
+    padding: 3px;
+    overflow: hidden;
+    background: #eee;
+}
+.container .banner .counter .num_box .num {
+    background-image: url(images/counter_digits.gif);
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 32px;
+    float: left;
+    margin-right: 2px;
+}
+
+.container .banner .counter .num_box .num0 {
+    background-position: 0 0; 
+}
+.container .banner .counter .num_box .num1 {
+    background-position: 0 -32px; 
+}
+.container .banner .counter .num_box .num2 {
+    background-position: 0 -64px; 
+}
+.container .banner .counter .num_box .num3 {
+    background-position: 0 -96px; 
+}
+.container .banner .counter .num_box .num4 {
+    background-position: 0 -128px; 
+}
+.container .banner .counter .num_box .num5 {
+    background-position: 0 -160px; 
+}
+.container .banner .counter .num_box .num6 {
+    background-position: 0 -192px; 
+}
+.container .banner .counter .num_box .num7 {
+    background-position: 0 -224px; 
+}
+.container .banner .counter .num_box .num8 {
+    background-position: 0 -256px; 
+}
+.container .banner .counter .num_box .num9 {
+    background-position: 0 -288px; 
+}
+.container .info-box {
+    width: 705px;
+    overflow: hidden;
+    padding: 15px 0 15px 10px;
+}
+.container .info-box li {
+    width: 163px;
+    float: left;
+    margin: 5px;
+    display: inline;
+}
+.container .info-box li em {
+    display: block;
+    float: left;
+    width: 44px;
+    height: 44px;
+    margin-right: 8px;
+    background-image: url(images/main.gif);
+    background-repeat: no-repeat;
+}
+.container .info-box li h6, .container .info-box li p {
+    width: 108px;
+    float: left;
+}
+.container .info-box li h6 {
+    font-size: 12px;
+    line-height: 14px;
+    margin-bottom: 3px;
+}
+.container .info-box li p {
+    line-height: 15px;
+    color: #666;
+}
+.container .info-box li.friend em {
+    background-position: 0 0;
+}
+.container .info-box li.brand em {
+    background-position: -44px 0;
+}
+.container .info-box li.activity em {
+    background-position: -88px 0;
+}
+.container .info-box li.gear em {
+    background-position: -132px 0;
+}
+
+.section_box {
+    width: 705px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.section_box .head {
+    overflow: hidden;
+    border-bottom: 1px solid #cfcfcf;
+    padding: 2px;
+    overflow: hidden;
+    width: 98%;
+}
+.section_box .head h5 {
+    float: left;
+    color: #3e84cd;
+    font-size: 14px;
+    line-height: 20px;
+}
+.section_box .head a.more {
+    float: right;
+    background: #f1b023;
+    color: #fff;
+    padding: 0 8px;
+    line-height: 18px;
+    margin-top: 2px;
+}
+.hot_blogs {
+    width: 460px;
+    height: 315px;
+    float: left;
+    overflow: hidden;
+}
+.hot_blogs .blog_box {
+    width: 430px;
+    padding: 10px 0 10px 25px;
+    border-bottom: 1px dashed #ccc;
+    position: relative;
+}
+.hot_blogs .blog_box .icon {
+    position: absolute;
+    top: 13px;
+    left: 6px;
+}
+.hot_blogs .blog_box a {
+    color: #369;
+}
+
+.hot_blogs .blog_box .info {
+    line-height: 20px;
+    margin-bottom: 5px;
+}
+.hot_blogs .blog_box .datetime {
+    color: #999;
+}
+.hot_blogs .blog_box h6 {
+    font-size: 13px;
+    color: #369;
+    height: 20px;
+    overflow: hidden;
+    font-weight: normal;
+}
+.hot_blogs .blog_box .comments {
+    color: #666;
+    height: 35px;
+    overflow: hidden;
+}
+
+.hot_blogs .blog_box .hot {
+    width: 55px;
+    height: 50px;
+    float: right;
+    background: url(/static/image/common/hotspot.gif);
+    text-align: center;
+    margin-top: 22px;
+    margin-left: 30px;
+}
+.hot_blogs .blog_box .hot a {
+    display: block;
+    line-height: 20px;
+    color: #fff;
+}
+.hot_blogs .blog_box .hot a:hover {
+    text-decoration: none;
+}
+.hot_blogs .blog_box .hot em {
+    color: #369;
+    cursor: pointer;
+    display: block;
+    font-size: 12px;
+    line-height: 30px;
+}
+
+.hot_doing {
+    float:right;
+    width: 228px;
+    height: 315px;
+    color: #999;
+    overflow: hidden;
+}
+.hot_doing a {
+    color: #369;
+}
+.hot_doing .item {
+    padding: 5px;
+    border-bottom: 1px dashed #999;
+    overflow: hidden;
+}
+.hot_doing .info {
+    height: 20px;
+    overflow: hidden;
+}
+.hot_doing .info .user {
+}
+.hot_doing .info .user img {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+}
+.hot_doing .info .datetime {
+    float: right;
+}
+.hot_doing .info .his_doing {
+    width: 16px;
+    height: 12px;
+    display: inline-block;
+    text-indent: -9999px;
+    background: url(images/main.gif?1) -192px -30px no-repeat;
+    vertical-align: middle;
+    overflow: hidden;
+    margin-left: 2px;
+}
+.hot_doing .message {
+    color: #666;
+    padding: 3px 0;
+}
+
+.best_peoples {
+    width: 705px;
+}
+.best_peoples .control_pane {
+    float:left;
+    width: 100px;
+    height: 20px;
+    padding: 2px 0 0 10px;
+    overflow: hidden;
+}
+.best_peoples .control_pane li {
+    width: 15px;
+    height: 15px;
+    overflow: hidden;
+    float:left;
+    text-indent: -9999px;
+}
+.best_peoples .control_pane li a {
+    width: 100%;
+    height: 100%;
+    background-image: url(images/main.gif);
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+}
+.best_peoples .control_pane li.prev {
+    margin-right: 4px;
+}
+.best_peoples .control_pane li.prev a {
+    background-position: -192px 0;
+}
+.best_peoples .control_pane li.prev a:hover {
+    background-position: -192px -15px;
+}
+.best_peoples .control_pane li.next a {
+    background-position: -207px 0;
+}
+.best_peoples .control_pane li.next a:hover {
+    background-position: -207px -15px;
+}
+.best_peoples .page_list {
+    width: 705px;
+    height: 130px;
+    overflow: hidden;
+}
+.best_peoples .page_list .page {
+    width: 685px;
+    padding: 3px 0 3px 20px;
+    overflow: hidden;
+    margin: 0;
+    float: left;
+}
+.best_peoples .page_list .page li {
+    width:130px;
+    overflow: hidden;
+    margin: 4px 0;
+    float:left;
+    padding: 0;
+}
+.best_peoples .page_list .page li .avt {
+    float: left;
+    margin-right: 5px;
+}
+.best_peoples .page_list .page li .text {
+    float: left;
+    display: block;
+    padding-top: 8px;
+    width: 60px;
+}
+.best_peoples .page_list .page li .text .name {
+    display: block;
+    height: 18px;
+    line-height: 18px;
+    width: 100%;
+    overflow: hidden;
+    color: #000;
+}
+.best_peoples .page_list .page li .text .skill {
+    display: block;
+    height: 18px;
+    line-height: 18px;
+    width: 100%;
+    overflow: hidden;
+    color: #999;
+}

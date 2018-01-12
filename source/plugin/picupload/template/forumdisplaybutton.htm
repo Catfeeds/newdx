@@ -1,0 +1,27 @@
+<!--{block return}-->
+'<a  id="picupload_post" title="如果您的帖子照片较多，建议点此使用图片分楼发帖" href="plugin.php?id=picupload&fid={$_G[fid]}"><img src="static/images/tpfl.jpg"/><span id="new_tips"><img src="static/images/new.png"/></span></a>
+<link href="source/plugin/picupload/picupload.css" rel="stylesheet" type="text/css">             
+<div id="picupload_dialog">
+	<div id="close_tips" onclick="picupload_dialog.style.display='none';picupload_post.style.display = '';">关闭</div>
+	<table cellspacing="0" cellpadding="0" class="fwin">
+    <tr>
+    <td class="t_l"></td>
+    <td class="t_c"></td>
+    <td class="t_r"></td>
+    </tr>
+    <tr>
+    <td class="m_l"></td>
+    <td class="m_c">
+    <div id="picupload_dialog_content">
+    </div>
+    </td>
+    <td class="m_r"></td>
+    </tr>
+    <tr>
+    <td class="b_l"></td>
+    <td class="b_c"></td>
+    <td class="b_r"></td>
+    </tr>
+    </table>
+</div>
+<!--{/block}-->

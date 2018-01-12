@@ -1,0 +1,30 @@
+<!--{loop $newdata $key $value}-->
+	<li id="pmlist_{if $value[touid]}$value[touid]{else}$value[pmid]{/if}">
+		<!--{if $value[msgfromid]}-->
+		<a href="home.php?mod=space&uid=$value[msgfromid]" class="tx"><!--{avatar($value[msgfromid],small)}-->
+			<!--{if $value['new'] == 1}--><i class="wd"> </i><!--{/if}-->
+		</a>
+		<!--{else}-->
+		<a href="javascript:;"></a>
+		<!--{/if}-->
+		<div>
+			<span class="graydb"><!--{date($value[dateline], 'u')}--></span>
+			<span class="fl blue">
+				<!--{if $value[msgfromid]}-->
+					<a href="home.php?mod=space&uid=$value[msgfromid]" class="name">{$value[msgfrom]}</a>
+				<!--{/if}-->
+				$value[message]
+				<a href="{if $value[touid]}home.php?mod=space&do=pm&subop=view&pmid=$value[pmid]&touid=$value[touid]&daterange=$value[daterange]{else}home.php?mod=space&do=pm&subop=view&pmid=$value[pmid]{/if}#f_pst">²é¿´</a>
+			</span>
+			<span class="fr">
+				<!--{if $_G['gp_filter']!='announcepm'}-->
+					<!--{if $_G['gp_filter']=='systempm'}-->
+						<a href="home.php?mod=spacecp&ac=pm&op=delete&folder=inbox&pmid=$value[pmid]&handlekey=delpmhk_{$value[pmid]}" id="a_delete_$value[pmid]" onclick="showWindow(this.id, this.href, 'get', 0);">{lang delete}</a>
+					<!--{else}-->
+						<a href="home.php?mod=spacecp&ac=pm&op=delete&folder=inbox&{if $value[touid]}deluid=$value[touid]{else}pmid=$value[pmid]{/if}&handlekey=delpmhk_{$value[pmid]}" id="a_delete_$value[pmid]" onclick="showWindow(this.id, this.href, 'get', 0);" title="{lang delete}">{lang delete}</a>
+					<!--{/if}-->
+				<!--{/if}-->
+			</span>
+		</div>
+	</li>
+<!--{/loop}-->

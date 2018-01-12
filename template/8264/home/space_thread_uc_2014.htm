@@ -1,0 +1,109 @@
+{eval	
+	$_G[home_tpl_spacemenus][] = "<a href=\"home.php?mod=space&uid=$space[uid]&do=thread&view=me\">{lang they_thread}</a>";
+}
+<!--{subtemplate common/header_8264_new}-->
+<!--{subtemplate home/space_header_uc}-->
+<!--main-content-->
+<div class="main-content layout-page">
+	<div class="layout-app">
+		<div class="col-main">
+			<div class="main-wrap">
+				{if $viewtype == 'thread' && $list}
+				<div class="ui-block ui-block-title mod-wrap">
+					<div class="ui-title">
+						<h3>
+							{if $space[self]}我{else}$space[username]{/if}的发帖
+							<span class="number">{$threadCount}</span>
+						</h3>
+						{if $space[self]}
+						<a href="forum.php?mod=misc&action=nav" onclick="showWindow('nav', this.href, 'get', 0)" class="ui-add-link"><i class="ui-icon ui-add-icon"></i>发表帖子</a>
+						{/if}
+					</div>
+				</div>				
+				{/if}
+				<!--帖子列表-->
+				<div class="ui-block ui-block-content">
+				<div class="{if $viewtype == 'thread'}page-container-post{else}page-container-reply{/if}">
+				<div class="list-area">
+					{if $list}
+					{eval $listcnt = 0;}
+					<ul>
+						{loop $list $v}
+						{if $viewtype == 'thread'}
+						<li class="list-row">
+						<!--{subtemplate home/space_thread_post}-->
+						</li>
+						{else}
+						<li class="list-row">
+						<!--{subtemplate home/space_thread_reply}-->
+						</li>
+						{/if}							
+						{/loop}
+					</ul>
+					<!--分页-->
+					<!--{subtemplate home/space_page_uc}-->
+					<!--分页 end-->
+					{else}
+					<div class="page-container-empty">
+						<div class="empty-tips">
+							{eval $tempval = $viewtype == 'thread' ? '帖子' : '回复';}
+							<p><i class="icon-warn"></i>{if $space[self]}您还没有发表{$tempval}{else}没有可浏览的{$tempval}{/if}</p>
+							{if $space[self]}<p><a class="post-btn" href="forum.php?mod=misc&action=nav" onclick="showWindow('nav', this.href, 'get', 0)"><i>+</i>发表帖子</a></p>{/if}
+						</div>
+					</div>
+					{/if}
+				</div>
+				</div>
+				</div>				
+				<!--帖子列表 end-->
+			</div>
+		</div>
+		<div class="col-sub">
+			<!-- 帖子 -->
+			<div class="category-nav-container mod-wrap">
+				<div class="category-menu-nav">
+					<ul class="menu-nav-tree">
+						<li class="menu-nav {if $viewtype == 'thread'}menu-nav-current{/if}">
+							<a href="home.php?mod=space&uid=$space[uid]&do=thread&view=me&type=thread&from=space">
+								<i class="menu-nav-icon icon-post"></i>
+								<em>全部发帖</em>
+								<span class="number">{if $threadCount > 999}999+{else}$threadCount{/if}</span>
+							</a>
+						</li>
+						<li class="menu-nav {if $viewtype == 'reply'}menu-nav-current{/if}">
+							<a href="home.php?mod=space&uid=$space[uid]&do=thread&view=me&type=reply&from=space">
+								<i class="menu-nav-icon icon-reply"></i>
+								<em>全部回复</em>
+								<span class="number">{if $replyCount > 999}999+{else}$replyCount{/if}</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+            <div style="padding:20px 0px 0px 0px;;"><!--{ad/custom_465}--></div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+jQuery(function(){
+	//处理图片图片无正常显示时，显示默认图
+	jQuery('.realimg').each(function(){
+		var thisobj    = jQuery(this);						
+		var thiswidth  = thisobj.width();							
+		var thisheight = thisobj.height();
+		if ((thiswidth == 120 && thisheight == 120)|| thiswidth <= 30) {
+			thisobj.remove();
+		} else {
+			thisobj.css({'width':'135px','height':'90px'}).show();
+		}
+	});
+	jQuery('.realimgContainer').each(function(){
+		if (jQuery(this).find('.realimg').length == 0) {
+			jQuery(this).remove();
+		}
+	});
+});
+</script>
+<!--main-content end-->
+<!--{subtemplate home/space_footer_uc}-->
+<!--{subtemplate common/footer_8264_new}-->

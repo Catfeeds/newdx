@@ -1,0 +1,63 @@
+<?php if(!defined('IN_DISCUZ')) exit('Access Denied'); ?>
+<div class="noticebox">
+    <span><em>户外有风险，仅供参考</em></span>
+</div>
+<!--底部开始-->
+<footer class="footer-new">
+    <a href="http://www.8264.com/xuexiao/">电脑版</a>
+    <a href="http://app.zaiwai.com">在外APP</a>
+    <p class="copyRight">Copyright 2013 - 2017  8264.com. All Rights Reserved</p>
+</footer>
+<!--底部结束-->
+<!--底部浮动开始-->
+<div class="bottom_bar">
+    <div class="kaoshiicon foot_button">
+        <a href="http://www.8264.com/xuexiao/" class="select">
+            <i class="select"></i>
+            学习考试
+        </a>
+    </div>
+    <div class="huiguicon foot_button">
+        <a href="http://www.8264.com/xuexiao/video.html">
+            <i></i>
+            视频课程
+        </a>
+    </div>
+    <div class="hezuoicon foot_button">
+        <a href="http://www.8264.com/xuexiao/huodong.html">
+            <i></i>
+            线下课程
+        </a>
+    </div>
+    <div class="huiyuanicon foot_button">
+        <a href="http://www.8264.com/xuexiao/user.html">
+            <i></i>
+            会员中心
+        </a>
+    </div>
+</div>
+<!--底部浮动结束-->
+<script type="text/javascript">
+    var url = window.location.href;
+    if(url.indexOf('video') > 0){
+        $('.huiguicon a').addClass('select');
+        $('.huiguicon i').addClass('select');
+        $('.huiguicon').siblings().find('a').removeClass('select');
+        $('.huiguicon').siblings().find('i').removeClass('select');
+    }else if(url.indexOf('user') > 0){
+        $('.huiyuanicon a').addClass('select');
+        $('.huiyuanicon i').addClass('select');
+        $('.huiyuanicon').siblings().find('a').removeClass('select');
+        $('.huiyuanicon').siblings().find('i').removeClass('select');
+    }else if(url.indexOf('huodong') > 0){
+        $('.hezuoicon a').addClass('select');
+        $('.hezuoicon i').addClass('select');
+        $('.hezuoicon').siblings().find('a').removeClass('select');
+        $('.hezuoicon').siblings().find('i').removeClass('select');
+    }else{
+        $('.kaoshiicon a').addClass('select');
+        $('.kaoshiicon i').addClass('select');
+        $('.kaoshiicon').siblings().find('a').removeClass('select');
+        $('.kaoshiicon').siblings().find('i').removeClass('select');
+    }
+</script>

@@ -1,0 +1,329 @@
+/* CSS reset */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
+	margin:0;
+	padding:0;
+}
+html,body {
+	margin:0 auto;
+	padding:0;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+fieldset,img { 
+	border:0;
+}
+input{
+	border:1px solid #b0b0b0;
+	padding:3px 5px 4px;
+	color:#979797;
+	width:190px;
+}
+address,caption,cite,code,dfn,th,var {
+	font-style:normal;
+	font-weight:normal;
+}
+ol,ul {
+	list-style:none;
+}
+caption,th {
+	text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-size:100%;
+	font-weight:normal;
+}
+q:before,q:after {
+	content:'';
+}
+abbr,acronym { border:0;
+}
+/* General Codrops Demo Style */
+body{
+	background:#000 url(http://static.8264.com/static/images/forum/pattern.jpg) repeat top left ;
+	color:#fff;
+	font-family: 'PT Sans Narrow', Arial, sans-serif;
+	font-size:14px;
+}
+a{
+	color:#ddd;
+	text-decoration:none;
+}
+a:hover{
+	color:#00c6e3;
+}
+p.sub{
+	padding:25px 10px 10px 10px;
+	text-align:left;
+	color:#aaa;
+}
+.clr{
+	clear:both;
+}
+h1{
+	margin:5px;
+	font-size:24px;
+	text-align:center;
+	color:#fff;
+	font-family:"Pacifico", Georgia, "Times New Roman", serif;
+	text-shadow:1px 1px 1px #000;
+	padding-bottom:10px;
+	line-height:40px;
+}
+h1 span{
+	font-size:10px;
+	display:block;
+	letter-spacing:2px;
+	font-family: 'Trebuchet MS', 'Myriad Pro', Arial, sans-serif;
+	color:#00c6e3;
+	line-height:14px;
+	padding-top:10px;
+	text-shadow:none;
+	text-transform:uppercase;
+}
+/* Header Style */
+.nav960{ width:100%;}
+.top1{ background: url(http://static.8264.com/static/images/forum/nav_bg.jpg) repeat-x 0px 0px;}
+.top1_l{ _padding:3px 0px 0px 19px; padding:0px 0px 0px 19px;}
+.top1_r{ _padding:5px 19px 0px 0px; padding:0px 0px 0px 19px;}
+.header{
+	font-size:13px;
+	background:#000;
+	opacity:0.9;
+	text-transform:uppercase;
+	-moz-box-shadow: 1px 0px 2px #000;
+	-webkit-box-shadow: 1px 0px 2px #000;
+	box-shadow: 1px 0px 2px #000;
+}
+.header a{
+	line-height:18px;
+	padding:0 4px;
+	letter-spacing:1px;
+	text-shadow:1px 1px 1px #000;
+	color:#ddd;
+}
+.header a:hover{
+	color:#fff;
+}
+.header a span{
+	font-weight:bold;
+}
+.header span.right_ab{
+	float:right;
+}
+.content{
+	margin:0px 25px 30px 25px;
+}
+@media screen and (max-width: 640px) {
+	.header a{
+		display:block;
+		text-align:center;
+		font-size:10px;
+		text-shadow:none;
+	}
+	.header span.right_ab{
+		float:none;
+	}
+}
+/* Elastislide Style */
+.es-carousel-wrapper{
+	background: #101010;
+	padding:10px 27px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	position:relative;
+	
+	-moz-box-shadow:0px 1px 3px rgba(0, 0, 0, 0.9);
+	-webkit-box-shadow:0px 1px 3px rgba(0, 0, 0, 0.9);
+	box-shadow:0px 1px 3px rgba(0, 0, 0, 0.9);
+	position:relative;
+	margin-bottom:20px;
+}
+.es-carousel{
+	overflow:hidden;
+	background:#000;
+}
+.es-carousel ul{
+	display:none;
+}
+.es-carousel ul li{
+	height:100%;
+	float:left;
+	display:block;
+}
+.es-carousel ul li a{
+	display:block;
+	border-style:solid;
+	border-color:#222;
+	opacity:0.8;
+	-webkit-touch-callout:none;
+	/* option */
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	-ms-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+.es-carousel ul li.selected a{
+	border-color:#fff;
+	opacity:1.0;
+}
+.es-carousel ul li a img{
+	display:block;
+	margin-left:5px;
+	border:none;
+	max-height:100%;
+	max-width:100%;
+}
+.es-nav span{
+	position:absolute;
+	top:50%;
+	left:8px;
+	background:transparent url(http://static.8264.com/static/images/forum/nav_thumbs.png) no-repeat top left;
+	width:14px;
+	height:26px;
+	margin-top:-13px;
+	text-indent:-9000px;
+	cursor:pointer;
+	opacity:0.8;
+}
+.es-nav span.es-nav-next{
+	right:8px;
+	left:auto;
+	background-position:top right;
+}
+.es-nav span:hover{
+	opacity:1.0;
+}
+.rg-thumbs{
+	width:100%;
+}
+.rg-image-wrapper{
+	position:relative;
+	padding:20px 0px;
+	background:transparent url(http://static.8264.com/static/images/forum/black.png) repeat top left;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px; _height:100%; z-index:55;
+	
+}
+
+.rg-image-wrapper p{
+	margin:0px 0px 10px 50px;
+}
+
+.rg-image-nav a{
+	position:absolute;
+	top:0px;
+	_top:2px;
+	left:0px;
+	background:#000 url(http://static.8264.com/static/images/forum/nav.png) no-repeat -20% 50%;
+	width:28px;
+	height:100%;
+	_height:120px;
+	text-indent:-9000px;
+	cursor:pointer;
+	opacity:0.3;
+	outline:none;
+	-moz-border-radius: 10px 0px 0px 10px;
+	-webkit-border-radius: 10px 0px 0px 10px;
+	border-radius: 10px 0px 0px 10px;
+}
+.rg-image-nav a.rg-image-nav-next{
+	right:0px;
+	left:auto;
+	background-position:115% 50%;
+	-moz-border-radius: 0px 10px 10px 0px;
+	-webkit-border-radius: 0px 10px 10px 0px;
+	border-radius: 0px 10px 10px 0px;
+}
+.rg-image-nav a:hover{
+	opacity:0.8;
+}
+
+
+
+.rg-caption {
+	text-align:center;
+	margin-top:0 auto;
+	vertical-align: middle;
+
+}
+
+
+
+
+
+.pic_title_yy{ 
+	width:100%; 
+	color:#9a9695; 
+	font-size:12px;
+	margin:15px 0px;
+}
+.pic_title_yy a{ 
+	text-decoration:none;
+}
+.pic_title_yy_l{ 
+	float:left; 
+	width:700px;
+}
+.pic_title_yy_l img{ 
+	width:64px; 
+	height:64px; 
+	float:left;
+}
+.pic_title_yy_l p{ 
+	width: 440px; 
+	float:left; 
+	height:64px; 
+	overflow:hidden; 
+	color:#9a9695; 
+	padding:0px 0px 0px 12px; 
+	margin:0; 
+	line-height:2.1;
+}
+.pic_title_yy_l p a{ 
+	color:#9a9695; 
+	font-size:16px; 
+	font-family:"微软雅黑";
+}
+.pic_title_yy_r{ 
+	float:right; 
+	width:420px; 
+	height:55px; 
+	overflow:hidden; 
+	text-align:right; 
+	padding:9px 0px 0px 0px; 
+	line-height:1.8;
+}
+.pic_title_yy_r a{
+	color:#9a9695;
+}
+
+.show_menu{overflow:hidden; width:100%; height:105px;position:relative;z-index:10;}
+.piclist{width:300000px; position:absolute; z-index:-10;}
+.piclist img{cursor:pointer; width:100px; height:100px; border:0;}
+.plclist ul{float:left;padding-right:5px;}
+.piclist li{list-style:none;float:left; width:100px; height:100px;border:3px solid #ccc;margin-left:5px;}
+.contrl{margin:0 10px;cursor:pointer}
+.piclist li.selected{border-color:#2e99b9;}
+
+.mouseleft { background:url(http://static.8264.com/static/images/forum/mousbg.png) repeat ;  position:absolute;width:50%;height:100%; left:0px;top:0px;cursor:pointer;  z-index:99;}
+
+
+.mouseright {background:url(http://static.8264.com/static/images/forum/mousbg.png) repeat; position:absolute;width:50%;height:100%;right:0px;top:0px;cursor:pointer; z-index:99; }
+
+
+
+.footer{ background:none;}
+
+
+
+
+.buttonleft{width:30%; height:200px; left:100px;  float: left; position: fixed !important; top/**/: 280px; position: absolute; z-index: 100; top:expression(offsetParent.scrollTop+280); cursor: pointer; border:#000 solid 0px;}
+
+.buttonright{width:30%; height:200px; right:100px;  float:right; position: fixed !important; top/**/: 280px; position: absolute; z-index:100; top:expression(offsetParent.scrollTop+280); cursor: pointer; border:#000 solid 0px;}
+
+

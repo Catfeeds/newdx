@@ -1,0 +1,284 @@
+{if $_G[gp_do] == 'album'}
+ <link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/home/album-app.css?{VERHASH}" /> 
+{else}
+ <link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/home/blog-app.css?{VERHASH}" /> 
+{/if}
+<!--<link rel="stylesheet" type="text/css" href="http://www.8264.com/static/css/home/uc_tanchukuang.css?{VERHASH}" />-->
+ <link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/home/uc_tanchukuang.css?{VERHASH}" /> 
+<style type="text/css">
+.newswarpten {display:none!important;}
+</style>
+<script type="text/javascript">
+jQuery(function(){
+	//管理框	
+	jQuery('.manageContainer li').hover(function(){
+		var opObj = jQuery(this).find('.mod-op');		
+		opObj.find('.pl-popup-btn').show();
+		opObj.find('.pl-popup-panel').hide();
+		opObj.show();
+	},function(){
+		var opObj = jQuery(this).find('.mod-op');
+		opObj.hide();
+	});
+	
+	jQuery('.manageContainer .pl-popup-btn').click(function(){
+		jQuery(this).next().show();
+	});
+
+	//请稍候的样式重写
+	waithandle = setInterval(function(){
+		var flbobj = jQuery('.flb');
+		if (flbobj.length > 0) {
+			if (flbobj.html().indexOf("static/image/common/loading.gif") > -1) {
+				jQuery('.flb').addClass('dhinfo plr').removeClass('flb');
+				jQuery('#fwin_dialog_close').parent().remove();
+				jQuery('.dhinfo em').css({'padding':'0 60px'});
+			}
+		}
+	},10);
+
+	//更换封面
+	if (jQuery('.skin-layer-shadow').length > 0) {
+		jQuery('.p-profile').hover(function(){
+			jQuery('.skin-layer-shadow').css({'height':'30px'});
+		},function(){
+			jQuery('.skin-layer-shadow').css({'height':'0'});
+		});	
+	}
+	if (!jQuery('.cust-page-list .prev').hasClass('simple')) {
+		jQuery('.cust-page-list .prev').remove();	
+	}	
+});
+
+function showMenu_uc(id,top,left) {
+	showMenu(id);
+	jQuery('#'+id+'_menu').css({'top':top+'px'});
+	if (left) {
+		jQuery('#'+id+'_menu').css({'left':left+'px'});
+	}
+}
+
+function showDialog_uc(message) {
+	showDialog(message, 'notice');
+	jQuery('.altw').addClass('dhinfo plr');
+	jQuery('.alert_info').addClass('erroricon').removeClass('alert_info');
+	jQuery('.alert_error').addClass('erroricon').removeClass('alert_error');
+	jQuery('.flb').hide();
+	jQuery('.pns').hide();
+	jQuery('#fwin_dialog_cover').remove();	
+	jQuery('.dhinfo').append('<a href="javascript:void(0);" onclick="hideMenu(\'fwin_dialog\', \'dialog\');" class="closebtn"></a>');
+	return false;
+}
+</script>	
+
+<div id="container" class="ic-page">
+	<!--header-->
+	<div class="lazy-showBG blur-bg">
+		<div class="header-bg" {if $coverurl}style="background-image:url('$coverurl');"{/if}></div>
+	</div>
+	<div id="header">
+	<div class="p-profile container" {if $coverurl}style="background-image:url('$coverurl');"{/if}>
+		<div class="p-profile-name">
+			<h3 class="tit">
+				<a href="home.php?mod=space&uid=$space[uid]" class="text-user">
+					<span class="u-vip">$space[username]</span>
+				</a>
+				<!--关注关系-->
+				{if !$space[self]}
+					{if empty($space[mutual])}
+										
+					{if $_G['uid']}
+					<a href="home.php?mod=spacecp&ac=friend&op=add&uid={$space[uid]}&is_uc=1" class="p-btn-c btn-28" id="ajax_follow_me_{$space[uid]}" onclick="showWindow(this.id, this.href, 'get', 0);">
+					{else}
+					<a href="member.php?mod=logging&action=login" class="p-btn-c btn-28">
+					{/if}
+						<i class="icon-f icon-add-f"></i>关注
+					</a>
+					
+					{elseif $space[mutual] == 1}
+					<a href="javascript:void(0);" class="p-btn-d btn-28" onmouseover="var offleft = jQuery('.text-user').width()+200;showMenu_uc(this.id,'35',offleft);" id="followselect">
+						<i class="icon-f icon-focus-f"></i>已关注
+					</a>
+					{elseif $space[mutual] == 2}
+					<a href="javascript:void(0);" class="p-btn-d btn-28" onmouseover="var offleft = jQuery('.text-user').width()+200;showMenu_uc(this.id,'35',offleft);" id="followselect">
+						<i class="icon-f icon-addtwo-f"></i>互相关注
+					</a>
+					{/if}
+					{if $space[mutual]}
+					<div class="layer-list" id="followselect_menu" style="display:none;">
+						<a href="home.php?mod=spacecp&ac=friend&op=changegroup&uid={$space[uid]}&is_uc=1" class="" id="friend_group_{$space[uid]}" onclick="showWindow(this.id, this.href, 'get', 0);">
+							<span class="t">设置分组</span>
+						</a>
+						<a href="home.php?mod=spacecp&ac=friend&op=ucignore&uid={$space[uid]}&is_uc=1" class="" id="ajax_unfollow_me_{$space[uid]}" onclick="showWindow(this.id, this.href, 'get', 0);">
+							<span class="t">取消关注</span>
+						</a>
+					</div>
+					{/if}
+					<script type="text/javascript">
+					jQuery(function(){
+						jQuery("#operation a.unfollow").off("click").click(function(e) {
+							var url = "home.php?mod=spacecp&ac=friend&op=ignore&uid=%uid&confirm=1";
+							url = url.replace(/%uid/g, uid).replace(/&amp;/g, "&");
+							dconfirm('取消关注', '确认取消关注吗?', function() {
+								jQuery.post(url, {uid:uid}, function(data) {
+									if(data == 'success') {
+										showDialog("<p>取消关注成功</p>", 'notice', '','' , 0, '', '', '', '', 2);
+										li.remove();
+									}
+								});
+							});
+							e.preventDefault();
+							jQuery(this).parent("div").hide();
+						});
+					});
+					</script>
+				{/if}
+				<!--关注关系 home.php?mod=spacecp&ac=pm&touid=$space[uid] end-->			
+				{if !$space[self]}<a href="home.php?mod=space&do=pm&subop=view&touid=$space[uid]&daterange=5#f_pst" class="p-btn-d btn-28" target="_blank"><i class="send-mess"></i>发消息</a>{/if}				
+			</h3>
+		</div>
+		<div class="p-profile-data">
+			<div class="avatar">
+				<a href="home.php?mod=space&uid=$space[uid]">
+					<!--{avatar($space[uid],middle)}-->
+				</a>
+			</div>
+			<ul class="user-atten">
+				<li>
+					<a href="home.php?mod=space&uid=$space[uid]&do=friend" target="_blank">
+						<strong>{if $space[friends]}{$space[friends]}{else}0{/if}</strong>
+						<span class="txt">关注</span>
+					</a>
+				</li>
+				<li class="last">
+					<a href="home.php?mod=space&uid=$space[uid]&do=friend&view=fans" target="_blank">
+						<strong>{if $space[fans]}{$space[fans]}{else}0{/if}</strong>
+						<span class="txt">粉丝</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!--更换封面-->
+		{if $space[self]}		
+		<div class="skin-layer-shadow" style="display:block;height:0;overflow:hidden;">
+			<div id="uploadpic"></div>
+		</div>
+		{/if}
+		<!--更换封面 end-->
+	</div>
+	</div>
+	<!--header end-->
+	<!--content-->
+	<div id="content">
+		<!--module-->
+		<div class="module">
+			<div class="lazy-showBG">
+				<div class="main-nav-bg"></div>
+			</div>
+			<div class="global-nav">
+			<div class="container">
+				<!--nav-->
+				<div class="global-nav-inner">
+				<ul class="global-actions">
+					<li>
+						<a href="home.php?mod=space&uid=$space[uid]{if $_G['adminid'] == 1}&view=admin{/if}" {if $do == 'index' || $do == 'home'}class="active"{/if}>首页</a>
+					</li>
+					<li class="sn-separator"></li>
+					<li>
+						<a href="home.php?mod=space&uid=$space[uid]&do=thread&view=me&from=space" {if $_G[gp_do] == 'thread'}class="active"{/if}>帖子</a>
+					</li>
+					<li class="sn-separator"></li>					
+					<li>
+						<a href="home.php?mod=space&uid=$space[uid]&do=ownactivity" {if $_G[gp_do] == 'ownactivity'}class="active"{/if}>活动</a>
+					</li>
+					<li class="sn-separator"></li>
+					<li>
+						<a href="home.php?mod=space&uid=$space[uid]&do=dianping" {if $_G[gp_do] == 'dianping'}class="active"{/if}>点评</a>
+					</li>
+					<li class="sn-separator"></li>
+					<li>
+						<a href="home.php?mod=space&uid=$space[uid]&do=blog&view=me&from=space" {if $_G[gp_do] == 'blog' || $_G[gp_ac] == 'blog'}class="active"{/if}>日志</a>
+					</li>
+					<li class="sn-separator"></li>
+					<li>
+						<a href="home.php?mod=space&uid=$space[uid]&do=album&view=me" {if $_G[gp_do] == 'album'}class="active"{/if}>相册</a>
+					</li>
+				</ul>
+				</div>
+				<!--nav end-->
+				<ul class="statistic-data">
+					<li>
+						<a href="forum.php?mod=forumdisplay&fid=483" target="_blank">
+							<span class="text-atr">8264币</span>
+							<b class="text-count">$space[extcredits5]</b>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);" id="ucentermore" onmouseover="showMenu_uc(this.id,'40')" class="showmenu">
+							<span class="text-atr">更多</span>
+<!--							<b class="text-more">+</b>-->
+						</a>
+					</li>
+					<!--{if checkperm('allowbanuser') || checkperm('allowedituser') || $_G[adminid] == 1}-->
+						<!--{if checkperm('allowbanuser') || checkperm('allowedituser')}-->
+						<li>
+							<!--{if checkperm('allowbanuser')}-->
+							<a href="{if $_G[adminid] == 1}admin.php?action=members&operation=ban&username=$space[username]&frames=yes{else}forum.php?mod=modcp&action=member&op=ban&uid=$space[uid]{/if}" id="usermanageli" onmouseover="showMenu_uc(this.id,'40');" class="showmenu" target="_blank">
+							<!--{else}-->
+							<a href="{if $_G[adminid] == 1}admin.php?action=members&operation=search&username=$space[username]&submit=yes&frames=yes{else}forum.php?mod=modcp&action=member&op=edit&uid=$space[uid]{/if}" id="usermanageli" onmouseover="showMenu_uc(this.id,'40');" class="showmenu" target="_blank">
+							<!--{/if}-->
+								<span class="text-atr">{lang member_manage}</span>
+							</a>
+						</li>
+						<!--{/if}-->
+						<!--{if $_G[adminid] == 1}-->
+						<li>
+							<a href="forum.php?mod=modcp&action=thread&op=post&do=search&searchsubmit=1&users=$space[username]" id="umanageli" onmouseover="showMenu_uc(this.id,'40')" class="showmenu">
+								<span class="text-atr">{lang content_manage}</span>
+							</a>
+						</li>
+						<!--{/if}-->
+					<!--{/if}-->
+				</ul>
+				<ul id="ucentermore_menu" class="p_pop" style="display:none;">
+					<!--<li><a href="home.php?mod=space&uid=$space[uid]&do=doing&view=me&from=space">{lang doing}</a></li>
+					<li><a href="home.php?mod=space&uid=$space[uid]&do=share&view=me&from=space">{lang share}</a></li>
+					<li><a href="home.php?mod=space&uid=$space[uid]&do=wall">{lang message_board}</a></li>			-->		
+					{if $space[self]}<li><a href="home.php?mod=space&do=favorite">收藏</a></li>{/if}
+					
+					<!--<li><a href="home.php?mod=medal" target="_blank">勋章</a></li>
+					<li><a href="group.php?mod=my" target="_blank">群组</a></li> 要判断$space[self]-->					
+					
+					<li><a href="home.php?mod=spacecp&ac=credit&uid={$space[uid]}&op=base">积分</a></li>
+					<li><a href="home.php?mod=space&uid=$space[uid]&do=profile">{lang memcp_profile}</a></li>
+				</ul>
+				<!--{if checkperm('allowbanuser') || checkperm('allowedituser') || $_G[adminid] == 1}-->
+					<!--{if checkperm('allowbanuser') || checkperm('allowedituser')}-->
+					<ul id="usermanageli_menu" class="p_pop" style="display:none;">
+						<!--{if checkperm('allowbanuser')}-->
+							<li><a href="{if $_G[adminid] == 1}admin.php?action=members&operation=ban&username=$space[username]&frames=yes{else}forum.php?mod=modcp&action=member&op=ban&uid=$space[uid]{/if}" target="_blank">{lang user_ban}</a></li>
+						<!--{/if}-->
+						<!--{if checkperm('allowedituser')}-->
+							<li><a href="{if $_G[adminid] == 1}admin.php?action=members&operation=search&username=$space[username]&submit=yes&frames=yes{else}forum.php?mod=modcp&action=member&op=edit&uid=$space[uid]{/if}" target="_blank">{lang user_edit}</a></li>
+						<!--{/if}-->
+					</ul>
+					<!--{/if}-->
+					<!--{if $_G['adminid'] == 1}-->
+					<ul id="umanageli_menu" class="p_pop" style="display:none;">
+						<li><a href="admin.php?action=threads&users=$space[username]" target="_blank">{lang manage_post}</a></li>
+						<li><a href="admin.php?action=doing&searchsubmit=1&users=$space[username]" target="_blank">{lang manage_doing}</a></li>
+						<li><a href="admin.php?action=blog&searchsubmit=1&uid=$space[uid]" target="_blank">{lang manage_blog}</a></li>
+						<li><a href="admin.php?action=feed&searchsubmit=1&uid=$space[uid]" target="_blank">{lang manage_feed}</a></li>
+						<li><a href="admin.php?action=album&searchsubmit=1&uid=$space[uid]" target="_blank">{lang manage_album}</a></li>
+						<li><a href="admin.php?action=pic&searchsubmit=1&users=$space[username]" target="_blank">{lang manage_pic}</a></li>
+						<li><a href="admin.php?action=comment&searchsubmit=1&authorid=$space[uid]" target="_blank">{lang manage_comment}</a></li>
+						<li><a href="admin.php?action=share&searchsubmit=1&uid=$space[uid]" target="_blank">{lang manage_share}</a></li>
+						<li><a href="admin.php?action=threads&operation=group&users=$space[username]" target="_blank">{lang manage_group_threads}</a></li>
+						<li><a href="admin.php?action=prune&searchsubmit=1&operation=group&users=$space[username]" target="_blank">{lang manage_group_prune}</a></li>
+					</ul>
+					<!--{/if}-->
+				<!--{/if}-->
+			</div>
+			</div>
+		</div>
+		<!--module end-->

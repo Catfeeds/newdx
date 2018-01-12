@@ -1,0 +1,262 @@
+<div class="clboth pt26" id="{$editorid}_body">
+	<div class="fu_l">
+		<div class="editerbox">
+			<div id="{$editorid}_controls" class="edierbar clboth">
+				<a id="{$editorid}_bold" title="{lang e_bold}" class="bold"></a>
+				<div class="font_size">
+					<a href="javascript:;" class="small" onclick="discuzcode('fontsize', 2);" title="小"  ></a>
+					<a href="javascript:;" class="medium" onclick="discuzcode('fontsize', 3);" title="中"  ></a>
+					<a href="javascript:;" class="large" onclick="discuzcode('fontsize', 4);" title="大"  ></a>
+				</div>
+
+				<div class="colorbox">
+					<a href="javascript:;" class="gray" title="灰色" onclick="discuzcode('forecolor', '#585858')" onmouseout="setEditorTip('')" onmouseover="setEditorTip('灰色')" ></a>
+					<a href="javascript:;" class="blue" title="蓝色" onclick="discuzcode('forecolor', 'Blue')" onmouseout="setEditorTip('')" onmouseover="setEditorTip('蓝色')" ></a>
+					<a href="javascript:;" class="red" title="红色" onclick="discuzcode('forecolor', 'Red')" onmouseout="setEditorTip('')" onmouseover="setEditorTip('红色')" ></a>
+				</div>
+
+				<div class="text_align">
+					<a id="{$editorid}_justifyleft" class="text_left" title="{lang e_left}"></a>
+					<a id="{$editorid}_justifycenter" class="text_center" title="{lang e_center}"></a>
+				</div>
+				<div class="fjicon">
+					<a title="{lang e_url}" cate="link" class="linkicon" href="javascript:void(0);"></a>
+					<!--{if $_G['forum']['allowmediacode']}-->
+					<a class="shipinicon" cate="shipin" title="{lang e_video_title}" href="javascript:void(0);"></a>
+					<!--{/if}-->
+					<!--{if $_G['group']['allowpostattach']}-->
+					<a cate="fujian" class="fujianicon" title="{lang e_attach_title}" href="javascript:void(0);"><span class="tanhao" style="display: none;" id="{$editorid}_attachn"></span></a>
+					<!--{/if}-->
+					<div class="fujianout" cate="fujian" id="{$editorid}_attach_menu" style="display:none;{if ! $_G['forum']['allowmediacode']}left:40px;{/if}">
+						<div class="bqtitle">
+							<a cate='listattach' href="javascript:;" class="zhong" >{lang attachment_list}</a>
+							<!--{if $allowuploadnum}--><a cate='uploadattach' href="javascript:;">{lang common_upload}</a><!--{/if}-->
+							<span class="close14_14_24w closepostion"></span>
+						</div>
+						<div class="fujiancon">
+							<div id="noattachtips" class="fujinaup listattach" <!--{if empty($attachs['used']) && empty($attachs['unused'])}--> style="display:block;"<!--{/if}-->>
+								<div class="imgupcon">
+									<p>本帖还没有附件</p>
+									<input name="" type="button" class="imgfjbutton" />
+								</div>
+							</div>
+							<div class="fujian_list listattach" <!--{if empty($attachs['used']) && empty($attachs['unused'])}-->style="display:none;"<!--{/if}-->>
+								<ul>
+									<li class="fujian_list_th clboth">
+										<span class="filename">文件名</span>
+										<span class="readpower needdown">
+										{if $_G['group']['allowsetattachperm']}
+											阅读权限
+											<em class="notecon showdowndiv">阅读权限按由高到低排列，高于或等于选中组的用户才可以阅读。</em>
+										{/if}
+										</span>
+										<span class="info">描述</span>
+									</li>
+								</ul>
+								<span id="listofattach" style="display: block; position:relative">
+								<ul id="attachlist"></ul>
+								<div class="tsupfujian">以下是你上次上传但没有使用的附件</div>
+								<ul id="attachlist_old"></ul>
+								<div style="clear: both;"></div>
+								</span>
+								<div class="shuoming">点击文件名添加到帖子内容中，<em>"attach://"</em> 开头的附件地址支持任何人下载请谨慎添加</div>
+							</div>
+							<div class="fujinaup uploadattach" style="display:none;">
+								<ul class="clboth" id="attach_upload_body"></ul>
+								<div class="notice">
+									<p>
+										文件尺寸: 小于 8.7MB<br/>
+										可用扩展名: {eval echo str_replace(array('jpeg,','gif,','jpg,','png,') ,'' ,$_G['group']['attachextensions'])} <br/>
+										此处只允许上传除图片外的其他文件，上传图片请点击页面右侧上传按钮
+									</p>
+									<p id="attachbtn" style="text-align:center"></p>
+									<div class="noticetj" id="uploadbtn"><input name="" type="button" class="qxbutton" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="" type="button" class="tjbutton" /></div>
+									<span id="uploadingtips">
+									<p style="text-align: center;"><img src="http://static.8264.com/static/image/common/uploading.gif" style="vertical-align: middle;"/></p>
+									<div class="noticeshangchuan">上传中，请稍后，您可以暂时关闭小窗口，上传完成后会提示您。</div>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="shipinout" cate="shipin">
+						<div class="shipinclose"><span class="close14_14_24w closepostion"></span></div>
+						<div class="formshipin">
+							<span class="weblink"><input name="" type="text" class="input230" /><em>请输入视频文件地址</em></span>
+							<span class="w_h">
+								<em>宽：<input name="" type="text" class="input52" value="500" /></em>
+								<em>高：<input name="" type="text" class="input52" value="375" /></em>
+							</span>
+							<span class="fxauto clboth"><input name="" type="checkbox" value="" /><label>是否自动播放</label></span>
+							<span class="notice">支持优酷、土豆、56、酷六等视频网址<br>支持 wma avi rmvb mov swf flv 等音乐格式<br>示例：http://sever/movie.wma</span>
+						</div>
+						<div class="tjqx"><input name="" type="button" class="qxbutton" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="" type="button" class="tjbutton tjb" /></div>
+					</div>
+					<div class="linkout" cate="link">
+						<div class="linkoutclose"><span class="close14_14_24w closepostion"></span></div>
+						<div class="formlink">
+							<span class="weblink"><input type="text" class="input230" /><em>请输入链接地址</em></span>
+							<span class="weblink"><input type="text" class="input230" /><em>请输入链接文字</em></span>
+						</div>
+						<div class="tjqx"><input type="button" class="qxbutton" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="tjbutton tjb" /></div>
+					</div>
+				</div>
+				<!--{if in_array($_G['groupid'], array(1,2,3)) || $_G['groupid'] >= 13}-->
+				<!-- @提醒 -->
+				<div class="fjicon">
+					<a href="javascript:void(0);" class="aticon" onclick="atlist_show();"></a>
+					<div class="atpop out">
+						<div class="linkoutclose" onclick="javascript:atlist_hide();"><span class="close14_14_24w closepostion"></span></div>
+						<div class="formlink">
+							<span class="weblink"><input type="text" class="input230" name="username" onkeyup="atlist_get(this.value)" /><em>请输入您要@的用户名</em></span>
+						</div>
+						<div class="atlist" id="atlist"></div>
+					</div>
+				</div>
+				<!-- //@提醒 -->
+				<!--{/if}-->
+				<label id="{$editorid}_switcher" class="y" ><input id="{$editorid}_switchercheck" type="checkbox" class="pc" name="checkbox" value="0" {if !$editor[editormode]}checked="checked"{/if} onclick="switchEditor(this.checked?0:1)" />{lang code}</label>
+				<div id="{$editorid}_button">
+					<div id="{$editorid}_adv_s0">
+						<a id="{$editorid}_paste"></a>
+					</div>
+				</div>
+			</div>
+			<div class="edt areatext" style="height: 400px;"><textarea name="$editor[textarea]" id="{$editorid}_textarea" class="pt" tabindex="2" rows="15">$editor[value]</textarea></div>
+			<!--{subtemplate common/editor}-->
+		</div>
+	</div>
+	<div class="fu_r">
+		<div class="imgfbbox" id="right_tools">
+			<div class="imgfbtitle">
+				<span class="zhong uploadpic">上传图片</span><span class="usealbum">使用相册</span>
+			</div>
+			<div class="uploadpicshow imgfbboxcon">
+				<div class="imgfbboxcon">
+					<div class="imgfbbox_1">
+						<div class="imgupbuttoncon">
+
+							<div style="margin:0 auto;width:208px;">
+								<input id="fid" value="{$_G[fid]}" type="hidden">
+								<input id="editorid" value="{$editorid}" type="hidden">
+								<input id="url_action" value="{$action}" type="hidden">
+								<input id="url_policy" value="{$policy}" type="hidden">
+								<input id="url_signature" value="{$sign}" type="hidden">
+
+								<div id="filePicker">请选择图片</div>
+								<div><p style="display:none;" id="uploadtips"></p></div>
+							</div>
+
+							<script type="text/javascript" src="http://static.8264.com/static/js/webuploader.js"></script>
+							<script type="text/javascript" src="http://static.8264.com/static/js/webuploader_forum_start.js?{VERHASH}"></script>
+						</div>
+						<div class="imgmoreup">
+							<span class="imgmoreupicon"></span>
+							<span><img src="http://static.8264.com/static/images/common/imglistbg.jpg"/></span>
+							<span class="note">可批量上传50张图片<br/>单张图片不超过8.7M<br/>图片边长小于2500像素<br/>支持jpg、jpeg、gif、png格式</span>
+						</div>
+						<div style="display:none" id="uploadimagediv">
+							<div class="imglistcon clboth">
+								<ul id="uploadimagelist">
+									<!--{if !empty($imgattachs['used'])}--><!--{eval $imagelist = $imgattachs['used'];}-->
+										<!--{template forum/ajax_imagelist}-->
+            				        <!--{/if}-->
+                                    <!--{if !empty($imgattachs['unused'])}-->
+                                    	<!--{eval $imagelist = $imgattachs['unused'];}-->
+                                    	<!--{template forum/ajax_imagelist}-->
+                                    <!--{/if}-->
+								</ul>
+							</div>
+							<span class="djaddtz">点击图片插入帖子，请勿拖拽</span>
+							<div class="bcxc">
+								<a href="javascript:;" id="savetoalbum">保存相册</a>
+								<a href="javascript:;" id="insertallimage">全部添加</a>
+								<div class="bcxcout_selectout" id="selectsavealbum" style="display:none;">
+									<div class="bcxcout_selectoutclose"><span class="close14_14_24w closepostion"></span></div>
+									<div class="xcselect needdown">
+										<span>请选择相册</span><input type="hidden" name="uploadalbum" value="0" />
+										<div class="xcselectout showdowndiv">
+										<!--{loop $albumlist $album}-->
+											<a href="javascript:;" albumid="{$album[albumid]}">$album[albumname]</a>
+										<!--{/loop}-->
+											<a href="javascript:;" albumid="0">+创建新相册</a>
+										</div>
+									</div>
+									<div class="xcgx clboth"><input name="insertall" type="checkbox" value="" class="inputfx"/><em>勾选可保存图片到您的相册</em></div>
+								</div>
+								<div class="bcxcout_selectout" id="createnewalbum" style="display:none;">
+									<div class="bcxcout_selectoutclose"><span class="close14_14_24w closepostion"></span></div>
+									<span class="cjxctitle">创建相册</span>
+									<div class="cjxcinput">
+										<input name="newalbum" type="text" class="cjxctext" />
+									</div>
+									<div class="cjxcbutton"><input name="" type="button" class="cjbutton"/>&nbsp;&nbsp;&nbsp;&nbsp;<input name="" type="button" class="qxbutton" /></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="usealbumshow imgfbboxcon" style="display:none;">
+			<!--{if $albumlist}-->
+				<div class="xzxc needdown">
+					<span>选择相册</span>
+					<div class="xzxcout showdowndiv" style="display:none">
+						<!--{loop $albumlist $album}-->
+    					<a href="javascript:;" onclick="$('selectalbum_span').style.display = 'none';" albumid="$album[albumid]">$album[albumname]</a>
+    					<!--{/loop}-->
+					</div>
+				</div>
+				<div class="b_a_dox" id="selectalbum_span">
+					<span class="imgmoreupicon_on"></span>
+				</div>
+				<div id="albumphoto">
+					<div class="imgmoreup_no">
+						<span><img src="http://static.8264.com/static/images/common/imglistbg_1.jpg"/></span>
+						<span class="cxwithoutimg_text">请从我的相册中选择图片</span>
+					</div>
+				</div>
+			<!--{else}-->
+				<div class="imgmoreup_no">
+					<span><img src="http://static.8264.com/static/images/common/imglistbg_1.jpg"/></span>
+					<span class="cxwithoutimg_text">您的相册还没有照片</span>
+				</div>
+			<!--{/if}-->
+			</div>
+		</div>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+<!--{if $special != 4}-->
+<style>    
+.webuploader-container {
+	position: relative;
+}
+.webuploader-element-invisible {
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px,1px,1px,1px);
+}
+.webuploader-pick {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	background: #00b7ee;
+	padding: 10px 15px;
+	font-size: 16px;
+	color: #fff;
+	text-align: center;
+	width:178px;
+	border-radius: 3px;
+	overflow: hidden;
+}
+.webuploader-pick-hover {
+	background: #00a2d4;
+}
+
+.webuploader-pick-disable {
+	opacity: 0.6;
+	pointer-events:none;
+}
+</style>
+<!--{/if}-->

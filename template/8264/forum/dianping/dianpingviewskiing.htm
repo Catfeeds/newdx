@@ -1,0 +1,916 @@
+<!--{subtemplate common/header_8264}-->
+<link rel="stylesheet" type="text/css" href="/template/8264/css/common/reset.css" />
+<link rel="stylesheet" type="text/css" href="/template/8264/css/common/new_common.css" />
+<link rel="stylesheet" href="/source/plugin/skiing/css/reset.css?v=1" />
+<link rel="stylesheet" href="/source/plugin/skiing/css/style.css?v=1" />
+<script type="text/javascript">var fid = parseInt('$_G[fid]'), tid = parseInt('$_G[tid]');</script>
+<!--{if $modmenu['thread'] || $modmenu['post']}-->
+<script type="text/javascript" src="{$_G['setting']['jspath']}forum_moderate.js?{VERHASH}"></script>
+<!--{/if}-->
+<script type="text/javascript" src="{$_G['setting']['jspath']}forum_viewthread.js?{VERHASH}"></script>
+<script type="text/javascript">zoomstatus = parseInt($_G['setting']['zoomstatus']);var imagemaxwidth = '{IMAGEMAXWIDTH}';var aimgcount = new Array();</script>
+<!--新版头-->
+		<!--{subtemplate common/nav_8264_top}-->
+		<!--{subtemplate common/nav_8264_jian}-->
+<!--新版头-->
+
+<div id="ct" class="wp cl">
+<!--{if $_G['group']['allowpost'] && ($_G['group']['allowposttrade'] || $_G['group']['allowpostpoll'] || $_G['group']['allowpostreward'] || $_G['group']['allowpostactivity'] || $_G['group']['allowpostdebate'] || $_G['setting']['threadplugins'] || $_G['forum']['threadsorts'])}-->
+	<ul class="p_pop" id="newspecial_menu" style="display: none">
+		<!--{if !$_G['forum']['allowspecialonly']}--><li><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]">{lang post_newthread}</a></li><!--{/if}-->
+		<!--{if $_G['group']['allowpostpoll']}--><li class="poll"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=1">{lang post_newthreadpoll}</a></li><!--{/if}-->
+		<!--{if $_G['group']['allowpostreward']}--><li class="reward"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=3">{lang post_newthreadreward}</a></li><!--{/if}-->
+		<!--{if $_G['group']['allowpostdebate']}--><li class="debate"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=5">{lang post_newthreaddebate}</a></li><!--{/if}-->
+		<!--{if $_G['group']['allowpostactivity']}--><li class="activity"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=4">{lang post_newthreadactivity}</a></li><!--{/if}-->
+		<!--{if $_G['group']['allowposttrade']}--><li class="trade"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=2">{lang post_newthreadtrade}</a></li><!--{/if}-->
+		<!--{if $_G['setting']['threadplugins']}-->
+			<!--{loop $_G['forum']['threadplugin'] $tpid}-->
+				<!--{if array_key_exists($tpid, $_G['setting']['threadplugins']) && @in_array($tpid, $_G['group']['allowthreadplugin'])}-->
+					<li class="popupmenu_option"{if $_G['setting']['threadplugins'][$tpid][icon]} style="background-image:url($_G['setting']['threadplugins'][$tpid][icon])"{/if}><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&specialextra=$tpid">{$_G['setting']['threadplugins'][$tpid][name]}</a></li>
+				<!--{/if}-->
+			<!--{/loop}-->
+		<!--{/if}-->
+		<!--{if $_G['forum']['threadsorts'] && !$_G['forum']['allowspecialonly']}-->
+			<!--{loop $_G['forum']['threadsorts']['types'] $id $threadsorts}-->
+				<!--{if $_G['forum']['threadsorts']['show'][$id]}-->
+					<li class="popupmenu_option"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&extra=$_G[gp_extra]&sortid=$id">$threadsorts</a></li>
+				<!--{/if}-->
+			<!--{/loop}-->
+		<!--{/if}-->
+	</ul>
+<!--{/if}-->
+<!--{if $modmenu['post']}-->
+	<div id="mdly" class="fwinmask" style="display:none;">
+		<table cellspacing="0" cellpadding="0" class="fwin">
+			<tr>
+				<td class="t_l"></td>
+				<td class="t_c"></td>
+				<td class="t_r"></td>
+			</tr>
+			<tr>
+				<td class="m_l">&nbsp;&nbsp;</td>
+				<td class="m_c">
+					<div class="f_c">
+						<div class="c">
+							<h3>{lang admin_select}&nbsp;<strong id="mdct" class="xi1"></strong>&nbsp;{lang piece}: </h3>
+							<!--{if $_G['forum']['ismoderator']}-->
+								<!--{if $_G['group']['allowwarnpost']}--><a href="javascript:;" onclick="modaction('warn')">{lang modmenu_warn}</a><span class="pipe">|</span><!--{/if}-->
+								<!--{if $_G['group']['allowbanpost']}--><a href="javascript:;" onclick="modaction('banpost')">{lang modmenu_banpost}</a><span class="pipe">|</span><!--{/if}-->
+								<!--{if $_G['group']['allowdelpost']}--><a href="javascript:;" onclick="modaction('delpost')">{lang modmenu_deletepost}</a><span class="pipe"></span><!--{/if}-->
+									<!--{if $_G['group']['allowstickreply']}--><a href="javascript:;" onclick="modaction('stickreply')">{lang modmenu_stickpost}</a><span class="pipe">|</span><!--{/if}-->
+							<!--{/if}-->
+							<!--{if $_G['forum_thread']['pushedaid'] && $allowpostarticle}--><a href="javascript:;" onclick="modaction('pushplus', '', 'aid=$_G[forum_thread][pushedaid]', 'portal.php?mod=portalcp&ac=article&op=pushplus')">{lang modmenu_pushplus}</a><span class="pipe">|</span><!--{/if}-->
+						</div>
+					</div>
+				</td>
+				<td class="m_r"></td>
+			</tr>
+			<tr>
+				<td class="b_l"></td>
+				<td class="b_c"></td>
+				<td class="b_r"></td>
+			</tr>
+		</table>
+	</div>
+<!--{/if}-->
+
+<!--{if $viewdata}-->
+<div class="wap_960">
+		<div class="hx_nav clearfix" style="border-bottom:2px solid #49b6e1;">
+		<div class="fl"><h1><a href="forum.php?mod=dianping&fmod=showlist&fid=$_G[fid]">滑雪场</a></h1></div>	
+		 <div class="fl weizhi">
+        	<div class="fl">
+				<!--{if $proname }-->
+				<em></em><a href="{$myurl}&fmod=showlist&pro=$viewdata[pro]&page=1">$proname</a>
+				<!--{/if}-->       
+				<em>></em><a href="{$url}&fmod=showview">$_G[forum_thread][short_subject]</a>
+            </div>
+            <div class="fl qieh">
+            	( <a class="qh">切换省份</a> )
+            	<div class="yuanjiao shengf" id="other" style="display: none;">
+                	<b>省份：</b>					
+					<a href="forum.php?mod=forumdisplay&fid=$_G[fid]" target="_blank">全国</a>
+					<!--{if $regions}-->
+					<!--{loop $regions $type}-->
+					<a href="{$myurl}&fmod=showlist&pro=$type['pro']" target="_blank">$type['name']</a>
+					<!--{/loop}-->
+					<!--{/if}-->  					
+					
+                </div>
+            </div>
+        </div>
+		<div style="float:right;">
+        	<div class="sous">
+        	<form action="{PORTAL_HOST}xuechang" method="get">
+            	<input name="key" type="text"  class="sous_txt"/>
+				<input name="filter" type="hidden"  value="heats"/>
+                <input name="sub" type="submit"  class="sous_bn" value=""/>
+            </form>
+        </div>
+        </div>
+		</div>
+		 <div class="mian1 yuanjiao clearfix">
+    	<div class="fl mian1_l">
+        	<h1>$viewdata[name]</h1>
+            <a title="点击查看原图" target="_blank" href="$viewdata['pic']"><img src="$viewdata['pic'].thumb400.jpg" /></a>
+        </div>
+        <div class="fl mian1_r">
+			
+			<!--{if (($_G['forum']['ismoderator'] && $_G['group']['alloweditpost'] && (!in_array($post['adminid'], array(1, 2, 3)) || $_G['adminid'] <= $post['adminid'])) || ($_G['forum']['alloweditpost'] && $_G['uid'] && $post['authorid'] == $_G['uid'])&&($_G['groupid'] == 1 ||$_G['groupid']== 45))}-->
+        	<div class="guanli">
+            	<a class="gl"></a>
+                <div class="gl_list">
+                	<ul>
+                       <li><!--{if $_G['group']['allowdelpost']}--><a href="{$myurl}&fmod=dopost&tid={$_G[tid]}&pid={$viewdata[pid]}{if !empty($_G[gp_modthreadkey])}&modthreadkey=$_G[gp_modthreadkey]{/if}&page=$page"><!--{if $_G['forum_thread']['special'] == 2 && !$viewdata['message']}-->{lang post_add_aboutcounter}<!--{else}-->{lang edit}<!--{/if}--></a><!--{/if}--></li>
+                            <li><!--{if $_G['group']['allowdelpost']}--><a href="javascript:;" onclick="modthreads(3, 'delete')">{lang modmenu_deletethread}</a><!--{/if}--></li>                           
+							
+							<li class="setpass" {if $viewdata['enable']==1}style="display:none;"{/if}><a class="tgsh" href="javascript:;">通过审核</a></li>
+							<li class="setcancel" {if $viewdata['enable']==0}style="display:none;"{/if}><a class="qxsh" href="javascript:;">取消审核</a></li>
+													
+                    </ul>
+                </div>
+             </div>
+			<!--{/if}-->		
+			
+            <div class="wenz">
+            	<div class="clearfix"><b class="sj"></b><p>官方网址：<!--{if $viewdata['url']}--><a href="$viewdata['url']" target="_blank" style="color:#46B6E1">点击进入>>></a><!--{else}-->暂无<!--{/if}--></p></div>
+                <div class="clearfix"><b class="lx"></b><p>联系方式：<!--{if $viewdata['phone']}-->$viewdata['phone']<!--{else}-->暂无<!--{/if}--></p></div>
+                <div class="clearfix"><b class="dz"></b><p>地址：$viewdata['address']</p></div>
+            </div>
+        	<div class="pf clearfix">
+            	<h1>综合评分</h1>
+                <div class="pingf">				
+                    <div class="interest_sectl" id="interest_sectl">
+                                <div class="star_show">
+                                    <span star-data="1" class="graystar colorstar"></span>
+                                    <span star-data="2" class="graystar colorstar"></span>
+                                    <span star-data="3" class="graystar colorstar"></span>
+                                    <span star-data="4" class="graystar colorstar"></span>
+                                    <span star-data="5" class="graystar colorstar"></span>
+                                    <span class="num">0.0</span>
+                                    <span class="text"></span>								
+                                </div>
+                                <div class="peoples">
+                                    (<span class="num">0</span>人评分)
+                                </div>
+                                <div class="star_list">
+                                    <div class="star">
+                                        <span class="redstar2" title="力荐"></span>
+                                        <span class="redstar2" title="力荐"></span>
+                                        <span class="redstar2" title="力荐"></span>
+                                        <span class="redstar2" title="力荐"></span>
+                                        <span class="redstar2" title="力荐"></span>
+                                        <span class="percent"></span>
+                                        <span class="num">0.0%</span>
+                                    </div>
+                                    <div class="star">
+                                        <span class="redstar2" title="推荐"></span>
+                                        <span class="redstar2" title="推荐"></span>
+                                        <span class="redstar2" title="推荐"></span>
+                                        <span class="redstar2" title="推荐"></span>
+                                        <span class="graystar2" title="推荐"></span>
+                                        <span class="percent"></span>
+                                        <span class="num">0.0%</span>
+                                    </div>
+                                    <div class="star">
+                                        <span class="redstar2" title="还行"></span>
+                                        <span class="redstar2" title="还行"></span>
+                                        <span class="redstar2" title="还行"></span>
+                                        <span class="graystar2" title="还行"></span>
+                                        <span class="graystar2" title="还行"></span>
+                                        <span class="percent"></span>
+                                        <span class="num">0.0%</span>
+                                    </div>
+                                    <div class="star">
+                                        <span class="redstar2" title="较差"></span>
+                                        <span class="redstar2" title="较差"></span>
+                                        <span class="graystar2" title="较差"></span>
+                                        <span class="graystar2" title="较差"></span>
+                                        <span class="graystar2" title="较差"></span>
+                                        <span class="percent"></span>
+                                        <span class="num">0.0%</span>
+                                    </div>
+                                    <div class="star">
+                                        <span class="redstar2" title="很差"></span>
+                                        <span class="graystar2" title="很差"></span>
+                                        <span class="graystar2" title="很差"></span>
+                                        <span class="graystar2" title="很差"></span>
+                                        <span class="graystar2" title="很差"></span>
+                                        <span class="percent"></span>
+                                        <span class="num">0.0%</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="stared">
+                                    {if !$_G['uid']}
+                                    登录之后可评价
+                                    {else}
+                                    您己参与评价
+                                    {/if}
+                                </div>
+                            </div>
+					<script type="text/javascript">
+						;(function($) {
+							var o_star;
+							{if !$_G['uid'] || $viewdata['myrate'] > 0}
+							var lock = true;
+							{else}
+							var lock = false
+							{/if}
+							function enter_star(num) {
+								$('#interest_sectl .star_show .colorstar').removeClass('redstar graystar');
+								for (var i = 0; i < 5; ++i) {
+									if (i < num) {
+										$('#interest_sectl .star_show .colorstar').eq(i).addClass('redstar');
+									} else {
+										$('#interest_sectl .star_show .colorstar').eq(i).addClass('graystar');
+									}
+								}
+							}
+							
+							$('#interest_sectl .opera').click(function() {
+								$(window).scrollTop($('#f_pst').offset().top);
+							});
+										
+							function fill_star_select(data) {
+								if (data) {
+									var star_num = Math.ceil(data.price / 2);
+									o_star = star_num;
+									enter_star(o_star);
+									$('#interest_sectl .star_show .num').text(data.price);
+									$('#interest_sectl .peoples .num').text(data.count);
+									
+									var max_width = 80;
+									$('#interest_sectl .star_list .star').eq(0)
+										.find('.percent').width(data.percent5 / 100 * max_width).andSelf()
+										.find('.num').text(data.percent5 + '%');
+									$('#interest_sectl .star_list .star').eq(1)
+										.find('.percent').width(data.percent4 / 100 * max_width).andSelf()
+										.find('.num').text(data.percent4 + '%');
+									$('#interest_sectl .star_list .star').eq(2)
+										.find('.percent').width(data.percent3 / 100 * max_width).andSelf()
+										.find('.num').text(data.percent3 + '%');
+									$('#interest_sectl .star_list .star').eq(3)
+										.find('.percent').width(data.percent2 / 100 * max_width).andSelf()
+										.find('.num').text(data.percent2 + '%');
+									$('#interest_sectl .star_list .star').eq(4)
+										.find('.percent').width(data.percent1 / 100 * max_width).andSelf()
+										.find('.num').text(data.percent1 + '%');
+								}
+							}
+							{if $star_data}
+							var data = {$star_data};
+							fill_star_select(data);
+							{/if}
+						})(jQuery);
+						</script>
+                </div>
+            </div>
+            <div class="wydp clearfix">
+            	<a href="javascript:void();" class="dp" id="addcom"></a>
+                <div class="fl">点评$viewdata['replies']人</div>
+                <div class="fl">浏览$viewdata['views']人</div>
+            </div>
+        </div>
+    </div>
+    <div class="mian2 clearfix">
+    	<div class="mian2_l fl">
+        	<div class="hxjs wap_665 yuanjiao">
+                <div class="tab">
+                    <div class="tab_menu">
+                        <ul class="clearfix">
+                        	<!--{if $mapon}--><li class="selected"><a class="dtxs">地图显示</a></li><!--{/if}-->
+                            <li class="{if !$mapon}selected{/if}"><a class="ccjs">雪场简介</a></li>
+                        </ul>
+                    </div>
+					
+                    <div class="tab_box">
+					<!--{if $mapon}--> 
+                         <div class="selected">							
+							  <!--{if (($_G['forum']['ismoderator'] && $_G['group']['alloweditpost'] && (!in_array($post['adminid'], array(1, 2, 3)) || $_G['adminid'] <= $post['adminid'])) || ($_G['forum']['alloweditpost'] && $_G['uid'] && $post['authorid'] == $_G['uid'])&&($_G['groupid'] == 1))}-->
+                         	  <div id="yc" style="display: none;">
+								    <span>地址：$viewdata['address']</span>&nbsp;&nbsp;&nbsp;<span class="bz">地图标注</span>
+								    <div class="sh"><input type="text" name="add" id="add" size="40"/>&nbsp;&nbsp;<button type="button" id="search">&nbsp;&nbsp;搜 索&nbsp;&nbsp;</button>&nbsp;&nbsp;(搜索地址解析的格式如下：省+城市+区县+街道)</div>
+							  </div>							  
+							  <div class="clearfix" style="margin-bottom:5px;"><a href="javascript:void();" class="fr">修改标注</a></div>
+							  <!--{/if}-->							  
+							  <div id="mapPoint" style="height: 350px;"></div>
+							  <input type="hidden" value="" id="longitude" name="longitude">
+							  <input type="hidden" value="" id="latitude" name="latitude">
+							  <input type="hidden" value="$viewdata['address']" id="sAddress" name="sAddress">				
+							  <input type="hidden" value="$viewdata['pro']" id="pro" name="pro">
+							  <input type="hidden" value="$viewdata['tid']" id="tid" name="tid">
+							  <div class="mark">
+									 <span class="zs">注：地图位置标注仅供参考，具体情况以实际道路标实信息为准</span>
+							   </div> 
+							  	<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2&services=true"></script>			
+								<script type="text/javascript">
+									var long = {$viewdata['longitude']};
+									var lat = {$viewdata['latitude']};				
+									var map = new BMap.Map("mapPoint");
+									var point = new BMap.Point(long, lat);
+									map.centerAndZoom(point, 15);				
+									map.disableDoubleClickZoom(); // 禁用双击放大
+									var opts = {type: BMAP_NAVIGATION_CONTROL_SMALL}  
+									map.addControl(new BMap.NavigationControl(opts)); 		
+									var marker = new BMap.Marker(point); // 创建标注
+									map.addOverlay(marker); // 将标注添加到地图中
+								</script>								
+								<script type="text/javascript">
+								;(function($){
+									var tid = {$viewdata['tid']};
+									$('.fr').click(function(){
+										map.enableScrollWheelZoom();
+										marker.enableDragging(true); // 设置标注可拖拽
+										var opts = {
+											width : 110,     // 信息窗口宽度
+											height: 50,     // 信息窗口高度
+											title : "提示信息"  // 信息窗口标题
+										}
+										var infoWindow = new BMap.InfoWindow("拖动此标注更改店铺位置", opts);  // 创建信息窗口对象
+										marker.addEventListener("mouseup", function(){
+												var position = marker.getPosition();
+												var t = confirm('是否将新位置设置为此店铺的默认位置？');
+												if(t==true){    											
+													marker.disableDragging(true); // 设置标注不可拖拽
+													marker.removeEventListener("mouseup");
+													jQuery("#longitude").val(position['lng']);
+													jQuery("#latitude").val(position['lat']);        
+													var lng = jQuery("#longitude").val();
+													var lat = jQuery("#latitude").val();
+													var str_url = 'plugin.php?id=skiing:ajax_updateedit&tid='+tid;
+													jQuery.ajax({           
+														url: str_url,
+														type: 'post',
+														data:{ lng: lng, lat: lat },
+														success: function(msg){
+															showDialog("您的修改已提交,刷新页面可看最新效果！","notice");
+															$('#yc').hide();
+															marker.closeInfoWindow(infoWindow);
+															map.disableScrollWheelZoom();															
+															//map.clearOverlays();														
+														}
+													});         
+												}else{
+											
+												}													
+										});								
+										marker.openInfoWindow(infoWindow);
+										$('#yc').show();
+										$('.fr').hide();
+									//	showWindow('editmap','/plugin.php?id=skiing:editmap&tid='+tid+'&edit=1');		
+									});
+																		
+									$(".bz").click(function(){
+											$("#mapPoint").html("");
+											var pro = document.getElementById("pro").value;
+											var map = new BMap.Map("mapPoint");            // 创建Map实例
+											map.centerAndZoom(pro,15);
+											map.addControl(new BMap.NavigationControl());
+											map.enableScrollWheelZoom();
+											//创建地址解析的实例
+											var myGeo = new BMap.Geocoder();
+											var add = document.getElementById("sAddress").value;	
+											myGeo.getPoint(add, function(point){		
+											  if (point) {
+												map.centerAndZoom(point, 15);
+												mk = new BMap.Marker(point);
+												map.addOverlay(mk);
+												mk.enableDragging(true); // 设置标注可拖拽		
+												var opts = {
+													width : 110,     // 信息窗口宽度
+													height: 50,     // 信息窗口高度
+													title : "提示信息"  // 信息窗口标题
+												}
+												var infoWindow = new BMap.InfoWindow("拖动此标注更改店铺默认位置", opts);  // 创建信息窗口对象
+												mk.addEventListener("mouseup", function(){
+													var position = mk.getPosition();
+													var s = confirm("是否将新位置设置为此店铺的默认位置？");
+													if(s==true){
+														jQuery("#longitude").val(position['lng']);
+														jQuery("#latitude").val(position['lat']);
+														var lng = jQuery("#longitude").val();
+														var lat = jQuery("#latitude").val();
+														var tid = jQuery("#tid").val();
+														mk.disableDragging(true); // 设置标注不可拖拽
+														mk.removeEventListener("mouseup");
+														var str_url = 'plugin.php?id=skiing:ajax_updateedit&tid='+tid;
+														jQuery.ajax({           
+															url: str_url,
+															type: 'post',
+															data:{ lng: lng, lat: lat },
+															success: function(msg){
+																showDialog("您的修改已提交,刷新页面可看最新效果！","notice");
+																$('#yc').hide();
+																mk.closeInfoWindow(infoWindow);
+																map.disableScrollWheelZoom();
+																//map.clearOverlays();
+																//hideWindow('editmap');
+															}
+														}); 
+													}else{
+														jQuery("#longitude").val(point['lng']);
+														jQuery("#latitude").val(point['lat']);	
+													}													
+												});								
+												mk.openInfoWindow(infoWindow);			
+											  }else{
+												alert("数据错误,加载失败！");
+											  }
+											}, pro);	
+									});
+									
+									//搜索
+									$("#search").click(function(){
+										var dz = $("#add").val();
+										if(dz==""){
+											showDialog("详细地址不能为空！","notice");
+											return false;
+										}
+										$("#mapPoint").html("");
+										var pro = document.getElementById("pro").value;
+										var map = new BMap.Map("mapPoint");            // 创建Map实例
+										map.centerAndZoom(pro,15);									
+										map.addControl(new BMap.NavigationControl());
+										map.enableScrollWheelZoom();
+										//创建地址解析的实例
+										var myGeo = new BMap.Geocoder();
+										var add = document.getElementById("add").value;
+										myGeo.getPoint(add, function(point){		
+										  if (point) {
+											map.centerAndZoom(point, 15);
+											mk = new BMap.Marker(point);
+											map.addOverlay(mk);
+											mk.enableDragging(true); // 设置标注可拖拽		
+											var opts = {
+												width : 110,     // 信息窗口宽度
+												height: 50,     // 信息窗口高度
+												title : "提示信息"  // 信息窗口标题
+											}
+											var infoWindow = new BMap.InfoWindow("拖动此标注更改店铺默认位置", opts);  // 创建信息窗口对象
+											mk.addEventListener("mouseup", function(){
+												var position = mk.getPosition();
+												var s = confirm("是否将新位置设置为此店铺的默认位置？");
+												if(s==true){
+													jQuery("#longitude").val(position['lng']);
+													jQuery("#latitude").val(position['lat']);
+													var lng = jQuery("#longitude").val();
+													var lat = jQuery("#latitude").val();
+													var tid = jQuery("#tid").val();
+													mk.disableDragging(true); // 设置标注不可拖拽
+													mk.removeEventListener("mouseup");
+													var str_url = 'plugin.php?id=skiing:ajax_updateedit&tid='+tid;
+													jQuery.ajax({           
+														url: str_url,
+														type: 'post',
+														data:{ lng: lng, lat: lat },
+														success: function(msg){
+															showDialog("您的修改已提交,刷新页面可看最新效果！","notice");
+															$('#yc').hide();
+															mk.closeInfoWindow(infoWindow);
+															map.disableScrollWheelZoom();
+														}
+													}); 
+												}else{
+													jQuery("#longitude").val(point['lng']);
+													jQuery("#latitude").val(point['lat']);	
+												}													
+											});								
+											mk.openInfoWindow(infoWindow);			
+										  }else{
+											alert("数据错误,加载失败！");
+										  }
+										}, pro);	
+									});
+								})(jQuery);	
+								</script>
+                         </div>
+						 <!--{/if}-->
+						<!--{if $viewdata['longitude']&& $viewdata['latitude']}-->
+						<div class="{if !$mapon}selected{else}hide{/if}">						   
+						   	<!--{eval $viewdata['message']=strip_tags($viewdata['message'],'<br>');}-->	
+							 <p>$viewdata['message']</p>			   
+						</div>						
+						<!--{/if}-->
+                    </div>
+                </div>
+            </div>
+			
+			
+			
+			<!--{if $sticklist}-->
+					<div class="wap_665 xc_list yuanjiao">
+							 <div class="hx_tit clearfix">
+									<div class="fl">精彩点评</div>									
+							 </div>  	
+							  <!--{loop $sticklist $rpost}-->        
+							  <div class="pstl xs1" style="padding-top:10px; padding-left:10px;">							
+								  <div class="psta"><a href="home.php?mod=space&uid=$rpost[authorid]" c="1">$rpost[avatar]</a></div>
+								   <div class="psti">
+									  <p>
+										  
+										  <span class="xi2 fr">
+											  &nbsp;
+											  <!--{if $_G['group']['allowstickreply']}-->&nbsp;<a href="javascript:;" onclick="modaction('stickreply', $rpost[pid], '&undo=yes')" class="xi2" style="color:#F90">{lang admin_unstickreply}</a><!--{/if}-->
+										  </span>
+										  
+										  <a href="home.php?mod=space&uid=$rpost[authorid]" class="xi2 xw1" style="color:#46B6E1;">$rpost[author]</a> 
+									  </p>
+									  <div class="mtn">
+									  <!--{eval $rpost['message']=str_replace('thumbImg(this)','thumbImg(this,null,680)',$rpost["message"]);}-->$rpost[message]
+									   <!--{if !empty($aimgs[$rpost[pid]])}-->
+									   <script type="text/javascript" reload="1">aimgcount[{$rpost[pid]}] = [<!--{echo implode(',', $aimgs[$rpost[pid]]);}-->];attachimgshow($rpost[pid]);</script>
+									   <!--{/if}--> 
+									  </div>
+								  </div>
+							  </div>					 
+							  <!--{/loop}-->
+					  </div>					
+			<!--{/if}-->
+			
+			<div class="wap_665 xc_list yuanjiao">
+            	<div class="hx_tit clearfix">
+                	 <div class="fl">点评列表</div>
+                     <div style="float:right;"><a href="javascript:void();" id="w_pl">我也要发表评论</a></div>
+                </div>  				
+				<!--{if $comments}-->
+				<!--{loop $comments $comment}-->
+                <div class="pl_list clearfix" id="post_$comment[pid]">
+                	<div class="fl toux"><a href="home.php?mod=space&uid=$comment[authorid]"><!--{avatar($comment[authorid], small)}--></a></div>
+                    <div class="fr clearfix rq_pl">
+                    	<div class="clearfix">
+                        	<b class="fl"><a href="home.php?mod=space&uid=$comment[authorid]" target="_blank" class="xi2">$comment[author]</a>
+							{if $viewdata['myrate']}
+							<span class="star">
+								<span style="color: #8C8C8C">&nbsp;点评&nbsp;</span>
+								{eval for ($i = 0; $i < 5; $i++):}
+								{if $i < $viewdata['myrate']}<span class="redstar"></span>{else}<span class="graystar"></span>{/if}
+								{eval endfor;}
+							</span>
+							{/if}		
+							</b>
+                            <div class="fr"><span class="fbrq">发表于$comment[dateline]</span>													
+							</div>
+                        </div>
+                        <div class="plnr">
+							<!--{eval $comment['message']=str_replace('thumbImg(this)','thumbImg(this,null,757)',$comment["message"]);}-->$comment[message]	
+						</div>
+						<div class="plgl fr clearfix">						
+						<!--{if (($_G['forum']['ismoderator'] && $_G['group']['alloweditpost'] && (!in_array($comment['adminid'], array(1, 2, 3)) || $_G['adminid'] <= $comment['adminid'])) || ($_G['forum']['alloweditpost'] && $_G['uid'] && $comment['authorid'] == $_G['uid']))}-->
+						<!--{if !$comment['first'] && $modmenu['post']}-->
+						<span class="" style="color:#f90;">
+						<label for="manage$comment[pid]">
+						<input type="checkbox" id="manage$comment[pid]" class="pc" {if !empty($modclick)}checked="checked" {/if}onclick="pidchecked(this);modclick(this, $comment[pid])" value="$comment[pid]" autocomplete="off" />
+						{lang manage}
+						</label>
+						</span>
+						<!--{/if}-->
+						<!--{/if}-->	
+						
+						<a onclick="showWindow('reply', this.href)" href="forum.php?mod=post&amp;action=reply&amp;fid=$_G['fid']&amp;tid=$_G['tid']&amp;reppost=$comment['pid']&amp;extra=&amp;page=$_GET['page']">回复</a>
+						</div>
+                    </div>                    
+                </div>
+				<!--{/loop}-->
+				<!--{else}-->
+				<div class="dplb_list">
+				暂时还没有人点评哦，你快第一个发表点评吧！
+				</div>			          
+				<!--{/if}-->                        
+				<div id="postlistreply"><div id="post_new" style="display: none;"></div></div>
+				<!--{if $multipage}-->
+				 <div class="listPageBox clearfix">$multipage</div>				
+				<!--{/if}-->         
+                <div class="hx_tit clearfix" id="f_pst" style="margin-top:15px; border:0;">
+                	 <div class="fl">发表评论</div>
+                </div>
+				<script type="text/javascript">			
+				var postminchars = parseInt(0);			
+				var postmaxchars = parseInt(0);			
+				var disablepostctrl = parseInt('{$_G['group']['disablepostctrl']}');				
+				function hideDiv(){					
+					jQuery('.dplb_list').hide();
+					<!--{if checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->	
+					jQuery('#jg').html("");
+					<!--{/if}-->
+				}
+				</script>
+                <div class="fbpl">
+					<span id="fastpostreturn" style="margin-left: 10px;"></span>
+                	<form method="post" autocomplete="off" id="fastpostform" action="forum.php?mod=post&action=reply&fid=$_G[fid]&tid=$_G[tid]&extra=$_G[gp_extra]&replysubmit=yes{if $_G['gp_ordertype'] != 1}&infloat=yes&handlekey=fastpost{/if}{if $_G[gp_from]}&from=$_G[gp_from]{/if}"{if $_G['gp_ordertype'] != 1} onSubmit="<!--{if checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->return vode(this);<!--{/if}-->return fastpostvalidateoutshop(this);"{/if}>
+                	<span id="fastpostreturn"></span>
+						<div class="ztpf">
+						<style type="text/css">
+						.starselect_box{ overflow: hidden; margin: 0 0 5px;}
+						.starselect_box strong { margin-right: 10px; color:#46B6E1;}
+						.starselect_box label { margin-right: 6px;*+margin-right:3px;}
+						.starselect_box .radio { vertical-align: middle;}
+						</style>
+						{if $_G['uid'] && $viewdata['myrate']==0}					
+						<div class="starselect_box" id="starselect_box">
+							<strong>总体评分:</strong>
+							<label for="starselect_5">
+								<input type="radio" name="starselect" value="5" id="starselect_5" class="radio" />
+								力荐（五星）
+							</label>
+							<label for="starselect_4">
+								<input type="radio" name="starselect" value="4" id="starselect_4" class="radio" />
+								推荐（四星）
+							</label>
+							<label for="starselect_3">
+								<input type="radio" name="starselect" value="3" id="starselect_3" class="radio" />
+								还行（三星）
+							</label>
+							<label for="starselect_2">
+								<input type="radio" name="starselect" value="2" id="starselect_2" class="radio" />
+								较差（二星）
+							</label>
+							<label for="starselect_1">
+								<input type="radio" name="starselect" value="1" id="starselect_1" class="radio" />
+								很差（一星）
+							</label>
+						</div>
+						{elseif !$_G['uid']}					
+						<div class="starselect_box" id="starselect_box">
+							<strong>总体评分:</strong>
+							<label for="starselect_5">
+								<input type="radio" name="starselect" value="5" id="starselect_5" class="radio" />
+								力荐（五星）
+							</label>
+							<label for="starselect_4">
+								<input type="radio" name="starselect" value="4" id="starselect_4" class="radio" />
+								推荐（四星）
+							</label>
+							<label for="starselect_3">
+								<input type="radio" name="starselect" value="3" id="starselect_3" class="radio" />
+								还行（三星）
+							</label>
+							<label for="starselect_2">
+								<input type="radio" name="starselect" value="2" id="starselect_2" class="radio" />
+								较差（二星）
+							</label>
+							<label for="starselect_1">
+								<input type="radio" name="starselect" value="1" id="starselect_1" class="radio" />
+								很差（一星）
+							</label>
+						</div>
+						{/if}
+					</div>
+                    <input type="hidden" name="formhash" value="{FORMHASH}" />
+					<input type="hidden" name="subject" value="" />					
+					<textarea name="message" id="fastpostmessage" class="pl_txt"></textarea>                    
+                    <div style=" margin:10px 0 0 5px; width:585px;">                        
+                    <!--{if checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
+					<div class="yzm">
+                        <table border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td align="center" valign="bottom" height="32">验证码：</td>
+								<td align="center" valign="bottom" height="32"><input type="text" name="captcha" id="captcha" class="inputTxtShort borderEmbellish" style="width:50px;vertical-align: top;" /></td>
+                                <td align="center" valign="bottom"><a href="#" id="refreshCaptcha" title="点击刷新图片"><img src="/plugin.php?id=dailypicture:captcha" alt="点击刷新图片" /></a></td>
+                                <td align="center" valign="bottom"><input type="hidden" value="" id="yzm" name="yzm"></td>					
+                                <td align="center" valign="bottom"><span id="jg"></span></td> 
+                          </tr>
+                        </table>
+					</div>
+					<!--{/if}-->
+                        
+                     <p style="float:left; padding:0px 0px 0px 0px;"><span style="color: red;">请从滑雪场的雪道、设施、雪质，缆车，雪具，教练、交通、住宿、餐饮、价格、服务等方面进行点评。<br>请填写真实感受，严禁灌水！灌水删除，广告封号！
+</span></p>    
+                    <div style=" float:right;"><input {if !$guestreply}type="submit" onclick="hideDiv();" {else}type="button" onclick="showWindow('login', 'member.php?mod=logging&action=login&guestmessage=yes')" {/if}name="replysubmit"  id="fastpostsubmit" value="" class="pl_bn_hx fr" /></div>
+                      <div class="clear"></div>
+                    </div>
+                </form>
+					
+                </div>
+            </div>
+        </div>
+        <div class="mian2_r fr">
+			<!--{if $otherpro}-->
+        	<div class="yuanjiao mian2_rbox">
+          		<div class="mian2_rtit">同地区雪场</div>				
+				<!--{loop $otherpro $k $fj}-->
+                <div class="m2r_xclist">
+                	<div class="m2r_xclistImg"><a href="{$myurl}&tid=$fj[tid]&fmod=showview" target="_blank"><img src="$fj['pic'].thumb100.jpg" /></a></div>
+                    <div class="m2r_xclistTxt"><a href="{$myurl}&tid=$fj[tid]&fmod=showview" target="_blank">$fj['name']</a></div>		
+                </div>
+				<!--{/loop}-->	               
+            </div>
+			<!--{/if}-->
+		
+			
+			<!--{if $qt}-->
+            <div class="yuanjiao mian2_rbox">
+          		<div class="mian2_rtit">热门滑雪场</div>				
+				<!--{loop $qt $fj}-->
+                <div class="m2r_xclist">
+                	<div class="m2r_xclistImg"><a href="{$myurl}xuechang-$fj[tid]" target="_blank"><img src="$fj['showimg'].thumb100.jpg" /></a></div>
+                    <div class="m2r_xclistTxt"><a href="{$myurl}xuechang-$fj[tid]" title="$fj['subject']" target="_blank">$fj['subject']</a></div>
+                </div>	
+               <!--{/loop}-->      
+			  
+            </div>
+			<!--{/if}-->
+        </div>
+    </div>	
+
+
+
+<!--{/if}-->
+<!--{if !empty($aimgs[$post[pid]])}-->
+<script type="text/javascript" reload="1">aimgcount[{$post[pid]}] = [<!--{echo implode(',', $aimgs[$post[pid]]);}-->];attachimgshow($post[pid]);    </script>
+<!--{/if}-->  
+<!--{eval $postcount++;}-->
+
+</div>
+<script type="text/javascript">
+<!--{if checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
+function vode(theform){
+	if (trim(theform.captcha.value)=="") {
+		showDialog('验证码不能为空');		
+		return false;
+	}
+	if (theform.yzm.value=='0') {
+		showDialog('验证码输入错误');
+		return false;
+	}
+}	
+//验证码
+jQuery('#refreshCaptcha').click(function() {
+	jQuery(this).children('img').attr('src', '/plugin.php?id=dailypicture:captcha&_='+(new Date().getTime()));
+	jQuery('#jg').html("");
+	return false;
+});							
+jQuery('#captcha').blur(function(){
+	 validate_captcha();								 
+});							
+function validate_captcha() {					
+	jQuery.ajax({
+		async: false,
+		type: 'get',
+		url: '/plugin.php?id=dailypicture:validatecaptcha&captcha='+jQuery('#captcha').val(),
+		success : function(data) {
+			if (data==1) {
+				jQuery('#jg').html("");
+				jQuery('#jg').append('<img width="16" height="16" class="vm" src="static/image/common/check_right.gif">');
+				jQuery('#yzm').val('1');
+			}else{
+				jQuery('#jg').html("");
+				jQuery('#jg').append('<img width="16" height="16" class="vm" src="static/image/common/check_error.gif">');
+				jQuery('#yzm').val('0');
+				jQuery('#captcha').val('');
+			}
+		}
+	});						
+};			
+<!--{/if}--> 
+//切换城市	
+jQuery('.qh').click(function(){	
+	jQuery('#other').show();
+});
+jQuery('#other').mouseleave(function(){
+	jQuery('#other').hide();
+});
+//我要点评
+jQuery('#addcom').click(function() {		
+		jQuery(window).scrollTop(jQuery('#f_pst').offset().top);
+});
+jQuery('#w_pl').click(function() {		
+		jQuery(window).scrollTop(jQuery('#f_pst').offset().top);
+});
+//管理按钮样式
+jQuery('.gl').mousemove(function(){
+	jQuery('.gl_list').show();							
+});
+jQuery('.gl_list').mouseleave(function(){
+	jQuery(this).hide();							
+});
+
+var tid = <!--{$_G['tid']}-->;
+//取消审核操作
+jQuery('.guanli .setcancel').click(function(){					
+	var type = 'cancel';
+	jQuery.ajax({
+	type: 'get',			
+	url: 'plugin.php?id=skiing:ajax_updateskiing&type='+type+'&tid='+tid,
+	success: function(html) {
+		if(html=='success'){
+			showDialog('设置成功');
+			jQuery('.guanli .setcancel').hide();												
+			jQuery('.guanli .setpass').show();															
+		}else{
+			showDialog('设置失败');
+		}
+	}});
+	return false;
+});
+//审核通过操作
+jQuery('.guanli .setpass').click(function(){					
+	var type = 'pass';
+	jQuery.ajax({
+	type: 'get',			
+	url: 'plugin.php?id=skiing:ajax_updateskiing&type='+type+'&tid='+tid,
+	success: function(html) {
+		if(html=='success'){
+			showDialog('设置成功');
+			jQuery('.guanli .setcancel').show();												
+			jQuery('.guanli .setpass').hide();																	
+		}else{
+			showDialog('设置失败');
+		}
+	}});
+	return false;
+});
+
+jQuery(function($){
+$(".xc_list>div.pl_list:odd").addClass("bule");
+$(".mian2_rbox>div.m2r_xclist:odd").addClass("bule");
+})
+jQuery(function($){
+$("div.tab_menu ul li").click(function(){
+	var index=$("div.tab_menu ul li").index(this);
+	$("div.tab_box>div").eq(index).show().siblings().hide();
+	$("div.tab_menu ul li").eq(index).addClass("selected").siblings().removeClass("selected");
+})
+})
+</script>
+<form method="post" autocomplete="off" name="modactions" id="modactions">
+<input type="hidden" name="formhash" value="{FORMHASH}" />
+<input type="hidden" name="optgroup" />
+<input type="hidden" name="operation" />
+<input type="hidden" name="listextra" value="$_G[gp_extra]" />
+</form>
+$_G['forum_tagscript']
+<!--{hook/viewthread_bottom}-->
+<!--{if $_G['setting']['visitedforums'] || $oldthreads}-->
+	<div id="visitedforums_menu" class="{if $oldthreads}visited_w {/if}p_pop blk cl" style="display: none;">
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<!--{if $_G['setting']['visitedforums']}-->
+					<td id="v_forums">
+						<h3 class="mbn pbn bbda xg1">{lang viewed_forums}</h3>
+						<ul>
+							$_G['setting']['visitedforums']
+						</ul>
+					</td>
+				<!--{/if}-->
+				<!--{if $oldthreads}-->
+					<td id="v_threads">
+						<h3 class="mbn pbn bbda xg1">{lang viewd_threads}</h3>
+						<ul class="xl">
+						<!--{loop $oldthreads $oldtid $oldsubject}-->
+							<li><a href="forum.php?mod=viewthread&tid=$oldtid">$oldsubject</a></li>
+						<!--{/loop}-->
+						</ul>
+					</td>
+				<!--{/if}-->
+			</tr>
+		</table>
+	</div>
+<!--{/if}-->
+
+<!--{if $_G['setting']['forumjump']}-->
+	<div class="p_pop" id="fjump_menu" style="display: none">
+	$forummenu
+	</div>
+<!--{/if}-->
+
+<!--{if $_G['setting']['connect']['allow'] && $page == 1}-->
+	<script type="text/javascript">
+		var connect_uin = '{$_G[member][conuin]}';
+		var connect_sid = '{$_G[setting][connectsiteid]}';
+		var connect_share_api = '{$_G[connect][share_api]}';
+		var connect_t_api = '{$_G[connect][t_api]}';
+		var connect_thread_info = {
+			thread_id: '{$_G[tid]}',
+			post_id: '{$_G[connect][first_post][pid]}',
+			s_id: '{$_G[setting][connectsiteid]}',
+			uin: '{$_G[member][conuin]}',
+			forum_id: '{$_G[fid]}',
+			author_id: '{$_G[connect][first_post][authorid]}',
+			author: '{$_G[connect][first_post][author]}',
+			access_token: '{$_G[cookie][client_token]}',
+			share_channel: '{$_G[connect][share_channel]}'
+		};
+
+		connect_autoshare = '{$_G[gp_connect_autoshare]}';
+		connect_isbind = '{$_G[member][conisbind]}';
+		if(connect_autoshare == 1 && connect_isbind) {
+			_attachEvent(window, 'load', function(){
+				connect_share(connect_share_api, connect_uin, connect_sid);
+			});
+		}
+	</script>
+	<div id="connect_share_unbind" style="display: none;">
+		<div class="c hm">
+			<div style="font-size:14px; margin:10px 0;">{lang connect_post_unbind}</div>
+			<div><a href="connect.php?mod=config&connect_autoshare=1" target="_blank"><img src="{IMGDIR}/qq_bind.gif" align="absmiddle" style="margin-top:5px;" /></a></div>
+		</div>
+		<input type="hidden" id="connect_thread_title" name="connect_thread_title" value="$_G[forum_thread][subject]" />
+	</div>
+<!--{/if}-->
+<!--{if !IS_ROBOT && $_G['setting']['threadmaxpages'] > 1}-->
+	<script type="text/javascript">document.onkeyup = function(e){keyPageScroll(e, <!--{if $page > 1}-->1<!--{else}-->0<!--{/if}-->, <!--{if $page < $_G['setting']['threadmaxpages'] && $page < $_G['page_next']}-->1<!--{else}-->0<!--{/if}-->, 'forum.php?mod=viewthread&tid=$_G[tid]<!--{if $_G[gp_authorid]}-->&authorid=$_G[gp_authorid]<!--{/if}-->', $page);}</script>
+<!--{/if}-->
+</div>
+
+<!--{subtemplate common/footer_8264lw}-->

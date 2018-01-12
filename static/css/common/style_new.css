@@ -1,0 +1,193 @@
+/* CSS Document */
+a:hover{ text-decoration:none;}
+.w1040{ width:1040px; margin:0 auto;}
+.clear_b:after{content: ""; display: block; clear: both; visibility: hidden;}
+.clear_b{ zoom: 1;}
+/*灰色头部*/
+.navbbsbox{ height:69px; border-bottom:#edeced solid 1px; background:#f8f8f8; margin-bottom:20px;}
+.navbbsbox h1{ float:left; width:315px ; font-size:30px; color:#333; font-weight:normal; margin:0px; padding:18px 0px 0px 0px; background:url(http://static.8264.com/static/images/titleicon.png) 146px bottom no-repeat; line-height:1;}
+/*活动开始*/
+.hdbox{ width:1038px; border:#4395ff solid 1px; position:relative; height:85px; background: url(http://static.8264.com/static/images/wl/hdbg.jpg) left top no-repeat; margin:0px 0px 15px 0px;}
+.hdtitle{ background:url(http://static.8264.com/static/images/hdtitle.jpg) left top no-repeat; width:40px; height:85px; position:absolute; left:0px; top:0px;}
+.hdlinkbox{ position:absolute; top:29px; right:267px;}
+.hdlinkbox a{ font-size:12px; color:#fff; border-radius:2px; padding:6px 9px 6px 9px; background:#5b5b5b; background:rgba(91,91,91,.74); margin:0px 0px 0px 0px;}
+.hdlinkbox a.blue{ background:#4395ff;}
+.hdlinkbox a.white{ background:#cccbd4; background:rgba(255,255,255,.67); color:#393939;}
+.hdtimebox{ background:#fff; border-radius:5px; position:absolute; top:11px; right:35px; height:64px; padding:0px 38px; line-height:1;}
+.hdtimebox b{ font-size:20px; color:#4f5662; display:block; text-align:center; padding:11px 0px 5px 0px;}
+.hdtimebox span{ display:block; font-size:14px; color:#97a7b6; text-align:center;}
+.hdtimebox i{ font-size:18px; color:#f86335; font-weight:bold; font-style:normal; padding:0px 3px;}
+/*活动结束*/
+/*猜你喜欢的开始*/
+.youlikebox{ background:#f5f6f8; height:96px; margin:0px 0px 10px 0px;}
+.youlikeinfo{ width:202px; float:left; padding:16px 0px 0px 19px;}
+.youlikeinfo span{ color:#333; font-size:14px; display:block;}
+.youlikeinfo p{ font-size:12px; color:#999; padding:5px 0px 0px 0px; margin:0px 0px 0px 0px;}
+.youlikeone{ width:192px; height:68px; border:#eeeeee solid 1px; float:left; background:#fff; margin:13px 10px 0px 0px;}
+.youlikeone img{ width:50px; height:50px; float:left; margin:9px 9px 0px 9px;}
+.youlikeone p{ overflow:hidden; margin:0px 0px 0px 0px; padding:12px 0px 0px 0px;}
+.youlikeone span{ font-size:14px; color:#333; display:block; padding:0px 0px 2px 0px;}
+.youlikeone em{ font-size:12px; color:#999; display:block; height:18px; line-height:18px; overflow:hidden; }
+/*猜你喜欢的结束*/
+.w660{ width:660px; float:left;}
+.w330{ width:330px; float:right;}
+/*左侧切换标签*/
+.bbstitlebox{ border-bottom:#e5e5e5 solid 1px; height:64px;}
+.bbstitlebox a{ width:220px; height:63px; line-height:63px; float:left; text-align:center;}
+.bbstitlebox span{ background:url(http://static.8264.com/static/images/bbstitleicon.jpg) no-repeat; font-size:18px; color:#666; }
+.bbstitlebox span.tzjxicon{ background-position: 0px -19px; padding:0px 0px 0px 18px;}
+.bbstitlebox a.hover{ border-bottom:#4395ff solid 2px;}
+.bbstitlebox a.hover span.tzjxicon{ background-position: 0px 6px; color:#4395ff; }
+.bbstitlebox span.bklbicon{ background-position: 0px -77px; padding:0px 0px 0px 26px;}
+.bbstitlebox a.hover{ border-bottom:#4395ff solid 2px;}
+.bbstitlebox a.hover span.bklbicon{ background-position: 0px -52px; color:#4395ff; }
+.bbstitlebox span.hwhdicon{ background-position: 0px -135px; padding:0px 0px 0px 20px;}
+.bbstitlebox a.hover{ border-bottom:#4395ff solid 2px;}
+.bbstitlebox a.hover span.hwhdicon{ background-position: 0px -110px; color:#4395ff; }
+/*精选开始*/
+.jxone{  padding:45px 0px 0px 0px;}
+.jxone img{ width:180px; height:134px; float:left; margin:0px 25px 0px 0px;}
+.jxrightcon{ overflow:hidden;}
+.jxrightcon h3{ color:#333; font-size:18px; margin:0px; padding:0px 0px 15px 0px; font-weight:normal;}
+.jxrightcon p{ color:#999; font-size:14px; margin:0px; padding:0px 0px 22px 0px;}
+.jxrightcon{ }
+.jxrightcon .name_hf_date {}
+.jxrightcon .namebox a{ font-size:12px; color:#999;}
+.jxrightcon .namebox img{ width:24px; height:24px; border-radius:50%; margin:0px 10px 0px 0px;}
+.jxrightcon .namebox .username{ color:#4395ff; font-size:14px; margin:0px 0px 0px 4px;}
+.jxrightcon .namebox .hfcon{ color:#999; font-size:12px; padding:0px 0px 0px 14px;}
+/*版块列表开始*/
+.bbslistbox{}
+.bbstitlefl{ text-align:center; background:url(http://static.8264.com/static/images/fltitlebg.jpg) left center repeat-x; width:98px; margin:0 auto; padding:30px 35px;}
+.bbstitlefl span{ background:#fff; display:block;}
+.bbstitlefl b{ font-size:16px; color:#333; font-weight:normal; display:block;}
+.bbstitlefl em{ font-size:12px; color:#999; display:block;}
+.bbslistcon{}
+.bbslistcon li{ float:left; width:220px; margin:0px 0px 28px 0px;}
+.bbslistcon li .leftpic{ width:50px; height:50px; float:left; margin:0px 12px 0px 0px;}
+.bbslistcon li .leftpic img{ width:50px; height:50px;}
+.bbslistcon li .bbsinfocon{ overflow:hidden;}
+.bbslistcon li .bbsinfocon a{ font-size:14px; color:#333;}
+.bbslistcon li .bbsinfocon p{ font-size:12px; color:#949494; height:14px; line-height:14px; padding:3px 27px 0px 0px;}
+.bbslistcon.regional .leftpic{ background:#43a6df; width:50px; height:50px; float:left; color:#fff; line-height:48px; text-align:center;  margin:0px 12px 0px 0px; font-size:26px;}
+.bbslistcon.regional .leftpic:hover{ background:#1a2b38;}
+.bbslistcon.imgblue .leftpic{ background:#43a6df; width:50px; height:50px; float:left; margin:0px 12px 0px 0px;}
+.bbslistcon.imgblue .leftpic:hover{ background:#1a2b38;}
+.hdfllist{ margin:30px 0px 34px 0px; border-bottom:#eee solid 1px; border-right:#eee solid 1px; width:656px;}
+.hdfllist a{ float:left; border-top:#eeeeee solid 1px; border-left:#eeeeee solid 1px; line-height:1;  width:81px; height:28px; padding:60px 0px 0px 0px; font-size:14px; color:#666; text-align:center; background:url(http://static.8264.com/static/images/hdiconbg.jpg) no-repeat;}
+.hdfllist a.hdicon1{ background-position:28px 20px;}
+.hdfllist a.hdicon2{ background-position:-57px 20px;}
+.hdfllist a.hdicon3{ background-position:-137px 20px;}
+.hdfllist a.hdicon4{ background-position:-220px 20px;}
+.hdfllist a.hdicon5{ background-position:-303px 20px;}
+.hdfllist a.hdicon6{ background-position:-388px 20px;}
+.hdfllist a.hdicon7{ background-position:-471px 20px;}
+.hdfllist a.hdicon8{ background-position:-554px 20px;}
+.hdfllist a.hdicon9{ background-position:24px -69px;}
+.hdfllist a.hdicon10{ background-position:-58px -69px;}
+.hdfllist a.hdicon11{ background-position:-137px -69px;}
+.hdfllist a.hdicon12{ background-position:-220px -69px;}
+.hdfllist a.hdicon13{ background-position:-303px -69px;}
+.hdfllist a.hdicon14{ background-position:-388px -69px;}
+.hdfllist a.hdicon15{ background-position:-471px -69px;}
+.hdfllist a.hdicon16{ background-position:-554px -69px;}
+.hdlistcon700{ width:700px;}
+.hdonebox{ width:320px; float:left; position:relative; margin:0px 20px 26px 0px;}
+.hdonebox img{ width:320px; height:172px;}
+.hdonebox .item-info{ background:#fff; border:#ebebeb solid 1px; height:60px; padding:10px 13px 0px 13px; line-height:23px; font-weight:normal; font-size:14px; color:#333;}
+.hdonebox .item-detail{ position:absolute; width:100%; height:42px; background:url(http://static.8264.com/static/images/hdbg.png) bottom left repeat-x; left:0px; top:130px;}
+.hdonebox .item-detail span{ float:left; font-size:12px; color:#fff; padding:12px 0px 0px 12px;}
+.hdonebox .item-detail em{ float:right; font-size:20px; color:#fff;  padding:2px 12px 0px 0px;}
+.hdonebox .item-detail i{ font-size:18px; font-style:normal;}
+/*左侧开始*/
+.rightbox{ display:block;}
+.righttitle{ background:url(http://static.8264.com/static/images/bbstitleicon.jpg) 0px -165px no-repeat; font-size:16px; color:#333; padding:0px 0px 0px 16px; margin:20px 0px 20px 0px; display:block;}
+.dayrenwu{}
+.dayrenwuone{ height:72px; background:#ecf0fd; border-radius:3px; margin:0px 0px 10px 0px;}
+.lvbileft{ width:63px; float:left; text-align:center; padding:10px 0px 0px 0px;}
+.lvbileft span{ font-size:20px; color:#1e1e20; display:block;}
+.lvbileft em{ font-size:12px; color:#8a8a8a; display:block;}
+.rwtitle{ width:188px; float:left; background:url(http://static.8264.com/static/images/renwuicon.png) 0px 17px no-repeat; font-size:14px; color:#1e1e20; padding:13px 30px 0px 48px;height:42px; overflow: hidden;}
+.mgyzone{ width:103px; height:140px; border-radius:5px; position:relative; float:left; margin:0px 10px 14px 0px;}
+.mgyzone img{ width:103px; height:140px; border-radius:5px;}
+.mgyzone a{ background:url(http://static.8264.com/static/images/mgbg.png); position:absolute; left:0px; top:0px; right:0px; bottom:0px; width:100%; height:140px; border-radius:5px; display:none;}
+.mgyzone:hover a{ display: block;}
+.mgyzone i.mgicon{ background:url(http://static.8264.com/static/images/mgicon.png) center center no-repeat; display:block; margin:38px 0px 8px 0px; height:20px;}
+.mgyzone i.yzicon{ background:url(http://static.8264.com/static/images/yzicon.png) center center no-repeat; display:block; margin:38px 0px 8px 0px; height:19px;}
+.mgyzone span{ color:#fff; font-size:12px; text-align:center; padding:0px 13px 0px 13px; display:block;}
+.mgyzbox .mgyzcon{ width:340px;}
+.mrytbox{ border-radius:5px;}
+.mrytbox img{width:330px;}
+.mrytbox span{ background:#000000; height:38px; display:block;}
+.mrytbox em{ font-size:14px; color:#fff; font-style:normal; padding:9px 0px 0px 17px; float:left;}
+.mrytbox i{ font-size:12px; color:#fff; padding:12px 17px 0px 0px; float:right;}
+.sysbox{}
+.sysone{ width:160px; float:left; margin:0px 10px 0px 0px;}
+.sysone img{ width:160px; height:240px; border-radius:5px;}
+.sysone span{ font-size:14px; color:#333333; display:block; text-align:center; padding:10px 0px 0px 0px;}
+.syscon{ width:380px}
+.pb10{ padding-bottom:10px;}
+.leftfbactbox{ width:83px; position:fixed; _position: absolute; top:215px; top:expression(offsetParent.scrollTop+215);}
+.leftfbactbox a{ width:83px; height:83px; background:#4395ff; color:#fff; font-size:12px; display:block; text-align:center; border-radius:3px 3px 0px 0px;}
+.leftfbactbox i{ display:block; background:url(http://static.8264.com/static/images/clicon.png) no-repeat; height:16px; padding-top:22px;}
+.leftfbactbox a.fbtz i{ background-position:35px 22px;}
+.leftfbactbox a.fbact{ background:#5ba3ff; border-radius:0px 0px 3px 3px;}
+.leftfbactbox a.fbact i{ background-position:34px -60px;}
+.leftfbactbox span{ display:block; padding:3px 0px 0px 0px;}
+.addmore{ height:40px; border:#ececec solid 1px; border-radius:3px; line-height:38px; color:#999; font-size:14px; text-align:center; margin:27px 0px 0px 0px;}
+.gotop{ width:48px; height:48px; border:#e7e7e7 solid 1px; border-radius:3px; position:fixed; _position: absolute; bottom:20px; right:50px; background:url(http://static.8264.com/static/images/bbstitleicon.jpg) 16px -197px no-repeat; cursor:pointer; display:none;}
+/**/
+.w1040textAdBox .textAdBox { float:none; width: 1038px; background:#fff; margin-bottom:10px;}
+.w1040textAdBox .textAdBox ul{ width:100%;}
+.w1040textAdBox .layout{ width:1038px;}
+.w1040textAdBox ul li{ width:20%;}
+/**/
+.headerNav .layout{ width:1040px;}
+
+/*对冲原来的样式*/
+.fwinmask { border:#d7d7d7 solid 1px;background-color: #fff; box-shadow: 0px 0px 3px rgba(0, 0, 0, .2); border-radius:3px; }
+.fwinmask .flb {height:auto;line-height:auto;padding:0;}
+.fwinmask .m_l,.fwinmask .m_r,.fwinmask .m_l,.fwinmask .t_l,.fwinmask .t_c,.fwinmask .t_r,.fwinmask .b_l,.fwinmask .b_c,.fwinmask .b_r {display:none;}	
+.fwinmask input,.fwinmask select,.fwinmask button{ font-family:"Microsoft Yahei",Tahoma,Helvetica,SimSun,sans-serif;}
+.popwarpten li:after,.clear_b:after{content: ""; display: block; clear: both; visibility: hidden;}
+.popwarpten li,.clear_b{ zoom: 1;}
+/*发帖-选择板块*/
+.popbox{padding-bottom:50px;}
+.popbox a:hover{ text-decoration:none;}
+.popbox.w570{ width:570px;}
+.popbox.w300{ width:300px;}
+.popbox.w450{ width:450px;}
+.popbox_title{ height:49px; background:#f4f4f4;}
+.popbox_title span{ font-size:16px; color:#949494; float:left; margin:13px 0px 0px 19px; display:inline;}
+.popbox_title a{ font-size:14px; color:#43a6df; margin:14px 0px 0px 10px; float:left;}
+.popbox_title em{ float:right; width:15px; height:15px; background:url(http://static.8264.com/static/images/icon/usercentericon24.png) -5px -194px no-repeat; cursor:pointer; margin:16px 20px 0px 0px;}
+.tagtitle{ height:45px; background:#768693; font-size:0px; padding:0px 19px 0px 19px;}
+.tagtitle span{ font-size:12px; color:#fff; text-align:center; display:inline-block; padding:0px 14px 0px 14px; margin-top:7px; height:38px; line-height:38px; cursor:pointer;}
+.tagtitle span.hover{ background:#fff; color:#585858;}
+.popwarpten{ }
+.popbbslist{ }
+.pl20{ padding-left:24px;}
+.popbbslist li{ float:left; width:94px; padding:6px; margin:9px 0px 0px 0px;}
+.popbbslist li:hover,.popbbslist li.active{ background:#f4f4f4; cursor:pointer;}
+.popbbslist .iconbox{ width:34px; height:34px; background:#43a6df; font-size:18px; color:#fff;  float:left; text-align:center; line-height:32px; overflow:hidden;}
+.popbbslist li:hover .iconbox{ background:#1a2b38; }
+.popbbslist li.active .iconbox{ background:#1a2b38; }
+.popbbslist .iconbox img{ width:34px; height:34px; display: block; /*margin-top:-3px;*/}
+.popbbslist.w165 li{ width:165px;}
+.popbbslist p{ float:left; padding-left:9px;}
+.popbbslist.w165 p{ width:102px;height:44px;overflow:hidden;}
+.popbbslist p .titlename{ font-size:14px; color:#585858; padding-top:6px; display:block;}
+.buttonbox{ padding:24px 0px 0px 30px;}
+.button_confirm{ width:119px; height:40px; background-color:#ff7e00; font-size:16px; color:#fff; line-height:40px; text-align:center; border:0 none; border-radius:2px; cursor:pointer;}
+.button_cancel{ width:119px; height:40px; background-color:#c2c2c2; font-size:16px; color:#fff; line-height:40px; text-align:center; border:0 none; border-radius:2px; cursor:pointer;*margin-right: 8px;vertical-align: middle;}
+.buttonbox .fn12{ font-size:12px; color:#949494; padding-left:10px;}
+.buttonbox .msg_tip{ color:red;margin-left:10px;display:none;*vertical-align:8px;}
+.popbbslist .iconbox44{ width:48px; height:48px; float:left;}
+.popbbslist .iconbox44 img{ width:48px; height:48px;}
+.popbbslist .notetxt{ font-size:12px; color:#949494;}
+.popbbslist p .pt0{ padding-top:0px;}
+.popbbslist p .pt12{ padding-top:12px;}
+.popbbslist li.createalbum a.iconbox44{width:46px;height:46px;border:1px solid #e0e0e0;position:relative;}
+.popbbslist li.createalbum a.iconbox44 .row{background-color:#ececec;width:26px;height:3px;display:block;position:absolute;left:10px;top:21px;overflow:hidden}
+.popbbslist li.createalbum a.iconbox44 .col{background-color:#ededed;width:3px;height:26px;display:block;position:absolute;left:21px;top:10px;overflow:hidden}
+.popbbslist li.createalbum p a{padding-top:12px;}

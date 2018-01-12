@@ -1,0 +1,427 @@
+<style>
+#container ul li{float: left; margin-left: 10px;}
+fieldset{padding: 10px;}
+.selected{font-weight: bold;}
+#modules{overflow:hidden;}
+</style>
+<div id="container">
+<fieldset>
+<h3>{$mod}列表</h3>
+	<legend>搜索选项</legend>
+	<div>
+		<ul id="modules">
+		<!--{if $modules}-->
+			<li id="module_all" <!--{if $nowmodule==''}-->class="selected"<!--{/if}-->><a href="admin.php?action=plugins&operation=config&do=$pluginid&identifier=dianping&pmod=topic_manager">所有模块</a></li>
+			<!--{loop $modules $k $v}-->
+			<li id="module_$v[srcid]" <!--{if $v[srcid]===$nowmodule}-->class="selected"<!--{/if}-->><a href="admin.php?action=plugins&operation=config&do=$pluginid&identifier=dianping&pmod=topic_manager&fmod=$v[srcid]">$v[mname]</a></li>
+			<!--{/loop}-->
+		<!--{else}-->
+		<li>当前没有模块，请<a href="admin.php?action=plugins&operation=config&do=$pluginid&identifier=dianping&pmod=system_manager&fmod=addmodules">添加</a></li>
+		<!--{/if}-->
+		</ul>
+	</div>
+	<br>
+	<div style="margin-left:10px;">
+	<form action="" method="POST">
+		<input type="hidden" name="search" value="1" />
+		名称:
+		<input type="text" name="kName" id="kName" size="18" value="$search[kName]" />
+		tid:
+		<input type="text" name="tid" id="tid" size="18" value="$search[tid]" />
+
+		<select name="ispublish" id="ispublish">
+			<option value=""  <!--{if empty($search[ispublish])}-->selected="selected"<!--{/if}-->>全部</option>
+			<option value="0" <!--{if $search[ispublish]=='0'}-->selected="selected"<!--{/if}-->>己审核</option>
+			<option value="1" <!--{if $search[ispublish]=='1'}-->selected="selected"<!--{/if}-->>未审核</option>
+		</select>
+		<!--{if ($ord[$nowmodule]=='skiing'||$ord[$nowmodule]=='equipment')&&$nowmodule}-->
+		排序:
+		<select name="orderby" id="orderby">
+			<option value="0" <!--{if $search[orderby]=='0'}-->selected="selected"<!--{/if}-->>发布时间</option>
+			<option value="1" <!--{if $search[orderby]=='1'}-->selected="selected"<!--{/if}-->>排序</option>
+		</select>
+		<select name="horl" id="horl">
+			<option value="0" <!--{if $search[horl]=='0'}-->selected="selected"<!--{/if}-->>降序</option>
+			<option value="1" <!--{if $search[horl]=='1'}-->selected="selected"<!--{/if}-->>升序</option>
+		</select>
+		<!--{/if}-->
+		<input type="submit" class="btn" value="搜索">&nbsp;&nbsp;&nbsp;(共检索到<span style="color:red">$count</span>条记录)
+		<!--{if $nowmodule=='line'}-->
+		<span style="padding-left:15px;cursor: pointer;font-weight: bold;color:blue" id="resetHtmlall" url="admin.php?ctl=lineadmin&act=resetHtml&kid=all">重新生成所有</span>
+		<!--{/if}-->
+	</form>
+	</div>
+	<span style="clear: both;"></span>
+</fieldset>
+</div>
+<form action="" method="post" id="guideForm">
+<table class="tb tb2">
+<tr class="header">
+	<th>主题</th>
+	<th>模块</th>
+	<th>回复数</th>
+	<th>发布时间</th>
+        <!--{if $nowmodule=='club' && $_G['uid']==3552231 || $_G['uid']==125851}-->
+        <th>联系人</th>
+        <th>联系方式</th>
+        <!--{/if}-->
+	<!--{if $nowmodule=='mountain'}-->
+	<th>发布作者</th>
+	<!--{/if}-->
+	<!--{if $nowmodule=='brand'}-->
+	<th>是否招商</th>
+	<th>是否置顶</th>
+	<!--{/if}-->
+	<th><!--{if $nowmodule}--><!--{if $nowmodule!='brand'}-->排序<!--{else}-->招商电话<!--{/if}--><!--{/if}--></th>
+	<th>评分</th>
+	<th>评分变化</th>
+	<th>审核状态</th>
+	<th>操作</th>
+</tr>
+<!--{if $threadlist['list']}-->
+<!--{loop $threadlist['list'] $val}-->
+<tr>
+	<td>
+		<a href="http://www.8264.com/dianping.php?mod=$val[scr]&act=showview&tid=$val[tid]" target="_blank">$val[subject]</a>
+		<!--{if $nowmodule != 'mountain'}-->
+		 &nbsp;&nbsp;<a href="http://u.8264.com/space-uid-$val[authorid].html" target="_blank" style="color: red;">($val[author])</a>
+		<!--{/if}-->
+		<!--{if $nowmodule=='brand'}-->
+		 &nbsp;&nbsp;<span id="$val[tid]ty" style="font-weight: bold;color: blue;cursor: pointer;" onclick="edit_bq($val[tid])"><img alt="" src="static/image/admincp/editable.gif"></span>&nbsp;
+		<!--{/if}-->
+	</td>
+	<td>
+		$val[mod]
+	</td>
+	<td>
+		$val[replies]
+	</td>
+	<td>
+		$val[dateline]
+	</td>
+        <!--{if $nowmodule=='club'&& $_G['uid']==3552231 || $_G['uid']==125851}-->
+        <td>$val[contact]</td>
+        <td>
+            <!--{if $val[tel]}-->
+            电话：$val[tel]
+            <br>
+            <!--{/if}-->
+            <!--{if $val['weixin']}-->
+            微信：$val['weixin']<br>
+            <!--{/if}-->
+            <!--{if $val['qq']}-->
+            QQ：$val['qq']
+            <!--{/if}-->
+
+        </td>
+        <!--{/if}-->
+	<!--{if $nowmodule=='mountain'}-->
+	<td>
+		<a href="http://u.8264.com/space-uid-$val[authorid].html" target="_blank" style="color: red;">$val[author]</a>
+	</td>
+	<!--{/if}-->
+	<!--{if $nowmodule=='brand'}-->
+	<td>
+		<!--{if $val['bzs']}--><span style="color:green">招商中</span><!--{else}--><span style="color:red">未招商</span><!--{/if}-->
+	</td>
+	<td>
+		<!--{if $val['displayorder']==1}--><span style="color:green">置顶中</span><!--{else}--><span style="color:red">未置顶</span><!--{/if}-->
+	</td>
+	<!--{/if}-->
+	<td>
+		<!--{if $nowmodule}-->
+		<!--{if $nowmodule!='brand'}-->
+		<input type="text" id="order_$val[tid]" onfocus="this.select();" onKeyDown="document.getElementById('submit_$val[tid]').style.visibility='visible'" onKeyPress="document.getElementById('submit_$val[tid]').style.visibility='visible'" onChange="document.getElementById('submit_$val[tid]').style.visibility='visible'" name="order_$val[tid]" size="2" value="$val[orderby]"/>&nbsp;
+		<input type="button" id="submit_$val[tid]" name="submit_$val[tid]" value="修改" style="visibility:hidden" onClick="checkvalue('order_$val[tid]');"/><input type="hidden" name="id" id="id" value="$val[tid]" />&nbsp;&nbsp;&nbsp;<span id="tip$val[tid]"></span>
+		<!--{else}-->
+		<input type="text" id="order_$val[tid]" onfocus="this.select();" onKeyDown="document.getElementById('submit_$val[tid]').style.visibility='visible'" onKeyPress="document.getElementById('submit_$val[tid]').style.visibility='visible'" onChange="document.getElementById('submit_$val[tid]').style.visibility='visible'" name="order_$val[tid]" size="8" value="$val[zstel]"/>&nbsp;
+		<input type="button" id="submit_$val[tid]" name="submit_$val[tid]" value="修改" style="visibility:hidden" onClick="checkvaluebrand('order_$val[tid]');"/><input type="hidden" name="id" id="id" value="$val[tid]" />&nbsp;&nbsp;&nbsp;<span id="tip$val[tid]"></span>
+		<!--{/if}-->
+		<!--{/if}-->
+	</td>
+	<td><b style="color: blue;">{$allfen[$val['tid']]['price']}</b></td>
+	<td>{if $allfen[$val['tid']]['lastchange'] == 0}<b style="color:blue;">-</b>{else}{if $allfen[$val['tid']]['lastchange'] == 1}<b style="color:red;">∧</b>{else}<b style="color:green;">∨</b>{/if}{/if}</td>
+	<td>
+		<div id="sta_$val[tid]">$val[status]</div>
+	</td>
+	<td>
+		<!--{if $nowmodule=='brand'}-->
+		<a class="zhaoshang" <!--{if ($val[bzs]==1)}-->style="display:none"<!--{/if}--> href="$url&gid=$val[id]&zs=1">设为招商</a>
+		<a class="unzhaoshang" <!--{if ($val[bzs]!=1)}-->style="display:none"<!--{/if}--> href="$url&gid=$val[id]&zs=0">取消招商</a>&nbsp;
+		&nbsp;
+		<a class="zding" <!--{if ($val[displayorder]==1)}-->style='display:none' <!--{/if}--> href="$url&gid=$val[id]&zd=1">设为置顶</a>
+		<a class="buzhiding" <!--{if ($val[displayorder]!=1)}-->style='display:none' <!--{/if}--> href="$url&gid=$val[id]&zd=0">取消置顶</a>
+		&nbsp;
+		<!--{/if}-->
+		<!--{if $nowmodule=='line'}-->
+		<span><a class="maphtml" href="admin.php?ctl=lineadmin&act=resetHtml&kid={$val[tid]}">重新生成地图</a></span>
+		&nbsp;
+		<!--{/if}-->
+		<!--{if $val['closed']==0}-->
+		<a href="$url&op=$val[scr]&tid=$val[tid]&isshow=1" onclick="return checkPass($val[tid]);" class="shen_$val[tid]">通过</a>
+		<!--{else}-->
+		<a href="$url&op=$val[scr]&tid=$val[tid]&isshow=0" onclick="return checkPass($val[tid]);" class="shen_$val[tid]">不通过</a>
+		<!--{/if}-->
+	</td>
+</tr>
+<!--{/loop}-->
+<!--{else}-->
+<!--{/if}-->
+</table>
+<div style="overflow:hidden;width:99%;clear:both;padding:5px;border-top:1px solid #deeffb;">
+	<div style="float:left;">
+
+	</div>
+	<div style="float:right;">
+		$threadlist['multi']
+	</div>
+</div>
+</form>
+<style type="text/css">
+	.hover input, #chk_all {border: none;}
+	.fixsel input { vertical-align:middle; margin-right:10px;}
+	.div_content {background: none repeat scroll 0 0 #FEFEFE; border: 1px solid #639BB0; width:630px;}
+	.identity_title {border-bottom: 1px dashed #CCCCCC; padding: 5px 10px}
+	.identity_footer {border-top: 1px dashed #CCCCCC; padding: 2px 5px 5px 0; text-align: right; height:20px; padding-top:6px}
+</style>
+<div id="bq_add" class="div_content" style="position:absolute; z-index:999; padding:10px; line-height:1.8;display: none;">
+	<div class="identity_title">
+		<a href="javascript:void(0);" id="a_close" style="float:right"><img src="static/image/admincp/x.gif" width="16" height="16" border="0" /></a>
+		<b style="color: #F00" id="b_subject">请选择标签添加给：</b><span id="tip"></span>
+		<div style="clear:both;"></div>
+	</div>
+	<form id="frm_bq">
+	<input type="hidden" value="" name="tidd" id="tidd" />
+	<div id="bq_content" style="overflow: auto;height: 275px;">
+		<!--{loop $pplist $values}-->
+		<div class="hover" style="display: block;float: left;" id="bq_rq">
+		<div id="dg_id" style="width: 300px;">
+		<input type="checkbox" value="$values['id']" name="chk_detail[]" flg="chk_detail_" id="chk_detail_$values['id']" /><label for="chk_detail[]">$values['produce']</label></div>
+		</div>
+		<!--{/loop}-->
+	</div>
+	</form>
+	<div class="identity_footer">
+		<a href="javascript:void(0);" id="a_enter">确定</a>
+		&nbsp;&nbsp;
+		<a href="javascript:void(0);" id="a_cancel" style="padding-right:5px">取消</a>
+	</div>
+</div>
+<script src="static/js/jquery-1.6.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+//由于live可以绑定后来生成节点的该事件, 但是之前绑定的不会被清除, 会导致重复绑定, 重复发送请求. 在live之前先使用die清除之前的绑定.
+function checkPass(x){
+	$('.shen_'+x).die('click').live("click",function(){
+	      var url=$(this).attr('href');
+	      var _this=$(this);
+	      $.ajax({
+		      type : 'GET',
+		      url : url,
+		      success:function(html){
+			      _this.css("display",'none');
+			      var urls = url.substr(0,url.length-1);
+			      var hre = url.substr(-1,5);
+			      if(hre==1){
+				   urls += +"0";
+				   $('#sta_'+x).html("<span style='color:green'>已审核</span>");
+				   _this.html("<a class='shen_"+x+"' onclick='return checkPass("+x+");' href="+urls+">不通过</a>").show();
+			      }else{
+				   urls += +"1";
+				   $('#sta_'+x).html("<span style='color:red'>未审核</span>");
+				   _this.html("<a class='shen_"+x+"' onclick='return checkPass("+x+");' href="+urls+">通过</a>").show();
+			      }
+		      }
+	      });
+	      return false;
+	});
+	return false;
+}
+
+function checkvaluebrand(m){
+	if(document.getElementById(m).value==""){
+		alert('请输入招商电话');
+		return false;
+	}else{
+		var dh = document.getElementById(m).value;
+		var id = jQuery("#"+m).next().next().val();
+		var str_url = 'plugin.php?id=dianping:ajax_updateproduce&op=zhaoshang&bid='+id;
+		jQuery.ajax({
+				url: str_url + '&dh='+dh,
+				type: "get",
+				success: function(msg){
+					if (msg=="success") {
+						jQuery("#tip"+id).html('');
+						jQuery("#tip"+id).css("padding-left","5px").css("color","blue").html('修改成功！');
+					}else if(msg=="error"){
+						jQuery("#tip"+id).html('');
+						jQuery("#tip"+id).css("padding-left","5px").css("color","blue").html('修改失败！');
+					}
+					jQuery('#submit_'+id).css("visibility","hidden");
+				}
+		});
+	}
+}
+function checkvalue(m){
+	if(document.getElementById(m).value==""){
+		alert('请输入排序号，数字越大排名越高');
+		return false;
+	}else{
+		var order = document.getElementById(m).value;
+		if(isNaN(order)){
+			alert("您填的不是一个数字");
+			return false;
+		}
+		var id = jQuery("#"+m).next().next().val();
+		var str_url = 'plugin.php?id=dianping:ajax_update&mod=$nowmodule&tid='+id;
+		jQuery.ajax({
+				url: str_url + '&type=px&order='+order,
+				type: "get",
+				success: function(msg){
+					if (msg=="success") {
+						jQuery("#tip"+id).html('');
+						jQuery("#tip"+id).css("padding-left","5px").css("color","blue").html('修改成功！');
+					}else if(msg=="error"||msg=="errors"){
+						jQuery("#tip"+id).html('');
+						jQuery("#tip"+id).css("padding-left","5px").css("color","blue").html('修改失败！');
+					}else if(msg=="cunzai"){
+						jQuery("#tip"+id).html('');
+						jQuery("#tip"+id).css("padding-left","5px").css("color","blue").html('产品名称已存在，修改失败！');
+					}
+					jQuery('#submit_'+id).css("visibility","hidden");
+				}
+		});
+	}
+}
+
+// 点击取消或关闭按钮时隐藏弹出层
+jQuery('#a_close, #a_cancel').click(function () {
+	jQuery('#bq_add').hide();
+});
+jQuery('#a_close_zt, #a_cancel_zt').click(function () {
+	jQuery('#bq_zhuanti').hide();
+});
+//增加对重新生成地图的操作
+{if $nowmodule=='line'}
+jQuery('.maphtml').click(function(){
+	var obs = this;
+	jQuery.ajax({
+		url: this.href,
+		type: 'get',
+		dataType: 'json',
+		success: function(json){
+			if(json.status == true){
+				obs.innerHTML = "<b style='color:green;'>成功</b>,点击查看";
+				obs.href = "{$_G[config][web][attach]}" + json.message;
+				obs.target = '_blank';
+				obs.className = '';
+				jQuery(obs).unbind('click');
+			}else{
+				switch(json.message){
+					case -1:
+						msg = "参数错误";break;
+					case -2:
+						msg = "轨迹文件不存在";break;
+					default:
+						msg = "未知错误";
+				}
+				obs.innerHTML = '<b style="color:red;">失败</b>' + msg;
+			}
+		}
+	});
+	return false;
+});
+var nowstart = 0;
+function resetHtmlAll(){
+	var url = jQuery("#resetHtmlall").attr('url') + '&start=' + nowstart;
+	jQuery.ajax({
+		url: url,
+		type: 'get',
+		dataType: 'json',
+		success: function(json){
+			var msg = '';
+			if(json.success > 0){
+				msg = "成功生成<b style='color:green'>" + json.success + "</b>个 ";
+			}
+			if(json.errors > 0){
+				msg += "失败<b style='color:red'>" + json.errors + "</b>个 ";
+			}
+			if(json.shengyu > 0 && json.nextstart > 0){
+				msg += "剩余<b style='color:#E47A07'>" + json.shengyu + "</b>个 ";
+				nowstart = json.nextstart;
+				if(json.errors > 0){
+					msg += "点击继续";
+					jQuery("#resetHtmlall").one('click', resetHtmlAll);
+				}else{
+					msg += "5秒后将自动继续生成";
+					setTimeout(resetHtmlAll, 5000);
+				}
+			}else{
+				msg += " 全部生成完成，点击将重新生成";
+				jQuery('#resetHtmlall').one('click',resetAll);
+			}
+			jQuery("#resetHtmlall").html(msg);
+		}
+	});
+}
+function resetAll(){
+	nowstart = 0;
+	resetHtmlAll();
+}
+jQuery('#resetHtmlall').one('click', resetAll);
+{/if}
+function edit_bq(tid){
+	jQuery(':checkbox[id^=chk_detail_]').removeAttr('checked').removeAttr('disabled');
+	var int_top = jQuery('#' + tid+'ty').offset().top;
+	if (jQuery(document).height() - jQuery('#' + tid+'ty').offset().top-jQuery('#' + tid+'ty').height() < jQuery("#bq_add").height() + 50) {
+			int_top = jQuery('#' + tid+'ty').offset().top - jQuery("#bq_add").height();
+	}
+	var int_left = jQuery('#' + tid+'ty').offset().left;
+	jQuery("#bq_add").css("left", int_left);
+	if(int_top < 0){
+		int_top = 0;
+	}
+	jQuery("#bq_add").css("top", int_top);
+	jQuery("#bq_add").show();
+	jQuery("#tidd").val(tid);
+	var td=jQuery('#' + tid+'ty').parents('td').find('a:first').text();
+	jQuery('#b_subject').text("");
+	jQuery('#tip').text("");
+	jQuery('#b_subject').text("请选择 ("+td+") 品牌下覆盖产品:");
+
+	var str_url = 'plugin.php?id=dianping:ajax_updateproduce&op=getids&tid='+tid;
+	jQuery.getJSON(
+			str_url,
+			function(data) {
+				jQuery.each(data, function (i,v) {
+					jQuery("#chk_detail_"+v).attr('checked', 'checked');
+				});
+			}
+	);
+	return false;
+}
+jQuery('#a_enter').click(function () {
+	var str_url = 'plugin.php?id=dianping:ajax_updateproduce';
+	var data = jQuery("#frm_bq").serialize();
+	var str_uid = jQuery.trim(jQuery('#tidd').val());
+	// 如果没有取到tid则不进行任何处理
+	if (!str_uid) {
+		return;
+	}
+	jQuery.ajax({
+		url: str_url + '&op=edit',
+		type: "get",
+		data: data,
+		success: function(msg){
+			if (msg=="success") {
+				jQuery("#tip").css("padding-left","10px").css("color","blue").html('修改成功！');
+			}else if(msg=="error"){
+				jQuery("#tip").css("padding-left","10px").css("color","blue").html('修改失败！');
+			}
+			jQuery('#bq_add').fadeOut('3000');
+		}
+	});
+});
+</script>
+
+
+

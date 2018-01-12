@@ -1,0 +1,80 @@
+<!--{if $_G[inajax]}-->
+<!--{template common/header_ajax}-->
+<!--{else}-->
+<!--{template common/header_fav}-->
+<!--{/if}-->
+<!--{if $_G[uid]==1}-->
+<div class="wp cl">
+<div id="scbar" class="bm cl">
+	<form id="scform" class="z" method="post" autocomplete="off" onsubmit="searchFocus($('srchtxt'))" action="adminfav.php">
+		<input type="hidden" name="mod" value="search" />
+		<input type="hidden" name="formhash" value="{FORMHASH}" />
+		<input type="hidden" name="srchtype" value="title" />
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<td><input type="text" name="srchtxt" id="srchtxt" value="{lang enter_content}" autocomplete="off" onfocus="searchFocus(this);" onblur="searchBlur(this);" /></td>
+				<td>&nbsp;<!--{echo implode('', $slist);}--></td>
+				<td><button type="submit" id="search_submit" name="searchsubmit" class="xw1" value="true">{lang search}</button></td>
+				<td>
+					<div class="hot">
+						
+					</div>
+				</td>
+			</tr>
+		</table>
+	</form>
+	<script type="text/javascript">
+		function succeedhandle_{$_G[gp_handlekey]}(url, msg, values) {
+			window.location.reload();
+			
+			}
+	</script>
+</div>
+
+	
+</div>
+
+<div id="" class="wp cl">
+
+    <div class="bm_h cl">
+        <h2>
+        	搜索结果：
+        </h2>
+    </div>
+    <div class="bm_c cl">
+        <table cellpadding="0" cellspacing="0" align="center">
+            <tr style="border-bottom:1px solid #E6E6E6">
+            {eval $count=0;}
+            <!--{loop $urls $key $value}-->
+            {eval $count++;}
+                 <td height="30" width="150" align="left" class="showem" id="edit_$value[id]" onmousemove="showedit('edit_$value[id]',1)" onmouseout="showedit('edit_$value[id]',0)">
+                 <div id="daohangtext_$value[id]" style="width:155px;">
+                     <a href="$value[href]" title="$value[name]" class="xi2 showem" style="font-size:14px;line-height:24px;" target="_blank"> <!--{if $value[color]}--><font class="showem" color="$value[color]">$value[name]</font><!--{else}-->$value[name]<!--{/if}--></a>
+                     
+                     <!--{if $_G[uid]==1}--><span onclick="showWindow('adminfav_edit_$value[id]','adminfav.php?mod=ajax&op=edit_adminfav&id=$value[id]&uid=$value[uid]&page=$page')" class="admin_edit" title="编辑"></span>
+                      <span onclick="showWindow('adminfav_del_$value[id]','adminfav.php?mod=ajax&id=$value[id]&op=del_adminfav&uid=$value[uid]&page=$page')" class="admin_del" title="删除"></span><!--{/if}-->
+                 </div>
+                 </td>
+                 <td height="30" width="150" align="left">
+                 <a href="adminfav.php?mod=index&op=search_uid&uid=$value[uid]">$value[uid]</a>
+                 </td>
+                 <!--{if $count%3==0}--></tr><tr style="border-bottom:1px solid #E6E6E6"> <!--{/if}-->
+             <!--{/loop}-->
+             </tr>
+         </table>
+     </div>
+     <div>
+  <!--{if $multi}--><div class="pgs cl mtm">$multi</div><!--{/if}-->
+</div>
+<!--{/if}-->
+<hr style="margin-top:30px;" />
+<p style="text-align:center;padding:15px;color:#6B7355;
+font-family:Verdana;
+font-size:12px;">114la to Discuz v1.0网址导航  制作：<a href="http://www.qiaoqiao.net" target="_blank"><b>瞧瞧影视</b></a>  
+Powered by <a href="http://www.ylmf.com" target="_blank"> <b>雨林木风</b></a>
+</p>
+
+<div style="display:none">
+</div>
+</body>
+</html>

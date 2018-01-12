@@ -1,0 +1,47 @@
+{subtemplate common/header}
+
+
+<div id="pt" class="bm cl">
+<div class="z"><a href="./" class="nvhm">$_G[setting][bbname]</a><em>&rsaquo;</em><a href="./">$_G[setting][bbname]</a> <em>&rsaquo;</em><a href="plugin.php?id=drc_qqgroup:main">{lang drc_qqgroup:plugin_name}</a> <em>&rsaquo;</em>$plugin_nav</div>
+</div>
+
+<div id="ct" class="ct2 wp cl">
+<div class="mn">
+    	<div class="bm bw0">
+            <div class="bm bw0">
+			<div class="datalist">
+			<table width="100%" border="1" bordercolor="#cccccc">
+					
+					<tr bgcolor="#F2F2F2" align="center">
+						<td height="35" width="50">{lang drc_qqgroup:ico}</td>
+						<td>{lang drc_qqgroup:name}</td>
+						<td width="100">{lang drc_qqgroup:num}</td>
+						<td width="100">{lang drc_qqgroup:creator}</td>
+						<td width="110">{lang drc_qqgroup:intro}</td>
+						<td width="90">{lang drc_qqgroup:createtime}</td>
+						<td width="100">{lang drc_qqgroup:operater}</td>
+					</tr>
+					<!--{loop $qcplists $qcplist}-->
+					<tr align="center">
+						<td height="35"><img src="http://face7.qun.qq.com/cgi/svr/face/getface?type=4&fid=2002&uin=$qcplist[num]" height="28" /></td>
+						<td>$qcplist[name]</td>
+						<td><font style="font-family:Georgia, 'Times New Roman', Times, serif;">$qcplist[num]</font></td>
+						<td><font style="font-family:Georgia, 'Times New Roman', Times, serif;">$qcplist[creator]</font></td>
+						<td><span id="viewintro_$qcplist[id]" onmouseover="showMenu(this.id);"><a href="javascript:;">{lang drc_qqgroup:main_viewintro}</a></span>
+						<span id="viewintro_$qcplist[id]_menu" style="display:none; border:1px solid #ccc; background-color:#F2F2F2; padding:10px; text-align:left">$qcplist[intro]</span></td>
+						<td><font style="font-family:Georgia, 'Times New Roman', Times, serif;">$qcplist[createtime]</font></td>
+						<td><a href="plugin.php?id=drc_qqgroup:main&mod=cpanel&action=qcp&operation=edit&qid=$qcplist[id]" onclick="showWindow('qedit', this.href); return false;">{lang drc_qqgroup:qcp_edit}</a> | <a onclick="showDialog('{lang drc_qqgroup:qcp_notice}', 'confirm', '{lang drc_qqgroup:qcp_notice_title}', function () { window.location.href='plugin.php?id=drc_qqgroup:main&mod=cpanel&action=qcp&operation=delete&qid=$qcplist[id]'; return false; })" href="javascript:;">{lang drc_qqgroup:qcp_delete}</a></td>
+					</tr>
+					<!--{/loop}-->
+				</table>
+				
+				<div style="clear:both"></div>
+				<div style="margin-top:20px;">$multipage</div>
+			</div></div>
+		</div>
+	</div>
+
+	{template drc_qqgroup:side}
+</div>
+
+{subtemplate common/footer}

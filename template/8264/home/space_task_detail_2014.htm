@@ -1,0 +1,433 @@
+<div class="clear_b">
+<a class="y xs1 xw0 mtn" href="home.php?mod=task&item={if $task[status] == '1'}done{elseif $task[status] == '0'}doing{elseif $task[status] == '-1'}failed{else}new{/if}">{lang return}</a>
+<h4 class="rwt_14">任务详情</h4>
+
+<div class="h98_g clear_b">
+    <div class="rwicon49"></div>
+    <div class="rwp">
+        <a href="javascript:;">$task[name]</a>
+        <!--{if $task[period]}-->
+            <span>
+            <!--{if $task[periodtype] == 0}-->
+                    ( {lang task_period_hour} )
+            <!--{elseif $task[periodtype] == 1}-->
+                    ( {lang task_period_day} )
+            <!--{elseif $task[periodtype] == 2}-->
+                    <!--{eval $periodweek = $_G['lang']['core']['weeks'][$task[period]];}-->
+                    ( {lang task_period_week} )
+            <!--{elseif $task[periodtype] == 3}-->
+                    ( {lang task_period_month} )
+            <!--{/if}-->
+            </span>
+        <!--{/if}-->
+        <span>$task[description]</span>
+    </div>
+    <div class="rwbz">
+        <!--{if $task['reward'] == 'credit'}-->
+            <span class="bz">$task[bonus]</span>
+            <span class="bzw">$_G['setting']['extcredits'][$task[prize]][title]</span>
+        <!--{elseif $task['reward'] == 'magic'}-->
+            {lang magics_title} $task[rewardtext] $task[bonus] {lang magics_unit}
+        <!--{elseif $task['reward'] == 'medal'}-->
+            {lang medals} $task[rewardtext] <!--{if $task['bonus']}-->{lang expire} $task[bonus] {lang days} <!--{/if}-->
+        <!--{elseif $task['reward'] == 'invite'}-->
+            {lang invite_code} $task[prize] {lang expire} $task[bonus] {lang days}
+        <!--{elseif $task['reward'] == 'group'}-->
+            {lang usergroup} $task[rewardtext] <!--{if $task['bonus']}--> $task[bonus] {lang days} <!--{/if}-->
+        <!--{else}-->
+            {lang nothing}
+        <!--{/if}-->
+    </div>
+</div>
+<style>
+    .biao{
+        color: #ff0000;
+    }
+    .biao_blue{
+        color: cornflowerblue;
+    }
+</style>
+<!--{if $task[scriptname] == 'weixin'}-->
+    <div class="rwtl" style="text-align: left;padding-left: 10px;">
+                    <span class="sqtj">
+    1、打开微信，点击底部的<em class="biao">“发现”</em>按钮，使用<em class="biao">“扫一扫”</em>功能
+                    </span>
+            <span class="sqtj">
+    2、扫过二维码后，在朋友圈中输入您想说的话，点击<em class="biao">“发送”</em>
+                    </span>
+            <span class="sqtj ">
+    3、发送成功后，回到电脑页面，点击<em class="biao">“领取奖励”</em>，即可获得8264币
+                    </span>
+
+    </div>
+<!--{elseif $task[scriptname] == 'appshare'}-->
+    <div class="rwtl" style="text-align: left;padding-left: 10px;">
+        <span style="text-align: center;font-weight: bold">$taskvars['complete']['descript']['value']</span>
+        <span class="sqtj">
+    1、打开微信，点击底部的<em class="biao">“发现”</em>按钮，使用<em class="biao">“扫一扫”</em>功能
+                    </span>
+            <span class="sqtj">
+    2、扫过二维码后，在朋友圈中输入您想说的话，点击<em class="biao">“发送”</em>
+                    </span>
+        <span class="sqtj">
+    3、发送成功后，回到电脑页面，点击<em class="biao">“领取奖励”</em>，即可获得8264币
+                    </span>
+    </div>
+<!--{elseif $task[scriptname] == 'changxian'}-->
+    <div class="rwtl" style="text-align: left;padding-left: 10px;">
+        <span style="text-align: center;font-weight: bold">$taskvars['complete']['descript']['value']</span>
+        <span class="sqtj">
+    1、打开微信，点击底部的<em class="biao">“发现”</em>按钮，使用<em class="biao">“扫一扫”</em>功能
+                    </span>
+            <span class="sqtj">
+    2、扫过二维码后，在朋友圈中输入您想说的话，点击<em class="biao">“发送”</em>
+                    </span>
+        <span class="sqtj">
+    3、发送成功后，回到电脑页面，点击<em class="biao">“领取奖励”</em>，即可获得驴币
+                    </span>
+    </div>
+<!--{elseif $task[scriptname] == 'tiezi'}-->
+    <div class="rwtl" style="text-align: left;padding-left: 10px;">
+        <span style="text-align: center;font-weight: bold">$taskvars['complete']['descript']['value']</span>
+        <span class="sqtj">
+    1、打开微信，点击底部的<em class="biao">“发现”</em>按钮，使用<em class="biao">“扫一扫”</em>功能
+                    </span>
+            <span class="sqtj">
+    2、扫过二维码后，在朋友圈中输入您想说的话，点击<em class="biao">“发送”</em>
+                    </span>
+        <span class="sqtj">
+    3、发送成功后，回到电脑页面，点击<em class="biao">“领取奖励”</em>，即可获得驴币
+                    </span>
+    </div>
+<!--{elseif $task[scriptname] == 'appfollow'}-->
+    <div class="rwtl" style="text-align: left;padding-left: 10px;">
+        <span style="text-align: center;font-weight: bold">$taskvars['complete']['descript']['value']</span>
+        <span class="sqtj">
+    1、打开微信，点击底部的<em class="biao">“发现”</em>按钮，使用<em class="biao">“扫一扫”</em>功能
+                    </span>
+            <span class="sqtj">
+    2、扫过二维码后，点击“关注”，即可关注“在外APP”公众号<br/>
+                    </span>
+        <span class="sqtj">
+    3、关注成功后，回到电脑页面，点击<em class="biao">“领取奖励”</em>，即可获得驴币
+
+                    </span>
+            <span class="sqtj" id="ghhao_img">
+    <center><img src='{$qr_url}' width='180px' height='180px'/></center>
+    </span>
+    </div>
+<!--{else}-->
+    <div class="rwtl">
+        <!--{if $task['viewmessage']}-->
+            <span>$task[viewmessage]</span>
+        <!--{else}-->
+            <span>{lang task_complete_condition}</span>
+            <!--{if $taskvars['complete']}-->
+                <!--{loop $taskvars['complete'] $taskvar}-->
+                <span>$taskvar[name] : $taskvar[value]</span>
+                <!--{/loop}-->
+            <!--{else}-->
+                <span>{lang unlimited}</span>
+            <!--{/if}-->
+        <!--{/if}-->
+        <!--{if $task['endtime']}--><span class="gray_s">{lang task_endtime}</span><!--{/if}-->
+            <span class="sqtj">
+                {lang task_apply_condition}：
+                <!--{if $task[applyperm] || $task[relatedtaskid] || $task[tasklimits] || $taskvars['apply']}-->
+                        <!--{if $task[grouprequired]}-->{lang usergroup}: $task[grouprequired] <!--{elseif $task['applyperm'] == 'member'}-->{lang task_general_users}<!--{elseif $task['applyperm'] == 'admin'}-->{lang task_admins}<!--{/if}-->
+                        <!--{if $task[relatedtaskid]}-->{lang task_relatedtask}: <a href="home.php?mod=task&do=view&id=$task[relatedtaskid]">$_G['taskrequired']</a><!--{/if}-->
+                        <!--{if $task[tasklimits]}-->{lang task_numlimit}: $task[tasklimits]<!--{/if}-->
+                        <!--{if $taskvars['apply']}-->
+                                <!--{loop $taskvars['apply'] $taskvar}-->
+                                        $taskvar[name]: $taskvar[value]
+                                <!--{/loop}-->
+                        <!--{/if}-->
+                <!--{else}-->
+                        {lang unlimited}
+                <!--{/if}-->
+            </span>
+    </div>
+<!--{/if}-->
+
+<!--{if $allowapply == '-1'}-->
+    <div class="jdtwarpten mt17">
+        <div class="gojdt" style="width:$task[csc]%;"></div>
+        <span class="wczt">{lang task_complete} <i>$task[csc]</i>%</span>
+    </div>
+    <div class="mt17"><a href="home.php?mod=task&do=draw&id=$task[taskid]" class="{if $task[csc]>=100 && $task[checked]}lqjl{else}lqjl_no{/if}" id="apply_qr" taskid="$task[taskid]"></a></div>
+    <!--{if $task[csc] >=100 && !$task[checked] }--><div>{lang task_complete_waitting}</div><!--{/if}-->
+<!--{elseif $allowapply == '-2'}-->
+    <div class="rwts">{lang task_group_nopermission}</div>
+    <div class="mt17"><a href="javascript:;" onclick="doane(event);showDialog('{lang task_group_nopermission}')" class="ljsq_g" title="{lang task_group_nopermission}"></a></div>
+<!--{elseif $allowapply == '-3'}-->
+    <div class="rwts">{lang task_applies_full}</div>
+    <div class="mt17"><a href="javascript:;" onclick="doane(event);showDialog('{lang task_applies_full}')" class="ljsq_g" title="{lang task_applies_full}"></a></div>
+<!--{elseif $allowapply == '-4'}-->
+    <div class="rwts">{lang task_lose_on}$task[dateline]</div>
+<!--{elseif $allowapply == '-5'}-->
+
+    <!--{if $task[scriptname] == 'weixin'}-->
+    <!--{if $is_share == 1}-->
+    <div class="wancheng">
+        <span>今天已完成，请明天再申请</span>
+    </div>
+    <!--{/if}-->
+    <!--{else}-->
+    <div class="rwts">{lang task_complete_on}$task[dateline]</div>
+    <!--{/if}-->
+
+<!--{elseif $allowapply == '-6'}-->
+    <!--{if $task[scriptname] == 'appshare'}-->
+        <div class="rwts">
+        {lang task_complete_on}$task[dateline] &nbsp; {$task[t]}{lang task_applyagain}
+        <!--{if $task[checked] == -1}--><b style='margin-left:5px;color:red'>{lang moderate_not_validate}</b><br/><br/><!--{/if}-->
+        </div>
+        <div class="wancheng">
+            <span>今天已完成，请明天再申请</span>
+        </div>
+    <!--{else}-->
+    <div class="rwts">
+        {lang task_complete_on}$task[dateline] &nbsp; {$task[t]}{lang task_applyagain}
+        <!--{if $task[checked] == -1}--><b style='margin-left:5px;color:red'>{lang moderate_not_validate}</b><br/><br/><!--{/if}-->
+    </div>
+    <div class="mt17"><a href="javascript:;" onclick="doane(event);showDialog('{$task[t]}{lang task_applyagain}')" class="ljsq_g" title="{lang task_newbie_apply}"></a></div>
+    <!--{/if}-->
+
+<!--{elseif $allowapply == '-7'}-->
+    <div class="rwts">
+        {lang task_lose_on}$task[dateline] &nbsp; {$task[t]}{lang task_reapply}
+        <!--{if $task[checked] == -1}--><br/><b style='margin-left:5px;color:red'>{lang moderate_not_validate}</b><!--{/if}-->
+    </div>
+    <div class="mt17"><a href="javascript:;" onclick="doane(event);showDialog('{$task[t]}{lang task_reapply}')" class="ljsq_g" title="{lang task_applies_full}"></a>
+<!--{elseif $allowapply == '2'}-->
+    <div class="rwts">{lang task_complete_on}$task[dateline] &nbsp; {lang task_applyagain_now}</div>
+<!--{elseif $allowapply == '3'}-->
+    <div class="rwts">
+        {lang task_lose_on}$task[dateline] &nbsp; {lang task_reapply_now}
+        <!--{if $task[checked] == -1}--><br/><b style='margin-left:5px;color:red'>{lang moderate_not_validate}</b><!--{/if}-->
+    </div>
+<!--{/if}-->
+
+    <!--{if $allowapply > '0'}-->
+        <!--{if $task[scriptname] == 'weixin'}-->
+            <!--{if $is_share == 1}-->
+                <div class="wancheng">
+                    <span>今天已完成，请明天再申请</span>
+                </div>
+            <!--{else}-->
+                    <!--{if $_G['uid']}-->
+                        <div class="mt17"><a href="javascript:void(0);" class="ljsq" title="{lang task_newbie_apply}" onclick="checkqr($task[taskid]);" id="apply_qr" myid="home.php?mod=task&do=draw&id=$task[taskid]" taskid="$task[taskid]"></a></div>
+                        <div class="shop-qrcode" style="text-align: center">
+                            <img src="http://image1.8264.com/forum/201506/09/105105pvl3k3i4l4lidpso.png" title="扫一扫，用手机浏览" id="qr" width="150" height="150" style="display:none">
+                        </div>
+                    <!--{else}-->
+                        <div class="mt17"><a href="member.php?mod=logging&action=login" class="ljsq" title="{lang task_newbie_apply}" ></a></div>
+                    <!--{/if}-->
+            <!--{/if}-->
+        <!--{elseif $task[scriptname] == 'appshare'}-->
+
+
+                <!--{if $is_share_appshare == 1}-->
+                        <div class="wancheng">
+                            <span>今天已完成，请明天再申请</span>
+                        </div>
+                <!--{else}-->
+                        <!--{if $_G['uid']}-->
+                            <div class="mt17"><a href="javascript:void(0);" class="ljsq" title="{lang task_newbie_apply}" onclick="checkqr($task[taskid]);" id="apply_qr" myid="home.php?mod=task&do=draw&id=$task[taskid]" taskid="$task[taskid]"></a></div>
+                            <div class="shop-qrcode" style="text-align: center">
+                                <img src="http://image1.8264.com/forum/201506/09/105105pvl3k3i4l4lidpso.png" title="扫一扫，用手机浏览" id="qr" width="150" height="150" style="display:none">
+                            </div>
+                        <!--{else}-->
+                            <div class="mt17"><a href="member.php?mod=logging&action=login" class="ljsq" title="{lang task_newbie_apply}" ></a></div>
+                        <!--{/if}-->
+                <!--{/if}-->
+
+        <!--{elseif $task[scriptname] == 'changxian'}-->
+
+
+            <!--{if $is_share_changxian == 1}-->
+                    <div class="wancheng">
+                        <span>今天已完成，请明天再申请</span>
+                    </div>
+            <!--{else}-->
+                <!--{if $_G['uid']}-->
+                    <div class="mt17"><a href="javascript:void(0);" class="ljsq" title="{lang task_newbie_apply}" onclick="checkqr($task[taskid]);" id="apply_qr" myid="home.php?mod=task&do=draw&id=$task[taskid]" taskid="$task[taskid]"></a></div>
+                    <div class="shop-qrcode" style="text-align: center">
+                        <img src="http://image1.8264.com/forum/201506/09/105105pvl3k3i4l4lidpso.png" title="扫一扫，用手机浏览" id="qr" width="150" height="150" style="display:none">
+                    </div>
+                <!--{else}-->
+                    <div class="mt17"><a href="member.php?mod=logging&action=login" class="ljsq" title="{lang task_newbie_apply}" ></a></div>
+                <!--{/if}-->
+            <!--{/if}-->
+        <!--{elseif $task[scriptname] == 'tiezi'}-->
+
+
+            <!--{if $is_share_tiezi == 1}-->
+                    <div class="wancheng">
+                        <span>今天已完成，请明天再申请</span>
+                    </div>
+            <!--{else}-->
+                <!--{if $_G['uid']}-->
+                    <div class="mt17"><a href="javascript:void(0);" class="ljsq" title="{lang task_newbie_apply}" onclick="checkqr($task[taskid]);" id="apply_qr" myid="home.php?mod=task&do=draw&id=$task[taskid]&zhuzhanuser=$_G['uid']" taskid="$task[taskid]"></a></div>
+                    <div class="shop-qrcode" style="text-align: center;">
+                        <img src="" title="扫一扫，用手机浏览" id="qr" width="150" height="150" style="display:none">
+                    </div>
+                <!--{else}-->
+                    <div class="mt17"><a href="member.php?mod=logging&action=login" class="ljsq" title="{lang task_newbie_apply}" ></a></div>
+                <!--{/if}-->
+            <!--{/if}-->
+
+        <!--{elseif $task[scriptname] == 'appfollow'}-->
+			 <div class="mt17"><a href="javascript:void(0);" class="ljsq" title="{lang task_newbie_apply}" onclick="checkqr($task[taskid]);" id="apply_qr" myid="home.php?mod=task&do=draw&id=$task[taskid]" taskid="$task[taskid]"></a></div>
+		<!--{else}-->
+            <div class="mt17"><a href="home.php?mod=task&do=apply&id=$task[taskid]" class="ljsq" title="{lang task_newbie_apply}" ></a></div>
+        <!--{/if}-->
+    <!--{/if}-->
+    <!--{if $task[applicants]}-->
+    <div class="rw_people">
+        <div class="rw_p_t clear_b">
+            <span class="tname">已有<i>$task[applicants]</i>位会员参与此任务</span>
+            <span class="zk"></span>
+        </div>
+        <div class="people_list clear_b" id="ajaxparter"></div>
+        <script type="text/javascript">ajaxget('home.php?mod=task&do=parter&id=$task[taskid]', 'ajaxparter');</script>
+    </div>
+    <!--{/if}-->
+
+    <!--{if ($task[scriptname] == 'weixin') || ($task[scriptname] == 'appshare') || ($task[scriptname] == 'changxian') }-->
+    <script>
+        jQuery.ajaxSetup ({
+            // Disable caching of AJAX responses */
+            cache: false
+            //aysnc: false , // 默认同步加载
+
+        });
+        function checkqr(taskid){
+            //alert(taskid);
+            jQuery("#qr").show();
+            set_server_time();
+            return false;
+        }
+        
+        jQuery(function(){
+            var url = ('{$qr_url}');
+            jQuery("#qr").attr('alt','二维码生成中……');
+                jQuery.post("qrcode.php",{url:url},function(data){
+                    jQuery("#qr").attr('src','http://image1.8264.com/forum/'+data);
+                },'json');
+
+        })
+        if($_G['uid']){
+            jQuery("#qr").show();
+            jQuery("#apply_qr").hide();
+            set_server_time();
+        }
+        function set_server_time(){
+            server_time = setInterval("getServer()",5000);
+        }
+
+        //轮询查询用户是否分享二维码
+        //自定义轮询数据库方
+
+        function getServer() {
+            jQuery.get("home.php?mod=task", {is_qr_:1,taskid:jQuery("#apply_qr").attr('taskid')},function(data) {
+                if(data > 0){
+                    jQuery('#apply_qr').attr('class','lqjl');
+                    jQuery('#apply_qr').attr('href',jQuery("#apply_qr").attr('myid'));
+                    jQuery("#apply_qr").show();
+                    jQuery("#qr").remove();
+                    //二维码扫描后逻辑处理
+                    jQuery.get("home.php?mod=task",{'do':'apply',id:jQuery("#apply_qr").attr('taskid'),is_qr:1},function(data){
+                        clearInterval(server_time);
+                    });
+                }
+            });
+        }
+    </script>
+    <!--{/if}-->
+    <!--{if ($task[scriptname] == 'tiezi')}-->
+    <script>
+        jQuery.ajaxSetup ({
+            // Disable caching of AJAX responses */
+            cache: false
+            //aysnc: false , // 默认同步加载
+
+        });
+        function checkqr(taskid){
+            //alert(taskid);
+            jQuery("#qr").show();
+            set_server_time();
+            return false;
+        }
+        if($allowapply !== -1){
+            jQuery(function(){
+            var url = ('{$qr_url}');
+            jQuery("#qr").attr('alt','二维码生成中……');
+                jQuery.post("qrcode.php",{url:url},function(data){
+                    jQuery("#qr").attr('src','http://image1.8264.com/forum/'+data);
+                },'json');
+
+            });
+            
+            if($_G['uid']){
+                jQuery("#qr").show();
+                jQuery("#apply_qr").hide();
+                set_server_time();
+            }
+        }
+        
+        function set_server_time(){
+            server_time = setInterval("getServer()",5000);
+        }
+
+        //轮询查询用户是否分享二维码
+        //自定义轮询数据库方
+
+        function getServer() {
+            jQuery.get("home.php?mod=task", {is_tiezi:1,taskid:jQuery("#apply_qr").attr('taskid')},function(data) {
+                if(data > 0){
+                    jQuery('#apply_qr').attr('class','lqjl');
+                    jQuery('#apply_qr').attr('href',jQuery("#apply_qr").attr('myid'));
+                    jQuery("#apply_qr").show();
+                    jQuery("#qr").remove();
+                    //二维码扫描后逻辑处理
+                    jQuery.get("home.php?mod=task",{'do':'apply',id:jQuery("#apply_qr").attr('taskid'),is_qr:1},function(data){
+                        clearInterval(server_time);
+                    });
+                }
+            });
+        }
+    </script>
+    <!--{/if}-->
+	<!--{if ($task[scriptname] == 'appfollow')}-->
+	<script>
+		if($_G['uid']){
+            jQuery("#apply_qr").hide();
+			<!--{if $allowapply != -5}-->
+            set_server_time_follow();
+			<!--{/if}-->
+		    <!--{if $allowapply == -1||$allowapply == -5}-->
+            jQuery("#ghhao_img").remove();
+			<!--{/if}-->
+        }
+	   function set_server_time_follow(){
+            server_time = setInterval("getServer_follow()",5000);
+        }
+		
+		function getServer_follow() {
+            jQuery.get("home.php?mod=task", {is_qr_:'getIsfollow',taskid:jQuery("#apply_qr").attr('taskid')},function(data) {
+                if(data > 0){
+                    jQuery('#apply_qr').attr('class','lqjl');
+                    jQuery('#apply_qr').attr('href',jQuery("#apply_qr").attr('myid'));
+                    jQuery("#apply_qr").show();
+					jQuery("#ghhao_img").remove();
+                    //二维码扫描后逻辑处理
+                    jQuery.get("home.php?mod=task",{'do':'apply',id:jQuery("#apply_qr").attr('taskid'),is_qr:1},function(data){
+                        clearInterval(server_time);
+                    });
+                }
+            });
+        }
+	</script>   
+	<!--{/if}-->
+</div>

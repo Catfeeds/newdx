@@ -1,0 +1,179 @@
+<style>
+/*临时存放地图样式************************************************/
+       /* 显示原图按钮开始*********************************/
+     /* .ckdt {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        .ckdt a {
+            background: none repeat scroll 0 0 #000;
+            color: #fff;
+            display: block;
+            font: 14px/28px "Microsoft Yahei";
+            height: 28px;
+            opacity: 0.7;
+            text-align: center;
+            width: 100px;
+        }
+        .popBox {
+            display: none;
+            position: fixed;
+            _position: absolute;
+            top: 10%;
+            _top: expression(eval(document.documentElement.scrollTop));
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9999;
+        }*/
+    /*显示原图按钮结束*********************************/
+    /*地图大图弹层开始**************************************************************/
+    /*.popBox .w750 {
+        width: 750px;
+    }
+    .popBox .bd {
+        position: relative;
+        width: 720px;
+        margin: 135px auto 0;
+        background: #FFF;
+        border-radius: 3px;
+    }
+    .popGoogleMap {
+        margin: 0 35px;
+        padding: 30px 0 20px 0;
+    }
+    .popGoogleMap h2 {
+        font: 22px/26px "Microsoft Yahei";
+        color: #000;
+        margin-bottom: 10px;
+    }
+
+    .bd .closeBtn {
+        position: absolute;
+        display: block;
+        top: -14px;
+        right: -16px;
+        width: 40px;
+        height: 40px;
+        background: url(../../images/dianping/ski_sprite.png) no-repeat -150px -450px;
+        text-indent: -9999px;
+        cursor: pointer;
+    }*/
+    /*地图大图弹层结束********************************************************************/
+
+</style>
+<div class="right-map-warpten">
+    <div class="ui-block ui-block-title">
+        <div class="ui-title ui-title-line">
+            <h3>地图</h3>
+        </div>
+    </div>
+    <div class="ui-block ui-block-content">
+        <div class="right-map-warpten">
+            <div class="map">
+                <!--show map start------------------------------------------------>
+                <div class="bd">
+                    <div class="box">
+                        <div id="mapPoint" style="height: 270px;"></div>
+                        <div class="ckdt"><a href="javascript:;" id="ckdtBtn">查看大图</a></div>
+                    </div>
+                    <input type="hidden" value="" id="longitude" name="longitude">
+                    <input type="hidden" value="" id="latitude" name="latitude">
+                    <input type="hidden" value="{$detail['addr']}" id="sAddress" name="sAddress">
+                    <!--<input type="hidden" value="{$detail['pro']}" id="pro" name="pro">-->
+                    <input type="hidden" value="{$detail['tid']}" id="tid" name="tid">
+
+                    <div class="mark"><span class="zs">注：地图位置标注仅供参考，具体情况以实际道路标实信息为准</span></div>
+                    <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3&services=true"></script>
+                    <script type="text/javascript">
+                        var long = {$detail['lon']};
+                        var lat = {$detail['lat']};
+                        var map = new BMap.Map("mapPoint");
+                        var point = new BMap.Point(long, lat);
+                        map.centerAndZoom(point, 15);
+                        map.disableDoubleClickZoom(); // 禁用双击放大
+                        var opts = {type: BMAP_NAVIGATION_CONTROL_SMALL}
+                        map.addControl(new BMap.NavigationControl(opts));
+                        var marker = new BMap.Marker(point); // 创建标注
+                        map.addOverlay(marker); // 将标注添加到地图中
+                    </script>
+                </div>
+                <!--show map end------------------------------------------------->
+            </div>
+            <div class="info">注：地图位置标注仅供参考，具体情况以实际道路标实信息为准</div>
+        </div>
+    </div>
+</div>
+<!--临时注释掉大图编辑页面start------------------------------------------------------------------->
+<!--<div class="popBox" id="box_map">
+    <div class="bd w750">
+        <div class="popGoogleMap">
+            <h2>{$detail['name']}</h2>
+            {if (($_G['forum']['ismoderator'] && $_G['group']['alloweditpost'] && (!in_array($post['adminid'], array(1, 2, 3)) || $_G['adminid'] <= $post['adminid'])) || ($_G['forum']['alloweditpost'] && $_G['uid'] && $post['authorid'] == $_G['uid'])&&($_G['groupid'] == 1))}
+            <span id="bm_edit" style="cursor: pointer;">修改标注</span>
+            <div id="bm_editbox" style="display: none;">
+                <h3>地址：{$detail['newaddress']}（<span class="cBlue" id="bm_mark" style="cursor: pointer;">地图上标注</span>）</h3>
+                <div class="searchMap">
+                    <input type="text" class="textInput" id="bm_text" />
+                    <input type="submit" class="searchBtn" value="" id="bm_search" />
+                    <span class="tips">搜索地址解析的格式如下：省+城市+区县+街道<em class="emTop">◆</em></span>
+                </div>
+            </div>
+            {/if}
+            <div class="mapBox" id="popmap" style="height:400px;"></div>
+        </div>
+        <span class="closeBtn" id="bm_closeBtn">关闭</span>
+    </div>
+</div>-->
+<!--临时注释掉大图编辑页面end------------------------------------------------------------------->
+<script style="text/javascript" >
+    $('#ckdtBtn').click(function() {
+        $("#div_black, #box_map").fadeIn(200);
+        var long = {$detail['lon']};
+        var lat = {$detail['lat']};
+        var map = new BMap.Map("popmap");
+        var point = new BMap.Point(long, lat);
+        map.centerAndZoom(point, 15);
+        map.disableDoubleClickZoom(); // 禁用双击放大
+        var opts = {type: BMAP_NAVIGATION_CONTROL_SMALL}
+        map.addControl(new BMap.NavigationControl(opts));
+        var marker = new BMap.Marker(point); // 创建标注
+        map.addOverlay(marker); // 将标注添加到地图中
+
+        $('#bm_edit').click(function(){
+            map.enableScrollWheelZoom();
+            marker.enableDragging(true); // 设置标注可拖拽
+            var opts = {
+                width : 110,     // 信息窗口宽度
+                height: 50,     // 信息窗口高度
+                title : "提示信息"  // 信息窗口标题
+            }
+            var infoWindow = new BMap.InfoWindow("拖动此标注更改店铺位置", opts);  // 创建信息窗口对象
+            marker.addEventListener("mouseup", function(){
+                var position = marker.getPosition();
+                var t = confirm('是否将新位置设置为此店铺的默认位置？');
+                if(t==true){
+                    marker.disableDragging(true); // 设置标注不可拖拽
+                    marker.removeEventListener("mouseup");
+                    $("#longitude").val(position['lng']);
+                    $("#latitude").val(position['lat']);
+                    $.get('forum.php?ctl={$modstr}&act=editmap&tid='+tid,{lng:$("#longitude").val(), lat:$("#latitude").val()},function(){
+                        showDialog("您的修改已提交,刷新页面可看最新效果！","notice");
+                        $('#bm_editbox, #div_black, #box_map').hide();
+                        $('#bm_edit').show();
+                        marker.closeInfoWindow(infoWindow);
+                        map.disableScrollWheelZoom();
+                    });
+                }else{
+
+                }
+            });
+            marker.openInfoWindow(infoWindow);
+            $('#bm_editbox').show();
+            $('#bm_edit').hide();
+            //	showWindow('editmap','/plugin.php?id=skiing:editmap&tid='+tid+'&edit=1');
+        });
+    })
+</script>
+

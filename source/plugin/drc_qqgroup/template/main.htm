@@ -1,0 +1,46 @@
+{subtemplate common/header}
+<div id="pt" class="bm cl">
+<div class="z"><a href="./" class="nvhm">$_G[setting][bbname]</a><em>&rsaquo;</em><a href="./">$_G[setting][bbname]</a> <em>&rsaquo;</em><a href="plugin.php?id=drc_qqgroup:main">{lang drc_qqgroup:plugin_name}</a> <em>&rsaquo;</em>$plugin_nav</div>
+</div>
+
+<div id="ct" class="ct2 wp cl">
+<div class="mn">
+    	<div class="bm bw0">
+            <div class="bm bw0">
+			<div class="datalist">
+			<table width="100%" border="1" bordercolor="#cccccc">
+					
+					<tr bgcolor="#F2F2F2" align="center">
+						<td height="35" width="50">{lang drc_qqgroup:ico}</td>
+						<td>{lang drc_qqgroup:name}</td>
+						<td width="100">{lang drc_qqgroup:num}</td>
+						<td width="100">{lang drc_qqgroup:creator}</td>
+						<td width="110">{lang drc_qqgroup:intro}</td>
+						<td width="90">{lang drc_qqgroup:createtime}</td>
+						<td width="100">{lang drc_qqgroup:operation_btn}</td>
+					</tr>
+					<!--{loop $index_lists $index_list}-->
+					<tr align="center">
+						<td height="35"><a href="http://qun.qq.com/air/#$index_list[num]" target="_blank"><img src="http://face7.qun.qq.com/cgi/svr/face/getface?type=4&fid=2002&uin=$index_list[num]" height="28" /></a></td>
+						<td><a href="http://qun.qq.com/air/#$index_list[num]" target="_blank">$index_list[name]</a></td>
+						<td><font style="font-family:Georgia, 'Times New Roman', Times, serif;">$index_list[num]</font></td>
+						<td><font style="font-family:Georgia, 'Times New Roman', Times, serif;">$index_list[creator]</font></td>
+						<td><span id="viewintro_$index_list[id]" onmouseover="showMenu(this.id);"><a href="javascript:;">{lang drc_qqgroup:main_viewintro}</a></span>
+						<span id="viewintro_$index_list[id]_menu" style="display:none; border:1px solid #ccc; background-color:#F2F2F2; padding:10px; text-align:left">$index_list[intro]</span></td>
+						<td><font style="font-family:Georgia, 'Times New Roman', Times, serif;">$index_list[createtime]</font></td>
+						<td><a target="_blank" href="http://qun.qq.com/#jointhegroup/gid/$index_list[num]"><img border="0" src="/source/plugin/drc_qqgroup/image/gp.gif" alt="{lang drc_qqgroup:main_joinqun}" title="{lang drc_qqgroup:main_joinqun}" width="82" height="25"></a></td>
+					</tr>
+					<!--{/loop}-->
+				</table>
+				
+				<div style="clear:both"></div>
+				<div style="margin-top:20px;">$multipage</div>
+                
+			</div></div>
+		</div>
+	</div>
+
+	{template drc_qqgroup:side}
+</div>
+
+{subtemplate common/footer}

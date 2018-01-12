@@ -1,0 +1,83 @@
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<script language="JavaScript"> 
+window.onload = getMsg; 
+window.onresize = resizeDiv; 
+window.onerror = function(){} 
+//短信提示使用(asilas添加) 
+var divTop,divLeft,divWidth,divHeight,docHeight,docWidth,objTimer,i = 0; 
+function getMsg() 
+{ 
+try{ 
+divTop = parseInt(document.getElementById("eMeng").style.top,10) 
+divLeft = parseInt(document.getElementById("eMeng").style.left,10) 
+divHeight = parseInt(document.getElementById("eMeng").offsetHeight,10) 
+divWidth = parseInt(document.getElementById("eMeng").offsetWidth,10) 
+docWidth = document.body.clientWidth; 
+docHeight = document.body.clientHeight; 
+document.getElementById("eMeng").style.top = parseInt(document.body.scrollTop,10) + docHeight + 10;// divHeight 
+document.getElementById("eMeng").style.left = parseInt(document.body.scrollLeft,10) + docWidth - divWidth 
+document.getElementById("eMeng").style.visibility="visible" 
+objTimer = window.setInterval("moveDiv()",10) 
+} 
+catch(e){} 
+} 
+function resizeDiv() 
+{ 
+i+=1 
+if(i>1000) closeDiv() 
+try{ 
+divHeight = parseInt(document.getElementById("eMeng").offsetHeight,10) 
+divWidth = parseInt(document.getElementById("eMeng").offsetWidth,10) 
+docWidth = document.body.clientWidth; 
+docHeight = document.body.clientHeight; 
+document.getElementById("eMeng").style.top = docHeight - divHeight + parseInt(document.body.scrollTop,10) 
+document.getElementById("eMeng").style.left = docWidth - divWidth + parseInt(document.body.scrollLeft,10) 
+} 
+catch(e){} 
+} 
+function moveDiv() 
+{ 
+try 
+{ 
+if(parseInt(document.getElementById("eMeng").style.top,10) <= (docHeight - divHeight + parseInt(document.body.scrollTop,10))) 
+{ 
+window.clearInterval(objTimer) 
+objTimer = window.setInterval("resizeDiv()",1) 
+} 
+divTop = parseInt(document.getElementById("eMeng").style.top,10) 
+document.getElementById("eMeng").style.top = divTop - 1 
+} 
+catch(e){} 
+} 
+function closeDiv() 
+{ 
+document.getElementById('eMeng').style.visibility='hidden'; 
+if(objTimer) window.clearInterval(objTimer) 
+} 
+</script>
+<div id=eMeng style="Z-INDEX:99999; LEFT: 0px; WIDTH: 254px; POSITION: absolute; TOP: 0px; HEIGHT: 274px; visibility:hidden"> 
+<table width="254" height="274" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="20" bgcolor="#000000" style="text-align:right; font-weight:bold; font-size:14px;"><span title=关闭 style="CURSOR: hand;color:#FFFFFF;font-size:14px;font-weight:bold;margin-right:4px;" onClick=closeDiv() >×</span>
+	<!-- <IMG title=关闭 style="CURSOR: hand" onclick=closeDiv() hspace=3 src="msgClose.jpg"> -->
+	</td>
+  </tr>
+  <tr>
+    <td align="center" bgcolor="#000000" height="254" style="padding:2px;"><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="250" height="250">
+        <param name="movie" value="/img/8264gg/2008/flash/jack.swf">
+        <param name="quality" value="high">
+        <embed src="/img/8264gg/2008/flash/jack.swf
+" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="250" height="250"></embed>
+      </object></td>
+  </tr>
+</table>
+</div>
+</body>
+</html>

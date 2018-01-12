@@ -1,0 +1,73 @@
+<!--{eval $friendsname = array(1 => '{lang friendname_1}',2 => '{lang friendname_2}',3 => '{lang friendname_3}',4 => '{lang friendname_4}');}-->
+
+<!--{subtemplate common/header_8264_new}-->
+<!--{subtemplate home/space_header_uc}-->
+<!--main-content-->
+<div class="main-content">
+<div class="mod-wrap main-container">
+	<!--{if $count}-->
+	<div class="album-tit">
+		<h3 class="tit" style="font-size:14px;margin-top:2px;">
+			<a href="javascript:void(0);">{if $space[self]}我{else}$space[username]{/if}的相册<b>{$count}</b></a>
+		</h3>
+		{if $space[self]}<a href="home.php?mod=spacecp&ac=upload&op=flash" class="upload-photo" target="_blank"><i class="ui-icon ui-add-icon"></i>上传照片</a>{/if}
+	</div>
+	<!--{/if}-->
+	<!--{if $count}-->
+	<div class="user-album-list">
+		<ul class="album-list manageContainer mod-op-current">
+			<!--{loop $list $key $value}-->
+			<li class="album-item">
+				<div class="fav-album">
+					<div class="album-cover">
+						<a href="home.php?mod=space&uid=$value[uid]&do=album&id=$value[albumid]" class="album-cover-a">
+							<!--{if $value[pic]}--><img src="$value[pic]" alt="$value[albumname]" /><!--{/if}-->	
+						</a>
+					</div>
+					<div class="album-detail">
+						<div class="album-detail-inner">
+							<a href="home.php?mod=space&uid=$value[uid]&do=album&id=$value[albumid]" class="tit"><!--{if $value[albumname]}-->$value[albumname]<!--{else}-->{lang default_album}<!--{/if}--></a>
+							<a href="home.php?mod=space&uid=$value[uid]&do=album&id=$value[albumid]" class="count">{echo cutstr($value[picnum], 28, '...')}</a>
+						</div>
+					</div>
+					<!--操作-->
+					{if $space[self]}
+					<div class="mod-photo-op pl-popup-wrap pl-photoitem-op mod-op" style="display:none;">
+						<a class="pl-popup-btn pl-photoitem-op-btn" href="javascript:void(0)">
+							<span class="photo-op-tip">
+								<i class="icon-m icon-expansion-m"></i>
+							</span>
+						</a>
+						<div class="photo-op-list pl-popup-panel pl-photoitem-op-list">
+							<ul>
+								<li><a href="home.php?mod=spacecp&ac=album&op=edit&albumid=$value[albumid]" class="pl-photoitem-op-edit" id="albumedit" onclick="showWindow(this.id, this.href, 'get', 0);"><i class="icon-m icon-edit-m"></i>编辑</a></li>
+								<li><a href="home.php?mod=spacecp&ac=upload&op=flash&albumid=$value[albumid]" class="pl-photoitem-op-upload"><i class="icon-m icon-upload-m"></i>上传</a></li>
+							</ul>
+						</div>
+					</div>
+					{/if}
+					<!--操作 end-->					
+				</div>
+			</li>
+			<!--{/loop}-->
+		</ul>
+	</div>		
+	<!--{else}-->
+	<div class="page-container-empty">
+		<div class="empty-tips">
+			<p><i class="icon-warn"></i>{if $space[self]}您还没有创建相册{else}没有可浏览的相册{/if}</p>
+			{if $space[self]}<p><a class="post-btn" href="home.php?mod=spacecp&ac=upload&op=flash"><i>+</i>上传照片</a></p>{/if}
+		</div>
+	</div>
+	<!--{/if}-->	
+</div>
+<!--分页-->
+{if $multi}<div class="cust-page-list">{$multi}</div>{/if}	
+<!--分页 end-->
+</div>
+<!--ie7防止底部样式问题-->
+<div style="visibility:hidden;height:0;">8264</div>
+<!--ie7防止底部样式问题 end-->
+<!--main-content end-->
+<!--{subtemplate home/space_footer_uc}-->
+<!--{subtemplate common/footer_8264_new}-->

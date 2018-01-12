@@ -1,0 +1,437 @@
+<!--{subtemplate forum/dianping/header}-->
+<script type="text/javascript" src="{$_G['setting']['jspath']}forum_post.js?{VERHASH}"></script>
+<!--{if $_G[gp_action] == 'edit'}--><!--{eval $editor[value] = $postinfo[message];}--><!--{else}--><!--{eval $editor[value] = $message;}--><!--{/if}-->
+
+<link rel="stylesheet" type="text/css" href="data/cache/style_{STYLEID}_forum_post.css?{VERHASH}" />
+<!--[if IE 6]>
+<script src="/source/plugin/outshop/js/DD_belatedPNG_0.0.8a.js"></script>
+<script src="/source/plugin/outshop/js/DD_belatedPNG_css.js"></script>
+<![endif]-->
+<style type="text/css">
+#imglist .overlimit{display:none;}
+#pic_upload_multiimg { vertical-align: middle; }
+.bm, .bn{margin-bottom: 0px;}
+</style>
+
+<script type="text/javascript">
+maxpicnumber = 0;
+jQuery(document).ready(function($) {
+	$(document).on("click", "#imglist .deleteimg", function() {
+		$(this).parent().remove();
+		if($("#imglist .overlimit").length > 0){
+			$("#imglist .overlimit:first").removeClass('overlimit').find('input:hidden').removeAttr('disabled');
+		}else{
+			$("#numimage").val($("#numimage").val() - 1);
+		}
+	});
+	$('#subject').focus(function(){
+		$('#brand').hide();
+	}).blur(function(){
+		$(this).val() || $('#brand').show();
+	});
+
+	$('#bEn').focus(function(){
+		$('#benTip').hide();
+	}).blur(function(){
+		$(this).val() || $('#benTip').show();
+	});
+
+	$('#bCn').focus(function(){
+		$('#bcnTip').hide();
+	}).blur(function(){
+		$(this).val() || $('#bcnTip').show();
+	});
+
+	$('#company').focus(function(){
+		$('#companyTip').hide();
+	}).blur(function(){
+		$(this).val() || $('#companyTip').show();
+	});
+
+	$('#link').focus(function(){
+		$('#linkTip').hide();
+	}).blur(function(){
+		$(this).val() || $('#linkTip').show();
+	});
+
+	$('#city').focus(function(){
+		$('#cityTip').hide();
+	}).blur(function(){
+		$(this).val() || $('#cityTip').show();
+	});
+
+	$('#url').focus(function(){
+		$('#urlTip').hide();
+	}).blur(function(){
+		$(this).val() || $('#urlTip').show();
+	});
+
+	$('#address').focus(function(){
+		$('#addressTip').hide();
+	}).blur(function(){
+		$(this).val() || $('#addressTip').show();
+	});
+
+	$('.pubDt50 .gjselect_note').click(function(){
+		$('.gjdiv').toggle();
+	});
+	$('.gjdiv a').click(function(){
+		$('.pubDt50 .gjselect_note').text($(this).text());
+		$('#nation').val($(this).attr('rid'));
+		$('#cname').val($(this).text());
+		$('.gjdiv').hide();
+	});
+
+});
+function brand_validate(theform) {
+	var message = wysiwyg ? html2bbcode(getEditorContents()) : (!theform.parseurloff.checked ? parseurl(theform.message.value) : theform.message.value);
+	theform.message.value = message;
+	<!--{if $_G[gp_action] != 'edit'}-->
+	if(($('postsubmit').name != 'replysubmit' && !($('postsubmit').name == 'editsubmit' && !isfirstpost) && theform.subject.value == "")) {
+		showDialog('请填写户外品牌名称');
+		return false;
+	} else if(mb_strlen(theform.subject.value) > 80) {
+		showDialog('品牌名称超过 80 个字符的限制');
+		return false;
+	} else if(trim(theform.subject.value) == ""){
+		showDialog('请填写户外品牌名称');
+		return false;
+	}
+
+	if (theform.bEn.value=="") {
+		showDialog('请填写品牌的英文名称');
+		return false;
+	}
+//	if (theform.company.value=="") {
+//		showDialog('请填写品牌所属的公司名称');
+//		return false;
+//	}
+	if (theform.nation.value=="0"||theform.nation.value=="") {
+		showDialog('请选择品牌所属的国籍');
+		return false;
+	}
+	var flag = false;
+	for(var i = 0;i < theform.lett.length;i++){
+	   if(theform.lett[i].checked){
+		flag = true;
+	   }
+	}
+	if (!flag){
+		showDialog('请选择品牌首字母');
+		 return false;
+	}
+
+	if (theform.city.value=="") {
+		showDialog('请填写总部所在城市');
+		return false;
+	}
+	if (theform.url.value=="") {
+		showDialog('请填写官方网站');
+		return false;
+	}
+	var url = theform.url.value;
+	if(url){
+		var regexp = new RegExp("(http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&amp;*+?:_/=<>]*)?", "gi");
+		var urls = url.match(regexp);
+		if(!urls){
+			showDialog('网站地址填写不正确');
+			return false;
+		}
+	}
+
+    /*if (theform.uploadfile.value==""||theform.uploadfile.value==0) {
+     showDialog('请上传品牌logo图片');
+     return false;
+     }*/
+    /*编辑页面取得logo图片*/
+    if (jQuery('#imglist').find("span:not('.overlimit')").length==0) {
+        showDialog('请上传品牌logo图片');
+        return false;
+    }
+	if (parseInt(theform.uploadfile.value)>=2) {
+		showDialog('品牌logo图片上传一张即可');
+		return false;
+	}
+	if (!theform.upfile.value) {
+		showDialog('请上传品牌logo图片');
+		return false;
+	}
+	if(!/\.(jpg|jpeg|png|JPG|JPEG|PNG)$/.test(theform.upfile.value)){
+		showDialog('您上传的图片格式不正确');
+		return false;
+	}
+	if (trim(theform.message.value)=="") {
+		showDialog('请填写品牌介绍');
+		return false;
+	}
+	<!--{else}-->
+	if (theform.bEn.value=="") {
+		showDialog('请填写品牌的英文名称');
+		return false;
+	}
+//	if (theform.company.value=="") {
+//		showDialog('请填写品牌所属的公司名称');
+//		return false;
+//	}
+	if (theform.nation.value=="0"||theform.nation.value=="") {
+		showDialog('请选择品牌所属的国籍');
+		return false;
+	}
+	var flag = false;
+	for(var i = 0;i < theform.lett.length;i++){
+	   if(theform.lett[i].checked){
+		flag = true;
+	   }
+	}
+	if (!flag){
+		showDialog('请选择品牌首字母');
+		 return false;
+	}
+
+	if (theform.city.value=="") {
+		showDialog('请填写总部所在城市');
+		return false;
+	}
+	if (theform.url.value=="") {
+		showDialog('请填写官方网站');
+		return false;
+	}
+	var url = theform.url.value;
+	if(url){
+		var regexp = new RegExp("(http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&amp;*+?:_/=<>]*)?", "gi");
+		var urls = url.match(regexp);
+		if(!urls){
+			showDialog('网站地址填写不正确');
+			return false;
+		}
+	}
+	/*if (theform.uploadfile.value==""||theform.uploadfile.value==0) {
+		showDialog('请上传品牌logo图片');
+		return false;
+	}*/
+    /*编辑页面取得logo图片*/
+    if (jQuery('#imglist').find("span:not('.overlimit')").length==0) {
+        showDialog('请上传品牌logo图片');
+        return false;
+    }
+	if (parseInt(theform.uploadfile.value)>=2) {
+		showDialog('品牌logo图片上传一张即可');
+		return false;
+	}
+	<!--{/if}-->
+	if($('postsubmit').name == 'editsubmit') {
+		return true;
+	}else if(in_array($('postsubmit').name, ['topicsubmit', 'replysubmit','postsubmit'])) {
+		postsubmit(theform);
+	}
+	return false;
+}
+</script>
+<!--{eval $adveditor = $isfirstpost && $special || $special == 2 && ($_G['gp_action'] == 'newthread' || $_G['gp_action'] == 'reply' && !empty($_G['gp_addtrade']) || $_G['gp_action'] == 'edit' && $thread['special'] == 2);}-->
+<!--{eval $advmore = !$showthreadsorts && !$special || $_G['gp_action'] == 'reply' && empty($_G['gp_addtrade']) || $_G['gp_action'] == 'edit' && !$isfirstpost && ($thread['special'] == 2 && !$special || $thread['special'] != 2);}-->
+<div class="layout mt50" style="">
+	<form method="post" autocomplete="off" id="postform" onsubmit="return brand_validate(this);"
+			action="{if $_GET['do']=='new'}forum.php?ctl={$modstr}&act=dopost&do=new&arg=save
+			{elseif $_GET['do']=='reply'}forum.php?ctl={$modstr}&act=dopost&do=reply&tid={$_G['tid']}{elseif $_GET['do']=='edit'}
+			forum.php?ctl={$modstr}&act=dopost&do=edit&tid={$_G['tid']}{/if}">
+		<div id="postbox">
+			<div class="pubWeb">
+				<div class="publishLayout">
+					<h1 class="tit20 mb45">{if ($action=='new')}发布{$modname}{else}编辑{$modname}{/if}<b class="note">新品牌付费收录,5000元永久收录 联系qq:3278817818</b></h1>
+					<div class="bd">
+						{if !empty($_G['gp_modthreadkey'])}<input type="hidden" name="modthreadkey" id="modthreadkey" value="{$_G['gp_modthreadkey']}" />{/if}
+						<input type="hidden" name="page" value="$_G[gp_page]" />
+						<input type="hidden" name="fid" id="fid" value="$_G[fid]" />
+						<input type="hidden" name="formhash" id="formhash" value="{FORMHASH}" />
+						<input type="hidden" name="posttime" id="posttime" value="{TIMESTAMP}" />
+						{if $_GET['do']=='edit'}<input type="hidden" name="pid" id="pid" value="{$editdata['pid']}" />{/if}
+						<dl class="pubDt50">
+							<dt><span class="name48_43"></span></dt>
+							<dd>
+								<span class="inputTipsText">
+									<label class="fs16" id="brand" {if $editdata['subject']} style="display: none;"{/if}>户外品牌</label>
+									<input type="text" class="inputText w270" onkeyup="strLenCalc(this, 'checklen', 80);" id="subject" name="subject" {if $action=='edit'} value="$editdata[subject]" readonly="readonly"{/if}/>
+								</span>
+								<span class="icoRedStar">*</span>
+							</dd>
+						</dl>
+						<dl class="pubDt50">
+							<dt><span class="englishname48_43"></span></dt>
+							<dd>
+								<span class="inputTipsText">
+									<label class="fs16" id="benTip" {if $editdata['bEn']} style="display: none;"{/if}>请填写品牌的英文名称</label>
+									<input type="text" class="inputText w270" id="bEn" name="ename"   value="{$editdata['ename']}" />
+								</span>
+								<span class="icoRedStar">*</span>
+							</dd>
+						</dl>
+						<dl class="pubDt50">
+							<dt><span class="chinesename48_43"></span></dt>
+							<dd>
+								<span class="inputTipsText">
+									<label class="fs16" id="bcnTip" {if $editdata['cname']} style="display: none;"{/if}>请填写品牌的中文名称，如没有中文名称请留空</label>
+									<input type="text" class="inputText w360" id="bCn" name="cname" value="{$editdata['cname']}"/>
+								</span>
+							</dd>
+						</dl>
+						<dl class="pubDt50">
+							<dt><span class="dl48_43"></span></dt>
+							<dd>
+								<span class="inputTipsText">
+									<label class="fs16" id="companyTip" {if $editdata['company']} style="display: none;"{/if}>国内品牌请填所属公司，国外品牌的国内代理，请填写国内总代理</label>
+									<input type="text" class="inputText w500" id="company" name="company"  value="{$editdata['company']}"/>
+								</span>
+<!--								<span class="icoRedStar">*</span>-->
+							</dd>
+						</dl>
+						<dl class="pubDt50">
+							<dt><span class="tel48_43"></span></dt>
+							<dd>
+								<span class="inputTipsText">
+									<label class="fs16" id="linkTip" {if $editdata['tel']} style="display: none;"{/if}>联系电话</label>
+									<input type="text" class="inputText w270" id="link" name="link" value="{$editdata['tel']}"/>
+								</span>
+<!--								<span class="icoRedStar">*</span>-->
+							</dd>
+						</dl>
+						<dl class="pubDt50">
+							<dt><span class="gj48_43"></span></dt>
+							<dd>
+								<span class="inputTipsText" style="z-index:10;">
+									<div class="gjselect_note w270"><!--{if $editdata['nation']}-->$editdata['nation']<!--{else}-->品牌国籍<!--{/if}--></div>
+									<input type="hidden" name="nation" id="nation" value="{$editdata['nationid']}"/>
+									<div class="gjdiv">
+									<!--{if $brandlist}-->
+									<!--{loop $brandlist $brand}-->
+									<a href="javascript:;" rid="{$brand[rid]}">{$brand[area]}</a>
+									<!--{/loop}-->
+									<!--{/if}-->
+									</div>
+								</span>
+								<span class="icoRedStar">*</span>
+							</dd>
+						</dl>
+						<div class="zmlist">
+							<h3 class="tit14">品牌首字母</h3>
+							<!--{if $letlist}-->
+							<!--{loop $letlist $key $let}-->
+							<span><input type="radio" name="lett" value="$key" id="lett[]" <!--{if $key==$editdata['letter']}-->checked="checked"<!--{/if}-->/><label for="$let">$let</label></span>
+							<!--{/loop}-->
+							<!--{/if}-->
+						</div>
+                                                <dl class="pubDt50">
+							<dt><span class="dz48_43"></span></dt>
+							<dd>
+								<span class="inputTipsText">
+									<label class="fs16" id="addressTip" {if $editdata['addr']} style="display: none;"{/if}>联系地址</label>
+									<input type="text" class="inputText w270" id="address" name="address" value="{$editdata['addr']}"/>
+								</span>
+<!--								<span class="icoRedStar">*</span>-->
+							</dd>
+						</dl>
+						<dl class="pubDt50">
+							<dt><span class="zb48_43"></span></dt>
+							<dd>
+								<span class="inputTipsText">
+									<label class="fs16" id="cityTip" {if $editdata['city']} style="display: none;"{/if}>总部所在城市</label>
+									<input type="text" class="inputText w270" id="city" name="city"  value="{$editdata['city']}"/>
+								</span>
+								<span class="icoRedStar">*</span>
+							</dd>
+						</dl>
+						<dl class="pubDt50">
+							<dt><span class="web48_43"></span></dt>
+							<dd>
+								<span class="inputTipsText">
+									<label class="fs16" id="urlTip" {if $editdata['url']} style="display: none;"{/if}>官方网站前请加 http://</label>
+									<input type="text" class="inputText w270" id="url" name="url" value="{$editdata['url']}"/>
+								</span>
+								<span class="icoRedStar">*</span>
+							</dd>
+						</dl>
+						
+						<dl class="pubDt50">
+							<dt><span class="logo48_43"></span></dt>
+							<dd>
+								<input id="numimage" type="hidden" name="uploadfile" value="0"/>
+								<div id="pic_upload_multiimg">
+								此内容需要 Adobe Flash Player 10.0.0 或更高版本
+								<script type="text/javascript">
+									var pageHost = ((document.location.protocol == "https:") ? "https://" : "http://");
+									document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='"
+													+ pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" );
+								</script>
+								</div>
+								<span class="icoRedStar">*</span>
+								<div id="imglist" class="readyPic">
+                                    {if $editdata['pic'] && $editdata['dir']}
+                                    <span id="imagelist_id_{$editdata[baid]}">
+                                        <img src="{eval echo getimagethumb(60,60,2,$editdata['dir'].'/'.$editdata['pic'], $editdata['baid'], $editdata['serverid']);}">
+                                        <b class="deleteimg">删除</b>
+                                        <input type="hidden" name="imgselect[]" value="$editdata[baid]">
+                                    </span>
+                                    {/if}
+								</div>
+							</dd>
+						</dl>
+					</div>
+				</div>
+			</div>
+			<div class="layout mt15">
+				<!--{eval $editor['value'] = $editdata['message'];}-->
+				<!--{subtemplate forum/dianping/editor}-->
+				<div class="mtm mbm">
+				<button type="submit" id="postsubmit" class="tj182_43" value="true" name="{if $_GET['do'] == 'new'}topicsubmit{elseif $_G[gp_action] == 'reply'}replysubmit{elseif $_GET['do'] == 'edit'}editsubmit{/if}"></button>
+
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<script type="text/javascript" src="static/js/newswfobject.js"></script>
+<script type="text/javascript">
+	//上传图片
+	var params = {site:"{$_G[siteroot]}misc.php%3fmod=swfupload%26type=image%26fid=$fid%26mtype=plugin%26twidth=60%26theight=60%26back=uploadpic%26random=<!--{echo random(4)}-->",buttonimg:"{$_G[siteroot]}static/image/common/uploadnew.png"};
+	swfobject.embedSWF("static/flash/uploadforum.swf", "pic_upload_multiimg", "208", "50", "10.0.0", "playerProductInstall.swf", params, {wmode:"transparent"});
+	swfobject.createCSS("#pic_upload_multiimg", "text-align:left;");
+	/*{if ($action=='edit')}
+	ajaxget('forum.php?ctl={$modstr}&act=getimglist&type=forum{if $editdata[tid]}&tid={$editdata[tid]}{/if}{if {$editdata[pid]}}&pid={$editdata[pid]}{/if}', 'imglist');
+	{/if}*/
+
+</script>
+<script type="text/javascript">
+var maxpic = 1;
+function uploadpic(type, returndata) {
+	eval("var nattach = " + returndata + ";");
+	jQuery.noConflict();
+	;(function($){
+		switch(type){
+			case 1:
+			case 2:
+				var html = '';
+				html 	+= '<span id="imagelist_id_'+nattach.aid+'">';
+				html 	+= '<img src="' + nattach.thumbpic + '" />';
+				html 	+= '<b class="deleteimg">删除</b>';
+				html 	+= '<input type="hidden" value="'+nattach.aid+'" name="imgselect[]">';
+				html 	+= '</span>';
+                                //让图片只显示最后上传的。
+				$("#imglist").prepend(html);
+                                //$("#imglist").append(html);
+				var attachobj = $('#imagelist_id_' + nattach.aid);
+				attachobj.find('input').removeAttr('disabled').end().show();
+
+				attachobj.find('img').one('error', function(){
+					$(this).attr('src', ' ');
+					$(this).attr('src', nattach.thumbpic);
+				}).show();
+				break;
+			case 3:
+				break;
+		}
+		$('#imglist').find('span:gt(' + (maxpic - 1) + ')').addClass("overlimit").find('input').attr('disabled', true);
+		//算下上传图片数
+		$("#numimage").attr("value", $('#imglist').find("span:not('.overlimit')").length);
+	})(jQuery);
+}
+</script>
+<!--{subtemplate forum/dianping/footer}-->

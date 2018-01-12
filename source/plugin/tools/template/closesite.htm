@@ -1,0 +1,32 @@
+<div id="toolsh">
+	<div class="bm">
+		$des
+	</div>
+	<div class="bm">
+	<form action="$_G['basescript'].php?action=$action<!--{if $_G['gp_mclose'] == 'mclose'}-->&mclose=mclose<!--{elseif $_G['gp_wclose'] == 'wclose'}-->&wclose=wclose<!--{elseif $_G['gp_lclose'] == 'lclose'}-->&lclose=lclose<!--{elseif $_G['gp_xclose'] == 'xclose'}-->&xclose=xclose<!--{/if}-->" method="post">
+		<table class="tb">
+			<tbody>
+				<tr>
+				<th width="170px">{$tools_sitestatu}</th>
+				<td><span class="red"></span></td>
+				</tr>
+				
+				<tr>
+					<th width="30%"><input type="radio" <!--{if $bbclosed == 0}-->checked=""<!--{/if}--> value="1" name="close" class="radio"> {$tools_open}&nbsp;&nbsp;&nbsp;<input type="radio" value="2" name="close" class="radio" <!--{if $bbclosed == 1}-->checked=""<!--{/if}-->> {$tools_close}</th>
+				</tr> 
+				
+				<tr>
+					<th width="170px">{$tools_closereason}</th>
+				</tr>
+				
+				<tr>
+					<th><textarea class="textarea" name="closereason" >$closereason</textarea></th>
+				</tr>
+	
+				<tr><td colspan="2"><button class="pn vm"  name="action" <!--{if $_G['gp_mclose'] == 'mclose'}-->value="backupxn"<!--{elseif $_G['gp_wclose'] == 'wclose'}-->value="win15"<!--{elseif $_G['gp_lclose'] == 'lclose'}-->value="lin15"<!--{elseif $_G['gp_xclose'] == 'xclose'}-->value="xn11"<!--{/if}-->>…œ“ª≤Ω</button><button style="margin-left:30px;" class="pn" value="true" name="submit" type="submit"><em>{$tools_submit}</em></button></td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+	</div>
+</div>

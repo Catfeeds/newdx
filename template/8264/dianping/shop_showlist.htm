@@ -1,0 +1,278 @@
+<!--{subtemplate dianping/header}-->
+	<!--{subtemplate dianping/nav}-->
+		<div class="global-common-content">
+			<div class="module">
+				<!-- 值得买 -->
+        <!--{eval include(DISCUZ_ROOT.'./source/plugin/skiing/hd_zw.php');}-->
+        <!--{eval $zhidemai_list = ForumOptionHuoDong::pianyi_sidebar(6, 'top', 'jiu', '10027');}-->
+        <!--{if $zhidemai_list}-->
+        <div class="ui-grid-12 ui-grid-full" style="margin-top:20px;">
+        <style>
+            .zhidemaiwidth{ width:980px;}
+            .zhidemaibox .zhidemailist_new li{width:144px; overflow:hidden;}
+            .zhidemaibox .zhidemailist_new li img{ width:144px;}
+        </style>
+        <!--{subtemplate common/zhidemai}-->
+        </div>
+        <!--{/if}-->
+        <!-- //值得买 -->
+                <div class="ui-grid-12 ui-grid-full" style="margin-top:20px;display: none;">
+                	<!--{eval $bottom_ads = array('416', '409', '417'); $bottom_ad = rand(0, 2); $bottom_ad_id = $bottom_ads[$bottom_ad]; }-->
+<!--{ad/custom_$bottom_ad_id}-->
+
+                </div>
+				<div class="ui-grid-12 ui-grid-full">
+					<div class="nav-sift-class">
+						 <!--省和城市级联菜单导航-->
+						<div class="line_l_t_d p_r">
+							<div class="nav-name blue">所在地域</div>
+							 <div class="line_con_gray clboth p_r div_region">
+								<span class="arrow_d"></span>
+								<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&pid=0&rid=0&sid=0&cid={$cid}&bid={$bid}&order={$order}&page=1" {if $_GET['pid']==0} class="blue" {/if}>全部</a>
+								<!--{loop $arr_region $k $v}-->
+									<!--{if $k!=1430}-->
+									<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&pid={$k}&rid=0&sid=0&cid={$cid}&bid=0&order={$order}&page=1" value="{$k}" class="province {if $pid == $k} blue{/if}">{$v['name']}</a>
+									<!--{/if}-->
+								<!--{/loop}-->
+							</div>
+							<span class="tc_dq clboth" style="z-index:10000;width:450px;">
+								<!--{loop $arr_region $key $value}-->
+									<!--{if $key!=1430 && $key!=1426 && $key!=1428}-->
+									<span id='province_{$key}' class='div_city'>
+										<!--{loop $value['city'] $k $v}-->
+										<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&pid={$key}&rid={$k}&sid=0&cid=0&bid=0&order={$order}&page=1"{if $rid==$k} class="blue"{/if}>$v['cityname']</a>
+										<!--{/loop}-->
+									</span>
+									<!--{/if}-->
+								<!--{/loop}-->
+							</span>
+						</div>
+						<!--//省和城市级联菜单导航-->
+						<!--{if $pid!=0}-->
+						<div class="nav-sift-one">
+							<div class="nav-name orange">分类</div>
+							<div class="nav-list-wartpen">
+								<div class="nav-list-box">
+									<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&pid={$pid}&rid={$rid}&sid=0&cid={$cid}&bid={$bid}&order={$order}&page=1" {if $_GET['sid']==0}class="blue"{/if}>不限</a>
+									<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&pid={$pid}&rid={$rid}&sid=1&cid=0&bid=0&order={$order}&page=1"{if $_GET['sid']==1} class="blue"{/if}>街边店</a>
+									<a id="cbtn_2" href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&pid={$pid}&rid={$rid}&sid=2&cid=0&bid=0&order={$order}&page=1"{if $_GET['sid']>=2}  class="blue"{/if}>商场店</a>
+									<div id="sub_list_2" class="nav-list-more-box" style="display:none;">
+											<ul>
+												<li>
+													<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&pid={$pid}&rid=0&sid={$sid}&cid={$cid}&bid={$bid}&order={$order}&page=1"{if $_GET['sid']==0} class="blue"{/if}>全部</a>
+												</li>
+												<!--{loop $brand_market['market_array'] $k $v}-->
+												<li>
+													<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&pid={$pid}&rid={$rid}&sid={$k}&cid={$cid}&bid={$bid}&order={$order}&page=1"{if $_GET['sid']==$k} class="blue"{/if}>{$v}</a>
+												</li>
+												<!--{/loop}-->
+											</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--{/if}-->
+						<!--{if $brand_market['brand_array']}-->
+						<div class="line_l_t_d">
+								<div class="nav-name darkblue">品牌</div>
+								<div class="line_con_gray clboth p_r div_region">
+									<span class="arrow_d"></span>
+									<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&pid={$pid}&rid={$rid}&sid={$sid}&cid={$cid}&bid=0&order={$order}&page=1" {if $bid==0} class="blue" {/if}>全部</a>
+									<!--{loop $brand_market['brand_array'] $k $v}-->
+											<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&pid={$pid}&rid={$rid}&sid={$sid}&cid={$cid}&bid={$k}&order={$order}&page=1" class="{if $_GET['bid']==$k} blue {/if}">{$v}</a>
+									<!--{/loop}-->
+								</div>
+						</div>
+						<!--{/if}-->
+					</div>
+				</div>
+				<div class="col-main">
+					<div class="main-wrap">
+						<div class="ui-grid-6 ui-grid-left">
+							<div class="left-title-box">
+								<!-- 取消分类筛选 -->
+								<div class="sift-left">
+									<div class="condition-box">
+									<h1>	{if $pid}<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&pid=0&rid=0&sid=0&cid={$cid}&bid={$bid}&order={$order}&page=1" class="condition" style="margin-bottom:10px;">$arr_region[$pid]['name']<i></i></a>{/if}
+										{if $rid}<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&pid=0&rid=$rid&sid=0&cid={$cid}&bid={$bid}&order={$order}&page=1" class="condition" style="margin-bottom:10px;">$arr_region[$pid]['city'][$rid]['cityname']<i></i></a>{/if}
+										{if $sid==1}<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&pid=$pid&rid=$rid&sid=0cid={$cid}&bid={$bid}&order={$order}&page=1" class="condition" style="margin-bottom:10px;">街边店<i></i></a>
+										{elseif $sid>=2}<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&pid=$pid&rid=$rid&sid=0cid={$cid}&bid={$bid}&order={$order}&page=1" class="condition" style="margin-bottom:10px;">商场店<i></i></a>{/if}
+										{if $sid>2}<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&pid=$pid&rid=$rid&sid=2cid={$cid}&bid={$bid}&order={$order}&page=1" class="condition" style="margin-bottom:10px;">$brand_market['market_array'][$sid]<i></i></a>{/if}
+										{if $bid}<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&pid=$pid&rid=$rid&sid=$sid&cid={$cid}&bid=0&order={$order}&page=1" class="condition" style="margin-bottom:10px;">$brand_market['brand_array'][$bid]<i></i></a>{/if}
+									</h1>
+									</div>
+								</div>
+								<!-- //取消分类筛选 -->
+							</div>
+
+							<div class="left-title-box">
+								<div class="title-right">
+									<h3>
+										<span>店铺列表</span>
+									</h3>
+								</div>
+								<div class="sift-right">
+									<div class="sift-box">
+										<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&pid={$pid}&rid={$rid}&sid={$sid}&cid={$cid}&bid={$bid}&order=lastpost&page=1" <!--{if $_GET['order']=='lastpost' || $_GET['order']==''}--> class="hover" <!--{/if}--> ><i></i>默认</a>
+										<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&pid={$pid}&rid={$rid}&sid={$sid}&cid={$cid}&bid={$bid}&order=heats&page=1" <!--{if $_GET['order']=='heats'}--> class="hover" <!--{/if}--> ><i></i>热度</a>
+										<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&pid={$pid}&rid={$rid}&sid={$sid}&cid={$cid}&bid={$bid}&order=score&page=1" <!--{if $_GET['order']=='score'}--> class="hover" <!--{/if}-->><i></i>评分</a>
+										<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&pid={$pid}&rid={$rid}&sid={$sid}&cid={$cid}&bid={$bid}&order=dateline&page=1" <!--{if $_GET['order']=='dateline'}--> class="hover" <!--{/if}-->><i></i>最新</a>
+									</div>
+								</div>
+
+							</div>
+							<!--前面有图的 图片尺寸120*90 开始-->
+
+							<div class="left-list-box">
+								<div class="left-img-list-warpten">
+									<ul>
+										<!--{if $modlist}-->
+										<!--{loop $modlist $item}-->
+										<li>
+											<a href="http://www.8264.com/dianping.php?mod=shop&act=showview&tid={$item['tid']}" target="_blank" title="{$item[subject]}"><img src="{echo getimagethumb(120,90,2, $item['dir'].'/'.$item['showimg'], '', $item['serverid'])}" alt="{$item[subject]}"></a>
+											<div class="list-info">
+												<h2><a href="http://www.8264.com/dianping.php?mod=shop&act=showview&tid={$item['tid']}" class="title-big" target="_blank"  title="{$item[subject]}">{$item[subject]}</a></h2>
+												<span>
+													<!--{eval $bat=array();}-->
+													<!--{if $item['provinceid']}-->
+														<!--{eval $bat[0]=$arr_region[$item['provinceid']]['name'];}-->
+													<!--{/if}-->
+													<!--{if $item['regionid']}-->
+														<!--{eval $bat[1]=$arr_region[$item['provinceid']]['city'][$item['regionid']]['cityname'];}-->
+													<!--{/if}-->
+													<!--{if $item['marketid']}-->
+														<!--{eval $bat[3]='商场店';}-->
+													<!--{else}-->
+														<!--{eval $bat[3]='街边店';}-->
+													<!--{/if}-->
+													<!--{if $item['sbrandid']}-->
+														<!--{eval $bat[4]='品牌专卖';}-->
+													<!--{else}-->
+														<!--{eval $bat[4]='综合品牌';}-->
+													<!--{/if}-->
+													<!--{if $item['cbrandid']}-->
+														<!--{eval $bat[5]='连锁';}-->
+													<!--{/if}-->
+													<!--{eval echo  implode('，',$bat)}-->
+												</span>
+												<span>地址：$item[addr]</span>
+											</div>
+											<div class="list-star-comment">
+												<div class="rating-level big-rating clim-rating">
+													<span class="score-value score-value-{echo floor($item['score'])}" title="{$item['score']}分">
+														<em></em>
+													</span>
+												</div>
+												{if $item['cnum']}<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$item['tid']}#comment" target="_blank">{$item['cnum']}人点评</a>{else}<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$item['tid']}#write" class="gift" target="_blank"><i></i>我要点评</a>{/if}
+											</div>
+										</li>
+										<!--{/loop}-->
+
+										<!--{else}-->
+										<li>没有找到您要查看的内容</li>
+										<!--{/if}-->
+									</ul>
+								</div>
+							</div>
+							<!--前面有图的 图片尺寸120*90 结束-->
+						</div>
+						<div class="ui-grid-6 ui-grid-left">
+							<!-- page -->
+									<div class="page-box-warpten">{$multipage}</div>
+							<!-- //page -->
+						</div>
+					</div>
+				</div>
+				<div class="col-sider">
+					<div class="ui-grid-2 ui-grid-right">
+						<div class="right-publish-button-wapten">
+							<a href="http://www.8264.com/dianping.php?mod=shop&act=dopost&do=new" target="_blank"
+							   class="line-button">
+								<i class="line-icon"></i>
+								<span>发布店铺</span>
+							</a>
+						</div>
+					</div>
+					<!-- 最新店铺 -->
+					<div class="ui-grid-2 ui-grid-right">
+						<div class="right-customer-news-wapten">
+							<div class="ui-block ui-block-title">
+								<div class="ui-title ui-title-line">
+									<h3>最新店铺</h3>
+								</div>
+							</div>
+							<div class="ui-block ui-block-content">
+								<div class="common-list-box customer-news">
+									<ul>
+										<!--{loop $shop_new $k $value}-->
+										<li>
+											<div class="imgbox"><a href="http://www.8264.com/dianping.php?mod=shop&act=showview&tid={$value['tid']}" title="{$value['subject']}" target="_blank"><img src="{echo getimagethumb(120,90,2, $value['dir'].'/'.$value['showimg'], '', $value['serverid'])}" alt="{$value['subject']}"></a></div>
+											<div class="list-bd">
+												<h3 class="ilist-bd-title"><a href="http://www.8264.com/dianping.php?mod=shop&act=showview&tid={$value['tid']}" class="{if $k<1}orange{elseif $k<3}blue{/if}" title="{$value['subject']}" target="_blank">{$value['subject']}</a></h3>
+												<div class="date">{date($value['dateline'])}</div>
+											</div>
+										</li>
+										<!--{/loop}-->
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- //最新店铺 -->
+					<!--<div class="ui-grid-2 ui-grid-right">
+						<div class="right-topics-wapten">
+							<div class="ui-block ui-block-title">
+								<div class="ui-title ui-title-line">
+									<h3>打折促销信息</h3>
+								</div>
+							</div>
+							<div class="ui-block ui-block-content">
+								<div class="right-same-area-box">
+									<ul class="right-same-area">
+										{loop $arrDzcx $k $value}
+										<li>
+											<h3 class="wlist-bd-title"><a href="http://bbs.8264.com/thread-$value['tid']-1-1.html"  title="{$value['subject']}" target="_blank">{$value['subject']}</a></h3>
+										</li>
+										{/loop}
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>-->
+				</div>
+			</div>
+		</div>
+        <style>
+.bbsfoothotlist{ background: #1a2b38; color: #ffffff; padding-bottom:45px;}
+.topHill{  background:url(http://static.8264.com/static/image/common/bg_fourm_sprite.png) no-repeat 0 0; height: 16px;left: 0; position: relative; text-indent: -9999px; top: -16px; width: 175px}
+</style>
+
+<div class="bbsfoothotlist">
+	<div class="module">
+		<div class="topHill">顶部小山</div>
+	</div>
+	<div class="choiceness">
+        	<!--{block/6905}-->
+	</div>
+</div>
+		<!-- 友情链接 -->
+		<!--{if $dp_modules[$mod]['fid'] && ($_G['cache']['forumlinks']['forum'][$dp_modules[$mod][fid]][0] || $_G['cache']['forumlinks']['forum'][$dp_modules[$mod][fid]][1] || $_G['cache']['forumlinks']['forum'][$dp_modules[$mod][fid]][2])}-->
+		<div class="friendLink">
+			<div class="layout friendLinkcon">
+				<ul>
+				<!--{if $_G['cache']['forumlinks']['forum'][$dp_modules[$mod][fid]][0]}-->
+				$_G['cache']['forumlinks']['forum'][$dp_modules[$mod][fid]][0]
+				<!--{/if}-->
+				<!--{if $_G['cache']['forumlinks']['forum'][$dp_modules[$mod][fid]][1]}-->
+				$_G['cache']['forumlinks']['forum'][$dp_modules[$mod][fid]][1]
+				<!--{/if}-->
+				<!--{if $_G['cache']['forumlinks']['forum'][$dp_modules[$mod][fid]][2]}-->
+				$_G['cache']['forumlinks']['forum'][$dp_modules[$mod][fid]][2]
+				<!--{/if}-->
+				</ul>
+			</div>
+		</div>
+		<!--{/if}-->
+		<!-- //友情链接 -->
+	</div>
+<!--{subtemplate dianping/footer}-->

@@ -1,0 +1,61 @@
+<!--{subtemplate common/header_8264}-->
+<!--[name]领军人物[/name]-->
+<link href="template/8264/css/channel/style_903.css" rel="stylesheet" type="text/css">
+<style id="diy_style" type="text/css"></style>
+<!--{subtemplate common/nav_8264_top}-->
+<!--{subtemplate common/nav_8264_jian}-->
+<div class="layout topHead">
+	<div class="titLeft">
+		<h2>领军人物</h2>
+		<h3>户外产业大腕儿们说 ……</h3>
+	</div>
+	<div class="editorRight">
+		<img src="http://placekitten.com/32/32">责任编辑：志贺</div>
+</div>
+<div class="layout">
+	<div class="figureBox">
+		<!-- 循环开始 -->
+		<!--{if $arr['list']}-->		
+		<!--{loop $arr['list'] $value}-->
+		<dl class="figureList">
+			<dt>
+				<a href="portal.php?mod=view&aid=$value['aid']" target="_blank">				
+					<img src="$value['pic']"></a>
+			</dt>
+			<dd>
+				<h1>$value['name']</h1>
+				<h2>$value['shortname']</h2>
+				<h3>$value['titles']</h3>
+				<div class="fBottom">
+					<span class="comment">$value['view']</span>
+					<span class="date">$value['dateline']</span>
+				</div>
+			</dd>
+		</dl>
+		<!--{/loop}-->
+		<!--{/if}-->
+		<!-- 循环结束 -->
+		
+	</div>
+	<!--{if $arr['multi']}-->
+	<div class="listPageBox clearfix">
+		<div class="pg">
+			{$arr['multi']}
+		</div>
+	</div>
+	<!--{/if}-->
+</div>
+<script type="text/javascript">
+jQuery.noConflict();
+(function($) {
+	$(".figureList").hover(
+		function() {
+			$(this).addClass("current");
+		},
+		function() {
+			$(this).removeClass("current");
+		}
+	);
+})(jQuery);
+</script>
+<!--{subtemplate common/footer_8264lw}-->

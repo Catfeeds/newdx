@@ -1,0 +1,21 @@
+/* CSS Document */
+body { margin:0 0 0 0;text-align:center;font-size:12px; color:#000000;}
+ul{ list-style:none; margin:auto 0px;letter-spacing:0; word-spacing:0; padding:0;}
+a{text-decoration:none; color:#333333; font-size:12px;}
+a:hover{text-decoration:underline; color:#333333; font-size:12px;}
+form{ padding:0 0 0 0; margin:0 0 0 0;}
+em{ font-style:normal;}
+.warpper{ width:960px; text-align:center; margin:0 auto;}
+.top{ width:960px;}
+.mid{ width:960px;}
+.left{ width:782px; float:left; text-align:left; border-bottom:#CCCCCC solid 1px; border-left:#CCCCCC solid 1px; border-right:#CCCCCC solid 1px;}
+
+.con{ width:782px; border-bottom:#CCCCCC dashed 1px; padding-bottom:5px; margin-bottom:5px;}
+.img{ width:150px; height:120px; padding:3px; border:#CCCCCC solid 1px; float:left; margin:0px 5px;}
+.wen{ width:609px; float:right; line-height:1.6;}
+.title{ background:#e6f2e1; height:21px; padding:4px 0px 0px 10px; margin-right:5px;}
+.title a{ font-weight:bold;}
+.title a:hover{ font-weight:bold;}
+.content{ line-height:1.7; text-align:left; padding:8px;}
+.fenye{ padding:5px 0px;}
+.right{ width:162px; float:right; text-align:left; border:#CCCCCC solid 1px;}

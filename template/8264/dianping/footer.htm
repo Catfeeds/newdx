@@ -1,0 +1,70 @@
+<!--{if $act=='showview'}-->
+	<script src="http://static.8264.com/static/js/dianping/showview.js?{VERHASH}" type="text/javascript"></script>
+	<!--{if $_G['adminid']==1}--><script src="http://static.8264.com/static/js/dianping/manage.js?{VERHASH}" type="text/javascript"></script><!--{/if}-->
+<!--{/if}-->
+
+<!--{subtemplate common/ewm_r}-->
+<div class="share_bd_warpten">
+	<ul class="bbs_share_sc">
+		<li class="ps_re" id="share">
+			<a href="javascript:;" class="share"></a>
+			<div class="bdsharebuttonbox share_bd" data-tag="share_1">
+				<a href="javascript:;" class="sina" data-cmd="tsina"></a>
+				<a href="javascript:;" class="qq" data-cmd="qzone"></a>
+				<a href="javascript:;" class="wb" data-cmd="tqq"></a>
+				<a href="javascript:;" class="wx" data-cmd="weixin"></a>
+			</div>
+		</li>
+		<!--{if $act=='showview'}-->
+		<li><a href="home.php?mod=spacecp&ac=favorite&type=thread&id=$tid" id="m_k_favorite" onclick="showWindow(<!--{if $_G['uid']}-->this.id, this.href, 'get', 0<!--{else}-->'login','member.php?mod=logging&action=login'<!--{/if}-->);" class="sc"><b style="display: none;" id="favoritenumber"></b></a></li>
+		<!--{/if}-->
+		<li><a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist" class="bbsli" title="返回{$dp_modules[$mod]['cname']}首页"></a></li>
+		<li id="gotop_50"><a  href="javascript:;" class="gotop_50"></a></li>
+	</ul>
+</div>
+<script>
+window._bd_share_config = {
+	common : {
+		//此处放置通用设置
+	},
+	share : [
+		//此处放置分享按钮设置
+		{"tag" : "share_1", "bdSize" : 32}	
+	]
+}
+with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+(function($){
+	var ww=$(window).width();
+	var s_bd_r=Math.max((ww-980)/2-60,0);
+	$(".share_bd_warpten").css("right",s_bd_r);
+	
+	//鼠标移入分享后向左边弹出分享按钮
+	$("#share").hover(
+		function () {
+		$(".share_bd",this).show();
+		},
+		function () {
+		$(".share_bd",this).hide();
+		}
+	);
+	//返回顶部按钮
+	if($(window).scrollTop() > 10){$("#gotop_50").show();}	
+	$(window).scroll( function(){
+		if($(window).scrollTop()>10){
+			$("#gotop_50").show();
+		}else{
+			$("#gotop_50").hide();	
+		}
+	});
+	$("#gotop_50").click(function(){ 
+		$("html,body").animate({ scrollTop: 0 },500);
+	});		
+})(jQuery);
+</script>
+<script type="text/javascript"> 
+document.body.onselectstart=function(){ return false;}
+</script>
+<!--{subtemplate common/weixin_share}-->
+<!--{eval dp_output();}-->
+<!--{subtemplate common/footer_8264_new}-->
+

@@ -1,0 +1,390 @@
+<!--{eval $_G['home_tpl_titles'] = array($album['albumname'], '{lang album}');}-->
+<!--{eval $friendsname = array(0 => '{lang friendname_0}',1 => '{lang friendname_3}',2 => '{lang friendname_3}',3 => '{lang friendname_3}',4 => '{lang friendname_3}');}-->
+
+<!--{subtemplate common/header_8264_new}-->
+<!--{subtemplate home/space_header_uc}-->
+
+<!--main-content-->
+<form method="post" autocomplete="off" id="theform" name="theform" action="home.php?mod=spacecp&ac=album&op=editpic&albumid=$album[albumid]&is_uc=1">
+<div class="main-content">
+<div class="mod-wrap main-container">
+<div class="mod-wrap-bd">
+	<!--相册信息-->
+	<div class="photo-list-hd">
+		<!--相册信息-->
+		<div class="album-info">
+			<div class="albuminfo-cover">
+				<a href="home.php?mod=space&uid=$album[uid]&do=album&id=$album[albumid]">
+					<img src="{$album[pic]}" alt="{$album[albumname]}">
+				</a>
+			<!--	<div class="info">
+					<span class="data"><i class="icon-m icon-data-m"></i>{eval echo date('Y-m-d', $album[dateline])}</span>
+					<span class="count">$album[picnum]</span>
+				</div>-->
+			</div>
+			<div class="albuminfo-others">
+				<div class="album-tit-view">
+					<h3>$album[albumname]</h3>
+					<!--{if $space[self]}--><a href="home.php?mod=spacecp&ac=album&op=edit&albumid=$album[albumid]" class="modify-album-info" id="albumedit" onclick="showWindow(this.id, this.href, 'get', 0);">编辑</a><!--{/if}-->
+					<a class="ret-list" href="home.php?mod=space&uid=$space[uid]&do=album&view=me">返回相册列表 >></a>
+				</div>				
+				<div class="album-profile-more">
+					<div class="album-describe">
+						<span> 创建于 {echo date('Y-m-d', $album[dateline])} </span>
+						<span style="margin-left:8px;">$album[picnum]张</span>
+					</div>
+					<!--{if $space[self]}--><div class="album-limit" style="margin-left:0"><i style="font-style:normal;margin:0 8px 0 6px;">/</i>$friendsname[$album['friend']]</div><!--{/if}-->
+				</div>
+			</div>
+			<div class="interact-info">
+				{if $_G['uid']}
+				<a href="home.php?mod=spacecp&ac=favorite&type=album&id=$album[albumid]&spaceuid=$space[uid]&handlekey=sharealbumhk_{$album[albumid]}&is_uc=1" id="a_favorite" onclick="showWindow(this.id, this.href, 'get', 0);" class="item am-praise-btn" style="float:left;">
+				{else}
+				<a href="member.php?mod=logging&action=login" class="item am-praise-btn" style="float:left;">
+				{/if}				
+					<i class="icon-m icon-praise-m"></i><span id="favoritenum">$album[favtimes]</span>
+				</a>
+				<div class="shareBtn" style="float:left;">
+					<a href="javascript:;" class="share item am-comment-btn"><i class="icon-m icon-share-m"></i><span class="shareCount"></span>&nbsp;</a>
+					<div class="bdsharebuttonbox share-wrap-cust" data-tag="share_1" style="left:0;">
+						<span class="share-arr"></span>
+						<a href="javascript:;" class="sina" data-cmd="tsina"></a>
+						<a href="javascript:;" class="qq" data-cmd="qzone"></a>
+						<a href="javascript:;" class="wb" data-cmd="tqq"></a>
+						<a href="javascript:;" class="wx" data-cmd="weixin"></a>
+						<a class="bds_count" data-cmd="count" style="display:none;">-1</a>
+					</div>	
+				</div>
+				<!--{if $_G['uid']}-->
+				<!--<a href="#" class="oshr" onclick="showWindow('pubalbum','http://www.8264.com/plugin.php?id=whither:pubalbum&albumid={$_G['gp_id']}','get',0);return false;" style="background:#fff url(http://bbs.8264.com/static/image/common/recom_mdd.gif) 5px 2px no-repeat;">推荐到目的地</a>	-->		
+				<!--{/if}-->
+			</div>
+		</div>		
+		<!--相册信息 end-->
+		<!--相册管理-->
+		{if $space[self]}
+		<div class="mod-photo-tool" {if $isEdit}style="display:none;"{/if}>
+			<div class="photo-op-item">
+				<a href="home.php?mod=spacecp&ac=upload&op=flash&albumid=$album[albumid]" class="pl-upload" target="_blank"><i class="icon-m icon-upload-m"></i>上传照片</a>
+			</div>
+			<div class="photo-op-item">
+				<a href="javascript:void(0);" class="pl-manage" id="pl-manage"><i class="icon-m icon-manage-m"></i>批量管理</a>
+			</div>
+		</div>
+		<div class="photo-list-op" {if !$isEdit}style="display:none;"{/if}>
+			<div class="op-bar">
+				<div class="op-select">
+					<label class="all-check pl-manage-toolbar-selectpage">
+						<i class="icon-check"></i>
+						<input type="checkbox" class="all-checkbox">			
+						<span>全选</span>
+					</label>
+					<span class="check-info">已选择 <span class="num pl-manage-toolbar-count">0</span> 张</span>
+				</div>
+				<div class="op-item-wrap">
+					<a data-hottag="manage.movephotos" class="op-item pl-manage-toolbar-move" href="javascript:void(0);" onclick="piMovePic(this.rel)" rel="home.php?mod=spacecp&ac=album&op=editpic&albumid=$album[albumid]&subop=move&page=1">移动到相册</a>
+					<a data-hottag="manage.deletephotos" class="op-item pl-manage-toolbar-delete" href="javascript:void(0)" onclick="deletePic()">删除</a>
+				</div>
+				<div class="link-edit-quit">
+<!--					<span class="op-head-hint"><i class="icon-m icon-hint-m"></i>直接拖动照片可调整顺序</span>-->
+					<a data-hottag="manage.exit" class="op-item btn-edit-quit pl-manage-toolbar-exit" href="javascript:void(0)" id="finishmanage">完成管理</a>
+				</div>
+			</div>
+		</div>
+		{/if}
+		<!--相册管理 end-->
+	</div>
+	<!--相册信息 end-->
+	<!--相片列表-->
+	<div class="photo-list-bd">
+	<div class="mod-photo-list manageContainer {if $isEdit}mod-op-current{/if}">
+		<!--{if $list}-->	
+		<ul class="pl-photolist">
+			<!--{loop $list $value}-->
+			<li class="pl-photoitem">
+			<div class="mod-photo-item" id="picdiv_{$value[picid]}">
+				<div class="item-bd">								
+					<a href="javascript:void(0);" class="item-cover pl-photoitem-img isIE6">
+						<!--{if $value[pic]}--><img src="$value[pic]" alt="" class="picture" /><!--{/if}-->
+						<!--{if $value[status] == 1}--><b>({lang moderate_need})</b><!--{/if}-->
+					</a>
+					<a href="home.php?mod=space&uid=$value[uid]&do=$do&picid=$value[picid]&listpage={$_G[gp_page]}" style="display:none;"></a>
+					<a href="$value[filepath]" style="display:none;"></a>
+					{if $space[self]}
+					<!--管理框-->
+					<div class="mod-photo-op pl-popup-wrap pl-photoitem-op mod-op" style="display:none;">
+						<a class="pl-popup-btn pl-photoitem-op-btn" href="javascript:void(0)">
+							<span class="photo-op-tip">
+								<i class="icon-m icon-expansion-m"></i>
+							</span>
+						</a>
+						<div class="photo-op-list pl-popup-panel pl-photoitem-op-list">
+							<ul>
+								<li>
+									<a onclick="showWindow('setpichk', this.href, 'get', 0)" href="home.php?mod=spacecp&ac=album&op=setpic&albumid={$value[albumid]}&picid={$value[picid]}&handlekey=setpichk&is_uc=1" class="pl-photoitem-op-cover setpic" id="setpic_{$value[picid]}">
+										<i class="icon-m icon-cover-m"></i><span>{if $value[filepath] == $album[mpic]}封面图片{else}设为封面{/if}</span>
+									</a>
+								</li>
+								<li>
+									<a href="home.php?mod=spacecp&ac=album&op=editpic&albumid=$album[albumid]&subop=move&picids=$value[picid]&page={$page}" class="pl-photoitem-op-move" onclick="showWindow('albummove', this.href, 'get', 0)"><i class="icon-m icon-move-m"></i>移动到相册</a>
+								</li>
+								<li>
+									<a href="javascript:void(0);" class="pl-photoitem-op-delete" onclick="deletePic('$value[picid]')"><i class="icon-m icon-delete-m"></i>删除</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!--管理框 end-->
+					<!--选择框-->
+					<div class="item-select j-pl-photoitem-selctn item_check" {if !$isEdit}style="display:none;"{/if}>
+						<div class="bor">
+							<span>点击选择</span>
+						</div>
+						<label class="item-check">
+							<i class="icon-check"></i>
+						</label>
+					</div>
+					<!--选择框 end-->
+					{/if}
+				</div>
+				<!--图片描述-->
+				<div class="item-ft">
+					{eval $value[title] = $value[title] ? $value[title] : $value[filename];}
+					<div class="item-tit pl-photoitem-title">
+						<span class="">$value[title]</span>
+					</div>
+					{if $space[self]}
+					<div class="mod-input mod-input-focus pl-photoitem-quickedit" style="display:none;">
+						<div class="input-wrap">
+							<input type="text" value="$value[title]" maxlength="30" data-saving="0" name="title[{$value[picid]}]" onfocus="this.select();">
+						</div>
+					</div>
+					{/if}
+	<!--				<textarea name="title[{$pic[picid]}]" cols="50" rows="7" class="pt">$pic[title]</textarea>-->
+				</div>			
+				<!--图片描述 end-->
+			</div>
+			<input type="checkbox" name="ids[{$value[picid]}]" value="{$value[picid]}" id="picid_{$value[picid]}" class="picid" style="display:none;">
+			</li>
+			<!--{/loop}-->
+		</ul>
+	<!--{else}-->
+		<!--{if !$pricount}--><p class="emp">{lang no_pics}</p><!--{/if}-->
+		<!--{if $pricount}--><p>{lang hide_pic}</p><!--{/if}-->
+	<!--{/if}-->
+	</div>							
+	</div>
+	<!--相片列表 end-->				
+</div>
+</div>
+<!--分页-->
+{if $multi}<div class="cust-page-list">{$multi}</div>{/if}	
+<!--分页 end-->
+</div>
+<input type="hidden" name="page" value="$page" />
+<input type="hidden" name="editpicsubmit" value="true" />
+<input type="hidden" name="formhash" value="{FORMHASH}" />
+</form>
+<!--main-content end-->
+<!--{subtemplate home/space_footer_uc}-->
+<script type="text/javascript">
+jQuery(function(){			
+	//浏览和编辑状态的切换
+	jQuery('#pl-manage').click(function(){
+		jQuery('.mod-photo-tool').hide();			
+		jQuery('.photo-list-op').show();
+		jQuery('.mod-photo-list').addClass('mod-op-current');
+		jQuery('.item-select').show();		
+		return false;
+	});
+	jQuery('#finishmanage').click(function(){
+		jQuery('.mod-photo-tool').show();			
+		jQuery('.photo-list-op').hide();
+		jQuery('.mod-photo-list').removeClass('mod-op-current');
+		jQuery('.item-select').hide();
+		
+		//取消全选状态
+		jQuery('.all-check').removeClass('all-check-checked');					
+		jQuery('.pl-manage-toolbar-count').html('0');
+		jQuery('.picid').attr('checked', false);
+		jQuery('.mod-photo-item').removeClass('item-checked');
+		
+		//图片描述编辑框回到默认状态
+		jQuery('.item-tit').show();
+		jQuery('.mod-input').hide();
+		
+		//编辑图片描述
+		var action = jQuery('#theform').attr('action') + '&subop=update';
+		jQuery('#theform').attr('action', action);
+//		jQuery('#theform').submit();
+		ajaxpost('theform', 'return_$_G[gp_handlekey]');
+		return false;
+	});
+	
+	//全选
+	jQuery('.all-check').click(function(){				
+		if (jQuery(this).hasClass('all-check-checked')) {
+			jQuery(this).removeClass('all-check-checked');					
+			jQuery('.pl-manage-toolbar-count').html('0');
+			jQuery('.picid').attr('checked', false);
+			jQuery('.mod-photo-item').removeClass('item-checked');
+		} else {
+			jQuery(this).addClass('all-check-checked');					
+			jQuery('.pl-manage-toolbar-count').html(jQuery('.picid').length);					
+			jQuery('.picid').attr('checked', true);
+			jQuery('.mod-photo-item').addClass('item-checked');
+		}
+		return false;
+	});
+	
+	//单选
+	jQuery('.item_check').on('click',function(){
+		var parentObj = jQuery(this).parents('.mod-photo-item');			
+		if (parentObj.hasClass('item-checked')) {
+			parentObj.removeClass('item-checked');					
+			parentObj.next().attr('checked', false);
+			jQuery('.pl-manage-toolbar-count').html(jQuery('.item-checked').length);
+		} else {
+			parentObj.addClass('item-checked');
+			parentObj.next().attr('checked', true);				
+			jQuery('.pl-manage-toolbar-count').html(jQuery('.item-checked').length);
+		}
+		return false;
+	});
+	
+	//图片描述编辑框
+	jQuery('.item-tit').click(function(){
+		if (!jQuery(this).parents('.mod-photo-list').hasClass('mod-op-current')) {return false;}
+		jQuery('.item-tit').show();
+		jQuery('.mod-input').hide();
+		jQuery(this).hide().next().show().find('input').focus();
+		return false;
+	});
+	jQuery('.mod-input').click(function(){
+		return false;
+	});
+	jQuery('.mod-input input').change(function(){
+		jQuery(this).parent().parent().prev().find('span').html(jQuery(this).val());
+		return false;
+	});	
+	jQuery(document).click(function(){		
+		jQuery('.item-tit').show();
+		jQuery('.mod-input').hide();
+	});
+		
+	var ua    = navigator.userAgent.toLowerCase();
+	var isIE6 = ua.indexOf('msie 6.0') > -1 || ua.indexOf('msie 7.0') > -1 ? true : false;
+	jQuery('.isIE6').click(function(){	
+		if (isIE6) {
+			window.open(jQuery(this).next().next().attr('href'));    			
+		} else {
+			window.open(jQuery(this).next().attr('href'));  
+		}
+	});
+	
+});
+
+//批量移动到相册
+function piMovePic(rel) {
+	var href = rel;
+	var ids  = '';	
+	if (jQuery('.item-checked').length > 0) {		
+		jQuery('.item-checked').each(function(){
+			ids += jQuery(this).next().val()+',';
+		});
+		ids = ids.substr(0, ids.length-1);
+	}	
+	if (ids) {
+		href += '&picids='+ids;
+	} else {
+		showDialog_uc('请选择要移动的图片');		
+		return false;
+	}	
+	showWindow('albummove', href, 'get', 0);
+}	
+
+//设置封面的回调函数
+function succeedhandle_setpichk(url, msg, values) {
+	jQuery('.setpic').find('span').html('设为封面');
+	if(values['picid']) {
+		jQuery('#setpic_' + values['picid']).find('span').html('封面图片');
+		jQuery('.albuminfo-cover').find('img').attr('src', values['pic']);
+	}
+}
+
+//收藏的回调函数
+function succeedhandle_a_favorite(url, msg, values) {
+	if (values['id']) {
+		var favoritenum = parseInt(jQuery('#favoritenum').html(), 10) + 1;
+		jQuery('#favoritenum').html(favoritenum);
+	}
+}
+
+//移动到相册的回调函数
+function succeedhandle_albummove(url, msg, values) {
+	if (values['success']) {
+		location.reload();
+	}
+}
+
+//图片删除的回调函数
+function succeedhandle_albumpicdelete(url, msg, values) {
+	if (values['success']) {
+		location.reload();
+	}
+}
+
+//删除图片(单选和多选)
+function deletePic(picid) {
+	var ids = '';
+	var action = jQuery('#theform').attr('action') + '&subop=delete';
+	if (picid) {
+		ids = picid;
+	}
+	if (jQuery('.item-checked').length > 0) {		
+		jQuery('.item-checked').each(function(){
+			ids += jQuery(this).next().val()+',';
+		});
+		ids = ids.substr(0, ids.length-1);
+	}	
+	if (ids) {
+		action += '&picids='+ids;		
+	} else {
+		showDialog_uc('请选择要删除的图片');		
+		return false;
+	}
+	showWindow('albumpicdelete', action, 'get', 0);
+}
+</script>
+<script type="text/javascript">
+window._bd_share_config = {
+	common : {
+		//此处放置通用设置
+	},
+	share : [
+		//此处放置分享按钮设置
+		{"tag" : "share_1", "bdSize" : 32}
+	]
+}
+with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+jQuery(function(){
+	//鼠标移入分享后向左边弹出分享按钮
+	jQuery(".shareBtn").hover(
+		function () {
+		jQuery(".share-wrap-cust",this).show();
+		},
+		function () {
+		jQuery(".share-wrap-cust",this).hide();
+		}
+	);
+	var bdindex = 0;
+	bdcnt = setInterval(function(){
+		var tempCnt = parseInt(jQuery('.bds_count').html(), 10);
+		if (tempCnt >= 0) {
+			jQuery('.shareCount').html(tempCnt);
+			clearInterval(bdcnt);
+		}
+	},100);
+});
+</script>
+<!--{subtemplate common/footer_8264_new}-->

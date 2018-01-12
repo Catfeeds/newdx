@@ -1,0 +1,40 @@
+/* CSS Document */
+body {margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;text-align:center;font-size:12px; color:#666666;}
+ul{ list-style:none; margin:auto 0px;letter-spacing:0;word-spacing:0; padding:0;}
+a{text-decoration:none; color:#666666;}
+a:hover{text-decoration:underline;}
+.warpper{ width:980px; text-align:center; margin:auto;}
+em{ font-style:normal;}
+/********************************头部文件**************************************/
+.top{ width:980px;}
+/********************************导航样式**************************************/
+.nav{ width:978px; border: solid 1px #fa9150; height:40px; color:#ee4a00; text-align:center; line-height:40px; overflow:hidden; margin-bottom:10px;}
+.nav a{ color:#ee4a00;}
+/*********************************主题样式************************************/
+.mid{ width:980px;}
+.left{ border:#fa9150 solid 1px;}
+.lefttitle{ background:url(/pp/images/new_fans_1_left_1_b.jpg) repeat-x; height:25px; line-height:25px; overflow:hidden; padding-left:20px; font-size:14px; font-weight:bold; color:#ee4a00; text-align:left;}
+.lefttitle a{ color:#ee4a00;}
+.leftcon{}
+.leftcontitle{ font-size:14px; font-weight:bold; margin-top:25px; color:#ee4a00;}
+.leftconimg{ }
+.leftbuttonup{  height:40px;}
+.leftimg{ }
+.leftbuttondown{height:40px;}
+.right{ width:270px; float:right;}
+.paihang{ width:270px; border:#fa9150 solid 1px; margin-bottom:10px;}
+.righttitle{ width:250px; background:url(/pp/images/new_fans_1_left_1_b.jpg) repeat-x; height:25px; line-height:25px; overflow:hidden; padding-left:20px; font-size:14px; font-weight:bold; color:#ee4a00; text-align:left;}
+.rightcon{ width:270px; float:left;}
+.rightcon li{ width:250px; text-align:left; height:25px; line-height:25px; overflow:hidden; border-bottom:#eff3f6 solid 1px;}
+.rightcon a{ color:#0000a0;}
+.rightcon a:hover{ color:#ff0000;}
+.numtop{float:left; width:18px; line-height:17px; background:#d3ebfb; color:#727272; text-align:center; margin-top:3px;}
+.num{float:left; width:18px; line-height:17px; background:#b1b1b1; color:#727272; text-align:center; margin-top:3px;}
+.bottomimg{  margin-bottom:5px;}
+.imgleft{ width:125px;  border:#fa9150 solid 1px; float:left;}
+.imgright{ width:125px; border:#fa9150 solid 1px; float:right;}
+.imgmid{ width:345px; float:left;}
+
+/***********************************************************************/
+.bottom{ width:980px; background:#fc9107; color:#FFFFFF; margin-top:10px; height:25px; line-height:25px; overflow:hidden; float:left;}
+.bottom a{ color:#FFFFFF;}

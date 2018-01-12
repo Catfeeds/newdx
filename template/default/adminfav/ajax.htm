@@ -1,0 +1,59 @@
+<!--{subtemplate common/header_ajax}-->
+<!--{if $op == 'del_adminfav'}-->
+<h3 class="flb">
+		<em id="return_$_G[gp_handlekey]">删除该项</em>
+		<!--{if $_G[inajax]}--><span><a href="javascript:;" onclick="hideWindow('$_G[gp_handlekey]');" class="flbc" title="{lang close}">关闭</a></span><!--{/if}-->
+	</h3>
+	<form method="post" autocomplete="off" id="doingform_{$disp}" name="doingform" action="adminfav.php?mod=ajax&id=$id&op=del_adminfav&uid=$uid&page=$page" onsubmit="ajaxpost(this.id, 'return_$_G[gp_handlekey]');" >
+        <input name="delimgsubmit" id="delimgsubmit" value="true" type="hidden">
+        <!--{if $_G[inajax]}--><input type="hidden" name="handlekey" value="$_G[gp_handlekey]" /><!--{/if}-->
+		<input type="hidden" name="formhash" value="{FORMHASH}" />
+        <input type="hidden" name="handlekey" value="$_G[gp_handlekey]" />
+		<div class="c">确认删除该项吗？</div>
+		<p class="o pns">
+			<button type="submit" class="pn pnc" value="true"><strong>确定</strong></button>
+		</p>
+	</form>
+<script type="text/javascript">
+		
+		function succeedhandle_{$_G[gp_handlekey]}(url, msg, values) {
+			hideWindow('$_G[gp_handlekey]');
+			window.location.reload();
+		}
+</script>
+
+<!--{elseif $op == 'edit_adminfav'}-->
+ 	<!--{if $_G[uid]==1}-->
+            <h3 class="flb">
+                <em id="return_$_G[gp_handlekey]">修改网址</em>
+                <!--{if $_G[inajax]}--><span><a href="javascript:;" onclick="hideWindow('$_G[gp_handlekey]');" class="flbc" title="{lang close}">关闭</a></span><!--{/if}-->
+            </h3>
+
+            <form id="form_url_edit" name="form_url_edit" method="post" action="adminfav.php?mod=ajax&op=edit_adminfav&id=$id&uid=$uid&page=$page" onsubmit="ajaxpost(this.id, 'return_$_G[gp_handlekey]');" >
+              <table cellpadding="0" cellspacing="0" width="100%" class="fav" height="150" align="center">
+                
+                <td width="20"></td>
+                <tr><td width="20"></td><td width="50">名称：</td><td><input style="width:130px;" id="name" type="text" name="title" class="px pq" onkeydown="ctrlEnter(event, 'add');" onkeyup="strLenCalcnew(this, 'maxlimit',30)"  size="30" value="$name" /></td>
+                </tr>
+                <tr><td width="20"></td>
+                <td width="50">地址：</td><td><input style="width:180px;" id="href" type="text" name="href" class="px pq" size="30" value="$href" onfocus="if(this.value=='http://'){this.value='';}" onblur="if(this.value==''){this.value='http://'}" /></td>
+                </tr>
+                <tr><td width="20"></td>
+                <td width="50">颜色：</td><td><input style="width:70px;" id="color" type="text" name="color" class="px pq" size="20" value="$color" onchange="$('color_btn').style.backgroundColor=this.value" />&nbsp;<button type="button" class="setColor" id="color_btn" style="background-color:#000;width:50px;height:26px;" onclick="intocolor('selcolor', this, 'color');setdisplay('selcolor');">　</button> <div id="selcolor" style="width:auto; position:absolute;width:251px;z-index:65534"></div></td>
+                <td><button type="submit" class="pn pnc" id="url_editsubmit" ><em>修 改</em></button></td></tr>
+                </table>
+                <input type="hidden" name="url_editsubmit" value="true" />
+                <input type="hidden" name="handlekey" value="$_G[gp_handlekey]" />
+                <input type="hidden" name="formhash" value="{FORMHASH}" />
+                </form>
+               <!--{/if}-->
+           <script type="text/javascript">
+				function succeedhandle_{$_G[gp_handlekey]}(url, msg, values) {
+					hideWindow('$_G[gp_handlekey]');
+					window.location.reload();
+					
+					}
+			</script>
+
+<!--{/if}-->
+<!--{template common/footer_ajax}-->

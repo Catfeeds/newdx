@@ -1,0 +1,129 @@
+<script src="http://www.8264.com/static/js/jquery-1.6.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	jQuery.noConflict();
+	var str_url = 'plugin.php?id=useridentity:admincp_ajax';
+	function deny_apply (id) {
+		var str_reason = prompt('确定拒绝申请吗？');
+		if (str_reason != null) {
+			jQuery.ajax({
+				url: str_url + '&op=deny_apply&appid=' + id,
+				type: 'post',
+				data: {'op':'deny_apply', 'appid':id, 'reason':str_reason},
+				dataType: 'json',
+				contentType : 'application/x-www-form-urlencoded; charset=utf-8',
+				success: function (msg) {
+					if (msg.status != 'success') {
+						alert('操作失败！');
+					} else {
+						jQuery('#td_status_' + id).text('已拒绝');
+						jQuery('#td_reason_' + id).text(str_reason);
+						jQuery('#td_op_' + id).empty();
+						alert('拒绝申请！');
+					}
+				},
+				error: function (msg) {
+					alert('操作失败！');
+				}
+			});
+		} else {
+			return false;
+		}
+	}
+
+	function allow_apply (id, uid) {
+		if (confirm('本操作不可恢复，确定审核通过吗？')) {
+			var int_iid = jQuery('#hid_iid_' + id).val();
+			var int_idd = jQuery('#hid_idd_' + id).val();
+			jQuery.ajax({
+				url: str_url,
+				type: 'get',
+				data: {'op':'allow_apply', 'appid':id, 'uid':uid, 'iid':int_iid, 'idd':int_idd},
+				dataType: 'json',
+				success: function (msg) {
+					if (msg.status != 'success') {
+						alert('操作失败！');
+					} else {
+						jQuery('#td_status_' + id).text('已通过');
+						jQuery('#td_op_' + id).empty();
+						alert('审核通过！');
+					}
+				},
+				error: function (msg) {
+					alert('操作失败！');
+				}
+			});
+		}
+	}
+</script>
+<style type="text/css">
+	.hover input, #chk_all {border: none;}
+	.fixsel input { vertical-align:middle; margin-right:10px;}
+	.div_content {background: none repeat scroll 0 0 #FEFEFE; border: 1px solid #639BB0; width:630px;}
+	.identity_title {border-bottom: 1px dashed #CCCCCC; padding: 5px 10px}
+	.identity_footer {border-top: 1px dashed #CCCCCC; padding: 2px 5px 5px 0; text-align: right; height:20px; padding-top:6px}
+</style>
+<form action="admin.php?action=plugins&operation=config&do={$pluginid}&identifier=useridentity&pmod=admincp_verify_identity" method="POST">
+	<table class="tb tb2">
+		<tr>
+			<th class="partition">搜索</th>
+		</tr>
+		<tr>
+			<td>
+				UID：
+				<input type="text" name="txt_uid" id="txt_uid" size="15" value="{$str_uid}" />
+				用户名:
+				<input type="text" name="txt_name" id="txt_name" size="15" value="{$str_name}" />
+				<select name="slt_status" id="slt_status" >
+					<option value="">-- 申请状态 --</option>
+					<option value="1" {if $int_status == 1}selected{/if}>申请中</option>
+					<option value="2" {if $int_status == 2}selected{/if}>已通过</option>
+					<option value="3" {if $int_status == 3}selected{/if}>已拒绝</option>
+				</select>
+				<input type="submit" value="搜索" class="btn" />
+			</td>
+		</tr>
+	</table>
+</form>
+
+<table class="tb tb2">
+	<!--{if $arr_userapp}-->
+		<tr class="header">
+			<th width="10%">用户名</th><th width="10%">申请身份</th><th width="10%">申请状态</th><th width="10%">申请日期</th><th width="25%">申请理由</th><th width="22%">备注</th><th width="8%">操作</th>
+		</tr>
+		<!--{loop $arr_userapp $user}-->
+		<tr class="hover">
+			<td>
+				{$user['username']}
+				<input type="hidden" value="{$user['identity_id']}" id="hid_iid_{$user['id']}" />
+				<input type="hidden" value="{$user['detail_id']}" id="hid_idd_{$user['id']}" />
+			</td>
+			<td>{$user['subname']}</td>
+			<td id="td_status_{$user['id']}">
+				<!--{if $user['status'] == 1}-->
+					申请中...
+				<!--{elseif $user['status'] == 2}-->
+					已通过
+				<!--{elseif $user['status'] == 3 || $user['status'] == 0}-->
+					已拒绝
+				<!--{/if}-->
+			</td>
+			<td>{$user['apptime']}</td>
+			<td>{$user['app_reason']}</td>
+			<td id="td_reason_{$user['id']}">{$user['deny_reason']}</td>
+			<td id="td_op_{$user['id']}">
+				<!--{if $user['status'] == 1}-->
+					<a href="javascript:void(0);" onclick="allow_apply('{$user['id']}', '{$user['uid']}');">允许</a>
+					<a href="javascript:void(0);" onclick="deny_apply('{$user['id']}');">拒绝</a>
+				<!--{/if}-->
+			</td>
+		</tr>
+		<!--{/loop}-->
+		<tr>
+			<td>{$str_page}</td><td></td><td></td><td></td><td></td><td></td>
+		</tr>
+	<!--{else}-->
+		<div>
+			<h1>暂无数据</h1>
+		</div>
+	<!--{/if}-->
+</table>

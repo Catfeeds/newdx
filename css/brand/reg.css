@@ -1,0 +1,121 @@
+body {
+	font-size: 12px;
+	color: #000000;
+	margin-top: 10px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+.topxian {
+	background-image: url(/images/brand/regist/login_linebg.gif);
+	background-repeat: repeat-x;
+	padding-top: 1px;
+	background-position: top;
+}
+.zhucemaintalbe {
+	background-color: #FFFFFF;
+	padding: 15px;
+}
+
+
+.form {
+	height: 16px;
+	width: 130px;
+	border: 1px solid #dadada;
+}
+.bottomtd1 {
+	color: #000000;
+	text-align: center;
+	padding-top: 25px;
+	padding-bottom: 8px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #000000;
+}
+.bottomtd1 a {
+	color: #000000;
+	text-decoration: none;
+}
+.bottomtd2 {
+	border: 1px solid #004a9c;
+	color: #004a9c;
+	padding-top: 6px;
+	padding-right: 10px;
+	padding-bottom: 4px;
+	padding-left: 10px;
+	margin-top:15px;
+	text-align:center;
+}
+.bottomtd2 a {
+	color: #004a9c;
+	text-decoration: none;
+}
+
+.toplogo {
+	padding-bottom: 12px;
+	padding-left: 6px;
+	border-bottom-width: 4px;
+	border-bottom-style: solid;
+	border-bottom-color: #05418e;
+}
+.zhucetitle {
+	font-size: 13px;
+	font-weight: bold;
+	color: #3b3b3b;
+	background-image: url(/images/brand/regist/zuce_ion.gif);
+	background-repeat: no-repeat;
+	background-position: 64px 16px;
+	text-align: left;
+	padding-top: 30px;
+	padding-bottom: 12px;
+	padding-left: 100px;
+}
+.zhucetitle1 {
+	font-size: 13px;
+	font-weight: bold;
+	color: #3b3b3b;
+	background-image: url(/images/brand/regist/zuce_ion.gif);
+	background-repeat: no-repeat;
+	background-position: 18px 16px;
+	text-align: left;
+	padding-top: 30px;
+	padding-bottom: 12px;
+	padding-left: 52px;
+}
+.zhuceifo {
+	padding: 12px;
+	border-top-width: 3px;
+	border-top-style: solid;
+	border-top-color: #e6e6e6;
+}
+
+.zuceform {
+	height: 15px;
+	border: 1px solid #dadada;
+	background-color:#f1f1f1;
+
+}
+.ifoleft {
+    padding-top:10px;
+	background-color: #faf9f2;
+	padding-right: 6px;
+
+}
+.ifoleft td {
+	height: 30px;
+	font-weight: bold;
+	color: #3b3b3b;
+	text-align: right;
+}
+.iforight {
+    padding-top:10px;
+	padding-left: 6px;
+}
+.iforight td {
+	height: 30px;
+	color: #3b3b3b;
+	text-align: left;
+}
+input{
+margin:0px;
+}

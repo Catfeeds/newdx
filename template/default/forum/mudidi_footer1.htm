@@ -1,0 +1,23 @@
+                <div class="clear"></div>
+				<!--{eval $tem_prefix = $dxCache->prefix;}-->
+				<!--{eval $dxCache->prefix = 'mudidi_';}-->
+				<!--{if $dxCache->beginCache('footer')}-->
+				<div class="mudidi_scapenavs">
+					<!--{eval $mudidiHotScape = ForumOptionMudidi::getHotScape(45);}-->
+					<h3 class="scape_title">热门旅行景点：</h3>
+					<ul class="scape_list">
+						<!--{loop $mudidiHotScape $mudidi}-->
+						<li><a href="/thread-{$mudidi['tid']}-1-1.html">$mudidi['subject']</a></li>
+						<!--{/loop}-->
+					</ul>
+					<!--{eval $mudidiNav = ForumOptionMudidi::getRegionInMudidiNav();}-->
+					<h3 class="scape_title">目的地导航：</h3>
+					<ul class="scape_list">
+						<!--{loop $mudidiNav $mudidi}-->
+						<li><a href="/thread-{$mudidi['tid']}-1-1.html">$mudidi['name']</a></li>
+						<!--{/loop}-->
+					</ul>
+				</div>
+				<!--{eval $dxCache->endCache();}-->
+				<!--{/if}-->
+				<!--{eval $dxCache->prefix = $tem_prefix;}-->

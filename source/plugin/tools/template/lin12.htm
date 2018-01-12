@@ -1,0 +1,53 @@
+<div id="toolsh">
+<br />
+	<div class="bm">
+		$des
+	</div>
+	<div class="bm">
+	<form action="$_G['basescript'].php?action=$action" method="post">
+		<table class="tb">
+			<tbody>
+				<tr>
+				<th width="200px"><b>config_ucenter.php</b></th>
+				</tr>
+		                <tr>
+					<th>{$tools_dbusername}</th>
+					<td><input type="text" size="35" name="cucdbusername" class="textinput" value="{UC_DBUSER}"></td>
+					</tr>
+		                <tr>
+					<th>{$tools_mdbpw}</th>
+					<td><input type="text" size="35" name="cucdbpw" class="textinput" value="{UC_DBPW}"></td>
+				</tr>
+				<tr>
+					<th>{$tools_mdbname}</th>
+					<td><input type="text" size="35" name="cucdbname" class="textinput" value="{UC_DBNAME}"></td>
+				</tr>
+				<tr>
+					<th>{$tools_ucip}</th>
+					<td><input type="text" size="35" name="cucucip" class="textinput" value="{UC_IP}"></td>
+				</tr>
+				<tr>
+				<th width="200px"><b>config_global.php</b></th>
+				</tr>
+		                <tr>
+					<th>{$tools_dbusername}</th>
+					<td><input type="text" size="35" name="dbusername" class="textinput" value="{$_config['db'][1]['dbuser']}"></td>
+					</tr>
+		                <tr>
+					<th>{$tools_mdbpw}</th>
+					<td><input type="text" size="35" name="dbpw" class="textinput" value="{$_config['db'][1]['dbpw']}"></td>
+				</tr>
+				<tr>
+					<th>{$tools_mdbname}</th>
+					<td><input type="text" size="35" name="dbname" class="textinput" value="{$_config['db'][1]['dbname']}"></td>
+				</tr>
+						<tr>
+						<td><button class="pn vm"  name="action" value="lin11">{$tools_mback}</button></td>
+					<td><button class="pn" value="true" name="ucsubmit" type="submit"><em>{$tools_submit}</em></button></td>
+		                </tr>
+							<input type="hidden" name="xn77" value="xn77"/>           
+			</tbody>
+		</table>
+	</form>
+	</div>
+</div>

@@ -1,0 +1,96 @@
+<!--{template common/header}-->
+<!--{if !$_G[inajax]}-->
+	<div id="pt" class="bm cl">
+		<!--{subtemplate common/simplesearchform}-->
+		<div class="z"><a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> <em>&rsaquo;</em> <a href="home.php">$_G[setting][navs][4][navname]</a></div>
+	</div>
+	<div id="ct" class="ct2_a wp cl">
+		<div class="mn">
+			<div class="bm">
+<!--{/if}-->
+<!--{if $_GET['op'] == 'delete'}-->	
+	<form id="favoriteform_{$favid}" name="favoriteform_{$favid}" method="post" autocomplete="off" action="home.php?mod=spacecp&ac=favorite&op=delete&favid=$favid&type=$_GET[type]&is_uc=1" {if $_G[inajax] && $_GET[gp_type]!='view'} onsubmit="ajaxpost(this.id, 'return_$_G[gp_handlekey]');"{/if}>
+	
+	
+		<div class="popbox w450 textcenter">			
+			<div class="dhinfo">
+				<span>{lang delete_favorite_message}</span>
+				<em></em>
+			</div>
+			<div>
+				<button type="submit" name="deletesubmitbtn" value="true" class="button_cancel"><strong>{lang determine}</strong></button>
+				<!--{if $_G[inajax]}--><input class="button_confirm" onclick="hideWindow('$_G[gp_handlekey]');" value="È¡Ïû" type="button"/><!--{/if}-->
+			</div>
+			<div id="return_$_G[gp_handlekey]" style="margin-top:20px;display:none;">{lang delete_reply}</div>				
+		</div>	
+	
+		<input type="hidden" name="referer" value="$_G[referer]" />
+		<input type="hidden" name="deletesubmit" value="true" />
+		<input type="hidden" name="formhash" value="{FORMHASH}" />
+		<!--{if $_G[inajax]}--><input type="hidden" name="handlekey" value="$_G[gp_handlekey]" /><!--{/if}-->		
+	</form>
+	<!--{if $_G[inajax] && $_GET[gp_type]!='view'}-->
+	<script type="text/javascript">
+		function succeedhandle_$_G[gp_handlekey](url, msg, values) {
+			if (values['success']) {
+				location.reload();
+			}
+		}
+	</script>
+	<!--{/if}-->
+<!--{else}-->
+	{if !$_G[gp_is_uc]}
+	
+	<h3 class="flb">
+		<em id="return_$_G[gp_handlekey]">{lang favorite}</em>
+		<!--{if $_G[inajax]}--><span><a href="javascript:;" onclick="hideWindow('$_G[gp_handlekey]');" class="flbc" title="{lang close}">{lang close}</a></span><!--{/if}-->
+	</h3>
+	<form method="post" autocomplete="off" id="favoriteform_{$id}" name="favoriteform_{$id}" action="home.php?mod=spacecp&ac=favorite&type=$type&id=$id&spaceuid=$spaceuid" {if $_G[inajax]}onsubmit="ajaxpost(this.id, 'return_$_G[gp_handlekey]'{if $type == 'thread'}, null, null, null, 'favoriteupdate()'{/if});"{/if}>
+		<input type="hidden" name="favoritesubmit" value="true" />
+		<input type="hidden" name="referer" value="$_G[referer]" />
+		<input type="hidden" name="formhash" value="{FORMHASH}" />
+		<!--{if $_G[inajax]}--><input type="hidden" name="handlekey" value="$_G[gp_handlekey]" /><!--{/if}-->
+		<div class="c">
+			<p>{lang favorite_count}</p>
+			<p>{lang favorite_description}:</p>
+			<textarea id="general_{$id}" name="description" cols="50" rows="5" class="pt mtn" style="width: 400px;" onkeydown="ctrlEnter(event, 'favoritesubmit_btn')">$description</textarea>
+		</div>
+		<p class="o pns">
+			<button type="submit" name="favoritesubmit_btn" id="favoritesubmit_btn" class="pn pnc" value="true"><strong>{lang determine}</strong></button>
+		</p>
+	</form>
+	{else}
+	<form method="post" autocomplete="off" id="favoriteform_{$id}" name="favoriteform_{$id}" action="home.php?mod=spacecp&ac=favorite&type=$type&id=$id&spaceuid=$spaceuid&is_uc=1" {if $_G[inajax]}onsubmit="ajaxpost(this.id, 'return_$_G[gp_handlekey]'{if $type == 'thread'}, null, null, null, 'favoriteupdate()'{/if});"{/if}>
+		<div class="popbox w570">
+			<div class="popbox_title clearfix">
+				<span id="return_$_G[gp_handlekey]">{lang favorite}</span>			
+				<!--{if $_G[inajax]}--><em onclick="hideWindow('$_G[gp_handlekey]');"></em><!--{/if}-->
+			</div>
+			<div class="textareabox">
+				<p style="margin-bottom:10px;">{lang favorite_count}</p>
+				<textarea id="general_{$cid}" name="description" cols="" rows="" onkeydown="ctrlEnter(event, 'favoritesubmit_btn');" placeholder="{lang favorite_description}">$description</textarea>
+				<button type="submit" name="favoritesubmit_btn" id="favoritesubmit_btn" value="true" class="button_confirm"><strong>{lang determine}</strong></button>
+			</div>		
+		</div>
+		<input type="hidden" name="favoritesubmit" value="true" />
+		<input type="hidden" name="referer" value="$_G[referer]" />
+		<input type="hidden" name="formhash" value="{FORMHASH}" />
+		<!--{if $_G[inajax]}--><input type="hidden" name="handlekey" value="$_G[gp_handlekey]" /><!--{/if}-->
+	</form>
+	<script type="text/javascript">
+		function succeedhandle_$_G[gp_handlekey](url, msg, values) {
+			if (values['success']) {
+				location.reload();
+			}
+		}
+	</script>
+	{/if}
+<!--{/if}-->
+
+<!--{if !$_G[inajax]}-->
+		</div>
+	</div>
+	<div class="appl"><!--{subtemplate common/userabout}--></div>
+</div>
+<!--{/if}-->
+<!--{template common/footer}-->

@@ -1,0 +1,59 @@
+/* 论坛精选 list_837 开始 */
+body { color: #555; font-size: 12px; font-family: Tahoma, Helvetica, SimSun, sans-serif; }
+a { text-decoration: none; color: #555; }
+a:hover {text-decoration: none;}
+em { font-style: normal; }
+li { list-style: none outside none; }
+ul { margin:0; padding:0;}
+/* Global 全局样式 End */
+/* Clear Start */
+.clear { clear: both; display: block; overflow: hidden; visibility: hidden; width: 0; height: 0; }
+.clearfix:before, .clearfix:after { content: '.'; display: block; overflow: hidden; visibility: hidden; font-size: 0; line-height: 0; width: 0; height: 0; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+/* Clear End */
+
+/* 清除浮动 Start*/
+.site:after, .artListShortExp .cont:after, .listPageBox .pg:after { content: ""; display: block; clear: both; }
+.site, .artListShortExp .cont, .listPageBox .pg { zoom: 1; }
+/* 清除浮动 End */
+
+/* 公共样式 Start */
+.undis { display: none; }
+.dis { display: block; }
+.ind { text-indent: 2em; }
+.ind10 { text-indent: 10px; }
+.noborder { border: 0 none; }
+.Q-red a, a.Q-red { color: #BD0A01 !important; }
+.Q-black a, a.Q-black { color: #000 !important; }
+.Q-bold { font-weight: 700 !important; }
+.fl { float: left; display: inline; }
+.fr { float: right; display: inline; }
+.fn { font-weight: 400; }
+.mt8 { margin-top: 8px; }
+.mt12 { margin-top: 12px; }
+.mt15 { margin-top: 15px; }
+.mb10 { margin-bottom: 10px; }
+
+.shadowBlack { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);} /* 阴影 */
+
+/* 公共样式 End */
+.listPageBox { }
+.listPageBox .pg { margin: 0 15px 10px; }
+.listPageBox .pg a, .listPageBox .pg strong { float: left; display: block; font-size: 15px; font-weight: 400; color: #999999; height: 24px; padding: 6px 7px 4px; margin-left: 5px; font-family: "Microsoft YaHei"; background:none; border:0; }
+.listPageBox .pg a:hover, .listPageBox .pg strong { border:0;border-bottom: 2px solid #00A6FC; color: #141414; text-decoration: none; background:none; }
+/* 分页结束*/
+.wrapper { margin:auto; }
+.wap_960 { width:980px; margin:auto;}
+.ltjx_tit {}
+.ltjx_tit h2 { font: bold 20px 微软雅黑; margin:20px 5px;} 
+.ltjx_tit h2 a { font-size:14px; margin-left:20px;}
+.ltjx_tit h2 a:hover { color:#2A6FBC; font-size:14px; margin-left:20px;}
+#image-list .column { float:left; display:inline; margin:0px 30px 0px 0px;}
+#image-list .pic { width:200px; overflow:hidden; padding:10px; margin-bottom:15px; background: #fff; text-align: left; border: #d6d6d6 solid 1px; box-shadow: 0px 0px 5px #CCC;border-radius: 5px;}
+#image-list .pic img { width: 200px; border: none; }
+#image-list .pic .text { line-height: 20px; }
+.text-box .head { margin-top:5px;}
+.text-box .head a{ font-size: 13px; font-family: 微软雅黑, Arial, Helvetica, sans-serif; font-weight: bold; color: #2A6FBC; }
+#loadding_ico { text-align: center; clear: both; }
+/* 论坛精选 list_837 结束 */

@@ -1,0 +1,13 @@
+<style>
+#photo_image_list li{float: left; margin: 10px;}
+#photo_image_list li p{text-align: center; font-size: 18px; padding-top:5px;}
+</style>
+<ul id="photo_image_list">
+	<!--{loop $imglist $img}-->
+	<li>
+		<div><a href="{$img[pic]}" target="_blank"><img style="width:200px;height:200px;" src="{$img[pic]}"/></a></div>
+		<p><a target="_blank" href="{$img[url]}">{$img[title]}</a></p>
+	</li>
+	<!--{/loop}-->
+	<div style="clear:both;"></div>
+</ul>

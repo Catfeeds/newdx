@@ -1,0 +1,119 @@
+@charset "gb2312";
+/* Andes 2012-12-28 */
+/* Global 全局样式 Start */
+body { background-image: none; color: #555; font-size: 12px; font-family: "Microsoft YaHei", Tahoma, Helvetica, SimSun, sans-serif; }
+a { text-decoration: none; color: #555; }
+a:hover { text-decoration: none; color: #2a85e8; }
+em { font-style: normal; }
+li { list-style: none outside none; }
+input,
+textarea,
+select { font-size: 12px; color: #7b7b7b; }
+/* Global 全局样式 End */
+
+/* Clear Start */
+.clear { clear: both; display: block; overflow: hidden; visibility: hidden; width: 0; height: 0; }
+.clearfix:before,
+.clearfix:after { content: '.'; display: block; overflow: hidden; visibility: hidden; font-size: 0; line-height: 0; width: 0; height: 0; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+/* Clear End */
+
+/* 清除浮动 Start*/
+/* 首页 Start */
+.layout:after,
+.hd:after,
+.bd:after,
+.ft:after,
+.leftAreaContent:after,
+.rightAreaContent:after { content: ""; display: block; clear: both; visibility: hidden; }
+.layout,
+.hd,
+.bd,
+.ft,
+.leftAreaContent,
+.rightAreaContent { zoom: 1; }
+/* 首页 End */
+/* 清除浮动 End */
+
+/* 公共样式 Start */
+.undis { display: none; }
+.dis { display: block; }
+.ind { text-indent: 2em; }
+.ind10 { text-indent: 10px; }
+.noborder { border: 0 none; }
+.Q-red a,
+a.Q-red { color: #BD0A01 !important; }
+.Q-black a,
+a.Q-black { color: #000 !important; }
+.Q-bold { font-weight: 700 !important; }
+.floatL,
+.layout .floatL { float: left; display: inline; }
+.fr,
+.layout .fr { float: right; display: inline; }
+.fn { font-weight: 400; }
+.pieCss { behavior: url(http://www.8264.com/template/default/common/pie.htc); } /* css3插件 */
+.shadowBlack { box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2); behavior: url(http://www.8264.com/template/default/common/pie.htc); } /* 阴影 */
+.bRadius2px { border-radius: 2px; behavior: url(http://www.8264.com/template/default/common/pie.htc); } /* 圆角 */
+.minHeightTuan { min-height: 680px; _height: 680px; }
+.wp { width: auto; }
+.nav960 { margin: auto; width: 960px; }
+/* 公共样式 End */
+
+/* 门户首页 Start */
+/* 公共样式 Start */
+.layout { margin: 0 auto; width: 960px; }
+.layoutLeft { float: left; display: inline; width: 182px; }
+.leftAreaContent { border: 1px solid #d4d4d4; box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2); background: #FFF; }
+.leftAreaContent .hd { }
+.leftAreaContent .bd { }
+/* */
+.artList12 li {
+color:; float: left; font-size: 12px; height: 22px; line-height: 22px; overflow: hidden; text-indent: 10px; width: 100%; }
+.artList14 li {
+color:; float: left; font-size: 14px; height: 24px; line-height: 24px; overflow: hidden; text-indent: 11px; width: 100%; }
+.artListIndex14 li {
+color:; float: left; font-size: 14px; height: 24px; line-height: 24px; overflow: hidden; text-indent: 11px; width: 360px; }
+/* */
+.layoutRight { float: right; display: inline; width: 765px; }
+.layoutRightCont { width: 375px; }
+.rightArea { }
+.rightAreaAll { border: 1px solid #d4d4d4; box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2); background: #FFF; }
+.rightAreaContent { border: 1px solid #d4d4d4; box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2); background: #FFF; }
+.rightAreaContent .hd { height: 30px; }
+.rightAreaContent .bd { }
+.adRightAll { float: left; display: inline; border: 1px solid #d4d4d4; font-size: 0; }
+/* */
+.mt8 { margin-top: 8px; }
+.mt10 { margin-top: 10px; }
+.mt12 { margin-top: 12px; }
+.mt15 { margin-top: 15px; }
+.mb10 { margin-bottom: 10px; }
+.mb15 { margin-bottom: 15px; }
+.mb20 { margin-bottom: 20px; }
+.ml13 { margin-left: 13px; }
+.pd15 { padding: 0 15px; }
+.adBox { border: 1px solid #d4d4d4; box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2); font-size: 0; }
+.ad960 { border: 1px solid #d4d4d4; box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2); font-size: 0; }
+/* 蛇签 */
+.sheqian2 a { }
+.sheqian2 a.active { }
+.sheqianbody .hide { display: none; }
+.sheqianbody .active { display: block; }
+/* 公共样式 End */
+
+/* 勇者先行 Start */
+.pioneerHead { position: relative; height: 240px; width: 960px; background: url(http://www.8264.com/template/8264/css/moban/880/images/pioneer_head.jpg) no-repeat; margin-top: 10px; }
+.pioneerHead p { position: absolute; bottom: 0; width: 880px; padding: 5px 40px; line-height: 1.5; color: #FFF; font-size: 14px; background: #000; filter: alpha(opacity=40); -moz-opacity: 0.4; -khtml-opacity: 0.4; opacity: 0.4; }
+.pioneerCol { position: relative; float: left; display: inline; width: 320px; height: 480px; font-family: "Microsoft YaHei"; }
+.pioneerCol .mainPic img { position: absolute; top: 0; left: 0; width: 320px; height: 480px; z-index: 20; }
+.pioneerCol h3 { position: absolute; top: 130px; width: 100%; font: 36px/36px "Microsoft YaHei"; color: #FFF; text-align: center; z-index: 30; }
+.pioneerCol h4 { position: absolute; top: 180px; width: 100%; font: 60px/60px "Microsoft YaHei"; color: #FFF; text-align: center; z-index: 30; }
+.pioneerCol .blackLayout { position: absolute; width: 320px; height: 480px; background: #000; filter: alpha(opacity=20); -moz-opacity: 0.2; -khtml-opacity: 0.2; opacity: 0.2; z-index: 25; }
+.pioneerColHover h3,
+.pioneerColHover h4,
+.pioneerColHover .blackLayout { z-index: 10; }
+.pioneerCol .tips { position: absolute; bottom: 10px; width: 100%; height: 70px; background: url(http://www.8264.com/template/8264/css/moban/880/images/bg_pioneer.png) no-repeat 22px 0; z-index: 30; }
+.pioneerCol .tips .attention { position: absolute; top: 28px; left: 28px; display: block; width: 103px; line-height: 12px; color: #612b02; text-align: center; }
+.pioneerCol .tips .comment { position: absolute; top: 28px; left: 189px; display: block; width: 103px; line-height: 12px; color: #612b02; text-align: center; }
+/* 勇者先行 End */

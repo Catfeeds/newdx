@@ -1,0 +1,39 @@
+{subtemplate common/header}
+<div class="tm_c" fwin="mods" style="width:250px;">
+   <h3 class="flb"><em fwin="mods">选择了一条价格记录</em>
+			<span><a title="关闭" onclick="hideWindow('confimpanel')" class="flbc" href="javascript:;">关闭</a></span></h3>        
+			<form onsubmit="return false;" action="" autocomplete="off" method="post" fwin="mods" id="product_select_form">
+			<div class="c">
+				<div class="tplw">					   
+					<ul style="margin-top: 3px;">						   
+					   <li style="border-bottom: 1px solid #CDCDCD;">你确认要 删除 选择的价格么?：</li>
+					</ul>						
+					<br>
+					<label style="vertical-align:top;">删除原因：</label><textarea id="reason" class="px" style="height:60px; font-size:12px;" name="reason" rows="3" cols="35"></textarea><br />
+										   
+				</div>					
+			</div>			
+			<p class="o pns" style="text-align:center;">
+			<button type="button" value="提交" class="pn pnc" name="modsubmit" fwin="mods" style="margin:0;" onclick="javascript:submit_product_select_form();return false;"><span>提交</span></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" class="pc" id="sendreasonpm" name="sendreasonpm" fwin="mods" value="1"><label for="sendreasonpm">&nbsp;通知作者</label>
+			</p>
+			</form>
+		   <script type="text/javascript">
+			function submit_product_select_form() {			   
+			   params = jQuery('#product_select_form').serialize();		
+			   jQuery.ajax({				
+				   type: 'post',
+				   url: '/plugin.php?id=produce:ajax_deleteprice&prid={$prid}&puid={$puid}',
+				   data: params,
+				   success: function(html) {																											
+					   if(html=='success'){
+						  showDialog('删除成功');
+						   location.reload();
+					   }else{
+						   showDialog('删除失败');
+					   }
+					}
+			   });
+		   }
+		   </script>
+</div>
+{subtemplate common/footer}

@@ -1,0 +1,1 @@
+document.writeln("<a href=\"http:\/\/u.8264.com\/space-16746449-do-album-id-36038.html\" target=\"_blank\"><font color=\"#0000FF\" style=\"font-size: 11pt\"><b>比基尼美女换衣被偷拍<\/b><\/font><\/a>");

@@ -1,0 +1,28 @@
+
+@media (max-width: 1920px) {
+	/*.layout .noLogin{display: none;}
+	.layout .searchTopNav{display: none;}*/
+	.headerNav .nav li.wan .new{display: none;}
+	.pg_logging .bottomNav,.pg_register .bottomNav{display: none;}
+}
+@media (min-width: 640px) and (max-width: 980px) {
+	.layout .noLogin{display: none;}
+	.layout .searchTopNav{display: none;}
+	.headerNav .layout{width: 640px;}
+	.reg_cnt .reg_cntcon{width: 640px;}
+	.reg_main{float: none;margin: 90px auto 0;}
+}
+@media (max-width: 640px) {
+	.layout .noLogin{display: none;}
+	.layout .searchTopNav{display: none;}
+	.headerNav .layout{width: auto;}
+	.reg_cnt .reg_cntcon{width: auto;}
+	/*.headerNav .nav li a.topLink{font: 16px/20px "Microsoft Yahei";padding: 5px 10px 10px 10px}
+	.headerNav .nav li{width: auto;margin-right: 0;}*/
+	.reg_main{float: none;margin: 90px auto 0;}
+	.reg_bg{min-height: 473px;}
+	/*.headerNav .nav li.fx{display: none;}*/
+}
+@media (max-height: 615px) {
+	.reg_cnt .reg_main{margin-top: 0;transition: all 0.2s ease-in 0s;}
+}

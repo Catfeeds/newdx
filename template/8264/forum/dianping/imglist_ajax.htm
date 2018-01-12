@@ -1,0 +1,11 @@
+<!--{if $imglist}-->
+	<!--{loop $imglist $img}-->
+	<script class="needdelete">uploadsuccess(1, "{aid:$img[aid], thumbpic:'{eval echo getimagethumb(60,60,2,$dir . '/'.$img['attachment'], $img['aid'], $img['serverid']);}', fileid:'$img[aid]', filename:'{$img[filename]}'}");</script>
+	<!--{/loop}-->
+	<script class="needdelete">
+	jQuery.noConflict();
+	;(function($){
+		$('#imglist .needdelete').remove();
+	})(jQuery);
+	</script>
+<!--{/if}-->

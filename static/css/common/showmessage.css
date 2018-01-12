@@ -1,0 +1,44 @@
+/* CSS Document */
+
+body { background:#eee; }
+
+.clboth:after { content: ""; display: block; clear: both; visibility: hidden; }
+.clboth{ zoom: 1; }
+
+em{ font-style:normal;}
+.ts590{ background:#fff; border-radius:5px; height:155px; width:590px; margin:auto; font-family: "Microsoft Yahei",Tahoma,Helvetica,SimSun,sans-serif;}
+.l_400{ width:400px; float:left; padding:30px 0px 0px 35px;}
+.b_b{ border-bottom:#d6d6d6 solid 1px; display:block; font-size:20px; padding:0px 0px 13px 0px;}
+.b_b em{ display:block; color:#949494; font-size:12px;}
+.hard_s{ background:url(http://static.8264.com/static/images/common/tsicon.jpg) 241px -109px no-repeat; padding:14px 94px 0px 0px; height:33px; color:#1e6d9b; font-size:12px; text-decoration:none; display:block;}
+.hard_s:hover{ color:#1a2b38; font-size:12px; background:url(http://static.8264.com/static/images/common/tsicon.jpg) 242px -58px no-repeat; text-decoration:none; }
+.r_88{ width:88px; float:right; margin:20px 35px 0px 0px; display:inline;}
+.r_88 a{ display:block; background:#1e6d9b; color:#fff; font-size:12px; text-decoration:none;}
+.r_88 a:hover{ display:block; background:#1a2a37; text-decoration:none; color:#fff; font-size:12px;}
+.r_88 .wszlimg{ display:block; width:88px; height:88px; background:url(http://static.8264.com/static/images/common/tsicon.jpg) -118px -265px no-repeat;}
+.r_88 .wszlwz{ height:23px; text-align:center; line-height:23px; display:block;}
+.r_102{ width:102px; height:86px; float:right; margin:32px 20px 0px 0px; display:inline; background:url(http://static.8264.com/static/images/common/tsicon.jpg) -122px -164px no-repeat;}
+.ts590_pt20{ padding-top:20px; background:#fff; border-radius:5px; height:132px; width:590px; margin:0 auto; font-family: "Microsoft Yahei",Tahoma,Helvetica,SimSun,sans-serif;}
+.info_r_w{ display:block; text-align:center; font-size:14px; padding:11px 0px 11px 0px; color:#585858;}
+.info_r_w a { color: #1e6d9b; }
+.qc{ width:76px; height:28px; background:url(http://static.8264.com/static/images/common/tsicon.jpg) -95px 0px; display:block; margin:0px auto;}
+.qc:hover{ width:76px; height:28px; background:url(http://static.8264.com/static/images/common/tsicon.jpg) -95px -29px;}
+.ts590_pt20_h85{ padding-top:20px; background:#fff; border-radius:5px; height:85px; width:590px; margin:0 auto; font-family: "Microsoft Yahei",Tahoma,Helvetica,SimSun,sans-serif;}
+.hard_b{ background:url(http://static.8264.com/static/images/common/tsicon.jpg) 282px -159px no-repeat; padding:14px 0px 3px 0px; height:41px; color:#1e6d9b; font-size:14px; text-decoration:none; display:block; margin:0px auto; width:404px;}
+.hard_b:hover{ color:#1a2b38; font-size:14px; background:url(http://static.8264.com/static/images/common/tsicon.jpg) 282px -220px no-repeat; text-decoration:none; }
+
+
+.ts590_white{ padding:20px 0px; background:#fff; border-radius:5px; width:590px; margin:0 auto; font-family: "Microsoft Yahei",Tahoma,Helvetica,SimSun,sans-serif;}
+.ts590_white p{ margin:0px; padding:0;}
+.right_icon{ width:39px; height:39px; display:block; background:url(http://static.8264.com/static/images/common/tsicon.jpg) -58px -288px no-repeat; margin:0px auto;}
+.error_icon{ width:39px; height:39px; display:block; background:url(http://static.8264.com/static/images/common/tsicon.jpg) -1px -289px no-repeat; margin:0px auto;}
+.notice_icon{ width:39px; height:39px; display:block; background:url(http://static.8264.com/static/images/common/tsicon.jpg) -188px -1px no-repeat; margin:0px auto;}
+.info_ts{ display:block; text-align:center; font-size:14px; padding:0px 0px 5px 0px; color:#585858;}
+.link_ts{ display:block; color:#1e6d9b; font-size:14px; text-decoration:none; text-align: center;  padding:0px 0px 5px 0px;}
+.link_ts:hover{ color:#1a2a37; font-size:14px; text-decoration:none;}
+.ts590_white .mb_15{ margin-bottom:15px;}
+.fhup{ width:88px; height:28px; background:url(http://static.8264.com/static/images/common/tsicon.jpg) 0px 0px; display:block; margin:10px auto 0px auto;}
+.fhup:hover{ width:88px; height:28px; background:url(http://static.8264.com/static/images/common/tsicon.jpg) 0px -29px;}
+
+
+

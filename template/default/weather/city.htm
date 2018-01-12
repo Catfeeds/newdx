@@ -1,0 +1,88 @@
+<!--{subtemplate common/header_8264_new}-->
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/weather/style/style.css">
+<style>
+    body{ background:#fff;}
+</style>
+<script src="http://static.8264.com/static/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+    jQuery(function ($) {
+        //external加上target="_blank"
+        $("a[rel*=external]").attr("target", "_blank");
+    });
+</script>
+
+<div class="w1170">
+	<!-- 值得买 -->
+    <!--{eval include(DISCUZ_ROOT.'./source/plugin/skiing/hd_zw.php');}-->
+    <!--{eval $zhidemai_list = ForumOptionHuoDong::pianyi_sidebar(6, 'top', 'jiu', '10027');}-->
+    <!--{if $zhidemai_list}-->
+    <div style="margin: 10px auto 10px auto;">
+    <style>
+        .zhidemaiwidth{ width:1170px;}
+        .zhidemaibox .zhidemailist_new{ width:1170px; margin:0 auto; overflow:hidden;}
+        .zhidemaibox .zhidemailist_new ul{ width:1370px;}
+        .zhidemaibox .zhidemailist_new li{width:176px; overflow:hidden;}
+        .zhidemaibox .zhidemailist_new li img{ width:176px;}
+    </style>
+    <!--{subtemplate common/zhidemai}-->
+    </div>
+    <!--{/if}-->
+    <!-- //值得买 -->
+    <div class="btitle clear_b">
+        <h1>热门城市天气预报</h1>
+    </div>
+    <div class="citylist clear_b">
+        <a href="http://www.8264.com/weather/guangxi/yangshuo/" target="_blank">阳朔</a>
+        <a href="http://www.8264.com/weather/heilongjiang/haerbin/" target="_blank">哈尔滨</a>
+        <a href="http://www.8264.com/weather/yunnan/lijiang/" target="_blank">丽江</a>
+        <a href="http://www.8264.com/weather/neimenggu/hulunbeier/" target="_blank">呼伦贝尔</a>
+        <a href="http://www.8264.com/weather/beijing/" target="_blank">北京</a>
+        <a href="http://www.8264.com/weather/aomen/aomen/" target="_blank">澳门</a>
+        <a href="http://www.8264.com/weather/guangdong/guangzhou/" target="_blank">广州</a>
+        <a href="http://www.8264.com/weather/jilin/changchun/" target="_blank">长春</a>
+        <a href="http://www.8264.com/weather/jiangsu/suzhou/" target="_blank">苏州</a>
+        <a href="http://www.8264.com/weather/yunnan/dali/" target="_blank">大理</a>
+        <a href="http://www.8264.com/weather/jiangxi/wuyuan/" target="_blank">婺源</a>
+        <a href="http://www.8264.com/weather/shanghai/shanghai/" target="_blank">上海</a>
+        <a href="http://www.8264.com/weather/anhui/huangshan/" target="_blank">黄山</a>
+        <a href="http://www.8264.com/weather/zhejiang/hangzhou/" target="_blank">杭州</a>
+        <a href="http://www.8264.com/weather/hebei/qinhuangdao/" target="_blank">秦皇岛</a>
+        <a href="http://www.8264.com/weather/shandong/jinan/" target="_blank">济南</a>
+        <a href="http://www.8264.com/weather/jiangsu/wuxi/" target="_blank">无锡</a>
+        <a href="http://www.8264.com/weather/guangxi/guilin/" target="_blank">桂林</a>
+        <a href="http://www.8264.com/weather/jiangsu/nanjing/" target="_blank">南京</a>
+        <a href="http://www.8264.com/weather/tianjin/tianjin/" target="_blank">天津</a>
+        <a href="http://www.8264.com/weather/taiwan/taibei/" target="_blank">台北</a>
+        <a href="http://www.8264.com/weather/fujian/xiamen/" target="_blank">厦门</a>
+        <a href="http://www.8264.com/weather/hainan/sanya/" target="_blank">三亚</a>
+        <a href="http://www.8264.com/weather/hubei/wuhan/" target="_blank">武汉</a>
+        <a href="http://www.8264.com/weather/xianggang/xianggang/" target="_blank">香港</a>
+        <a href="http://www.8264.com/weather/guangdong/zhuhai/" target="_blank">珠海</a>
+        <a href="http://www.8264.com/weather/shanxi/xian/" target="_blank">西安</a>
+        <a href="http://www.8264.com/weather/sichuan/chengdu/" target="_blank">成都</a>
+        <a href="http://www.8264.com/weather/jiangsu/yangzhou/" target="_blank">扬州</a>
+    </div>
+
+    <div class="citylistpagy clear_b">
+
+        <!--{loop $weather_area_list $weather_area}-->
+        <dl class="clear_b">
+            <dt><a href="http://www.8264.com/weather/{$weather_area['spell']}/" target="_blank">{$weather_area['name']}</a><a href="http://www.8264.com/weather/{$weather_area['spell']}/" target="_blank" class="morecity">更多城市</a></dt>
+            <dd>
+                <!--{loop $weather_area['areas'] $weather_city}-->
+                <a href="http://www.8264.com/weather/{$weather_city['pspell']}/{$weather_city['spell']}/" target="_blank">{$weather_city['name']}</a>
+                <!--{/loop}-->
+            </dd>
+        </dl>
+        <!--{/loop}-->
+    </div>
+</div>
+<!-- <div style="background:url(images/bottom.jpg) top center no-repeat; height:70px;"></div> -->
+<script>
+    $(document).ready(function () {
+        $("body").addClass("citylistbody");
+    });
+</script>
+<!--嵌入公用底部开始-->
+<!--{subtemplate common/footer_8264_new}-->
+

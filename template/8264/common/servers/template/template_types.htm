@@ -1,0 +1,10 @@
+<!--{if $types}-->
+<select name="mtype">
+	<option value="">请选择模块</option>
+	<!--{loop $types $k $v}-->
+	<option value="{$k}" <!--{if $selected == $k}-->selected<!--{/if}--> >{$v}</option>
+	<!--{/loop}-->
+</select>
+<!--{else}-->
+<span>请选择模块</span>
+<!--{/if}-->

@@ -1,0 +1,449 @@
+<!--{subtemplate forum/dianping/header}-->
+<style type="text/css">
+#imglist .overlimit{display:none;}
+#pic_upload_multiimg,#pic_upload_multiimg_head { vertical-align: middle; }
+</style>
+<script type="text/javascript">
+maxpicnumber = 0;
+function modform_validate(theform) {
+	var message = wysiwyg ? html2bbcode(getEditorContents()) : (!theform.parseurloff.checked ? parseurl(theform.message.value) : theform.message.value);
+	theform.message.value = message;
+
+	<!--{if $action != 'edit'}-->
+	var subject=jQuery('#subject').val();
+	if($('postsubmit').name == 'newpost' && trim(subject) == null) {
+		_showmsg('请填写{$modname}{$modsetting[mc]}');
+		return false;
+	} else if(mb_strlen(theform.subject.value) > 80) {
+		_showmsg('您的{$modname}{$modsetting[mc]}超过 80 个字符的限制');
+		return false;
+	} else if(trim(theform.subject.value) == ""){
+		_showmsg('请填写{$modname}{$modsetting[mc]}');
+		return false;
+	}
+	if (theform.uploadfile.value == '0') {
+		_showmsg('请上传{$modname}{$modsetting[pic]}，并至少选择一张');
+		return false;
+	}
+	<!--{else}-->
+	var subject=jQuery('#subject').val();
+	if(($('postsubmit').name != 'replypost' && trim(subject) == null)) {
+		_showmsg('请填写{$modname}{$modsetting[mc]}');
+		return false;
+	} else if(mb_strlen(theform.subject.value) > 80) {
+		_showmsg('您的{$modname}{$modsetting[mc]}超过 80 个字符的限制');
+		return false;
+	} else if(trim(theform.subject.value) == ""){
+		_showmsg('请填写{$modname}{$modsetting[mc]}');
+		return false;
+	}
+	<!--{/if}-->
+
+	if(!jQuery('#bid').val()){
+		_showmsg('请选择{$modname}{$modsetting['brand']}');
+		return false;
+	}
+
+	//if(!trim(jQuery('#sn').val())){
+	//	_showmsg('请填写{$modname}{$modsetting['sn']}');
+	//	return false;
+	//}
+	if(!jQuery('#cid').val()||!jQuery('#pcid').val()){
+		_showmsg('请选择{$modname}{$modsetting['typeclass']}');
+		return false;
+	}
+        //参考价格填写的判断
+        /*
+	if(!jQuery('#price').val()){
+		_showmsg('请选择{$modname}价格');
+		return false;
+	} else {
+		var reg =/(^[1-9]\d*(\.\d{1,2})?$)|(^[0]{1}(\.\d{1,2})?$)/;
+		if(!reg.test(jQuery('#price').val())){
+			_showmsg('请填写正确的价格');
+			return false;
+		}
+	}
+        */
+	if (trim(theform.message.value)=="") {
+		showDialog('请填写{$modname}简介');
+		return false;
+	}
+
+	if($('postsubmit').name == 'editpost') {
+		return true;
+	}else if(in_array($('postsubmit').name, ['replypost','newpost'])) {
+		postsubmit(theform);
+	}
+	return false;
+}
+jQuery(document).ready(function($) {
+	$('#subject').blur();
+	$('#subject').focus(function(){
+		!$(this).val() && $(this).prev().hide();
+	}).blur(function(){
+		!$(this).val() && $(this).prev().show();
+	});
+
+	//验证码
+	$('#refreshCaptcha').click(function() {
+		$(this).children('img').attr('src', '/plugin.php?id=dailypicture:captcha&_='+(new Date().getTime()));
+		$('#jg').html("");
+		return false;
+	});
+	$('#captcha').blur(function(){
+		 validate_captcha();
+	});
+	function validate_captcha() {
+		$.ajax({
+			async: false,
+			type: 'get',
+			url: '/plugin.php?id=dailypicture:validatecaptcha&inajax=1&captcha='+$('#captcha').val(),
+			success : function(data) {
+				if (data==1) {
+					$('#jg').html('<img width="16" height="16" class="vm" src="static/image/common/check_right.gif">');
+					$('#yzm').val('1');
+				}else{
+					$('#jg').html('<img width="16" height="16" class="vm" src="static/image/common/check_error.gif">');
+					$('#yzm').val('0');
+					$('#captcha').val('');
+				}
+			}
+		});
+	};
+
+	$(document).on("click", "#imglist .deleteimg", function() {
+		$(this).parent().remove();
+		if($("#imglist .overlimit").length > 0){
+			$("#imglist .overlimit:first").removeClass('overlimit').find('input:hidden').removeAttr('disabled');
+		}else{
+			$("#numimage").val($("#numimage").val() - 1);
+		}
+	});
+
+	$('#sn').focus(function(){
+		$('#sn_notice').hide();
+	}).blur(function(){
+		$(this).val() || $('#sn_notice').show();
+	});
+	$('#price').focus(function(){
+		$('#price_notice').hide();
+	}).blur(function(){
+		$(this).val() || $('#price_notice').show();
+	});
+	$('#tids').focus(function(){
+		$('#tids_notice').hide();
+	}).blur(function(){
+		$(this).val() || $('#tids_notice').show();
+	});
+	$('#pcshow').click(function(){
+		$('#pclist').toggle();
+	});
+	$('#pclist a').click(function(){
+		$('#pcshow').addClass('selectdiv_zhong').text($(this).text());
+		$('#pcid').val($(this).attr('pcid'));
+		$('#pcname').val($(this).text());
+		$('#pclist').hide();
+		$('#cshow, #cicon').show();
+	});
+	$('#cshow').click(function(){
+		var pcid=$('#pcid').val();
+		pcid && $('#clist_'+pcid).toggle();
+	});
+	$('div[id^=clist_] a').click(function(){
+		$('#cshow').addClass('selectdiv_zhong').text($(this).text());
+		$('#cid').val($(this).attr('cid'));
+		$('#cname').val($(this).text());
+		$(this).parent().hide();
+	});
+
+	$('#bshow').click(function(){
+		$('#bbox').toggle();
+	});
+	$('#bnav a').mouseover(function(){
+		$(this).addClass('select_z').siblings().removeClass('select_z');
+		$('#bdiv div').eq($(this).index()).show().siblings().hide();
+	});
+	$('#bdiv a').click(function(){
+		var binfo = $(this);
+		$('#bshow').addClass('selectdiv_zhong').text('已选择品牌：'+binfo.text());
+		$('#bid').val(binfo.attr('bid'));
+		$('#bname').val(binfo.text());
+		$('#btid').val(binfo.attr('btid'));
+		$('#bbox').hide();
+	});
+});
+</script>
+<!--{subtemplate forum/dianping/editor_2014_second}-->
+<div class="layout mt50">
+	<div class="pubWeb">
+		<h1 class="tit20 mb45">{if ($action=='new')}发布{$modname}{else}编辑{$modname}{/if}</h1>
+		<div class="bd">
+			<form method="post" autocomplete="off" id="postform" action="
+			{if $action=='new'}
+			forum.php?ctl={$modstr}&act=dopost&do=new
+			{elseif $action=='reply'}
+			forum.php?ctl={$modstr}&act=dopost&do=reply&tid={$_G['tid']}
+			{elseif $action=='edit'}
+			forum.php?ctl={$modstr}&act=dopost&do=edit&tid={$_G['tid']}
+			{/if}" onsubmit="return modform_validate(this);return false;">
+				{if !empty($_G['gp_modthreadkey'])}<input type="hidden" name="modthreadkey" id="modthreadkey" value="{$_G['gp_modthreadkey']}" />{/if}
+				<input type="hidden" name="wysiwyg" id="{$editorid}_mode" value="{$editor['editormode']}" />
+				<input type="hidden" name="formhash" id="formhash" value="{FORMHASH}" />
+				<input type="hidden" name="posttime" id="posttime" value="{TIMESTAMP}" />
+				{if $action == 'edit'}<input type="hidden" name="pid" value="{$editdata['pid']}" />{/if}
+				<dl class="pubDt50">
+					<dt><span class="icoName48x43"></span></dt>
+					<dd>
+						<span class="inputTipsText">
+							{if $action=='new'}<label class="fs16">{$modname}{$modsetting[mc]}</label>{/if}
+							<input type="text" class="inputText w270" name="subject" id="subject" value="{$editdata['subject']}" />
+						</span>
+						<span class="icoRedStar">*</span>&nbsp;&nbsp;&nbsp;英文（中文）+产品名称+型号，如：KAILAS（凯乐石）奥林匹斯登山包 KA201
+					</dd>
+				</dl>
+				<dl class="pubDt50">
+					<dt><span class="icoUpPic48x43"></span></dt>
+					<dd>
+						<input id="numimage" type="hidden" name="uploadfile" value="0"/>
+						<div id="pic_upload_multiimg">
+						此内容需要 Adobe Flash Player 11.1.0 或更高版本
+						<script type="text/javascript">
+							var pageHost = ((document.location.protocol == "https:") ? "https://" : "http://");
+							document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='"
+											+ pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" );
+						</script>
+						</div>
+						<span class="icoRedStar">*</span>&nbsp;&nbsp;&nbsp;图片尺寸大于325px*325px的正方形，图片张数不多于5张
+						<div id="imglist" class="readyPic"></div>
+					</dd>
+				</dl>
+				<dl class="pubDt50">
+					<dt><span class="icoUpPic48x43"></span></dt>
+					<dd>
+						<div id="pic_upload_multiimg_head">
+						此内容需要 Adobe Flash Player 11.1.0 或更高版本
+						<script type="text/javascript">
+							var pageHost = ((document.location.protocol == "https:") ? "https://" : "http://");
+							document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='"
+											+ pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" );
+						</script>
+						</div>
+						<span class="icoRedStar">*</span>&nbsp;&nbsp;&nbsp;上传白色背景的正方形封面图片，图像需居中，图片尺寸大于231px*231px，封面图无任何logo、水印、其他图标
+						<span id="headerimgtmp" style="display: none;" class="attachpic">
+							<input type="hidden" name="headimgselect" value="" disabled="true"/>
+						</span>
+						<div id="imglist_head" class="readyPic">
+							{if $editdata['showimg'] && $editdata['dir']}
+							<a href="{$editdata['fmurl']}{$editdata[dir]}/{$editdata['showimg']}" target="_blank"><img src="{eval echo getimagethumb(60,60,2,$editdata[dir].'/'.$editdata['showimg'], $editdata['kaid'], $editdata['serverid']);}" class="nowpic" /></a>
+							{if $editdata['kaid'] > 0}
+							<input type="hidden" name="headimgselect" value="{$editdata['kaid']}"/>
+							{/if}
+							{/if}
+						</div>
+					</dd>
+				</dl>
+				<dl class="pubDt50 pubDt_Short">
+					<dt><span class="icoGps48x43"></span></dt>
+					<dd>
+						<span class="selectdiv{if $editdata['bid']} selectdiv_zhong{/if}" id="bshow">{if !$editdata['bid']}请选择{$modname}品牌{else}已选择品牌：{$editdata['bname']}{/if}</span>
+						<span class="icoRedStar">*</span>
+						<div class="brand_tan_warpten" id="bbox">
+							<div class="brand_tan_title" id="bnav">
+								<!--{loop $letterlist $key $letter}-->
+								<a href="javascript:;"{if $key == 0}  class="select_z"{/if}>{$letter}</a>
+								<!--{/loop}-->
+								<a href="javascript:;" style="width: 36px; font-size: 14px;">其他</a>
+							</div>
+							<div class="brandlist" id="bdiv">
+								{loop $letterlist $key $letter}
+								<div{if $key != 0} style="display:none;"{/if}>
+								{loop $brandlist $brand}
+								{if $brand['letter']-1 == $key}
+								<a href="javascript:;" bid="{$brand['id']}" btid="{$brand['tid']}">{$brand['subject']}</a>
+								{/if}
+								{/loop}
+								</div>
+								{/loop}
+								<div style="display:none;"><a href="javascript:;" bid="-1" btid="0">其他品牌</a></div>
+							</div>
+						</div>
+						<input type="hidden" name="bid" id="bid" value="{$editdata['brandid']}" />
+						<input type="hidden" name="bname" id="bname" value="{$editdata['brandname']}" />
+						<input type="hidden" name="btid" id="btid" value="{$editdata['brandtid']}" />
+					</dd>
+				</dl>
+				<dl class="pubDt50" style="display:none;">
+					<dt><span class="icoModel48x43"></span></dt>
+					<dd>
+						<span class="inputTipsText">
+							<label class="fs16" id="sn_notice"{if $editdata['sn']} style="display: none;"{/if}>型号</label>
+							<input class="inputText w270" type="text" name="sn" id="sn" value="{$editdata['sn']}" />
+						</span>
+						<span class="icoRedStar">*</span>
+					</dd>
+				</dl>
+				<dl class="pubDt50 pubDt_Short_1">
+					<dt><span class="icoWeb48x43"></span></dt>
+					<dd style="position:relative">
+						<span class="selectdiv{if $editdata['pcid']} selectdiv_zhong{/if}" id="pcshow">{if !$editdata['pcid']}请选择{$modname}分类{else}{$editdata['pcname']}{/if}</span>
+						<span class="icoRedStar">*</span>
+						<div class="categorylist" id="pclist">
+							<!--{loop $typelist $typel}-->
+							<!--{loop $typel $type}-->
+							<a href="javascript:;" pcid="{$type['cid']}"{if $editdata['pcid'] == $type['cid']} selected="select_z"{/if}>{$type['name']}</a>
+							<!--{/loop}-->
+							<!--{/loop}-->
+						</div>
+
+						<span class="selectdiv{if $editdata['cid']} selectdiv_zhong{/if}" id="cshow"{if !$editdata['cid']} style="display:none;"{/if}>{if !$editdata['cid']}请选择{$modname}二级分类{else}{$editdata['cname']}{/if}</span>
+						<span class="icoRedStar" id="cicon"{if !$editdata['cid']} style="display:none;"{/if}>*</span>
+
+						<!--{loop $typelist $typel}-->
+						<!--{loop $typel $type}-->
+						<!--{if $type['children']}-->
+						<div class="categorylist child" id="clist_{$type['cid']}">
+							<!--{loop $type['children'] $t_child}-->
+							<a href="javascript:;" cid="{$t_child['cid']}"{if $editdata['cid'] == $t_child['cid']} selected="select_z"{/if}>{$t_child['name']}</a>
+							<!--{/loop}-->
+						</div>
+						<!--{/if}-->
+						<!--{/loop}-->
+						<!--{/loop}-->
+
+						<input type="hidden" name="cid" id="cid" value="{$editdata['cid']}" />
+						<input type="hidden" name="cname" id="cname" value="{$editdata['cname']}" />
+						<input type="hidden" name="pcid" id="pcid" value="{$editdata['pcid']}" />
+						<input type="hidden" name="pcname" id="pcname" value="{$editdata['pcname']}" />
+					</dd>
+				</dl>
+				<dl class="pubDt50">
+					<dt><span class="icoTel48x43"></span></dt>
+					<dd>
+						<span class="inputTipsText">
+							<label class="fs16" id="price_notice"{if $editdata['price']} style="display: none;"{/if}>参考价格</label>
+							<input type="text" class="inputText w150" name="price" id="price" value="{$editdata['price']}" maxlength="10" />
+						</span>
+<!--						<span class="icoRedStar">*</span>&nbsp;&nbsp;&nbsp;参考价格请填写 商品吊牌价-->
+					</dd>
+				</dl>
+				<dl class="pubDt50">
+					<dt><span class="icoid48x43"></span></dt>
+					<dd>
+						<span class="inputTipsText">
+							<label class="fs16" id="tids_notice"{if $editdata['tids']} style="display: none;"{/if}>网友测评帖子ID,用半角逗号分隔</label>
+							<input type="text" class="inputText w270" name="tids" id="tids" value="{$editdata['tids']}" />
+						</span>
+					</dd>
+				</dl>
+				{if $_G['groupid'] == 1}
+				<!-- 公司内部人员才能添加导购链接 -->
+				<dl class="pubDt50">
+					<dt><span class="icoName48x43"></span></dt>
+					<dd>
+						<span class="inputTipsText">
+							<label class="fs16" id="dgurl_notice"{if $editdata['dgurl']} style="display: none;"{/if}>导购链接</label>
+							<input type="text" class="inputText w270" name="dgurl" id="dgurl" value="{$editdata['dgurl']}" />
+						</span>
+					</dd>
+				</dl>
+				{/if}
+				<dl class="pubDt50">
+					<dd class="edtor">
+					<!--{eval $editor['value'] = $editdata['message'];}-->
+					<!--{subtemplate forum/dianping/editor_2014_first}-->
+					</dd>
+				</dl>
+
+				{if $action != 'edit' && checkperm('seccode') && ($secqaacheck || $seccodecheck)}
+				<span>验证码：</span>
+				<div style="margin-top:-20px;margin-left:50px;margin-bottom:20px;">
+					<script type="text/javascript" src="http://api.geetest.com/get.php?gt=273df89437f54dac2bfb5b69afe1c318&r=<?=time()?>"></script>
+				</div>
+
+				{/if}
+				<dl class="pubDt50">
+					<dd style="_position:relative;">
+						<input type="hidden" name="{$action}postsubmit" value="yes" />
+						<input type="submit" class="publish182x43_1" name="{$action}post" id="postsubmit" value="" />
+					</dd>
+				</dl>
+			</form>
+		</div>
+
+	</div>
+</div>
+
+<script type="text/javascript" src="static/js/newswfobject.js"></script>
+<script type="text/javascript">
+	var params = {site:"{$_G[siteroot]}misc.php%3fmod=swfupload%26type=image%26fid=$fid%26mtype=plugin%26twidth=60%26theight=60%26back=uploadsuccess_back%26random=<!--{echo random(4)}-->",buttonimg:"{$_G[siteroot]}static/image/common/uploadnew.png"};
+	swfobject.embedSWF("static/flash/uploadforum.swf", "pic_upload_multiimg", "208", "50", "10.0.0", "playerProductInstall.swf", params, {wmode:"transparent"});
+	swfobject.createCSS("#pic_upload_multiimg", "text-align:left;");
+ajaxget('forum.php?ctl={$modstr}&act=getimglist{if $editdata[tid]}&tid={$editdata[tid]}{/if}{if {$editdata[pid]}}&pid={$editdata[pid]}{/if}', 'imglist');
+</script>
+<script type="text/javascript">
+	var params = {site:"{$_G[siteroot]}misc.php%3fmod=swfupload%26type=image%26fid=$fid%26mtype=forum%26twidth=60%26theight=60%26head=1%26back=uploadsuccess_back_head%26water=no%26random=<!--{echo random(4)}-->",buttonimg:"{$_G[siteroot]}static/image/common/uploadnew.png"};
+	swfobject.embedSWF("static/flash/uploadforum.swf", "pic_upload_multiimg_head", "208", "50", "10.0.0", "playerProductInstall.swf", params, {wmode:"transparent"});
+	swfobject.createCSS("#pic_upload_multiimg_head", "text-align:left;");
+</script>
+<script>
+var maxpic = <!--{$imgselectlimit}-->;
+function uploadsuccess_back(type, returndata) {
+	eval("var nattach = " + returndata + ";");
+	jQuery.noConflict();
+	;(function($){
+		switch(type){
+			case 1:
+			case 2:
+				var html = '';
+				html 	+= '<span id="imagelist_id_'+nattach.aid+'">';
+				html 	+= '<img src="' + nattach.thumbpic + '" />';
+				html 	+= '<b class="deleteimg">删除</b>';
+				html 	+= '<input type="hidden" value="'+nattach.aid+'" name="imgselect[]">';
+				html 	+= '</span>';
+
+				$("#imglist").append(html);
+				var attachobj = $('#imagelist_id_' + nattach.aid);
+				attachobj.find('input').removeAttr('disabled').end().show();
+
+				attachobj.find('img').one('error', function(){
+					$(this).attr('src', ' ');
+					$(this).attr('src', nattach.thumbpic);
+				}).show();
+				break;
+			case 3:
+				break;
+		}
+		$('#imglist').find('span:gt(' + (maxpic - 1) + ')').addClass("overlimit").find('input').attr('disabled', true);
+		//算下上传图片数
+		$("#numimage").attr("value", $('#imglist').find("span:not('.overlimit')").length);
+	})(jQuery);
+}
+function uploadsuccess_back_head(type, returndata) {
+	eval("var nattach = " + returndata + ";");
+	jQuery.noConflict();
+	;(function($){
+		if(nattach.nowcount < 50 || type != 3){
+			if(document.getElementById('image_' + nattach.fileid) == null){
+				$('#imglist_head input[name=headimgselect]').attr('name', 'headdelete[]');
+				$('#headerimgtmp').clone().attr('id', 'image_' + nattach.fileid).attr('title', nattach.filename).prependTo('#imglist_head');
+			}
+		}
+		var attachobj = $('#image_' + nattach.fileid);
+		switch(type){
+			case 1:
+				$('#imglist_head img').hide();
+				attachobj.prepend('<img src="' + nattach.thumbpic + '" />').find('input').val(nattach.aid).removeAttr('disabled').end().attr('id', 'image_' + nattach.aid).show();
+				break;
+			case 2:
+				$('#imglist_head img').hide();
+				attachobj.prepend('<img src="' + nattach.thumbpic + '" />').find('input').val(nattach.aid).removeAttr('disabled').end().attr('id', 'image_' + nattach.aid).show();
+				$('#imglist_head .nowpic').hide();
+				break;
+			case 3:
+				break;
+		}
+	})(jQuery);
+}
+</script>
+<!--{subtemplate forum/dianping/footer}-->

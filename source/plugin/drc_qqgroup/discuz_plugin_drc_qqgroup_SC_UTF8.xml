@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Version"><![CDATA[X1.5]]></item>
+	<item id="Time"><![CDATA[2010-10-20 15:15]]></item>
+	<item id="From"><![CDATA[Discuz! Rescue Centre (http://localhost/forum/)]]></item>
+	<item id="Data">
+		<item id="plugin">
+			<item id="available"><![CDATA[1]]></item>
+			<item id="adminid"><![CDATA[1]]></item>
+			<item id="name"><![CDATA[DRC - QQ???]]></item>
+			<item id="identifier"><![CDATA[drc_qqgroup]]></item>
+			<item id="description"><![CDATA[]]></item>
+			<item id="datatables"><![CDATA[]]></item>
+			<item id="directory"><![CDATA[drc_qqgroup/]]></item>
+			<item id="copyright"><![CDATA[???? | bbs.7drc.com]]></item>
+			<item id="version"><![CDATA[2.0]]></item>
+			<item id="__modules">
+				<item id="0">
+					<item id="name"><![CDATA[main]]></item>
+					<item id="menu"><![CDATA[QQ???]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[5]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[1]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+			</item>
+		</item>
+		<item id="version"><![CDATA[X1.5]]></item>
+		<item id="var">
+			<item id="0">
+				<item id="displayorder"><![CDATA[1]]></item>
+				<item id="title"><![CDATA[????]]></item>
+				<item id="description"><![CDATA[??????QQ?????]]></item>
+				<item id="variable"><![CDATA[offset]]></item>
+				<item id="type"><![CDATA[radio]]></item>
+				<item id="value"><![CDATA[1]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="1">
+				<item id="displayorder"><![CDATA[2]]></item>
+				<item id="title"><![CDATA[QQ????UID]]></item>
+				<item id="description"><![CDATA[???UID??,???????UID??????QQ?,?????????,?????????,?:1,2,52,100]]></item>
+				<item id="variable"><![CDATA[admins]]></item>
+				<item id="type"><![CDATA[text]]></item>
+				<item id="value"><![CDATA[1]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="2">
+				<item id="displayorder"><![CDATA[3]]></item>
+				<item id="title"><![CDATA[?????]]></item>
+				<item id="description"><![CDATA[??????QQ???????,???]]></item>
+				<item id="variable"><![CDATA[groups]]></item>
+				<item id="type"><![CDATA[groups]]></item>
+				<item id="extra"><![CDATA[]]></item>
+				<item id="__value">
+					<item id="0"><![CDATA[10]]></item>
+					<item id="1"><![CDATA[11]]></item>
+					<item id="2"><![CDATA[12]]></item>
+					<item id="3"><![CDATA[13]]></item>
+					<item id="4"><![CDATA[14]]></item>
+					<item id="5"><![CDATA[15]]></item>
+					<item id="6"><![CDATA[16]]></item>
+					<item id="7"><![CDATA[17]]></item>
+					<item id="8"><![CDATA[18]]></item>
+					<item id="9"><![CDATA[19]]></item>
+					<item id="10"><![CDATA[1]]></item>
+					<item id="11"><![CDATA[2]]></item>
+					<item id="12"><![CDATA[3]]></item>
+					<item id="13"><![CDATA[7]]></item>
+				</item>
+			</item>
+			<item id="3">
+				<item id="displayorder"><![CDATA[4]]></item>
+				<item id="title"><![CDATA[????]]></item>
+				<item id="description"><![CDATA[QQ??????????,??HTML??]]></item>
+				<item id="variable"><![CDATA[notice]]></item>
+				<item id="type"><![CDATA[textarea]]></item>
+				<item id="value"><![CDATA[?????QQ???????,??????????????QQ???,????????QQ?????,???????????]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="4">
+				<item id="displayorder"><![CDATA[5]]></item>
+				<item id="title"><![CDATA[????]]></item>
+				<item id="description"><![CDATA[???????QQ???]]></item>
+				<item id="variable"><![CDATA[perpage]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[20]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+		</item>
+		<item id="language">
+			<item id="scriptlang">
+				<item id="main_nav"><![CDATA[??]]></item>
+				<item id="main_offset"><![CDATA[??????,????,???]]></item>
+				<item id="main_group"><![CDATA[??????????????,???!]]></item>
+				<item id="main_noadmins"><![CDATA[????QQ???????,????,???]]></item>
+				<item id="add_success"><![CDATA[???,??????!]]></item>
+				<item id="check_success"><![CDATA[?QQ??????,??????!]]></item>
+				<item id="check_failed"><![CDATA[?QQ???????,?????!]]></item>
+				<item id="check_nav"><![CDATA[????]]></item>
+				<item id="typeedit_success"><![CDATA[???,???????!]]></item>
+				<item id="typedelete_success"><![CDATA[???????????QQ??????!]]></item>
+				<item id="typecp_nav"><![CDATA[????]]></item>
+				<item id="qedit_success"><![CDATA[?QQ????????!]]></item>
+				<item id="qdelete_success"><![CDATA[?QQ??????!]]></item>
+				<item id="qcp_nav"><![CDATA[??QQ?]]></item>
+				<item id="qadd_msg1"><![CDATA[???????,????]]></item>
+				<item id="qadd_msg2"><![CDATA[??????,????]]></item>
+				<item id="qadd_msg3"><![CDATA[?????????,????]]></item>
+				<item id="qadd_msg4"><![CDATA[??????????,????]]></item>
+				<item id="qadd_msg5"><![CDATA[???????,????]]></item>
+				<item id="qadd_msg6"><![CDATA[????????,????]]></item>
+				<item id="qadd_success"><![CDATA[?????????,???????!]]></item>
+			</item>
+			<item id="templatelang">
+				<item id="plugin_name"><![CDATA[8264??QQ?????]]></item>
+				<item id="ico"><![CDATA[???]]></item>
+				<item id="name"><![CDATA[???]]></item>
+				<item id="num"><![CDATA[???]]></item>
+				<item id="creator"><![CDATA[????]]></item>
+				<item id="intro"><![CDATA[???]]></item>
+				<item id="createtime"><![CDATA[????]]></item>
+				<item id="operation_btn"><![CDATA[????]]></item>
+				<item id="operater"><![CDATA[????]]></item>
+				<item id="main_viewintro"><![CDATA[????]]></item>
+				<item id="main_joinqun"><![CDATA[????????]]></item>
+				<item id="side_1"><![CDATA[????]]></item>
+				<item id="side_2"><![CDATA[????]]></item>
+				<item id="side_3"><![CDATA[????]]></item>
+				<item id="side_4"><![CDATA[??QQ?]]></item>
+				<item id="side_5"><![CDATA[????]]></item>
+				<item id="side_6"><![CDATA[????]]></item>
+				<item id="side_7"><![CDATA[????]]></item>
+				<item id="side_8"><![CDATA[????]]></item>
+				<item id="side_9"><![CDATA[??QQ?]]></item>
+				<item id="side_10"><![CDATA[????]]></item>
+				<item id="side_11"><![CDATA[<li>??:<a href="http://bbs.7drc.com" target="_blank">DRC</a></li><li>??:<a href="http://www.mutoulee.cn" target="_blank">????</a></li><li>??:<a href="http://bbs.7drc.com" target="_blank">bbs.7drc.com</a></li>]]></item>
+				<item id="check_ok"><![CDATA[??]]></item>
+				<item id="check_no"><![CDATA[??]]></item>
+				<item id="qcp_edit"><![CDATA[??]]></item>
+				<item id="qcp_delete"><![CDATA[??]]></item>
+				<item id="qcp_notice"><![CDATA[???????QQ???]]></item>
+				<item id="qcp_notice_title"><![CDATA[????]]></item>
+				<item id="qadd_title"><![CDATA[??QQ?]]></item>
+				<item id="qedit_title"><![CDATA[??QQ?]]></item>
+				<item id="qadd_type"><![CDATA[???:]]></item>
+				<item id="qadd_name"><![CDATA[???:]]></item>
+				<item id="qadd_num"><![CDATA[???:]]></item>
+				<item id="qadd_creator"><![CDATA[????:]]></item>
+				<item id="qadd_createtime"><![CDATA[????:]]></item>
+				<item id="qadd_intro"><![CDATA[???:]]></item>
+				<item id="qadd_submit"><![CDATA[? ?]]></item>
+				<item id="type_order"><![CDATA[????]]></item>
+				<item id="type_name"><![CDATA[????]]></item>
+				<item id="type_operater"><![CDATA[????]]></item>
+				<item id="type_delete_notice"><![CDATA[????????????????QQ?!<br>????????]]></item>
+				<item id="typeadd_title"><![CDATA[????]]></item>
+				<item id="typeedit_title"><![CDATA[????]]></item>
+				<item id="typeadd_order"><![CDATA[????:]]></item>
+				<item id="typeadd_name"><![CDATA[????:]]></item>
+				<item id="order_tip"><![CDATA[???????,?:1]]></item>
+			</item>
+		</item>
+		<item id="installfile"><![CDATA[install.php]]></item>
+		<item id="uninstallfile"><![CDATA[uninstall.php]]></item>
+		<item id="license"><![CDATA[[b][size=4][color=DarkOrange]Drc_QQgroup[/color] [/size][/b][??: V2.0]
+		
+[b]????[/b]
+???? ???? | ?DRC? ?????????, ???????
+???????????????????,??????????????
+????:23735841(QQ)?mutou.lee@163.com (Email)
+
+[b]????[/b]
+Discuz! Rescue Centre!| ?DRC?:[url=http://bbs.7drc.com]http://bbs.7drc.com[/url]
+QQ?????:40318866
+]]></item>
+
+  <item id="intro"><![CDATA[[b][size=4][color=DarkOrange]Drc_QQgroup 2.0 ??:[/color][/size][/b]
+[b]????[/b]
+???? ???? | ?DRC? ?????????, ???????
+???????????????????,??????????????
+????:23735841(QQ)?mutou.lee@163.com (Email)
+
+[b]????[/b]
+Discuz! Rescue Centre!| ?DRC?:[url=http://bbs.7drc.com]http://bbs.7drc.com[/url]
+QQ?????:40318866
+]]></item>
+	</item>
+</root>

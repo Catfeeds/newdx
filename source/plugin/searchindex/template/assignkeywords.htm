@@ -1,0 +1,243 @@
+<!--{template common/header}-->
+
+<!--{if ($op == 'search')}-->
+    <!--{loop $keywords $list}-->
+        <li>
+            <input type="checkbox" name="keyword" id="keyword_$list[searchid]_pc" class="pc" value="$list[searchid]" onclick="getkeywordnum();"/> 
+            <label for="keyword_$list[searchid]_pc" id="keyword_$list[searchid]">$list[keywords]</label>
+        </li>
+    <!--{/loop}-->
+<!--{elseif ($op == 'get')}-->
+	<!--{loop $keywords $list}-->
+		<li id="$list[searchid]">
+			<em>$list[keywords]</em>
+			<span class="xg1">
+				<a href="javascript:;" onclick="upkeyword($list[searchid]);" title="{lang move_up}"><img class="vm" src="{IMGDIR}/icon_top.gif" alt="{lang move_up}" /></a>
+				<a href="javascript:;" onclick="downkeyword($list[searchid]);" title="{lang move_down}"><img class="vm" src="{IMGDIR}/icon_down.gif" alt="{lang move_down}" /></a>
+				<a href="javascript:;" onclick="delkeyword($list[searchid]);" title="{lang delete}"><img class="vm" src="{IMGDIR}/data_invalid.gif" alt="{lang delete}" /></a>
+			</span>
+		</li>
+	<!--{/loop}-->
+<!--{elseif ($op == 'add')}-->
+	<!--{loop $keywords $ra}-->
+		<li id="keyword_li_$ra[searchid]">
+			<input type="hidden" name="keywords[]" value="$ra[searchid]" size="5">
+			<a href="portal.php?mod=view&aid=$ra[aid]" target="_blank">$ra[keywords]</a> 
+			(关键字ID: $ra[searchid])
+			<a href="javascript:;" onclick="keyword_delete($ra[searchid]);" class="xg1">删除</a>
+		</li>
+	<!--{/loop}-->
+<!--{else}-->
+	<h3 class="flb">
+		<em>管理相关关建字</em>
+		<!--{if $_G[inajax]}--><span><a href="javascript:;" onclick="hideWindow('$_G[gp_handlekey]');" class="flbc" title="{lang close}">{lang close}</a></span><!--{/if}-->
+	</h3>
+	<div class="c bart">
+		<div class="pns cl">
+			<div class="y">
+				关键字id:
+				<input type="text" name="manualid" id="manualid" class="px vm" value="0" size="10" />&nbsp;
+				<button type="button" name="raid_button" class="pn" value="false" onclick="keywordmanualadd();"><em>手工添加</em></button>
+			</div>
+			$category 
+			<input type="text" name="searchkey" id="keywordsearchkey" class="px vm" value="$searchkey" size="10" />&nbsp;
+			<button type="button" name="search_button" class="pn vm" value="false" onclick="keywordsearch();"><em>搜索</em></button>
+		</div>
+		<div class="cl">
+			<div class="z">
+				<p class="mtm mbn">待选(<span id="keywordnum">0</span>/<span id="keywordnumall">$count</span> 最多显示{$limit}条)</p>
+				<ul id="keywordlist" class="bartl">
+				<!--{loop $keywords $list}-->
+					<li>
+						<input type="checkbox" name="keyword" id="keyword_$list[searchid]_pc" class="pc" value="$list[searchid]" onclick="getkeywordnum();"/> 
+						<label for="keyword_$list[searchid]_pc" id="keyword_$list[searchid]">$list[keywords]</label>
+					</li>
+				<!--{/loop}-->
+				</ul>
+			</div>
+			<div class="barto">
+				<button name="choosebutton" class="pn" onclick="choosekeyword();" title="{lang selected_tag_selected}"><em>&gt;</em></button>
+			</div>
+			<div class="y">
+				<p class="mtm mbn">己选(<strong id="selectednum" class="xi1">0</strong>)</p>
+				<ul id="selectedkeyword" class="bartl"></ul>
+			</div>
+		</div>
+	</div>
+	<p class="o pns">
+		<input type="hidden" id="keywordselectedarray" name="keywordselectedarray" value="" />
+		<button type="submit" name="dsf" class="pn pnc" onclick="addrelatekeyword();"><span>{lang confirms}</span></button>
+		<button type="reset" name="dsf" class="pn" onclick="hideWindow('$_G[gp_handlekey]');"><em>{lang cancel}</em></button>
+	</p>
+
+	<script type="text/javascript">
+	function choosekeyword() {
+		var keyword = document.getElementsByName("keyword");
+		for(var i = 0; i < keyword.length; i++){
+			if(keyword[i].checked) {
+				var choosed = $("keyword_"+keyword[i].value).innerHTML;
+				choosed ='<li id="'+keyword[i].value+'"><em>'+choosed+'</em><span class="xg1"><a href="javascript:;" onclick="upkeyword('+keyword[i].value+');" title="{lang move_up}"><img class="vm" src="{IMGDIR}/icon_top.gif" alt="{lang move_up}" /></a> <a href="javascript:;" onclick="downkeyword('+keyword[i].value+');" title="{lang move_down}"><img class="vm" src="{IMGDIR}/icon_down.gif" alt="{lang move_down}" /></a> <a href="javascript:;" onclick="delkeyword('+keyword[i].value+');" title="{lang delete}"><img class="vm" src="{IMGDIR}/data_invalid.gif" alt="{lang delete}" /></a></span></li>';
+				if(!$(keyword[i].value)) {
+					$("selectedkeyword").innerHTML += choosed;
+				}
+			}
+		}
+		updatekeywordarray();
+	}
+	function upkeyword(id) {
+		var lastid = getkeyworddivid(id, 'last');
+		if(lastid) {
+			var lastdiv = $(lastid);
+	        var div = $(id);
+			$("selectedkeyword").insertBefore(div,lastdiv);
+		}
+		updatekeywordarray();
+	}
+	function downkeyword(id) {
+		var nextid = getkeyworddivid(id, 'next');
+		if(nextid) {
+			var nextdiv = $(nextid);
+	        var div = $(id);
+			$("selectedkeyword").insertBefore(nextdiv,div);
+		}
+		updatekeywordarray();
+	}
+	function delkeyword(id) {
+		var div = $(id);
+		div.parentNode.removeChild(div);
+		updatekeywordarray();
+	}
+	function updatekeywordarray() {
+		var list = document.getElementById("selectedkeyword").getElementsByTagName("li");
+		var str = '';
+		for(var i = 0; i < list.length; i++)
+		{
+			if(str == '') {
+				str = list[i].id;
+			} else {
+				str = str + ',' + list[i].id;
+			}
+	       
+		}
+		$('keywordselectedarray').value = str;
+		$('selectednum').innerHTML = list.length;
+	}
+	function getkeyworddivid(id,type) {
+		var str = $('keywordselectedarray').value;
+	    var arr = new Array();
+		var rstr = '';
+		arr = str.split(",");
+
+		for (var i = 0; i < arr.length; i++) {
+			if (arr[i] == id) {
+				if(type == 'last') {
+					if(arr[i-1]) {
+						rstr = arr[i-1];
+					}
+				} else if(type == 'next') {
+					if(arr[i+1]) {
+						rstr = arr[i+1];
+					}
+				}
+				break;
+			}
+		}
+		return rstr;
+	}
+	function keywordmanualadd() {
+		var manualid = $('manualid').value;
+		if($(manualid)) {
+			alert('该关键字己经添加过了');
+			return false;
+		}
+		var url = 'plugin.php?id=searchindex:assignkeywords&op=get&inajax=1&relatedid='+manualid;
+		var x = new Ajax();
+		x.get(url, function(s){
+			s = trim(s);
+			if(s) {
+				$('selectedkeyword').innerHTML += s;
+				updatekeywordarray();
+			} else {
+				alert('{lang keyword_validate_noexist}');
+				return false;
+			}
+		});
+	}
+	function keywordsearch() {
+		var searchkey = $('keywordsearchkey').value;
+		//var searchcate = $('searchcate').value;
+		var url = 'plugin.php?id=searchindex:assignkeywords&op=search&inajax=1&searchkey='+searchkey;
+		var x = new Ajax();
+		x.get(url, function(s){
+			s = trim(s);
+			if(s) {
+				$('keywordlist').innerHTML = s;
+				getkeywordnum();
+			} else {
+				$('keywordlist').innerHTML = '';
+				getkeywordnum();
+				return false;
+			}
+		});
+		
+	}
+	function getkeywordnum() {
+		var keyword = document.getElementsByName("keyword");
+		for(var i = 0, j = 0; i < keyword.length; i++){
+			if(keyword[i].checked) {
+				j++;
+			}
+		}
+		$('keywordnum').innerHTML = j;
+		$('keywordnumall').innerHTML = keyword.length;
+	}
+	function addrelatekeyword() {
+		var relatedid = $("keywordselectedarray").value;
+		if(relatedid) {
+			var url = 'plugin.php?id=searchindex:assignkeywords&op=add&inajax=1&relatedid='+relatedid;
+			var x = new Ajax();	
+			x.get(url, function(s){
+				s = trim(s);
+				if(s) {
+					$('keyword_div').innerHTML = '';
+					$('keyword_div').innerHTML = s;
+				}
+			});
+		} else {
+			$('keyword_div').innerHTML = '';
+		}
+		hideWindow('$_G[gp_handlekey]');
+	}
+	function getrelatedkeyword() {
+		var input = document.getElementById("keyword_div").getElementsByTagName("input");
+		if(input) {
+			var id = '';
+			for(var i = 0;i < input.length;i++)
+			{
+				if(id) {
+					id = id + ',' + input[i].value;
+				} else {
+					id = input[i].value;
+				}
+			}
+			if(id != '') {
+				var url = 'plugin.php?id=searchindex:assignkeywords&op=get&inajax=1&relatedid='+id;
+				var x = new Ajax();
+				x.get(url, function(s){
+				s = trim(s);
+				if(s) {
+					$("keywordselectedarray").value = id;
+					$('selectedkeyword').innerHTML = s;
+					$('selectednum').innerHTML = input.length;
+				}
+				});
+			}
+
+		} else {
+			return true;
+		}
+	}
+	getrelatedkeyword();
+	</script>
+<!--{/if}-->
+<!--{template common/footer}-->

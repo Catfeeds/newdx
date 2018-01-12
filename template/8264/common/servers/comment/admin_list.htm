@@ -1,0 +1,36 @@
+<div id="commentcontainer">
+<p style="font-size:16px;width:750px;"><b>专题帖子绑定</b><span style="float:right"><a href="javascript:;" onclick="hideWindow('commentadmin')" class="flbc">关闭</a></span></p>
+<h3>{$title}</h3>
+<p>{$tips}</p>
+<form id = "comment_form" action = "/admin.php?ctl=commentadmin&type={$type}&typeid={$typeid}" method="GET">
+<table class="tb">
+<tr class="header" style="border-bottom:1px solid #999"><th>编号</th><th class="td28">对应帖子tid</th><th>帖子创建时间</th><th>模板名（不填将使用默认）</th><th>评论条数</th><th>操作</th></tr>
+<tr class="header">
+	<td>自动生成<input type="hidden" name="act_addnew" value="addnew"/></td>
+	<td><input type="text" name="newtid_addnew" value=""/></td>
+	<td>自动生成</td>
+	<td><span id="template_new"><script>ajaxget('/forum.php?ctl=template&act=gettemplate&model=comment&typename=list&formname=template_addnew', 'template_new');</script></span></td>
+	<td><input type="text" name="num_addnew" value=""/></td>
+	<td><a href="/admin.php?ctl=commentadmin&act=addnew&type={$type}&typeid={$typeid}" onclick="editcommentadmin('addnew');return false;"/>增加新绑定</a></td>
+</tr>
+<!--{if $list}-->
+<!--{loop $list $t}-->
+<tr class="hover">
+	<td><b class="red">{$t[cid]}</b><input name="ctid_{$t[cid]}" value="{$t[cid]}" type="hidden"/><input type="hidden" name="act_{$t[cid]}" value="edit"/></td>
+	<td><input name="newtid_{$t[cid]}" value="{$t[tid]}"/></td>
+	<td>{$t[time]}</td>
+	<td><span id="template_span_{$t[cid]}"><script>ajaxget('/forum.php?ctl=template&act=gettemplate&model=comment&typename=list&formname=template_{$t[cid]}&selected={$t[setting][template]}', 'template_span_{$t[cid]}');</script></td>
+	<td><input name="num_{$t[cid]}" value="{$t[setting][num]}"/></td>
+	<td>
+		<b><a onclick="showWindow('commentadmin', this.href, 'get', 0);" href="admin.php?ctl=commentadmin&act=delete&ctid={$t[cid]}&typeid={$typeid}&type={$type}" class="red">删除</a></b>
+		&nbsp;
+		<b><a href="/admin.php?ctl=commentadmin&act=edit&type={$type}&typeid={$typeid}&ctid={$t[cid]}" onclick="editcommentadmin('{$t[cid]}');return false;">修改</a></b>
+	</td>
+</tr>
+<!--{/loop}-->
+<!--{else}-->
+<tr><td colspan="5"><p>当前没有绑定的帖子</p></td></tr>
+<!--{/if}-->
+</table>
+</form>
+</div>

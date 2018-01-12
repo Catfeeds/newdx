@@ -1,0 +1,101 @@
+<!-- 目的地App弹层 -->
+<style type="text/css">
+.app-fade{opacity:0;}
+.app-fade.app-in{opacity:1;filter:alpha(opacity=100);}
+.app-modal-open{overflow:hidden;}
+.app-modal{bottom:0;display:none;left:0;outline:0 none;overflow:hidden;position:fixed;_position:absolute;right:0;top:0;z-index:9999999999;}
+.app-modal-open .app-modal{overflow-x:hidden;overflow-y:auto;}
+.app-modal-dialog{margin:30px auto;position:relative;width:980px;}
+.app-modal-content{outline:0 none;position:relative;height:564px;background:url(http://static.8264.com/static/images/tps/v1/POP2xTiW-XTiX-980-564.jpg) no-repeat #fff;}
+.app-modal-backdrop{background-color:#000;bottom:0;left:0;position:fixed;_position:absolute;_ display:none;right:0;top:0;z-index:9999999998;}
+.app-modal-backdrop.app-fade{opacity:0;filter:alpha(opacity=0);}
+.app-modal-backdrop.app-in{opacity:.5;filter:alpha(opacity=50);}
+.app-modal-body{ padding:304px 0 0 609px;}
+.qrcode-img{float:left;}
+.app-download{position:relative;float:left;margin-left:15px;}
+.app-download a{position:absolute;left:128px;width:48px;height:48px;}
+.app-download .ios-app{top:34px;}
+.app-download .android-app{top:96px;}
+.app-modal-dialog-close{ position:absolute;right:-50px;top:0;width:50px;height:50px;background:url(http://static.8264.com/static/images/tps/v1/Xti1Tb-XiXtk-50-50.jpg) no-repeat;cursor:pointer;}
+</style>
+<div class="app-modal-backdrop app-fade app-in" style="display:none;"></div>
+<div class="app-modal" style="display:none;">
+	<div class="app-modal-dialog">
+		<div class="app-modal-content">
+			<div class="app-modal-body">
+				<div class="qrcode-img">
+					<img src="http://static.8264.com/static/images/tps/v1/qRad1Xver-128-151.png" title="扫一扫，关注微信公众号">
+				</div>
+				<div class="app-download">
+					<img src="http://static.8264.com/static/images/tps/v1/qRad2Xver-177-151.png" title="手机扫码立即下载">
+					<a href="https://itunes.apple.com/cn/app/zai-wai/id942808722?mt=8" class="ios-app" target="_blank"></a>
+					<a href="http://app.zaiwai.com/android_download" class="android-app" target="_blank"></a>
+				</div>
+			</div>
+		</div>
+		<div class="app-modal-dialog-close"></div>
+	</div>
+</div>
+<script type="text/javascript">
+	var cookiepre = 'Bz6S_ee0d_',
+		cookiedomain = '.8264.com',
+		cookiepath = '/';
+
+	function setcookie(cookieName, cookieValue, seconds, path, domain, secure) {
+		var expires = new Date();
+		if(cookieValue == '' || seconds < 0) {
+			cookieValue = '';
+			seconds = -2592000;
+		}
+		expires.setTime(expires.getTime() + seconds * 1000);
+		domain = !domain ? cookiedomain : domain;
+		path = !path ? cookiepath : path;
+		document.cookie = escape(cookiepre + cookieName) + '=' + escape(cookieValue)
+			+ (expires ? '; expires=' + expires.toGMTString() : '')
+			+ (path ? '; path=' + path : '/')
+			+ (domain ? '; domain=' + domain : '')
+			+ (secure ? '; secure' : '');
+	}
+
+	function getcookie(name, nounescape) {
+		name = cookiepre + name;
+		var cookie_start = document.cookie.indexOf(name);
+		var cookie_end = document.cookie.indexOf(";", cookie_start);
+		if(cookie_start == -1) {
+			return '';
+		} else {
+			var v = document.cookie.substring(cookie_start + name.length + 1, (cookie_end > cookie_start ? cookie_end : document.cookie.length));
+			return !nounescape ? unescape(v) : v;
+		}
+	}
+
+	jQuery(document).ready(function() {
+		var _wh = jQuery(window).height();
+		var ua    = navigator.userAgent.toLowerCase();
+		var isIE7 = ua.indexOf('msie 7.0') > -1;
+		var _adpt = jQuery(window).width();
+		// var dialog_closed = getcookie("app-dialog-closed");
+		// dialog_closed = dialog_closed ? dialog_closed : 0;
+
+		// if(dialog_closed > 4 && {$_G['uid']} && !getcookie("app-download-dialog")) {
+		// 	setcookie("app-download-dialog", 1, 86400);
+		// }
+
+		if(!getcookie("app-download-dialog") && _adpt > 1120) {
+			jQuery("body").addClass('app-modal-open').css("padding-right", "16px");
+			if(isIE7){
+				jQuery(".app-modal").css("overflow-y", "hidden");
+			}
+			var _pr = _wh > (jQuery('.app-modal').height() + 60) ? '' : 16;
+			jQuery('.app-modal').css("padding-right", _pr);
+			jQuery(".app-modal-backdrop, .app-modal").show();
+		}
+		jQuery(".app-modal-dialog-close").click( function (){
+			jQuery("body").removeClass('app-modal-open').css("padding-right", "0px");
+			jQuery(".app-modal-backdrop, .app-modal").hide();
+			setcookie("app-download-dialog", 1, 86400);
+			// setcookie("app-dialog-closed", parseInt(dialog_closed)+1, 31536000);
+		});
+	});
+</script>
+<!-- //目的地App弹层 -->

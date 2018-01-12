@@ -1,0 +1,39 @@
+/* CSS Document */
+.clear_b:after{content: ""; display: block; clear: both; visibility: hidden;}
+.clear_b{ zoom: 1;}
+.morecommenttitle{ font-size:16px; color:#000;}
+.morecommenttitle span{ float:left;}
+.morecommenttitle a{ float:right; color:#949494; font-size:12px;}
+.plname{ font-size:14px; color:#585858; padding-bottom:5px;}
+.plname em{ float:right; font-size:12px; color:#949494;}
+.pt15{ padding-top:5px;}
+.comment-main .comment-list-box{ border-bottom:0 none;}
+.attrValues a.morelink{ color:#43a6df; font-size:12px; padding:0px 12px 0px 3px; background:url(../dianping/images/qwicon.png) right center no-repeat;}
+.porductimg{ width:200px; height:200px; border:#eee solid 1px; margin-top:16px;}
+.porductname{ font-size:14px; color:#585858; padding-top:16px;}
+.dpnum{ font-size:12px; color:#949494; padding:0px 0px 0px 10px;}
+.stardpbox{ padding-top:5px;}
+.taglist{ padding:12px 0px;}
+.taglist a{ border:#86c6ed solid 1px; border-radius:20px; color:#43a6df; font-size:12px; padding:4px 12px 4px 12px; display: inline; white-space: nowrap; float:left; margin:0px 5px 5px 0px;}
+.authorlist{ padding-top:15px;}
+.authorone{ border:#eee solid 1px; padding:7px; font-size:14px; color:#585858; width:200px; margin-bottom:10px;}
+.authorone p{ overflow:hidden; padding-top:3px;}
+.authorone span{ display:block;}
+.authorone em{ display:block; font-size:12px; color:#949494; padding-top:5px;}
+.authorone img{ width:48px; height:48px; border-radius:3px; float:left; margin-right:7px;}
+.logo-box {border: 1px solid #43a6df; width: 110px; margin-top:16px;}
+.logo-box .logo-img { border: 5px solid #ffffff; height: 50px;  width: 100px;}
+.logo-box .brand-addr { background-color: #43a6df; color: #ffffff; line-height: 1.2; padding: 5px 2px; text-align: center;}
+
+
+
+
+
+
+
+
+
+
+
+
+

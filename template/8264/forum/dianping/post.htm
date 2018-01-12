@@ -1,0 +1,360 @@
+<!--{subtemplate forum/dianping/header}-->
+<style type="text/css">
+#imglist .overlimit{display:none;}
+#pic_upload_multiimg { vertical-align: middle; }
+</style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3&services=true"></script>
+<script type="text/javascript">
+maxpicnumber = 0;
+function modform_validate(theform) {
+	<!--{if $action != 'edit'}-->
+	if($('postsubmit').name == 'newpost' && theform.subject.value == "") {
+		_showmsg('请填写{$modname}{$modsetting[mc]}');
+		return false;
+	} else if(mb_strlen(theform.subject.value) > 80) {
+		_showmsg('您的{$modname}{$modsetting[mc]}超过 80 个字符的限制');
+		return false;
+	} else if(trim(theform.subject.value) == ""){
+		_showmsg('请填写{$modname}{$modsetting[mc]}');
+		return false;
+	}
+	if (theform.uploadfile.value == '0') {
+		_showmsg('请上传{$modname}{$modsetting[pic]}，并至少选择一张');
+		return false;
+	}
+	<!--{if $action != 'edit' && checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
+	if (trim(theform.captcha.value)=="") {
+		_showmsg('验证码不能为空');
+		return false;
+	}
+	if (theform.yzm.value=='0') {
+		_showmsg('验证码输入错误');
+		return false;
+	}
+	<!--{/if}-->
+	<!--{else}-->
+	if(($('postsubmit').name != 'replypost' && theform.subject.value == "")) {
+		_showmsg('请填写{$modname}{$modsetting[mc]}');
+		return false;
+	} else if(mb_strlen(theform.subject.value) > 80) {
+		_showmsg('您的{$modname}{$modsetting[mc]}超过 80 个字符的限制');
+		return false;
+	} else if(trim(theform.subject.value) == ""){
+		_showmsg('请填写{$modname}{$modsetting[mc]}');
+		return false;
+	}
+	<!--{/if}-->
+
+	if (theform.address.value=="0" || theform.address.value=="") {
+		_showmsg('请填写{$modname}的{$modsetting[address]}');
+		return false;
+	}
+
+	if($('postsubmit').name == 'editpost') {
+		return true;
+	}else if(in_array($('postsubmit').name, ['replypost','newpost'])) {
+		postsubmit(theform);
+	}
+	return false;
+}
+jQuery(document).ready(function($) {
+	$('#subject').focus(function(){
+		!$(this).val() && $(this).prev().hide();
+	}).blur(function(){
+		!$(this).val() && $(this).prev().show();
+	});
+	$('#address').focus(function(){
+		!$(this).val() && $(this).prev().hide();
+	}).blur(function(){
+		!$(this).val() && $(this).prev().show();
+	});
+	$('#link').focus(function(){
+		!$(this).val() && $(this).prev().hide();
+	}).blur(function(){
+		!$(this).val() && $(this).prev().show();
+	});
+	$('#message').focus(function(){
+		!$(this).val() && $(this).prev().hide();
+	}).blur(function(){
+		!$(this).val() && $(this).prev().show();
+	});
+
+	$('#cityBtn').click(function(){
+		$('#cityList').show();
+	});
+	$('#cityList').mouseleave(function(){
+		$(this).hide();
+	});
+	$('#cityItem>a').click(function(){
+		$('#province').val(this.id);
+		$('#dqtxt').text(this.innerHTML);
+		$('#xqs').text(this.innerHTML+" -");
+		$('#cityList').hide();
+	});
+
+	//验证码
+	$('#refreshCaptcha').click(function() {
+		$(this).children('img').attr('src', '/plugin.php?id=dailypicture:captcha&_='+(new Date().getTime()));
+		$('#jg').html("");
+		return false;
+	});
+	$('#captcha').focus(function(){
+		!$(this).val() && $(this).prev().hide();
+	});
+	$('#captcha').blur(function(){
+		!$(this).val() && $(this).prev().show();
+		 validate_captcha();
+	});
+	function validate_captcha() {
+		$.ajax({
+			async: false,
+			type: 'get',
+			url: '/plugin.php?id=dailypicture:validatecaptcha&inajax=1&captcha='+$('#captcha').val(),
+			success : function(data) {
+				if (data==1) {
+					$('#jg').html('<img width="16" height="16" class="vm" src="static/image/common/check_right.gif">');
+					$('#yzm').val('1');
+				}else{
+					$('#jg').html('<img width="16" height="16" class="vm" src="static/image/common/check_error.gif">');
+					$('#yzm').val('0');
+					$('#captcha').val('');
+				}
+			}
+		});
+	};
+
+	$(document).on("click", "#imglist .deleteimg", function() {
+		$(this).parent().remove();
+		if($("#imglist .overlimit").length > 0){
+			$("#imglist .overlimit:first").removeClass('overlimit').find('input:hidden').removeAttr('disabled');
+		}else{
+			$("#numimage").val($("#numimage").val() - 1);
+		}
+	});
+
+	//加载地图
+	$("#mapBtn").click(function(){
+		var province = $("#xqs").text();
+		var address = $("#address").val();
+		var map = new BMap.Map("container");            // 创建Map实例
+		{if empty($editdata['longitude']) && empty($editdata['latitude'])}
+		var point = new BMap.Point(116.383, 39.973);
+		{else}
+		var point = new BMap.Point({$editdata['longitude']}, {$editdata['latitude']});
+		{/if}
+		var opt = {type: BMAP_NAVIGATION_CONTROL_SMALL}
+		map.addControl(new BMap.NavigationControl(opt));
+		//map.centerAndZoom(point, 13);
+		//创建地址解析器实例
+		var myGeo = new BMap.Geocoder();
+		//将地址解析结果显示在地图上，并调整地图视野
+		myGeo.getPoint(address, function(point){
+			if (point) {
+				map.centerAndZoom(point, 16);
+				var marker = new BMap.Marker(point);  // 创建标注
+				map.addOverlay(marker);
+				marker.enableDragging(true); // 设置标注可拖拽
+				var opts = {
+					width : 110,     // 信息窗口宽度
+					height: 50,     // 信息窗口高度
+					title : "提示信息"  // 信息窗口标题
+				}
+				jQuery("#longitude").val(point['lng']);
+				jQuery("#latitude").val(point['lat']);
+				var infoWindow = new BMap.InfoWindow("拖动此标注更改店铺默认位置", opts);  // 创建信息窗口对象
+				marker.addEventListener("mouseup", function(){
+					var position = marker.getPosition();
+					var s = confirm("是否将新位置设置为此店铺的默认位置？");
+					if(s==true){
+						jQuery("#longitude").val(position['lng']);
+						jQuery("#latitude").val(position['lat']);
+						marker.disableDragging(true); // 设置标注不可拖拽
+						marker.removeEventListener("mouseup");
+					}else{
+						jQuery("#longitude").val(point['lng']);
+						jQuery("#latitude").val(point['lat']);
+					}
+				});
+				marker.openInfoWindow(infoWindow);
+				$("#container").css("display","");
+			}else{
+				alert("地图数据加载失败！");
+			}
+		}, province);
+		return false;
+	});
+});
+</script>
+<div class="layout mt50">
+	<div class="pubWeb">
+		<h1 class="tit20 mb45">{if ($action=='new')}发布{$modname}{else}编辑{$modname}{/if}</h1>
+		<div class="bd">
+			<form method="post" autocomplete="off" id="postform" action="
+			{if $action=='new'}
+			forum.php?ctl={$modstr}&act=dopost&do=new
+			{elseif $action=='reply'}
+			forum.php?ctl={$modstr}&act=dopost&do=reply&tid={$_G['tid']}
+			{elseif $action=='edit'}
+			forum.php?ctl={$modstr}&act=dopost&do=edit&tid={$_G['tid']}
+			{/if}" onsubmit="return modform_validate(this);return false;">
+				{if !empty($_G['gp_modthreadkey'])}<input type="hidden" name="modthreadkey" id="modthreadkey" value="{$_G['gp_modthreadkey']}" />{/if}
+				<input type="hidden" name="formhash" id="formhash" value="{FORMHASH}" />
+				<input type="hidden" name="posttime" id="posttime" value="{TIMESTAMP}" />
+				<input type="hidden" name="fid" id="fid" value="477" />
+				{if $action == 'edit'}<input type="hidden" name="pid" value="{$editdata['pid']}" />{/if}
+				<dl class="pubDt50">
+					<dt><span class="icoName48x43"></span></dt>
+					<dd>
+						<span class="inputTipsText">
+							{if $action=='new'}<label class="fs16">{$modname}{$modsetting[mc]}</label>{/if}
+							<input type="text" class="inputText w270" name="subject" id="subject" value="{$editdata['subject']}" />
+						</span>
+						<span class="icoRedStar">*</span>
+					</dd>
+				</dl>
+				<dl class="pubDt50">
+					<dt><span class="icoUpPic48x43"></span></dt>
+					<dd>
+						<input id="numimage" type="hidden" name="uploadfile" value="0"/>
+						<div id="pic_upload_multiimg">
+						此内容需要 Adobe Flash Player 11.1.0 或更高版本
+						<script type="text/javascript">
+							var pageHost = ((document.location.protocol == "https:") ? "https://" : "http://");
+							document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='"
+											+ pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" );
+						</script>
+						</div>
+						<span class="icoRedStar">*</span>
+						<div id="imglist" class="readyPic"></div>
+					</dd>
+				</dl>
+				<dl class="pubDt50">
+					<dt><span class="icoCity48x43"></span></dt>
+					<dd>
+						<span class="tips posRel">
+							{if $action=='new'}
+							猜在<span class="cBlue" id="dqtxt">{$nowregion['name']}</span>，猜错了？
+							{else}
+							{$modname}在<span class="cBlue" id="dqtxt">{$nowregion['name']}</span>，填错了？
+							{/if}
+							<input type="hidden" name="pro" id="province" value="{$nowregion['id']}" />
+							<span class="cityChange"><span id="cityBtn">（切换城市 <em></em>）</span>
+								<div class="cityList" id="cityList">
+									<div class="list" id="cityItem">
+										{loop $regions $type}
+										<a href="javascript:;" id="{$type['pro']}">{$type['name']}</a>
+										{/loop}
+									</div>
+									<span class="topJJ">◆</span><span class="topJJWrite">◆</span>
+								</div>
+							</span>
+						</span>
+					</dd>
+				</dl>
+				<dl class="pubDt50">
+					<dt><span class="icoGps48x43"></span></dt>
+					<dd>
+						<span class="topTips" id="xqs">{$nowregion['name']} -</span>
+						<span class="inputTipsText">
+							<label class="fs16"{if $editdata['address']} style="display:none;"{/if}>{$modsetting[address]}：不要重复填写省、市地区</label>
+							<input type="text" class="inputText w360" name="address" id="address" value="{$editdata['address']}" />
+						</span>
+						<span class="mapLabel" id="mapBtn">地图标注</span><span class="icoRedStar">*</span>
+						<div class="googleMap" style="display: none;height:400px;" id="container"></div>
+						<input type="hidden" value="{$editdata['longitude']}" id="longitude" name="mapx">
+						<input type="hidden" value="{$editdata['latitude']}" id="latitude" name="mapy">
+					</dd>
+				</dl>
+				<dl class="pubDt50">
+					<dt><span class="icoWeb48x43"></span></dt>
+					<dd><input type="text" name="url" id="url" value="{if $editdata['url']}{$editdata['url']}{else}http://{/if}" class="inputText w270" /></dd>
+				</dl>
+				{if $_G['groupid'] == 1}
+				<!-- 公司内部人员才能添加导购链接 -->
+				<dl class="pubDt50">
+					<dt><span class="icoWeb48x43"></span></dt>
+					<dd>
+						<span class="inputTipsText">
+							<label class="fs16" id="dgurl_notice"{if $editdata['dgurl']} style="display: none;"{/if}>导购链接</label>
+							<input type="text" class="inputText w270" name="dgurl" id="dgurl" value="{$editdata['dgurl']}" />
+						</span>
+					</dd>
+				</dl>
+				{/if}
+				<dl class="pubDt50">
+					<dt><span class="icoTel48x43"></span></dt>
+					<dd>
+						<span class="inputTipsText">
+							<label class="fs16"{if $editdata['phone']} style="display:none;"{/if}>如：022-27308264</label>
+							<input type="text" class="inputText w270" name="phone" id="link" value="{$editdata['phone']}" />
+						</span>
+						<div class="contTextArea">
+							<div class="inputTipsText">
+								<label class="fs14"{if $editdata['message']} style="display:none;"{/if}>{$modsetting[initpost]}</label>
+								<textarea name="message" id="message" rows="6">{$editdata['message']}</textarea>
+							</div>
+						</div>
+					</dd>
+				</dl>
+				{if $action != 'edit' && checkperm('seccode') && ($secqaacheck || $seccodecheck)}
+				<span>验证码：</span>
+					<div style="margin-top:-20px;margin-left:50px;margin-bottom:20px;">
+						<script type="text/javascript" src="http://api.geetest.com/get.php?gt=273df89437f54dac2bfb5b69afe1c318&r=<?=time()?>"></script>
+					</div>
+				{/if}
+				<dl class="pubDt50">
+					<dt>&nbsp;</dt>
+					<dd>
+						<input type="hidden" name="{$action}postsubmit" value="yes">
+						<input type="submit" class="publish182x43" name="{$action}post" id="postsubmit" value="" />
+					</dd>
+				</dl>
+			</form>
+		</div>
+
+	</div>
+
+</div>
+<script type="text/javascript" src="static/js/newswfobject.js"></script>
+<script type="text/javascript">
+	var params = {site:"{$_G[siteroot]}misc.php%3fmod=swfupload%26type=image%26fid=$fid%26mtype=plugin%26twidth=60%26theight=60%26random=<!--{echo random(4)}-->",buttonimg:"{$_G[siteroot]}static/image/common/uploadnew.png"};
+	swfobject.embedSWF("static/flash/uploadforum.swf", "pic_upload_multiimg", "208", "50", "10.0.0", "playerProductInstall.swf", params, {wmode:"transparent"});
+	swfobject.createCSS("#pic_upload_multiimg", "text-align:left;");
+ajaxget('forum.php?ctl={$modstr}&act=getimglist{if $editdata[tid]}&tid={$editdata[tid]}{/if}{if {$editdata[pid]}}&pid={$editdata[pid]}{/if}', 'imglist');
+</script>
+<script>
+var maxpic = <!--{$imgselectlimit}-->;
+function uploadsuccess(type, returndata) {
+	eval("var nattach = " + returndata + ";");
+	jQuery.noConflict();
+	;(function($){
+		switch(type){
+			case 1:
+			case 2:
+				var html = '';
+				html 	+= '<span id="imagelist_id_'+nattach.aid+'">';
+				html 	+= '<img src="' + nattach.thumbpic + '" />';
+				html 	+= '<b class="deleteimg">删除</b>';
+				html 	+= '<input type="hidden" value="'+nattach.aid+'" name="imgselect[]">';
+				html 	+= '</span>';
+
+				$("#imglist").append(html);
+				var attachobj = $('#imagelist_id_' + nattach.aid);
+				attachobj.find('input').removeAttr('disabled').end().show();
+
+				attachobj.find('img').one('error', function(){
+					$(this).attr('src', ' ');
+					$(this).attr('src', nattach.thumbpic);
+				}).show();
+				break;
+			case 3:
+				break;
+		}
+		$('#imglist').find('span:gt(' + (maxpic - 1) + ')').addClass("overlimit").find('input').attr('disabled', true);
+
+		//算下上传图片数
+		$("#numimage").attr("value", $('#imglist').find("span:not('.overlimit')").length);
+	})(jQuery);
+}
+</script>
+<!--{subtemplate forum/dianping/footer}-->

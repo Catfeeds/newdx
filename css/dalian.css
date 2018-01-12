@@ -1,0 +1,112 @@
+/* CSS Document */
+body {margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;text-align:center;font-size:12px;}
+ul{ list-style:none; margin:auto 0px;letter-spacing:0;word-spacing:0; padding:0;}
+a{text-decoration:none; color:#000000;}
+a:hover{text-decoration:underline;}
+.warpper{ width:980px; text-align:center; margin:auto;}
+/***************************头部导航部分**************************************/
+.nav{ width:980px; height:30px; line-height:30px; overflow:hidden;background:#37aae1;}
+.nav a{ text-decoration:none; color:#000000;}
+.nav a:hover{text-decoration:none;}
+.top{ width:980px; height:80px; margin-bottom:8px;}
+.toplogo{ width:230px; height:80px; float:left;}
+.topbanner{ width:750px;; height:80px; float:left;}
+/****************************中间部分************************************/
+.mid{ width:980px;}
+.flashall{ width:604px; height:377px; border:#9ad7ea solid 1px; float:left; background:url(/moban/dalian/images/flashbg.jpg) bottom right no-repeat; padding-top:8px;}
+.flash{ width:586px; height:260px; margin:auto; text-align:center;}
+.flashlist{ width:550px; float:right; margin:10px 0 0 0 ;}
+.flashlist li{ width:260px; height:25px; background:url(/moban/dalian/images/arrow.jpg) left center no-repeat; float:left; text-align:left; padding-left:10px; line-height:25px; overflow:hidden;}
+.flashlist a{ color:#8d8d8d;}
+.newsall{ width:363px; height:384px; border:#9e9e9e solid 1px; float:right; background:url(/moban/dalian/images/newsbg.jpg) top no-repeat;}
+.smallbg{ width:9px; height:50px; background:#37aae1; float:left;}
+.newslist{ width:320px; margin:65px 0 0 10px; float:left;}
+.newslist li{ width:320px; height:25px; line-height:25px; overflow:hidden; text-align:left;}
+.newslist a{ color:#8d8d8d;}
+.newad{ width:350px; height:107px; margin-top:4px;}
+/*********************************户外店铺***************************************/
+.shop{ width:604px; border:#9ad7ea solid 1px; float:left; background:url(/moban/dalian/images/shop.jpg) no-repeat top left; margin-top:10px;}
+.shopimgwenwarp{ width:364px; margin:40px 0 0 8px; float:left;}
+.shopwarp{ width:364px; height:100px; float:left; margin-bottom:8px;}
+.shopimg{ width:128px; height:94px; float:left; border:#CCCCCC solid 1px; padding-top:4px;}
+.shopconwarp{ width:225px; float:left; margin-left:8px;}
+.shopcontitle{ width:225px; height:25px; line-height:25px; overflow:hidden; font-size:14px; color:#3c8404; text-align:left; font-weight:bold;}
+.shopconwen{ width:225px; height:55px; line-height:1.5; text-align:left;}
+.shopconmore{ width:225px; height:20px; text-align:right; color:#fb5c00;}
+.shopconmore a{ color:#fb5c00; font-size:12px;}
+.shopright{ width:195px; height:365px; float:right; margin-right:4px;}
+.shoprightaccoutertitle{ width:185px; height:18px; border-bottom:#949494 solid 1px; color:#fd5904; font-size:14px; font-weight:bold; padding-top:20px; text-align:right; padding-right:10px;}
+.shoprightaccouter{ width:195px; height:225px; background:#f3f0e7; margin-top:8px;}
+.shoprightaccouter li{ width:167px; height:25px; line-height:25px; overflow:hidden; margin:auto; text-align:left;}
+.shoprightad{ width:195px; height:120px; background:#b7daed; margin-top:8px; padding-top:4px;}
+.shopborder{ width:586px;border-top:solid 7px #b7daed ;float:right; margin-right:4px;}
+/********************************论坛*********************************************/
+.bbs{ width:365px; float:right; margin-top:10px;}
+.bbstitle{ width:365px; height:41px; background:url(/moban/dalian/images/bbsbg.jpg) repeat-x;}
+.bbstitleimg{ width:52px; height:35px; background:url(/moban/dalian/images/bbsicon.jpg) no-repeat; float:left; margin-top:6px;}
+.bbstitlecon{ width:200px; height:41px; line-height:41px; overflow:hidden; float:left; color:#FFFFFF; font-size:14px; font-weight:bold; text-align:left; padding-left:7px;}
+.bbstitlemore{ width:90px; height:41px; line-height:41px; overflow:hidden; float:right; color:#FFFFFF;}
+.bbstitlemore a{ color:#FFFFFF; font-size:12px; font-weight:bold;}
+.bbslist{ width:357px; float:left; text-align:left; background:#ffecc2; padding-left:8px;}
+.bbslist li{ width:310px; height:25px; line-height:25px; overflow:hidden; text-align:left;}
+.bbssearch{ width:365px; background:#000000 url(/moban/dalian/images/bbssearch.jpg) top left no-repeat; margin-top:8px; padding-top:50px; padding-bottom:10px;}
+.bbssearch1{ width:180px; float:left; text-align:center;}
+.bbssearch2{ width:180px; float:left; text-align:center; margin-top:10px;}
+.bbssearch3{ width:165px; float:right; text-align:left;}
+.bbssearch4{ width:165px; float:right; text-align:left; margin-top:10px;}
+.bbsad{ width:365px; height:83px; margin-top:7px; background:#ffffff;}
+/******************************************户外攻略******************************/
+.manual{ width:604px; border:#9ad7ea solid 1px; float:left; background:url(/moban/dalian/images/manual.jpg) no-repeat top left; margin-top:10px; height:400px;}
+.manualleft{width:195px; float:left; margin:70px 0 0 8px; background:#f3f1e5;}
+.manuallefttitlewarp{ width:195px; padding-top:10px;}
+.manuallefttitlewen{ width:110px; text-align:left; padding-left:10px; float:left; font-size:14px; color:#79890d; font-weight:bold;}
+.manuallefttitlemore{ width:50px;text-align:left; color:#79890d; float:right;}
+.manuallefttitlemore a{ color:#79890d; font-size:14px;}
+.manualleftimg{ width:180px; margin:auto; margin-top:5px!important;}
+.manualleftcontent{ width:195px;}
+.manualleftcontent li{ width:180px; height:24px; line-height:24px; overflow:hidden; text-align:left; padding-left:15px;}
+.manualright{width:364px; margin:0 0 0 8px; float:right;}
+.manualrighttitle{ width:219px; float:right; border-bottom:#949494 solid 1px; color:#d37ae8;padding-top:21px!important;padding-top:22px; font-size:14px; font-weight:bold; text-align:right; padding-right:10px; margin-right:5px!important;}
+.manualrightimgwenwarp{ width:364px; float:right; margin-right:5px; margin-top:30px;}
+.manualrightimgwenall{ width:364px; float:right; margin-bottom: 10px;}
+.manualrightimg{width:128px; height:94px; float:left; border:#CCCCCC solid 1px; padding-top:4px;}
+.manualrightconwarp{ width:225px; float:left; margin-left:8px;}
+.manualrightwenttitle{width:225px; height:25px; line-height:25px; overflow:hidden; font-size:14px; color:#248bda; text-align:left; font-weight:bold;}
+.manualrightwencon{width:225px; height:55px; line-height:1.5; text-align:left;}
+.manualrightwenmore{ width:225px; height:20px; text-align:right; color:#fb5c00;}
+.manualrightwenmore a{ color:#fb5c00; font-size:12px;}
+/************************户外活动*************************************/
+.activity{ width:365px; float:right; margin-top:7px; background:#e1dfa6; height:204px;}
+.activitytitle{ width:365px;height:40px; background:url(/moban/dalian/images/businessbg.jpg) repeat-x;}
+.activitytitleimg{ width:50px; background:url(/moban/dalian/images/businessicon.jpg) no-repeat; margin-left:5px; float:left; height:40px;}
+.activitytitlewen{ width:200px; height:40px; font-size:14px; font-weight:bold; float:left; text-align:left; line-height:40px; overflow:hidden; padding-left:5px;}
+.activitycon{ width:360px;}
+.activitylist{ width:348px; float:left; margin-left:8px; line-height:2;}
+.activitylist li{ width:340px; height:25px; font-size:12px; line-height:25px; overflow:hidden; text-align:left;}
+.activitylist1{ width:348px; float:left; margin-left:8px; line-height:2;}
+.activitylist1 li{ width:160px; height:25px; font-size:12px; line-height:25px; overflow:hidden; text-align:left; float:left; padding-right:10px;}
+/*****************************户外商户**************************/
+.company{width:604px; border:#9ad7ea solid 1px; float:left; background:url(/moban/dalian/images/company.jpg) no-repeat top left; margin-top:10px;}
+.companytitle{ float:right; width:250px; border-bottom:#949494 solid 1px; margin-right:5px;  padding-top:13px!important; padding-top:14px; text-align:right; padding-right:10px; margin-right:5px!important;}
+.companytitle a {font-size:16px; font-weight:bold; color:#FF3333;}
+.companytitle a:hover{text-decoration:none;}
+.companyimgwarp{ width:604px; margin-top:70px!important;margin-top:30px;}
+.companyimgall{text-align:center; border: #CCCCCC 1px solid; margin-bottom:10px;}
+.companyimg{ padding:2px 2px 2px 2px;}
+.companywen{ height:25px; line-height:25px; overflow:hidden; text-align:center; text-overflow:ellipsis; text-overflow:ellipsis; white-space:nowrap;}
+/*********************************品牌**********************************/
+.brandwarp{width:365px; float:right; margin-top:10px; background:#1590ba;}
+.brandtitle{ width:365px; height:40px; background:url(/moban/dalian/images/brandbg.jpg) repeat-x;}
+.brandimg{ width:49px; height:40px; background:url(/moban/dalian/images/brand.jpg) no-repeat top left; margin-left:5px; float:left;}
+.brandwen{ width:200px; height:40px; color:#1590ba; font-size:14px; font-weight:bold; text-align:left; padding-left:5px; float:left; line-height:40px; overflow:hidden;}
+.brandmore{ width:50px; height:40px; float:right; text-align:right; padding-right:5px; line-height:40px; overflow:hidden;}
+.brandlogo{ width:110px; float:left; margin:5px 4px 0px 4px;}
+.brandlogoimg{ width:100px; height:50px; border:#CCCCCC 4px solid;}
+.brandlogowen{ width:100px; height:20px; line-height:20px; overflow:hidden;}
+.web{ width:348px; margin-left:8px; float:left;}
+.web li{ width:160px; height:25px; overflow:hidden; line-height:25px; text-align:left; color:#FFFFFF; float:left;}
+.web a{ color:#FFFFFF;}
+/*******************************地部样式***************************************/
+.bottom{ width:980px; margin:auto; margin-top:10px; text-align:center;}
+/***************************附加样式******************************************/
+.add{ width:190px; height:22px; margin:0 0 6px 40px; float:left;}

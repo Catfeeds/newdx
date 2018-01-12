@@ -1,0 +1,43 @@
+<!--<li class="list-comment-item" id="comment_$value[cid]_li">-->
+	<div class="comment-wrap">
+		<div class="user-info">
+			<a href="home.php?mod=space&uid=$value[authorid]" class="avatar">
+				{avatar($value[authorid],small)}
+			</a>
+		</div>
+		<div class="comment-info">
+			<div class="tit">
+				<span class="user-name">
+					<a href="home.php?mod=space&uid=$value[authorid]" id="author_$value[cid]">{$value[author]}</a>
+				</span>
+				<span class="comment-time">{echo date('Y-m-d H:i:s', $value[dateline])}</span>
+				<div class="comment-op-bar">
+					{if $value[authorid]==$_G[uid]}							
+						<a href="home.php?mod=spacecp&ac=comment&op=edit&cid=$value[cid]&handlekey=editcommenthk_{$value[cid]}" id="c_$value[cid]_edit" onclick="showWindow(this.id, this.href, 'get', 0);" class="delete">{lang edit}</a>
+					{/if}
+					{if $value[authorid]==$_G[uid] || $value[uid]==$_G[uid] || checkperm('managecomment')}
+						<a href="home.php?mod=spacecp&ac=comment&op=delete&cid=$value[cid]&handlekey=delcommenthk_{$value[cid]}" id="c_$value[cid]_delete" onclick="showWindow(this.id, this.href, 'get', 0);" class="delete">{lang delete}</a>
+					{/if}
+					{if $value[authorid]!=$_G[uid] && ($value['idtype'] != 'uid' || $space[self])}
+						{if $_G['uid']}
+						<a href="home.php?mod=spacecp&ac=comment&op=reply&cid=$value[cid]&feedid=$feedid&handlekey=replycommenthk_{$value[cid]}" id="c_$value[cid]_reply" onclick="showWindow(this.id, this.href, 'get', 0);"  class="delete">
+						{else}
+						<a href="member.php?mod=logging&action=login" class="delete">
+						{/if}						
+						{lang reply}
+						</a>
+					{/if}
+				</div>
+			</div>
+			<table style="width:100%;">
+				<tbody>
+					<tr>
+						<td style="font-size:14px;"> 
+							{if $value[status] == 0 || $value[authorid] == $_G[uid] || $_G[adminid] == 1}$value[message]{else}{lang moderate_not_validate}{/if}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+<!--</li>-->

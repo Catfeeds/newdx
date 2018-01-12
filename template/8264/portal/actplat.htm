@@ -1,0 +1,139 @@
+<!--{subtemplate dianping/header}-->
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/portal/style_pcact.css">
+<style>
+	.pg a.prev {
+			background-image: none;
+		}
+</style>	
+
+    <div class="header">
+        <div class="layout">
+            <div class="icoHill"></div>
+            <div class="headerL">
+                <h1>
+                    <span class="country">活动平台</span>
+                </h1>
+                <div class="site">
+                    <a href="http://www.8264.com/">首页</a>
+                    > 
+                    <a href="http://www.8264.com/portal.php?mod=actplat">活动平台</a>
+                </div>
+            </div>
+            <div class="headerR"><a href="http://app.zaiwai.com/" target="_blank"><img src="http://static.8264.com/static/images/portal/actplat/zaiwailogo.png"/></a></div>
+        </div>
+    </div>
+	<div class="warpper">
+    	<div class="warpten mt15 clear_b">
+        	<!--左边开始-->
+        	<div class="bignewsbox">
+            	<div class="bignews">
+					<!--单条循环开始-->
+					{loop $lunboList $v}
+                    <div class="bignewsimg"><a href="{$v[bannerurl]}" target="_blank"><img src="{$v[pic]}"/></a></div>
+					{/loop}
+					<!--单条循环结束-->
+				</div>
+			</div>
+            <script>
+				// 轮播开始
+				jQuery(function(){
+					 var shuliang = jQuery(".bignews>div").size();
+					 var lunbotime;
+					 var index = 0;
+						jQuery(".bignewsbox").append("<div class='shuzi'></div>");
+						for ( i=0 ; i< shuliang ;i){
+						i++	
+						jQuery(".shuzi").append("<span></span>");
+						};
+						jQuery(".shuzi span").eq(0).addClass("tsshuzi");
+					jQuery(".shuzi span").mouseenter(function(){
+						var index = jQuery(this).index();
+						jQuery(this).addClass("tsshuzi").siblings().removeClass("tsshuzi");
+						jQuery(".bignews>div").eq(index).fadeIn(1).siblings().hide(1);
+					});	
+					jQuery(".bignewsbox").hover(
+						function(){
+							clearInterval(lunbotime);		
+						},function(){
+							lunbotime = setInterval(function(){	
+								jQuery(".shuzi span").eq(index).addClass("tsshuzi").siblings().removeClass("tsshuzi");
+								jQuery(".bignews>div").eq(index).fadeIn(1).siblings().hide(1);
+								index++;
+								if(index == shuliang ){
+									index=0;
+								};		
+							},3000);
+						}).trigger("mouseleave");
+				});
+				// 轮播结束
+	        </script>
+            <!--左边结束-->
+            <!--右边开始-->
+            <div class="hotact">
+            	<div class="hotacttitle">热门活动</div>
+                <div class="hotactlist">
+                	<ul>
+                    	<!--单条循环开始-->
+						{loop $hotactList $v}
+						<li><a href="{$v[url]}" target="_blank" title="{$v[title]}">{echo cutstr($v[title],32,'...')}</a></li>
+						{/loop}
+						<!--单条循环结束-->
+                    </ul>
+                </div>
+                <a href="http://bbs.8264.com/forum-forumdisplay-fid-12-typeid-1593-filter-typeid.html" target="_blank" class="fbact">发布活动</a>
+                <div class="adbp">2016广告洽谈   QQ：3278817818</div>
+            </div>
+            <!--右边结束-->
+        </div>
+        <div class="actlisttw">
+            <!--单条开始-->
+			{loop $list $v}
+            <div class="actlistone clear_b mt15">
+                <div class="actlist_l">
+                    <a href="http://bbs.8264.com/thread-{$v[aid]}-1-1.html" target="_blank" class="actlist_link">{$v[subject]}</a>
+                    <p>{echo cutstr($v[textmessage],170,'...')}</p>
+                    <div class="simglist">
+						{if ($v[pic1])||($v[pic2])||($v[pic3])||($v[pic4])}
+						  {if $v[pic1]}<img class="lazy" src="{$v[pic1]}" >{/if}
+						  {if $v[pic2]}<img class="lazy" src="{$v[pic2]}" >{/if}
+						  {if $v[pic3]}<img class="lazy" src="{$v[pic3]}" >{/if}
+						  {if $v[pic4]}<img class="lazy" src="{$v[pic4]}" >{/if}
+						{else}
+							{loop $v[imgList] $vv}
+							{$vv}
+							{/loop}  
+						{/if}
+                    </div>
+                </div>
+                <div class="actlist_r">
+                	<div class="timelist"><i class="ksicon"></i>开始时间：{$v[starttime]}</div>
+                    <div class="timelist"><i class="endicon"></i>结束时间：{$v[endtime]}</div>
+                    <div class="timelist"><i class="gongicon"></i>公布时间：{$v[publictime]}</div>
+					{if $v[is_closed]}
+					<a   class="addcj" style="background:none;text-indent:70px;">活动结束</a>
+					{else}
+                    <a href="http://bbs.8264.com/thread-{$v[aid]}-1-1.html" target="_blank" class="addcj">我要参加</a>
+					{/if}
+                </div>
+            </div>
+			{/loop}
+            <!--单条结束-->
+            
+         
+        </div>
+		<div class="pgbox clear_b">
+			<!--分页开始-->
+			{if $multi}<div class="cust-page-list">{$multi}</div>{/if}	
+			<!--分页结束-->
+		</div>
+ 	</div>
+    <!--嵌入公用底部开始-->
+    <!--{subtemplate common/footer_8264_new}-->
+    <!--嵌入公用底部结束-->
+</body>
+</html>

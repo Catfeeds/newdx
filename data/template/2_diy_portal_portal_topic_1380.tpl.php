@@ -1,0 +1,247 @@
+<?php if(!defined('IN_DISCUZ')) exit('Access Denied'); ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>2011adidas全情投入</title>
+<link href="http://static.8264.com/oldcms/moban/zt/adidas/style/style.css" rel="stylesheet" type="text/css" />
+<script src="http://static.8264.com/oldcms/moban/zt/adidas/js1/common.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div class="warpten">
+<div class="top"></div>
+<div class="banner"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/brannd.jpg"/></div>
+    <div class="nav">
+    	<ul>
+        	<li><a href="#a1">阿迪达斯TERREX户外先锋中国行</a></li>
+            <li><a href="#a2">运动员故事</a></li>
+            <li><a href="#a3">TERREX 产品介绍</a></li>
+            <li><a href="#a4">户外零售店</a></li>
+            <li><a href="http://static.8264.com/oldcms/moban/zt/adidas/adidas.pdf">户外杂志下载</a></li>
+            <li class="navone"><a href="http://www.adidas.com/cn/outdoor" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/adidaslogo.jpg" /></a></li>
+        </ul>
+    </div>
+    <div class="title"><a name="a1"></a><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/title1.jpg" /></a></div>
+    <div style="margin:auto; width:940px; margin-top:10px;"><iframe src="http://static.8264.com/oldcms/moban/zt/adidas/lunbo1.html" frameBorder=0 name="iframe"  scrolling="no" height="230" width="940" marginheight="0" marginwidth="0"></iframe></div>
+    <div class="actall">
+    	<div class="actone"><a href="http://www.adidas.com/outdoor/cn/newsarticle/morocco-road-trip/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/a1.jpg" /></a></div>
+        <div class="actone"><a href="http://www.adidas.com/outdoor/cn/newsarticle/matterhorn-furggen-ridge/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/a2.jpg" /></a></div>
+        <div class="actone"><a href="http://www.adidas.com/outdoor/cn/newsarticle/alexander-huber-solo/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/a3.jpg" /></a></div>
+        <div class="actone"><a href="http://www.adidas.com/outdoor/cn/newsarticle/mauerlaufer/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/a4.jpg" /></a></div>
+        <div class="actone"><a href="http://www.adidas.com/outdoor/cn/newsarticle/antarctica-base-jump/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/a5.jpg" /></a></div>
+        <div class="clear"></div>
+    </div>
+    <div class="title"><a name="a3"></a><a href="http://www.adidas.com/outdoor/cn/products/all/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/title2.jpg" /></a></div>
+    <!--轮播开始-->
+    <div class="lunbo">
+        <div id="focus_turn">
+            <ul id="focus_pic">
+                <li class="current"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/l1.jpg"/></li>
+                <li class="normal"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/l2.jpg" /></li>
+            </ul>
+            <ul id="focus_tx">
+                <li class="current"><a href="#" target="_blank">大连山友28日凌晨成功登顶南极1</a></li>
+                <li class="normal"><a href="#" target="_blank">2010第11届三夫户外俱乐部会员2</a></li>
+                <li class="normal"><a href="#" target="_blank">2010第11届三夫户外俱乐部会员3</a></li>
+            </ul>
+            <div id="focus_opacity"></div>
+        </div>
+    </div>
+    <!--轮播结束-->
+    <div class="titlemid">户外运动</div>
+    <div class="conimg" id="de">
+        <table width="100%"  cellspacing="0" cellpadding="0">
+            <tr>
+                <td id="de1">
+                    <table width="100%"  cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td><div class="img"><a href="http://www.adidas.com/outdoor/cn/products/mountain/#d=/outdoor/cn/products/mountain/product/V10378/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test2.jpg"  /></a></div></td>
+                            <td><div class="img"><a href="http://www.adidas.com/outdoor/cn/products/mountain/#d=/outdoor/cn/products/mountain/product/V10359/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test3.jpg"  /></a></div></td>
+                            <td><div class="img"><a href="http://www.adidas.com/outdoor/cn/products/mountain/#l=/outdoor/cn/products/mountain/1/&d=/outdoor/cn/products/mountain/product/G40592/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test4.jpg"  /></a></div></td>
+                            <td><div class="img"><a href="http://www.adidas.com/outdoor/cn/products/mountain/#l=/outdoor/cn/products/mountain/6/&d=/outdoor/cn/products/mountain/product/V10094/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test5.jpg"  /></a></div></td>
+                            <td><div class="img"><a href="http://www.adidas.com/outdoor/cn/products/mountain/#l=/outdoor/cn/products/mountain/5/&d=/outdoor/cn/products/mountain/product/V10996/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test6.jpg"  /></a></div></td>
+                            <td><div class="img"><a href="http://www.adidas.com/outdoor/cn/products/mountain/#l=/outdoor/cn/products/mountain/3/&d=/outdoor/cn/products/mountain/product/G43086/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test7.jpg"  /></a></div></td>
+                            <td><div class="img"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test8.jpg"  /></a></div></td>
+                            <td><div class="img"><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test9.jpg"  /></a></div></td>
+                            <td><div class="img"><a href="http://www.adidas.com/outdoor/cn/products/mountain/#l=/outdoor/cn/products/mountain/3/&d=/outdoor/cn/products/mountain/product/G40606/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test10.jpg"  /></a></div></td>
+                            <td><div class="img"><a href="http://www.adidas.com/outdoor/cn/products/mountain/#l=/outdoor/cn/products/mountain/3/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test11.jpg"  /></a></div></td>
+                            <td><div class="img"><a href="http://www.adidas.com/outdoor/cn/products/mountain/#l=/outdoor/cn/products/mountain/6/&d=/outdoor/cn/products/mountain/product/O59427/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test12.jpg"  /></a></div></td>
+                            <td><div class="img"><a href="http://www.adidas.com/outdoor/cn/products/mountain/#l=/outdoor/cn/products/mountain/6/&d=/outdoor/cn/products/mountain/product/V11100/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test13.jpg"  /></a></div></td>
+                        </tr>
+                    </table>
+                </td>
+                <td id="de2">&nbsp;</td>
+            </tr>
+        </table>
+        <SCRIPT language=JavaScript type=text/javascript>
+        function GetObj01(objName){
+        if(document.getElementById){
+        return eval('document.getElementById("' + objName + '")');
+        }else if(document.layers){
+        return eval("document.layers['" + objName +"']");
+        }else{
+        return eval('document.all.' + objName);
+        }
+        }
+        var speed01=20//速度数值越大速度越慢
+        GetObj01("de2").innerHTML=GetObj01("de1").innerHTML
+        function Marquee01(){
+        if(GetObj01("de").scrollLeft<=0)
+        GetObj01("de").scrollLeft=GetObj01("de1").offsetWidth
+        else{
+        GetObj01("de").scrollLeft--
+        }
+        }
+        var MyMar01=setInterval(Marquee01,speed01)
+        GetObj01("de").onmouseover=function() {clearInterval(MyMar01)}
+        GetObj01("de").onmouseout=function() {MyMar01=setInterval(Marquee01,speed01)}
+        </SCRIPT>
+    </div>
+    <div class="titlemid">徒步/山地越野</div>
+    <div class="chanpinall">
+    	<!--单条循环开始-->
+        <div class="chanpinone">
+        	<a href="http://www.adidas.com/outdoor/cn/products/hiking/product/V10129/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test14.jpg" /></a>
+            <div class="chanpinname"><a href="http://www.adidas.com/outdoor/cn/products/hiking/product/V10129/" target="_blank">这款徒步跋涉3合1CLIMAPROOF?防风外层/羊毛内胆茄克能够适应任何多变的寒冬天气。</a></div>
+        </div>
+        <!--单条循环结束-->
+        <div class="chanpinone">
+        	<a href="http://www.adidas.com/outdoor/cn/products/hiking/product/V38161/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test15.jpg" /></a>
+            <div class="chanpinname"><a href="http://www.adidas.com/outdoor/cn/products/hiking/product/V38161/" target="_blank">专为户外体育探险而设计，这款夹克采用CLIMAWARM?技术，在温度下降时，为您提供温暖舒适的呵护。</a></div>
+        </div>
+        <div class="chanpinone">
+        	<a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test16.jpg" /></a>
+            <div class="chanpinname"><a href="http://www.adidas.com/outdoor/cn/products/hiking/product/O05908/" target="_blank">
+          这款Hiking1-SideFleece夹克，单手可调节拉绳褶边方便在行走途中轻松应对气候变化。</a></div>
+        </div>
+        <div class="chanpinone">
+        	<a href="http://www.adidas.com/outdoor/cn/products/hiking/product/V34579/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test17.jpg" /></a>
+            <div class="chanpinname"><a href="http://www.adidas.com/outdoor/cn/products/hiking/product/V34579/" target="_blank">非常耐用且极具弹力的羊毛，扫除身体汗液并提供温暖呵护。紧身合体的连帽提供柔顺的舒适感。</a></div>
+        </div>
+        <div class="chanpinone">
+        	<a href="http://www.adidas.com/outdoor/cn/products/hiking/#l=/outdoor/cn/products/hiking/1/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test18.jpg" /></a>
+            <div class="chanpinname"><a href="http://www.adidas.com/outdoor/cn/products/hiking/#l=/outdoor/cn/products/hiking/1/" target="_blank">夹克可以在严酷条件下防风挡雪，同时还具有良好的透气性。它的双层设计中采用了 CLIMAPROOF。</a></div>
+        </div>
+        <div class="chanpinone">
+        	<a href="http://www.adidas.com/outdoor/cn/products/all/#d=/outdoor/cn/products/all/product/V11032/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test19.jpg" /></a>
+            <div class="chanpinname"><a href="http://www.adidas.com/outdoor/cn/products/all/#d=/outdoor/cn/products/all/product/V11032/" target="_blank">徒步旅行羊毛外套内置与中等重量的羊毛，它具有透气CLIMAWARM允许热汗水逃跑。</a></div>
+        </div>
+        <div class="chanpinone">
+        	<a href="http://www.adidas.com/outdoor/cn/products/hiking/product/V11039/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test20.jpg" /></a>
+            <div class="chanpinname"><a href="http://www.adidas.com/outdoor/cn/products/hiking/product/V11039/" target="_blank">阿迪达斯徒步旅行的信心不可预知的山区天气三合一CLIMAPROOF迷航torm 2的外套。</a></div>
+        </div>
+        <div class="chanpinone">
+        	<a href="http://www.adidas.com/outdoor/cn/products/all/product/P91512/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test22.jpg" /></a>
+            <div class="chanpinname"><a href="http://www.adidas.com/outdoor/cn/products/all/product/P91512/" target="_blank">采用混合结构来提供所需的温暖与透气性，室外活动中提供最优的移动范围，尤其是在滑雪活动之中。</a></div>
+        </div>
+        <div class="chanpinone">
+        	<a href="http://www.adidas.com/outdoor/cn/products/all/product/V10393/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test21.jpg" /></a>
+            <div class="chanpinname"><a href="http://www.adidas.com/outdoor/cn/products/all/product/V10393/" target="_blank">夹克可以在严酷条件下防风挡雪，同时还具有良好的透气性。快速干爽十分蓬松的羊毛衬里。</a></div>
+        </div>
+        <div class="chanpinone">
+        	<a href="http://www.adidas.com/outdoor/cn/products/hiking/product/P92569/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test23.jpg" /></a>
+            <div class="chanpinname"><a href="http://www.adidas.com/outdoor/cn/products/hiking/product/P92569/" target="_blank">徒步旅行抓绒帽衫提供透气的温暖和易于穿风袖口和下摆保持了寒意而柔软的拉绒羊毛内提供舒适。</a></div>
+        </div>
+        <div class="chanpinone">
+        	<a href="http://www.adidas.com/outdoor/cn/products/hiking/product/G41528/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test24.jpg" /></a>
+            <div class="chanpinname"><a href="http://www.adidas.com/outdoor/cn/products/hiking/product/G41528/" target="_blank">女款远足鞋采用防水GORE-TEX防雨挡泥而不损透气性。减震性可帮助您的双足全天保持清爽。</a></div>
+        </div>
+        <div class="chanpinone">
+        	<a href="http://www.adidas.com/outdoor/cn/products/all/product/G40518/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test25.jpg" /></a>
+            <div class="chanpinname"><a href="http://www.adidas.com/outdoor/cn/products/all/product/G40518/" target="_blank">适于任何户外运动时候穿着多区外底设计非常适于远足与登山，令每一步都获得绝佳缓冲感受。</a></div>
+        </div>
+        <div class="chanpinone">
+        	<a href="http://www.adidas.com/outdoor/cn/products/hiking/product/U43957/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test26.jpg" /></a>
+            <div class="chanpinname"><a href="http://www.adidas.com/outdoor/cn/products/hiking/product/U43957/" target="_blank">这款中帮远足鞋，提供卓越的天气保护性能。外底令你在未知地面上每一步稳定有力。</a></div>
+        </div>
+        <div class="chanpinone">
+        	<a href="http://www.adidas.com/outdoor/cn/products/all/product/G41296/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test27.jpg" /></a>
+            <div class="chanpinname"><a href="http://www.adidas.com/outdoor/cn/products/all/product/G41296/" target="_blank">女子快速X GTX鞋在快节奏的户外活动提供了100％的气象保障。</a></div>
+        </div>
+        <div class="chanpinone">
+        	<a href="http://www.adidas.com/outdoor/cn/products/all/product/U41594/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test28.jpg" /></a>
+            <div class="chanpinname"><a href="http://www.adidas.com/outdoor/cn/products/all/product/U41594/" target="_blank">一款灵活轻便的远足靴，令其具有更强的透气防水保护性能。外底抓地有力，</a></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="title"><a name="a2"></a><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/title3.jpg" /></a></div>
+    <div class="yundongyuana">
+    	<div class="yundong_l">
+        	<div style="margin:5px auto; width:650px;"><iframe src="http://static.8264.com/oldcms/moban/zt/adidas/lunbo2.html" frameBorder=0 name="iframe"  scrolling="no" height="330" width="650" marginheight="0" marginwidth="0"></iframe></div>
+            <div class="shipin">
+            	<div class="shipin_l">
+                	<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0" width="370" height="250"><param name="movie" value="http://player.youku.com/player.php/sid/XMzAwNDIwNTYw/v.swf" /><param name="quality" value="high" /><param name="wmode"><embed src="http://player.youku.com/player.php/sid/XMzAwNDIwNTYw/v.swf" quality="high"  pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="370" height="250"></embed></object>
+</div>
+                <div class="shipin_r">
+                	<h1>视频播放列表</h1>
+                    <ul>
+                    	<li><a href="http://v.youku.com/v_show/id_XMzAwNDE4MTM2.html" target="_blank">未知，让我们不断前行（一）</a></li>
+                        <li><a href="http://v.youku.com/v_show/id_XMzAwNDI3NzAw.html" target="_blank">未知，让我们不断前行（二）</a></li>
+                        <li><a href="http://v.youku.com/v_show/id_XMzAwNDIxMTky.html" target="_blank">未知，让我们不断前行（三）</a></li>
+                        <li><a href="http://v.youku.com/v_show/id_XMzAwNDA4OTQ0.html" target="_blank">亚历山大&#8226;胡贝尔无保护独攀Schweizerführe</a></li>
+                        <li><a href="http://v.youku.com/v_show/id_XMzAwNDA5Nzky.html" target="_blank">亚历山大&#8226;胡贝尔无保护独攀HASSE BRANDLER</a></li>
+                        <li><a href="http://v.youku.com/v_show/id_XMzAwNDIwNTYw.html" target="_blank">亚历山大&#8226;胡贝尔无保护独攀MURCIANA</a></li>
+                        <li><a href="#" target="_blank"></a></li>
+                        <li><a href="#" target="_blank"></a></li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="yundong_r">
+        	<!--单条开始-->
+            <div class="yundongimg"><a href="http://www.adidas.com/outdoor/cn/athlete/barbara-zangerl/#pg1" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test29.jpg" /></a></div>
+            <!--单条结束-->
+            <div class="yundongimg"><a href="http://www.adidas.com/outdoor/cn/athlete/michi-aschaber/#pg2" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test30.jpg" /></a></div>
+            <div class="yundongimg"><a href="http://www.adidas.com/outdoor/cn/athlete/peter-csonka/#pg3" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test31.jpg" /></a></div>
+            <div class="yundongimg"><a href="http://www.adidas.com/outdoor/cn/athlete/alex-luger/#pg4" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test32.jpg" /></a></div>
+            <div class="yundongimg"><a href="http://www.adidas.com/outdoor/cn/athlete/wolfgang-steiner/#pg4" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test33.jpg" /></a></div>
+            <div class="yundongimg"><a href="http://www.adidas.com/outdoor/cn/athlete/beat-kammerlander/#pg3" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test34.jpg" /></a></div>
+            <div class="yundongimg"><a href="http://www.adidas.com/outdoor/cn/athlete/sam-sutton/#pg2" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test35.jpg" /></a></div>
+            <div class="yundongimg"><a href="http://www.adidas.com/outdoor/cn/athlete/alessandro-ploner/#pg1" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test36.jpg" /></a></div>
+            <div class="yundongimg"><a href="http://www.adidas.com/outdoor/cn/athlete/nick-troutman/#pg1" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test37.jpg" /></a></div>
+            <div class="yundongimg"><a href="http://www.adidas.com/outdoor/cn/athlete/corinna-schwiegershausen/#pg2" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test38.jpg" /></a></div>
+            <div class="yundongimg"><a href="http://www.adidas.com/outdoor/cn/athlete/bernhard-steiner/#pg3" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test39.jpg" /></a></div>
+            <div class="yundongimg"><a href="http://www.adidas.com/outdoor/cn/athlete/michi-lerjen/#pg4" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test40.jpg" /></a></div>
+            <div class="yundongimg"><a href="http://www.adidas.com/outdoor/cn/athlete/thomas-huber/#pg2" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test41.jpg" /></a></div>
+            <div class="yundongimg"><a href="http://www.adidas.com/outdoor/cn/athlete/lukas-irmler/#pg3" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test42.jpg" /></a></div>
+            <div class="yundongimg"><a href="http://www.adidas.com/outdoor/cn/athlete/nina-halasova/#pg4" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test43.jpg" /></a></div>
+            <div class="yundongimg"><a href="http://www.adidas.com/outdoor/cn/athlete/michaela-essl/#pg4" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test44.jpg" /></a></div>
+            <div class="yundongimg"><a href="http://www.adidas.com/outdoor/cn/athlete/alexander-ruchkin/#pg1" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test45.jpg" /></a></div>
+            <div class="yundongimg"><a href="http://www.adidas.com/outdoor/cn/athlete/lukas-ennemoser/#pg5" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/test46.jpg" /></a></div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="title"><a name="a4"></a><img src="http://static.8264.com/oldcms/moban/zt/adidas/images/title4.jpg" /></div>
+    <div class="shop">
+    	<div class="shopup">
+        	<div class="shop_l">
+            	<iframe src="http://static.8264.com/oldcms/moban/zt/adidas/lunbo3.html" frameBorder=0 name="iframe"  scrolling="no" height="270" width="565" marginheight="0" marginwidth="0"></iframe>
+            </div>
+            <div class="shop_r">
+            	<div class="shop_wen">
+                	<ul>
+                    	<li><h1>北京</h1><a href="http://www.adidas.com/campaigns/campaigns_cn/SLT/content/index.asp?strCountry_adidascom=cn" target="_blank">阿迪达斯全球品牌中心-北京三里屯</a></li>
+                        <li><h1>北京</h1><a href="http://www.adidas.com/conceptstores/content/index.asp?strBrand_adidascom=performance&amp;strCountry_adidascom=cn&amp;country=cn&amp;strLanguage_adidascom=cn&amp;language=cn" target="_blank">阿迪达斯北京东方新天地专卖店</a></li>
+                        <li><h1>北京</h1><a href="#" target="_blank">阿迪达斯北京新光天地专卖店</a></li>
+                        <li><h1>上海</h1><a href="http://www.adidas.com/conceptstores/content/index.asp?strBrand_adidascom=performance&amp;strCountry_adidascom=cn&amp;country=cn&amp;strLanguage_adidascom=cn&amp;language=cn" target="_blank">阿迪达斯上海市静安区南京西路939号</a></li>
+                        <li><h1>上海</h1><a href="http://www.adidas.com/conceptstores/content/index.asp?strBrand_adidascom=performance&amp;strCountry_adidascom=cn&amp;country=cn&amp;strLanguage_adidascom=cn&amp;language=cn" target="_blank">阿迪达斯上海市淮海路专卖店</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="shopdown" style="display:none;">阿迪达斯是全球领先的体育品牌。阿迪达斯索倡导的品牌精神"没有不可能"浐透到各个沟通渠道并帮助消费者与阿迪达斯更紧密的联系在一起。阿迪达斯全球品牌中心—北京三里屯有史以来第一次在同一门店内聚焦了阿迪达斯旗下三大品牌：阿迪达斯运动表现、Originals经典系列和Y-3，意在将阿迪达斯零售消费体验带上更高的层次。</div>
+    </div>
+    
+</div>
+<div class="bottom">
+<a href="http://www.8264.com/template/8264/about/aboutus.htm" target="_blank">8264简介</a>&nbsp;|&nbsp;<a href="http://www.8264.com/template/8264/about/ggservice/index.html" target="_blank" >广告服务</a>&nbsp;|&nbsp;<a href="http://www.8264.com/zhuanti" target="_blank">户外热点</a>&nbsp;|&nbsp;<a href="http://www.8264.com/template/8264/about/aboutus.htm" target="_blank">联系方式</a>&nbsp;|&nbsp;<a href="http://bbs.8264.com/plugin.php?id=drc_qqgroup:main" target="_blank" >QQ群联盟</a>&nbsp;|&nbsp;<a href="http://www.8264.com/link/" target="_blank">户外网址大全</a><br>
+          服务热线：022-23708264&nbsp;|&nbsp;传真：022-23857291&nbsp;|&nbsp;地址：天津市华苑产业园区鑫茂科技园C2座6层AB单元<br>
+          <a href="http://bx.8264.com" target="_blank">户外活动有风险，8264提醒您购买</a> <a href="http://bx.8264.com">户外保险</a><br>
+          除了脚印什么都不留下 除了摄影什么都不带走，欢迎各种媒体转载我们的原创作品[转载请注明出处]。8264&nbsp;版权所有   <a href="http://www.miibeian.gov.cn/" target="_blank">津ICP备05004140号-10</a>&nbsp;&nbsp;&nbsp;<a href="http://www.8264.com/template/8264/image/icp.jpg" target="_blank">ICP证 津B2-20110106</a></div>
+</body>
+</html>

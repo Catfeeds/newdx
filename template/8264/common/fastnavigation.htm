@@ -1,0 +1,62 @@
+<style>
+.nav_t_p_a{ width:980px; border:#d8d8d8 solid 1px; position:absolute; top:52px; right:0px;z-index: 6363;background: #fff; box-shadow: 0 2px 5px #CCCCCC}
+.nav_t_p_a dl{ display:table; border-bottom:#d8d8d8 solid 1px; width:100%; margin:0;  padding:11px 0px 6px 0px; background:url(http://static.8264.com/static/image/common/bbsnavbg.jpg) -21px 0px repeat-y;}
+.nav_t_p_a dl.without_b{ border-bottom:none 0;}
+.nav_t_p_a dt{ float:left; width:94px; margin:0px; padding:0px; text-indent:15px; height:100%;font-size:12px; color:#fff;}
+.nav_t_p_a dd{ margin:0px; padding:0px; overflow:hidden;}
+.nav_t_p_a dd a{ margin:0px 20px 5px 0px; display:inline-block; white-space: nowrap;}
+.nav_t_p_a dd a:hover{ color:#43A6DF;}
+.headerL .site .xlsj{ padding:0px 16px 0px 0px; background:url(http://static.8264.com/static/image/common/arrow_xl.jpg) 51px 7px no-repeat; }
+.headerL .site .xlsj_down{ padding:0px 16px 0px 0px; background:url(http://static.8264.com/static/image/common/arrow_xl.jpg) 51px -8px no-repeat; }
+
+</style>
+<!--{if $catlist}-->
+<div class="nav_t_p_a" style="display: none;">	
+	<!--{loop $catlist $key $cat}-->
+	<dl <!--{if $cat[extra][classname]}-->class="bg"<!--{/if}-->>
+		<dt>{$cat[name]}</dt>		
+		<!--{if $cat[forumcolumns] == 0}-->
+					<dd>
+						<!--{loop $cat[forums] $forumid}-->
+						<!--{eval $forum['domain']=$alldomainwithfid[$forumid];}--> 
+						<!--{eval $forumurl = !empty($forum['domain']) && !empty($_G['setting']['domain']['root']['forum']) ? 'http://'.$forum['domain'].'.'.$_G['setting']['domain']['root']['forum'] : 'forum.php?mod=forumdisplay&fid='.$forumid;}-->
+							<a href="$forumurl">
+								<i>$forumlist[$forumid][name]</i>								
+							</a>
+						<!--{/loop}-->
+					</dd>
+					<!--{else}-->
+					<dd>
+						<!--{loop $cat[forums] $forumid}-->
+						<!--{eval $forum['domain']=$alldomainwithfid[$forumid];}--> 
+						<!--{eval $forumurl = !empty($forum['domain']) && !empty($_G['setting']['domain']['root']['forum']) ? 'http://'.$forum['domain'].'.'.$_G['setting']['domain']['root']['forum'] : 'forum.php?mod=forumdisplay&fid='.$forumid;}--> 
+						
+							<!--{if $forumlist[$forumid][extra][localname] != ''}-->
+						
+							<!--{else}-->
+						
+							<!--{/if}-->
+							
+							<a href="<!--{if $forumlist[$forumid][redirect]}-->$forumlist[$forumid][redirect]" target="_blank"<!--{else}-->$forumurl"<!--{/if}--> >$forumlist[$forumid][name] <!--{if $forumid == 493}--><!--{else}--><!--{/if}--></a>
+								
+						
+						
+						<!--{/loop}-->
+					</dd>
+					<!--{/if}-->		
+	</dl>
+	
+	<!--{/loop}-->
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function($){	
+	$('.site .xlsj, .nav_t_p_a').hover(function(){	
+		clearTimeout(window.acCtrl);		
+		$(".nav_t_p_a").show();
+	},function(){		
+		window.acCtrl=setTimeout(function(){$(".nav_t_p_a").hide();},300);
+	});
+})
+</script>
+<!--{/if}-->		
+

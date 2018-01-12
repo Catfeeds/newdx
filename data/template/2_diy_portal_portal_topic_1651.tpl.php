@@ -1,0 +1,295 @@
+<?php if(!defined('IN_DISCUZ')) exit('Access Denied'); ?>
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>2016ISPO慕尼黑展8264现场报道</title>
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/oldcms/moban/zt/2016ispo/style/style.css">
+<script src="http://static.8264.com/oldcms/moban/zt/2016ispo/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div class="branner"></div>
+<div class="newsbox">
+<div class="w980 pr">
+    	<div class="leftarrow"></div>
+    	<div class="newslist">
+        	<ul>
+            	<li>
+                	<a href="http://www.8264.com/viewnews-106021-page-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/news1.jpg"/></a>
+                    <p>
+                    	<a href="http://www.8264.com/viewnews-106021-page-1.html" target="_blank">8264带您现场看： ISPO MUNICH 2016来了</a>
+                        <span>一年一度的ISPO MUNICH展于1月24在慕尼黑展览中心拉开帷幕，为期4天的展会将呈现出哪些新亮点，新趋势，又有哪些突破性产品面世？受慕尼黑主办方邀请，8264(8264.com)记者作为中国独家网络媒体已飞抵现场，未来的几天，请跟随我们一起来看来自全球户外产业最前沿的新鲜报道！</span>
+                    </p>
+                </li>
+                <li>
+                	<a href="http://www.8264.com/viewnews-106029-page-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/news2.jpg"/></a>
+                    <p>
+                    	<a href="http://www.8264.com/viewnews-106029-page-1.html" target="_blank">8264带您现场看 2016 ISPO AWARD都花落谁家</a>
+                        <span>ISPO AWARD是全球范围运动产品创新性和高品质的标志。作为ISPO MUNICH 2016的重头戏之一，ISPO AWARD在开展首日(2016-1-24)11时举办了颁奖典礼。想知道哪些产品斩获大奖，还有领奖人的风采？看8264编辑采集自现场的第一手资料： </span>
+                    </p>
+                </li>
+                <li>
+                	<a href="http://www.8264.com/viewnews-106189-page-1.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/news3.jpg"/></a>
+                    <p>
+                    	<a href="http://www.8264.com/viewnews-106189-page-1.html" target="_blank">ISPO慕尼黑展落幕 ISPO北京& 上海展精彩开启！</a>
+                        <span>ISPO在德国有40多年的历史，在这个热爱户外运动的国度几乎人人都知道ISPO。我曾经在酒吧和年轻人随意聊天，提及我在ISPO团队，他们就两眼发光，那时我就吃惊怎么他们都知道ISPO？他们说：那当然，我爸还是小孩的时候就有ISPO了；在慕尼黑，坐在出租车上，司机会告诉你：我也爱滑雪、徒步，ISPO来了，酒店贵了，我们的生意也就超级好了，我也爱ISPO……</span>
+                    </p>
+                </li>
+            </ul>
+        </div>
+        <div class="rightarrow"></div>
+    </div>
+</div>
+<div class="w980">
+<div class="navbox clear_b">
+    	<a href="http://munich.ispo.com/en/TRADE-SHOW-VISITORS/Opening-Hours-Location/" target="_blank" class="nav1"></a>
+        <a href="http://munich.ispo.com/Project-specific/Openinghours/ISPO-MUNICH-Gelaendeplan-Map-of-fair-ground.jpg" target="_blank" class="nav2"></a>
+        <a href="http://www.messe-muenchen.de/en/meta/anreise/anreise_2_contentmaster.php" target="_blank" class="nav3"></a>
+        <a href="http://munich.ispo.com/en/TRADE-SHOW-VISITORS/Journey-stay-visa/Journey/" target="_blank" class="nav4"></a>
+        <a href="http://ispo-mediaservices.com/prj_157/view/index.cfm?nv=0&LNG=2" target="_blank" class="nav5"></a>
+        <a href="http://ispo-mediaservices.com/prj_157/view/index.cfm?nv=6.2&LNG=2 " target="_blank" class="nav6"></a>
+    </div>
+</div>
+<div class="w980 pb50" id="zhnews">
+<div class="zhnews clear_b">
+        <ul>
+            <li>
+                <a href="http://www.8264.com/viewnews-106031-page-1.html " target="_blank">
+                    <img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/n1.jpg"/>
+                    <b>8264带您现场看：Fenix荣获亚洲金奖 创新很重要</b>
+                    <span>作为活跃在ISPO MUNICH展厅为数不多的中国本土品牌，Fenix在ISPO AWARD评选中却屡获佳绩。无论是自行车灯BT20（2013-14年），手电PD12（2014-15年），获得自行车灯BC30R和露营灯CL20（2015-16年），都体现了Fenix追求卓越用户体验，创新户外运动照明的精神。在本届ISPO MUNICH上，Fenix的露营灯CL25R荣获亚洲金奖，稍早时间还曾荣获中国户外产业年度评选——国产品牌装备大奖。</span>
+                    <em>
+                        24
+                        <i>Feb,2016</i>
+                    </em>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.8264.com/viewnews-106053-page-1.html" target="_blank">
+                    <img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/n2.jpg"/>
+                    <b>8264慕尼黑现场：国际户外大牌也跟风？</b>
+                    
+                    <span>总会有人说国内的户外行业喜欢跟风，没有国外的有创意。这句话小编不愿意听，真的就是“外国的月亮圆”？好东西就是会得到市场的认可，大家一起做，不断改进，精益求精才是王道。现在，我们就看看ISPO MUNICH上的一款跟风装备——雪崩气囊背包。</span>
+                    <em>
+                        24
+                        <i>Feb,2016</i>
+                    </em>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.8264.com/viewnews-106061-page-1.html" target="_blank">
+                    <img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/n3.jpg"/>
+                    <b>8264慕尼黑现场：国际户外品牌的“幕后英雄” </b>
+                    <span>在中国户外产业中，有一群人，你可能不了解，但是绝不能无视，他们所经营的OEM企业，为全球的户外爱好者提供装备。在本届ISPO MUNICH的C1-C3展区，很多展位上都悬挂下面这个图案，这代表他们来自中国，也代表了中国制造的力量。今天就让小编带你了解下这些国际户外品牌的幕后英雄。</span>
+                    <em>
+                        24
+                        <i>Feb,2016</i>
+                    </em>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.8264.com/viewnews-106079-page-1.html " target="_blank">
+                    <img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/n4.jpg"/>
+                    <b>8264慕尼黑现场 Gerlinde被授予体育名人奖</b>
+                    <span>德国当地时间26日晚，著名登山家Gerlinde Kaltenbrunner被授予ISPO年度体育名人奖（“Sports Personality of theYear”）。颁奖仪式将在ISPOVIP晚宴中举行，约350位来自商界、体育届和媒体的嘉宾代表出席。 </span>
+                    <em>
+                        24
+                        <i>Feb,2016</i>
+                    </em>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.8264.com/viewnews-106086-page-1.html" target="_blank">
+                    <img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/n5.jpg"/>
+                    <b>8264慕尼黑现场：有趣装备之轻轻松松玩户外</b>
+                    <span>每年的ISPO MUNICH展会上，除了大家都关注的各种“高大上”，也总会有很多新奇的小玩意，让你心动不已。现在就让小编带你看看本届展会上的那些有趣的“小玩意”，先从让我们变得更轻松的产品说起吧！为了避免广告嫌疑，小编就不逐一抄袭产品品牌简介了。</span>
+                    <em>
+                        25
+                        <i>Feb,2016</i>
+                    </em>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.8264.com/viewnews-106135-page-1.html " target="_blank">
+                    <img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/n6.jpg"/>
+                    <b>8264慕尼黑现场：扑面而来的商业味儿</b>
+                    <span>在ISPO MUNICH的几天，如果问小编与ISPO BEIJING最大的不同在哪里？我会告诉你，是展会的商业氛围。来到这里的参观者，大多带有很强的目的性，他们不是走马观花，而是要在展会上寻找自己的合作伙伴。</span>
+                    <em>
+                        25
+                        <i>Feb,2016</i>
+                    </em>
+                </a>
+            </li>
+        </ul>
+        <ul style="display:none;">
+            <li>
+                <a href="http://www.8264.com/viewnews-106144-page-1.html" target="_blank">
+                    <img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/n7.jpg"/>
+                    <b>8264慕尼黑现场：有趣装备之玩户外开心最重要</b>
+                    <span>想要飞？3D+体感让你在客厅就能享受飞翔的乐趣。这个健身系统把物质世界和虚拟世界结合在一起，带把手的遥控部件可记录动作并与个人电脑或智能手机上的游戏连接。通过控制游戏中的动作和锻炼进程可以活动手脚，前后倾斜，左右翻滚。</span>
+                    <em>
+                        25
+                        <i>Feb,2016</i>
+                    </em>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.8264.com/viewnews-106147-page-1.html " target="_blank">
+                    <img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/n8.jpg"/>
+                    <b>8264慕尼黑现场：Gore-Tex科技创新40年</b>
+                    <span>GORE-TEX被全球户外爱好者所熟知，对人类开展户外运动产生了革命性影响，使人们首次真正体会到全天候最佳保护，被称为被誉为“世纪之布”。在本届ISPO MUNICH上，GORE-TEX的“40 YEARS OF INNOVATIONS”展示最近几年的得意之作，吸引了众多参观者。下面就让小编带你一起看看。</span>
+                    <em>
+                        25
+                        <i>Feb,2016</i>
+                    </em>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.8264.com/viewnews-106152-page-1.html " target="_blank">
+                    <img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/n9.jpg"/>
+                    <b>8264慕尼黑现场：飞耐时会适用于80%的户外运动</b>
+                    <span>瑞典飞耐时集团创建于1960年，自创品牌Fjallraven（北极狐）被誉为瑞典的国民品牌。随着公司的发展，相继收购了HANWAG（悍威）,Primus和Brunton三个世界著名的高端户外品牌。在本届ISPO MUNICH期间，飞耐时集团品牌市场总监Maisie Zhang女士接受了8264的专访。</span>
+                    <em>
+                        26
+                        <i>Feb,2016</i>
+                    </em>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.8264.com/viewnews-106176-page-1.html " target="_blank">
+                    <img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/n10.jpg"/>
+                    <b>8264慕尼黑现场：从不走回头路的MBC创始人姜磊</b>
+                    <span>一副登山杖，可以减轻30%的负重，不过，你知道么？你手里的国际大牌登山杖很有可能出自中国的MBC之手。在ISPO MUNICH期间，MBC品牌创始人姜磊接受了8264的专访，现在就让我们一起看一看中国制造的力量。</span>
+                    <em>
+                        26
+                        <i>Feb,2016</i>
+                    </em>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.8264.com/viewnews-106098-page-1.html " target="_blank">
+                    <img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/n11.jpg"/>
+                    <b>凯乐石产品再获五项德国ISPO大奖 彰显持续创新实力</b>
+                    <span>2016年1月24日，德国慕尼黑ISPO大奖（ISPOAWARD）揭晓。攀登领导品牌凯乐石选送的五款专业产品凭借其创新设计获得国际专业评审们的一致肯定，摘取五项德国ISPO产品大奖！</span>
+                    <em>
+                        26
+                        <i>Feb,2016</i>
+                    </em>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.8264.com/viewnews-105906-page-1.html" target="_blank">
+                    <img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/n12.jpg"/>
+                    <b>户外产业最棒的展会之一 ：ISPO MUNICH</b>
+                    <span>ISPO MUNICH 是目前世界上体育用品及运动时装行业最大的综合博览会，在全球运动产业从业者心中有着重要地位。现在，就让我们浮光掠影的看一看ISPO的45年历程。</span>
+                    <em>
+                        26
+                        <i>Feb,2016</i>
+                    </em>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="imgbox" style="display:none;">
+<div class="w980 pt30" id="imglist">
+    	<div class="imgboxlist clear_b">
+            <ul>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+            </ul>
+            <ul style="display:none;">
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+                <li><a href="#" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2016ispo/images/i1.jpg"/></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="footer">
+<div class="footercon clear_b">
+<p class="footer_l">津ICP备05004140号-10 ICP证 津B2-20110106<br>户外有风险，8264提醒您购买<a target="_blank" href="http://bx.8264.com/">户外保险</a></p>
+<p class="footer_r"><a rel="nofollow" href="http://bbs.8264.com/misc-stat.html" target="_blank">站点统计</a> | <a rel="nofollow" href="http://www.8264.com/about-contact.html" target="_blank">联系我们</a> | <a rel="nofollow" href="http://www.8264.com/about-contact.html#q4" target="_blank">8264招聘</a> | <a rel="nofollow" href="http://bbs.8264.com/misc-faq.html" target="_blank">帮助</a></p>
+</div>
+</div>
+<script>
+// 轮播开始
+$(function(){
+ var shuliang = $(".zhnews ul").size();
+ var index = 0;
+ 	$("#zhnews").append("<div class='zhsi'></div>"); 
+for ( i=0 ; i< shuliang ;i){
+i++	
+$(".zhsi").append("<span></span>");
+};
+$(".zhsi span").eq(0).addClass("ts");
+$(".zhsi span").mouseenter(function(){	
+var index = $(this).index();
+$(this).addClass("ts").siblings().removeClass("ts");
+$(".zhnews ul").eq(index).fadeIn().siblings().hide(0);
+});	
+});
+$(function(){
+ var shuliang = $(".imgboxlist ul").size();
+ var index = 0;
+ 	$("#imglist").append("<div class='szbox'></div>"); 
+for ( i=0 ; i< shuliang ;i){
+i++	
+$(".szbox").append("<span></span>");
+};
+$(".szbox span").eq(0).addClass("ts");
+$(".szbox span").mouseenter(function(){	
+var index = $(this).index();
+$(this).addClass("ts").siblings().removeClass("ts");
+$(".imgboxlist ul").eq(index).fadeIn().siblings().hide(0);
+});	
+});
+
+/*新闻大滚动*/
+$(function(){
+var newsnum = $(".newslist li").size();
+var i=0;
+
+$(".rightarrow").click( function () { 
+if( i < newsnum-1){
+i++;
+$(".newslist li").eq(i).show().siblings().hide();
+}
+});
+$(".leftarrow").click( function () { 
+if( i>0){
+i--;
+$(".newslist li").eq(i).show().siblings().hide();
+}
+});	
+});
+
+</script>
+</body>
+</html>

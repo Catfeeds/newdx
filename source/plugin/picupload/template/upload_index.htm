@@ -1,0 +1,264 @@
+<!--{subtemplate common/header_8264_new}-->
+<link rel="stylesheet" href="/source/plugin/picupload/style/style.css?{VERHASH}" />
+
+<!--引入JS-->
+<script type="text/javascript" src="http://static.8264.com/static/js/webuploader.js"></script>
+
+<div class="wrap">
+<form id="newpost" method="post" onsubmit="return false;" autocomplete="off" action="plugin.php?id=picupload:post&fid={$_G['fid']}">
+<div class="wraptitle">
+<script type="text/javascript">
+var maxnum = <!--{$maxpic}-->;
+var attachserver = "http://<!--{$_G['config']['cdn']['images']['cdnurl']}-->";
+var formactiontype = '{$_G[gp_action]}';
+</script>
+	<span style="float:left">$navigation</span>
+	<span style="float:right;font-size:13px;font-weight:300;"><a style="color:#0691D3;" href="forum.php?mod=post&action=newthread&fid=$_G[fid]" onclick="return confirm('<!--{if $_G[cache][plugin][picupload][tipstext]}--><!--{$_G[cache][plugin][picupload][tipstext]}--><!--{else}-->您当前编辑的文字信息将会丢失<!--{/if}-->');">切换到普通发帖</a><a style="color:#0691D3;margin-left:10px;" href="{$returnurl}">返回&nbsp;$_G['forum']['name']</a></span>
+	<div style="clear:both;"></div>
+	</div>
+<div class="ft tools_background" id="tools_top" style="width:960px;">
+	<!--{if !empty($_G['forum'][threadtypes][types])}-->
+	<div class="selectft" <!--{if $_G[gp_action]!='reply'}-->onclick="typeidlist.style.display = 'block';"<!--{/if}-->>
+			<input type="hidden" name="typeid" value="<!--{if $_G[gp_action]=='reply'}-->{$thread[typeid]}<!--{else}-->0<!--{/if}-->" id="typeid"/><span id="typeid_txt"><!--{if $_G[gp_action]=='reply'}-->{$_G['forum'][threadtypes][types][$thread[typeid]]}<!--{else}-->选择主题分类<!--{/if}--></span>
+			<!--{if $_G[gp_action]!='reply'}-->
+			<div id="typeidlist" class="selecttan">
+				<!--{loop $_G['forum'][threadtypes][types] $typeid $name}-->
+				<a href="javascript:;" typeid="<!--{$typeid}-->" target="_self" onclick="dosort(this,'typeid',event)"><!--{echo strip_tags($name);}--></a>
+				<!--{/loop}-->
+			</div>
+			<!--{/if}-->
+	</div>
+	<!--{/if}-->
+	<div class="textft">
+	<!--{if $_G[gp_action] != 'reply'}-->
+		<input type="text" id="subject" name="subject" onkeyup="strLenCalc(this, 'checklen', 80);" id="textfield" class="textft_name" />
+	<!--{else}-->
+		<span id="subjecthide" class="z">RE: <!--{eval echo strlen($thread[subject])>55 ? substr($thread[subject],0,55)."..." : $thread[subject]}-->&nbsp;</span>
+		<span>[<a href="javascript:;" onclick="display('subjecthide');display('subjectbox');$('subject').value='RE: {echo htmlspecialchars(str_replace('\'', '\\\'', $thread[subject]))}';display('subjectchk');strLenCalc($('subject'), 'checklen', 80);"><!--{eval echo lang('forum/template','modify')}--></a>]</span>
+		<span id="subjectbox" style="display:none">
+		<input type="text" id="subject" name="subject" onkeyup="strLenCalc(this, 'checklen', 80);" value="RE: $thread[subject]" class="textft_name" /></span>
+	<!--{/if}-->
+		<span id="subjectchk"{if $_G[gp_action] == 'reply'} style="display:none"{/if}>&nbsp;&nbsp;<!--{eval echo lang('forum/template','comment_message1')}--> <strong id="checklen"> 80 </strong><!--{eval echo lang('forum/template','comment_message2')}--></span>
+	</div>
+	<input type="hidden" name="formhash" id="formhash" value="{FORMHASH}" />
+	<input type="hidden" name="posttime" id="posttime" value="{TIMESTAMP}" />
+	<input type="hidden" name="fid" id="fid" value="$_G[fid]"/>
+	<input type="hidden" name="tid" id="tid" value="<!--{if $_G['gp_action']=='reply'}-->$_G[tid]<!--{else}-->0<!--{/if}-->"/>
+	<input type="hidden" name="action" id="action" value="$_G[gp_action]"/>
+	<!--{if !empty($_G['gp_modthreadkey'])}--><input type="hidden" name="modthreadkey" id="modthreadkey" value="$_G['gp_modthreadkey']" /><!--{/if}-->
+	<input type="hidden" name="wysiwyg" id="{$editorid}_mode" value="$editormode" />
+	<!--{if $_G[gp_action] == 'reply'}-->
+		<input type="hidden" name="noticeauthor" value="$noticeauthor" />
+		<input type="hidden" name="noticetrimstr" value="$noticetrimstr" />
+		<input type="hidden" name="noticeauthormsg" value="$noticeauthormsg" />
+	<!--{/if}-->
+</div>
+</form>
+<div class="col_main">
+	<div id="righttool" class="col_side_l tools_background">
+		<!--左侧标签title开始-->
+		<div class="col_side_l_title">
+			<ul>
+				<li class="upimg_z" id="selectupload_menu" onclick="if(!this.className.match('_z')){this.className = 'upimg_z';selectalbum_menu.className = 'album';use_album.style.display='none';use_upload.style.display='block';}">上传照片</li>
+				<li class="album" id="selectalbum_menu" onclick="if(!this.className.match('_z')){this.className = 'album_z';selectupload_menu.className = 'upimg';use_album.style.display='block';use_upload.style.display='none';}">使用相册</li>
+			</ul>
+		</div>
+		<!--左侧标签title结束-->
+		<div class="col_side_layout">
+			<form autocomplete="off" action="plugin.php?id=picupload:post" method="post">
+			<!--状态相册开始-->
+			<div id="use_album" class="col_side_l_con" style="display:none;">
+				<div class="note">从我的相册中选择图片</div>
+				<div class="selectalbumwrap">
+					<div class="selectalbum" onclick="useajaxalbum.style.display='block';">
+						<input id="ajaxalbum" type="hidden" value="0"/><span id="ajaxalbum_txt">请选择相册</span>
+						<div id="useajaxalbum" class="selectalbumtan">
+							<!--{loop $albumlist $album}-->
+							<a href="javascript:;" ajaxalbum="<!--{$album['albumid']}-->" onclick="dosort(this,'ajaxalbum',event);ajaxget('plugin.php?id=picupload:albumlist&abid=' + this.getAttribute('ajaxalbum'),'albumlist_ajax','');" target="_self"><!--{$album['albumname']}-->&nbsp;(<strong class="xi1 album_num"><!--{$album['picnum']}--></strong>)</a>
+							<!--{/loop}-->
+						</div>
+					</div>
+				</div>
+				<!--相册状态初始开始-->
+				<div id="albumlist_ajax" class="col_side_main"><img src="http://static.8264.com/static/images/photobg.jpg"/></div>
+				<!--相册状态初始结束-->
+			</div>
+			<!--状态相册结束-->
+			<!--状态上传开始-->
+			<div style="margin:0 auto;width:208px;">
+				<input id="url_action" value="{$action}" type="hidden">
+				<input id="url_policy" value="{$policy}" type="hidden">
+				<input id="url_signature" value="{$sign}" type="hidden">
+
+				<div id="filePicker">请选择图片</div>
+				<div><p style="display:none;" id="uploadtips"></p></div>
+			</div>
+			<div id="use_upload" class="col_side_l_con">
+				<div class="upnote">还可上传 <b id="img_sy"><!--{$maxpic}--></b> 张图片</div>
+				<div class="bcdxc">
+					<input id="savetoalbum" name="savetoalbum" type="checkbox" value="1" /><label>保存图片到相册</label>
+                    <div id="newalbum_tips" class="tjalbum" style="display:none;">
+                        <table width="185" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td class="tjalumtestwarp"><input id="newalbumname" name="newalbumname" type="text" class="tjalbumtext" /></td>
+                            </tr>
+                            <tr>
+                              <td class="tjalbumbuttomwarp"><input onclick="albumid_txt.innerHTML = newalbumname.value+'<span class=\'red\'>  (New!)  </span>';newalbum_tips.style.display='none';" name="" type="button" class="tjalbumbuttom" />&nbsp;&nbsp;<input name="" onclick="newalbum_tips.style.display='none';" type="reset" class="tjalbumbuttom_reset" value="" /></td>
+                            </tr>
+                        </table>
+                    </div>
+				</div>
+				<div class="selectalbumwrap_save">
+					<div class="selectalbum_save" onclick="selectalbum_list.style.display='block';this.style.zIndex = 10;">
+						<input id="albumid" type="hidden" name="albumid" value="0"/><span id="albumid_txt">请选择相册</span>
+						<div id="selectalbum_list" class="selectalbumtan_save" style="display:none;">
+							<!--{loop $albumlist $album}-->
+							<a href="javascript:;" albumid="<!--{$album['albumid']}-->" onclick="dosort(this,'albumid',event)" target="_self"><!--{$album['albumname']}-->&nbsp;(<strong class="xi1 album_num"><!--{$album['picnum']}--></strong>)</a>
+							<!--{/loop}-->
+							<a href="javascript:;" id="createname" albumid="0" onclick="dosort(this,'albumid',event);newalbum_tips.style.display='';newalbumname.focus();">+创建新相册</a>
+						</div>
+				  </div>
+				</div>
+			</div>
+			<!--状态上传开始-->
+			</form>
+		</div>
+		<input type="button" style="border:0px;cursor:pointer;" class="tjbuttom" id="tjbuttom" />
+		<div style="clear:both;"></div>
+	</div>
+	<div class="col_side_r smallpiclist">
+		<form autocomplete="off" action="plugin.php?id=picupload:post" method="post">
+		<div class="cztop tools_background" id="pic_tools_tips" style="display:none;width:710px;">
+			<div class="cztop_l">
+				<input type="checkbox" id="descriptionallpic" />&nbsp;<label style="margin-right: 10px;">描述图片</label>
+				<span id="descriptionSelect"><input id="beforeattach" name="beforeattach" type="checkbox" value="1" />&nbsp;<label>描述在图片前</label></span>
+			</div>
+			<input id="temp_notic" type="hidden" name="reply_notice" value="1" checked="true"/>
+			<input type="hidden" name="addfeed" value="1" checked="true"/>
+			<input type="hidden" name="usesig" value="1" checked="true"/>
+			<div class="cztop_r"><span style="display: none;visibility: hidden;">当前共有<b id="img_num">0</b>个图片,</span><span>拖动图片可重新排序</span></div>
+		</div>
+		</form>
+		
+			<div id="watting" class="wattingdiv side_r_one side_r_one_float loading">
+				<form autocomplete="off" action="plugin.php?id=picupload:ajaxpost&inajax=1" method="post">
+				<div class="side_r_one_img">
+					<img onload='showmynext(this);' class="attachpic_load attachimg" />
+					<!--<img style="display: none;" class="attachshows" src="static/image/discuz6/imageloading.gif" />-->
+					<input type="hidden" class="attach_new"/>
+					<input type="hidden" class="attachimage" name="attachimage[]" />
+					<p class="wattingtitle wattings"></p>
+					<p class="wattings"><b class="wattingpercent"></b></p>
+				</div>
+				<div class="side_r_one_text">
+					<textarea class="texttips attachshows" style="display: none;">请输入描述</textarea>
+					<textarea class="textshow" style="display:none;" cols="" rows="" ></textarea>
+					<div class="messagetips wattings"></div>
+				</div>
+				<div style="display: none;" class="side_r_one_dele"></div>
+				<div class="deletepicbtn x_buttom"><input type="hidden" class="attach_delete" name="attachnew[][delete]" value="0" /></div>
+				<input type="hidden" name="formhash" value="{FORMHASH}" />
+				<input type="hidden" name="posttime" value="{TIMESTAMP}" />
+				<input type="hidden" name="fid" value="$_G[fid]"/>
+				<input type="hidden" name="tid" value="<!--{if $_G['gp_action']=='reply'}-->$_G[tid]<!--{else}-->0<!--{/if}-->"/>
+				<input type="hidden" name="action" value="$_G[gp_action]"/>
+				<input type="hidden" name="beforeattach" value="0" />
+				<input type="hidden" class="albumtype" disabled="true"/>
+				<input type="hidden" class="albumurl" disabled="true" />
+				<input type="hidden" value="1" name="savetoalbum" disabled="true" />
+				<input type="hidden" value="0" name="albumid" disabled="true"/>
+				<input type="hidden" value="0" name="typeid" disabled="true" />
+				<!--{if !empty($_G['gp_modthreadkey'])}--><input type="hidden" name="modthreadkey" id="modthreadkey" value="$_G['gp_modthreadkey']" /><!--{/if}-->
+				<div style="clear:both;"></div>
+				</form>
+			</div>
+		
+		<div id="temp_imglist"><div><form action="plugin.php?id=picupload:ajaxpost&inajax=1" method="post"><div class="side_r_one"><input type="hidden" value="album" /><div class="side_r_one_img"><img onload='showmynext(this);' class="attachpic_load attachimg" /><img src="http://static.8264.com/static/image/discuz6/imageloading.gif" /><input type="hidden" value=''/></div><div class="side_r_one_text"><textarea onclick="show_focus(this);">请输入描述</textarea><textarea style="display:none;" onblur="this.parentNode.parentNode.className='side_r_one';" onfocus="this.parentNode.parentNode.className='side_r_one_z';" cols="" rows=""></textarea></div><div class="x_buttom_z" onmouseover="this.className='x_buttom';" onmouseout="this.className='x_buttom_z';" onclick="albumpicdel(this);" id="delid"></div></div></form></div></div><div id='postlist'><div id="imgattachlist"></div></div></div>
+</div>
+<div style="clear:both;"></div>
+</div>
+<div id="albumaddexiststips">当前图片已经被添加到这里啦!</div>
+<script type="text/javascript" src="http://static.8264.com/static/js/jquery.form.js"></script>
+<script type="text/javascript" src="http://static.8264.com/static/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script type="text/javascript">var ajaxper = <!--{$ajaxper}-->;</script>
+<script type="text/javascript" src="source/plugin/picupload/js/picupload.js?{VERHASH}"></script>
+<script type="text/javascript" src="http://static.8264.com/static/js/webuploader_start.js?{VERHASH}"></script>
+<!--<script type="text/javascript" src="static/js/newswfobject.js"></script>-->
+<script type="text/javascript">
+//    var params = {site:"{$_G[siteroot]}misc.php%3fmod=swfupload%26type=image%26fid=$fid%26twidth=100%26theight=100%26random=<!--{echo random(4)}-->",buttonimg:"http://static.8264.com/static/image/common/uploadnew.png"};
+//    swfobject.embedSWF("static/flash/uploadforum.swf", "pic_upload_multiimg", "208", "50", "10.0.0", "playerProductInstall.swf", params, {wmode:"transparent"});
+//    swfobject.createCSS("#pic_upload_multiimg", "display:block;text-align:left;z-index:200");
+	ajaxget('plugin.php?id=picupload:imagelist', 'imgattachlist');
+</script>
+<style>
+#watting{display:none;}
+#attachtemp{display:none;}
+.wattingdiv p{font-size:16px;line-height:18px;text-align:center;margin:13px 5px;}
+.wattingdiv .wattingpercent{font-size:24px;line-height:26px;}
+.wattingdiv .messagetips{font-size:20px;line-height:100px;}
+.attachimg{display:none;}
+#flashloading{background: url('http://static.8264.com/static/image/common/uploadnew.png') no-repeat; width:208px;height:50px;line-height:50px;font-size:16px;text-align:center;color:white;font-family: 微软雅黑;position:absolute;}
+#flashloading b{margin-left:15px;}
+#descriptionSelect{display:none;}
+#pic_upload_multiimg{width:208px;height:50px;}
+#albumaddexiststips{display:none;padding:10px 18px 15px 10px;line-height:20px;position:absolute;background:url('http://static.8264.com/static/image/common/tips_album.png') no-repeat; width:150px;height:70px;z-index:999;font-size:14px;color:white;font-family:微软雅黑;}
+			
+#uploadtips{color:blue;text-align:center;}
+#nv_plugin{height:auto;}
+#type_select{display:none;}
+.album_num{color:#E87C1A;}
+#albumid_select{background:#CCC}
+#showlist{height:520px;padding-top:10px;}
+.floatleft{float:left;}
+.img_show{width:120px;height:110px;}
+.img_show,.img_des,.img_contrl{margin-left:10px;padding:5px;line-height:110px;text-align:center;}
+.imgdeleted {opacity: 0.5;}
+#albumlist{height:350px;width:210px;}
+#albumlist table td{padding:5px;}
+#temp_imglist{display:none;}
+.albumaddimg{max-width:100px;max-height:100px;}
+.albumaddimg_ie6{width:100px;height:100px;}
+.cztop_r b{font-size:15px;margin:0 3px;}
+#process{background:#4BB6EA;width:0px;height:40px;}
+.red{color:red;}
+#tips_tzjx{width:710px;}
+.forprocess .alert_info{line-height:100%;padding-left:100px;padding-top:0;padding-bottom:0;min-height:25px;background-image:url("http://static.8264.com/static/image/common/info1.png");font-size:16px;background-position: 0 0;}
+.forprocess .alert_info div.ttt{text-align:right;height:25px;line-height:25px;font-weight:700;font-family:"Microsoft YaHei",Tahoma,Helvetica,SimSun,sans-serif}
+.forprocess .c.altw{padding:10px 15px;}
+.forprocess .t_l,.forprocess .t_c,.forprocess .t_r,.forprocess .m_l,.forprocess .m_r,.forprocess .b_l,.forprocess .b_c,.forprocess .b_r{background-color:#fff;opacity:0.6;}
+#tpisoffl{color:#8C8C8C;}
+#backgroundprocess{background:#EFEFEF;border:1px #D9D9D9 solid;margin-top:5px;}
+
+.webuploader-container {
+	position: relative;
+}
+.webuploader-element-invisible {
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px,1px,1px,1px);
+}
+.webuploader-pick {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	background: #00b7ee;
+	padding: 10px 15px;
+	font-size: 16px;
+	color: #fff;
+	text-align: center;
+	width:178px;
+	border-radius: 3px;
+	overflow: hidden;
+}
+.webuploader-pick-hover {
+	background: #00a2d4;
+}
+
+.webuploader-pick-disable {
+	opacity: 0.6;
+	pointer-events:none;
+}
+
+
+</style>
+<!--{subtemplate common/footer_8264_new}-->

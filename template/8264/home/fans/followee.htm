@@ -1,0 +1,261 @@
+<!--{template common/header_8264_new}-->
+<link href="http://static.8264.com/static/css/home/fan.css?{VERHASH}" rel="stylesheet" type="text/css">
+<link href="http://static.8264.com/static/css/home/home_space.css?{VERHASH}" rel="stylesheet" type="text/css" />
+<div class="container main-container">
+	<div class="module user-setting-wrap">
+		<!--{subtemplate home/fans/leftnav}-->
+		<div class="setting-form">
+			<div class="main-wrap">
+				<!--开始-->
+				<div class="form-box profile">
+					<div class="info-hd">
+						<span class="caption">我的关注</span>
+						<em class="caption-info">({$following_count}人)</em>
+						{if $space['self']}
+						<div class="groups" id="groups">关注分组</div>
+						<div class="searchwarpten">
+							<input type="text" class="searchtext" placeholder="搜索" value="{$_G[gp_searchname]}">
+							<input type="button" class="searchbutton">
+						</div>
+						<div class="groups-down">
+							<!--{if $groups}-->
+							<ul>
+								<!--{loop $groups $gid $gname}-->
+								<li groupid="{$gid}" {if isset($privacy['filter_gid'][$gid])}blocked="blocked"{/if}><a href="javascript:void(0);">{if isset($privacy['filter_gid'][$gid])}[屏蔽]{/if}{$gname}</a></li>
+								<!--{/loop}-->
+							</ul>
+							<!--{/if}-->
+						</div>
+						{/if}
+					</div>
+					<div class="info-bd">
+						<div class="friend-attention-list">
+							<ul>
+								<!--{if $myfollowing}-->
+								<!--{loop $myfollowing $uid $value}-->
+								<li>
+									<a href="home.php?mod=space&uid={$uid}" target="_blank"><!--{avatar($value['fwuid'],small)}--></a>
+									<div class="friend-attention-info">
+										<div class="nameinfo"><a href="home.php?mod=space&uid={$uid}" target="_blank">{$value['username']}</a><span class="nickname"><!--{if $value['nickname']}-->({$value['nickname']})<!--{/if}--></span>
+										</div>
+										{if $space['self']}
+										<div class="friend-button">
+											<div class="friend-state">
+												<!--{if $value['mutual'] == 1}-->
+												<em class="friend-mutualed">已关注</em>
+												<!--{elseif $value['mutual'] == 2}-->
+												<em class="friend-mutual">相互关注</em>
+												<!--{/if}-->
+											</div>
+											<span fuid="<!--{$uid}-->"></span>
+										</div>
+										<div class="means" id="group_name_{$uid}">{$groups[$value['gid']]}</div>
+										{/if}
+									</div>
+								</li>
+								<!--{/loop}-->
+								<!--{/if}-->
+							</ul>
+						</div>
+					</div>
+					<!--{$multi}-->
+				</div>
+				<!--结束-->
+			</div>
+		</div>
+	</div>
+</div>
+{if $space['self']}
+<!--头部弹出操作开始-->
+<div class="operation" id="operationnav">
+	<a href="javascript:void(0);" class="editgroupname">编辑</a>
+	<!--<a href="javascript:void(0);">删除</a>-->
+	<a href="javascript:void(0);" class="blockgroup"></a>
+</div>
+<!--头部弹出操作结束-->
+<!--内容弹出操作开始-->
+<div class="operation" id="operation">
+	<a href="#" class="editname">备注</a>
+	<a href="#" class="send_message">发短消息</a>
+	<!-- <a href="#" class="greet">打招呼</a> -->
+	<a href="#" class="editgroup">关注分组</a>
+	<a href="#" class="unfollow">取消关注</a>
+</div>
+{/if}
+<!--内容弹出操作结束-->
+<script type="text/javascript">
+{if $space['self']}
+//list操作jq开始
+jQuery(function(){
+	jQuery(".friend-button span").click( function () {
+		var li = jQuery(this).parents('li:first');
+
+		var groups_x_y = jQuery(this).offset();
+		var e = eval(groups_x_y.left +5);
+		var t = eval(groups_x_y.top + 25);
+		jQuery("#operation").css({
+			left: e+"px",
+			top: t+"px",
+			display: "block",
+			zIndex: "9999"
+		}).off("mouseleave").mouseleave(function () {
+			jQuery(this).hide();
+		});
+		var uid = jQuery(this).attr("fuid");
+		/*send message*/
+		jQuery("#operation a.send_message").off("click").click(function(e) {
+			var href = "home.php?mod=spacecp&ac=pm&op=showmsg&handlekey=showmsg_%uid&touid=%uid&pmid=0&daterange=2";
+			href = href.replace(/%uid/g, uid).replace(/&amp;/g, "&");
+			showWindow('showMsgBox', href, 'get', 0);
+			e.preventDefault();
+			jQuery(this).parent("div").hide();
+		});
+		/*greeting*/
+		/*jQuery("#operation a.greet").off("click").click(function(e) {
+			var href = "home.php?mod=spacecp&ac=poke&op=send&uid=%uid";
+			href = href.replace(/%uid/g, uid).replace(/&amp;/g, "&");
+			var id = "a_poke_" + uid;
+
+			showWindow(id, href, 'get', 0);
+			e.preventDefault();
+			jQuery(this).parent("div").hide();
+		});*/
+		/*edit nickname*/
+		jQuery("#operation a.editname").off("click").click(function(e) {
+			var href = "home.php?mod=spacecp&ac=friend&op=editnickname&uid=%uid";
+			href = href.replace(/%uid/g, uid).replace(/&amp;/g, "&");
+			id = "friend_editnote_" + uid;
+
+			showWindow(id, href, 'get', 0);
+			e.preventDefault();
+			jQuery(this).parent("div").hide();
+		});
+		/*change group*/
+		jQuery("#operation a.editgroup").off("click").click(function(e) {
+			var href = "home.php?mod=spacecp&ac=friend&op=changegroup&uid=%uid";
+			href = href.replace(/%uid/g, uid).replace(/&amp;/g, "&");
+			id = "friend_group_" + uid;
+
+			showWindow(id, href, 'get', 0);
+			e.preventDefault();
+			jQuery(this).parent("div").hide();
+		});
+		/*unfollow to somebody*/
+		jQuery("#operation a.unfollow").off("click").click(function(e) {
+			var url = "home.php?mod=spacecp&ac=friend&op=ignore&uid=%uid&confirm=1";
+			url = url.replace(/%uid/g, uid).replace(/&amp;/g, "&");
+
+			dconfirm('取消关注', '确认取消关注吗?', function() {
+				jQuery.post(url, {uid:uid}, function(data) {
+					if(data == 'success') {
+						showDialog("<p>取消关注成功</p>", 'notice', '','' , 0, '', '', '', '', 2);
+						li.remove();
+					}
+				});
+			});
+
+			e.preventDefault();
+			jQuery(this).parent("div").hide();
+		});
+	});
+
+	jQuery("#groups").click( function () {
+		if(jQuery(".groups-down").is(":hidden")){
+			jQuery(".groups-down").show();
+		}else{
+			jQuery(".groups-down").hide();
+		}
+	});
+
+	//导航弹出操作jq开始
+	jQuery(".groups-down li").click( function () {
+		var groups_x_y = jQuery(this).offset();
+		var e = eval(groups_x_y.left + 30);
+		var t = eval(groups_x_y.top + 28);
+		jQuery("#operationnav").css({
+			left: e+"px",
+			top: t+"px",
+			display: "block",
+			zIndex: "9999"
+		});
+		var blocked = jQuery(this).attr("blocked");
+		var block_content = '';
+		if(blocked == 'blocked') {
+			jQuery("#operationnav a.blockgroup").text("取消");
+			block_content = "在首页显示该用户组的好友动态?";
+		}
+		else {
+			jQuery("#operationnav a.blockgroup").text("屏蔽");
+			block_content = "在首页不显示该用户组的好友动态?";
+		}
+		var gid = jQuery(this).attr('groupid');
+		if(! gid) return;
+
+		//edit group name
+		jQuery("#operationnav a.editgroupname").off("click").click(function(e) {
+			var href = "home.php?mod=spacecp&ac=friend&op=editgroupname&group=%group_id";
+			href = href.replace(/%group_id/g, gid).replace(/&amp;/g, "&");
+			var id = "c_edit_" + gid;
+			showWindow(id, href, 'get', 0);
+			e.preventDefault();
+			jQuery(this).parent("div").hide();
+
+			jQuery(".groups-down").hide();
+		});
+
+		//block group
+		jQuery("#operationnav a.blockgroup").off("click").click(function() {
+			jQuery("#operationnav").hide();
+			dconfirm('调整用户组动态', block_content, function() {
+				var url = "home.php?mod=spacecp&ac=friend&op=blockgroup&group=%groupid&handlekey=ignorehk_%groupid";
+				url = url.replace(/%groupid/g, gid).replace(/&amp;/g, "&");
+				jQuery.post(url, {group:gid}, function(data) {
+					if(data == 'success') {
+						var text = jQuery("li[groupid=" + gid + "] a").text();
+						if(text.indexOf('屏蔽') > 0) {
+							jQuery("li[groupid=" + gid + "] a").text(text.replace("[屏蔽]", ''));
+							jQuery("li[groupid=" + gid + "]").removeAttr("blocked");
+						}
+						else {
+							jQuery("li[groupid=" + gid + "] a").text("[屏蔽]" + text);
+							jQuery("li[groupid=" + gid + "]").attr("blocked", "blocked");
+						}
+					}
+					else {
+						showDialog("<p>服务器正忙, 请您稍后再试!</p>", 'notice', '','' , 0, '', '', '', '', 2);
+					}
+				});
+			});
+		});
+
+	});
+	//导航弹出操作jq结束
+
+	//search by username
+	jQuery("div.searchwarpten :input.searchbutton").click(function(){
+		var searchtext = jQuery("div.searchwarpten :input.searchtext").val();
+		if(! searchtext || searchtext == '搜索') {
+			showDialog("<p>搜索 名称不能为空!</p>", 'notice', '','' , 0, '', '', '', '', 2);
+			return;
+		}
+		var href = "home.php?mod=space&do=friend&searchname=" + searchtext;
+		href = href.replace(/&amp;/g, "&");
+		window.location.href = href;
+	});
+});
+//list操作jq结束
+{/if}
+//点击弹出关闭按钮整体关闭
+jQuery(function(){
+	jQuery(".set-box").click( function () {
+		jQuery(".fpall").hide();
+	});
+});
+jQuery(function(){
+	jQuery(".set-box").click( function () {
+		jQuery(".fpall").hide();
+	});
+});
+</script>
+<!--{subtemplate home/space_footer_2014}-->
+<!--{template common/footer_8264_new}-->

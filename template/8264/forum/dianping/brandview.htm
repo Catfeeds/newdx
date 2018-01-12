@@ -1,0 +1,1379 @@
+<!--{subtemplate forum/dianping/header}-->
+<script type="text/javascript">var fid = parseInt('$_G[fid]'), tid = parseInt('$_G[tid]');</script>
+<script type="text/javascript" src="{$_G['setting']['jspath']}forum_moderate.js?{VERHASH}"></script>
+<script type="text/javascript" src="{$_G['setting']['jspath']}forum_viewthread.js?{VERHASH}"></script>
+<script type="text/javascript">zoomstatus = parseInt($_G['setting']['zoomstatus']);var imagemaxwidth = '{IMAGEMAXWIDTH}';var aimgcount = new Array();</script>
+<style id="diy_style" type="text/css"></style>
+<style type="text/css">
+#mdly { margin: 20px 0 0 10px; padding: 0; width: 200px; height: auto; background: none; }
+
+.share_bd_warpten{ width:50px; position:absolute; float:right; position: fixed !important;  position: absolute; z-index: 1; bottom:20px; right: 30px; background:#fff;}
+.bbs_share_sc{ width:50px;}
+.bbs_share_sc li{ width:50px; height:51px;}
+.bbs_share_sc li.ps_re{ position:relative;}
+.bbs_share_sc li a{ background:url('http://www.8264.com/static/images/common/baidushare.jpg') no-repeat; display:block; }
+.bbs_share_sc li .share{ width:50px; height:50px; background-position:0px 0px;}
+.bbs_share_sc li .share:hover{ width:50px; height:50px; background-position:0px -204px;}
+.bbs_share_sc li .sc{ width:50px; height:50px; background-position:0px -51px;}
+.bbs_share_sc li .sc:hover{ width:50px; height:50px; background-position:0px -255px;}
+.bbs_share_sc li .bbsli{ width:50px; height:50px; background-position:0px -102px;}
+.bbs_share_sc li .bbsli:hover{ width:50px; height:50px; background-position:0px -306px;}
+.bbs_share_sc li .gotop_50{ width:50px; height:50px; background-position:0px -153px;}
+.bbs_share_sc li .gotop_50:hover{ width:50px; height:50px; background-position:0px -357px;}
+
+.share_bd{ width:200px; position:absolute; height:50px; top:0px; right:50px; font-size:0px; display:none;}
+.bbs_share_sc li .share_bd a{ width:50px; height:50px; background:url('http://www.8264.com/static/images/common/baidushare.jpg') no-repeat; display:inline-block; _display:inline; _zoom:1;}
+.bbs_share_sc li .share_bd a.sina{ background-position:0 -408px;}
+.bbs_share_sc li .share_bd a.sina:hover{ background-position:0 -612px;}
+.bbs_share_sc li .share_bd a.qq{ background-position: 0px -459px;}
+.bbs_share_sc li .share_bd a.qq:hover{ background-position: 0px -663px;}
+.bbs_share_sc li .share_bd a.wb{ background-position: 0px -510px;}
+.bbs_share_sc li .share_bd a.wb:hover{ background-position: 0px -714px;}
+.bbs_share_sc li .share_bd a.wx{ background-position: 0px -561px;}
+.bbs_share_sc li .share_bd a.wx:hover{ background-position: 0px -765px;}
+
+.bdshare-button-style0-32 a{padding:0;margin:0;}
+</style>
+<script type="text/javascript">
+var ie6=false;
+if(/msie/.test(navigator.userAgent.toLowerCase()) && 'undefined' == typeof(document.body.style.maxHeight)){
+	ie6=true;
+}
+jQuery(document).ready(function($) {
+	$("#comment").on('click',".pg>a",function(e){
+			e.preventDefault();
+			var tempArr = this.href.split('-');
+			$.get('{$url}',{act:'ajaxreply',tid:parseInt(tempArr[1]),page:parseInt(tempArr[2])},function(data){
+				$("#comment>.hd").nextAll().remove();
+				data && $("#comment>.hd").after(data);
+			});
+			$("#comment>.hd").after('<div style="padding: 0 0 10px 6px;"><img src="{$_G[siteurl]}{STATICURL}image/common/loading.gif" style="vertical-align: top;"> 数据读取中...</div>');
+			$("#comment dl").remove();
+			$(document).scrollTop($('#comment').offset().top-50);
+	});
+	$(document).on('click', "span[id^=supportBtn_]", function(){
+		var sid = this.id;
+		var pid = sid.replace('supportBtn_','');
+		var s_c = $(this).find('em').text() ? parseInt($(this).find('em').text().replace(/[^0-9]/ig, "")) : 0;
+		if(s_c == 0) $(this).addClass('active');
+		$(this).find('em').text('('+parseInt(s_c+1)+')');
+		$(this).attr('id', '');
+		$.get('forum.php?ctl={$modstr}&act=support',{tid:'{$_G['tid']}',pid:pid},function(data){});
+	});
+	$(document).on('click',"span[id^=editBtn_]",function(){
+		var p = $(this).parents('dl');
+		$("#box_view #pid").val(this.id.replace('editBtn_',''));
+		var star = p.find('#starnum').val() || 1;
+		var starDom = $("#bv_starBox>span").eq(star-1);
+		starDom.prevAll().addBack().css({"background-position": "0 0"});
+		starDom.nextAll().css({"background-position": "-17px 0"});
+		$("#bv_starBox").next().html(starDom.attr('title'));
+		$("#bv_starNum").val(star);
+		p.find('#goodpoint').html() && $("#box_view #goodpoint").val(p.find('#goodpoint').html().replace(/<br[^>]*>/gi,"\r\n"));
+		p.find('#weakpoint').html() && $("#box_view #weakpoint").val(p.find('#weakpoint').html().replace(/<br[^>]*>/gi,"\r\n"));
+		p.find('#message') && $("#box_view #message").val(p.find('#message').html().replace(/<br[^>]*>/gi,"\r\n"));
+		$("#div_black, #box_view").fadeIn(200);
+	});
+	$("#bv_starBox>span").click(function(){
+		$(this).prevAll().addBack().css({"background-position": "0 0"});
+		$(this).nextAll().css({"background-position": "-17px 0"});
+		$("#bv_starBox").next().html($(this).attr('title'));
+		if (ie6) {
+			$("#bv_starNum").val(($(this).index()+1)/3);
+		} else {
+			$("#bv_starNum").val($(this).index()+1);
+		}
+	});
+	$("#bv_closeBtn").click(function(){
+		$("#div_black, #box_view").fadeOut(200);
+	});
+
+	$("#boxSubmit").click(function(){
+		$('#bv_error').html('').hide();
+		var goodpoint = $("#box_view #goodpoint").val();
+		var weakpoint = $("#box_view #weakpoint").val();
+		var message = $("#box_view #message").val();
+		var starnum = $("#bv_starNum").val();
+		var pid = $("#box_view #pid").val();
+
+		{if $myrate && $viewdata['enable']==1 && $_G['uid']}
+		if(!goodpoint) {
+			$('#bv_error').html('请完成优点信息').show();
+			$("#box_view #goodpoint").focus();
+			return false;
+		}
+		if(!weakpoint) {
+			$('#bv_error').html('请完成不足信息').show();
+			$("#box_view #weakpoint").focus();
+			return false;
+		}
+		{/if}
+		if(!message) {
+			$('#bv_error').html('请完成评价信息').show();
+			$("#box_view #message").focus();
+			return false;
+		}
+		$('#bv_error').html('').hide();
+
+		$.post('forum.php?ctl={$modstr}&act=dopost&do=reply&ext=edit&tid={$_G['tid']}&inajax=1',
+				{pid:pid,starnum:starnum,goodpoint:goodpoint,weakpoint:weakpoint,message:message,formhash:'{FORMHASH}',replypostsubmit:'yes'},function(data){
+					if(data=='ok'){
+
+					} else {
+						showDialog("发生错误请重试！");
+					}
+				});
+		var comment = $("#editBtn_"+pid).parents('dl');
+		comment.find('#starnum').val(starnum);
+		var starDom = comment.find('.star>span').eq(starnum-1);
+		starDom.prevAll().addBack().css({"background-position": "0 0"});
+		starDom.nextAll().css({"background-position": "-16px 0"});
+		comment.find('#goodpoint').html() && comment.find('#goodpoint').html(goodpoint.replace(/(\r\n)|(\n)/gi,"<br/>"));
+		comment.find('#weakpoint').html() && comment.find('#weakpoint').html(weakpoint.replace(/(\r\n)|(\n)/gi,"<br/>"));
+		comment.find('#message').html(message.replace(/(\r\n)|(\n)/gi,"<br/>"));
+		$("#bv_closeBtn").click();
+	});
+	//鼠标移入分享后向左边弹出分享按钮
+	$("#share").hover(
+		function () {
+		$(".share_bd",this).show();
+		},
+		function () {
+		$(".share_bd",this).hide();
+		}
+	);
+	//返回顶部按钮
+	if($(window).scrollTop() > 10){$("#gotop_50 a").show();}
+	$(window).scroll( function(){
+		if($(window).scrollTop()>10){
+			$("#gotop_50 a").show();
+		}else{
+			$("#gotop_50 a").hide();
+		}
+	});
+	$("#gotop_50").click(function(){
+		$("html,body").animate({ scrollTop: 0 },500);
+	});
+});
+</script>
+<div class="wrapper">
+	<div class="layout mt20" style="display: none;">
+		<div class="brandHeadTit">
+			<h2><a href="{$url}&act=showview&tid={$viewdata[tid]}">$viewdata['subject']</a></h2>
+		</div>
+	</div>
+	<div style="margin: 10px auto 0px auto;width: 980px;"><!--{ad/custom_249}--></div>
+	<div class="layout mt35">
+		<div class="layoutLeft">
+			<h1 class="brandNe">
+				<span class="tit"><h1><a href="{$url}&act=showview&tid={$viewdata[tid]}">$viewdata['subject']</a></h1></span>
+						<!--{if $_G['forum']['ismoderator']&&$_G['adminid']==1}-->
+						<div class="brandManage">
+							<span class="manageBtn">管理</span>
+							<ul class="manageList" style="display: none;">
+								<li><!--{if $_G['group']['allowdelpost']}--><a href="{$url}&act=dopost&do=edit&tid={$_G[tid]}&pid={$viewdata[pid]}&page=1&action=edit{if !empty($_G[gp_modthreadkey])}&modthreadkey=$_G[gp_modthreadkey]{/if}"><!--{if $_G['forum_thread']['special'] == 2 && !$post['message']}-->{lang post_add_aboutcounter}<!--{else}-->{lang edit}<!--{/if}--></a><!--{/if}--></li>
+								<li><!--{if $_G['group']['allowdelpost']}--><a href="forum.php?ctl={$modstr}&act=deleteit&tid={$_G[tid]}" onclick="return confirm('确认删除这个{$modname}？删除后将不可恢复！');">{lang modmenu_deletethread}</a><!--{/if}--></li>
+								<!--{if $_G['group']['allowstickthread']}-->
+								<li class="setzhiding" {if $viewdata['displayorder']==1}style="display:none;"{/if}><a class="tgsh" href="javascript:;">置顶</a></li>
+								<li class="cancelzhiding" {if $viewdata['displayorder']==0}style="display:none;"{/if}><a class="tgsh" href="javascript:;">取消置顶</a></li>
+								<!--{/if}-->
+							</ul>
+						</div>
+						<script type="text/javascript">
+							;(function($) {
+								$('.manageBtn').mouseover(function(){
+									$('.manageList').css("display","");
+								});
+								$('.manageList').mouseleave(function(){
+									$('.manageList').css("display","none");
+								});
+								//置顶操作
+								$('.brandManage .setzhiding').click(function(){
+									var type = 'zhiding';
+									jQuery.ajax({
+									type: 'get',
+									url: 'plugin.php?id=dianping:ajax_updateproduce&op='+type+'&tid='+tid,
+									success: function(html) {
+										if(html=='success'){
+											showDialog('置顶成功');
+											jQuery('.brandManage .cancelzhiding').show();
+											jQuery('.brandManage .setzhiding').hide();
+										}else{
+											showDialog('设置失败');
+										}
+									}});
+									return false;
+								});
+								//取消置顶操作
+								$('.brandManage .cancelzhiding').click(function(){
+									var type = 'zhiding';
+									jQuery.ajax({
+									type: 'get',
+									url: 'plugin.php?id=dianping:ajax_updateproduce&op='+type+'&tid='+tid,
+									success: function(html) {
+										if(html=='success'){
+											showDialog('取消置顶成功');
+											jQuery('.brandManage .cancelzhiding').show();
+											jQuery('.brandManage .setzhiding').hide();
+										}else{
+											showDialog('设置失败');
+										}
+									}});
+									return false;
+								});
+							})(jQuery);
+						</script>
+						<!--{/if}-->
+			</h1>
+			<div class="brandContL">
+				<div class="brandTop">
+					<div class="brandLogoBox">
+						<!--{if $viewdata['zhaoshang']}-->
+						<div class="topTips">正在招商 <!--{if $viewdata['zstel']}-->$viewdata['zstel']<!--{/if}--></div>
+						<!--{/if}-->
+						<div class="logo"> <span class="pic"><img src="http://image.8264.com/{$viewdata['dir']}/$viewdata['pic']" /></span>
+							<p class="address">中国总部：$viewdata['city']</p>
+						</div>
+						<div class="info">
+							<p>品牌名称：$viewdata['ename']</p>
+							<p>中文名称：<!--{if $viewdata['cname']}-->$viewdata['cname']<!--{else}-->无<!--{/if}--></p>
+							<p>品牌国籍：<!--{if $viewdata['nation']}-->$viewdata['nation']<!--{else}-->无<!--{/if}--></p>
+						</div>
+						<div class="bottom"></div>
+						<div class="count"><span class="cOrange">$viewdata['views']</span> 人浏览 | <span class="cOrange">$viewdata['replies']</span> 人参与讨论</div>
+					</div>
+
+					<div class="brandTextBox">
+
+						<p class="web">
+							<!--{if $viewdata['url']}-->
+								<!--{eval $str = $viewdata['url'];}-->
+								<!--{eval $find = "|";}-->
+								<!--{if stripos($str,$find)}-->
+									<!--{if $viewdata['tid']=='880044'}-->
+										<!--{eval $brand_url = substr($str,0,strpos($str,$find));}-->
+										<!--{if $brand_url}-->
+										<!--{eval $gw = substr($str,strpos($str,$find)+1);}-->
+										品牌官网：<a href="$gw" target="_blank">$gw</a><br>
+										<!--{/if}-->
+									<!--{else}-->
+										<!--{eval $brand_url = substr($str,0,strpos($str,$find));}-->
+										<!--{if $brand_url}-->
+											<!--{eval $gw = substr($str,strpos($str,$find)+1);}-->
+										品牌官网：<a href="$gw" target="_blank" rel="nofollow">$gw</a>
+										<!--{/if}-->
+									<!--{/if}-->
+								<!--{else}-->
+									<!--{if stripos($viewdata['url'],'tmall.com') && $viewdata['tid']=='1216338'}-->品牌官网：<a href="$viewdata['url']" target="_blank" rel="nofollow">$viewdata['url']</a><!--{else}-->品牌官网：<a href="$viewdata['url']" target="_blank" rel="nofollow">$viewdata['url']</a><!--{/if}-->
+								<!--{/if}-->
+							<!--{/if}-->
+						</p>
+						<div class="grade">
+							<div class="interest_sectl" id="interest_sectl">
+								<div class="star_show">
+									{eval for ($i = 0; $i < 5; $i++):}
+									<span class="{if $i < $star_data['price']/2}{if $star_data['price']/2-$i<1}halfstar{else}redstar{/if}{else}graystar{/if} colorstar"></span>
+									{eval endfor;}
+									<span class="num">{$star_data['price']}</span>
+									<span class="text"></span>
+								</div>
+								<div class="peoples"> (<span class="num"><!--{if $star_data['count']}-->{$star_data['count']}<!--{else}-->0<!--{/if}--></span>人评分) </div>
+								<div class="star_list">
+									<div class="star" title="力荐">
+										<span class="redstar2"></span>
+										<span class="redstar2"></span>
+										<span class="redstar2"></span>
+										<span class="redstar2"></span>
+										<span class="redstar2"></span>
+										<span class="percent" style="width:{eval echo $star_data['percent5']*0.8}px;"></span>
+										<span class="num">{$star_data['percent5']}%</span>
+										<span class="num">(力荐)</span>
+									</div>
+									<div class="star" title="推荐">
+										<span class="redstar2"></span>
+										<span class="redstar2"></span>
+										<span class="redstar2"></span>
+										<span class="redstar2"></span>
+										<span class="graystar2"></span>
+										<span class="percent" style="width:{eval echo $star_data['percent4']*0.8}px;"></span>
+										<span class="num">{$star_data['percent4']}%</span>
+										<span class="num">(推荐)</span>
+									</div>
+									<div class="star" title="还行">
+										<span class="redstar2"></span>
+										<span class="redstar2"></span>
+										<span class="redstar2"></span>
+										<span class="graystar2"></span>
+										<span class="graystar2"></span>
+										<span class="percent" style="width:{eval echo $star_data['percent3']*0.8}px;"></span>
+										<span class="num">{$star_data['percent3']}%</span>
+										<span class="num">(还行)</span>
+									</div>
+									<div class="star" title="较差">
+										<span class="redstar2"></span>
+										<span class="redstar2"></span>
+										<span class="graystar2"></span>
+										<span class="graystar2"></span>
+										<span class="graystar2"></span>
+										<span class="percent" style="width:{eval echo $star_data['percent2']*0.8}px;"></span>
+										<span class="num">{$star_data['percent2']}%</span>
+										<span class="num">(较差)</span>
+									</div>
+									<div class="star" title="很差">
+										<span class="redstar2"></span>
+										<span class="graystar2"></span>
+										<span class="graystar2"></span>
+										<span class="graystar2"></span>
+										<span class="graystar2"></span>
+										<span class="percent" style="width:{eval echo $star_data['percent1']*0.8}px;"></span>
+										<span class="num">{$star_data['percent1']}%</span>
+										<span class="num">(很差)</span>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<p><span class="cGrey">所属公司：</span><!--{if $viewdata['company']}-->$viewdata['company']<!--{else}-->无<!--{/if}--></p>
+						<p><span class="cGrey">联系地址：</span><!--{if $viewdata['addr']}-->$viewdata['addr']<!--{else}-->无<!--{/if}--></p>
+
+
+						<!--{if $rank_info}-->
+						<!--{loop $rank_info $value}-->
+						<span><a href="{$url}&act=showlist&let=0&nat=0&cp={$value['cp']}&order=score&page=1" title="$value['produce']" >$value['produce']</a></span>
+						<!--{/loop}-->
+						<!--{/if}-->
+					</div>
+				</div>
+				<div class="brandIntro">
+					<div class="hd">
+						<h2><!--{$viewdata['subject']}-->品牌简介</h2>
+						<a href="/pinpai-$viewdata['tid']#writecommon" class="wydp_bluelink">我要点评</a>
+						<div class="wydp_warpten">
+							<div class="wydp_border">
+								<div class="wydp_arrow"></div>
+								<div class="wydp_orangebg">写点评兑换礼品</div>
+								<div class="wydp_info">
+									<ul>
+										<li>
+											<span class="num_orange">1</span>
+											<span class="wydp_info_con">请写下自己的真实感受，严禁抄袭</span>
+											<div class="clboth_0"></div>
+										</li>
+										<li>
+											<span class="num_orange">2</span>
+											<span class="wydp_info_con">点评被奖励8264币后，请到论坛兑换礼品</span>
+											<div class="clboth_0"></div>
+										</li>
+									</ul>
+								</div>
+								<a href="http://bbs.8264.com/forum-483-1.html" target="_blank" class="dh_orange"></a>
+							</div>
+						</div>
+						<script type="text/javascript">
+						;(function($) {
+							$('.wydp_warpten').css("display","none");
+							$('.wydp_bluelink').mouseover(function() {
+								$('.wydp_warpten').css("display","");
+							});
+
+							$('.wydp_warpten').mouseleave(function() {
+								$('.wydp_warpten').css("display","none");
+							});
+						})(jQuery);
+						</script>
+					</div>
+					<div class="bd" id="mini_message">
+						<!--{if $viewdata['bYin']}-->
+						<div class="pronounce">
+							<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="290" height="24">
+								<param name="movie" value="static/flash/03.swf?soundFile={$viewdata[bYin]}&bg=0xCDDFF3&leftbg=0x357DCE&lefticon=0xF2F2F2&rightbg=0x357DCE&rightbghover=0x4499EE&righticon=0xF2F2F2&righticonhover=0xFFFFFF&text=0x357DCE&slider=0x357DCE&track=0xFFFFFF&border=0xFFFFFF&loader=0x8EC2F4&autostart=no&loop=no" />
+								<param name="quality" value="high" />
+								<param value="transparent" name="wmode" />
+								<embed src="static/flash/03.swf?soundFile={$viewdata[bYin]}&bg=0xCDDFF3&leftbg=0x357DCE&lefticon=0xF2F2F2&rightbg=0x357DCE&rightbghover=0x4499EE&righticon=0xF2F2F2&righticonhover=0xFFFFFF&text=0x357DCE&slider=0x357DCE&track=0xFFFFFF&border=0xFFFFFF&loader=0x8EC2F4&autostart=no&loop=no" width="290" height="24" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"></embed>
+							</object>
+						</div>
+						<!--{/if}-->
+						<!--{eval $mini_message = preg_replace('/(\s|)+/', '', $viewdata['mini_message']);}-->
+						$mini_message
+						<div id="slidemore" class="p_more">查看更多</div>
+					</div>
+
+					<div class="bd" id="whole_message" style="display: none;">
+							<!--{if $viewdata['bYin']}-->
+							<div class="pronounce">
+								<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="290" height="24">
+								<param name="movie" value="static/flash/03.swf?soundFile={$viewdata[bYin]}&bg=0xCDDFF3&leftbg=0x357DCE&lefticon=0xF2F2F2&rightbg=0x357DCE&rightbghover=0x4499EE&righticon=0xF2F2F2&righticonhover=0xFFFFFF&text=0x357DCE&slider=0x357DCE&track=0xFFFFFF&border=0xFFFFFF&loader=0x8EC2F4&autostart=no&loop=no" />
+								<param name="quality" value="high" />
+								<param value="transparent" name="wmode" />
+								<embed src="static/flash/03.swf?soundFile={$viewdata[bYinss]}&bg=0xCDDFF3&leftbg=0x357DCE&lefticon=0xF2F2F2&rightbg=0x357DCE&rightbghover=0x4499EE&righticon=0xF2F2F2&righticonhover=0xFFFFFF&text=0x357DCE&slider=0x357DCE&track=0xFFFFFF&border=0xFFFFFF&loader=0x8EC2F4&autostart=no&loop=no" width="290" height="24" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"></embed>
+							</object>
+							</div>
+							<!--{/if}-->
+							<!--{eval $viewdata['message']=str_replace('thumbImg(this)','thumbImg(this,null,583)',$viewdata["message"]);}-->$viewdata[message]
+							<div id="slidesmall" class="p_more">收起</div>
+					</div>
+					<script type="text/javascript">
+						jQuery('.brandIntro .p_more').click(function() {
+							if (jQuery('#mini_message').css('display') != 'none') {
+								jQuery('#mini_message').hide();
+								jQuery('#whole_message').show();
+							} else {
+								jQuery('#mini_message').show();
+								jQuery('#whole_message').hide();
+							}
+						});
+						</script>
+				</div>
+				<div class="brandUserLike">
+					<span class="brandUsers_button" id="brandUsers_likeit">
+					<a class="brand_users_action" href="#">
+					<div class="pillar">
+						<div class="pillar_inner" style="height: 60px;"> <em>{$likenum}</em> </div>
+					</div>
+					<div class="text">我喜欢</div>
+					</a>
+					</span>
+					<span class="brandUsers_button" id="brandUsers_wantuse"> <a class="brand_users_action" href="#">
+					<div class="pillar">
+						<div class="pillar_inner" style="height: 24px;"> <em>{$wantnum}</em> </div>
+					</div>
+					<div class="text">我想用</div>
+					</a> </span>
+				</div>
+				<div class="brandUserList">
+					<div class="hd">
+						<h2>喜欢$viewdata['subject']品牌的用户<span class="cOrange" id="person_num">{$likenum}</span>人</h2>
+					</div>
+					<div class="bd">
+						<ul class="userList48">
+							<!--{loop $likeitUsers $value}-->
+							<li><a href="home.php?mod=space&uid={$value['uid']}" target="_blank" rel="nofollow"  class="pic">$value['avatar']</a>
+								<p><a href="home.php?mod=space&uid={$value['uid']}" target="_blank" rel="nofollow" > $value['username']</a></p>
+							</li>
+							<!--{/loop}-->
+							<!--{if $_G[uid]}-->
+							<li id="likeitUsers_myface"> <a href="home.php?mod=space&uid={$_G[uid]}" target="_blank" rel="nofollow"   class="pic">{avatar($_G[uid], 'small')}</a>
+								<p><a href="home.php?mod=space&uid={$_G[uid]}" target="_blank" rel="nofollow" >{$_G[username]}</a></p>
+							</li>
+							<!--{/if}-->
+						</ul>
+					</div>
+				</div>
+				<div id="publiced_alert">你己经表过态了</div>
+				<script type="text/javascript">
+					var accomplish_arr = {
+						'likeit': {eval echo $user_attentions[likeit] ? 1 : 0;},
+						'wantuse': {eval echo $user_attentions[wantuse] ? 1 : 0;},
+						'using': {eval echo $user_attentions[using] ? 1 : 0;}
+					};
+					var brandUsersNum = {
+						'likeit': {eval echo $likenum;},
+						'wantuse': {eval echo $wantnum;},
+						'using': {eval echo $usednum;}
+					}
+					function initPillarHeight() {
+						var percentage = {}
+						var max = 1;
+						for (var i in brandUsersNum) {
+							if (max < brandUsersNum[i]) {
+								max = brandUsersNum[i];
+							}
+						}
+						for (var i in brandUsersNum) {
+							if (brandUsersNum[i] != 0) {
+								percentage[i] = (brandUsersNum[i] / max) * 60;
+								if (percentage[i] != 0) {
+									percentage[i] += "px";
+								} else {
+									percentage[i] = "1px";
+								}
+							} else {
+								percentage[i] = "1px";
+							}
+						}
+						jQuery('#brandUsers_likeit .pillar_inner').css('height', percentage['likeit']);
+						jQuery('#brandUsers_wantuse .pillar_inner').css('height', percentage['wantuse']);
+						jQuery('#brandUsers_using .pillar_inner').css('height', percentage['using']);
+					}
+					initPillarHeight();
+					function accomplish_button(type) {
+						accomplish_arr[type] = 1;
+						var pillar_inner_em = jQuery('#brandUsers_'+type+' .pillar_inner em');
+						pillar_inner_em.text(pillar_inner_em.text()-0+1);
+						brandUsersNum[type]++;
+						initPillarHeight();
+						if (type == 'likeit') {
+							jQuery('#likeitUsers_myface').show();
+							var num = parseInt(jQuery('#person_num').text());
+							jQuery('#person_num').text(++num);
+						}
+					}
+					;(function($){
+						var publiced_alert_interval;
+						function show_publiced_alert(_this) {
+							clearInterval(publiced_alert_interval);
+							$('#publiced_alert').css({top: _this.offset().top+ 110, left: _this.offset().left}).show();
+						}
+						$('.brandUsers_button').mouseout(function(){
+							clearInterval(publiced_alert_interval);
+							publiced_alert_interval = setInterval(function(){
+								$('#publiced_alert').hide();
+							}, 1000);
+						})
+						var tid = <!--{$_G['tid']}-->;
+					<!--{if !$_G['uid']}-->
+						$('.brandUsers_button a').click(function(){
+							showWindow('login', 'member.php?mod=logging&action=login');hideWindow('register');
+						})
+					<!--{else}-->
+						$('#brandUsers_likeit a').click(function(){
+							var type = 'likeit';
+							if (accomplish_arr[type]==1) {
+								show_publiced_alert($(this));
+								return false;
+							}
+							$.ajax({
+								type: 'get',
+								url: '/plugin.php?id=dianping:attention&op=new&type='+type+'&tid='+tid,
+								success: function(html){
+									accomplish_button(type);
+								}
+							});
+							return false;
+						});
+						$('#brandUsers_wantuse a').click(function(){
+							var type = 'wantuse';
+							if (accomplish_arr[type]==1) {
+								show_publiced_alert($(this));
+								return false;
+							}
+							$.ajax({
+								type: 'get',
+								url: '/plugin.php?id=dianping:attention&op=new&tid='+tid+'&type='+type,
+								success: function(html){
+									accomplish_button(type);
+								}
+							});
+							return false;
+							//showWindow('productselect','/plugin.php?id=brand:productselect&tid='+tid+'&type='+type);
+						});
+						$('#brandUsers_using a').click(function(){
+							var type = 'using';
+							if (accomplish_arr[type]==1) {
+								show_publiced_alert($(this));
+								return false;
+							}
+							showWindow('productselect','/plugin.php?id=dianping:productselect&tid='+tid+'&type='+type);
+						});
+					<!--{/if}-->
+					})(jQuery);
+				</script>
+				<!--{eval $album_num = count($albumlist);}-->
+				<!--{if $albumlist&&$album_num>0}-->
+				<div class="sharePic" id="commentshare">
+					<div class="hd">
+						<span class="shareMore">
+						<input type="hidden" name="formhash" value="{FORMHASH}" />
+						<input type="hidden" name="srchtxt" value="<!--{eval echo $_G['forum_option']['brand_name']['value'];}-->"/>
+						<input type="hidden" name="searchsubmit" value="yes" />
+						<a href="http://www.8264.com/zhuangbei-0-0-$viewdata['id']-5-1.html" class="cBlue" target="_blank">+$viewdata['shortsubject']更多</a></span>
+						<h2><!--{$viewdata['subject']}-->$_G[forum_thread][short_subject]装备库(共有<span class="cOrange">$bsharenum</span>件)</h2>
+					</div>
+					<div>
+						<div id="fxbtn"> {eval $block_num = ceil($album_num / 3);}
+							{eval for($i = 1; $i <= $block_num; ++$i):}
+							<div class="{if $i == 1} on{/if}">&nbsp;</div>
+							{eval endfor;} </div>
+						<div class="piclist" id="fxcontent"> {eval for ($i = 0; $i < $block_num; ++$i):}
+							<div class="share_item{if $i == 0} on{/if}"> {eval $targe_index = $i * 3;}
+								{eval for ($j = $targe_index; $j < $targe_index + 3; ++$j):}
+								{eval if ($j == $album_num)break;}
+								{eval $value = $albumlist[$j];}
+								<div class="pic">
+									<div class="image">
+										<table>
+											<tr>
+												<td valign="middle" width="185" height="245"><a target="_blank" href="http://www.8264.com/zhuangbei-{$value['tid']}-1.html"> <img style="vertical-align:middle;max-height:268px;max-width:none;padding:1px 0px;" src="{eval echo getimagethumb(165,165,2,$value['showimg'], $value['aid'], $value['serverid']);}"/> </a></td>
+											</tr>
+										</table>
+									</div>
+									<div class="txt"> <a target="_blank" href="http://www.8264.com/zhuangbei-{$value['tid']}.html" style="color: #666666;font-size: 12px;text-decoration: none;">$value['subject']</a> </div>
+								</div>
+								{eval endfor;} </div>
+							{eval endfor;} </div>
+					</div>
+					<script type="text/javascript">
+						;(function($) {
+							var interval,
+								time = 4000;
+							function get_next_index() {
+								var count = $('#fxbtn > div').length;
+								var index = $('#fxbtn > div.on').index('#fxbtn > div') + 1;
+								return index >= count ? 0 : index;
+							}
+							function toggle_block(i) {
+								$('#fxbtn > div').removeClass('on').eq(i).addClass('on');
+								$('#fxcontent > .share_item').removeClass('on').eq(i).addClass('on');
+							}
+							function auto_toggle() {
+								toggle_block(get_next_index());
+							}
+							interval = setInterval(auto_toggle, time);
+							$('#fxbtn, #fxcontent').hover(function() {
+								clearInterval(interval);
+							}, function() {
+								clearInterval(interval);
+								interval = setInterval(auto_toggle, time);
+							});
+							$('#fxbtn > div').each(function(i) {
+								$(this).mouseover(function() {
+									toggle_block(i);
+								});
+							});
+						})(jQuery);
+					</script>
+				</div>
+				<!--{/if}-->
+
+				<div style=" margin-top:25px;"><!--{subtemplate forum/dianping/dpad}--></div>
+
+				<!--{if $myreply}-->
+				<div class="brandComment" id="mycomment" {if !$myrate} style="display:none;"{/if}>
+					<div class="hd">
+						<h2 class="h2Tit">我的点评&nbsp;&nbsp;&nbsp;<span>假如您的点评没有奖励8264币，请联系工作人员QQ1919501975询问原因</span></h2>
+					</div>
+					<div class="bd">
+						<!--{loop $myreply $post}-->
+						<dl class="commentListDl" id="post_$post[pid]">
+							<dd class="face"><a href="home.php?mod=space&uid=$post[authorid]"><!--{avatar($post[authorid], small)}--></a></dd>
+							<dt>
+								<div class="toplist">
+								<span class="name"><a href="home.php?mod=space&uid=$post[authorid]" target="_blank" class="xi2">$post[author]</a></span> {eval $star = $post[starnum];}
+								{if $star} <span class="star">
+								{eval for ($i = 0; $i < 5; $i++):}
+								{if $i < $star}<span class="redstar"></span>{else}<span class="graystar"></span>{/if}
+								{eval endfor;} </span>
+								{/if}
+								<span class="date">发表于 $post[dateline]</span>
+								<input type="hidden" name="" id="starnum" value="{$post['starnum']}" />
+								<!--{if $post['rate']}-->
+								&nbsp;&nbsp;&nbsp;<span class="bi"><a href="http://bbs.8264.com/forum-483-1.html" target="blank"><img align="absmiddle" title="奖励8264币" alt="奖励8264币" src="static/image/common/8264b.gif"></a></span>
+								<!--{/if}-->
+								</div>
+								<ul class="goodBad">
+										<!--{if $post['weakpoint']}-->
+										<li>
+											<span class="leftIco bad">缺点</span>
+											<div class="conts"><p id="weakpoint">{$post['weakpoint']}</p></div>
+										</li>
+										<!--{/if}-->
+										<!--{if $post['goodpoint']}-->
+										<li>
+											<span class="leftIco good">优点</span>
+											<div class="conts"><p id="goodpoint">{$post['goodpoint']}</p></div>
+										</li>
+										<!--{/if}-->
+										{if $star&&$post['goodpoint']&&$post['weakpoint']}
+										<li>
+											<span class="leftIco all">综合</span>
+											<div class="conts"><p id="message"><!--{eval $post['message']=str_replace('thumbImg(this)','thumbImg(this,null,757)',$post["message"]);}-->$post[message]</p></div>
+										</li>
+										{else}
+										<dd class="cont" style="margin-top: 10px;" id="message"> <!--{eval $post['message']=str_replace('thumbImg(this)','thumbImg(this,null,757)',$post["message"]);}-->$post[message]</dd>
+										{/if}
+								</ul>
+								<dd class="control">
+									{if $_G['adminid'] == 1 && !$comment['first']}
+									<span>
+									<label for="manage$post[pid]">
+										<input type="checkbox" id="manage$post[pid]" class="pc" {if !empty($modclick)}checked="checked" {/if}onclick="pidchecked(this);modclick(this, $post[pid])" value="$post[pid]" autocomplete="off" />
+										{lang manage}
+									</label>
+									<!--{if $_G['group']['raterange'] && $post['authorid']}-->
+										<a id="k_rate" style="color: #666;" href="javascript:;" onclick="showWindow('rate', 'forum.php?mod=misc&action=rate&tid=$_G[tid]&pid=$post[pid]', 'get', -1);return false;" title="加8264币">{lang rate}&nbsp;</a>
+									<!--{/if}-->
+									<!--{if $post['rate'] && $_G['forum']['ismoderator']}-->
+										<a href="forum.php?mod=misc&action=removerate&tid=$_G[tid]&pid=$post[pid]&page=$page" style="color: #666;" onclick="showWindow('rate', this.href, 'get', -1)">{lang removerate}</a>
+									<!--{/if}-->
+									</span>
+									{/if}
+									<span {if $_G['uid']}{if $supportlist[$post['pid']]}title="你已经评价过了"{else} title="有用"{/if}{else} title="登录后才能进行评价" {/if} {if $_G['uid']&&  !$supportlist[$post['pid']]} id="supportBtn_{$post['pid']}"{/if} class="useful{if $post['supports']>0} active{/if}"><i></i>有用{if !$post['supports']}{else}({$post['supports']}){/if}</span>
+									<span class="ans" id="editBtn_{$post['pid']}" style="color: #666;"><a href="javascript:;">修改</a></span>
+								</dd>
+							</dt>
+						</dl>
+						<!--{/loop}-->
+					</div>
+				</div>
+				<!--{/if}-->
+
+				<div class="brandComment" id="comment">
+					<div class="hd">
+						<h2 class="h2Tit"><!--{$viewdata['subject']}-->最新评论</h2>
+					</div>
+					<div class="bd">
+						<!--{if $replylist}-->
+						<!--{loop $replylist $post}-->
+						<dl class="commentListDl" id="post_$post[pid]">
+							<dd class="face"><a href="home.php?mod=space&uid=$post[authorid]"  target="_blank"  rel="nofollow" ><!--{avatar($post[authorid], small)}--></a></dd>
+							<dt>
+								<div class="toplist">
+								<span class="name"><a href="home.php?mod=space&uid=$post[authorid]" target="_blank" rel="nofollow" class="xi2">$post[author]</a></span> {eval $star = $post[starnum];}
+								{if $star} <span class="star">
+								{eval for ($i = 0; $i < 5; $i++):}
+								{if $i < $star}<span class="redstar"></span>{else}<span class="graystar"></span>{/if}
+								{eval endfor;} </span>
+								{/if}
+								<input type="hidden" name="" id="starnum" value="{$post['starnum']}" />
+								<span class="date">点评<!--{$viewdata['subject']}-->品牌 发表于 $post[dateline]</span>
+								<!--{if $post['rate']}-->
+								&nbsp;&nbsp;&nbsp;<span class="bi"><a href="http://bbs.8264.com/forum-483-1.html" target="blank"><img align="absmiddle" title="奖励8264币" alt="奖励8264币" src="static/image/common/8264b.gif"></a></span>
+								<!--{/if}-->
+								</div>
+								<ul class="goodBad">
+										<!--{if $post['weakpoint']}-->
+										<li>
+											<span class="leftIco bad">缺点</span>
+											<div class="conts"><p id="weakpoint">{$post['weakpoint']}</p></div>
+										</li>
+										<!--{/if}-->
+										<!--{if $post['goodpoint']}-->
+										<li>
+											<span class="leftIco good">优点</span>
+											<div class="conts"><p id="goodpoint">{$post['goodpoint']}</p></div>
+										</li>
+										<!--{/if}-->
+										{if $star&&$post['goodpoint']&&$post['weakpoint']}
+										<li>
+											<span class="leftIco all">综合</span>
+											<div class="conts"><p id="message"><!--{eval $post['message']=str_replace('thumbImg(this)','thumbImg(this,null,757)',$post["message"]);}-->$post[message]</p></div>
+										</li>
+										{else}
+										<dd class="cont" style="margin-top: 10px;" id="message"> <!--{eval $post['message']=str_replace('thumbImg(this)','thumbImg(this,null,757)',$post["message"]);}-->$post[message]</dd>
+										{/if}
+								</ul>
+								<dd class="control">
+									{if $_G['adminid'] == 1 && !$comment['first']}
+									<span>
+									<label for="manage$post[pid]">
+										<input type="checkbox" id="manage$post[pid]" class="pc" {if !empty($modclick)}checked="checked" {/if}onclick="pidchecked(this);modclick(this, $post[pid])" value="$post[pid]" autocomplete="off" />
+										{lang manage}
+									</label>
+									<!--{if $_G['group']['raterange'] && $post['authorid']}-->
+										<a id="k_rate" style="color: #666;" href="javascript:;" onclick="showWindow('rate', 'forum.php?mod=misc&action=rate&tid=$_G[tid]&pid=$post[pid]', 'get', -1);return false;" title="加8264币">{lang rate}&nbsp;</a>
+									<!--{/if}-->
+									<!--{if $post['rate'] && $_G['forum']['ismoderator']}-->
+										<a href="forum.php?mod=misc&action=removerate&tid=$_G[tid]&pid=$post[pid]&page=$page" onclick="showWindow('rate', this.href, 'get', -1)" style="color: #666;">{lang removerate}</a>
+									<!--{/if}-->
+									</span>
+									{/if}
+
+									<span {if $_G['uid']}{if $supportlist[$post['pid']]}title="你已经评价过了"{else} title="有用"{/if}{else} title="登录后才能进行评价" {/if} {if $_G['uid']&& $_G['uid']!=$post['authorid']&& !$supportlist[$post['pid']]} id="supportBtn_{$post['pid']}"{/if}{if !$_G['uid']} onclick="javascript:window.location.href = '{$_G[siteurl]}member.php?mod=logging&action=login';return false;"{/if} class="useful{if $post['supports']>0} active{/if}"><i></i>有用<em>{if !$post['supports']}{else}({$post['supports']}){/if}</em></span>
+
+									{if $_G['adminid'] == 1 && $star}
+									<span class="ans" id="editBtn_{$post['pid']}"><a href="javascript:;" style="color: #666;">修改</a></span>
+									{/if}
+								</dd>
+							</dt>
+						</dl>
+						<!--{/loop}-->
+						<!--{else}-->
+						<div class="dplb_list"> 暂时还没有人点评哦，你快第一个发表点评吧！ </div>
+						<!--{/if}-->
+						<div id="postlistreply">
+							<div id="post_new" style="display:none;border: none;">
+								<dl class="commentListDl" id="pid">
+									<dd class="face"><a href="home.php?mod=space&uid=$_G[uid]"><!--{avatar($_G[uid], small)}--></a></dd>
+
+									<dt>
+									<div class="toplist">
+										<span class="name"><a href="home.php?mod=space&uid=$_G[uid]" target="_blank" class="xi2">$_G[username]</a></span> {eval $star =2;}
+
+										<span class="star">
+
+										</span>
+										<span class="date">
+
+										</span>
+										</div>
+										<ul class="goodBad">
+											{if $myrate!=1 && $viewdata['enable']==1 && $_G['uid']}
+											<li>
+												<span class="leftIco bad">缺点</span>
+												<div class="conts"><p id="weakpoint"></p></div>
+											</li>
+											<li>
+												<span class="leftIco good">优点</span>
+												<div class="conts"><p id="goodpoint"></p></div>
+											</li>
+											<li>
+												<span class="leftIco all">综合</span>
+												<div class="conts"><p id="message"></p></div>
+											</li>
+											{else}
+											<dd class="cont" style="margin-top: 10px;"> <p id="message"></p></dd>
+											{/if}
+										</ul>
+									</dt>
+								</dl>
+							</div>
+						</div>
+						<div class="listPageBox">
+							$replymulti
+						</div>
+					</div>
+				</div>
+
+				<script type="text/javascript">
+				var postminchars = parseInt(4);
+				var postmaxchars = parseInt('$_G['setting']['maxpostsize']');
+				var disablepostctrl = parseInt('0');
+				function hideDiv(){
+					jQuery('.dplb_list').hide();
+				}
+				jQuery(document).ready(function($) {
+					$('#fastpostmessage').focus(function(){
+						!$(this).val() && $(this).prev().hide();
+					}).blur(function(){
+						!$(this).val() && $(this).prev().show();
+					});
+				});
+				function fastpostvalidates(theform){
+					var star;
+					var star = jQuery("#form_starNum").val();
+					var box = jQuery('#starBox')[0];
+					if(!parseInt(star)&& typeof(box)!=='undefined'){
+						showDialog("请点击星星图标进行点评");
+						return false;
+					}else{
+					}
+					{if $myrate!=1 && $viewdata['enable']==1 && $_G['uid']}
+					var goodpoint = jQuery("#f_goodpoint").val();
+					var weakpoint = jQuery("#f_weakpoint").val();
+					if(theform.goodpoint.value == '') {
+						showDialog('请完成优点信息。');
+						theform.message.focus();
+						return false;
+					}
+					if(theform.weakpoint.value == '') {
+						showDialog('请完成不足信息。');
+						theform.message.focus();
+						return false;
+					}
+					{/if}
+					if(theform.message.value == '') {
+						showDialog('请完成评价信息。');
+						theform.message.focus();
+						return false;
+					}
+					var message = theform.message.value;
+					showDialog('', 'info', '<img src="' + IMGDIR + '/loading.gif"> 请稍候...');
+					jQuery.post('forum.php?ctl={$modstr}&act=dopost&do=reply&tid={$_G['tid']}&inajax=1',
+							{starnum:star,<!--{if $myrate!=1 && $viewdata['enable']==1 && $_G['uid']}-->goodpoint:goodpoint,weakpoint:weakpoint,<!--{/if}-->message:message,formhash:'{FORMHASH}',replypostsubmit:'yes'},function(data){
+							hideMenu('fwin_dialog', 'dialog');
+							if(data=='ok'){
+								jQuery('#post_new, #post_new .star, #post_new .face').show();
+								var starHtml = '';
+								if(star>0){
+									for(var i=0;i<5;i++){
+										if(i<star){
+											starHtml += '<span class="redstar"></span>';
+										} else {
+											starHtml += '<span class="graystar"></span>';
+										}
+									}
+								}
+								jQuery('#post_new .star').html(starHtml);
+								{if $myrate!=1 && $viewdata['enable']==1 && $_G['uid']}
+								jQuery('#post_new #goodpoint').html(goodpoint.replace(/(\r\n)|(\n)/gi,"<br/>"));
+								jQuery('#post_new #weakpoint').html(weakpoint.replace(/(\r\n)|(\n)/gi,"<br/>"));
+								{/if}
+								jQuery('#post_new #message').html(message);
+								var d=new Date();
+								jQuery('#post_new .date').html('发表于 1秒前');
+								jQuery('#starBox').remove();
+								jQuery('#fastpostmessage').val('');
+								jQuery('.brandGrade').remove();
+							} else {
+								showDialog('发生错误请重试！');
+							}
+					});
+					return false;
+				}
+				</script>
+				<div id="writecommon"></div>
+				{if $myrate!=1 && $viewdata['enable']==1}
+				<div class="brandComment brandGrade">
+					<div id="writeCmt_dw"></div>
+					<div class="hd">
+						<h2><span style="float:left;">写<!--{$viewdata['subject']}-->点评</span>
+						{if $myrate!=1 && $viewdata['enable']==1 && $_G['uid']}
+							<span class="starBox" id="starBox">
+								<span class="graystar1" title="很差"></span>
+								<span class="graystar1" title="较差"></span>
+								<span class="graystar1" title="还行"></span>
+								<span class="graystar1" title="推荐"></span>
+								<span class="graystar1" title="力荐"></span>
+							</span>
+							<span>
+							</span>
+						{elseif !$_G['uid']}
+							<span class="starBox" id="starBox">
+								<span class="graystar1" title="很差"></span>
+								<span class="graystar1" title="较差"></span>
+								<span class="graystar1" title="还行"></span>
+								<span class="graystar1" title="推荐"></span>
+								<span class="graystar1" title="力荐"></span>
+							</span>
+							<span>
+							</span>
+						{else}
+
+						{/if}
+						</h2>
+					</div>
+					<form method="post" autocomplete="off" id="fastpostform" action="{$url}&act=dopost&do=reply&tid={$_G['tid']}" onSubmit="<!--{if checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->return vode(this);<!--{/if}-->return fastpostvalidates(this);">
+						<span id="fastpostreturn"></span>
+						<div class="writeGoodBad">
+						{if $myrate!=1 && $viewdata['enable']==1 && ($_G['uid']||!$_G['uid'])}
+						<li class="mb30">
+							<span class="leftIco bad">优点</span>
+							<div class="cont"><textarea name="weakpoint" rows="2" class="line3Area" id="f_weakpoint"></textarea></div>
+						</li>
+						<li class="mb30">
+							<span class="leftIco good">优点</span>
+							<div class="cont"><textarea name="goodpoint" rows="2" class="line3Area" id="f_goodpoint"></textarea></div>
+						</li>
+						{/if}
+						<li class="mb18">
+							<span class="leftIco all">综合</span>
+							<div class="cont" style="position: relative;">
+								<label class="fs14">{$modsetting[initdianping]}</label>
+								<textarea name="message" id="fastpostmessage" rows="6" class="line5Area "></textarea>
+							</div>
+						</li>
+						<li>
+							<div class="cont" style="margin-top: 15px;margin-left: 89px;">
+								<input type="hidden" name="starnum" id="form_starNum" value="0" />
+								<input type="hidden" name="formhash" value="{FORMHASH}" />
+								<input type="hidden" name="subject" value="" />
+								<input type="hidden" value="yes" name="replypostsubmit">
+								 <!--{if checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
+								 <style>
+								.subyzm td{vertical-align: middle;padding-top: 10px;}
+								.yztext {padding-left: 16px;}
+								 </style>
+								<div class="yzm">
+									<table border="0" cellspacing="0" cellpadding="0" class="subyzm">
+										<tr>
+											<td align="center" height="32" class="yztext" >验证码：</td>
+											<td align="center" valign="bottom" height="32"><input type="text" name="captcha" id="captcha" class="inputTxtShort borderEmbellish" style="width:50px;vertical-align: top;" onblur="vode();"/></td>
+											<td align="center"><a href="#" id="refreshCaptcha" title="点击刷新图片"><img src="/plugin.php?id=dailypicture:captcha" alt="点击刷新图片" /></a></td>
+											<td align="center"><input type="hidden" value="" id="yzm" name="yzm"></td>
+											<td align="center"><span id="jg"></span></td>
+										</tr>
+									</table>
+								</div>
+								<!--{/if}-->
+								<input {if !$guestreply}type="submit" onclick="hideDiv();" {else}type="button" onclick="showWindow('login', 'member.php?mod=logging&action=login&guestmessage=yes')" {/if}name="replysubmit"  id="fastpostsubmit" value="" class="tj182_43" />
+							</div>
+						</li>
+						</div>
+					</form>
+					<script type="text/javascript">
+						;(function($) {
+							$("#starBox>span").click(function(){
+								$(this).prevAll().addBack().css({"background-position": "0 0"});
+								$(this).nextAll().css({"background-position": "-17px 0"});
+								if (ie6) {
+									$("#form_starNum").val(($(this).index()+1)/3);
+								} else {
+									$("#form_starNum").val($(this).index()+1);
+								}
+							});
+						})(jQuery);
+					</script>
+				</div>
+			    {/if}
+			</div>
+		</div>
+		<div class="layoutRight">
+			<div class="searchR" style="display: none;">
+				<script language="javascript" type="text/javascript">
+					function g(formname){
+						var url = "http://www.baidu.com/baidu";
+						if (formname.s[1].checked) {
+							formname.ct.value = "2097152";
+						} else {
+							formname.ct.value = "0";
+						}
+						formname.action = url;
+						return true;
+					}
+					<!--{if checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
+					function vode(theform){
+						if (trim(theform.captcha.value)=="") {
+							showDialog('验证码不能为空');
+							return false;
+						}
+						if (theform.yzm.value=='0') {
+							showDialog('验证码输入错误');
+							return false;
+						}
+						return fastpostvalidateoutshop(theform);
+					}
+					//验证码
+					jQuery('#refreshCaptcha').click(function() {
+						jQuery(this).children('img').attr('src', '/plugin.php?id=dailypicture:captcha&_='+(new Date().getTime()));
+						jQuery('#jg').html("");
+						return false;
+					});
+					jQuery('#captcha').blur(function(){
+						 validate_captcha();
+						 return false;
+					});
+					function validate_captcha() {
+						jQuery.ajax({
+							async: false,
+							type: 'get',
+							url: '/plugin.php?id=dailypicture:validatecaptcha&captcha='+jQuery('#captcha').val(),
+							success : function(data) {
+								if (data==1) {
+									jQuery('#jg').html("");
+									jQuery('#jg').append('<img width="16" height="16" class="vm" src="static/image/common/check_right.gif">');
+									jQuery('#yzm').val('1');
+								}else{
+									jQuery('#jg').html("");
+									jQuery('#jg').append('<img width="16" height="16" class="vm" src="static/image/common/check_error.gif">');
+									jQuery('#yzm').val('0');
+									jQuery('#captcha').val('');
+								}
+							}
+						});
+					};
+					<!--{/if}-->
+				</script>
+				<table border="0" align="" cellpadding="0" cellspacing="0">
+					<form action="forum.php?ctl=brand&act=showlist&order=heats&page=1" method="post" target="_blank">
+						<tr>
+							<td><input type="text" name="key" id="key" value="{lang enter_content}" autocomplete="off" onfocus="searchFocus(this);" onblur="searchBlur(this);" class="searchtext" ></td>
+							<td><input type="submit" id="search_submit" name="searchsubmit" value="" class="searchbuttom" >
+							<input name="filter" type="hidden"  value="heats"/>
+							<input type="hidden" name="formhash" value="{FORMHASH}" />
+							<input type="hidden" name="srchtype" value="title" />
+							<input type="hidden" name="srhfid" value="$_G[fid]" />
+						</tr>
+					</form>
+				</table>
+			</div>
+			<!--{if $articles_result}-->
+			<div class="brandRCol equiCol mt15">
+				<div class="hd hdd">
+					<h2><!--{$viewdata['cname']}-->新闻</h2>
+					<form class="searchform more" method="post" autocomplete="off" target="_blank" action="/search.php?mod=portal">
+							<input type="hidden" name="formhash" value="{FORMHASH}" />
+							<input type="hidden" name="srchtxt" value="{$_G['forum_option']['brand_name']['value']}"/>
+							<input type="hidden" name="searchsubmit" value="yes" />
+							<!--{if ($_G['forum']['ismoderator'] && $_G['group']['alloweditpost'] && (!in_array($post['adminid'], array(1, 2, 3)) || $_G['adminid'] <= $post['adminid']) || ($_G['groupid'] == 1 ||$_G['groupid']== 45))}-->
+							<a href="/portal.php?mod=portalcp&ac=article&catid=751" class="cBlue" target="_blank">+发布新文章</a>
+							<!--{/if}-->
+					</form>
+				</div>
+				<div class="bd">
+					<ul class="imgTextLR70 floatL">
+						<!--{loop $articles_result $value}-->
+						<li>
+							<a href="http://www.8264.com/{$value[aid]}.html" class="pic" target="_blank" title="{$value[title]}">
+								<!--{if $value['pic']}-->
+								<img src="{$value[pic]}.thumb.jpg" style="width:68px;height:47px;" alt="" />
+								<!--{else}-->
+								<img src="http://www.8264.com/static/image/common/nopic.gif" style="width:68px;height:47px;" alt="" />
+								<!--{/if}-->
+							</a>
+							<p>
+								<a href="http://www.8264.com/{$value[aid]}.html" target="_blank" title="{$value[title]}">{$value[title]}</a><br/>
+								<span class="date"><!--{eval echo gmdate('m月d日 ',$value['dateline'])}--></span>
+								<a href="http://www.8264.com/{$value[aid]}.html" target="_blank" class="more">详细</a>
+							</p>
+						</li>
+						<!--{/loop}-->
+					</ul>
+				</div>
+			</div>
+			<!--{/if}-->
+			<!-- <div>{ad/custom_255}</div> -->
+			<!--{if $zb_result}-->
+			<div class="brandRCol equiCol mt15">
+				<div class="hd hdd">
+					<h2><!--{$viewdata['cname']}-->讨论</h2>
+					<form class="searchform" method="post" autocomplete="off" target="_blank" action="/search.php?mod=forum">
+						<input type="hidden" name="formhash" value="{FORMHASH}" />
+						<input type="hidden" name="srchtxt" value="{$_G['forum_option']['brand_name']['value']}"/>
+						<input type="hidden" name="searchsubmit" value="yes" />
+						<span class="more">
+							<!-- <a href="/forum.php?mod=post&action=newthread&fid=7" target="_blank" class="cBlue">+ 发布新贴</a> -->
+						</span>
+					</form>
+				</div>
+				<div class="bd">
+					<ul class="imgTextLR floatL">
+						<!--{loop $zb_result $value}-->
+						<li> <span class="pic"><a href="home.php?mod=space&uid={$value['authorid']}" rel="nofollow"  target="_blank">$value[avatar]</a></span>
+							<p><a href="http://bbs.8264.com/thread-{$value[tid]}-1-1.html" target="_blank" title="{$value[subject]}">{$value[subject]}</a></p>
+						</li>
+						<!--{/loop}-->
+					</ul>
+				</div>
+			</div>
+			<!--{/if}-->
+
+			<!--{if $topics_result}-->
+			<div class="brandRCol specialCol mt15">
+				<div class="hd hdd">
+					<h2>相关专题</h2>
+				</div>
+				<div class="bd">
+					<ul class="imgTextTB">
+						<!--{loop $topics_result $value}-->
+						<li><a href="http://www.8264.com/topic/{$value[topicid]}.html" target="_blank" class="pic"><img src="{$value[cover]}" /></a>
+							<p><a href="http://www.8264.com/topic/{$value[topicid]}.html" target="_blank">{$value[title]}</a></p>
+						</li>
+						<!--{/loop}-->
+
+					</ul>
+				</div>
+			</div>
+			<!--{/if}-->
+			<!--{if $blogs_result}-->
+			<div class="brandRCol spaceCol mt15">
+				<div class="hd hdd">
+					<h2>品牌空间</h2>
+					<span class="more"></span> </div>
+					<div class="bd">
+						<ul class="artListOrange floatL">
+							<!--{loop $blogs_result $value}-->
+							<li><a href="http://u.8264.com/home-space-uid-{$value[uid]}-do-blog-id-{$value[blogid]}.html" target="_blank" title="{$value[subject]}">{$value[subject]}</a></li>
+							<!--{/loop}-->
+						</ul>
+					</div>
+			</div>
+			<!--{/if}-->
+			<!--{if $hotbrands}-->
+			<div class="brandRCol" style="padding-top: 10px;">
+				<span class="hd"><h2 style="padding-bottom: 0px;">热门品牌</h2></span>
+				<div>
+					<ul>
+						<!--{loop $hotbrands $brand}-->
+						<li style="padding-top: 20px;">
+							<table>
+								<tr>
+									<td rowspan="2">
+										<img src="http://image.8264.com/{$brand[dir]}/{$brand[showimg]}" alt="{$brand['subject']}"
+									width="90px;" height="45px;" />
+									</td>
+									<td>
+										<div style="padding-left: 15px;">
+											<a href="http://www.8264.com/pinpai-{$brand[tid]}" target="_blank"><!--{$brand['subject']}--></a>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div style="padding-top: 5px; padding-left: 10px;" class="starCom">
+											<span class="star">
+												<!--{eval for($i=1; $i<=5; $i++) : }-->
+												<span class="{if $i <= $brand['score']/2}
+																redstar
+															{elseif $i > ($brand['score']/2 - 1)}
+																halfstar
+															{else}
+																graystar
+															{/if}"></span>
+												<!--{eval endfor;}-->
+											</span>
+											<span class="num"><b style="color:#F98361;">{$brand['score']}</b></span>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</li>
+						<!--{/loop}-->
+					</ul>
+				</div>
+			</div>
+			<!--{/if}-->
+			<!--{if $cplist}-->
+			<div class="brandRCol" style="padding-top: 20px;">
+				<div class="hd hdd">
+					<h2>同排行品牌</h2>
+				</div>
+				<div>
+					<ul>
+						<!--{loop $cplist $brand}-->
+						<li style="padding-top: 20px;">
+							<table>
+								<tr>
+									<td rowspan="2">
+										<a href="http://www.8264.com/pinpai-{$brand[tid]}" target="_blank" title="{$brand['subject']}"><img src="http://image.8264.com/{$brand[dir]}/{$brand[showimg]}" alt="{$brand['subject']}"
+									width="90px;" height="45px;" /></a>
+									</td>
+									<td>
+										<div style="padding-left: 15px;">
+											<a href="http://www.8264.com/pinpai-{$brand[tid]}" target="_blank" title="{$brand['subject']}"><!--{$brand['subject']}--></a>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div style="padding-top: 5px; padding-left: 10px;" class="starCom">
+											<span class="star">
+												<!--{eval for($i=1; $i<=5; $i++) : }-->
+												<span class="{if $i <= $brand['score']/2}
+																redstar
+															{elseif $i > ($brand['score']/2 - 1)}
+																halfstar
+															{else}
+																graystar
+															{/if}"></span>
+												<!--{eval endfor;}-->
+											</span>
+											<span class="num"><b style="color:#F98361;">{$brand['score']}</b></span>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</li>
+						<!--{/loop}-->
+					</ul>
+				</div>
+			</div>
+
+			<!--{/if}-->
+		</div>
+	</div>
+	<!-- wrapper End -->
+</div>
+<form method="post" autocomplete="off" name="modactions" id="modactions">
+	<input type="hidden" name="formhash" value="{FORMHASH}" />
+	<input type="hidden" name="optgroup" />
+	<input type="hidden" name="operation" />
+	<input type="hidden" name="listextra" value="$_G[gp_extra]" />
+</form>
+<div id="mdly" class="fwinmask" style="display:none;">
+	<table cellspacing="0" cellpadding="0" class="fwin">
+		<tr>
+			<td class="t_l"></td>
+			<td class="t_c"></td>
+			<td class="t_r"></td>
+		</tr>
+		<tr>
+			<td class="m_l">&nbsp;&nbsp;</td>
+			<td class="m_c">
+				<div class="f_c">
+					<div class="c">
+						<h3>{lang admin_select}&nbsp;<strong id="mdct" class="xi1"></strong>&nbsp;{lang piece}: </h3>
+						<!--{if $_G['forum']['ismoderator']}-->
+						<!--{if $_G['group']['allowbanpost']}--><a href="javascript:;" onclick="modaction('banpost')">{lang modmenu_banpost}</a><span class="pipe">|</span><!--{/if}-->
+						<!--{if $_G['group']['allowdelpost']}--><a href="javascript:;" onclick="modaction('delpost')">{lang modmenu_deletepost}</a><span class="pipe">|</span><!--{/if}-->
+						<!--{/if}-->
+						<!--{if $_G['forum_thread']['pushedaid'] && $allowpostarticle}--><a href="javascript:;" onclick="modaction('pushplus', '', 'aid=$_G[forum_thread][pushedaid]', 'portal.php?mod=portalcp&ac=article&op=pushplus')">{lang modmenu_pushplus}</a><span class="pipe">|</span><!--{/if}-->
+					</div>
+				</div>
+			</td>
+			<td class="m_r"></td>
+		</tr>
+		<tr>
+			<td class="b_l"></td>
+			<td class="b_c"></td>
+			<td class="b_r"></td>
+		</tr>
+	</table>
+</div>
+
+<div class="popBox" id="box_view">
+	<div class="bd">
+		<div class="popWriteCmt">
+			<h2>
+				<span class="tit">修改点评</span>
+				<span class="tips"></span>
+				<span class="starBox" id="bv_starBox">
+					<span class="graystar" title="很差"></span>
+					<span class="graystar" title="较差"></span>
+					<span class="graystar" title="还行"></span>
+					<span class="graystar" title="推荐"></span>
+					<span class="graystar" title="力荐"></span>
+				</span>
+				<span class="starTextTips"></span>
+				<input type="hidden" name="" id="bv_starNum" value="0" />
+			</h2>
+			<div style="color: red; display: none;" id="bv_error"></div>
+			<form method="post" autocomplete="off" id="postform" action="{$url}&act=dopost&do=reply&ext=edit&page={$_G['page']}&tid={$_G['tid']}">
+				<ul class="writeGoodBad">
+					<li class="mb30">
+						<span class="leftIco bad">不足</span>
+						<div class="cont"><textarea name="weakpoint" id="weakpoint" rows="2" class="line3Area"></textarea></div>
+					</li>
+					<li class="mb30">
+						<span class="leftIco good">优点</span>
+						<div class="cont"><textarea name="goodpoint" id="goodpoint" rows="2" class="line3Area"></textarea></div>
+					</li>
+					<li class="mb18">
+						<span class="leftIco all">综合</span>
+						<div class="cont"><textarea name="message" id="message" rows="6" class="line5Area "></textarea></div>
+					</li>
+					<li class="sub"><input type="button" value="" id="boxSubmit" class="modifi182x43"></li>
+				</ul>
+				<input type="hidden" name="pid" id="pid" value="0" />
+			</form>
+		</div>
+		<span class="closeBtn" id="bv_closeBtn">关闭</span>
+	</div>
+</div>
+
+<div class="share_bd_warpten">
+	<ul class="bbs_share_sc">
+		<li class="ps_re" id="share">
+			<a href="javascript:;" class="share"></a>
+			<div class="bdsharebuttonbox share_bd" data-tag="share_1">
+				<a href="javascript:;" class="sina" data-cmd="tsina"></a>
+				<a href="javascript:;" class="qq" data-cmd="qzone"></a>
+				<a href="javascript:;" class="wb" data-cmd="tqq"></a>
+				<a href="javascript:;" class="wx" data-cmd="weixin"></a>
+			</div>
+		</li>
+		<li><a href="home.php?mod=spacecp&ac=favorite&type=thread&id=$_G[tid]" id="m_k_favorite" onclick="showWindow(<!--{if $_G['uid']}-->this.id, this.href, 'get', 0<!--{else}-->'login','member.php?mod=logging&action=login'<!--{/if}-->);" class="sc"><b style="display: none;" id="favoritenumber"></b></a></li>
+		<li><a href="forum.php?mod=forumdisplay&fid=$_G[fid]" class="bbsli" title="返回品牌首页"></a></li>
+		<li id="gotop_50"><a style="display: none;" href="javascript:;" class="gotop_50"></a></li>
+	</ul>
+</div>
+<script>
+window._bd_share_config = {
+	common : {
+		//此处放置通用设置
+	},
+	share : [
+		//此处放置分享按钮设置
+		{"tag" : "share_1", "bdSize" : 32}
+	]
+}
+with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+(function($){
+	var ww=$(window).width();
+	var s_bd_r=Math.max((ww-980)/2-60,0);
+	$(".share_bd_warpten").css("right",s_bd_r);
+})(jQuery);
+</script>
+
+<style type="text/css">
+.friendLink { background:#0f1f2b; padding: 15px 0; font: 12px/20px "Microsoft Yahei"; margin-top:20px; margin:0 auto;}
+.friendLinkcon{ width:980px; margin:0 auto;}
+.friendLink span{ display:block; font-size:16px; line-height:18px; padding-bottom: 5px; color:#807f7f;}
+.friendLink a { color: #807f7f; margin-right: 10px; display: inline; white-space: nowrap; text-decoration:none;}
+.friendLink a:hover { color: #FFF; }
+</style>
+<div class="friendLink">
+<!--[diy=linkmore]-->
+<div id="linkmore" class="area"></div>
+<!--[/diy]-->
+</div>
+<!--{subtemplate forum/dianping/footer}-->

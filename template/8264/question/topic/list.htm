@@ -1,0 +1,317 @@
+<!--{template common/header_8264_new}-->
+<link rel="stylesheet" href="http://static.8264.com/static/css/common/style.css?{VERHASH}">
+<link rel="stylesheet" href="http://static.8264.com/static/css/ask/global/1.0.1/css/ask.css?{VERHASH}">
+<style>
+.rcontentp img{max-height:600px; width:expression(document.body.clientHeight>600?"600px":"auto"); overflow:hidden;}
+.edierbar {
+    background: #f2f3f6 none repeat scroll 0 0;
+    border-bottom: 0px solid #e3e3e3;
+}
+.pinglunmid {
+    border: 0px solid #e3e3e3;
+}
+.activate_mask_tip_answer {
+    padding: 16px 20px 20px;
+}
+ .gxblist img {
+	border-radius: 50%;
+    float: left;
+    height: 48px;
+    width: 48px;
+}
+
+.answergoodonespan img {
+    border-radius: 2px;
+    float: left;
+    height: 24px;
+    margin-right: 8px;
+    width: 24px;
+}
+.editable_content a{display:inline;}
+</style>
+<header class="header_new">
+    <!--{if !empty($_G['cookie']['fromm8264xuexiao'])}-->
+        <!--<a class="icon4" href="javascript:window.history.go(-1);"></a>-->
+        <a class="icon4" href="http://m.8264.com/xuexiao"></a>
+    <!--{/if}-->
+    <a href="javascript:void(0);" class="logo"></a>
+</header>
+<div class="header">
+        <div class="layout">
+            <div class="icoHill"></div>
+            <div class="headerL">
+                <h1>
+                    <span class="country">问答</span>
+                </h1>
+                <div class="site">
+                    <a href="http://www.8264.com/wenda/">问答</a>
+                    {if $lable}
+					<em>></em><a href="http://www.8264.com/wenda/list-0-{$lable}-1.html">{$outputlables[$lable][name]}</a>
+					{else}
+					<em>></em><a href="http://www.8264.com/wenda/">户外</a>
+					{/if}
+
+                </div>
+            </div>
+            <style type="text/css">
+			.dsad{position:absolute;right:230px;top:18px}
+			</style>
+			<div class="dsad"><!--{ad/custom_290}--></div>
+        </div>
+    </div>
+    <!--主体内容开始-->
+    <div class="w980">
+        <div style="margin-top: 20px;" class="tjhd-wrap">
+        <div style="display:none;"><!--{eval $bottom_ads = array('416', '409', '417'); $bottom_ad = rand(0, 2); $bottom_ad_id = $bottom_ads[$bottom_ad]; }-->
+<!--{ad/custom_$bottom_ad_id}--></div>
+		<!-- 值得买 -->
+        <!--{eval include(DISCUZ_ROOT.'./source/plugin/skiing/hd_zw.php');}-->
+        <!--{eval $zhidemai_list = ForumOptionHuoDong::pianyi_sidebar(6, 'top', 'jiu', '10027');}-->
+        <!--{if $zhidemai_list}-->
+        <div>
+        <style>
+            .zhidemaiwidth{ width:980px;}
+            .zhidemaibox .zhidemailist_new li{width:144px; overflow:hidden;}
+            .zhidemaibox .zhidemailist_new li img{ width:144px;}
+        </style>
+        <!--{subtemplate common/zhidemai}-->
+        </div>
+        <!--{/if}-->
+        <!-- //值得买 -->
+
+        </div>
+
+
+        <div class="clear_b pt40">
+            <!--左侧开始-->
+            <div class="l_660" style="overflow: hidden;">
+                <!--搜索开始-->
+                <div class="searchboxall">
+                    <div class="searchcon">
+                    <form id="scform" autocomplete="off" action="http://so.8264.com/cse/search" target="_blank">
+                        <input type="hidden" name="s" value="9963133823733045431" />
+                        <input type="hidden" name="nsid" value="4" />
+                        <input type="search" class="searchinput" name="q" placeholder="搜搜你想问的问题">
+                        <input type="submit" class="searchbutton" value="搜索">
+                    </form>
+                    </div>
+                </div>
+                <!--搜索结束-->
+                <div class="category clear_b">
+                    <!--
+                    <img src="http://image1.8264.com/forum/201601/04/1544204ttyy64d55v3rqv2.jpg">
+                    <p>
+                        <b>户外运动</b>
+                        <span>户外运动有益身心健康，就像运动前的准备活动一样，运动后我们也要注意一些细节，这样才能最大限度的保护我们的身体。</span>
+                    </p>
+                    -->
+                    <div class="bigtitleassortment clear_b" style="display:none;"><h1>
+							{if $lable}
+							{$outputlables[$lable][name]}
+							{else}
+							户外
+							{/if}
+
+						</h1><span>{$guanzhuNum}</span><em>人关注</em></div>
+                    <div class="txiconboxlist clear_b">
+
+						{loop $guanzhuImg $v}
+						<span class="favtar-img">
+							{avatar($v, small)}
+						</span>
+						{/loop}
+                        <span class="tps-dott"></span>
+                    </div>
+
+                    <div class="assortmentbox clear_b">
+                        <div class="assortmentbox-inner line">
+                        <div class="assortmentcon">
+                            <a href="wenda/" {if $lable==0} class="hover" {/if}>全部</a>
+							{loop $outputlables $k $v}
+							  {if $v[num] > 0}
+								<a href="wenda/list-0-{$k}-1.html" {if $lable==$k} class="hover"{/if}>{$v[name]}</a>
+							  {/if}
+							{/loop}
+                        </div>
+                        </div>
+                        <div class="assortmentmore">
+                            <span>更多</span>
+                        </div>
+                        <div class="u-c-more">
+                            <span class="more-channel"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="listtitlebig clear_b">
+                    <span>所有问题</span>
+                    <div class="czright">
+                        <a href="wenda/list-0-{$lable}-1.html" {if $hot ==0} class="hover" {/if} >热门</a>
+                        <a href="wenda/list-1-{$lable}-1.html" {if $hot ==1} class="hover" {/if} >时间</a>
+                    </div>
+                </div>
+
+                <!--回答开始列表开始-->
+                <div class="answerlistbox">
+                    <!--单条情况开始-->
+					<!--{loop $list $key $listone}-->
+                    <div class="asklist">
+                        <div class="al-hd">
+                            <a href="wenda/{$listone[topicid]}.html" target='_blank'>{$listone['title']}</a>
+                            <i>{$listone['replynum']}回答</i>
+                        </div>
+						{if $listone['upreplyid']}
+						<div class="answergoodone clear_b">
+							<span class='answergoodonespan'><!--{echo discuz_uc_avatar($listone['textauthorid'])}--></span>
+                            <div class="answergoodcon">
+                                <div class="answer_author_info clear_b">
+                                    <span>{$listone['textauthor']}</span>
+                                </div>
+                                <div class="editable_content wap-wordp">
+                                    <p>{$listone['textrcontent']}<a href="wenda/{$listone[topicid]}.html" target='_blank' style="display:inline;">[查看全文]</a></p>
+                                </div>
+                            </div>
+                        </div>
+						{/if}
+                    </div>
+					<!--{/loop}-->
+                    <!--单条情况结束-->
+                </div>
+                <!--回答开始列表结束-->
+                <!--分页开始-->
+                <div class="list_pager">
+					<!--分页开始-->
+					{if $multi}<div class="pg clear_b">{$multi}</div>{/if}
+					<!--分页结束-->
+                </div>
+                <!--分页结束-->
+            </div>
+            <!--左侧结束-->
+            <!--右侧开始-->
+            <div class="r_260">
+                <!--贡献经验人数-->
+                <div class="wyfbbox">
+                    <!--<a href="javascript:;" onclick="showtiwen();" class="wytw">提问</a>-->
+                    <a href="http://bbs.8264.com/forum-post-action-newthread-fid-12.html" class="wytw">我要提问</a>
+                </div>
+                <!--贡献经验人数-->
+                <div class="wyfbbox">
+                    <div class="smallfonttitle">
+                        贡献经验人数
+                    </div>
+                    <div class="numbox peoplenum">
+                    </div>
+                    <div class="smallfonttitle">
+                        关注数
+                    </div>
+                    <div class="numbox gzsnum">
+                    </div>
+                </div>
+                <!--//贡献经验人数-->
+				<div class="">
+                    <div class="rtitle">贡献排行榜</div>
+                    <div class="gxblist">
+                        <ul>
+							<!--{loop $gxuserlist $gxuser}-->
+                            <li>
+                                <a class="tx48">
+                                    <!--<img src="http://static.8264.com/common/ico_82x82/huwaidating.jpg" alt="" class="tximg">-->
+									<!--{echo discuz_uc_avatar($gxuser['authorid'])}-->
+                                    <span>{$gxuser['author']}</span>
+                                </a>
+                            </li>
+							<!--{/loop}-->
+                        </ul>
+                    </div>
+                </div>
+
+				<div class="mt45">
+                    <div class="rtitle">等你回答</div>
+                    <div class="xgwtbox">
+                        <ul>
+                            <!--{loop $xgtopiclist $xgtopic}-->
+							<li>
+                                <a href="wenda/{$xgtopic[topicid]}.html" target='_blank'>
+                                    <div class="wds">
+                                        <b>{$xgtopic['replynum']}</b>
+                                        问答
+                                    </div>
+                                    <span>{$xgtopic['title']}</span>
+                                </a>
+                            </li>
+							<!--{/loop}-->
+                        </ul>
+                    </div>
+                </div>
+
+				<!--JD广告开始-->
+                <!--{subtemplate common/adv_jd_250}-->
+                <!--JD广告结束-->
+            </div>
+            <!--右侧结束-->
+        </div>
+    </div>
+    <!--主体内容结束-->
+<br/>
+
+<script src="http://static.8264.com/static/js/jquery.lazyload.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+
+		//图片延时加载
+		jQuery(".lazy").lazyload({
+			effect: "fadeIn",
+			appear: function() {
+			}
+		});
+
+		$(".assortmentmore").click( function () {
+            if( $(this).hasClass('sqpointer') ){
+                $(".assortmentcon").height(80);
+                $('span',this).text("更多")
+                $(this).removeClass('sqpointer');
+            }else{
+                $(".assortmentcon").css({ height: "auto" });
+                $('span',this).text("收起")
+                $(this).addClass('sqpointer');
+            }
+        });
+        $(".u-c-more").click(function() {
+            if($(this).hasClass("drop-up")){
+                $(this).removeClass("drop-up");
+                $(".assortmentbox-inner").removeClass("box").addClass("line");
+                $(".assortmentbox").removeClass("open");
+            }else{
+                $(this).addClass("drop-up");
+                $(".assortmentbox-inner").removeClass("line").addClass("box");
+                $(".assortmentbox").addClass("open");
+            }
+        });
+        var d = $(".assortmentcon"),
+            u = d.find("a.hover");
+            d.parent()[0].scrollLeft=u[0].offsetLeft-u.width()/2;
+
+        //贡献经验人数
+        var peoplenum = '7932';
+        var arr = peoplenum.split("");
+        for(var i in arr){
+            $(".peoplenum").append("<span>" + arr[i] + "</span>");
+        }
+        //关注数
+        var gzs = '{$guanzhuNum}';
+        var arr2 = gzs.split("");
+        for(var i in arr2){
+            $(".gzsnum").append("<span>" + arr2[i] + "</span>");
+        }
+	});
+</script>
+
+<footer class="footer_ask">
+    <div class="fbc">
+        <a href="http://m.8264.com/bbs">8264论坛</a>
+        <a href="http://um0.cn/1mEo9u" class="toApp">在外APP</a>
+        <p class="copyRight">Copyright 2013 - 2016  8264.com. All Rights Reserved</p>
+    </div>
+</footer>
+<!--{ad/custom_484}-->
+<!--{subtemplate common/footer_8264_new}-->

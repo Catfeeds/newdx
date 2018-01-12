@@ -1,0 +1,55 @@
+<!--{subtemplate common/header_8264_new}-->
+<style>
+	html{ height:100%;}
+	body{ height:100%;}
+	#wp{ height:100%; margin:-54px 0px -70px 0px;}
+	.clear_b:after{content: ""; display: block; clear: both; visibility: hidden;}
+	.clear_b{ zoom: 1;}
+	.w980{ width:980px; margin:0 auto;}
+	.title22{ font-size:22px; padding:100px 0px 10px 0px;}
+	.firendlinkinfo{ font-size:14px; color:#585858; line-height:1.5; padding:10px 0;}
+	.firednlinkinputlist{ padding:30px 0px 0px 0px;}
+	.firednlinkinputlist dl{ width:100%; margin:0px 0px 20px 0px;}
+	.firednlinkinputlist dt{ float:left; font-size:16px; float:left; padding:7px 0px 0px 0px; text-align:right; width:140px;}
+	.firednlinkinputlist dd{ float:left; font-size:14px; float:left;}
+	.firednlinkinputlist dd span{ padding:0px 0px 0px 20px; display:inline-block; _display: inline; _zoom:1; font-size:12px; color:#585858;}
+	.firednlinkinputlist input{ border:1px solid #d6d6d6; height:20px; font-size:14px; line-height:21px; padding:10px; color:#585858; border-radius:3px; width:300px;}
+	.firednlinkinputlist input.tjbutton{ background:#43a6df; font-size:18px; text-align:center;  height:42px; line-height:42px; width:182px; border:0 none; padding:0px; color:#fff; font-family:"Microsoft Yahei",Tahoma,Helvetica,SimSun,sans-serif; cursor:pointer;}
+	.firednlinkinputlist input.tjbutton:hover{ background:#1a2b38;}
+</style>
+<div class="w980">
+	<form method="post">
+		<div class="title22">友情链接交换</div>
+		<div class="firendlinkinfo">
+			申请前请在贵站投放以下链接：<font color="#43a6df"><!--{$outlink}--></font>
+		</div>
+		<div class="firendlinkinfo">
+			链接关键词为：<font color="#43a6df"><!--{$outlinkname}--></font>
+		</div>
+		<div class="firendlinkinfo">
+			我们会尽快审核您的申请
+		</div>
+		<div class="firednlinkinputlist clear_b">
+			<dl class="clear_b">
+				<dt>您的关键词&nbsp;&nbsp;</dt>
+				<dd><input type="text" name="name" placeholder="如：8264活动平台"><span></span></dd>
+			</dl>
+			<dl class="clear_b">
+				<dt>您的网址&nbsp;&nbsp;</dt>
+				<dd><input type="text" name="url" placeholder="如：http://hd.8264.com"><span></span></dd>
+			</dl>
+			<dl class="clear_b">
+				<dt>您的QQ&nbsp;&nbsp;</dt>
+				<dd><input type="text" name="qq"><span></span></dd>
+			</dl>
+			<dl class="clear_b">
+				<dt></dt>
+				<dd>
+					<input type="hidden" name="type" value="{$type}">
+					<input type="submit" class="tjbutton" value="提交">
+				</dd>
+			</dl>
+		</div>
+	</form>
+</div>
+<!--{subtemplate common/footer_8264_new}-->

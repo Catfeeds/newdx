@@ -1,0 +1,29 @@
+{subtemplate common/header}
+<div class="bm">
+	<div class="bm_h cl">
+		<h2>8264户外热点内容列表
+		    <!--{if $manager==1}--><span style=" padding-left: 733px;"><a href="plugin.php?id=searchindex:adminsearch&operation=all"><font style="font-size:12px;">管理关键字</font></a></span><!--{/if}-->
+		</h2>
+    </div>
+	<div class="bm_c">
+		<ul class="xl" style="line-height:25px; float:left; ">
+		<!--{loop $ing_lists $ing_list}-->
+				<li style="float:left; text-align: center; width: 100px; height: 20px; line-height: 20px; padding:1px 2px 1px 2px; overflow:hidden;">
+				<a href="zhuanti/$ing_list[searchid]" title="$ing_list[keywords]" target="_blank">$ing_list[keywords]</a>
+				</li>
+		<!--{/loop}-->
+		</ul>
+        <div style="clear:both;"></div>
+	</div>
+</div>
+<!--{if !empty($multipage)}-->
+<div class="pgs cl mbm">$multipage</div>
+<div class="pgs cl mbm">
+    <div class="pg">
+    <!--{loop $pagelist $value}-->
+    <a href="$value[url]" title="第$value[page]页内容">$value[page]</a>
+    <!--{/loop}-->
+    </div>
+</div>
+<!--{/if}-->
+{subtemplate common/footer}

@@ -1,0 +1,97 @@
+/* CSS Document */
+.clear_b:after,.liststyleone li:after,.jiagebox li:after{content: ""; display: block; clear: both; visibility: hidden;}
+.clear_b,.liststyleone li,.jiagebox li{ zoom: 1;}
+
+
+body{ background:#f9f9f9;}
+
+
+.warpten980{ width:980px; margin:0 auto;}
+.indextitlebig{ font-size:20px; color:#000; height:70px;}
+.indextitlebig span{ float:left; margin-top:21px;}
+.indextitlebig span.zbicon{ background:url(http://static.8264.com/static/image/mudidi/bg.png) 0 -291px no-repeat; padding-left:20px;}
+.indextitlebig span.glicon{ background:url(http://static.8264.com/static/image/mudidi/bg.png) 0 -353px no-repeat; padding-left:20px;}
+.indextitlebig span.whicon{ background:url(http://static.8264.com/static/image/mudidi/bg.png) 0 -322px no-repeat; padding-left:20px;}
+.indextitlebig a{ float:right; color:#25b289; font-size:12px; margin-top:31px; text-decoration:none;}
+.indextitlebig a.float_left{ float:left; margin:28px 0px 0px 10px; display:inline;}
+.indextitlebig a.orangebox{ border:#ff7950 solid 1px; color:#ff7950; padding:2px 8px; margin-top:28px;}
+.boxborder{ background:#fff; border:#e7e6e7 solid 1px; border-left: 0 none; border-top:0 none;}
+.w480{ width:480px;}
+.float_left{ float:left;}
+.float_right{ float:right;}
+.liststyleone{ padding-top:30px;}
+.liststyleone li{ height:44px; padding:0px 30px 0px 30px; }
+.liststyleone li a{ float:left; font-size:16px; color:#585858; text-decoration:none; position: relative;}
+.liststyleone li a em{ width:30px; height:19px; background:url(http://static.8264.com/static/image/mudidi/bg.png) no-repeat; position:absolute; right:-31px; top:-11px;}
+.liststyleone li a em.preferential{ background-position:0 -50px;}
+.liststyleone li a em.hoticon{ background-position:0 -71px;}
+.liststyleone li span{ float:right; font-size:14px; color:#949494;}
+.liststyleone li span i{ color:#1e6d9b; font-style:normal;}
+.liststyleone li span img{ width:24px; height:24px; border-radius:3px; float:left; margin:0px 5px 0px 0px;}
+.liststyleone li span a{ font-size:14px; color:#1e6d9b; width:70px; height:20px; overflow:hidden; padding-top:3px;}
+.w680{ width:680px;}
+.w330{ width:330px;}
+.imgwenlist{}
+.imgwenlist li{ border-bottom:#eeeeee solid 1px; height:76px; position:relative; padding:20px 0px 20px 30px;}
+.imgwenlist li img{ width:76px; height:76px; float:left; margin:0px 10px 0px 0px; display:inline;}
+.imgwenlist li i{ width:36px; height:20px; background:url(http://static.8264.com/static/image/mudidi/bg.png) 0px -93px no-repeat; position:absolute; left:25px; top:26px;}
+.imgwenlist li p{ overflow:hidden; margin:0px; padding:0px;}
+.imgwenlist li p a{ font-size:16px; color:#585858; height:50px; overflow:hidden; display:block; text-decoration:none; width:210px;}
+.imgwenlist li p span{ color:#949494; font-size:12px; display:block; padding-top:10px;}
+.glcitylist{}
+.glcitylist li{ padding:30px 0px 30px 30px; border-bottom:#eee solid 1px;}
+.glcitylist li img{ width:48px; height:48px; float:left; margin:0px 16px 0px 0px; display:inline; border-radius:3px;}
+.glcitylist li p{ overflow:hidden; margin:0px; padding:0px; height:48px;}
+.glcitylist li p a{ font-size:16px; color:#1e6d9b; text-decoration:none; display:block; overflow: hidden; width:550px; height:20px;}
+.glcitylist li p a.orange{ color:#ff7950;}
+.glcitylist li p span{ font-size:12px; display: block; color:#949494; padding-top:12px;}
+.glcitylist li div{ font-size:14px; color:#585858; padding-top:10px; padding-right:40px; line-height:1.5;}
+
+
+
+
+
+.city_introduction{ padding:27px 20px 27px 27px; font-size:15px; color:#585858; line-height:1.5;}
+
+.city_introduction p{ margin:0px; padding:0px 0px 10px 0px; font-size:14px;}
+.city_introduction p em{ font-size:14px; display:inline; padding-right:5px;}
+.city_introduction p span{ font-size:14px; display:inline; padding-right:25px;}
+
+.city_introduction span{ display:block; font-size:16px; padding-bottom:15px;}
+.city_introduction span em{ padding:0px 0px 0px 10px; font-size:12px; color:#949494;}
+
+
+
+
+
+
+.w280{ width:280px;}
+.citynavlist{ margin-top:70px;}
+.citynavlist li{ height:52px; border-bottom:#eee solid 1px; background:url(http://static.8264.com/static/image/mudidi/bg.png) 244px -235px no-repeat;}
+.citynavlist li a{ font-size:14px; height:52px; line-height:52px; color:#585858; display:block; background:url(http://static.8264.com/static/image/mudidi/bg.png) no-repeat; text-indent:50px; text-decoration:none;}
+.citynavlist li a.glcion1{ background-position:20px 17px;}
+.citynavlist li a.glcion2{ background-position:20px -115px;}
+.citynavlist li a.glcion3{ background-position:20px -157px;}
+.citynavlist li a.glcion4{ background-position:20px -197px;}
+.lunboconad{ position:relative; float:left;}
+.lunboimgad{ height:170px; overflow:hidden; width:100%;}
+.lunboimgad img{ width:279px; height:170px;}
+.orangebg{ height:47px; width:100%; position:absolute; top:123px; left:0px; background:#ff7950; opacity: 0.9; filter: alpha(opacity=90);}
+.jiagebox{ height:47px; width:100%; position:absolute; top:123px; left:0px; overflow:hidden;}
+.jiagebox li{}
+.jiagebox li a{ display:block; height:47px;}
+.jiagebox li span{ float:left; font-size:24px; color:#fff; padding:6px 0px 0px 13px;}
+.jiagebox li i{ float:left; font-size:14px; color:#fff; text-decoration:line-through; font-style:normal; padding:16px 0px 0px 7px;}
+.jiagebox li em{ float:right; font-size:14px; color:#ff7950; background:#fff; padding:1px 3px 1px 3px; margin:13px 20px 0px 0px; display:inline;}
+.adtitlename{ height:56px; overflow:hidden;}
+.adtitlename a{ color:#585858; font-size:14px; display:block; height:56px; overflow:hidden; text-decoration:none; padding:10px 20px; }
+.shuziad{ font-size:0px; text-align:left; height:30px; padding-top:5px; padding-left:15px;}
+.shuziad span{ width:11px; height:11px; border-radius:50%; background:#d8d8d8; display:inline-block; _display:inline; _zoom:1; cursor:pointer; margin-left:5px;}
+.shuziad span.tsshuzi{ background:#ff7950;}
+.searchTopNav .tips{ font-size:12px;}
+.ptb30{ padding:0px 0px 30px 0px;}
+.header{ background:#fff;}
+.header .colNameList a:hover,.header .colNameList a.hover{ background:#ff7950; color:#fff;}
+.headerL .site a{ font-size:12px;}
+.headerL h1{ height:32px;}
+.header .icoHill{   background: url(http://static.8264.com/static/image/mudidi/shan.jpg) left top  no-repeat ; bottom: -1px; height: 16px;   position: absolute; right: 264px; text-indent: -9999px; width: 167px;}

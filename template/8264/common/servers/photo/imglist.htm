@@ -1,0 +1,28 @@
+<ul id="photo_imglist_new">
+	<!--{loop $imagelist $image}-->
+	<li class="noselectphoto" myid="{$image[aid]}">
+		<span class="icon newicon"></span>
+		<img src="{$image[url]}/{$image[attachment]}"/>
+		<p>标题：<input type="text" disabled name="titles[{$image[aid]}]" value=""/></p>
+		<p>链接：<input type="text" disabled name="urls[{$image[aid]}]" value=""/></p>
+	</li>
+	<!--{/loop}-->
+	<!--{if $editimglist}-->
+	<!--{loop $editimglist $_aid $image}-->
+	<li class="selectphoto" myid="{$_aid}">
+    	<span class="icon selecticon"></span>
+		<img src="{$image[pic]}"/>
+		<p>标题：<input type="text" name="titles[{$_aid}]" value="{$image[title]}"/></p>
+		<p>链接：<input type="text" name="urls[{$_aid}]" value="{$image[url]}"/></p>
+		<input type="hidden" name="pids[{$_aid}]" value="{$image[pid]}"/>
+	</li>
+	<input type="hidden" class="photo_aids_hidden" name="aids[]" value="{$_aid}"/>
+	<!--{/loop}-->
+	<input type="hidden" name="editphotoid" value="{$editid}"/>
+	<input type="hidden" name="postmod" value="editphoto"/>
+	<script>$('submitbtn').value = '修改';</script>
+	<!--{else}-->
+	<input type="hidden" name="postmod" value="addphoto"/>
+	<!--{/if}-->
+	<div style="clear:both;"></div>
+</ul>

@@ -1,0 +1,151 @@
+.pic-box {
+    width: 960px;
+    padding: 10px;
+    background: url(images/pic_box.gif);
+    overflow: hidden;
+	margin:40px auto;
+}
+
+.pic-box-2 {
+    background: #fff;
+    padding:5px;
+    -webkit-box-shadow:0px 0px 5px #ccc;
+    -moz-box-shadow:0px 0px 5px #ccc;
+    box-shadow:0px 0px 5px #ccc;
+}
+.pic-box-2 .inner {
+    background: #f7f7f7;
+    border:1px solid #e8e7e3;
+    -moz-border-radius: 5px; 
+    -khtml-border-radius: 5px; 
+    -webkit-border-radius: 5px; 
+    border-radius: 5px;
+    color: #626262;
+}
+
+.top-info {
+    margin-bottom: 10px;
+}
+
+.top-info h2 {
+    background: url(images/h2-icon.gif) 10px 11px no-repeat;
+    text-indent: 35px;
+    font-size: 16px;
+    height: 38px;
+    line-height: 38px;
+}
+.top-info h2 a {
+    color: #626262;
+}
+
+.top-info p {
+    padding: 0 10px 10px;
+}
+
+.top-info p.sponsor {
+    overflow: hidden;
+    width: 500px;
+}
+
+.top-info p.sponsor strong, .top-info p.sponsor span {
+    height: 21px;
+    line-height: 21px;
+    float: left;
+}
+
+.top-info p.sponsor img {
+    vertical-align: top;
+}
+
+.form-box {
+    padding: 10px 40px;
+}
+.form-box h3 {
+    font-size: 16px;
+}
+.form-box .row{
+    padding: 8px 0;
+    overflow: hidden;
+    width: 850px;
+}
+.form-box .row label{
+    margin-right:10px;
+    display: block;
+    float: left;
+    width: 60px;
+    padding-right: 10px;
+}
+.form-box .row .form-widget {
+    float: left;
+    width: 700px;
+    overflow: hidden;
+}
+
+.form-box .row .text{
+    height:14px;
+    line-height: 14px;
+    padding: 3px;
+    width:200px;
+    border:1px solid #ccc;
+}
+
+.form-box .row .description{
+    height: 100px;
+    line-height: 14px;
+    padding: 3px;
+    width: 400px;
+    border: 1px solid #ccc;
+}
+
+.form-box .row .help-block {
+    padding: 3px 0;
+    color: #888;
+}
+
+.form-box .row .pic-upload-box {
+    width: 408px;
+}
+.form-box .row .add-pic-btn {
+    margin-left: 80px;
+    color: #888;
+}
+.form-box .row .pic-upload-box .del-pic-btn {
+    float: right;
+    color: #888;
+}
+.form-box .row .submit {
+    margin-left: 80px;
+    height: 26px;
+    width: 100px;
+}
+
+.webuploader-container {
+	position: relative;
+}
+.webuploader-element-invisible {
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+	clip: rect(1px,1px,1px,1px);
+}
+.webuploader-pick {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	background: #00b7ee;
+	padding: 2px 15px;
+	font-size: 12px;
+	color: #fff;
+	text-align: center;
+	width:85px;
+	border-radius: 3px;
+	overflow: hidden;
+}
+.webuploader-pick-hover {
+	background: #00a2d4;
+}
+
+.webuploader-pick-disable {
+	opacity: 0.6;
+	pointer-events:none;
+}
+

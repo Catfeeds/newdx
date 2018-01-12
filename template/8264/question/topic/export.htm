@@ -1,0 +1,557 @@
+<!--{subtemplate common/header_8264_new}-->
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/dianping/{$modstr}style.css?{VERHASH}" />
+<div class="blackLayout" id="div_black"></div>
+<div class="popBox" id="box_msg" style="display:none;">
+	<div class="bd w420">
+		<div class="popMessage">
+			<div class="messageText" id="bmsg_text"></div>
+			<button class="sureBlueBtn_182x43" id="bmsg_ok"></button>
+		</div>
+		<span class="closeBtn" id="bmsg_closeBtn">关闭</span>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+	document.body.onselectstart = function() {
+		return false;
+	}
+	document.body.style = "-moz-user-select:none";
+</script> 
+
+
+
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$("#bmsg_ok, #bmsg_closeBtn").click(function() {
+			$("#div_black, #box_msg").hide();
+		});
+		$('#div_black').appendTo('body');
+		$("#div_black").css({opacity: 0.8});
+		$('#box_msg').appendTo('body');
+		var bodyheight = $("body").height();
+		$("#div_black").height(bodyheight);
+		$("#div_black").hide();
+	});
+	function _showmsg(text) {
+		jQuery("#bmsg_text").text(text);
+		jQuery("#div_black, #box_msg").show();
+	}
+</script>
+<div class="header">
+	<div class="layout">
+		<div class="icoHill">&nbsp;</div>
+		<div class="headerL">
+			<h1><span class="country">导入帖子问题</span></h1>
+			<div>
+				<div class="site">
+					<a href="$_G[config][web][portal]">首页</a>	
+					> <a href="$_G[config][web][portal]forum.php?ctl={$modstr}&act=showlist">导入帖子问题</a>
+
+
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--header引入结束-->
+
+
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/dianping/xl_detail.css?{VERHASH}" />
+<style type="text/css">
+	#imglist .overlimit{display:none;}
+	#pic_upload_multiimg { vertical-align: middle; }
+	#div_kml { float:left; }
+	#kmllist {clear:both;+margin:20px 0 0;_margin:20px 0 0;display:block;}
+	#kmllist .delkml {margin-left:15px;}
+	.icoid48x43 {
+		background: rgba(0, 0, 0, 0) url("http://static.8264.com/static/images/dianping/icon.png") no-repeat scroll -73px -56px;
+		display: block;
+		height: 43px;
+		width: 48px;
+	}
+	.sureBlueBtn_182x43 {
+		background: rgba(0, 0, 0, 0) url("http://static.8264.com/static/images/dianping/ski_sprite.png") no-repeat scroll 0 -760px;
+		border: 0 none;
+		cursor: pointer;
+		height: 43px;
+		padding: 0;
+		width: 182px;
+	}
+	.publish-orange {
+		background: #43a6df  no-repeat scroll 9px 7px;
+		padding: 0 9px 0 9px;
+	}
+	.publish-box a {
+		border-radius: 3px;
+		color: #fff;
+		display: inline-block;
+		font-size: 12px;
+		height: 24px;
+		line-height: 24px;
+	}
+	.wentidaan td {border:#ff6600 1px dotted;border-collapse:collapse;}
+	.wentidaan img{max-width:600px; height:expression(document.body.clientWidth>600?"600px":"auto"); overflow:hidden;} 
+	.ycspan ,.ycspan a{color:#43a6df;};
+
+</style>
+
+<style>
+.clear_b:after{content: ""; display: block; clear: both; visibility: hidden;}
+.clear_b{ zoom: 1;}
+.asklist_y{ width:980px; margin:0 auto;}
+.asktitle_y{ font-size:18px;}
+.askone_y{ border-bottom:#dbdbdb solid 1px; padding:30px 0px 40px 0px;}
+.name_cz_y{ padding:0px 0px 11px 0px;}
+.name_yy{ font-size:14px; color:#1e6d9b; float:left;}
+.cz_yy{ float:right;}
+.cz_yy .zhiding_yy{ color:#ff6600;}
+.cz_yy a{ font-size:14px; color:#1e6d9b; margin:0px 0px 0px 10px;}
+.askinfo_y{ font-size:14px; color:#585858; padding:0px 30px 15px 0px; line-height:1.5;}
+.askinfo_y img{ width:160px; height:120px; margin:5px 0px;}
+.pinglun_yy{ font-size:14px; color:#585858; font-weight:bold; padding:0px 0px 15px 0px;}
+.graylist_yy{ background:#fbfbfb; border:#f2f0f0 solid 1px; padding:20px 20px 10px 20px;}
+.userid_yy{ font-size:12px; color:#1e6d9b; position: absolute; left:0px; top:0px; width:100px;}
+.graylist_yy li{ position: relative; padding:0px 0px 10px 0px;}
+.graylist_yy p{ font-size:12px; color:#585858; padding:0px 70px 0px 100px;}
+.yincang_yy{ color:#1e6d9b; font-size:12px; position:absolute; right:0px; top:0px; cursor:pointer;}
+
+.askone_name_cz{}
+.askone_name_cz .name_yy{ float:left; color:#1e6d9b; font-size:12px;}
+.askone_name_cz .ycbigbutton{ float:right; color:#1e6d9b; font-size:12px;}
+
+#preview{position:absolute;border:none;background:#333;padding:0px;display:none;color:#fff;}
+#preview img{max-height:400px;max-width:400px;}
+</style>
+
+<!--{subtemplate question/editor_2014_second}-->
+<div id="wp">
+	<div class="layout mt50">
+		<div class="pubWeb">
+			<h1 class="tit20 mb45">导入</h1>
+			<div class="bd">
+				<form method="post" autocomplete="off" id="postform"  action="question.php?ctl=topic&act=doexportquestion" onsubmit="return modform_validate(this);">
+					<input type="hidden" name="wysiwyg" id="{$editorid}_mode" value="{$editor['editormode']}" />
+					<input type="hidden" name="formhash" id="formhash" value="{FORMHASH}" />
+					<input type="hidden" name="posttime" id="posttime" value="{TIMESTAMP}" />
+					{if $action == 'edit'}<input type="hidden" name="pid" value="{$editdata['pid']}" />{/if}
+
+
+					<dl class="pubDt50">
+						<dt><span class="icoid48x43"></span></dt>
+						<dd>
+							<span class="inputTipsText">
+								<!--<label class="fs16">请输入帖子ID</label>-->
+								<input type="text" class="inputText w150" name="tid" id="tid" value="{$wenti['tid']}" readonly/>
+								<input type="hidden"  name="hiddentid" id="hiddentid" value="{$wenti['tid']}" />
+								<input type="hidden"  name="hiddentopicid" id="hiddentopicid" value="{$questionShow['topicid']}" />
+							</span>
+							<span class="icoRedStar publish-box">
+								<a class="publish-orange" href="http://bbs.8264.com/admin.php?action=question&operation=addexportquestion" >新增数据</a>
+								<script>
+									function laqudata() {
+										var tid = jQuery.trim(jQuery('#tid').val());
+										if (tid == '') {
+											_showmsg('请输入帖子ID');
+											return false;
+										} else {
+											window.location.href = "$_G[siteurl]question.php?ctl=topic&act=exportquestion&tid=" + tid;
+										}
+									}
+								</script>   
+							</span>
+						</dd>
+					</dl>
+
+
+					<dl class="pubDt50">
+						<dt><span>帖子标题</span></dt>
+						<dd>
+							<span class="inputTipsText">
+								<label class="fs16"></label>
+								<input type="text" class="inputText w270" style="width:600px;"  name="subject" id="subject" value="{$questionShow['title']}" />
+							</span>
+							<span class="icoRedStar publish-box">
+							</span>
+						</dd>
+					</dl>
+
+					<dl class="pubDt50">
+						<dt><span>帖子标签</span></dt>
+						<dd>
+							<span class="inputTipsText">
+								<label class="fs16"></label>
+								<input type="text" class="inputText w270" name="label" id="label" value="{$questionShow['showlable']}" />
+							</span>
+							<span class="icoRedStar publish-box"></span>多个标签请用“,”隔开
+						</dd>
+					</dl>
+
+
+
+					<dl class="pubDt50" style="margin-bottom:0;">
+						<dt><span>问题描述</span></dt>
+						<dd>
+							<!--{eval $editor['value'] = $wenti['message'];}-->
+							<!--{subtemplate question/editor_2014_first}-->
+						</dd>
+					</dl>
+					
+					<dl class="pubDt50" style="clear:both;">
+						<dt>&nbsp;</dt>
+						<dd>
+							<input type="submit" class="publish182x43" name="{$action}post" id="postsubmit" value=""/>
+							<input type="hidden" name="{$action}postsubmit" value="yes" />
+						</dd>
+					</dl>
+					
+					
+					<dl class="pubDt50" style="clear:both;">
+						<dt>&nbsp;</dt>
+						<dd>
+							<br/>
+							<div class="asklist_y">
+								<div class="asktitle_y">问题答案</div>
+								<div class="askcon_y">
+									<!--置顶答案-->
+									{if $questionShow[upuid]}
+									{loop $showdaanlist $k $v}
+									<!--单条开始-->
+									{if $questionShow[upuid]&&$k==$questionShow[upuid]}
+									<div class="askone_y zhidingicon">
+										<div class="name_cz_y clear_b">
+											<span class="name_yy">{$v['author']}</span>
+											<div class="cz_yy">
+												{if $questionShow[upuid]&&$k==$questionShow[upuid]}
+												<a id="zhiding_a_{$k}" href="javascript:void(0)" class="zhiding_yy zhiding_a" onclick="doZhiding('{$k}')">已置顶</a>
+												{else}
+												<a id="zhiding_a_{$k}" href="javascript:void(0)" class="zhiding_a" onclick="doZhiding('{$k}')">置顶</a>
+												{/if}
+
+											</div>
+										</div>
+											
+										{loop $v['arr'] $kk $vv}
+										
+										{if in_array($vv['pid'],$questionShow[showpid]) }
+										<div class="askoneid_yy">
+											<div class="askone_name_cz clear_b"><span class="name_yy">#{$vv['pid']}</span><a id="ycbigbutton{$vv[pid]}" href="javascript:void(0)" class="ycbigbutton" onclick="doYcbigbutton('{$vv[pid]}', 'hidden','{$k}')">隐藏</a></div>
+											<div class="askinfo_y">
+												{$vv['message']}
+											</div>
+										</div>
+										{else}
+										<div class="askoneid_yy" style="background: rgb(255, 255, 255) none repeat scroll 0% 0%; opacity: 0.5;">
+											<div class="askone_name_cz clear_b"><span class="name_yy">#{$vv['pid']}</span><a  id="ycbigbutton{$vv[pid]}" class="ycbigbutton xs_yy" href="javascript:void(0)" style="color: rgb(255, 102, 0);" onclick="doYcbigbutton('{$vv[pid]}', 'show','{$k}')">显示</a></div>
+											<div class="askinfo_y">
+												{$vv['message']}
+											</div>
+										</div>
+										{/if}
+										{/loop}
+										
+										{if $v['comment'][0]}
+										<div class="pinglun_yy">评论</div>
+										<div class="graylist_yy">
+											<ul>
+												{loop $v['comment'][0] $ck $cv}
+												{if in_array($cv['forpid'],$questionShow[showpid]) }
+												<li>
+													<span class="userid_yy">{$cv['author']}<!--#{$cv['forpid']}--></span>
+													<p>{$cv['comment']}</p>
+													<span id="yincang_yy{$cv['forpid']}" class="yincang_yy" onclick="doYcyincang_yy('{$cv[forpid]}', 'hidden','{$k}')">隐藏</span>
+												</li>
+												{else}
+												<li style="background: rgb(255, 255, 255) none repeat scroll 0% 0%; opacity: 0.5;">
+													<span class="userid_yy">{$cv['author']}<!--#{$cv['forpid']}--></span>
+													<p>{$cv['comment']}</p>
+													<span id="yincang_yy{$cv['forpid']}" class="yincang_yy xs_yy" style="color: rgb(255, 102, 0);" onclick="doYcyincang_yy('{$cv[forpid]}', 'show','{$k}')">显示</span>
+												</li>
+												{/if}
+												{/loop}
+
+											</ul>
+										</div>
+										{/if}
+										
+									</div>
+									{/if}
+									<!--单条结束-->
+									{/loop}
+									{/if}
+									
+									
+									
+									
+									
+									
+									
+									{loop $showdaanlist $k $v}
+									<!--单条开始-->
+									{if $k!=$questionShow[upuid]}
+									<div class="askone_y zhidingicon">
+										<div class="name_cz_y clear_b">
+											<span class="name_yy">{$v['author']}</span>
+											<div class="cz_yy">
+												{if $questionShow[upuid]&&$k==$questionShow[upuid]}
+												<a id="zhiding_a_{$k}" href="javascript:void(0)" class="zhiding_yy zhiding_a" onclick="doZhiding('{$k}')">已置顶</a>
+												{else}
+												<a id="zhiding_a_{$k}" href="javascript:void(0)" class="zhiding_a" onclick="doZhiding('{$k}')">置顶</a>
+												{/if}
+
+											</div>
+										</div>
+											
+										{loop $v['arr'] $kk $vv}
+										
+										{if in_array($vv['pid'],$questionShow[showpid]) }
+										<div class="askoneid_yy">
+											<div class="askone_name_cz clear_b"><span class="name_yy">#{$vv['pid']}</span><a id="ycbigbutton{$vv[pid]}" href="javascript:void(0)" class="ycbigbutton" onclick="doYcbigbutton('{$vv[pid]}', 'hidden','{$k}')">隐藏</a></div>
+											<div class="askinfo_y">
+												{$vv['message']}
+											</div>
+										</div>
+										{else}
+										<div class="askoneid_yy" style="background: rgb(255, 255, 255) none repeat scroll 0% 0%; opacity: 0.5;">
+											<div class="askone_name_cz clear_b"><span class="name_yy">#{$vv['pid']}</span><a  id="ycbigbutton{$vv[pid]}" class="ycbigbutton xs_yy" href="javascript:void(0)" style="color: rgb(255, 102, 0);" onclick="doYcbigbutton('{$vv[pid]}', 'show','{$k}')">显示</a></div>
+											<div class="askinfo_y">
+												{$vv['message']}
+											</div>
+										</div>
+										{/if}
+										{/loop}
+										
+										{if $v['comment'][0]}
+										<div class="pinglun_yy">评论</div>
+										<div class="graylist_yy">
+											<ul>
+												{loop $v['comment'][0] $ck $cv}
+												{if in_array($cv['forpid'],$questionShow[showpid]) }
+												<li>
+													<span class="userid_yy">{$cv['author']}<!--#{$cv['forpid']}--></span>
+													<p>{$cv['comment']}</p>
+													<span id="yincang_yy{$cv['forpid']}" class="yincang_yy" onclick="doYcyincang_yy('{$cv[forpid]}', 'hidden','{$k}')">隐藏</span>
+												</li>
+												{else}
+												<li style="background: rgb(255, 255, 255) none repeat scroll 0% 0%; opacity: 0.5;">
+													<span class="userid_yy">{$cv['author']}<!--#{$cv['forpid']}--></span>
+													<p>{$cv['comment']}</p>
+													<span id="yincang_yy{$cv['forpid']}" class="yincang_yy xs_yy" style="color: rgb(255, 102, 0);" onclick="doYcyincang_yy('{$cv[forpid]}', 'show','{$k}')">显示</span>
+												</li>
+												{/if}
+												{/loop}
+
+											</ul>
+										</div>
+										{/if}
+										
+									</div>
+									{/if}
+									<!--单条结束-->
+									{/loop}
+									
+
+							</div>
+						</dd>
+					</dl>					
+					
+
+	
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	//答案隐藏显示
+	function doYcbigbutton(pid, operation,uid) {
+		//alert("$_G[siteurl]question.php?ctl=topic&act=ajaxOpertionpid_daan&topicid=" + {$questionShow['topicid']} + "&pid=" + pid + "&tooperation=" + operation+ "&uid=" + uid);
+		//return false;
+		jQuery.get("$_G[siteurl]question.php?ctl=topic&act=ajaxOpertionpid_daan&topicid=" + {$questionShow['topicid']} + "&pid=" + pid + "&tooperation=" + operation+ "&uid=" + uid, function(data) {
+			if (data == '10') {
+				jQuery("#ycbigbutton"+pid).parents(".askoneid_yy").css({ background: "#fff", opacity: "0.5" });
+				jQuery("#ycbigbutton"+pid).text("显示");
+				jQuery("#ycbigbutton"+pid).addClass("xs_yy");
+				jQuery("#ycbigbutton"+pid).css({color:"#ff6600"});
+				jQuery("#ycbigbutton"+pid).attr('onclick','doYcbigbutton(\''+pid+'\', \'show\',\''+uid+'\')');
+				
+				
+			}else if (data == '11'){
+				jQuery("#ycbigbutton"+pid).parents(".askoneid_yy").removeAttr("style");
+				jQuery("#ycbigbutton"+pid).text("隐藏");
+				jQuery("#ycbigbutton"+pid).removeClass("xs_yy");
+				jQuery("#ycbigbutton"+pid).removeAttr("style");
+				jQuery("#ycbigbutton"+pid).attr('onclick','doYcbigbutton(\''+pid+'\', \'hidden\',\''+uid+'\')');
+			}
+		});
+	}
+	
+	//答案评论隐藏显示
+	function doYcyincang_yy(pid, operation,uid) {
+		jQuery.get("$_G[siteurl]question.php?ctl=topic&act=ajaxOpertionpid_comment&topicid=" + {$questionShow['topicid']} + "&pid=" + pid + "&tooperation=" + operation+ "&uid=" + uid, function(data) {
+			if (data == '10') {
+				jQuery("#yincang_yy"+pid).parents("li").css({ background: "#fff", opacity: "0.5" });
+				jQuery("#yincang_yy"+pid).text("显示");
+				jQuery("#yincang_yy"+pid).addClass("xs_yy");
+				jQuery("#yincang_yy"+pid).css({color:"#ff6600"});
+				jQuery("#yincang_yy"+pid).attr('onclick','doYcyincang_yy(\''+pid+'\', \'show\',\''+uid+'\')');
+					
+			}else if (data == '11'){
+				jQuery("#yincang_yy"+pid).parents("li").removeAttr("style");
+				jQuery("#yincang_yy"+pid).text("隐藏");
+				jQuery("#yincang_yy"+pid).removeClass("xs_yy");
+				jQuery("#yincang_yy"+pid).removeAttr("style");
+				jQuery("#yincang_yy"+pid).attr('onclick','doYcyincang_yy(\''+pid+'\', \'hidden\',\''+uid+'\')');
+				
+			}else if (data == '9'){
+				alert('请先显示答案，再显示答案的回复！');return false;
+			}
+			
+		});
+	}
+	
+	
+	
+	
+	//答案置顶
+	function doZhiding(upuid) {
+		jQuery.get("$_G[siteurl]question.php?ctl=topic&act=ajaxOpertionupuid&topicid=" + {$questionShow['topicid']} + "&upuid=" + upuid, function(data) {
+			if (data == '11') {
+				jQuery(".askcon_y").find(".zhiding_a").removeClass("zhiding_yy").text("置顶");
+				jQuery("#zhiding_a_"+upuid).addClass("zhiding_yy").text("已置顶");
+					
+			}else if (data == '10'){
+				return false;
+			}
+		});
+	}
+
+
+	function modform_validate(theform) {
+		//alert("{$action}");
+		//获得编辑其中的值
+		var message = wysiwyg ? html2bbcode(getEditorContents()) : (!theform.parseurloff.checked ? parseurl(theform.message.value) : theform.message.value);
+		theform.message.value = message;
+		if (theform.tid.value == "") {
+			_showmsg('请输入帖子ID');
+			return false;
+		}
+
+		if (theform.hiddentid.value == "") {
+			_showmsg('帖子ID非法');
+			return false;
+		}
+
+
+		if (trim(theform.label.value) == "") {
+			_showmsg('请填写标签');
+			return false;
+		}
+
+
+
+
+		if ($('postsubmit').name == 'exportquestionpost') {
+			return true;
+		}
+		return false;
+	}
+</script>
+<script type="text/javascript" src="static/js/newswfobject.js"></script>
+<script type="text/javascript">
+	//上传kml
+	var params = {site: "{$_G[siteroot]}misc.php%3fmod=swfupload%26type=gps%26fid=$fid%26mtype=plugin%26back=uploadkml%26random=<!--{echo random(4)}-->", buttonimg: "{$_G[siteroot]}static/images/dianping/line/uploaddoc.jpg"};
+	swfobject.embedSWF("static/flash/uploadforum.swf", "pic_upload_kml", "208", "50", "10.0.0", "playerProductInstall.swf", params, {wmode: "transparent"});
+	swfobject.createCSS("#pic_upload_kml", "text-align:left;");
+</script>
+<script type="text/javascript">
+
+//上传kml的回调函数
+	function uploadkml(type, returndata) {
+		eval("var nattach = " + returndata + ";");
+		jQuery.noConflict();
+		;
+		(function($) {
+			if (typeof (nattach.filename) !== 'undefined') {
+				$("#kmllist").hide().html("").html('<span>' + nattach.filename + '<a class="delkml" href="javascript:void(0);">删除</a></span>');
+			}
+			switch (type) {
+				case 1:
+				case 2:
+					$("#kmllist").show();
+					$('#kmllist').find('span:gt(0)').remove();
+					$("#lMap").attr("value", nattach.aid);
+					$("#div_kml").hide();
+					$("#btn_kml_show").show();
+					break;
+				case 3:
+					break;
+			}
+		})(jQuery);
+	}
+</script>
+<script src="http://static.8264.com/static/js/jquery.lazyload.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+
+		//图片延时加载
+		jQuery(".lazy").lazyload({
+			effect: "fadeIn",
+			appear: function() {
+			}
+		});
+		//线路名称
+		$('#tid').focus(function() {
+			!$(this).val() && $(this).prev().hide();
+		}).blur(function() {
+			!$(this).val() && $(this).prev().show();
+		}).click(function() {
+			!$(this).val() && $(this).prev().hide();
+		});
+
+	});
+</script>
+<script type="text/javascript">
+	this.imagePreview = function(){	
+	/* CONFIG */
+		
+		xOffset = 10;
+		yOffset = 30;
+		
+		// these 2 variable determine popup's distance from the cursor
+		// you might want to adjust to get the right result
+		
+	/* END CONFIG */
+	jQuery("img.preview").hover(function(e){
+		this.t = this.title;
+		this.title = "";	
+		var c = (this.t != "") ? "<br/>" + this.t : "";
+		jQuery("body").append("<div id='preview'><img src='"+ this.src +"' alt='Image preview' />"+ c +"</div>");								 
+		jQuery("#preview")
+			.css("top",(e.pageY - xOffset) + "px")
+			.css("left",(e.pageX + yOffset) + "px")
+			.fadeIn("fast");						
+    },
+	function(){
+		this.title = this.t;	
+		jQuery("#preview").remove();
+    });	
+	jQuery("img.preview").mousemove(function(e){
+		jQuery("#preview")
+			.css("top",(e.pageY - xOffset) + "px")
+			.css("left",(e.pageX + yOffset) + "px");
+	});			
+};
+
+
+// starting the script on page load
+jQuery(document).ready(function(){
+	imagePreview();
+});
+</script>
+<!--{ad/custom_484}-->
+<!--{subtemplate common/footer_8264_new}-->

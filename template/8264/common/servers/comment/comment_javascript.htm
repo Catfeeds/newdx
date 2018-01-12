@@ -1,0 +1,29 @@
+<script type="text/javascript">
+function comment_validate(theform, mytid, cid){
+	var s = '';
+	if(theform.message.value == '' && theform.subject.value == '') {
+		s = '请完成标题或内容栏。';
+		theform.message.focus();
+	} else if(mb_strlen(theform.subject.value) > 80) {
+		s = '您的标题超过 80 个字符的限制。';
+		theform.subject.focus();
+	}
+	if(mb_strlen(theform.message.value) < 8 || mb_strlen(theform.message.value) > 300) {
+		s = '您的帖子长度不符合要求。\n\n当前长度: ' + mb_strlen(theform.message.value) + ' ' + '字节\n系统限制: 8 到 300 字节';
+	}
+	if(s) {
+		$('postreturn_' + mytid).className = 'onerror';
+		$('postreturn_' + mytid).innerHTML = s;
+		$('postsubmit_' + mytid).disabled = false;
+		return false;
+	}
+	$('postsubmit_' + mytid).disabled = true;
+	theform.message.value = parseurl(theform.message.value);
+	var recall = function () {ajaxget('/forum.php?ctl=comment&act=showcomment&id=' + cid +'&page=1&desc=1', 'commentsrv_' + cid);showCreditPrompt();gomycomment();}
+	var goPosition = function (){var position = $('commentsrv_' + cid);var top = GetElementTop(position)-80;window.scrollTo(0, top); }
+	var GetElementTop = function (element) {var actualTop = element.offsetTop;var current = element.offsetParent;while (current != null) {actualTop += current.offsetTop;current = current.offsetParent;}return actualTop;}
+	var gomycomment = function (){setTimeout(goPosition, 1000);}
+	ajaxpost(theform.id, 'postreturn_' + mytid, null, 'onerror', $('postsubmit_' + mytid), recall);
+	return false;
+}
+</script>

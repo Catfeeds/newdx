@@ -1,0 +1,100 @@
+<style type="text/css">
+.clear_b:after{content: ""; display: block; clear: both; visibility: hidden;}
+.clear_b{ zoom: 1;}
+
+.graybox{ background:#fbfbfb; border:#f0f0f0 solid 1px; width:978px; margin:26px auto 0; padding:27px 0px 30px 0px; color:#585858;}
+.graybox li{ width:50%; float:left; font-size:14px;  padding:0px 0px 10px 0px;}
+.graybox li input{ height:36px; background:#fff; border:#dfdfdf solid 1px; border-radius:2px; width:234px; float:left; line-height:36px; font-size:14px; padding:0px 10px; font-family:"Microsoft Yahei",Tahoma,Helvetica,SimSun,sans-serif;}
+.formname{ float:left; width:180px; text-align:right; padding:7px 0px 0px 0px; font-size:14px;}
+
+.readyPic{  margin-top: 20px; padding:0px 0px 0px 180px;}
+.readyPic span{ float:left; display: block; height: 60px; margin-right: 20px; position: relative; width: 60px;}
+.readyPic img{ width: 60px; height:60px; border-radius:2px; }
+.readyPic b { background: url("http://static.8264.com/static/images/dianping/ski_sprite.png") no-repeat scroll -210px -460px rgba(0, 0, 0, 0);  cursor: pointer; display: block; height: 14px; position: absolute; right: -6px; text-indent: -9999px; top: -7px; width: 14px;}
+
+.overlimit {display:none!important;}
+</style>
+<div class="graybox">
+	<ul class="clear_b" id="message_info">
+		<li><span class="formname">品名：</span><input type="text" name="message_value[0]"></li>		
+		<li><span class="formname">规格型号：</span><input type="text" name="message_value[1]"></li>
+		<li><span class="formname">新旧程度：</span><input type="text" name="message_value[2]"></li>
+		<li><span class="formname">有无瑕疵并说明：</span><input type="text" name="message_value[3]"></li>
+		<li><span class="formname">入手来源及时间：</span><input type="text" name="message_value[4]"></li>
+		<li><span class="formname">价格：</span><input type="text" name="message_value[5]"></li>
+		<li><span class="formname">含或不含运资转让价：</span><input type="text" name="message_value[6]"></li>
+		<li><span class="formname">是否可刀：</span><input type="text" name="message_value[7]"></li>
+		<li><span class="formname">是否有售后服务：</span><input type="text" name="message_value[8]"></li>
+		<li><span class="formname">是否支持淘宝：</span><input type="text" name="message_value[9]"></li>
+		<li><span class="formname">货品所在地：</span><input type="text" name="message_value[10]"></li>
+		<li><span class="formname">联系方式：</span><input type="text" name="message_value[11]"></li>
+		<li><span class="formname">转让原因：</span><input type="text" name="message_value[12]"></li>
+	</ul>
+	<input type="hidden" name="message" id="message"/>
+	<div class="clear_b">
+		<span class="formname" style="float:left;">实物图片：</span>
+		<input id="numimage" type="hidden" name="uploadfile" value="0"/>
+		<div id="pic_upload_multiimg" style="float:left;">
+		此内容需要 Adobe Flash Player 11.1.0 或更高版本
+		<script type="text/javascript"> 
+			var pageHost = ((document.location.protocol == "https:") ? "https://" : "http://"); 
+			document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='" 
+							+ pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" ); 
+		</script>
+		</div>
+	</div>
+	
+	<div class="readyPic clear_b" id="imglist">	</div>	
+</div>
+<script type="text/javascript" src="static/js/newswfobject.js"></script>
+<script type="text/javascript">
+	var params = {site:"{$_G[siteroot]}misc.php%3fmod=swfupload%26type=image%26fid=392%26mtype=forum%26twidth=60%26theight=60%26back=uploadpic%26tipbg=1%26random=<!--{echo random(4)}-->",buttonimg:"http://static.8264.com/static/image/common/uploadnewbbs.jpg"};
+	swfobject.embedSWF("static/flash/uploadforum.swf", "pic_upload_multiimg", "120", "38", "10.0.0", "playerProductInstall.swf", params, {wmode:"transparent"});
+	swfobject.createCSS("#pic_upload_multiimg", "text-align:left;");
+</script>
+<script>
+var maxpic =  3;
+function uploadpic(type, returndata) {
+	eval("var nattach = " + returndata + ";");
+	jQuery.noConflict();	
+	;(function($){							
+		switch(type){
+			case 1:
+			case 2:
+				var html = '';
+				html 	+= '<span id="imagelist_id_'+nattach.aid+'">';
+				html 	+= '<img src="' + nattach.thumbpic + '" />';
+				html 	+= '<b class="deleteimg">删除</b>';
+				html 	+= '<input type="hidden" value="'+nattach.aid+'" name="imgselect[]">';
+				html 	+= '</span>';
+							
+				$("#imglist").append(html);
+				var attachobj = $('#imagelist_id_' + nattach.aid);
+				attachobj.find('input').removeAttr('disabled').end().show();			
+				
+				attachobj.find('img').one('error', function(){
+					$(this).attr('src', ' ');
+					$(this).attr('src', nattach.thumbpic);
+				}).show();
+				break;
+			case 3:
+				break;
+		}		
+		$('#imglist').find('span:gt(' + (maxpic - 1) + ')').addClass("overlimit").find('input').attr('disabled', true);		
+		
+		//算下上传图片数
+		$("#numimage").attr("value", $('#imglist').find("span:not('.overlimit')").length);
+	})(jQuery);
+}
+
+jQuery(function(){
+	jQuery(document).on("click", "#imglist .deleteimg", function() {
+		jQuery(this).parent().remove();
+		if(jQuery("#imglist .overlimit").length > 0){
+			jQuery("#imglist .overlimit:first").removeClass('overlimit').find('input:hidden').removeAttr('disabled');
+		}else{
+			jQuery("#numimage").val($("#numimage").val() - 1);
+		}
+	});
+});
+</script>

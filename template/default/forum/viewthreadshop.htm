@@ -1,0 +1,842 @@
+<!--{subtemplate common/header_8264_new}-->
+
+<div class="header">
+<div class="layout">
+<div class="icoHill">&nbsp;</div>
+<div class="headerL">
+<h1><span class="country">店铺</span></h1>
+<div class="site">
+<a href="http://www.8264.com/">首页</a>
+			
+&gt; <a href="http://www.8264.com/dianpu">店铺</a>
+</div>
+</div>
+<div class="headerR">
+<div class="colNameList"><a href="http://www.8264.com/xuechang">滑雪场</a>
+<a href="http://www.8264.com/zhuangbei" >装备库</a>
+<a href="http://www.8264.com/pinpai">户外品牌</a>
+<a target="_blank" href="http://www.8264.com/dianpu" class="nowmod">户外店</a>
+</div>
+</div>
+</div>
+</div>
+<link rel="stylesheet" href="/source/plugin/outshop/css/postshop.css?v=1" />
+<!--[if IE 6]>
+<script src="/source/plugin/outshop/js/DD_belatedPNG_0.0.8a.js"></script>
+<script src="/source/plugin/outshop/js/DD_belatedPNG_css.js"></script>
+<![endif]-->
+<script type="text/javascript">var fid = parseInt('$_G[fid]'), tid = parseInt('$_G[tid]');</script>
+<!--{if $modmenu['thread'] || $modmenu['post']}-->
+<script type="text/javascript" src="{$_G['setting']['jspath']}forum_moderate.js?{VERHASH}"></script><!--{/if}-->
+<script type="text/javascript" src="{$_G['setting']['jspath']}forum_viewthread.js?{VERHASH}"></script>
+<script type="text/javascript">zoomstatus = parseInt($_G['setting']['zoomstatus']);var imagemaxwidth = '{IMAGEMAXWIDTH}';var aimgcount = new Array();</script>
+<!--{eval $shop = ForumOptionShop::getShopBytId($_GET['tid']);}-->
+
+
+
+
+<!--{hook/viewthread_top}-->
+<!--此处去掉了广告-->
+
+<style id="diy_style" type="text/css"></style>
+<div class="wp">
+	<!--[diy=diy1]--><div id="diy1" class="area"></div><!--[/diy]-->
+</div>	
+<div style="width:960px; margin:10px auto 10px auto"><!--{ad/custom_248}--></div>
+<div id="ct" class="wp cl">
+<!--{if $_G['group']['allowpost'] && ($_G['group']['allowposttrade'] || $_G['group']['allowpostpoll'] || $_G['group']['allowpostreward'] || $_G['group']['allowpostactivity'] || $_G['group']['allowpostdebate'] || $_G['setting']['threadplugins'] || $_G['forum']['threadsorts'])}-->
+	<ul class="p_pop" id="newspecial_menu" style="display: none">
+		<!--{if !$_G['forum']['allowspecialonly']}--><li><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]">{lang post_newthread}</a></li><!--{/if}-->
+		<!--{if $_G['group']['allowpostpoll']}--><li class="poll"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=1">{lang post_newthreadpoll}</a></li><!--{/if}-->
+		<!--{if $_G['group']['allowpostreward']}--><li class="reward"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=3">{lang post_newthreadreward}</a></li><!--{/if}-->
+		<!--{if $_G['group']['allowpostdebate']}--><li class="debate"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=5">{lang post_newthreaddebate}</a></li><!--{/if}-->
+		<!--{if $_G['group']['allowpostactivity']}--><li class="activity"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=4">{lang post_newthreadactivity}</a></li><!--{/if}-->
+		<!--{if $_G['group']['allowposttrade']}--><li class="trade"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=2">{lang post_newthreadtrade}</a></li><!--{/if}-->
+		<!--{if $_G['setting']['threadplugins']}-->
+			<!--{loop $_G['forum']['threadplugin'] $tpid}-->
+				<!--{if array_key_exists($tpid, $_G['setting']['threadplugins']) && @in_array($tpid, $_G['group']['allowthreadplugin'])}-->
+					<li class="popupmenu_option"{if $_G['setting']['threadplugins'][$tpid][icon]} style="background-image:url($_G['setting']['threadplugins'][$tpid][icon])"{/if}><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&specialextra=$tpid">{$_G['setting']['threadplugins'][$tpid][name]}</a></li>
+				<!--{/if}-->
+			<!--{/loop}-->
+		<!--{/if}-->
+		<!--{if $_G['forum']['threadsorts'] && !$_G['forum']['allowspecialonly']}-->
+			<!--{loop $_G['forum']['threadsorts']['types'] $id $threadsorts}-->
+				<!--{if $_G['forum']['threadsorts']['show'][$id]}-->
+					<li class="popupmenu_option"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&extra=$_G[gp_extra]&sortid=$id">$threadsorts</a></li>
+				<!--{/if}-->
+			<!--{/loop}-->
+		<!--{/if}-->
+	</ul>
+<!--{/if}-->
+
+<!--{if $modmenu['post']}-->
+	<div id="mdly" class="fwinmask" style="display:none;">
+		<table cellspacing="0" cellpadding="0" class="fwin">
+			<tr>
+				<td class="t_l"></td>
+				<td class="t_c"></td>
+				<td class="t_r"></td>
+			</tr>
+			<tr>
+				<td class="m_l">&nbsp;&nbsp;</td>
+				<td class="m_c">
+					<div class="f_c">
+						<div class="c">
+							<h3>{lang admin_select}&nbsp;<strong id="mdct" class="xi1"></strong>&nbsp;{lang piece}: </h3>
+							<!--{if $_G['forum']['ismoderator']}-->
+								<!--{if $_G['group']['allowwarnpost']}--><a href="javascript:;" onclick="modaction('warn')">{lang modmenu_warn}</a><span class="pipe">|</span><!--{/if}-->
+								<!--{if $_G['group']['allowbanpost']}--><a href="javascript:;" onclick="modaction('banpost')">{lang modmenu_banpost}</a><span class="pipe">|</span><!--{/if}-->
+								<!--{if $_G['group']['allowdelpost']}--><a href="javascript:;" onclick="modaction('delpost')">{lang modmenu_deletepost}</a><span class="pipe"></span><!--{/if}-->
+								
+							<!--{/if}-->
+							<!--{if $_G['forum_thread']['pushedaid'] && $allowpostarticle}--><a href="javascript:;" onclick="modaction('pushplus', '', 'aid=$_G[forum_thread][pushedaid]', 'portal.php?mod=portalcp&ac=article&op=pushplus')">{lang modmenu_pushplus}</a><span class="pipe">|</span><!--{/if}-->
+						</div>
+					</div>
+				</td>
+				<td class="m_r"></td>
+			</tr>
+			<tr>
+				<td class="b_l"></td>
+				<td class="b_c"></td>
+				<td class="b_r"></td>
+			</tr>
+		</table>
+	</div>
+<!--{/if}-->
+<style type="text/css">	
+.px { margin-top:4px;}
+/* 右下角分享*/
+
+.share_bd_warpten{ width:50px; position:absolute; float:right; position: fixed !important;  position: absolute; z-index: 1; bottom:20px; right: 30px; background:#fff;}
+.bbs_share_sc{ width:50px;}
+.bbs_share_sc li{ width:50px; height:51px;}
+.bbs_share_sc li.ps_re{ position:relative;}
+.bbs_share_sc li a{ background:url('http://www.8264.com/static/images/common/baidushare.jpg') no-repeat; display:block; }
+.bbs_share_sc li .share{ width:50px; height:50px; background-position:0px 0px;}
+.bbs_share_sc li .share:hover{ width:50px; height:50px; background-position:0px -204px;}
+.bbs_share_sc li .sc{ width:50px; height:50px; background-position:0px -51px;}
+.bbs_share_sc li .sc:hover{ width:50px; height:50px; background-position:0px -255px;}
+.bbs_share_sc li .bbsli{ width:50px; height:50px; background-position:0px -102px;}
+.bbs_share_sc li .bbsli:hover{ width:50px; height:50px; background-position:0px -306px;}
+.bbs_share_sc li .gotop_50{ width:50px; height:50px; background-position:0px -153px;}
+.bbs_share_sc li .gotop_50:hover{ width:50px; height:50px; background-position:0px -357px;}
+
+.share_bd{ width:200px; position:absolute; height:50px; top:0px; right:50px; font-size:0px; display:none;}
+.bbs_share_sc li .share_bd a{ width:50px; height:50px; background:url('http://www.8264.com/static/images/common/baidushare.jpg') no-repeat; display:inline-block; _display:inline; _zoom:1;}
+.bbs_share_sc li .share_bd a.sina{ background-position:0 -408px;}
+.bbs_share_sc li .share_bd a.sina:hover{ background-position:0 -612px;}
+.bbs_share_sc li .share_bd a.qq{ background-position: 0px -459px;}
+.bbs_share_sc li .share_bd a.qq:hover{ background-position: 0px -663px;}
+.bbs_share_sc li .share_bd a.wb{ background-position: 0px -510px;}
+.bbs_share_sc li .share_bd a.wb:hover{ background-position: 0px -714px;}
+.bbs_share_sc li .share_bd a.wx{ background-position: 0px -561px;}
+.bbs_share_sc li .share_bd a.wx:hover{ background-position: 0px -765px;}
+
+.bdshare-button-style0-32 a{padding:0;margin:0;}
+/* 搜索修正 */
+.bd-index { background: #f4f4f4; border: 1px solid #e6e6e6; display: block; float: left; line-height: 16px; padding: 3px 6px; height: 17px; -moz-border-radius: 5px; -khtml-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; color: #454545; font-weight: normal; }
+.interest_sectl { float: left; width: 220px; position: relative; }
+.interest_sectl .star_show { overflow: hidden; width: 100%; height:27px;}
+.interest_sectl .star_show .redstar { background: url(/static/images/star.png) no-repeat; width: 15px; height: 14px; *+height:20px; display: inline-block; margin: 3px 0 0 0 !important;}
+.interest_sectl .star_show .graystar { background: url(/static/images/star.png) -15px 0 no-repeat; width: 15px; height:14px; *+height:20px; display: inline-block;  }
+.interest_sectl .star_show .num { font-size: Arial; font-size: 20px; line-height: 20px; color: red; padding: 0 0 0 8px; margin: 0 8px 0 0 !important; }
+.interest_sectl .star_show .text { font-size: 12px; line-height: 20px; color: #666; padding: 0 0 0 8px; display: none; }
+.interest_sectl .peoples { overflow: hidden; width: 100%; }
+.interest_sectl .peoples .num { margin: 0 !important; float: none !important; }
+.interest_sectl .star { overflow: hidden; width: 100%; }
+.interest_sectl .star .redstar2 {  _background: url(/static/images/star2.png) 0 5px no-repeat!important;background: url(/static/images/star2.png) no-repeat;width: 9px; height: 10px; *+height:15px;_height:9px; display: inline-block;  }
+.interest_sectl .star .graystar2 { _background: url(/static/images/star2.png) -9px 5px no-repeat!important;background: url(/static/images/star2.png) -9px 0 no-repeat; width: 9px; height:10px; *+height:15px; _height:9px; display: inline-block; }
+.interest_sectl .star .percent { width: 0px; height: 14px; background: #F5CBAD; display: inline-block; margin: 0 5px !important; }
+.interest_sectl .star .num { font-size: 12px; line-height: 13px; margin: 0 !important; }
+.interest_sectl .stared { position: absolute; top: -25px; height: 25px; line-height: 25px; left: 0; background: white; border: 1px solid #ccc; color: #666; padding: 0 5px; white-space: nowrap; display: none; }
+.interest_sectl .opera { line-height: 20px; cursor: pointer; color: #666; }
+.bm_c .star { overflow: hidden; display: inline; margin: 0 5px; }
+.bm_c .star .redstar { background: url(/static/images/star2.png) no-repeat; width: 9px; height: 9px; display: inline-block; overflow: hidden; vertical-align: middle; }
+.bm_c .star .graystar { background: url(/static/images/star2.png) -9px 0 no-repeat; width: 9px; height: 9px; display: inline-block; overflow: hidden; vertical-align: middle; }
+.dpjs .star { overflow: hidden; display: inline; margin: 0 5px; }
+.dpjs .star .redstar { background: url(/static/images/star2.png) no-repeat; width: 9px; height: 9px; display: inline-block; overflow: hidden; vertical-align: middle; }
+.dpjs .star .graystar { background: url(/static/images/star2.png) -9px 0 no-repeat; width: 9px; height: 9px; display: inline-block; overflow: hidden; vertical-align: middle; }
+.ditu_t1_m .star { overflow: hidden; display: inline; margin: 0 5px; }
+.ditu_t1_m .star .redstar { background: url(/static/images/star2.png) no-repeat; width: 9px; height: 9px; display: inline-block; overflow: hidden; vertical-align: middle; }
+.ditu_t1_m .star .graystar { background: url(/static/images/star2.png) -9px 0 no-repeat; width: 9px; height: 9px; display: inline-block; overflow: hidden; vertical-align: middle; }
+
+.dplb_list_r .star { overflow: hidden; display: inline; margin: 0 5px; }
+.dplb_list_r .star .redstar { background: url(/static/images/star2.png) no-repeat; width: 9px; height: 9px; display: inline-block; overflow: hidden; vertical-align: middle; }
+.dplb_list_r .star .graystar { background: url(/static/images/star2.png) -9px 0 no-repeat; width: 9px; height: 9px; display: inline-block; overflow: hidden; vertical-align: middle; }
+</style>
+<div id="postlist" class="">
+<!--{eval $postcount = 0;}-->
+<!--{loop $postlist $post}-->         
+<!--{if $post[first]==1}-->
+
+<div class="wap">
+	<div class="yuanjiao mian1">
+    	<div class="mian1_left">
+        	<div class="mian1_left1">
+            	<a title="点击查看原图" target="_blank" href="http://www.8264.com/plugin.php?id=outshop:showimage&img=$post['tid']"><img src="$shop['sPic'].thumb200.jpg" /></a>
+            </div>
+            <div class="mian1_left2">
+            	<h1>$shop['subject']</h1>
+				<!--{eval $province = ForumOptionShop::getRegionById($shop['provinceid']);}-->
+				<!--{eval $region = ForumOptionShop::getRegionById($shop['regionid']);}-->
+				<!--{eval $brand = ForumOptionShop::getSBrandById($shop['sbrand']);}-->				
+				<!--{if $province&&$region}-->				
+                <p><b>地址：</b><!--{if $province['name']==$region['name']}--><!--{else}--><span>$province['name']</span><!--{/if}--><span>$region['name']</span>$shop['addr']</p>
+				
+				<!--{/if}-->
+				<!--{if $brand['brand']}-->
+                <p><b>专营品牌：</b>$brand['brand']</p>
+				<!--{/if}-->
+				<!--{eval $sy = ForumOptionShop::getMarketById($shop['marketid']);}-->	
+                <p><b>分类：</b><!--{if $shop[marketid]!=0}-->商场店<!--{else}-->街边店<!--{/if}-->&nbsp;&nbsp;$sy['market']&nbsp;&nbsp;<!--{if $shop[cbrandid]}--><!--{eval $cbd = ForumOptionShop::getChainBrandById($shop['cbrandid']);}-->$cbd['chainbrand']连锁<!--{else}--><!--{/if}--></p>
+                <a class="liul">浏览&nbsp;$shop['views']人</a><a class="dianp">点评&nbsp;$shop['replies']人</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="mian1_right">
+        	<div class="mian1_right1">
+            	<h1>综合评分</h1>
+                <div class="pingf">				
+                    <div class="interest_sectl" id="interest_sectl">
+                                <div class="star_show">
+                                    <span star-data="1" class="graystar colorstar"></span>
+                                    <span star-data="2" class="graystar colorstar"></span>
+                                    <span star-data="3" class="graystar colorstar"></span>
+                                    <span star-data="4" class="graystar colorstar"></span>
+                                    <span star-data="5" class="graystar colorstar"></span>
+                                    <span class="num">0.0</span>
+                                    <span class="text"></span>								
+                                </div>
+                                <div class="peoples">
+                                    (<span class="num">0</span>人评分)
+                                </div>
+                                <div class="star_list">
+                                    <div class="star">
+                                        <span class="redstar2" title="力荐"></span>
+                                        <span class="redstar2" title="力荐"></span>
+                                        <span class="redstar2" title="力荐"></span>
+                                        <span class="redstar2" title="力荐"></span>
+                                        <span class="redstar2" title="力荐"></span>
+                                        <span class="percent"></span>
+                                        <span class="num">0.0%</span>
+                                    </div>
+                                    <div class="star">
+                                        <span class="redstar2" title="推荐"></span>
+                                        <span class="redstar2" title="推荐"></span>
+                                        <span class="redstar2" title="推荐"></span>
+                                        <span class="redstar2" title="推荐"></span>
+                                        <span class="graystar2" title="推荐"></span>
+                                        <span class="percent"></span>
+                                        <span class="num">0.0%</span>
+                                    </div>
+                                    <div class="star">
+                                        <span class="redstar2" title="还行"></span>
+                                        <span class="redstar2" title="还行"></span>
+                                        <span class="redstar2" title="还行"></span>
+                                        <span class="graystar2" title="还行"></span>
+                                        <span class="graystar2" title="还行"></span>
+                                        <span class="percent"></span>
+                                        <span class="num">0.0%</span>
+                                    </div>
+                                    <div class="star">
+                                        <span class="redstar2" title="较差"></span>
+                                        <span class="redstar2" title="较差"></span>
+                                        <span class="graystar2" title="较差"></span>
+                                        <span class="graystar2" title="较差"></span>
+                                        <span class="graystar2" title="较差"></span>
+                                        <span class="percent"></span>
+                                        <span class="num">0.0%</span>
+                                    </div>
+                                    <div class="star">
+                                        <span class="redstar2" title="很差"></span>
+                                        <span class="graystar2" title="很差"></span>
+                                        <span class="graystar2" title="很差"></span>
+                                        <span class="graystar2" title="很差"></span>
+                                        <span class="graystar2" title="很差"></span>
+                                        <span class="percent"></span>
+                                        <span class="num">0.0%</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="stared">
+                                    {if !$_G['uid']}
+                                    登录之后可评价
+                                    {else}
+                                    您己参与评价
+                                    {/if}
+                                </div>
+                            </div>
+					<script type="text/javascript">
+						;(function($) {
+							var o_star;
+							{if !$_G['uid'] || $forumOption->isStared('forum', $_G['tid'], $_G['uid'])}
+							var lock = true;
+							{else}
+							var lock = false
+							{/if}
+							function enter_star(num) {
+								$('#interest_sectl .star_show .colorstar').removeClass('redstar graystar');
+								for (var i = 0; i < 5; ++i) {
+									if (i < num) {
+										$('#interest_sectl .star_show .colorstar').eq(i).addClass('redstar');
+									} else {
+										$('#interest_sectl .star_show .colorstar').eq(i).addClass('graystar');
+									}
+								}
+							}
+							
+							$('#interest_sectl .opera').click(function() {
+								$(window).scrollTop($('#f_pst').offset().top);
+							});
+										
+							function fill_star_select(data) {
+								if (data) {
+									var star_num = Math.ceil(data.price / 2);
+									o_star = star_num;
+									enter_star(o_star);
+									$('#interest_sectl .star_show .num').text(data.price);
+									$('#interest_sectl .peoples .num').text(data.count);
+									
+									var max_width = 80;
+									$('#interest_sectl .star_list .star').eq(0)
+										.find('.percent').width(data.percent5 / 100 * max_width).andSelf()
+										.find('.num').text(data.percent5 + '%');
+									$('#interest_sectl .star_list .star').eq(1)
+										.find('.percent').width(data.percent4 / 100 * max_width).andSelf()
+										.find('.num').text(data.percent4 + '%');
+									$('#interest_sectl .star_list .star').eq(2)
+										.find('.percent').width(data.percent3 / 100 * max_width).andSelf()
+										.find('.num').text(data.percent3 + '%');
+									$('#interest_sectl .star_list .star').eq(3)
+										.find('.percent').width(data.percent2 / 100 * max_width).andSelf()
+										.find('.num').text(data.percent2 + '%');
+									$('#interest_sectl .star_list .star').eq(4)
+										.find('.percent').width(data.percent1 / 100 * max_width).andSelf()
+										.find('.num').text(data.percent1 + '%');
+								}
+							}
+		        			{eval $star_data = $forumOption->getStarInfoByType('forum', $_G['tid']);}
+							{if $star_data}
+							var data = {eval echo json_encode($star_data)};
+							fill_star_select(data);
+							{/if}
+						})(jQuery);
+						</script>
+                </div>
+            </div>
+			<!--{if (($_G['forum']['ismoderator'] && $_G['group']['alloweditpost'] && (!in_array($post['adminid'], array(1, 2, 3)) || $_G['adminid'] <= $post['adminid'])) || ($_G['forum']['alloweditpost'] && $_G['uid'] && $post['authorid'] == $_G['uid'])&&($_G['groupid'] == 1 ||$_G['groupid']== 45))}-->
+            <div class="mian1_right2">
+            	<div class="guanli">
+                	<a class="gl">管理</a>
+                	<div class="gl_list">
+                    	<ul>
+                        	<li><!--{if $_G['group']['allowdelpost']}--><a href="forum.php?mod=post&action=edit&fid={$_G[fid]}&tid={$_G[tid]}&pid={$post[pid]}{if !empty($_G[gp_modthreadkey])}&modthreadkey=$_G[gp_modthreadkey]{/if}&page=$page"><!--{if $_G['forum_thread']['special'] == 2 && !$post['message']}-->{lang post_add_aboutcounter}<!--{else}-->{lang edit}<!--{/if}--></a><!--{/if}--></li>
+                            <li><!--{if $_G['group']['allowdelpost']}--><a href="javascript:;" onclick="modthreads(3, 'delete')">{lang modmenu_deletethread}</a><!--{/if}--></li>                           
+							
+							<li class="setpass" {if $shop['ispublish']==1}style="display:none;"{/if}><a class="tgsh" href="javascript:;">通过审核</a></li>
+							<li class="setcancel" {if $shop['ispublish']==0}style="display:none;"{/if}><a class="qxsh" href="javascript:;">取消审核</a></li>
+							
+									
+					    </ul>
+                    </div>
+                </div>
+                <div class="wydp"></div>
+            </div>
+			<!--{/if}-->			
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+	<div class="mian" id="page_content">
+    	<div class="mian_left yuanjiao" id="left_8264">
+        	<div>
+                <div class="mian_tit1">店铺介绍<a href='javascript:void();' class="jb" style="float:right; font-size:12px; color:#E98300;  height: 15px; margin:8px 30px 0px 0px; padding:0px 0px 0px 20px;">内容不实，我要举报</a></div>
+                        
+                <div class="dpjs">
+			<!--{eval $post['message']=strip_tags($post['message'],'<br>');}-->	
+			<p>$post['message']</p>
+                </div>
+		<script type="text/javascript">
+			;(function($) {
+				var tid = {$post['tid']};
+				<!--{if !$_G['uid']}-->
+					$('.mian_tit1 a').click(function(){
+						showWindow('login', 'member.php?mod=logging&action=login');hideWindow('register');
+					})
+				<!--{else}-->
+					$('.mian_tit1 a').click(function(){								
+						showWindow('jb','/plugin.php?id=outshop:jb&tid='+tid);		
+						return false;
+					});											
+				<!--{/if}-->	
+			})(jQuery);				
+		</script>
+                <div class="mian_tit clearfix">
+                    <p style="float:left">点评列表</p>
+                    <div class="tit_fbpl" id="addcom" style="cursor:pointer;">我也要发表评论</div>
+					<script type="text/javascript">
+					;(function($) {
+						$('#addcom').click(function() {
+								$(window).scrollTop($('#f_pst').offset().top);
+						});				
+						$('.gl').mousemove(function(){
+							$('.gl_list').show();							
+						});
+						$('.gl_list').mouseleave(function(){
+							$(this).hide();							
+						});						
+						$(function($){
+							$(".dpjs>div.dplb_list:odd").addClass("bule");						
+						});
+						
+						var tid = <!--{$_G['tid']}-->;
+						//取消审核操作
+						$('.mian1_right2 .setcancel').click(function(){					
+							var type = 'cancel';											 
+							 $.ajax({
+								   type: 'get',			
+								   url: 'plugin.php?id=outshop:ajax_updateoutshop&type='+type+'&tid='+tid,
+								   success: function(html) {
+									   if(html=='success'){
+										   showDialog('设置成功');
+										   $('.mian1_right2 .setcancel').hide();												
+										   $('.mian1_right2 .setpass').show();															
+									   }else{
+										   showDialog('设置失败');
+									   }
+								   }
+							});
+							return false;
+						});
+						//通过审核操作
+						$('.mian1_right2 .setpass').click(function(){					
+							var type = 'pass';											 
+							 $.ajax({
+								   type: 'get',			
+								   url: 'plugin.php?id=outshop:ajax_updateoutshop&type='+type+'&tid='+tid,
+								   success: function(html) {
+									   if(html=='success'){
+										   showDialog('设置成功');
+										   $('.mian1_right2 .setcancel').show();												
+										   $('.mian1_right2 .setpass').hide();															
+									   }else{
+										   showDialog('设置失败');
+									   }
+								   }
+							});
+							return false;
+						});
+						
+						//鼠标移入分享后向左边弹出分享按钮
+						$("#share").hover(
+							function () {
+							$(".share_bd",this).show();
+							},
+							function () {
+							$(".share_bd",this).hide();
+							}
+						);
+						//返回顶部按钮
+						if($(window).scrollTop() > 10){$("#gotop_50 a").show();}	
+						$(window).scroll( function(){
+							if($(window).scrollTop()>10){
+								$("#gotop_50 a").show();
+							}else{
+								$("#gotop_50 a").hide();	
+							}
+						});
+						$("#gotop_50").click(function(){ 
+							$("html,body").animate({ scrollTop: 0 },500);
+						});
+					})(jQuery);					
+					</script>
+					<div class="clear"></div>
+					</div>
+					<div class="dpjs">					
+					<!--{if count($postlist)>=2}-->
+					<!--{loop $postlist $post}-->
+					<!--{if $post['first']!=1}-->
+					<div class="dplb_list" id="post_$post[pid]">
+						<div class="touxiang"><a href="home.php?mod=space&uid=$post[authorid]"><!--{avatar($post[authorid], small)}--></a></div>
+						<div class="dplb_list_r">
+							<div style="float:left; color:#2770c0; font-weight:bold"><a href="home.php?mod=space&uid=$post[authorid]" target="_blank" class="xi2">$post[author]</a></div>
+							<div style="float:right; color:#ccc;">发表于$post[dateline]
+							{eval $star = $forumOption->getStarByRalateid('forum', $_G['tid'], $post['authorid'], $post['pid']);}
+							{if $star}
+							<span class="star">
+								{eval for ($i = 0; $i < 5; $i++):}
+								{if $i < $star['starnum']}<span class="redstar"></span>{else}<span class="graystar"></span>{/if}
+								{eval endfor;}
+							</span>
+							{/if}
+							</div>
+							<div class="clear"></div>
+							<div style=" margin-top:5px;">
+								<!--{eval $post['message']=str_replace('thumbImg(this)','thumbImg(this,null,757)',$post["message"]);}-->$post[message]	
+							</div>
+						</div>
+						<!--{if (($_G['forum']['ismoderator'] && $_G['group']['alloweditpost'] && (!in_array($post['adminid'], array(1, 2, 3)) || $_G['adminid'] <= $post['adminid'])) || ($_G['forum']['alloweditpost'] && $_G['uid'] && $post['authorid'] == $_G['uid']))}-->
+						<!--{if !$post['first'] && $modmenu['post']}-->
+						<span class="y">
+						<label for="manage$post[pid]">
+						<input type="checkbox" id="manage$post[pid]" class="pc" {if !empty($modclick)}checked="checked" {/if}onclick="pidchecked(this);modclick(this, $post[pid])" value="$post[pid]" autocomplete="off" />
+						{lang manage}
+						</label>
+						</span>
+						<!--{/if}-->
+						<!--{/if}-->				
+						<div class="clear"></div>
+					</div>
+					<!--{/if}-->
+					<!--{/loop}-->
+					<!--{else}-->
+					<div class="dplb_list">
+					暂时还没有人点评哦，你快第一个发表点评吧！
+					</div>
+					<!--{/if}-->
+                </div>			
+				<div id="postlistreply"><div id="post_new" style="display: none;"></div></div>
+				<!--{if $multipage}-->
+				 <div class="listPageBox clearfix">$multipage</div>				
+				<!--{/if}-->              
+            </div>
+                        
+            <div class="mian_tit" style="margin-top:15px;">
+            	<p>发表评论</p>
+            </div>
+			<script type="text/javascript">			
+			var postminchars = parseInt(20);			
+			var postmaxchars = parseInt(400);			
+			var disablepostctrl = parseInt('{$_G['group']['disablepostctrl']}');			
+			</script>
+            <div class="mian_fbpl" id="f_pst">
+				<span id="fastpostreturn" style="margin-left: 10px;"></span>
+            	<form method="post" autocomplete="off" id="fastpostform" action="forum.php?mod=post&action=reply&fid=$_G[fid]&tid=$_G[tid]&extra=$_G[gp_extra]&replysubmit=yes{if $_G['gp_ordertype'] != 1}&infloat=yes&handlekey=fastpost{/if}{if $_G[gp_from]}&from=$_G[gp_from]{/if}"{if $_G['gp_ordertype'] != 1} onSubmit="return fastpostvalidateoutshop(this)"{/if}>
+                	<span id="fastpostreturn"></span>
+						<div class="ztpf">
+						<style type="text/css">
+						.starselect_box{ overflow: hidden; margin: 0 0 5px;}
+						.starselect_box strong { margin-right: 10px;}
+						.starselect_box label { margin-right: 6px;}
+						.starselect_box .radio { vertical-align: middle;}
+						</style>
+						{if $_G['uid'] && !$forumOption->isStared('forum', $_G['tid'], $_G['uid'])}					
+						<div class="starselect_box" id="starselect_box">
+							<strong>店铺评价:</strong>
+							<label for="starselect_5">
+								<input type="radio" name="starselect" value="5" id="starselect_5" class="radio" />
+								力荐（五星）
+							</label>
+							<label for="starselect_4">
+								<input type="radio" name="starselect" value="4" id="starselect_4" class="radio" />
+								推荐（四星）
+							</label>
+							<label for="starselect_3">
+								<input type="radio" name="starselect" value="3" id="starselect_3" class="radio" />
+								还行（三星）
+							</label>
+							<label for="starselect_2">
+								<input type="radio" name="starselect" value="2" id="starselect_2" class="radio" />
+								较差（二星）
+							</label>
+							<label for="starselect_1">
+								<input type="radio" name="starselect" value="1" id="starselect_1" class="radio" />
+								很差（一星）
+							</label>
+						</div>
+						{elseif !$_G['uid']}					
+						<div class="starselect_box" id="starselect_box">
+							<strong>店铺评价:</strong>
+							<label for="starselect_5">
+								<input type="radio" name="starselect" value="5" id="starselect_5" class="radio" />
+								力荐（五星）
+							</label>
+							<label for="starselect_4">
+								<input type="radio" name="starselect" value="4" id="starselect_4" class="radio" />
+								推荐（四星）
+							</label>
+							<label for="starselect_3">
+								<input type="radio" name="starselect" value="3" id="starselect_3" class="radio" />
+								还行（三星）
+							</label>
+							<label for="starselect_2">
+								<input type="radio" name="starselect" value="2" id="starselect_2" class="radio" />
+								较差（二星）
+							</label>
+							<label for="starselect_1">
+								<input type="radio" name="starselect" value="1" id="starselect_1" class="radio" />
+								很差（一星）
+							</label>
+						</div>
+						{/if}
+					</div>
+                    <input type="hidden" name="formhash" value="{FORMHASH}" />
+					<input type="hidden" name="subject" value="" />					
+					<textarea onkeyup="strLenCalc(this, 'checklen', 400);" name="message" id="fastpostmessage" class="pl_txt"></textarea>			
+                    <div style=" margin:10px 0 0 5px; width:585px;">
+                    	<p style="float:left;">还可输入<strong id="checklen">400</strong>个字符&nbsp;&nbsp;<span style="color: red;">请从店铺的货品数量、产品质量、产品价格、服务态度等方面进行点评。</span></p>
+                        <input {if !$guestreply}type="submit" {else}type="button" onclick="showWindow('login', 'member.php?mod=logging&action=login&guestmessage=yes')" {/if}name="replysubmit"  id="fastpostsubmit"  type="button" class="pl_bn" value="提交" />
+                        <div class="clear"></div>
+                    </div>
+                </form>
+            </div> 
+        </div>
+        <div class="mian_right" id="right_8264">		
+			<!--{eval $sp = ForumOptionShop::getShopBytId($shop['tid']);}-->
+			<!--{if $sp['longitude']&& $sp['latitude']}-->
+        	<div class="ditu yuanjiao">
+            	<div class="mian_tit clearfix">
+            	<p style="float:left">地图显示</p>
+                <!--{if (($_G['forum']['ismoderator'] && $_G['group']['alloweditpost'] && (!in_array($post['adminid'], array(1, 2, 3)) || $_G['adminid'] <= $post['adminid'])) || ($_G['forum']['alloweditpost'] && $_G['uid'] && $post['authorid'] == $_G['uid']))}--><div class="tit_bzdt">修改标注</div><!--{/if}-->
+                <div class="clear"></div>
+				</div>
+             	<div class="ditu_t">
+					<div id="mapContainer"></div>
+                    <div class="ckdt"><a href="javascript:;">查看大图</a></div>
+				</div>				
+            </div>
+			<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2&services=true"></script>			
+			<script type="text/javascript">
+				var long = {$sp['longitude']};
+				var lat = {$sp['latitude']};				
+				var map = new BMap.Map("mapContainer");
+				var point = new BMap.Point(long, lat);
+				map.centerAndZoom(point, 14);
+				map.disableDragging();
+				map.disableDoubleClickZoom(); // 禁用双击放大
+				var opts = {type: BMAP_NAVIGATION_CONTROL_SMALL}  
+				map.addControl(new BMap.NavigationControl(opts)); 		
+				var marker = new BMap.Marker(point); // 创建标注
+				map.addOverlay(marker); // 将标注添加到地图中
+			</script>
+			<script type="text/javascript">
+			;(function($) {
+				var tid = {$sp['tid']};
+				$('.tit_bzdt').click(function() {
+					showWindow('editmap','/plugin.php?id=outshop:editmap&tid='+tid+'&edit=1');			
+				});				
+				$('.ditu_t .ckdt a').click(function() {
+					showWindow('editmap','/plugin.php?id=outshop:editmap&tid='+tid+'&edit=0');				
+				});
+			})(jQuery);				
+			</script>
+			<!--{eval $spfj = ForumOptionShop::getShopNearbyInfobyjw($sp['longitude'],$sp['latitude'],$sp['tid']);}-->			
+			<!--{if $spfj}-->
+            <div class="mian_rightbox yuanjiao">
+            	<div class="mian_tit">
+            		<p>附近的店铺</p>
+             	</div>
+                <div class="ditu_t1">					
+					<!--{loop $spfj $fj}-->
+                	<div class="ditu_t1_m">
+                		<a href="{PORTAL_HOST}dianpu-$fj[tid]" class="dname" title="$fj['sName']">$fj['sName']</a>
+                        <div style=" margin-top:5px;">
+                        	<div style=" float:left; padding-left:15px;">
+								{eval $star = $fj['score'];}
+								{if $star}
+								<span class="star">
+									{eval for ($i = 0; $i < 5; $i++):}
+									{if $i < $star/2}<span class="redstar"></span>{else}<span class="graystar"></span>{/if}
+									{eval endfor;}
+								</span>
+								{/if}
+							</div>
+                            <div style=" float:right"><span>$fj['views']</span>人浏览</div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <!--{/loop}-->				   
+                </div>
+            </div>
+			<!--{/if}-->
+			<!--{/if}-->			
+			<!--{eval $qt= ForumOptionShop::getsShopListbyShop($shop['regionid'],$shop['marketid'],$shop['tid']);}-->
+			<!--{if $qt}-->
+            <div class="mian_rightbox yuanjiao">
+            	<div class="mian_tit">
+					<!--{eval $market= ForumOptionShop::getMarketById($shop['marketid']);}-->
+					<!--{if $market}-->
+            		<p>$market['market']其他户外店</p>
+					<!--{/if}-->
+             	</div>
+                <div class="ditu_t1">					
+					<!--{loop $qt $fj}-->
+                	<div class="ditu_t1_m">						
+						<div class="ditu_t1_mpic"><img src="$fj['sPic'].thumb200.jpg" /></div>
+                        <div class="ditu_t1_mtxt">
+                        	<a href="{PORTAL_HOST}dianpu-$fj[tid]" title="$fj['subject']">$fj['subject']</a>
+                            <div style=" margin-top:5px;">
+								{eval $star = $fj['score'];}
+								{if $star}
+								<span class="star">
+									{eval for ($i = 0; $i < 5; $i++):}
+									{if $i < $star/2}<span class="redstar"></span>{else}<span class="graystar"></span>{/if}
+									{eval endfor;}
+								</span>
+								{/if}								
+							</div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <!--{/loop}-->                
+                </div>            
+            </div>
+			<!--{/if}-->
+			
+			<!--{eval $dqls= ForumOptionShop::getShopcBrandbysBrand($shop['provinceid'],$shop['cbrandid'],$shop['tid']);}-->
+			<!--{if $dqls}-->
+            <div class="mian_rightbox yuanjiao">
+            	<div class="mian_tit">					
+					<!--{eval $lspb= ForumOptionShop::getChainBrandById($shop['cbrandid']);}-->				
+					<!--{if $province&&$lspb}-->
+            		<p>$province['name']其他<span>$lspb['chainbrand']</span></p>
+					<!--{/if}-->
+             	</div>
+                <div class="ditu_t1">					
+					<!--{loop $dqls $fj}-->
+					<div class="ditu_t1_m">
+                		<a href="{PORTAL_HOST}dianpu-$fj[tid]" class="dname1" title="$fj['subject']">$fj['subject']</a>
+                        <div style="float:right">							
+							{eval $star = $fj['score'];}
+							{if $star}
+							<span class="star">
+								{eval for ($i = 0; $i < 5; $i++):}
+								{if $i < $star/2}<span class="redstar"></span>{else}<span class="graystar"></span>{/if}
+								{eval endfor;}
+							</span>
+							{/if}		
+						</div>
+                        <div class="clear"></div>
+                        <div style="margin:5px 0 0 15px;">$fj['addr']</div>
+                    </div>           
+				    <!--{/loop}-->  				  
+                </div>            
+            </div>
+			<!--{/if}-->
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>	   
+<!--{/if}-->
+    <!--{if !empty($aimgs[$post[pid]])}-->
+    <script type="text/javascript" reload="1">aimgcount[{$post[pid]}] = [<!--{echo implode(',', $aimgs[$post[pid]]);}-->];attachimgshow($post[pid]);    </script>
+    <!--{/if}-->  
+	</div>	
+<!--{eval $postcount++;}-->
+<!--{/loop}-->
+
+</div>
+
+<form method="post" autocomplete="off" name="modactions" id="modactions">
+<input type="hidden" name="formhash" value="{FORMHASH}" />
+<input type="hidden" name="optgroup" />
+<input type="hidden" name="operation" />
+<input type="hidden" name="listextra" value="$_G[gp_extra]" />
+</form>
+$_G['forum_tagscript']
+<!--{hook/viewthread_bottom}-->
+<!--{if $_G['setting']['visitedforums'] || $oldthreads}-->
+	<div id="visitedforums_menu" class="{if $oldthreads}visited_w {/if}p_pop blk cl" style="display: none;">
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<!--{if $_G['setting']['visitedforums']}-->
+					<td id="v_forums">
+						<h3 class="mbn pbn bbda xg1">{lang viewed_forums}</h3>
+						<ul>
+							$_G['setting']['visitedforums']
+						</ul>
+					</td>
+				<!--{/if}-->
+				<!--{if $oldthreads}-->
+					<td id="v_threads">
+						<h3 class="mbn pbn bbda xg1">{lang viewd_threads}</h3>
+						<ul class="xl">
+						<!--{loop $oldthreads $oldtid $oldsubject}-->
+							<li><a href="forum.php?mod=viewthread&tid=$oldtid">$oldsubject</a></li>
+						<!--{/loop}-->
+						</ul>
+					</td>
+				<!--{/if}-->
+			</tr>
+		</table>
+	</div>
+<!--{/if}-->
+
+<!--{if $_G['setting']['forumjump']}-->
+	<div class="p_pop" id="fjump_menu" style="display: none">
+	$forummenu
+	</div>
+<!--{/if}-->
+
+<!--{if $_G['setting']['connect']['allow'] && $page == 1}-->
+	<script type="text/javascript">
+		var connect_uin = '{$_G[member][conuin]}';
+		var connect_sid = '{$_G[setting][connectsiteid]}';
+		var connect_share_api = '{$_G[connect][share_api]}';
+		var connect_t_api = '{$_G[connect][t_api]}';
+		var connect_thread_info = {
+			thread_id: '{$_G[tid]}',
+			post_id: '{$_G[connect][first_post][pid]}',
+			s_id: '{$_G[setting][connectsiteid]}',
+			uin: '{$_G[member][conuin]}',
+			forum_id: '{$_G[fid]}',
+			author_id: '{$_G[connect][first_post][authorid]}',
+			author: '{$_G[connect][first_post][author]}',
+			access_token: '{$_G[cookie][client_token]}',
+			share_channel: '{$_G[connect][share_channel]}'
+		};
+
+		connect_autoshare = '{$_G[gp_connect_autoshare]}';
+		connect_isbind = '{$_G[member][conisbind]}';
+		if(connect_autoshare == 1 && connect_isbind) {
+			_attachEvent(window, 'load', function(){
+				connect_share(connect_share_api, connect_uin, connect_sid);
+			});
+		}
+	</script>
+	<div id="connect_share_unbind" style="display: none;">
+		<div class="c hm">
+			<div style="font-size:14px; margin:10px 0;">{lang connect_post_unbind}</div>
+			<div><a href="connect.php?mod=config&connect_autoshare=1" target="_blank"><img src="{IMGDIR}/qq_bind.gif" align="absmiddle" style="margin-top:5px;" /></a></div>
+		</div>
+		<input type="hidden" id="connect_thread_title" name="connect_thread_title" value="$_G[forum_thread][subject]" />
+	</div>
+<!--{/if}-->
+<!--{if !IS_ROBOT && $_G['setting']['threadmaxpages'] > 1}-->
+	<script type="text/javascript">document.onkeyup = function(e){keyPageScroll(e, <!--{if $page > 1}-->1<!--{else}-->0<!--{/if}-->, <!--{if $page < $_G['setting']['threadmaxpages'] && $page < $_G['page_next']}-->1<!--{else}-->0<!--{/if}-->, 'forum.php?mod=viewthread&tid=$_G[tid]<!--{if $_G[gp_authorid]}-->&authorid=$_G[gp_authorid]<!--{/if}-->', $page);}</script>
+<!--{/if}-->
+</div>
+
+<div class="wp mtn">
+	<!--[diy=diy3]--><div id="diy3" class="area"></div><!--[/diy]-->
+</div>
+
+<div class="share_bd_warpten">
+	<ul class="bbs_share_sc">
+		<li class="ps_re" id="share">
+			<a href="javascript:;" class="share"></a>
+			<div class="bdsharebuttonbox share_bd" data-tag="share_1">
+				<a href="javascript:;" class="sina" data-cmd="tsina"></a>
+				<a href="javascript:;" class="qq" data-cmd="qzone"></a>
+				<a href="javascript:;" class="wb" data-cmd="tqq"></a>
+				<a href="javascript:;" class="wx" data-cmd="weixin"></a>
+			</div>
+		</li>
+		<li><a href="home.php?mod=spacecp&ac=favorite&type=thread&id=$_G[tid]" id="m_k_favorite" onclick="showWindow(<!--{if $_G['uid']}-->this.id, this.href, 'get', 0<!--{else}-->'login','member.php?mod=logging&action=login'<!--{/if}-->);" class="sc"></a></li>
+		<li><a href="forum.php?mod=forumdisplay&fid=$_G[fid]" class="bbsli" title="返回户外店首页"></a></li>
+		<li id="gotop_50"><a style="display: none;" href="javascript:;" class="gotop_50"></a></li>
+	</ul>
+</div>
+<script>
+window._bd_share_config = {
+	common : {
+		//此处放置通用设置
+	},
+	share : [
+		//此处放置分享按钮设置
+		{"tag" : "share_1", "bdSize" : 32}	
+	]
+}
+with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<!--{subtemplate common/footer_8264_new}-->

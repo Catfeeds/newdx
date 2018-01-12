@@ -1,0 +1,453 @@
+<div class="lxch_new clboth" id="post_$post[pid]">
+	<div id="pid$post[pid]">
+
+<!--{eval $needhiddenreply = ($hiddenreplies && $_G['uid'] != $post['authorid'] && $_G['uid'] != $_G['forum_thread']['authorid'] && !$post['first'] && !$_G['forum']['ismoderator']);}-->
+<!--{block authorverifys}-->
+<!--{if $_G['setting']['verify']['enabled']}-->
+	<!--{loop $_G['setting']['verify'] $vid $verify}-->
+		<!--{if $verify['available'] && $post['verify'.$vid] == 1}-->
+			<a href="home.php?mod=spacecp&ac=profile&op=verify&vid=$vid" target="_blank"><!--{if $verify[icon]}--><img src="$verify[icon]" class="vm" alt="$verify[title]" title="$verify[title]" /><!--{else}-->$verify[title]<!--{/if}--></a>&nbsp;
+		<!--{/if}-->
+	<!--{/loop}-->
+<!--{/if}-->
+<!--{/block}-->
+
+<div class="lxch_l">
+	$post[newpostanchor] $post[lastpostanchor]
+	<!--{if $post['authorid'] && $post['username'] && !$post['anonymous']}-->
+		<!--{if $_G['setting']['authoronleft']}-->
+			<a href="home.php?mod=space&uid={$post['authorid']}" target="_blank" class="name_id_new" rel="nofollow">{$post['author']}</a>$authorverifys
+		<!--{/if}-->
+	<!--{/if}-->
+
+	<div class="t_img_new" id="uboxbtn_{$post['pid']}" style="z-index:2;">
+	<!--{if $_G['setting']['bannedmessages'] & 2 && ($post['memberstatus'] == '-1' || ($post['authorid'] && !$post['username']) || ($post['groupid'] == 4 || $post['groupid'] == 5) || ($post['status'] & 1))}-->
+		<!--<span>{lang member_avatar_banned}</span>-->
+		<!--{echo avatar(0)}-->
+	<!--{elseif $post['avatar'] && $showavatars}-->
+		<a href="home.php?mod=space&uid={$post['authorid']}" target="_blank"  rel="nofollow"><!--{avatar($post['authorid'])}--></a>
+		<div class="lctx_t" id="ubox_{$post['pid']}">
+			<div class="lctx_tcon">
+				<div class="lctx_tcon_n">
+					<div class="cltx_head clboth">
+						<div class="cltxbox"><a href="home.php?mod=space&uid={$post['authorid']}" target="_blank" rel="nofollow"><!--{avatar($post['authorid'], small)}--></a></div>
+						<div class="clnameinfo">
+							<a href="home.php?mod=space&uid={$post['authorid']}" target="_blank" class="name" rel="nofollow">{$post['author']}</a>
+							<a href="home.php?mod=spacecp&ac=usergroup&gid={$post['groupid']}" target="_blank" rel="nofollow">{$post['authortitle']}</a>
+							<!--{if $post['medals']}-->
+							<span class="riicon">
+								<!--{loop $post['medals'] $medal}-->
+								<img src="http://static.8264.com/static/image/common/$medal[image]" alt="$medal[name]" title="$medal[name]" />
+								<!--{/loop}-->
+							</span>
+							<!--{/if}-->
+						</div>
+					</div>
+					<div class="ueser_forum_info">
+						<a href="home.php?mod=space&uid={$post['uid']}&do=thread&type=thread&view=me&from=space" rel="nofollow">主题<span>{$post['threads']}</span></a>
+						<a href="home.php?mod=space&uid={$post['uid']}&do=thread&type=reply&view=me&from=space" rel="nofollow">回帖<span>{$post['posts']}</span></a>
+<!--						<a href="forum.php?mod=viewthread&tid=1641700">8264币<span>{$post['extcredits5']}</span></a>-->
+						<a href="home.php?mod=space&uid={$post['uid']}&do=friend" class="withoutb_r" rel="nofollow">关注<span>{$post['friends']}</span></a>
+						<a href="home.php?mod=space&uid={$post['uid']}&do=friend&view=fans" class="withoutb_r" rel="nofollow">粉丝<span>{$post['fans']}</span></a>
+					</div>
+					<div class="send_friend clboth">
+						<a href="home.php?mod=spacecp&ac=pm&op=showmsg&handlekey=showmsg_$post[authorid]&touid=$post[authorid]&pmid=0&daterange=2&pid=$post[pid]" onclick="hideMenu('userinfo$post[pid]');showWindow({if !$_G['uid']}'login','member.php?mod=logging&action=login'{else}'sendpm', this.href{/if})" title="{lang send_pm}" class="send">发短信</a>
+						<div class="update_ucache" id="updateuserinfo_$post[pid]"><a href="javascript:;" onclick="ajaxget('plugin.php?id=api:userinfoupdate&uid={$post[authorid]}' ,'updateuserinfo_{$post[pid]}');">刷新缓存</a></div>
+						<!--{if $post[authorid] != $_G[uid]}-->
+						<a href="home.php?mod=spacecp&ac=friend&op=add&uid=$post[authorid]&handlekey=addfriendhk_{$post[authorid]}" id="a_friend_li_{$post[pid]}" onclick="showWindow({if !$_G['uid']}'login','member.php?mod=logging&action=login'{else}this.id, this.href, 'get', 1, {'ctrlid':this.id,'pos':'00'}{/if});" class="friend">关注</a>
+						<!--{/if}-->
+					</div>
+				</div>
+			</div>
+		</div>
+	<!--{/if}-->
+	</div>
+
+	<!--{if $post['medals']}-->
+	<span class="hzicon_1">
+		<!--{loop $post['medals'] $medal}--><img src="http://static.8264.com/static/image/common/$medal[image]" alt="$medal[name]" title="$medal[name]" /><!--{/loop}-->
+	</span>
+	<!--{/if}-->
+	<!--{if $post['extcredits5']}--><a href="forum.php?mod=viewthread&tid=1641700" class="info_new orangelink">8264币 <i class="orange">{$post['extcredits5']}</i> {$_G['setting']['extcredits'][5]['unit']}</a><!--{/if}-->
+	<a href="home.php?mod=space&uid={$post['uid']}&do=thread&type=reply&view=me&from=space" target="_blank" class="info_new alink" rel="nofollow">发帖：{echo $post['threads']+$post['posts']} 帖</a>
+	<span class="info_new">在线：{$post['oltime']} 小时</span>
+	<span class="info_new">注册：{$post['regdate']}</span>
+
+	<!--{if $_G['group']['allowedituser'] || $_G['group']['allowbanuser'] || ($_G['forum']['ismoderator'] && $_G['group']['allowviewip'] && !$post['first'])}-->
+		<span class="info_new">
+			<!--{if $_G['forum']['ismoderator'] && $_G['group']['allowviewip']}-->
+				<a href="forum.php?mod=topicadmin&action=getip&fid=$_G[fid]&tid=$_G[tid]&pid=$post[pid]" onclick="ajaxmenu(this, 0, 0, 2);doane(event)">IP</a>&nbsp;
+			<!--{/if}-->
+			<!--{if $_G['group']['allowedituser']}-->
+				<a href="{if $_G['adminid'] == 1}admin.php?frames=yes&action=members&operation=search&uid=$post[authorid]&submit=yes{else}forum.php?mod=modcp&action=member&op=edit&uid=$post[authorid]{/if}" target="_blank">{lang edit}</a>&nbsp;
+			<!--{/if}-->
+			<!--{if $_G['group']['allowbanuser']}-->
+				<!--{if $_G['adminid'] == 1}-->
+					<a href="admin.php?action=members&operation=ban&username=$post[usernameenc]&frames=yes" target="_blank">{lang ban_member}</a>&nbsp;
+				<!--{else}-->
+					<a href="forum.php?mod=modcp&action=member&op=ban&uid=$post[authorid]" target="_blank">{lang ban_member}</a>&nbsp;
+				<!--{/if}-->
+			<!--{/if}-->
+			<a href="forum.php?mod=modcp&action=thread&op=post&do=search&searchsubmit=1&users=$post[usernameenc]" target="_blank">{lang posts}</a>
+		</span>
+	<!--{/if}-->
+</div>
+
+<div class="lxch_r">
+	<div class="lc_bs_new clboth">
+		<!--{if $post['authorid'] && !$post['anonymous']}-->
+			<!--{if !$_G['setting']['authoronleft']}--><a href="home.php?mod=space&uid=$post[authorid]" target="_blank" class="xi2" rel="nofollow">$post[author]</a>$authorverifys<!--{/if}-->
+			<!--{hook/viewthread_postheader $postcount}-->
+		<!--{elseif $post['authorid'] && $post['username'] && $post['anonymous']}-->
+			{lang anonymous}
+			<!--{hook/viewthread_postheader $postcount}-->
+		<!--{elseif !$post['authorid'] && !$post['username']}-->
+			{lang guest}
+			<!--{hook/viewthread_postheader $postcount}-->
+		<!--{/if}-->
+		<span class="fby" id="authorposton$post[pid]">
+			<style type="text/css">
+			.lc_bs_new span.fby div{display:inline;}
+			.fby a{ color:#949494;}
+			</style>
+			<!--{if $postcount==0}-->
+				发表于
+			<!--{else}-->
+			{lang poston}
+			<!--{/if}-->
+			$post[dateline]
+
+
+		</span>
+
+		<!--关注关系-->
+		<!--{if $post[first] == 1 && $_G[uid] != $post[authorid]}-->
+		<style type="text/css">
+		.first-follow .btn-28 {
+		    border-radius: 2px;
+		    float: left;
+		    font-size: 12px;
+		    height: 28px;
+		    line-height: 28px;
+		    margin-left: 8px;
+		    padding: 0 12px;
+		    text-align: center;
+		    margin-top:3px;
+		}
+		.first-follow .p-btn-d {
+		    background-color: #fff;
+		    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+		}
+		.first-follow .p-btn-c {
+		    background-color: #ff7e00;
+		    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+		    color: #fff;
+		}
+		.first-follow .icon-f {
+		    background: rgba(0, 0, 0, 0) url("http://static.8264.com/static/images/icon/attent_15x59.png") no-repeat scroll 0 0;
+		    display: inline-block;
+		    height: 13px;
+		    margin: -2px 5px 0 0;
+		    vertical-align: middle;
+		    width: 13px;
+		}
+		.first-follow .icon-add-f {
+		    background-position: -1px -48px;
+		}
+		.first-follow .icon-focus-f {
+		    background-position: -1px -24px;
+		}
+		.first-follow .layer-list {
+		    background-color: #fff;
+		    border-radius: 2px;
+		    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.17);
+		    position: absolute;
+		    text-align: center;
+		    width: 100px;
+		    z-index: 101;
+		}
+		.first-follow .layer-list a {
+		    display: block;
+		    font-size: 14px;
+		    height: 28px;
+		    line-height: 28px;
+		}
+		.first-follow .layer-list a:hover {
+		    background-color:#f3f3f3;
+		    color:#ff7e00;
+		}
+		</style>
+		<div style="float:left;position:relative;z-index:1;" class="first-follow">
+			{if empty($post[mutual])}
+
+			{if $_G['uid']}
+			<a href="home.php?mod=spacecp&ac=friend&op=add&uid={$post[authorid]}" class="p-btn-c btn-28 addfollow" id="ajax_follow_me_{$post[authorid]}">
+			{else}
+			<a href="member.php?mod=logging&action=login" class="p-btn-c btn-28">
+			{/if}
+				<i class="icon-f icon-add-f"></i>关注
+			</a>
+
+			{elseif $post[mutual] == 1}
+			<a href="javascript:void(0);" class="p-btn-d btn-28 button_hover" onmouseover="showMenu_uc(this.id,'35','1');" id="followselect">
+				<i class="icon-f icon-focus-f"></i>已关注
+			</a>
+			{elseif $post[mutual] == 2}
+			<a href="javascript:void(0);" class="p-btn-d btn-28 button_hover" onmouseover="showMenu_uc(this.id,'35','1');" id="followselect">
+				<i class="icon-f icon-addtwo-f"></i>互相关注
+			</a>
+			{/if}
+			{if $post[mutual]}
+			<div class="layer-list" id="followselect_menu" style="display:none;">
+				<a href="home.php?mod=spacecp&ac=friend&op=changegroup&uid={$post[authorid]}" id="friend_group_{$post[authorid]}" class="setgroup">
+					<span class="t">设置分组</span>
+				</a>
+				<a href="javascript:void(0);" rel="home.php?mod=spacecp&ac=friend&op=ignore&uid={$post[authorid]}&confirm=1"  class="unfollow">
+					<span class="t">取消关注</span>
+				</a>
+			</div>
+			{/if}
+		</div>
+		<script type="text/javascript">
+		jQuery(function(){
+			//添加关注
+			jQuery(".first-follow").delegate(".addfollow","click",function(){
+				showWindow(jQuery(this).attr('id'), jQuery(this).attr('href'), 'get', 0);
+			});
+
+			//取消关注
+			jQuery(".layer-list").delegate(".unfollow","click",function(){
+				var url = jQuery(this).attr('rel');
+				dconfirm('取消关注', '确认取消关注吗?', function() {
+					jQuery.post(url, '', function(data) {
+						if(data == 'success') {
+							var html = '<a href="home.php?mod=spacecp&ac=friend&op=add&uid={$post[authorid]}" class="p-btn-c btn-28 addfollow" id="ajax_follow_me_{$post[authorid]}"><i class="icon-f icon-add-f"></i>关注</a>';
+							jQuery('.first-follow').html('').html(html);
+							showDialog("<p>取消关注成功</p>", 'notice', '','' , 0, '', '', '', '', 2);
+						}
+					});
+				});
+			});
+
+			//设置分组
+			jQuery(".layer-list").delegate(".setgroup","click",function(){
+				showWindow(jQuery(this).attr('id'), jQuery(this).attr('href'), 'get', 0);
+			});
+		});
+		function showMenu_uc(id,top,left) {
+			showMenu(id);
+			jQuery('#'+id+'_menu').css({'top':top+'px'});
+			if (left) {
+				jQuery('#'+id+'_menu').css({'left':left+'px'});
+			}
+		}
+		function callback_follow_successfully(mutual, uid) {
+			if (mutual == 1) {
+				var html = '<a href="javascript:void(0);" class="p-btn-d btn-28 button_hover" id="followselect"><i class="icon-f icon-focus-f"></i>已关注</a>';
+			} else if (mutual == 2) {
+				var html = '<a href="javascript:void(0);" class="p-btn-d btn-28 button_hover" id="followselect"><i class="icon-f icon-addtwo-f"></i>互相关注</a>';
+			}
+			html += '<div class="layer-list" id="followselect_menu" style="display:none;">';
+			html += '<a href="home.php?mod=spacecp&ac=friend&op=changegroup&uid=';
+//			html += uid;
+			html += uid;
+			html += '" id="friend_group_'+uid+'" class="setgroup"><span class="t">设置分组</span></a>';
+			html += '<a href="javascript:void(0);" rel="home.php?mod=spacecp&ac=friend&op=ignore&uid='+uid+'&confirm=1"  class="unfollow"><span class="t">取消关注</span></a>';
+			html += '</div>';
+			jQuery('.first-follow').html('').html(html);
+			jQuery('.first-follow .button_hover').mouseover(function(){
+				showMenu_uc(jQuery(this).attr('id'),'35','1');
+			});
+			//取消关注
+			jQuery(".layer-list").delegate(".unfollow","click",function(){
+				var url = jQuery(this).attr('rel');
+				dconfirm('取消关注', '确认取消关注吗?', function() {
+					jQuery.post(url, '', function(data) {
+						if(data == 'success') {
+							var html = '<a href="home.php?mod=spacecp&ac=friend&op=add&uid={$post[authorid]}" class="p-btn-c btn-28 addfollow" id="ajax_follow_me_{$post[authorid]}"><i class="icon-f icon-add-f"></i>关注</a>';
+							jQuery('.first-follow').html('').html(html);
+							showDialog("<p>取消关注成功</p>", 'notice', '','' , 0, '', '', '', '', 2);
+						}
+					});
+				});
+			});
+			//设置分组
+			jQuery(".layer-list").delegate(".setgroup","click",function(){
+				showWindow(jQuery(this).attr('id'), jQuery(this).attr('href'), 'get', 0);
+			});
+		}
+		</script>
+		<!--{/if}-->
+		<!--关注关系 end-->
+
+		<!--{if !IS_ROBOT}-->
+			<a href="{$_G[siteurl]}{if $post[first]}forum.php?mod=viewthread&tid=$_G[tid]$fromuid{else}forum.php?mod=redirect&goto=findpost&ptid=$_G[tid]&pid=$post[pid]$fromuid{/if}" class="lc_bs_no" title="{lang share_url_copy}" id="postnum$post[pid]" onclick="setCopy(this.href, '{lang post_copied}');return false;">
+			<!--{if !empty($postno[$post[number]])}-->$postno[$post[number]]<!--{else}--><em>{$post[number]}</em>{$postno[0]}<!--{/if}-->
+			</a>
+		<!--{/if}-->
+
+		<span class="tzgn">
+			<!--{if $post['authorid'] && !$post['anonymous']}-->
+				<!--{if $post['invisible'] == 0}-->
+					<!--{if !IS_ROBOT && !$_G['gp_authorid'] && !$_G['forum_thread']['archiveid']}-->
+					<a href="forum.php?mod=viewthread&tid=$post[tid]&page=$page&authorid=$post[authorid]" rel="nofollow">{lang thread_show_author}</a>
+					<!--{elseif !$_G['forum_thread']['archiveid']}-->
+					<a href="forum.php?mod=viewthread&tid=$post[tid]&page=$page" rel="nofollow">{lang thread_show_all}</a>
+					<!--{/if}-->
+				<!--{/if}-->
+			<!--{/if}-->
+
+			<!--{if !IS_ROBOT && $post['first'] && !$_G['forum_thread']['archiveid']}-->
+				<!--{if $ordertype != 1}-->
+					| <a href="forum.php?mod=viewthread&tid=$_G[tid]&extra=$_G[gp_extra]&ordertype=1" rel="nofollow">{lang post_descview}</a>
+				<!--{else}-->
+					| <a href="forum.php?mod=viewthread&tid=$_G[tid]&extra=$_G[gp_extra]&ordertype=2" rel="nofollow">{lang post_ascview}</a>
+				<!--{/if}-->
+				<!--{if $post['invisible'] == 0}--><!--{/if}-->
+				<!--{if $_G['forum_thread']['readperm']}-->| <em class="xg2">{lang readperm_thread} $_G[forum_thread][readperm]</em><!--{/if}-->
+			<!--{/if}-->
+
+			<!--{if $_G['forum_scan_way_button'] == 1 && $post['first'] }-->
+				| <a href="tupian-{$_G['tid']}.html#pic" target="_blank">只看本帖大图</a>
+			<!--{/if}-->
+		</span>
+	</div>
+
+	<!--{hook/viewthread_sidetop $postcount}-->
+	<!--{hook/viewthread_sidebottom $postcount}-->
+	<!--{if $post['first']}-->
+		<!--{if $_G['forum_threadstamp']}--><div id="threadstamp"><img src="http://static.8264.com/static/image/stamp/$_G[forum_threadstamp][url]" title="$_G[forum_threadstamp][text]" /></div><!--{/if}-->
+	<!--{/if}-->
+
+	<!--{if !$post[first] && $_G['forum_thread']['special'] == 5}-->
+		<label class="pdbts pdbts_{echo intval($post[stand])}">
+			<!--{if $post[stand] == 1}--><a class="v" href="forum.php?mod=viewthread&tid=$_G[tid]&extra=$_G[gp_extra]&filter=debate&stand=1" title="{lang debate_view_square}">{lang debate_square}</a>
+				<!--{elseif $post[stand] == 2}--><a class="v" href="forum.php?mod=viewthread&tid=$_G[tid]&extra=$_G[gp_extra]&filter=debate&stand=2" title="{lang debate_view_opponent}">{lang debate_opponent}</a>
+				<!--{else}--><a href="forum.php?mod=viewthread&tid=$_G[tid]&extra=$_G[gp_extra]&filter=debate&stand=0" title="{lang debate_view_neutral}">{lang debate_neutral}</a><!--{/if}-->
+			<!--{if $post[stand]}-->
+				<a class="b" href="forum.php?mod=misc&action=debatevote&tid=$_G[tid]&pid=$post[pid]" id="voterdebate_$post[pid]" onclick="ajaxmenu(this);doane(event);">{lang debate_support} $post[voters]</a>
+			<!--{/if}-->
+		</label>
+	<!--{/if}-->
+
+	<div class="clboth">
+		<div class="ad_info">
+			<!--{if $post['number']<6}--><!--{ad/thread/a_pt/2/$postcount}--><!--{/if}-->
+
+			<!--{if $_G['forum_thread']['readmodel'] ==1&&$post['first']}-->
+			    <div style="text-align:center; padding:30px 0px 10px 0px;">
+					<a target="_blank" href="http://www.8264.com/youji/{$_G[tid]}.html?from=8264bbs">
+						<img  src="http://static.8264.com/static/image/common/ydbicon.png">
+					</a>
+				</div>
+			<!--{/if}-->
+			<!--{if $_G['forum_thread']['readmodel'] ==2&&$post['first']}-->
+			    <div style="text-align:center; padding:30px 0px 10px 0px;">
+					<a target="_blank" href="http://www.8264.com/wenzhang/{$_G[tid]}.html?from=8264bbs">
+						<img  src="http://static.8264.com/static/image/common/wzbicon.png">
+					</a>
+				</div>
+			<!--{/if}-->
+
+			<!--{if $post['first']}-->
+				<!--{if $post[tags] || $relatedkeywords}-->
+					<div class="ptg">
+						<!--{if $post[tags]}-->$post[tags]<!--{/if}-->
+						<!--{if $relatedkeywords}--><span>$relatedkeywords</span><!--{/if}-->
+					</div>
+				<!--{/if}-->
+			<!--{/if}-->
+		</div>
+	</div>
+
+	<!--{subtemplate forum/viewthread_node_body_2014}-->
+
+	<!--{if !IS_ROBOT && $post['first'] && !$_G['forum_thread']['archiveid']}-->
+		<!--{if !empty($lastmod['modaction']) && $_G['groupid'] == 1}-->
+		<div class="gldivfst clboth" ><a href="forum.php?mod=misc&action=viewthreadmod&tid=$_G[tid]" title="{lang thread_mod}" onclick="showWindow('viewthreadmod', this.href)">{lang thread_mod_by}</a></div>
+		<!--{hook/viewthread_useraction}-->
+		<!--{/if}-->
+	<!--{/if}-->
+
+	<div class="lcbottom clboth">
+		<!--{if !$_G['forum_thread']['archiveid']}-->
+		<div class="gldiv_l">
+			<!--{if $post['invisible'] == 0}-->
+				<!--{if $allowpostreply}-->
+				<a class="hficon" href="forum.php?mod=post&action=reply&fid=$_G[fid]&tid=$_G[tid]&repquote=$post[pid]&extra=$_G[gp_extra]&way=reply&page=$page" onclick="showWindow(<!--{if $_G['uid']}-->'reply', this.href<!--{else}-->'login','member.php?mod=logging&action=login'<!--{/if}-->)">{lang reply}</a>
+				<!--{/if}-->
+			<!--{/if}-->
+			<!--{if $_G['group']['raterange'] && $post['authorid'] && !$post['first'] && $post['invisible'] == 0}-->
+				<a id="p_rate_btn" class="pficon" href="javascript:;" onclick="showWindow('rate', 'forum.php?mod=misc&action=rate&tid=$_G[tid]&pid=$post[pid]', 'get', -1);return false;">{lang rate}</a>
+			<!--{/if}-->
+			<!--{if $_G['group']['raterange'] && $post['authorid'] && $post['first']}-->
+				<a id="p_rate_btn" class="pficon" href="javascript:;" onclick="showWindow('rate', 'forum.php?mod=misc&action=rate&tid=$_G[tid]&pid=$post[pid]', 'get', -1);return false;" title="{echo count($postlist[$post[pid]][totalrate]);} {lang people_score}">{lang rate}</a>
+			<!--{/if}-->
+
+			<!--{if (($_G['forum']['ismoderator'] && $_G['group']['alloweditpost'] && (!in_array($post['adminid'], array(1, 2, 3)) || $_G['adminid'] <= $post['adminid'])) || ($_G['forum']['alloweditpost'] && $_G['uid'] && $post['authorid'] == $_G['uid']))}-->
+				<a id="p_edit_btn" href="forum.php?mod=post&action=edit&fid=$_G[fid]&tid=$_G[tid]&pid=$post[pid]{if !empty($_G[gp_modthreadkey])}&modthreadkey=$_G[gp_modthreadkey]{/if}&page=$page"><!--{if $_G['forum_thread']['special'] == 2 && !$post['message']}-->{lang post_add_aboutcounter}<!--{else}-->{lang edit}<!--{/if}--></a>
+			<!--{/if}-->
+		</div>
+		<div class="gldiv_r">
+			<!--{if $post['invisible'] == -2 && !$post['first']}-->
+				<span class="xg1">({lang moderate_need})</span>
+			<!--{/if}-->
+			<!--{if $post['first'] && $post['invisible'] == -3}-->
+				<a href="forum.php?mod=misc&action=pubsave&tid=$_G[tid]">{lang published}</a>
+			<!--{/if}-->
+			<!--{if !(($_G['forum']['ismoderator'] && $_G['group']['alloweditpost'] && (!in_array($post['adminid'], array(1, 2, 3)) || $_G['adminid'] <= $post['adminid'])) || ($_G['forum']['alloweditpost'])) && $_G['uid'] && $post['authorid'] == $_G['uid']}-->
+				<a href="forum.php?mod=misc&action=postappend&tid=$post[tid]&pid=$post[pid]&extra=$_G[gp_extra]&page=$page" onClick="showPostWin('postappend', this.href)">{lang postappend}</a>
+			<!--{/if}-->
+
+			<!--{if !$post['first'] && $modmenu['post']}-->
+			<span>
+				<label for="manage$post[pid]">
+					<input type="checkbox" id="manage$post[pid]" {if !empty($modclick)}checked="checked" {/if}onclick="pidchecked(this);modclick(this, $post[pid])" value="$post[pid]" autocomplete="off" />{lang manage}
+				</label>
+			</span>
+			<!--{/if}-->
+
+			<!--{if $post['invisible'] == 0}-->
+				<!--{if $post['first'] && $_G[uid] && $_G[uid] == $post[authorid] && !in_array($_G[fid], array(7,378))}-->
+					<a href="misc.php?mod=invite&action=thread&id=$_G[tid]" onclick="showWindow('invite', this.href, 'get', 0);">{lang invite}</a>
+				<!--{/if}-->
+				<!--{if $_G['forum_thread']['special'] == 3 && ($_G['forum']['ismoderator'] && (!$_G['setting']['rewardexpiration'] || $_G['setting']['rewardexpiration'] > 0 && ($_G[timestamp] - $_G['forum_thread']['dateline']) / 86400 > $_G['setting']['rewardexpiration']) || $_G['forum_thread']['authorid'] == $_G['uid']) && $post['authorid'] != $_G['forum_thread']['authorid'] && $post['first'] == 0 && $_G['uid'] != $post['authorid'] && $_G['forum_thread']['price'] > 0}-->
+					<a href="javascript:;" onclick="setanswer($post['pid'], '$_G[gp_from]')">{lang reward_set_bestanswer}</a>
+				<!--{/if}-->
+
+				<!--{if $post['rate'] && $_G['forum']['ismoderator']}-->
+					<a href="forum.php?mod=misc&action=removerate&tid=$_G[tid]&pid=$post[pid]&page=$page" onclick="showWindow('rate', this.href, 'get', -1)">{lang removerate}</a>
+				<!--{/if}-->
+				<!--{if $post['authorid'] != $_G['uid'] && $_G['uid']}-->
+					<a href="javascript:;" onclick="showWindow('miscreport$post[pid]', 'misc.php?mod=report&rtype=post&rid=$post[pid]', 'get', -1);return false;" id="report_btn" style="display: none;">{lang report}</a>
+				<!--{/if}-->
+			<!--{/if}-->
+
+			<!--{if $post['first']}-->
+				<a href="home.php?mod=spacecp&ac=favorite&type=thread&id=$_G[tid]" id="m_k_favorite" onclick="showWindow(<!--{if $_G['uid']}-->this.id, this.href, 'get', 0<!--{else}-->'login','member.php?mod=logging&action=login'<!--{/if}-->);" title="{$_G['forum_thread']['favtimes']}{lang activity_member_unit}{lang thread_favorite}" style="display: none;">{lang thread_favorite}(<b id="favoritenumber">{$_G['forum_thread']['favtimes']}</b>)</a>
+			<!--{/if}-->
+
+			<!--{hook/viewthread_postfooter $postcount}-->
+		</div>
+		<div style="clear:both;"></div>
+		<!--{/if}-->
+	</div>
+
+	<!--{if $post['first'] && $_G[forum_thread][special] == 5 && $_G[forum_thread][displayorder] >= 0}-->
+		<ul class="ttp cl">
+			<li style="display:inline;margin-left:12px"><strong class="bw0">{lang debate_filter}: </strong></li>
+			<li{if !isset($_G['gp_stand'])} class="xw1 a"{/if}><a href="forum.php?mod=viewthread&tid=$_G[tid]&extra=$_G[gp_extra]" hidefocus="true">{lang all}</a></li>
+			<li{if $_G['gp_stand'] == 1} class="xw1 a"{/if}><a href="forum.php?mod=viewthread&tid=$_G[tid]&extra=$_G[gp_extra]&stand=1" hidefocus="true">{lang debate_square}</a></li>
+			<li{if $_G['gp_stand'] == 2} class="xw1 a"{/if}><a href="forum.php?mod=viewthread&tid=$_G[tid]&extra=$_G[gp_extra]&stand=2" hidefocus="true">{lang debate_opponent}</a></li>
+			<li{if isset($_G['gp_stand']) && $_G['gp_stand'] == 0} class="xw1 a"{/if}><a href="forum.php?mod=viewthread&tid=$_G[tid]&extra=$_G[gp_extra]&stand=0" hidefocus="true">{lang debate_neutral}</a></li>
+		</ul>
+	<!--{/if}-->
+</div>
+
+<!--{if !empty($aimgs[$post[pid]])}-->
+<script type="text/javascript" reload="1">aimgcount[{$post[pid]}] = [<!--{echo implode(',', $aimgs[$post[pid]]);}-->];attachimgshow($post[pid]);</script>
+<!--{/if}-->
+<!--{hook/viewthread_endline $postcount}-->
+
+	</div>
+</div>

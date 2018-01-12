@@ -1,0 +1,76 @@
+<style>
+#add_container table{width:800px;}
+#add_container table tbody{border-bottom:2px black solid; margin: 20px 10px;}
+#add_container table th{text-align: center; border-bottom:1px #CCC dotted; padding: 5px 10px;}
+#add_container table td{text-align: left; border-bottom:1px #CCC dotted; padding: 5px 10px;}
+#add_container table td{background:#EEE;}
+#add_container table th{background: #4DD7F4;}
+#add_container table input{width:350px; margin: 5px 2px 5px 0px;}
+</style>
+
+<script src="http://static.8264.com/static/js/calendar.js"></script>
+<div id="add_container">
+	<form action="/admin.php?action=plugins&operation=config&do={$pluginid}&identifier=interests&pmod=linemanagerment&method={$method}" method="POST">
+		<table>
+			<tr>
+				<th colspan="{if $messagetips}3{else}2{/if}">{if $method == 'add'}添加{else}编辑{/if}推送线路</th>
+				{if $method == 'edit'}<input type="hidden" name="editid" value="{eval echo $nowinfo[linemod::_ID];}" />{/if}
+			</tr>
+			<tr>
+				<td width="20%">线路名称</td>
+				<td><input name="linename" type="text" value="{$_POST['linename']}" /></td>
+				{if $messagetips[linename]}<td width="30%"><b style="color: red;">{$messagetips[linename]}</b></td>{elseif $messagetips}<td width="30%"></td>{/if}
+			</tr>
+			<tr>
+				<td>线路URL地址</td>
+				<td><input name="lineurl" type="text" value="{$_POST['lineurl']}" /></td>
+				{if $messagetips[lineurl]}<td><b style="color: red;">{$messagetips[lineurl]}</b></td>{elseif $messagetips}<td></td>{/if}
+			</tr>
+			<tr>
+				<td>线路活动开始时间</td>
+				<td><input name="linestart" type="text" value="{$_POST['linestart']}" onclick="showcalendar(event, this, false, false, false, 30)" /></td>
+				{if $messagetips[linestart]}<td><b style="color: red;">{$messagetips[linestart]}</b></td>{elseif $messagetips}<td></td>{/if}
+			</tr>
+			<tr>
+				<td>线路提前报名时间</td>
+				<td><input name="linebefore" type="text" value="{$_POST['linebefore']}" />天</td>
+				{if $messagetips[linebefore]}<td><b style="color: red;">{$messagetips[linebefore]}</b></td>{elseif $messagetips}<td></td>{/if}
+			</tr>
+			<tr>
+				<td>线路活动行程</td>
+				<td><input name="lineuse" type="text" value="{$_POST['lineuse']}" />天</td>
+				{if $messagetips[lineuse]}<td><b style="color: red;">{$messagetips[lineuse]}</b></td>{elseif $messagetips}<td></td>{/if}
+			</tr>
+			<tr>
+				<td>推送位置</td>
+				<td>
+					<select name="linepos" {if $method == 'edit'}disabled{/if}>
+						<option value="0">请选择推送位置</option>
+						{loop linemod::$pos_type $k $v}
+						<option value="{$k}" {if $_POST[linepos] == $k}selected{/if}>{$v}</option>
+						{/loop}
+					</select>{if $method == 'edit'}&nbsp;&nbsp;<b style="color:red">位置不可编辑</b><input type="hidden" name="linepos" value="{$_POST[linepos]}" />{/if}
+				</td>
+				{if $messagetips[linepos]}<td><b style="color: red;">{$messagetips[linepos]}</b></td>{elseif $messagetips}<td></td>{/if}
+			</tr>
+			<tr>
+				<td>线路版块</td>
+				<td>
+					<select name="linefid" {if $method == 'edit'}disabled{/if}>
+						<option value="0">请选择版块</option>
+						{loop $allfidname $k $v}
+						<option value="{$k}" {if $_POST[linefid] == $k}selected{/if}>{$v}</option>
+						{/loop}
+					</select>{if $method == 'edit'}&nbsp;&nbsp;<b style="color:red">位置不可编辑</b><input type="hidden" name="linefid" value="{$_POST[linefid]}" />{/if}
+				</td>
+				{if $messagetips[linefid]}<td><b style="color: red;">{$messagetips[linefid]}</b></td>{elseif $messagetips}<td></td>{/if}
+			</tr>
+			<tr>
+				<th colspan="{if $messagetips}3{else}2{/if}">
+					<button type="submit">{if $method == 'add'}添加{else}编辑{/if}</button>
+					<input type="hidden" name="submit" value="1"/>
+				</th>
+			</tr>
+		</table>
+	</form>
+</div>

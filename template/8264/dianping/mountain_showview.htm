@@ -1,0 +1,1033 @@
+<!--{subtemplate dianping/header}-->
+	<!--{subtemplate dianping/nav}-->
+        <script>
+function nofind(obj,image){
+    obj.src=image;
+    obj.onerror=null; //控制不要一直跳动
+}
+</script>
+	<style>
+		.rows-content{padding-left: 92px;}
+		.timeText {
+			background-color: #fdfdfd;
+			border: 1px solid #dfdfdf;
+			border-radius: 2px;
+			box-shadow: 0 2px 2px rgba(0, 0, 0, 0.03) inset;
+			height: 25px;
+			padding: 4px 6px;
+		}
+		.timeHour {
+			display: none;
+			width: 40px;
+		}
+	</style>
+	<script src="static/js/calendar.js" type="text/javascript"></script>
+		<div class="global-common-content">
+			<div class="module">
+				<!-- 值得买 -->
+        <!--{eval include(DISCUZ_ROOT.'./source/plugin/skiing/hd_zw.php');}-->
+        <!--{eval $zhidemai_list = ForumOptionHuoDong::pianyi_sidebar(6, 'top', 'jiu', '10027');}-->
+        <!--{if $zhidemai_list}-->
+        <div class="ui-grid-12 ui-grid-full" style="margin-top:20px;">
+        <style>
+            .zhidemaiwidth{ width:980px;}
+            .zhidemaibox .zhidemailist_new li{width:144px; overflow:hidden;}
+            .zhidemaibox .zhidemailist_new li img{ width:144px;}
+        </style>
+        <!--{subtemplate common/zhidemai}-->
+        </div>
+        <!--{/if}-->
+        <!-- //值得买 -->
+                <div style="margin-top:20px;display: none;">
+                	<!--{eval $bottom_ads = array('416', '409', '417'); $bottom_ad = rand(0, 2); $bottom_ad_id = $bottom_ads[$bottom_ad]; }-->
+					<!--{ad/custom_$bottom_ad_id}-->
+                </div>
+                <div style=" width:980px; margin:10px auto 10px auto;"><!--{ad/custom_432}--></div>
+				<div class="col-main">
+					<div class="main-wrap">
+						<div class="ui-grid-6 ui-grid-left">
+						<!--detail-->
+							<div class="review-left-top">
+								<div class="ui-block ui-block-title">
+									<div class="ui-title">
+										<h1>$detail['subject'] <span id="info_status" {if $detail['ispublish']==1}style="display:none;"{/if}>(未审核)</span></h1>
+										<!--{if $_G['adminid']==1}-->
+										<!--{template dianping/cplist_thread}-->
+										<!--{/if}-->
+									</div>
+								</div>
+								<div class="ui-block ui-block-content">
+									<div class="review-item-info">
+										<div class="review-gallery">
+											<div class="review-booth">
+												<ul class="review-pic-box">
+												<!--{loop $piclist $k $pic}-->
+													<li>
+														<a href="{if $pic[serverid]==99}http://image1.8264.com/{else}http://image.8264.com/{/if}{$pic[dir]}/{$pic[attachment]}" title="点击查看原图" target="_blank">
+															<img src="<!--{eval echo getimagethumb(322,322,11, $pic['dir'].'/'.$pic['attachment'], $pic['aid'], $pic['serverid']);}-->" />
+														</a>
+													</li>
+												<!--{/loop}-->
+												</ul>
+											</div>
+											<ul class="review-booth-tbumb">
+											<!--{loop $piclist $k $pic}-->
+												<li class="{if $k==0}pic-selected{else}pic-item{/if}">
+													<div class="pic-item">
+														<a href="{if $pic[serverid]==99}http://image1.8264.com/{else}http://image.8264.com/{/if}{$pic[dir]}/{$pic[attachment]}" target="_blank">
+															<img src="<!--{eval echo getimagethumb(48,48,2, $pic['dir'].'/'.$pic['attachment'], $pic['aid'], $pic['serverid']);}-->" />
+														</a>
+													</div>
+												</li>
+											<!--{/loop}-->
+											</ul>
+										</div>
+										<div class="review-attribute">
+											<div class="attribute-top-content">
+												<div class="rating-level big-rating bv-rating">
+													<span class="score-value score-value-{echo floor($detail['score'])}">
+														<em></em>
+													</span>
+													<strong>{$detail['score']}</strong>
+												</div>
+												<div class="reviews-count">
+													(<span class="num"><a href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$tid}#comment">{$detail['cnum']}</a></span>人评分)
+												</div>
+												<div class="rw-rechart-con">
+													<div title="非常困难" class="rm-rechart-line">
+														<div class="rating-level small-rating rm-rating">
+															<span class="score-value score-value-10">
+																<em></em>
+															</span>
+														</div>
+														<div class="rm-rechart-bar">
+															<div class="rm-rechart-full" style="width:{$detail['percent5']}%;"></div>
+														</div>
+														<div class="rm-rechart-val">{$detail['percent5']}% (非常困难)</div>
+													</div>
+													<div title="困难" class="rm-rechart-line">
+														<div class="rating-level small-rating rm-rating">
+															<span class="score-value score-value-8">
+																<em></em>
+															</span>
+														</div>
+														<div class="rm-rechart-bar">
+															<div class="rm-rechart-full" style="width:{$detail['percent4']}%;"></div>
+														</div>
+														<div class="rm-rechart-val">{$detail['percent4']}% (困难)</div>
+													</div>
+													<div title="难" class="rm-rechart-line">
+														<div class="rating-level small-rating rm-rating">
+															<span class="score-value score-value-6">
+																<em></em>
+															</span>
+														</div>
+														<div class="rm-rechart-bar">
+															<div class="rm-rechart-full" style="width:{$detail['percent3']}%;"></div>
+														</div>
+														<div class="rm-rechart-val">{$detail['percent3']}% (难)</div>
+													</div>
+													<div title="简单" class="rm-rechart-line">
+														<div class="rating-level small-rating rm-rating">
+															<span class="score-value score-value-4">
+																<em></em>
+															</span>
+														</div>
+														<div class="rm-rechart-bar">
+															<div class="rm-rechart-full" style="width:{$detail['percent2']}%;"></div>
+														</div>
+														<div class="rm-rechart-val">{$detail['percent2']}% (简单)</div>
+													</div>
+													<div title="非常简单" class="rm-rechart-line">
+														<div class="rating-level small-rating rm-rating">
+															<span class="score-value score-value-2">
+																<em></em>
+															</span>
+														</div>
+														<div class="rm-rechart-bar">
+															<div class="rm-rechart-full" style="width:{$detail['percent1']}%;"></div>
+														</div>
+														<div class="rm-rechart-val">{$detail['percent1']}% (非常简单)</div>
+													</div>
+												</div>
+												<div class="review-item-detail">
+													<span class="detail-item longitude">
+														<i class="ui-icon"></i>经度：{$detail['lon']}
+													</span>
+													<span class="detail-item latitude">
+														<i class="ui-icon"></i>纬度：{$detail['lat']}
+													</span>
+													<span class="detail-item altitude">
+														<i class="ui-icon"></i>高度：{$detail['height']}
+													</span>
+													<span class="detail-item season">
+														<i class="ui-icon"></i>攀登季节：{$detail['season']}</span>
+													<span class="detail-item address">
+														<i class="ui-icon"></i>所在地址：{$detail['region']}
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- //detail -->
+						</div>
+						<div class="ui-grid-6 ui-grid-left">
+						<!-- content -->
+						<!--{subtemplate dianping/showview_content}-->
+						<!-- //content -->
+						</div>
+						<!--去掉8264币-->
+						<div class="ui-grid-6 ui-grid-left">
+						<!-- 点评赚8264币 -->
+						<!--{subtemplate dianping/showview_credit}-->
+						<!-- //点评赚8264币 -->
+						</div>
+						<div class="ui-grid-6 ui-grid-left">
+						<!-- 我的点评 -->
+							<div id="mycomment">
+							<!--{if $mycomment}-->
+							<!--{subtemplate dianping/mountain_mycomment}-->
+							<!--{/if}-->
+							</div>
+						<!-- //我的点评 -->
+						</div>
+						<div class="ui-grid-6 ui-grid-left">
+						<!-- comment list -->
+						<!--{if !$commentlist}-->
+						<div style="margin:16px 0px 30px 0px; display:none"><img src="http://static.8264.com/dianping/images/demo/pdyb.jpg"></div>
+						<!--{/if}-->
+						<!--{if $commentlist}-->
+						<div class="review-comment-box"><a id="comment"></a>
+							<div class="ui-block ui-block-title">
+								<div class="ui-title ui-title-line">
+									<h3>{$detail['subject']}的点评</h3>
+								</div>
+								<div class="ui-title ui-title-line star-s">
+									<input type="hidden" value='' class="snum">
+									<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$tid}" id='0'>全部($recordnum)</a>
+									<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$tid}" id='5'>5星</a>
+									<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$tid}"  id='4'>4星</a>
+									<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$tid}"  id='3'>3星</a>
+									<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$tid}"  id='2'>2星</a>
+									<a href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$tid}"  id='1'>1星</a>
+								</div>
+							</div>
+              				<div style="margin:16px 0px 30px 0px; display:none;"><img src="http://static.8264.com/dianping/images/demo/pdyb.jpg"></div>
+							<div class="ui-block ui-block-content">
+								<div class="comment-main"  id="commentlist">
+									<!--{subtemplate dianping/mountain_comment}-->
+								</div>
+							</div>
+						</div>
+						<!--{/if}-->
+						<!-- //comment list -->
+						</div>
+						<div class="pl-popup-wrap mod-edit-popup"  id="edithtml" style="display:none;">
+						<!-- comment edit --><a id="write"></a>
+							<div class="write-comment-box">
+								<div class="ui-block ui-block-title">
+									<div class="ui-title ui-title-line">
+										<h3>修改点评</h3><span class="note">注：转山线路不在山峰点评范围之内，山峰点评仅针对攀登进行点评</span>
+										<a href="javascript:void(0);" class="close-popup">关闭</a>
+									</div>
+								</div>
+								<form method="post"  id="editform" action="">
+								<input type="hidden" id="pid" name="pid" value="" size="2" />
+								<input type="hidden" id="uid" name="uid" value="" size="2" />
+								<div class="ui-block ui-block-content">
+									<div class="comment-form-box">
+										<div class="rows-content row-color-1">
+											<div class="commAttr">
+												<i class="attrs-icon comm"></i>难度评价
+											</div>
+											<div class="attrForms">
+												<div class="star-rating-box">
+													<ul class="star-rating-level stars1">
+														<li><a class="one-star" id="star_1_e" value='1' href="javascript:void(0);" title="非常简单">100</a></li>
+														<li><a class="two-stars" id="star_2_e" value='2' href="javascript:void(0);" title="简单">200</a></li>
+														<li><a class="three-stars" id="star_3_e" value='3'  href="javascript:void(0);" title="难">300</a></li>
+														<li><a class="four-stars" id="star_4_e" value='4' href="javascript:void(0);" title="困难">400</a></li>
+														<li><a class="five-stars" id="star_5_e" value='5' href="javascript:void(0);" title="非常困难">500</a></li>
+													</ul>
+													<span class="result stars1-tips"  style=""></span>
+													<input type="hidden" id="starnum_e" class="starnum" name="starnum" value="" size="2" />
+												</div>
+											</div>
+										</div>
+										<div class="rows-content row-color-2">
+											<div class="commAttr">
+												<i class="attrs-icon date"></i>攀登日期
+											</div>
+											 <div class="cont ">
+												<input name="datapicker[]" readonly class="timeText datapicker startPicker"  onclick="showcalendar(event, this, '', '', '', 28);" /> ---
+												<input name="datapicker[]" readonly class="timeText datapicker endPicker"  onclick="showcalendar(event, this, '', '', '', 28);"/>&nbsp;&nbsp;&nbsp;&nbsp;
+												<input name="datapicker[]" class="timeText timeHour dataHour" maxlength="2"/>
+												<span class="timeHour">时 --- </span>
+												<input name="datapicker[]" class="timeText timeHour dataHour" maxlength="2"/>
+												<span class="timeHour">时</span>
+												<div id="date_error_e" style="padding-top:7px;"></div>
+											</div>
+
+										</div>
+										<div class="rows-content row-color-3">
+											<div class="commAttr">
+												<i class="attrs-icon price"></i>费用协作
+											</div>
+											<div class="attrForms">
+												<div class="issue-forms-group">
+													<textarea name="ext3" id="ext3_e" cols="30" rows="2" placeholder="列举自己出行的各项话费，车费、住宿费、门票、参加商业活动费用等"></textarea>
+													<div id="ext3_eTip" class="valid-tips-container"></div>
+												</div>
+											</div>
+										</div>
+										<div class="rows-content row-color-4">
+											<div class="commAttr">
+												<i class="attrs-icon note"></i>我的建议
+											</div>
+											<div class="attrForms">
+												<div class="issue-forms-group">
+													<textarea name="ext4" id="ext4_e" cols="30" rows="2" placeholder="提醒他人需要注意的关键事项，如露营点、水源点、岔路口等"></textarea>
+													<div id="ext4_eTip" class="valid-tips-container"></div>
+												</div>
+											</div>
+										</div>
+										<div class="rows-content row-color-5">
+											<div class="commAttr">
+												<i class="attrs-icon complex"></i>攀登综述
+											</div>
+											<div class="attrForms">
+												<div class="issue-forms-group">
+													<textarea name="message" id="message_e" cols="30" rows="6" placeholder="从线路风景、难度、强度、所需装备等方面对线路进行描述，文字200字以上"></textarea>
+													<div id="message_eTip" class="valid-tips-container"></div>
+												</div>
+											</div>
+										</div>
+										<!--{subtemplate dianping/replyedit_pic_upload}-->
+										<div class="rows-content row-color-6">
+											<div class="attrForms">
+												<div class="issue-submit-group">
+													<input type="submit" name="submit" value="修改" class="btn-issue" />
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								</form>
+							</div>
+						<!-- //comment edit -->
+						</div>
+						<!--{if !$mycomment}-->
+						<div class="ui-grid-6 ui-grid-left">
+						<!-- comment public --><a id="write"></a>
+							<div class="write-comment-box">
+								<div class="ui-block ui-block-title">
+									<div class="ui-title ui-title-line">
+										<h3>写点评</h3><span class="note">注：转山线路不在山峰点评范围之内，山峰点评仅针对攀登进行点评</span>
+									</div>
+								</div>
+								<form method="post"  id="postform" action="">
+								<div class="ui-block ui-block-content">
+									<div class="comment-form-box">
+										<div class="rows-content row-color-1">
+											<div class="commAttr">
+												<i class="attrs-icon comm"></i>难度评价
+											</div>
+											<div class="attrForms">
+												<div class="star-rating-box">
+													<ul class="star-rating-level stars1">
+														<li><a class="one-star" id="star_1" value='1' href="javascript:void(0);" title="非常简单">100</a></li>
+														<li><a class="two-stars" id="star_2" value='2' href="javascript:void(0);" title="简单">200</a></li>
+														<li><a class="three-stars" id="star_3" value='3'  href="javascript:void(0);" title="难">300</a></li>
+														<li><a class="four-stars" id="star_4" value='4' href="javascript:void(0);" title="困难">400</a></li>
+														<li><a class="five-stars" id="star_5" value='5' href="javascript:void(0);" title="非常困难">500</a></li>
+													</ul>
+													<span class="result stars1-tips"  style=""></span>
+													<div class="clearfix"></div>
+													<input type="hidden" id="starnum" class="starnum" name="starnum" value="" size="2" />
+													<div id="starnumTip" class="valid-tips-container" style="display: none;">
+														<div class="valid-tips-container"><span class="tips-txt error"><i class="icon-v icon-error-v"></i>请点击星星图标进行点评</span></div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="rows-content row-color-2">
+											<div class="commAttr">
+												<i class="attrs-icon date"></i>攀登日期
+											</div>
+											<div class="cont post">
+												<input name="datapicker[]" readonly class="timeText datapicker startPicker" onclick="showcalendar(event, this, '', '', '', 28);" onchange="changeDate()"/> ---
+												<input name="datapicker[]" readonly class="timeText datapicker endPicker" onclick="showcalendar(event, this, '', '', '', 28);"/>&nbsp;&nbsp;&nbsp;&nbsp;
+												<input name="datapicker[]" class="timeText timeHour dataHour startHour" maxlength="2"/>
+												<span class="timeHour">时 --- </span>
+												<input name="datapicker[]" class="timeText timeHour dataHour endHour" maxlength="2"/>
+												<span class="timeHour">时</span>
+												<div id="date_error" style="padding-top:7px;"></div>
+											</div>
+
+										</div>
+										<div class="rows-content row-color-3">
+											<div class="commAttr">
+												<i class="attrs-icon price"></i>费用协作
+											</div>
+											<div class="attrForms">
+												<div class="issue-forms-group">
+													<textarea name="ext3" id="ext3" cols="30" rows="2" placeholder="列举自己出行的各项话费，车费、住宿费、门票、参加商业活动费用等"></textarea>
+													<div id="ext3Tip" class="valid-tips-container"></div>
+												</div>
+											</div>
+										</div>
+										<div class="rows-content row-color-4">
+											<div class="commAttr">
+												<i class="attrs-icon note"></i>我的建议
+											</div>
+											<div class="attrForms">
+												<div class="issue-forms-group">
+													<textarea name="ext4" id="ext4" cols="30" rows="2" placeholder="提醒他人需要注意的关键事项，如露营点、水源点、岔路口等"></textarea>
+													<div id="ext4Tip" class="valid-tips-container"></div>
+												</div>
+											</div>
+										</div>
+										<div class="rows-content row-color-5">
+											<div class="commAttr">
+												<i class="attrs-icon complex"></i>攀登综述
+											</div>
+											<div class="attrForms">
+												<div class="issue-forms-group">
+													<textarea name="message" id="message" cols="30" rows="6" placeholder="从线路风景、难度、强度、所需装备等方面对线路进行描述，文字200字以上"></textarea>
+													<div id="messageTip" class="valid-tips-container"></div>
+												</div>
+											</div>
+										</div>
+										<!--{subtemplate dianping/reply_pic_upload}-->
+										<!--{if checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
+											<div class="rows-content row-color-6">
+												<div class="commAttr">
+													<i class="attrs-icon picture"></i>验证码
+												</div>
+												<div class="attrForms">
+													<div class="issue-forms-group">
+														<input type="text" name="captcha" id="captcha" class="inputTxtShort borderEmbellish" style="width:50px;vertical-align: top;"/>
+														<a href="#" id="refreshCaptcha" title="点击刷新图片"><img src="/plugin.php?id=dailypicture:captcha" alt="点击刷新图片" /></a>
+														<input type="hidden" value="" id="yzm" name="yzm">
+														<span id="jg"></span>
+													</div>
+												</div>
+											</div>
+										<!--{/if}-->
+										<div class="rows-content row-color-6">
+											<div class="attrForms">
+												<div class="issue-submit-group">
+													<input type="submit" name="submit" value="发布" class="btn-issue" />
+													<!-- 手机绑定提示 -->
+													<!--{if !$_G['member']['telstatus']}-->
+													<style type="text/css">.tips-binding__inside{background:url(http://static.8264.com/static/images/tip.png) no-repeat 0 50%;padding-left:20px;margin:4px 0 0 10px;font-size:14px;color:#585858}.tips-binding__inside a{color:#ff7038;font-size:14px}.tips-binding__inside a:hover{color:#ff7038;font-size:14px}</style>
+													<span class="tips-binding__inside">注：写点评操作需绑定手机，<a href="http://u.8264.com/home-setting.html#account-security" target="_blank">去绑定>></a></span>
+													<!--{/if}-->
+													<!-- //手机绑定提示 -->
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								</form>
+							</div>
+						<!-- //comment public -->
+						</div>
+						<!--{/if}-->
+					</div>
+				</div>
+				<!-- side bar -->
+				<div class="col-sider">
+
+					<!-- 热门 -->
+					<div class="ui-grid-2">
+						<div class="right-hot-warpten">
+							<div class="ui-block ui-block-title">
+								<div class="ui-title ui-title-line">
+									<h3>热门</h3>
+									<div class="ui-title-link"><a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&order=heats&dq=0&gd=0&page=1" target="_brank">more</a></div>
+								</div>
+							</div>
+							<div class="ui-block ui-block-content">
+								<div class="common-list-box hot-list-box">
+									<ul class="hot-list">
+									<!--{loop $sidebar_hot $k $item}-->
+										<li>
+											<div class="imgbox"><a href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$item['tid']}" target="_blank"><img src="{eval echo getimagethumb(60,60,2, $item['dir'].'/'.$item['showimg'], 0, $item['serverid']);}" alt=""></a></div>
+											<div class="list-bd">
+												<h3 class="ilist-bd-title"><a href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$item['tid']}" title="$item['subject']" target="_blank"{if $k==0} class="orange"{elseif $k==1 || $k==2} class="blue"{/if}>$item['subject']</a></h3>
+												<div class="rating-level small-rating hot-rating">
+													<span class="score-value score-value-{echo floor($item['score'])}">
+														<em></em>
+													</span>
+													<strong>$item['score']</strong>
+												</div>
+												<span class="comm-num"><i class="ui-icon icon-comm"></i>$item['cnum']人参加评论</span>
+												<span class="fire {if $k==0}orange{elseif $k==1 || $k==2}blue{/if}"></span>
+											</div>
+										</li>
+										<!--{/loop}-->
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- //热门 -->
+					<!-- 周边山峰 -->
+					<div class="ui-grid-2 ui-grid-right">
+						<div class="right-hot-warpten">
+							<div class="ui-block ui-block-title">
+								<div class="ui-title ui-title-line">
+									<h3>周边山峰</h3>
+									<div class="ui-title-link"><a href="http://www.8264.com/dianping.php?mod={$mod}&act=showlist&order=lastpost&dq={$detail['type']}&gd=0&page=1" target="_brank">more</a></div>
+								</div>
+							</div>
+							<div class="ui-block ui-block-content">
+								<div class="common-list-box hot-list-box">
+									<ul class="hot-list">
+									<!--{loop $sidebar_type $k $item}-->
+										<li>
+											<div class="imgbox"><a href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$item['tid']}" target="_blank"><img src="{eval echo getimagethumb(60,60,2, $item['dir'].'/'.$item['showimg'], 0, $item['serverid']);}" alt=""></a></div>
+											<div class="list-bd">
+												<h3 class="ilist-bd-title"><a href="http://www.8264.com/dianping.php?mod={$mod}&act=showview&tid={$item['tid']}" title="$item['subject']" target="_blank"{if $k==0} class="orange"{elseif $k==1 || $k==2} class="blue"{/if}>$item['subject']</a></h3>
+												<div class="rating-level small-rating hot-rating">
+													<span class="score-value score-value-{echo floor($item['score'])}">
+														<em></em>
+													</span>
+													<strong>$item['score']</strong>
+												</div>
+												<span class="comm-num"><i class="ui-icon icon-comm"></i>$item['cnum']人参加评论</span>
+											</div>
+										</li>
+										<!--{/loop}-->
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- //周边山峰 -->
+
+                    <!--{if $hddata}-->
+                    <!--{subtemplate common/hd_ad}-->
+                    <!--{/if}-->
+				</div>
+				<!-- //side bar -->
+			</div>
+		</div>
+	</div>
+
+    <style>
+.bbsfoothotlist{ background: #1a2b38; color: #ffffff; padding-bottom:45px;}
+.topHill{  background:url(http://static.8264.com/static/image/common/bg_fourm_sprite.png) no-repeat 0 0; height: 16px;left: 0; position: relative; text-indent: -9999px; top: -16px; width: 175px}
+</style>
+
+<div class="bbsfoothotlist">
+	<div class="module">
+		<div class="topHill">顶部小山</div>
+	</div>
+	<div class="choiceness">
+        	<!--{block/7029}-->
+	</div>
+</div>
+<div class="friendLink">
+	<!--{block/6991}-->
+	</div>
+	<script>
+	(function($){
+		$(function(){
+				//添加点评
+				$('#postform').submit(function(event){
+
+					event.preventDefault();
+					var starnum   = $("#postform #starnum").val();
+					var begindate = getNumberTime($("#postform input[name='datapicker[]']").eq(0).val());
+					var enddate = getNumberTime($("#postform input[name='datapicker[]']").eq(1).val());
+					var startHour = $("#postform input[name='datapicker[]']").eq(2).val();
+					var endHour   = $("#postform input[name='datapicker[]']").eq(3).val();
+					var ext3 = $.trim($("#postform #ext3").val());
+					var ext4 = $.trim($("#postform #ext4").val());
+					var message = $.trim($("#postform #message").val());
+
+					 //form表单初始化验证后进行二次验证
+					if(starnum == 0){
+						$("#postform #starnumTip").show();
+					}
+				 	if(!begindate){
+	                    show_errors('date_error','开始日期不能为空！');
+	                    return false;
+	                }
+	                if(!enddate){
+	                    show_errors('date_error','结束日期不能为空！');
+	                    return false;
+	                }
+	    			if(begindate==enddate){
+
+	                	if(startHour=='' || endHour==''  ){
+	                		show_errors('date_error','时间不能为空！');
+	                        return false;
+	                	}
+
+	                }
+					if(ext3.length<10 || ext4.length <10 || message.length <50 || starnum == 0){
+						return false;
+					}
+					<!--{if checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
+					if (trim($("#postform #captcha").val())=="") {
+						showDialog('验证码不能为空');
+						return false;
+					}
+					if (trim($("#postform #yzm").val())=='0') {
+						showDialog('验证码输入错误');
+						return false;
+					}
+					<!--{/if}-->
+					//防止二次提交
+					$(":submit",this).attr("disabled","disabled");
+					 //图片aid获取
+					var imgselect = new Array();
+					$($("input[name='imgselect[]']:not(:disabled)")).each(function(){
+						 imgselect.push($(this).val());
+					});
+					var postUrll='http://www.8264.com/dianping.php?mod=misc&act=dopost&model=mountain&do=newsave&tid={$detail['tid']}';
+					var stararray=['非常简单','简单','难','困难','非常困难'];
+					$.post(postUrll,{starnum:starnum,ext1:begindate,ext2:enddate,startHour:startHour,endHour:endHour,ext3:ext3,ext4:ext4,message:message,formhash:'{FORMHASH}',replypostsubmit:'yes',imgselect:imgselect},
+						function(data){
+								if(data == '-1'){
+									alert('你需要登陆后才能评价');
+									window.location.href = 'http://www.8264.com/member.php?mod=logging&action=login';
+									return false;
+								}else if(data){
+									$('#mycomment').show();
+									$('#mycomment').html(data);
+									$('#postform').parent('.write-comment-box').remove();
+									$(document).scrollTop($('#mycomment').offset().top-60);
+								}
+					});
+
+				});
+				//修改点评
+				$('#editform').submit(function(event){
+					event.preventDefault();
+					var starnum   = $("#editform .starnum").val();
+					var begindate = getNumberTime($("#editform input[name='datapicker[]']").eq(0).val());
+					var enddate = getNumberTime($("#editform input[name='datapicker[]']").eq(1).val());
+					var startHour = $("#editform input[name='datapicker[]']").eq(2).val();
+					var endHour   = $("#editform input[name='datapicker[]']").eq(3).val();
+					var ext3 = $.trim($("#editform #ext3_e").val());
+					var ext4 = $.trim($("#editform #ext4_e").val());
+					var message = $.trim($("#editform #message_e").val());
+						 //form表单初始化验证后进行二次验证
+					if(starnum == 0){
+						$("#postform #starnumTip").show();
+					}
+
+	    			 if(!checkText(begindate, enddate, startHour, endHour, '', '', '', 'show_errors')){
+	         			return false;
+	         		}
+					if(ext3.length<10 || ext4.length <10 || message.length <50 || starnum == 0){
+						return false;
+					}
+					 //图片aid获取
+					var imgselect = new Array();
+					$($("input[name='imgselect[]']:not(:disabled)")).each(function(){
+						imgselect.push($(this).val());
+					});
+					var pid = $("#editform #pid").val();
+					var postUrll='http://www.8264.com/dianping.php?mod=misc&act=dopost&model=mountain&do=editsave&tid={$detail['tid']}';
+					var stararray=['非常简单','简单','难','困难','非常困难'];
+					$.post(postUrll,{pid:pid,starnum:starnum,ext1:begindate,ext2:enddate,startHour:startHour,endHour:endHour,ext3:ext3,ext4:ext4,message:message,formhash:'{FORMHASH}',replypostsubmit:'yes',imgselect:imgselect},
+						function(data){
+							if(data == '-2'){
+									alert('修改失败');
+									$('#overlay').remove();
+									$('#edithtml .editinput').val('');
+									$('#edithtml').hide();
+									return false;
+							}else if(data){
+									$('#post_'+pid).html(data);
+									$('#overlay').remove();
+									$('#edithtml .editinput').val('');
+									$('#edithtml').hide();
+
+							}
+					});
+				});
+				//评分处理
+				$(".stars1 a").click(function(){
+					var starnum = $(this).attr('value');
+					var title   = $(this).attr('title');
+					$('.stars1 li a').removeClass('current-star-rating');
+					$(this).addClass('current-star-rating');
+					$('.starnum').val(starnum);
+					$('.star_title').show();
+					$(this).parents('ul').siblings('.stars1-tips').html(title);
+				});
+				//获取修改
+				$(".comment-main").delegate(".editclick","click",function(){
+					var pid = $(this).attr('id');
+					var url = 'http://www.8264.com/dianping.php?mod=misc&act=dopost&do=editpost';
+					var tid =  {$detail['tid']};
+					$.ajax({
+						type: "GET",
+						url: url,
+						data: {pid:pid,tid:tid},
+						dataType: "json",
+						success: function(data){
+							$('#editform #ext3_e').val((data['ext3']));
+							$('#editform #ext4_e').val(data['ext4']);
+							$('#editform #message_e').val(data['message']);
+							$('#editform #pid').val(pid);
+							$('#editform .starnum').val(data['starnum']);
+							$('#editform #star_'+data['starnum']+'_e').addClass('current-star-rating');
+
+							$("#editform input[name='datapicker[]']").eq(0).val(data['ext1']);
+							$("#editform input[name='datapicker[]']").eq(1).val(data['ext2']);
+							if(data.ext1 == data.ext2){
+								$("#editform .timeHour").show();
+								$("#editform input[name='datapicker[]']").eq(2).val(data['startHour']);
+								$("#editform input[name='datapicker[]']").eq(3).val(data['endHour']);
+							}else{
+								$("#editform .timeHour").hide();
+							}
+							//图片处理
+							var str = '';
+							$.each(data['attachlist'],function(i,v){
+								str += "<span class=\"attachpic\"  id=\"image_"+ v.aid+"\" title=\""+ v.filename+"\">";
+								str += "<img width=60 height=60 src=\"http://image1.8264.com/plugin/"+ v.attachment+"\">";
+								str += "<b class=\"deleteimg\">删除</b>";
+								str += "<input type=\"hidden\" value=\""+ v.aid+"\" name=\"imgselect[]\">";
+								str += "</span>";
+							});
+							$("#imglist_e").html(str);
+						}
+					});
+
+					//var edithtml= $('#edithtml').html();
+					easyDialog.open({
+							container : 'edithtml'
+					});
+					/*start----编辑页图片上传之flash初始化*/
+					var params = {site:"http://www.8264.com/misc.php%3fmod=swfupload%26type=image%26fid=$fid%26mtype=plugin%26twidth=60%26theight=60%26random="+Math.random()+"%26back=upload_image_success_e",buttonimg:"http://static.8264.com/dianping/images/icon/data/uploadnew.png"};
+					swfobject.embedSWF("http://www.8264.com/static/flash/uploadforum.swf", "pic_upload_multiimg_e", "150", "45", "10.0.0", "playerProductInstall.swf", params, {wmode:"transparent"});
+					swfobject.createCSS("#pic_upload_multiimg_e", "text-align:left;");
+					/*end----编辑页图片上传之flash初始化*/
+
+					 /*start----编辑页图片上传之flash初始化*/
+					var params = {site:"http://www.8264.com/misc.php%3fmod=swfupload%26type=image%26fid=$fid%26mtype=plugin%26twidth=60%26theight=60%26random="+Math.random()+"%26back=upload_image_success_e",buttonimg:"http://static.8264.com/dianping/images/icon/data/uploadnew.png"};
+					swfobject.embedSWF("http://www.8264.com/static/flash/uploadforum.swf", "pic_upload_multiimg_e", "150", "45", "10.0.0", "playerProductInstall.swf", params, {wmode:"transparent"});
+					swfobject.createCSS("#pic_upload_multiimg_e", "text-align:left;");
+					/*end----编辑页图片上传之flash初始化*/
+
+				});
+
+				//图片上传之删除功能
+				$(".row-color-6").on("click", ".deleteimg", function() {
+					$(this).parent().remove();
+					if($("#imglist .overlimit").length > 0){
+						$("#imglist .overlimit:first").removeClass('overlimit').find('input:hidden').removeAttr('disabled');
+					}else{
+						$("#numimage").val($("#numimage").val() - 1);
+					}
+				});
+				$("#commentlist").on('click',".pg>a",function(e){
+					e.preventDefault();
+					$.get(this.href, {ajaxreply:1}, function(data){
+						data && $("#commentlist").html(data);
+					});
+					$(document).scrollTop($('#commentlist').offset().top-60);
+				});
+
+
+				$.formValidator.initConfig({
+					formID: "postform",
+					debug: false,
+					submitOnce: false,
+					onError:function(msg,obj,errorlist){
+					}
+				});
+
+				//攀登综述
+				$('#message').formValidator({
+					onShow: '',
+					onFocus: '<div class="valid-tips-container"><span class="tips-txt prompt"><i class="icon-v icon-prompt-v"></i>请填写综合总结。</span></div>',
+					onCorrect: '<div class="valid-tips-container"><span class="tips-txt success"><i class="icon-v icon-success-v"></i></span></div>',
+					defaultValue: ""
+				}).inputValidator({
+					empty: false,
+					min: 50,
+					onError: '<div class="valid-tips-container"><span class="tips-txt error"><i class="icon-v icon-error-v"></i>请填写综合总结，不少于50字</span></div>'
+				});
+				//我的建议
+				$('#ext4').formValidator({
+					onShow: '',
+					onFocus: '<div class="valid-tips-container"><span class="tips-txt prompt"><i class="icon-v icon-prompt-v"></i>请填写您对未来攀登此山峰的攀登者的建议和经验</span></div>',
+					onCorrect: '<div class="valid-tips-container"><span class="tips-txt success"><i class="icon-v icon-success-v"></i></span></div>',
+					defaultValue: ""
+				}).inputValidator({
+					empty: false,
+					min: 20,
+					onError: '<div class="valid-tips-container"><span class="tips-txt error"><i class="icon-v icon-error-v"></i>请填写您对未来攀登此山峰的攀登者的建议和经验，不能少于10个字符</span></div>'
+				});
+				//费用协作
+				$('#ext3').formValidator({
+					onShow: '',
+					onFocus: '<div class="valid-tips-container"><span class="tips-txt prompt"><i class="icon-v icon-prompt-v"></i>请准确填写此次攀登所用费及商业队情况</span></div>',
+					onCorrect: '<div class="valid-tips-container"><span class="tips-txt success"><i class="icon-v icon-success-v"></i></span></div>',
+					defaultValue: ""
+				}).inputValidator({
+					empty: false,
+					min: 20,
+					onError: '<div class="valid-tips-container"><span class="tips-txt error"><i class="icon-v icon-error-v"></i>请准确填写此次攀登所用费及商业队情况，不能少于10个字符</span></div>'
+				});
+
+				/*修改页面交互*/
+				//攀登综述
+				$('#message_e').formValidator({
+					onShow: '',
+					onFocus: '<div class="valid-tips-container"><span class="tips-txt prompt"><i class="icon-v icon-prompt-v"></i>请填写综合总结。</span></div>',
+					onCorrect: '<div class="valid-tips-container"><span class="tips-txt success"><i class="icon-v icon-success-v"></i></span></div>',
+					defaultValue: ""
+				}).inputValidator({
+					empty: false,
+					min: 20,
+					onError: '<div class="valid-tips-container"><span class="tips-txt error"><i class="icon-v icon-error-v"></i>请填写综合总结，不少于50字</span></div>'
+				});
+				//我的建议
+				$('#ext4_e').formValidator({
+					onShow: '',
+					onFocus: '<div class="valid-tips-container"><span class="tips-txt prompt"><i class="icon-v icon-prompt-v"></i>请填写您对未来攀登此山峰的攀登者的建议和经验</span></div>',
+					onCorrect: '<div class="valid-tips-container"><span class="tips-txt success"><i class="icon-v icon-success-v"></i></span></div>',
+					defaultValue: ""
+				}).inputValidator({
+					empty: false,
+					min: 20,
+					onError: '<div class="valid-tips-container"><span class="tips-txt error"><i class="icon-v icon-error-v"></i>请填写您对未来攀登此山峰的攀登者的建议和经验，不能少于10个字符</span></div>'
+				});
+				//费用协作
+				$('#ext3_e').formValidator({
+					onShow: '',
+					onFocus: '<div class="valid-tips-container"><span class="tips-txt prompt"><i class="icon-v icon-prompt-v"></i>请准确填写此次攀登所用费及商业队情况</span></div>',
+					onCorrect: '<div class="valid-tips-container"><span class="tips-txt success"><i class="icon-v icon-success-v"></i></span></div>',
+					defaultValue: ""
+				}).inputValidator({
+					empty: false,
+					min: 20,
+					onError: '<div class="valid-tips-container"><span class="tips-txt error"><i class="icon-v icon-error-v"></i>请准确填写此次攀登所用费及商业队情况，不能少于10个字符</span></div>'
+				});
+		});
+	})(jQuery);
+	 //表单验证前的检验
+    function checkText(startTime,endTime,startHour,endHour,weak,msg,price,fun){
+    	weak 		= jQuery.trim(weak);
+    	price 		= jQuery.trim(price);
+    	msg  		= jQuery.trim(msg);
+    	startHour 	= parseInt(startHour);
+    	endHour  	= parseInt(endHour);
+    	if(!fun){
+    		fun = '_showmsg'
+    	}
+
+    	var date 	      = new Date();
+    	var curTime    	  = Math.floor(date.getTime()/1000);
+
+    	if(!startTime){
+    	    fun == 'show_errors' ?  eval(fun+'("date_error_e", "请选择开始时间")') : eval(fun+'("请选择开始时间")');
+    		return false
+    	}
+    	if (startTime > curTime) {
+    		fun == 'show_errors' ?  eval(fun+'("date_error_e", "开始时间需小于当前时间")') : eval(fun+'("开始时间需小于当前时间")');
+    		return false;
+    	}
+    	if(!endTime){
+    	    fun == 'show_errors' ?  eval(fun+'("date_error_e", "请选择结束时间")') : eval(fun+'("请选择结束时间")');
+    		return false;
+    	}
+    	if (endTime > curTime) {
+    	    fun == 'show_errors' ?  eval(fun+'("date_error_e", "结束时间需小于当前时间")') : eval(fun+'("结束时间需小于当前时间")');
+    		return false;
+    	}
+    	if(startTime > endTime){
+    	    fun == 'show_errors' ?  eval(fun+'("date_error_e", "结束时间需大于开始时间")') : eval(fun+'("结束时间需大于开始时间")');
+    		return false;
+    	}
+
+    	if(startTime == endTime){
+    		var curHour 	= date.getHours();
+    		var tempJiange  = curTime - startTime;
+    		if(!startHour && startHour!=0){
+    		fun == 'show_errors' ?  eval(fun+'("date_error_e", "请填写开始时间")') : eval(fun+'("请填写开始时间")');
+    			return false;
+    		}
+    		//当天才需要判断
+    		if (tempJiange < 86400) {
+    			if (startHour > curHour) {
+                    fun == 'show_errors' ?  eval(fun+'("date_error_e", "开始时间需小于当前时间")') : eval(fun+'(开始时间需小于当前时间")');
+    				return false;
+    			}
+    		}
+    		if(!endHour){
+                fun == 'show_errors' ? eval(fun+'("date_error_e", "请填写结束时间")') : eval(fun+'("请填写结束时间")');
+    			return false;
+    		}
+    		//当天才需要判断
+    		if (tempJiange < 86400) {
+    			if (endHour > curHour) {
+                    fun == 'show_errors' ?  eval(fun+'("date_error_e", "结束时间需小于当前时间")') : eval(fun+'("结束时间需小于当前时间")');
+    				return false;
+    			}
+    		}
+    		if (startHour >= endHour) {
+                fun == 'show_errors' ?  eval(fun+'("date_error_e", "结束时间需大于开始时间")') : eval(fun+'("结束时间需大于开始时间")');
+    			return false;
+    		}
+    	}
+    	return true;
+    }
+		function calendarCallback(obj){
+				var parentObj  = obj.parentNode;
+				var childNodes = parentObj.childNodes;
+				var isStart    = obj.className.indexOf("startPicker") != -1 ? true : false;
+				var datapicker = new Array();
+				var timeHour   = new Array();
+				var dIndex = 0;
+				var tIndex = 0;
+				for(var i = 0; i < childNodes.length; i++){
+						var temp = childNodes[i].className;
+						if (temp) {
+								if(temp.indexOf("timeText") != -1){
+										datapicker[dIndex] = childNodes[i];
+										dIndex++;
+								}
+								if(temp.indexOf("timeHour") != -1){
+										timeHour[tIndex] = childNodes[i];
+										tIndex++;
+								}
+						}
+				}
+
+				var startTime  = datapicker[0].value;
+				var endTime	   = datapicker[1].value;
+
+				datapicker[2].value = "";
+				datapicker[3].value = "";
+
+				var date 	      = new Date();
+				var curTime    	  = Math.floor(date.getTime()/1000);
+				var selectTime 	  = obj.value;
+				var intSelectTime = getNumberTime(selectTime);
+				if (intSelectTime > curTime && parentObj.className.indexOf("post") != -1 ) {
+						obj.value = "";
+						var sign  = isStart ? "开始" : "结束";
+						show_errors("date_error", "线路的"+sign+"时间需小于当前时间");
+						var tttt = setInterval(function(){
+								var div_black = document.getElementById("div_black");
+								if (div_black.style.display == "none") {
+										clearInterval(tttt);
+										obj.click();
+								}
+						},200);
+						return false;
+				}else{
+						if(parentObj.className.indexOf("post") != -1) {
+								jQuery('#date_error').html('');
+						}
+				}
+
+				if (startTime) {
+						if(isStart){
+								datapicker[1].click();
+						}
+				}
+				if (!startTime || !endTime) {
+						return false;
+				}
+				//把时间转为时间戳
+				var intStartTime 	= getNumberTime(startTime);
+				var intEndTime 		= getNumberTime(endTime);
+
+				if (intStartTime == intEndTime) {
+						for(var i = 0; i < timeHour.length; i++){
+								timeHour[i].style.display = "inline";
+						}
+				} else {
+						for(var i = 0; i < timeHour.length; i++){
+								timeHour[i].style.display = "none";
+						}
+				}
+
+				if (intStartTime > intEndTime && parentObj.className.indexOf("post") != -1) {
+						obj.value = "";
+						show_errors("date_error", "线路的结束时间需大于开始时间");
+						var tttt = setInterval(function(){
+								var div_black = document.getElementById("div_black");
+								if (div_black.style.display == "none") {
+										clearInterval(tttt);
+										obj.click();
+								}
+						},200);
+						return false;
+				}
+				else{
+						if( parentObj.className.indexOf("post") != -1) {
+								intStartTime == intEndTime ? jQuery('#date_error').html('') : jQuery('#date_error').html('<div class="correct"></div>');
+						}
+				}
+		}
+		function show_errors(element_id, msg){
+				if(element_id != '') {
+						var error_ele = '<div class="onError" id="" style="display: block;"><div class="valid-tips-container"><span class="tips-txt error"><i class="icon-v icon-error-v"></i>'+msg+'</span></div></div>';
+						jQuery('#' + element_id).html(error_ele).show();
+				}
+		}
+		function getNumberTime(time){
+				time = time.replace(/-/g,"/");
+				var date = new Date(time);
+				time = Math.floor(date.getTime()/1000);
+				return time;
+		}
+		<!--{if checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
+		function vode(theform){
+			if (trim(theform.captcha.value)=="") {
+				showDialog('验证码不能为空');
+				return false;
+			}
+			if (theform.yzm.value=='0') {
+				showDialog('验证码输入错误');
+				return false;
+			}
+			return fastpostvalidateoutshop(theform);
+		}
+		//验证码
+		jQuery('#refreshCaptcha').click(function() {
+			jQuery(this).children('img').attr('src', '/plugin.php?id=dailypicture:captcha&_='+(new Date().getTime()));
+			jQuery('#jg').html("");
+			return false;
+		});
+		jQuery('#captcha').blur(function(){
+			 validate_captcha();
+			 return false;
+		});
+		function validate_captcha() {
+			jQuery.ajax({
+				async: false,
+				type: 'get',
+				url: '/plugin.php?id=dailypicture:validatecaptcha&captcha='+jQuery('#captcha').val(),
+				success : function(data) {
+					if (data==1) {
+						jQuery('#jg').html("");
+						jQuery('#jg').append('<img width="16" height="16" class="vm" src="static/image/common/check_right.gif">');
+						jQuery('#yzm').val('1');
+					}else{
+						jQuery('#jg').html("");
+						jQuery('#jg').append('<img width="16" height="16" class="vm" src="static/image/common/check_error.gif">');
+						jQuery('#yzm').val('0');
+						//jQuery('#captcha').val('');
+					}
+				}
+			});
+		};
+		<!--{/if}-->
+</script>
+	<!--{subtemplate dianping/footer}-->

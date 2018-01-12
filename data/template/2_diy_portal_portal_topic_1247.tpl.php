@@ -1,0 +1,357 @@
+<?php if(!defined('IN_DISCUZ')) exit('Access Denied'); ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>经典户外电影回顾</title>
+<link href="http://static.8264.com/oldcms/moban/zt/2009movie/style/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<style>
+a:link {text-decoration: none;}
+a:visited {text-decoration: none;}
+a:active {text-decoration: none;}
+a:hover {text-decoration: none;}
+</style>
+<div class="warpper">
+<div class="banner"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/banner.jpg" width="960" height="430" border="0"/></div>
+    <div class="mid">
+    	<div class="left">
+        	<div class="lefttitle"></div>
+            <div class="leftconall">
+            	<div class="leftcon_img"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/001.jpg" width="100" height="130" border="0"/></div>
+                <div class="leftcon_r">
+                	<div class="leftcon_title"><em style="float:left; margin-top:4px;"><a href="#" target="_blank">勇闯雷霆峰&nbsp;克林特·伊斯特伍德 乔治·肯尼迪主演</a></em><div style="clear:both;"></div></div>
+                    <div class="leftcon"><strong>剧情介绍：</strong>克林特．伊斯特伍德自导自演的此片，描写已退休的特级杀手在大学系任教，但中央情报局对他威逼利诱，令他不得不复出，主要任务是在雪山上进行暗杀。本片故事并不新奇，但导演的手法较为爽朗，背景选择在绝险的雪山上，尤见特出。虽然本片有一半以上的篇幅描写爬山，但过程拍得逼真惊险，反成全片精华所在，显然很大程度上要归功于五名摄影师。&nbsp;&nbsp;&nbsp;<a href="http://u.8264.com/space-3552053-do-album-picid-324904-goto-down.html" target="_blank"><span style="color:#FF0000">海报1</span></a>&nbsp;&nbsp;<a href="http://u.8264.com/space-3552053-do-album-picid-324905-goto-down.html" target="_blank"><span style="color:#FF0000">海报2</span></a>&nbsp;&nbsp;<a href="http://58.251.57.206/down1?cid=1526402359&amp;t=14&amp;fmt=flv&amp;usrinput=勇闯雷霆峰&amp;dt=0&amp;ps=624_256&amp;rt=0kbs&amp;plt=7612" target="_blank"><span style="color:#FF0000">下载</span></a></div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+            <div class="leftconall">
+            	<div class="leftcon_img"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/002.jpg" width="100" height="130" border="0"/></div>
+                <div class="leftcon_r">
+                	<div class="leftcon_title"><em style="float:left; margin-top:4px;"><a href="#" target="_blank">冰峰抢险队&nbsp; Eugene S. Jones 导演</a></em><div style="clear:both;"></div></div>
+                    <div class="leftcon"><strong>剧情介绍：</strong>两对青年人开始攀登美国北部的白马山。不慎失落了保险绳，又面临这严寒的夜晚，一筹莫展。 
+山林管理员麦克唐纳老人得知有人在冰峰遇难后，自愿放弃周末假期，立即赶赴抢险指挥部。在向出事地点迈进时，不慎掉进悬崖上的石缝里。时近黄昏，新的一场暴风雪即将来临，困在山腰之间的凯瑟和麦克唐纳的生命将受到严重威胁。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://v.youku.com/v_show/id_XNDE0ODA1NDQ=.html" target="_blank"><span style="color:#FF0000">在线看一</span></a>&nbsp;&nbsp;&nbsp;<a href="http://v.youku.com/v_show/id_XNDE0NTgyNjQ=.html" target="_blank"><span style="color:#FF0000">在线看二</span></a></div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+            <div class="leftconall">
+            	<div class="leftcon_img"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/003.jpg" width="100" height="130" border="0"/></div>
+                <div class="leftcon_r">
+                	<div class="leftcon_title"><em style="float:left; margin-top:4px;"><a href="#" target="_blank">冰峰168小时&nbsp;又名：触及巅峰  </a></em><div style="clear:both;"></div></div>
+                    <div class="leftcon"><strong>剧情介绍：</strong>1985年，来自英国的两名登山者准备征服高达10800英尺的秘鲁安第斯山Siula Grande 峰。在攀登到9000英尺时，灾难发生了。<br> 
+一个名叫乔·辛普森的登山者不慎跌下一个陡坡，并且摔断了右腿。在他下面是万丈深渊，而向上又无法攀爬。他的同伴西蒙·耶茨只好用救生绳紧紧拉住他，并且在暴风雪中随其一起下降。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://kankan.xunlei.com/4.0/movie/4/3704.html?id=42" target="_blank"><span style="color:#FF0000">迅雷在线</span></a>&nbsp;&nbsp;<a href="http://v.ku6.com/show/2LFGiL-j1oN-Sw98.html" target="_blank"><span style="color:#FF0000">酷6在线</span></a>&nbsp;&nbsp;<a href="http://v.youku.com/v_show/id_XNjU1Nzk5NTY=.html" target="_blank"><span style="color:#FF0000">优酷在线</span></a>&nbsp;&nbsp;<a href="http://v.youku.com/v_show/id_XNjU1Nzk5NTY=.html" target="_blank"><span style="color:#FF0000">海报欣赏</span></a></div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+            <div class="leftconall">
+            	<div class="leftcon_img"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/004.jpg" width="100" height="130" border="0"/></div>
+                <div class="leftcon_r">
+                	<div class="leftcon_title"><em style="float:left; margin-top:4px;"><a href="#" target="_blank">南极大冒险&nbsp;弗兰克·马歇尔 Frank Marshall执导</a></em><div style="clear:both;"></div></div>
+                    <div class="leftcon"><strong>剧情介绍：</strong>为了搜寻一块坠落在南极岛上的神秘陨石，一支由三个科学家组成的探险队开始了他们的南极探险之旅。探险小组包括杰瑞·夏洛德(保罗·沃克)，他最好的朋友库珀(贾森·比格斯)以及一个性格古怪的美国地质学家(布鲁斯·格林伍德)。去南极考察探险，当然离不了在雪地上行走的特殊工具——雪橇，以及人们的忠实伙伴--雪橇犬。一起走上一次奇异的征途....<a href="http://kankan.xunlei.com/4.0/movie/4/3704.html?id=42" target="_blank"><span style="color:#FF0000">海报欣赏</span></a>&nbsp;&nbsp;<a href="http://v.youku.com/v_show/id_XODU4NDg0ODg=.html" target="_blank"><span style="color:#FF0000">在线看</span></a>&nbsp;&nbsp;<a href="ftp://ftp.66ys.cn:3120/[66影视www.66ys.cn]南极大冒险DVD国语配音无水印[66YS.CN原创].rmvb" target="_blank"><span style="color:#FF0000">点击下载</span></a></div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+        <div class="right">
+        	<div class="righttitle"></div>
+            <div class="shipin">
+
+<!--<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="280" height="220">
+                <param name="movie" value="http://static.8264.com/oldcms/moban/zt/2009movie/dianying.swf" />
+                <param name="quality" value="high" />
+                <embed src="http://static.8264.com/oldcms/moban/zt/2009movie/dianying.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="280" height="220"></embed>
+              </object>-->
+<object type="application/x-shockwave-flash" data="http://static.8264.com/oldcms/moban/zt/2009movie/vcastr3.swf" width="280" height="220" id="vcastr3">
+<param name="movie" value="http://static.8264.com/oldcms/moban/zt/2009movie/vcastr3.swf"/> 
+<param name="allowFullScreen" value="true" />
+<param name="FlashVars" value="xml=
+<vcastr>
+<channel>
+<item>
+<source>http://static.8264.com/oldcms/moban/zt/2009movie/dianying.flv</source>
+<duration></duration>
+<title></title>
+</item>
+</channel>
+<config>
+</config>
+<plugIns>
+<logoPlugIn>
+<url>http://static.8264.com/oldcms/moban/zt/2009movie/logoPlugIn.swf</url>
+<logoText></logoText>
+<logoTextAlpha>0.75</logoTextAlpha>
+<logoTextFontSize>30</logoTextFontSize>
+<logoTextLink>http://www.ruochigroup.com</logoTextLink>
+<logoTextColor>0xffffff</logoTextColor>
+<textMargin>20 20 auto auto</textMargin>
+</logoPlugIn>
+</plugIns>
+</vcastr>"/>
+</object>			  
+  </div>
+            <div class="paihangtitle"></div>
+            <div class="movielist">
+            	<ul>
+                	<li><em style=" float:left;"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/no1.jpg" width="15" height="15" border="0" />&nbsp;<a href="http://v.youku.com/v_show/id_XMzc2MDc2MDA=.html" target="_blank" style="color:#fd0000;">垂直极限</a></em><em style="float:right;">2000年12月03日上映&nbsp;<img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/new.jpg" width="23" height="10" border="0" /></em></li>
+                    <li><em style=" float:left;"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/no2.jpg" width="15" height="15" border="0" />&nbsp;<a href="http://www.tudou.com/programs/view/j9X3VNO4W7g/" target="_blank" style="color:#fd0000;">南极日记</a></em><em style="float:right;">2005年03月21日上映&nbsp;<img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/new.jpg" width="23" height="10" border="0" /></em></li>
+                    <li><em style=" float:left;"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/no3.jpg" width="15" height="15" border="0" />&nbsp;<a href="http://v.youku.com/v_show/id_XNjU1Nzk5NTY=.html" target="_blank" style="color:#fd0000;">冰峰168小时</a></em><em style="float:right;">2004年01月23日上映&nbsp;<img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/new.jpg" width="23" height="10" border="0" /></em></li>
+                    <li><em style=" float:left;"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/no4.jpg" width="15" height="15" border="0" />&nbsp;<a href="http://v.youku.com/v_show/id_XODU4NDg0ODg=.html" target="_blank">南极大冒险</a></em><em style="float:right;">2006年02月17日上映&nbsp;<img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/new.jpg" width="23" height="10" border="0" /></em></li>
+                    <li><em style=" float:left;"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/no5.jpg" width="15" height="15" border="0" />&nbsp;<a href="http://v.youku.com/v_show/id_XMTc0MDYwNzY=.html" target="_blank">八千米死亡线</a></em><em style="float:right;">1992年05月01日上映&nbsp;<img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/new.jpg" width="23" height="10" border="0" /></em></li>
+                    <li><em style=" float:left;"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/no6.jpg" width="15" height="15" border="0" />&nbsp;<a href="http://v.youku.com/v_show/id_XNzk4MjQ3ODQ=.html" target="_blank">我们要活着回去(上)</a></em><em style="float:right;">1993年01月15日上映&nbsp;<img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/new.jpg" width="23" height="10" border="0" /></em></li>
+                    <li><em style=" float:left;"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/no7.jpg" width="15" height="15" border="0" />&nbsp;<a href="http://v.youku.com/v_show/id_XNjQ1OTExODQ=.html" target="_blank">我们要活着回去(下)</a></em><em style="float:right;">1993年01月15日上映&nbsp;<img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/new.jpg" width="23" height="10" border="0" /></em></li>
+                    <li><em style=" float:left;"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/no8.jpg" width="15" height="15" border="0" />&nbsp;<a href="http://v.youku.com/v_show/id_XODMwMzM1ODA=.html" target="_blank">伟哉圣母峰</a></em><em style="float:right;">1998年03月06日上映&nbsp;<img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/new.jpg" width="23" height="10" border="0" /></em></li>
+                    <li><em style=" float:left;"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/no9.jpg" width="15" height="15" border="0" />&nbsp;<a href="http://v.youku.com/v_show/id_XNDIyODY1NjA=.html" target="_blank">碧海蓝天</a></em><em style="float:right;">1988年02月13日上映&nbsp;<img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/new.jpg" width="23" height="10" border="0" /></em></li>
+                    <li><em style=" float:left;"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/no10.jpg" width="15" height="15" border="0" />&nbsp;<a href="http://v.youku.com/v_show/id_XNjIzNDA0NDg=.html" target="_blank">完美风暴</a></em><em style="float:right;">2000年06月26日上映&nbsp;<img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/new.jpg" width="23" height="10" border="0" /></em></li>
+<li><em style=" float:left;"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/no11.jpg" width="15" height="15" border="0" />&nbsp;<a href="http://v.youku.com/v_show/id_XMzkyNTU1Mjg=.html" target="_blank">绝岭雄风</a></em><em style="float:right;">1993年05月26日上映&nbsp;<img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/new.jpg" width="23" height="10" border="0" /></em></li>
+<li><em style=" float:left;"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/no12.jpg" width="15" height="15" border="0" />&nbsp;<a href="http://v.youku.com/v_show/id_XMzk5NDEyMzY=.html" target="_blank">绝妙降落</a></em><em style="float:right;">2005年12月02日上映&nbsp;<img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/new.jpg" width="23" height="10" border="0" /></em></li>
+                    
+                </ul>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+    <div class="mid1">
+    	<div class="mid1title"></div>
+        <div class="mid1conall rollBox">
+        	<div class="mid1_l"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/leftbuttom.jpg" width="16" height="79" border="0" onmousedown="ISL_GoUp()" onmouseup="ISL_StopUp()" onmouseout="ISL_StopUp()" /></div>
+ 	 <!--内部--> 
+  <div class="Cont" id="ISL_Cont"> 
+      <div class="ScrCont">
+    <div class="mid1con" id="List1">
+            	<div class="imgall">
+                	<div class="img"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/niao001.jpg" width="100" height="130" border="0"alt="始祖鸟的冲锋衣在电影《垂直极限》中出现。" /></div>
+                    <div class="wen">始祖鸟</div>
+                </div>
+                <div class="imgall">
+                	<div class="img"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/beilian001.jpg" width="100" height="130" border="0" alt="同样，The North Face的帐篷也出现在《垂直极限》中。同时，The North Face还曾出现在成龙的早期电影中，像《简单任务4》，还有在《国家宝藏》中也曾露脸。还有好多影视作品中见到该品牌，在此就不一一例举了。" /></div>
+                    <div class="wen">乐斯菲斯</div>
+                </div>
+                <div class="imgall">
+                	<div class="img"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/biao.jpg" width="100" height="130" border="0" alt="《火线狙击》" /></div>
+                    <div class="wen">suunto</div>
+                </div>
+                <div class="imgall">
+                	<div class="img"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/feicheng.jpg" width="100" height="130" border="0" alt="葛大爷在《非诚勿扰》中，去杭州时背的背包，日高品牌，话说日高这次赚大发啦，该片总票房3.5亿左右，想想，会有多少人看到日高的背包啊！" /></div>
+                    <div class="wen">日高</div>
+                </div>
+                <div class="imgall">
+                	<div class="img"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/agl.jpg" width="100" height="130" border="0"  alt="2008年法国户外品牌AIGLE邀请Nicolas Vanier担任品牌形象大使，并协助他在西伯利亚拍摄电影《狼》。专门推出了以他姓名命名的适应该地区极端恶劣环境的Nicolas Vanier远征探险系列服装，这一系列产品不只是简单意义上的户外服装，而是融入了Nicolas Vanier传奇的探险经验和对自然的热爱，也融入了AIGLE与自然和谐相处的品牌理念，更是将二者的最重要的使命贯穿到所有产品中，那就是环境保护和 “带人类重归自然” 的理念。"/></div>
+                    <div class="wen">AIGLE</div>
+                </div>
+                <div class="imgall">
+                	<div class="img"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/bata.jpg" width="100" height="130" border="0" alt="Patagonia赞助了班夫山地文化电影节年度最佳自然环境影片提名的《99天在冰上》
+。讲述的是北极消失的故事，看后值得人深思..." /></div>
+                    <div class="wen">Patagonia</div>
+                </div>
+                <div class="imgall">
+                	<div class="img"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/tewa.jpg" width="100" height="130" border="0"  alt="美国知名品牌Teva 投资拍摄的世界顶级高科技IMAX电影——《大峡谷探险——江河告急》！户外爱好者们和广大驴友们有福了！"/></div>
+                    <div class="wen">Teva</div>
+                </div>
+            </div>
+<div id="List2"></div> 
+            </div> 
+            </div> 
+    <div class="mid1_r"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/right_buttom.jpg" width="16" height="79" border="0"  onmousedown="ISL_GoDown()" onmouseup="ISL_StopDown()" onmouseout="ISL_StopDown()" /></div>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+<style type="text/css"> 
+<!-- 
+.rollBox{width:910px;overflow:hidden;} 
+.rollBox .Cont{width:870px;overflow:hidden;float:left;} 
+.rollBox .ScrCont{width:10000000px;}
+--> 
+</style> 
+<script language="javascript" type="text/javascript"> 
+<!--//--><![CDATA[//><!-- 
+//图片滚动列表 mengjia 070816 
+var Speed = 10; //速度(毫秒) 
+var Space = 5; //每次移动(px) 
+var PageWidth = 124; //翻页宽度 
+var fill = 0; //整体移位 
+var MoveLock = false; 
+var MoveTimeObj; 
+var Comp = 0; 
+var AutoPlayObj = null; 
+GetObj("List2").innerHTML = GetObj("List1").innerHTML; 
+GetObj('ISL_Cont').scrollLeft = fill; 
+GetObj("ISL_Cont").onmouseover = function(){clearInterval(AutoPlayObj);} 
+GetObj("ISL_Cont").onmouseout = function(){AutoPlay();} 
+AutoPlay(); 
+function GetObj(objName){if(document.getElementById){return eval('document.getElementById("'+objName+'")')}else{return eval('document.all.'+objName)}} 
+function AutoPlay(){ //自动滚动 
+ clearInterval(AutoPlayObj); 
+ AutoPlayObj = setInterval('ISL_GoDown();ISL_StopDown();',5000); //间隔时间 
+} 
+function ISL_GoUp(){ //上翻开始 
+ if(MoveLock) return; 
+ clearInterval(AutoPlayObj); 
+ MoveLock = true; 
+ MoveTimeObj = setInterval('ISL_ScrUp();',Speed); 
+} 
+function ISL_StopUp(){ //上翻停止 
+ clearInterval(MoveTimeObj); 
+ if(GetObj('ISL_Cont').scrollLeft % PageWidth - fill != 0){ 
+  Comp = fill - (GetObj('ISL_Cont').scrollLeft % PageWidth); 
+  CompScr(); 
+ }else{ 
+  MoveLock = false; 
+ } 
+ AutoPlay(); 
+} 
+function ISL_ScrUp(){ //上翻动作 
+ if(GetObj('ISL_Cont').scrollLeft <= 0){GetObj('ISL_Cont').scrollLeft = GetObj('ISL_Cont').scrollLeft + GetObj('List1').offsetWidth} 
+ GetObj('ISL_Cont').scrollLeft -= Space ; 
+} 
+function ISL_GoDown(){ //下翻 
+ clearInterval(MoveTimeObj); 
+ if(MoveLock) return; 
+ clearInterval(AutoPlayObj); 
+ MoveLock = true; 
+ ISL_ScrDown(); 
+ MoveTimeObj = setInterval('ISL_ScrDown()',Speed); 
+} 
+function ISL_StopDown(){ //下翻停止 
+ clearInterval(MoveTimeObj); 
+ if(GetObj('ISL_Cont').scrollLeft % PageWidth - fill != 0 ){ 
+  Comp = PageWidth - GetObj('ISL_Cont').scrollLeft % PageWidth + fill; 
+  CompScr(); 
+ }else{ 
+  MoveLock = false; 
+ } 
+ AutoPlay(); 
+} 
+function ISL_ScrDown(){ //下翻动作 
+ if(GetObj('ISL_Cont').scrollLeft >= GetObj('List1').scrollWidth){GetObj('ISL_Cont').scrollLeft = GetObj('ISL_Cont').scrollLeft - GetObj('List1').scrollWidth;} 
+ GetObj('ISL_Cont').scrollLeft += Space ; 
+} 
+function CompScr(){ 
+ var num; 
+ if(Comp == 0){MoveLock = false;return;} 
+ if(Comp < 0){ //上翻 
+  if(Comp < -Space){ 
+   Comp += Space; 
+   num = Space; 
+  }else{ 
+   num = -Comp; 
+   Comp = 0; 
+  } 
+  GetObj('ISL_Cont').scrollLeft -= num; 
+  setTimeout('CompScr()',Speed); 
+ }else{ //下翻 
+  if(Comp > Space){ 
+   Comp -= Space; 
+   num = Space; 
+  }else{ 
+   num = Comp; 
+   Comp = 0; 
+  } 
+  GetObj('ISL_Cont').scrollLeft += num; 
+  setTimeout('CompScr()',Speed); 
+ } 
+} 
+//--><!]]> 
+</script> 
+    <div class="mid1">
+    	<div class="mid2title"></div>
+        <div class="mid1conall">
+        	<div class="imgall1">
+                <div class="img"><a href="http://v.youku.com/v_show/id_XMzk5NDEyMzY=.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/jmjiangluo.jpg" width="100" height="130" border="0"  alt="绝妙降落"/></a></div>
+                <div class="wen"><a href="http://v.youku.com/v_show/id_XMzk5NDEyMzY=.html" target="_blank">绝妙降落</a></div>
+            </div>
+            <div class="imgall1">
+                <div class="img"><a href="http://v.youku.com/v_show/id_XNDg0NDcwODg=.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/lvxingdyishu.jpg" width="100" height="130" border="0" alt="旅行的艺术" /></a></div>
+                <div class="wen"><a href="http://v.youku.com/v_show/id_XNDg0NDcwODg=.html" target="_blank">旅行的艺术</a></div>
+            </div>
+            <div class="imgall1">
+                <div class="img"><a href="http://v.youku.com/v_show/id_XMTc0MDYwNzY=.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/K2.jpg" width="100" height="130" border="0" alt="八千米死亡线" /></a></div>
+                <div class="wen"><a href="http://v.youku.com/v_show/id_XMTc0MDYwNzY=.html" target="_blank">八千米死亡线</a></div>
+            </div>
+            <div class="imgall1">
+                <div class="img"><a href="http://v.youku.com/v_show/id_XMTcyMjA2OTY=.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/bingyu.jpg" width="100" height="130" border="0" alt="冰雨"/></a></div>
+                <div class="wen"><a href="http://v.youku.com/v_show/id_XMTcyMjA2OTY=.html" target="_blank">冰雨</a></div>
+            </div>
+            <div class="imgall1">
+                <div class="img"><a href="http://v.youku.com/v_show/id_XNTAzMjI3ODA=.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/baozou.jpg" width="100" height="130" border="0" alt="暴走墨脱" /></a></div>
+                <div class="wen"><a href="http://v.youku.com/v_show/id_XNTAzMjI3ODA=.html" target="_blank">暴走墨脱</a></div>
+            </div>
+            <div class="imgall1">
+                <div class="img"><a href="http://v.youku.com/v_show/id_XMTcxNzYzODQ=.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/xixing.jpg" width="100" height="130" border="0" alt="西行溯源" /></a></div>
+                <div class="wen"><a href="http://v.youku.com/v_show/id_XMTcxNzYzODQ=.html" target="_blank">西行溯源</a></div>
+            </div>
+            <div class="imgall1">
+                <div class="img"><a href="http://v.youku.com/v_show/id_XMzc2MDc2MDA=.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/chuizhi.jpg" width="100" height="130" border="0" alt="垂直极限" /></a></div>
+                <div class="wen"><a href="http://v.youku.com/v_show/id_XMzc2MDc2MDA=.html" target="_blank">垂直极限</a></div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+<div class="mid1conall">
+        	<div class="imgall1">
+                <div class="img"><a href="http://www.tudou.com/programs/view/j9X3VNO4W7g/" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/nanjiriji.jpg" width="100" height="130" border="0"  alt="南极日记"/></a></div>
+                <div class="wen"><a href="http://www.tudou.com/programs/view/j9X3VNO4W7g/" target="_blank">南极日记</a></div>
+            </div>
+            <div class="imgall1">
+                <div class="img"><a href="http://v.youku.com/v_show/id_XMzkyNTU1Mjg=.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/jueling.jpg" width="100" height="130" border="0" alt="绝岭雄风" /></a></div>
+                <div class="wen"><a href="http://v.youku.com/v_show/id_XMzkyNTU1Mjg=.html" target="_blank">绝岭雄风</a></div>
+            </div>
+            <div class="imgall1">
+                <div class="img"><a href="http://v.youku.com/v_show/id_XNzk4MjQ3ODQ=.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/huoxiaqu.jpg" width="100" height="130" border="0" alt="我们要活着回去" /></a></div>
+                <div class="wen"><a href="http://v.youku.com/v_show/id_XNzk4MjQ3ODQ=.html" target="_blank">第一集</a>&nbsp;<a href="http://v.youku.com/v_show/id_XNjQ1OTExODQ=.html" target="_blank">第二集</a></div>
+            </div>
+            <div class="imgall1">
+                <div class="img"><a href="http://v.youku.com/v_show/id_XNjIzNDA0NDg=.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/wanmei.jpg" width="100" height="130" border="0" alt="完美风暴"/></a></div>
+                <div class="wen"><a href="http://v.youku.com/v_show/id_XNjIzNDA0NDg=.html" target="_blank">完美风暴</a></div>
+            </div>
+            <div class="imgall1">
+                <div class="img"><a href="http://kankan.xunlei.com/4.0/movie/68/2968.html?id=42" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/huangye.jpg" width="100" height="130" border="0"  alt="荒野生存" /></a></div>
+                <div class="wen"><a href="http://kankan.xunlei.com/4.0/movie/68/2968.html?id=42" target="_blank">荒野生存</a></div>
+            </div>
+            <div class="imgall1">
+                <div class="img"><a href="http://v.youku.com/v_show/id_XNDIyODY1NjA=.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/bihai.jpg" width="100" height="130" border="0" alt="碧海蓝天" /></a></div>
+                <div class="wen"><a href="http://v.youku.com/v_show/id_XNDIyODY1NjA=.html" target="_blank">碧海蓝天</a></div>
+            </div>
+            <div class="imgall1">
+                <div class="img"><a href="http://v.youku.com/v_show/id_XNDI0NzY5MDQ=.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/qiusheng.jpg" width="100" height="130" border="0" alt="荒野求生秘笈" /></a></div>
+                <div class="wen"><a href="http://v.youku.com/v_show/id_XNDI0NzY5MDQ=.html" target="_blank">荒野求生秘笈</a></div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+<div class="mid1conall">
+        	<div class="imgall1">
+                <div class="img"><a href="http://v.youku.com/v_show/id_XNjk2OTMzODA=.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/gaoshan.jpg" width="100" height="130" border="0"  alt="高山上的恋人"/></a></div>
+                <div class="wen"><a href="http://v.youku.com/v_show/id_XNjk2OTMzODA=.html" target="_blank">高山上的恋人</a></div>
+            </div>
+            <div class="imgall1">
+                <div class="img"><a href="http://v.youku.com/v_show/id_XODMwMzM1ODA=.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/shengmufeng.jpg" width="100" height="130" border="0" alt="伟哉圣母峰" /></a></div>
+                <div class="wen"><a href="http://v.youku.com/v_show/id_XODMwMzM1ODA=.html" target="_blank">伟哉圣母峰</a></div>
+            </div>
+            <div class="imgall1">
+                <div class="img"><a href="http://v.youku.com/v_show/id_XNzUzNDM2NTI=.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/bbc.jpg" width="100" height="130" border="0" alt="BBC喜马拉雅之旅" /></a></div>
+                <div class="wen"><a href="http://v.youku.com/v_show/id_XNzUzNDM2NTI=.html" target="_blank">BBC喜马拉雅之旅</a></div>
+            </div>
+            <div class="imgall1">
+                <div class="img"><a href="http://v.ku6.com/show/8Vf7infxeJzoBngy.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/dixin.jpg" width="100" height="130" border="0" alt="地心历险记3D"/></a></div>
+                <div class="wen"><a href="http://v.ku6.com/show/8Vf7infxeJzoBngy.html" target="_blank">地心历险记3D</a></div>
+            </div>
+            <div class="imgall1">
+                <div class="img"><a href="http://v.youku.com/v_show/id_XODYzNDIyODQ=.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/long.jpg" width="100" height="130" border="0"  alt="龙之心" /></a></div>
+                <div class="wen"><a href="http://v.youku.com/v_show/id_XODYzNDIyODQ=.html" target="_blank">龙之心</a></div>
+            </div>
+            <div class="imgall1">
+                <div class="img"><a href="http://v.youku.com/v_show/id_XODU4NDg0ODg=.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/004.jpg" width="100" height="130" border="0" alt="南极大冒险" /></a></div>
+                <div class="wen"><a href="http://v.youku.com/v_show/id_XODU4NDg0ODg=.html" target="_blank">南极大冒险</a></div>
+            </div>
+            <div class="imgall1">
+                <div class="img"><a href="http://v.ku6.com/show/2LFGiL-j1oN-Sw98.html" target="_blank"><img src="http://static.8264.com/oldcms/moban/zt/2009movie/images/003.jpg" width="100" height="130" border="0" alt="冰峰168小时" /></a></div>
+                <div class="wen"><a href="http://v.ku6.com/show/2LFGiL-j1oN-Sw98.html" target="_blank">冰峰168小时</a></div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+    <div class="bottom"><a href="http://www.8264.com/ziliao/about/aboutus.php" target="_blank">关于我们</a> | <a href="http://www.8264.com/ziliao/about/aboutus.php" target="_blank">联系我们</a> | <a href="http://www.8264.com/8954.html">给我留言</a> |  <a href="http://www.8264.com/ziliao/sitemap.html" target="_blank">网站地图</a> | <a href="http://www.8264.com/ziliao/ggservice/index.html" target="_blank">广告服务</a> | <a href="http://www.8264.com/list/531/" target="_blank">编辑部的故事</a> | <a href="http://www.8264.com/sitelink/index.html" target="_blank">友情连接</a><br>服务热线：022-23708264 | 传真：022-23708323 | 地址：天津市新技术产业园区华天道8号海泰信息广场C座1001号<br>除了脚印什么都不留下除了摄影什么都不带走，欢迎各种媒体转载我们的原创作品[转载请注明出处]。&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.miibeian.gov.cn" target="_blank">津ICP备05004140号-1</a></div>
+</div>
+</body>
+</html>

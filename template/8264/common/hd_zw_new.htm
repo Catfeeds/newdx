@@ -1,0 +1,156 @@
+<style>
+	.hd980{ width:978px; margin:0 auto; background:#f6f8fa; padding:0px 0px 15px 0px; border:#e5e5e5 solid 1px;}
+	.title_hd980{ text-align:center; padding:20px 0px;}
+	.clear_b:after{content: ""; display: block; clear: both; visibility: hidden;}
+	.clear_b{ zoom: 1;}
+	.hdone{ width:164px; height:112px; background:#fff; border:#eeeeef solid 1px; float:left; position:relative; font-size:0px; line-height:0px; border:#eeeeee solid 1px; padding:7px; margin:0px 0px 0px 13px;}
+	.hdone img{ width:164px; height:112px;}
+	.ftpop{ width:164px; height:112px; position:absolute; left:7px; top:7px; line-height:1.5; text-align:center;}
+	.hdone a{ width:164px; height:112px; display:block;  text-decoration:none; background: #000; opacity: 0; filter: alpha(opacity=0); position: absolute; top:7px; left:7px; z-index:20;}
+	.hdone a:hover{ text-decoration:none;}
+	.ftpop span{ color:#fff; font-size:16px; position:relative; text-align:center; display:inline-block; _display:inline; _zoom:1; margin:38px 0px 0px 0px;}
+	.ftpop em{ color:#fff; font-size:12px; text-align:center; display:block; font-style:normal;}
+	.ftpop i{ background:url(http://static.8264.com/static/images/zw/hot.jpg) 0px 0px no-repeat; width:10px; height:10px; position:absolute; top:0px; right:-13px; font-size:0px;}
+	.ftpop i.newicon{ background:url(http://static.8264.com/static/images/zw/new.jpg) 0px 0px no-repeat;}
+	.bgfff{ background:#fff; border-top:#e5e5e5 solid 1px; border-bottom:#e5e5e5 solid 1px; margin:14px 13px 0px 13px; height:60px; overflow:hidden;}
+	.bgfff a{ font-size:14px; color:#55c5f9; text-decoration:none; margin:0px 0px 0px 15px; height:60px; line-height:60px; display: inline; white-space: nowrap; display:inline-block; _display:inline; _zoom:1;}
+	.bgfff span{ height:60px; display:inline-block; _display:inline; _zoom:1; line-height:60px;}
+	.zbt_icon{ background:url(http://static.8264.com/static/images/zw/dian.png) 27px 22px no-repeat; font-size:16px; color:#333; padding:0px 0px 2px 48px;}
+	.djhot_icon{ background:url(http://static.8264.com/static/images/zw/fenlei.png) 27px 24px no-repeat; font-size:16px; color:#333; padding:0px 0px 2px 48px;}
+</style>
+<body>
+<div class="hd980" style="display:none;">
+	<div class="title_hd980"><img src="http://static.8264.com/static/images/zw/titlehd.png"/></div>
+    <div class="hdlist clear_b">
+    	<!--{loop $huodong_zaiwai['pic'] $id $cate}-->
+    	<div class="hdone">
+        	<img src="http://static.8264.com/static/images/zw/logo_{$id}.jpg">
+            <div class="ftpop">
+                <span>$cate['name']{if in_array($id, array(4, 7, 71))}<i></i>{/if}{if in_array($id, array(52, 16))}<i class="newicon"></i>{/if}</span>
+                <em>$cate['ename']</em>
+            </div>
+            <a href="http://hd.8264.com/xianlu-{$id}-0-0-0?utm_source=s14363562&utm_campaign=p16195123" target="_blank"></a>
+        </div>
+        <!--{/loop}-->
+    </div>
+    <div class="bgfff">
+    	<div class="zby">
+        	<span class="zbt_icon">$huodong_zaiwai['state']周边推荐</span>
+            <!--{loop $huodong_zaiwai['state_cate']['cates'] $id $name}--><a href="http://hd.8264.com/xianlu-{$id}-0-0-{$huodong_zaiwai['state_cate']['py']}-0-3-1?start=1&utm_source=s14363562&utm_campaign=p16195123" target="_blank">$name</a><!--{/loop}-->
+            <span class="djhot_icon">当季热门推荐</span>
+            <!--{loop $huodong_zaiwai['other'] $id $cate}--><a href="http://hd.8264.com/xianlu-{$id}-0-0-0?utm_source=s14363562&utm_campaign=p16195123" target="_blank">$cate['name']</a><!--{/loop}-->
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- 户外学校广告 -->
+<style>
+.hotmudidibox{border:#e0e7eb solid 1px; border-bottom:0px; border-right:0px; margin-top:15px; width:980px;background-color: #fff;}
+.hotmudidibox li{ width:139px; border-bottom:#e0e7eb solid 1px; border-right:#e0e7eb solid 1px; height:70px; float:left;}
+.hotmudidibox li a{ display:block; height:72px; width:133px; text-align:center; overflow:hidden;}
+.hotmudidibox li a:hover{text-decoration:none;}
+.hotmudidibox li:hover,.hotmudidibox li.hover{ background:#508eff;}
+.hotmudidibox li:hover span,.hotmudidibox li.hover span{ color:#fff;}
+.hotmudidibox li:hover em,.hotmudidibox li.hover em{ color:#fff;}
+.hotmudidibox li span{ font-size:16px; color:#31424e; display: block; width:100%; padding:13px 0px 0px 0px;}
+.hotmudidibox li em{ font-size:12px; color:#93a4b0; display:block; width:100%;}
+.hotmudidibox li i{ font-size:16px; color:#31424e; display: block; width:100%; line-height:70px; height:72px; font-style:normal;}
+.hotmudidibox li:hover i,.hotmudidibox li.hover i{ color:#fff;}
+</style>
+<div class="hotmudidibox clear_b">
+    <ul>
+        <li>
+            <a href="http://www.8264.com/xuexiao/catinfo-2.html" target="_blank">
+                <span>安全急救考试</span>
+                <em>268题</em>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.8264.com/xuexiao/catinfo-1.html" target="_blank">
+                <span>户外基础考试</span>
+                <em>187题</em>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.8264.com/xuexiao/catinfo-18.html" target="_blank">
+                <span>野外生存考试</span>
+                <em>91题</em>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.8264.com/xuexiao/catinfo-15.html" target="_blank">
+                <span>徒步知识考试</span>
+                <em>77题</em>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.8264.com/xuexiao/catinfo-5.html" target="_blank">
+                <span>登山知识考试</span>
+                <em>49题</em>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.8264.com/xuexiao/catinfo-3.html" target="_blank">
+                <span>攀岩知识考试</span>
+                <em>43题</em>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.8264.com/xuexiao/catinfo-8.html" target="_blank">
+                <span>跑步知识考试</span>
+                <em>71题</em>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.8264.com/xuexiao/catinfo-16.html" target="_blank">
+                <span>露营知识考试</span>
+                <em>56题</em>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.8264.com/xuexiao/catinfo-21.html" target="_blank">
+                <span>户外装备考试</span>
+                <em>72题</em>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.8264.com/xuexiao/catinfo-24.html" target="_blank">
+                <span>户外摄影考试</span>
+                <em>84题</em>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.8264.com/xuexiao/catinfo-14.html" target="_blank">
+                <span>绳索知识考试</span>
+                <em>89题</em>
+            </a>
+        </li>
+
+        <li>
+            <a href="http://www.8264.com/xuexiao/catinfo-37.html" target="_blank">
+                <span>运动营养考试</span>
+                <em>104题</em>
+            </a>
+        </li>
+
+        <li>
+            <a href="http://www.8264.com/xuexiao/catinfo-39.html" target="_blank">
+                <span>马术考试</span>
+                <em>69题</em>
+            </a>
+        </li>
+
+        <li>
+            <a href="http://www.8264.com/xuexiao/catinfo-17.html" target="_blank">
+                <span>瑜伽考试</span>
+                <em>103题</em>
+            </a>
+        </li>
+
+    </ul>
+</div>
+<!-- //户外学校广告 -->

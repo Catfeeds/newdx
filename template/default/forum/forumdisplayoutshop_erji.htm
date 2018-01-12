@@ -1,0 +1,416 @@
+<!--{subtemplate common/header_8264_new}-->
+
+<div class="header">
+<div class="layout">
+<div class="icoHill">&nbsp;</div>
+<div class="headerL">
+<h1><span class="country">户外店</span></h1>
+<div class="site">
+<a href="http://www.8264.com/">首页</a>			
+&gt; <a href="http://www.8264.com/dianpu">户外店</a>
+</div>
+</div>
+<div class="headerR">
+<div class="colNameList"><a href="http://www.8264.com/xuechang">滑雪场</a>
+<a href="http://www.8264.com/zhuangbei" >户外品牌</a>
+<a href="http://www.8264.com/pinpai">装备库</a>
+<a href="http://www.8264.com/dianpu" class="nowmod">户外店</a>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+<link href="/source/plugin/outshop/css/postshop.css" rel="stylesheet" type="text/css">
+<!--[if IE 6]>
+<script src="source/plugin/outshop/js/DD_belatedPNG_0.0.8a.js"></script>
+<script src="source/plugin/outshop/js/DD_belatedPNG_css.js"></script>
+<![endif]-->
+<!--{if $_G['forum']['ismoderator']}-->
+	<script type="text/javascript" src="{$_G[setting][jspath]}forum_moderate.js?{VERHASH}"></script>
+<!--{/if}-->
+
+
+
+<style type="text/css">
+.px { margin-top:4px;}
+/* 搜索修正 */
+.ditu_t1_mtxt .star {
+	overflow: hidden;
+	display: inline;
+}
+.ditu_t1_mtxt .star .redstar {
+	background: url(/static/images/star2.png) no-repeat;
+	width: 9px;
+	height: 9px;
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: middle;
+}
+.ditu_t1_mtxt .star .graystar {
+	background: url(/static/images/star2.png) -9px 0 no-repeat;
+	width: 9px;
+	height: 9px;
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: middle;
+}
+
+.std_dplb3 .star {
+	overflow: hidden;
+	display: inline;
+}
+.std_dplb3 .star .redstar {
+	background: url(/static/images/star2.png) no-repeat;
+	width: 9px;
+	height: 9px;
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: middle;
+}
+.std_dplb3 .star .graystar {
+	background: url(/static/images/star2.png) -9px 0 no-repeat;
+	width: 9px;
+	height: 9px;
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: middle;
+}
+</style>
+<!--{eval $_GET['cbrand']=$_GET['cbrand']? $_GET['cbrand']: 0;}-->	
+<!--{eval $_GET['brand']=$_GET['brand']? $_GET['brand']: 0;}-->
+<!--{eval $_GET['sshop']=$_GET['sshop']? $_GET['sshop']: 0;}-->
+<!--{eval $_GET['pro']=$_GET['pro']? $_GET['pro']: 0;}-->
+<!--{eval $_GET['reg']=$_GET['reg']? $_GET['reg']: 0;}-->
+<!--{if $_GET['cbrand']=="0"&&$_GET['brand']=="0"&&$_GET['sshop']=="0"&&$_GET['pro']=="0"&&$_GET['reg']=="0"}-->		
+<div style="width:960px; margin:10px auto 10px auto"><!--{ad/custom_184}--></div>
+<!--{/if}-->   
+<div class="wap">	
+	<div class="std_heqian clearfix">
+    	<div class="std_mian1_qian1"><a>实体店</a></div>  
+        <div class="clear"></div>
+        <div class="std_mian1_qian3"><a href="{PORTAL_HOST}dianpu-public" target="_blank">申请店铺</a></div>
+    </div>
+	<div class="std_mian1 yuanjiao">
+    	<div class="std_shengf">		
+        	<div class="std_shengf_l">省&nbsp;份：</div>
+            <div class="std_shengf_r"><a {if !$_GET['pro']} class="on"{/if} href="{PORTAL_HOST}dianpu-0-0-0-{$_GET['cbrand']}-{$_GET['brand']}-3-1" class="abule">全国</a>
+				<!--{eval $regionData = ForumOptionShop::getRegionListbyshop($_GET['cbrand'],$_GET['brand']);}-->				
+				<!--{if $regionData}-->									
+				<!--{loop $regionData $type}-->
+				<!--{if $type['upid'] == 0}-->  
+				<a href="{PORTAL_HOST}dianpu-{$type['catid']}-0-0-{$_GET['cbrand']}-{$_GET['brand']}-3-1" {if $_GET['pro']==$type['catid']} class="on"{/if}>$type['name']</a>
+				<!--{/if}-->    
+				<!--{/loop}-->
+				<!--{/if}-->   			
+				
+				<!--{if $_GET['pro']}-->	
+				<!--{eval $region= ForumOptionShop::getRegionlist($_GET['pro'],$_GET['cbrand'],$_GET['brand']);}-->
+				<!--{if $region}-->	
+            	<div class="a_dianj">
+					<!--{loop $region $reg}-->			 
+                	<a href="{PORTAL_HOST}dianpu-{$reg['upid']}-{$reg['catid']}-0-0-0-3-1" {if $_GET['reg']==$reg['catid']} class="on"{/if}>$reg['name']</a>	
+					<!--{/loop}-->
+                </div>
+				<!--{/if}-->  
+				<!--{/if}-->
+				
+            </div>
+            <div class="clear"></div>
+        </div>
+		
+		<!--{if $_GET['pro']}-->	
+        <div class="std_shengf">
+        	<div class="std_shengf_l">分&nbsp;类：</div>
+            <div class="std_shengf_r">
+				
+				<a href="{PORTAL_HOST}dianpu-{$_GET['pro']}-{$_GET['reg']}-0-{$_GET['cbrand']}-{$_GET['brand']}-3-1" {if $_GET['sshop']==''} class="on"{/if} class="abule">不限</a>
+				<!--{eval $jiebian= ForumOptionShop::isjiebian($_GET['pro'],$_GET['reg']);}-->
+				<!--{if $jiebian}-->
+				<a href="{PORTAL_HOST}dianpu-{$_GET['pro']}-{$_GET['reg']}-1-0-0-3-1" {if $_GET['sshop']=='1'} class="on"{/if} class="abule">街边店</a>
+				<!--{/if}-->
+				<!--{eval $sshop= ForumOptionShop::getsShoplist($_GET['pro'],$_GET['reg']);}-->
+				<!--{if $sshop}-->	
+				<a href="{PORTAL_HOST}dianpu-{$_GET['pro']}-{$_GET['reg']}-2-0-0-3-1" {if $_GET['sshop']>1} class="on"{/if} class="abule">商场店</a>
+            	<!--{if $_GET['sshop']>=2}-->	
+				<div class="a_dianj">					
+					<!--{loop $sshop $sp}-->		
+                	<a href="{PORTAL_HOST}dianpu-{$_GET['pro']}-{$_GET['reg']}-$sp['id']-0-0-3-1" {if $_GET['sshop']==$sp['id']} class="on"{/if}>$sp['market']</a>
+					<!--{/loop}-->
+                </div>
+				<!--{/if}-->
+				<!--{/if}--> 
+            </div>
+            <div class="clear"></div>
+        </div>
+		<!--{/if}-->
+		
+		<!--{eval $cbrand= ForumOptionShop::getchainlist($_GET['pro'],$_GET['reg'],$_GET['sshop']);}-->		
+		<!--{if $cbrand }-->
+        <div class="std_shengf">
+        	<div class="std_shengf_l">连&nbsp;锁：</div>
+            <div class="std_shengf_r" style="height: 21px;overflow: hidden;" id="ls">				
+				<a href="{PORTAL_HOST}dianpu-{$_GET['pro']}-{$_GET['reg']}-{$_GET['sshop']}-0-{$_GET['brand']}-3-1" {if $_GET['cbrand']==''} class="on"{/if} class="abule">不限</a>
+							
+				<!--{loop $cbrand $cb}-->			 
+				<a href="{PORTAL_HOST}dianpu-{$_GET['pro']}-{$_GET['reg']}-{$_GET['sshop']}-{$cb['id']}-0-3-1" {if $_GET['cbrand']==$cb['id']} class="on"{/if}>$cb['chainbrand']</a>
+			
+				<!--{/loop}-->
+				
+			</div>
+			<!--{if count($cbrand)>=10}-->	
+            <div class="std_shengf_g"><a href="javascript:;" id="lsmore">更多</a></div>
+			<!--{/if}-->
+            <div class="clear"></div>
+        </div>
+		<!--{/if}-->
+		<!--{eval $brand= ForumOptionShop::getbrandlist($_GET['pro'],$_GET['reg'],$_GET['sshop']);}-->
+		<!--{if $brand }-->
+        <div class="std_shengf std_pinpai">
+        	<div class="std_shengf_l">品&nbsp;牌：</div>            
+			<div class="std_shengf_r" style="height: 21px;overflow: hidden;" id="pp">
+				<a href="{PORTAL_HOST}dianpu-{$_GET['pro']}-{$_GET['reg']}-{$_GET['sshop']}-{$_GET['cbrand']}-0-3-1" {if $_GET['brand']==''} class="on"{/if} class="abule">不限</a>
+				
+				<!--{loop $brand $bd}-->	
+				<a href="{PORTAL_HOST}dianpu-{$_GET['pro']}-{$_GET['reg']}-{$_GET['sshop']}-0-$bd['id']-3-1" {if $_GET['brand']==$bd['id']} class="on"{/if}>$bd['brand']</a>
+
+				<!--{/loop}-->
+			</div>
+			<!--{if count($brand)>=8}-->	
+            <div class="std_shengf_g"><a href="javascript:;" id="ppmore">更多</a></div>
+			<!--{/if}-->
+            <div class="clear"></div>
+        </div>
+		<!--{/if}-->
+        <script type="text/javascript">		
+			;(function($){
+				$("#lsmore").click(function(){				
+				  if($("#ls").css("height")!='21px'){
+					$("#ls").css("height",'21px');
+					$("#lsmore").text("更多").removeClass("std_shengf_g1");
+				  }else{
+					$("#ls").css("height","auto");
+					$("#lsmore").text("收起").addClass("std_shengf_g1");
+				  }			 
+				});
+				$("#ppmore").click(function(){				
+				  if($("#pp").css("height")!='21px'){
+					$("#pp").css("height",'21px');
+					$("#ppmore").text("更多").removeClass("std_shengf_g1");
+				  }else{
+					$("#pp").css("height","auto");
+					$("#ppmore").text("收起").addClass("std_shengf_g1");
+				  }			 
+				})		
+			})(jQuery);
+		</script>
+    </div>	
+	
+    <div class="std_mian_tiao">
+    	<div style="float:left">			
+			<!--{if $_GET['pro']}-->
+			<!--{eval $sf= ForumOptionShop::getProvince($_GET['pro']);}-->
+			<a href="{PORTAL_HOST}dianpu-0-0-$_GET['sshop']-{$_GET['cbrand']}-{$_GET['brand']}-3-1">$sf['name']</a>
+			<!--{/if}-->
+			
+			<!--{if $_GET['reg']}-->
+			<!--{eval $rg= ForumOptionShop::getProvince($_GET['reg']);}-->
+			<a href="{PORTAL_HOST}dianpu-{$_GET['pro']}-0-{$_GET['sshop']}-{$_GET['cbrand']}-{$_GET['brand']}-3-1">$rg['name']</a>
+			<!--{/if}-->
+						
+			<!--{if $_GET['sshop']==0&&$_GET['sshop']!=''}-->			
+			<a href="{PORTAL_HOST}dianpu-{$_GET['pro']}-{$_GET['reg']}-0-{$_GET['cbrand']}-{$_GET['brand']}-3-1">街边店</a>
+			<!--{/if}-->			
+			<!--{if $_GET['sshop']}-->			
+			<a href="{PORTAL_HOST}dianpu-{$_GET['pro']}-{$_GET['reg']}-0-{$_GET['cbrand']}-{$_GET['brand']}-3-1">商场店</a>
+			<!--{if $_GET['sshop']!=1}-->	
+			<!--{eval $mk= ForumOptionShop::getMarketById($_GET['sshop']);}-->
+			<!--{if $mk}-->		
+			<a href="{PORTAL_HOST}dianpu-{$_GET['pro']}-{$_GET['reg']}-2-{$_GET['cbrand']}-{$_GET['brand']}-3-1">$mk['market']</a>
+			<!--{/if}-->
+			<!--{/if}-->
+			<!--{/if}-->
+						
+			<!--{if $_GET['cbrand']}-->
+			<!--{eval $cbrand= ForumOptionShop::getChainBrandById($_GET['cbrand']);}-->
+			<!--{if $cbrand}-->		
+			<a href="{PORTAL_HOST}dianpu-{$_GET['pro']}-{$_GET['reg']}-{$_GET['sshop']}-0-{$_GET['brand']}-3-1">$cbrand['chainbrand']</a>
+			<!--{/if}-->
+			<!--{/if}-->
+						
+			<!--{if $_GET['brand']}-->
+			<!--{eval $brand= ForumOptionShop::getSBrandById($_GET['brand']);}-->
+			<!--{if $brand}-->		
+			<a href="{PORTAL_HOST}dianpu-{$_GET['pro']}-{$_GET['reg']}-{$_GET['sshop']}-{$_GET['cbrand']}-0-3-1">$brand['brand']</a>
+			<!--{/if}-->
+			<!--{/if}-->			
+		</div>
+        <div style="float:right; margin-right:10px;">共有<span>$_G['forum_threadcount']</span>家店铺</div>
+        <div class="clear"></div>
+    </div>			
+	{eval $_G['page'] = max(1, intval($_G['gp_page']));}
+	{eval $condition = array();}
+	{if !empty($_GET['pro'])}
+		{eval $condition['pro'] = $_GET['pro'];}
+	{/if}
+	{if !empty($_GET['reg'])}
+		{eval $condition['reg'] = $_GET['reg'];}
+	{/if}
+	{if !empty($_GET['sshop'])||$_GET['sshop']==0}
+		{eval $condition['sshop'] = $_GET['sshop'];}
+	{/if}
+	{if !empty($_GET['cbrand'])}
+		{eval $condition['cbrand'] = $_GET['cbrand'];}
+	{/if}
+	{if !empty($_GET['brand'])}
+		{eval $condition['sbrand'] = $_GET['brand'];}
+	{/if}
+	
+	{if ($_G['gp_orderby']=='heats'&&$_GET['filter']=='')}
+		{eval $_G['gp_orderby']="s.score";}
+	{/if}	
+	{if ($_GET['filter'])}	
+		{if ($_GET['filter']=='digest')}
+		{eval $_G['gp_orderby']="s.score";}
+		{elseif ($_GET['filter']=='score')}
+		{eval $_G['gp_orderby']="s.".$_GET['filter'];}
+		{else}	
+		 {eval $_G['gp_orderby']="t.".$_GET['filter'];}
+		{/if}	
+	{/if}
+	{if !empty($_GET['key'])}
+		{eval $condition['tj'] = $_GET['key'];}
+	{/if}
+	<!--{eval $list = ForumOptionShop::getShopList($condition,$_G['gp_orderby']." DESC",(($_G['page']-1)*20).',20');}-->	
+    <div class="mian std_mian2">
+    	<div class="mian_left std_mian2_l yuanjiao">
+        	<div class="mian_tit clearfix">
+            	<p style="float:left">店铺列表</p>
+            	<div class="std_paixu">
+                	<a >排序</a><!--{if $_GET['key']}--><a href="{PORTAL_HOST}dianpu-{eval echo urlencode($_GET['key'])}-1-{$_G['page']}" class="px1 <!--{if $_GET['filter']=='dateline'}--> on<!--{/if}-->">最&nbsp;新</a><!--{else}--><a href="{PORTAL_HOST}dianpu-{$_GET['pro']}-{$_GET['reg']}-{$_GET['sshop']}-{$_GET['cbrand']}-{$_GET['brand']}-1-{$_G['page']}" class="px1 <!--{if $_GET['filter']=='dateline'}-->on<!--{/if}-->">最&nbsp;新</a><!--{/if}--><!--{if $_GET['key']}--><a href="{PORTAL_HOST}dianpu-{eval echo urlencode($_GET['key'])}-2-{$_G['page']}" class="px1<!--{if $_GET['filter']=='views'}--> on<!--{/if}-->">浏&nbsp;览</a><!--{else}--><a href="{PORTAL_HOST}dianpu-{$_GET['pro']}-{$_GET['reg']}-{$_GET['sshop']}-{$_GET['cbrand']}-{$_GET['brand']}-2-{$_G['page']}" class="px1<!--{if $_GET['filter']=='views'}--> on<!--{/if}-->">浏&nbsp;览</a><!--{/if}--><!--{if $_GET['key']}--><a href="{PORTAL_HOST}dianpu-{eval echo urlencode($_GET['key'])}-3-{$_G['page']}" class="px1<!--{if $_GET['filter']=='score'}--> on<!--{/if}-->">评&nbsp;分</a><!--{else}--><a href="{PORTAL_HOST}dianpu-{$_GET['pro']}-{$_GET['reg']}-{$_GET['sshop']}-{$_GET['cbrand']}-{$_GET['brand']}-3-{$_G['page']}" class="px1<!--{if $_GET['filter']=='score'||$_GET['filter']==''}--> on<!--{/if}-->" style="border:0;">评&nbsp;分</a><!--{/if}-->
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="std_dplb">
+            	<div class="std_dplb1">店铺详情</div>
+                <div class="std_dplb2">浏览数</div>
+                <div class="std_dplb3">综合评分</div>
+                <div class="clear"></div>
+            </div>
+            <!--  店铺列表循环开始-->			
+			<!--{if $list}-->
+			<!--{loop $list $shop}-->
+            <div class="std_dplb_m">
+            	<div class="std_dplb1">
+					<div class="dplb_L"><a href="{PORTAL_HOST}dianpu-$shop[tid]" target="_blank"><img src="$shop['sPic'].thumb200.jpg" /></a></div>
+                    <div class="dplb_R">
+                    	<p><a href="{PORTAL_HOST}dianpu-$shop[tid]" target="_blank">$shop[sName]</a></p>
+                        <p>
+							<!--{eval $province = ForumOptionShop::getRegionById($shop['provinceid']);}-->
+							<!--{eval $region = ForumOptionShop::getRegionById($shop['regionid']);}-->
+							<!--{eval $sy = ForumOptionShop::getMarketById($shop['marketid']);}-->	
+							<!--{if $province['name']}-->							
+							$province['name']&nbsp;&nbsp;
+							<!--{/if}-->
+							<!--{if $region['name']}-->
+							$region['name']&nbsp;&nbsp;
+							<!--{/if}-->						
+							<!--{if $shop[marketid]!=0}-->商场店<!--{else}-->街边店<!--{/if}-->
+							<!--{if $sy}-->&nbsp;&nbsp;$sy['market']<!--{/if}-->							
+						</p>
+                        <p>地址：$shop[addr]</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="std_dplb2" style="padding-top:25px">$shop[views]</div>				
+                <div class="std_dplb3" style="padding-top:15px">
+                	<div class="pf">$shop[score]</div>
+                    <div style="margin-top:3px;">
+                        {eval $star = $shop['score'];}
+                        {if $star}
+                        <span class="star">
+                            {eval for ($i = 0; $i < 5; $i++):}
+                            {if $i < $star/2}<span class="redstar"></span>{else}<span class="graystar"></span>{/if}
+                            {eval endfor;}
+                        </span>
+                        {/if}
+                    </div>	
+				</div>
+                <div class="clear"></div>
+            </div>				
+			<!--{/loop}-->
+			<!--{else}-->
+			<div class="std_dplb_m">
+			没有相应店铺信息
+			</div>	
+			<!--{/if}-->	
+			<div class="listPageBox clearfix">
+				$multipage
+			</div>         
+        </div>		
+        <div class="mian_right std_mian2_r">
+        	
+            <div class="mian_rightbox yuanjiao">
+            	<div class="mian_tit1">
+            		<p>最新店铺</p>
+             	</div>
+                <div class="ditu_t1">					
+					<!--{eval $hot= ForumOptionShop::getHotShopList('s.sid');}-->
+					<!--{loop $hot $shop}-->
+                	<div class="ditu_t1_m">
+						<div class="ditu_t1_mpic"><img src="$shop['sPic'].thumb200.jpg" /></div>
+                        <div class="ditu_t1_mtxt">
+                        	<a href="{PORTAL_HOST}dianpu-$shop[tid]" target="_blank">$shop['sName']</a>
+                            <div style=" margin-top:5px;">$shop['dateline']</div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+					<!--{/loop}-->                
+                </div>            
+            </div>
+	    <!--{if $_GET['cbrand']=="0"&&$_GET['brand']=="0"&&$_GET['sshop']=="0"&&$_GET['pro']=="0"&&$_GET['reg']=="0"}-->
+            <div style="margin-bottom:15px;">
+            <!--{ad/custom_194}-->
+            </div>
+	    <!--{/if}-->
+            <div class="mian_rightbox yuanjiao">
+            	<div class="mian_tit">
+            		<p>联系我们</p>
+             	</div>
+                <div class="ditu_t1" style="color:#000;">					
+                	<div style="padding:10px 0 0 15px; line-height:1.8;">
+                    	QQ：2229115492 <br />
+						论坛ID：mboutside2011<br />
+						
+                    </div>               
+                </div>            
+            </div>
+	    
+	    <!--{eval $hwzb= ForumOptionShop::getZbjyatOutShop();}-->
+	     <!--{if $hwzb}-->	
+	     <div class="mian_rightbox yuanjiao">
+		<div class="mian_tit">
+			<p style="float:left;"><a href="http://bbs.8264.com/forum-174-1.html" target="_blank">打折促销信息</a></p>			
+			<a href="http://bbs.8264.com/forum.php?mod=post&action=newthread&fid=174" target="_blank" style="float:right; font-size:13px; padding:3px 10px 0px 0px; color:#ff6600;">发布信息</a>
+            <div class="clear"></div>
+        </div>
+		<div class="zbjylist">
+        	<ul>
+            	<!--{loop $hwzb $zb}-->
+            	<li><a href="http://bbs.8264.com/thread-$zb['tid']-1-1.html" target="_blank">$zb['subject']</a></li>
+                <!--{/loop}-->
+		 </ul>
+		</div>              
+	     </div>
+	    <!--{/if}-->
+	    
+        </div>
+        <div class="clear"></div>
+    </div>	
+
+</div>
+
+<!--{subtemplate common/float_guide}-->
+<!--{subtemplate common/footer_8264_new}-->

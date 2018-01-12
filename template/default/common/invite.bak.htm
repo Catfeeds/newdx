@@ -1,0 +1,142 @@
+<!--{template common/header}-->
+<link href="http://static.8264.com/static/css/home/misc_invite.css?{VERHASH}" rel="stylesheet" type="text/css">
+<!--{if !$_G['inajax']}-->
+<div id="pt" class="bm cl">
+	<!--{subtemplate common/simplesearchform}-->
+	<div class="z"><a href="./" class="nvhm" title="{lang homepage}">$_G['setting']['bbname']</a> <em>&rsaquo;</em> {lang invite}</div>
+</div>
+<div id="ct" class="wp cl">
+	<div class="mn">
+		<div class="bm bw0">
+			<h1 class="mt">{lang invite_friend}$invitename</h1>
+			<div class="usd usd2">
+<!--{else}-->
+		<div id="main_messaqge">
+			<h3 class="flb">
+				<em id="returnmessage4">{lang invite_friend}$invitename</em>
+				<span>
+					<!--{if $_G['inajax']}--><a href="javascript:;" class="flbc" onclick="hideWindow('invite')" title="{lang close}">{lang close}</a><!--{/if}-->
+				</span>
+			</h3>
+			<div class="usd">
+<!--{/if}-->
+				<ul class="cl">
+					<li>
+						<p>{lang invite_orderby_name}</p>
+						<p class="mtn"><input type="text" name="username" size="25" id="username" class="px" value="" autocomplete="off" /></p>
+						<script type="text/javascript">
+							var invitefs;
+							var clearlist = 0;
+						</script>
+					</li>
+					<li>
+						<p>{lang invite_orderby_friend}</p>
+						<p class="mtn">
+							<select class="ps" onchange="clearlist=1;getUser(1, this.value)">
+								<option value="0">{lang invite_all_friend}</option>
+								<!--{loop $friendgrouplist $groupid $group}-->
+									<option value="$groupid">$group</option>
+								<!--{/loop}-->
+							</select>
+						</p>
+					</li>
+				</ul>
+				<div class="tbx">
+					<span class="y">{lang invite_still_choose}(<strong id="remainNum">0</strong>){lang unit}</span>
+					<span id="showUser_0" onclick="invitefs.showUser(0)" class="a brs">{lang invite_all_friend}</span>
+					<span id="showUser_1" onclick="invitefs.showUser(1)">{lang selected}(<strong id="selectNum">0</strong>)</span>
+					<span id="showUser_2" onclick="invitefs.showUser(2)">{lang unselected}(<cite id="unSelectTab">0</cite>)</span>
+                    <span id="ext_allselectbtn" class="a brs" onclick="ext_allselect('friends',1);">全选</span>
+				</div>
+			</div>
+			<ul class="usl cl{if empty($_G['inajax'])} usl2{/if}" id="friends"></ul>
+			<script type="text/javascript">
+            	function ext_allselect(ulid,status){
+					ext_btn = document.getElementById('ext_allselectbtn');
+					ext_ul = document.getElementById(ulid);
+					ext_li = ext_ul.getElementsByTagName("li");
+					for(var i=0; i<ext_li.length; i++){
+						//判断不超过100个好友
+						if(i < 1000){
+							ext_a = ext_li[i].getElementsByTagName("a");
+							invitefs.select(ext_a[0].id);
+						}						
+					}
+					if(status){
+						ext_btn.innerHTML = "取消全选";
+						ext_btn.onclick = function(){
+						    ext_allselect('friends',0);	
+						};
+					}else{
+						ext_btn.innerHTML = "全选";
+						ext_btn.onclick = function(){
+						    ext_allselect('friends',1);	
+						};
+					}
+				}
+            </script>
+			<script type="text/javascript">				
+				var page = 1;
+				var gid = -1;
+				var showNum = 0;
+				var haveFriend = true;
+				function getUser(pageId, gid) {
+					page = parseInt(pageId);
+					gid = isUndefined(gid) ? -1 : parseInt(gid);
+					var x = new Ajax();
+					x.get('home.php?mod=spacecp&ac=friend&op=getinviteuser&inajax=1&page='+ page + '&gid=' + gid + '&' + Math.random(), function(s) {
+						var data = eval('('+s+')');
+						var singlenum = parseInt(data['singlenum']);
+						var maxfriendnum = parseInt(data['maxfriendnum']);
+						invitefs.addDataSource(data, clearlist);
+						haveFriend = singlenum && singlenum == 1000 ? true : false;
+						if(singlenum && invitefs.allNumber < 1000 && invitefs.allNumber < maxfriendnum && maxfriendnum > 1000 && haveFriend) {
+							page++;
+							getUser(page);
+						}
+					});
+				}
+				function selector() {
+					var num=<!--{eval echo $count;}-->;
+					var parameter = {'searchId':'username', 'showId':'friends', 'formId':'inviteform', 'showType':1, 'handleKey':'invitefs', 'maxSelectNumber':'1000','allNumber':num, 'selectTabId':'selectNum', 'unSelectTabId':'unSelectTab', 'maxSelectTabId':'remainNum'};invitefs = new friendSelector(parameter);
+					<!--{if $inviteduids}-->
+					invitefs.addFilterUser([$inviteduids]);
+					<!--{/if}-->
+					var listObj = $('friends');
+					listObj.onscroll = function() {
+						if(this.scrollTop >= (this.scrollHeight/5-5)) {
+							page++;
+							gid = isUndefined(gid) ? -1 : parseInt(gid);
+							if(haveFriend) {
+								getUser(page, gid);
+							}
+						}
+					}
+					getUser(page);
+				}
+				var scriptNode = document.createElement("script");
+				scriptNode.type = "text/javascript";
+				scriptNode.src = '{$_G[setting][jspath]}home_friendselector.js?{VERHASH}';
+				if(BROWSER.ie) {
+					scriptNode.onreadystatechange = function () {
+						if(scriptNode.readyState == 'loaded' || scriptNode.readyState == 'complete') {
+							selector();
+						}
+					}
+				} else {
+					scriptNode.onload = selector;
+				}
+				$('append_parent').appendChild(scriptNode);				
+			</script>
+			<form method="post" autocomplete="off" name="invite" id="inviteform" action="misc.php?mod=invite&action=$_G[gp_action]&id=$_G[gp_id]">
+				<input type="hidden" name="formhash" value="{FORMHASH}" />
+				<input type="hidden" name="referer" value="$_G['referer']" />
+				<!--{if !empty($_G['inajax'])}--><input type="hidden" name="handlekey" value="$_G['gp_handlekey']" /><!--{/if}-->
+				<p class="o pns{if empty($_G['inajax'])} mtw{/if}"><b style="margin-right:20px;color:#F26C4F;cursor:pointer;">邀请信息将保留15天，过期后将被删除</b><button type="submit" class="pn pnc" name="invitesubmit" value="yes"><strong>{lang invite_send}</strong></button></p>
+			</form>
+		</div>
+<!--{if !$_G['inajax']}-->
+	</div>
+</div>
+<!--{/if}-->
+<!--{template common/footer}-->

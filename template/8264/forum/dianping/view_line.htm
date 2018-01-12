@@ -1,0 +1,1346 @@
+<!--{subtemplate forum/dianping/header}-->
+<link rel="stylesheet" type="text/css" href="{$_G[siteurl]}{STATICURL}css/dianping/xl_detail.css?{VERHASH}" />
+<style type="text/css">
+#mdly { margin: 20px 0 0 10px; padding: 0; width: 200px; height: auto; background: none!important; }
+</style>
+<script type="text/javascript" src="{$_G['setting']['jspath']}forum_moderate.js?{VERHASH}"></script>
+<script type="text/javascript" src="{$_G['setting']['jspath']}calendar.js?{VERHASH}"></script>
+<script type="text/javascript" src="static/js/formValidator-4.0.1.js"></script>
+<script type="text/javascript" src="static/js/dianping/line_help.js"></script>
+<script type="text/javascript">
+var ie6=false;
+if(/msie/.test(navigator.userAgent.toLowerCase()) && 'undefined' == typeof(document.body.style.maxHeight)){
+	ie6=true;
+}
+var initmsg = "";
+var tid 	= {$viewdata['tid']};
+var fid 	= {$_G['fid']};
+</script>
+{eval $arrStar = array("5"=>"吐血推荐","4"=>"重点推荐","3"=>"一般推荐","2"=>"最好别去","1"=>"千万别去");}
+<div id="wp">
+	<div class="layout mt50">
+		<div>
+			<h1 class="skiName">
+				<span class="tit"><a href="{$url}&act=showview&tid={$viewdata[tid]}" title="{$viewdata['name']}">$viewdata['name']</a></span>
+				<!--管理权限-->
+				{if ( $_G['forum']['ismoderator'] && $_G['group']['alloweditpost'] && (!in_array($post['adminid'], array(1, 2, 3)) || $_G['adminid'] <= $post['adminid']) )}
+				<div class="guanli" id="glistBox">
+				<a class="gl"></a>
+				<div class="gl_list" id="glist">
+	                	<ul>
+							<li>
+								{if ($_G['forum']['ismoderator'] && $_G['group']['alloweditpost'])}
+								<a href="{$url}&act=dopost&do=edit&tid={$_G[tid]}&pid={$viewdata[pid]}&page=1{if !empty($_G[gp_modthreadkey])}&modthreadkey=$_G[gp_modthreadkey]{/if}">{lang edit}</a>
+								{/if}
+							</li>
+							<li><!--{if $_G['group']['allowdelpost']}--><a href="{$url}&act=deleteit&tid={$_G[tid]}" onclick="return confirm('确认删除这个{$modname}？删除后将不可恢复！');">{lang modmenu_deletethread}</a><!--{/if}--></li>
+							<!--{if ($_G['forum']['ismoderator'] && $_G['group']['alloweditpost'] && (!in_array($post['adminid'], array(1, 2, 3)) || $_G['adminid'] <= $post['adminid']) || ($_G['groupid'] == 1 ||$_G['groupid']== 45))}-->
+							<li class="setpass" {if $viewdata['enable']==1}style="display:none;"{/if}><a class="tgsh" href="javascript:;">通过审核</a></li>
+							<li class="setcancel" {if $viewdata['enable']==0}style="display:none;"{/if}><a class="qxsh" href="javascript:;">取消审核</a></li>
+							<!--{/if}-->
+				</ul>
+				</div>
+				</div>
+				{/if}
+				<!--管理权限end-->
+			</h1>
+		</div>
+		<!--左边-->
+		<div class="layoutLeft">
+			<!--简介-->
+			<div class="intro mb25">
+				<h2 class="h2Titip">
+					<div class="hovertab tab">{$modname}简介</div>
+					<a href="{$url}&act=showview&tid={$viewdata['tid']}#writecommon" class="wydp_orangelink">我要点评</a>
+					<div class="wydp_warpten" style="display: none;">
+						<div class="wydp_border">
+							<div class="wydp_arrow"></div>
+							<div class="wydp_bluebg">写点评兑换礼品</div>
+							<div class="wydp_info">
+								<ul>
+									<li>
+										<span class="num_blue">1</span>
+										<span class="wydp_info_con">请写下自己的真实感受，严禁抄袭</span>
+										<div class="clboth_0"></div>
+									</li>
+									<li>
+										<span class="num_blue">2</span>
+										<span class="wydp_info_con">点评被奖励8264币后，请到论坛兑换礼品</span>
+										<div class="clboth_0"></div>
+									</li>
+								</ul>
+							</div>
+							<a href="http://bbs.8264.com/forum-483-1.html" target="_blank" class="dh_bule"></a>
+						</div>
+					</div>
+					<div class="clboth_0"></div>
+				</h2>
+				<div class="bd tab_rel">
+					{if $cityids}
+						经过地域：
+						{eval $_t_index = 0;}
+						{loop $cityids $b $c}
+							{if $_t_index > 0}
+							--
+							{/if}
+							<a target="_blank" href="{$url}&act=showlist&order=lastpost&lType=0&lTime=0&province={$crossregin[$c]['provinceid']}&city={$crossregin[$c]['id']}&page=1">{$crossregin[$c]['name']}</a>
+							{eval $_t_index++;}
+						{/loop}
+					{/if}
+					<div><br></div>
+					<div class="info" id="info_p">
+						<p>{$viewdata['message']}</p>
+					</div>
+					<div class="p_more" id="slidemore" style="display:none;">查看更多</div>
+				</div>
+				{if $viewdata["map"]}
+				<div class="tab_rel" style="padding:0;">
+					<div class="map">
+						<iframe id="mapiframe" style='height:450px;width:100%;border:none;overflow: hidden;' src='{$viewdata["map"]}'></iframe>
+					</div>
+				</div>
+				{/if}
+			</div>
+			<!--简介end-->
+			<!--{subtemplate forum/dianping/dpad}-->
+			<!--我的点评-->
+			<div class="commentBox" id="myComment"{if !$my_comment} style="display:none;"{/if}>
+				<h2 class="h2Tit">我的点评&nbsp;&nbsp;&nbsp;<span>假如您的点评没有奖励8264币，请联系工作人员QQ1919501975询问原因</span></h2>
+				<dl class="cmtDl">
+					<dd class="avatar"><a href="home.php?mod=space&uid={$_G['uid']}" target="_blank" ><!--{avatar($_G['uid'], small)}--></a></dd>
+					<dd class="cmtCont">
+						<div class="tit">
+							<span class="usrName"><a href="home.php?mod=space&uid={$_G['uid']}" target="_blank"  class="usrName">{$_G['username']}</a></span>
+							<span class="date">发表于 {$my_comment['dateline']}</span>
+							<!--{if $my_comment['rate']}-->
+							<span class="bi"><a href="http://bbs.8264.com/forum-483-1.html" target="blank"><img align="absmiddle" title="奖励8264币" alt="奖励8264币" src="static/image/common/8264b.gif"></a></span>
+							<!--{/if}-->
+							<input type="hidden" name="" id="starnum" value="{$my_comment['starnum']}" />
+						</div>
+						<ul class="goodBad">
+							<li {if !$my_comment['ext1']} style="display:none;"{/if}>
+								<span class="leftIco good">时间</span>
+								<div class="cont"><p id="goodpoint">
+								{if $my_comment['isTian']}
+								{$my_comment['ext1_show']}&nbsp;&nbsp;-&nbsp;&nbsp;{$my_comment['ext2_show']}&nbsp;&nbsp;&nbsp;&nbsp;共计{$my_comment['timeTotal']}
+								{else}
+								{$my_comment['ext1_show']}&nbsp;&nbsp;{$my_comment['ext4']}时&nbsp;&nbsp;-&nbsp;&nbsp;{$my_comment['ext5']}时&nbsp;&nbsp;&nbsp;&nbsp;共计{$my_comment['timeTotal']}
+								{/if}
+								</p></div>
+								<input type="hidden" id="startTime" value="{$my_comment['ext1']}"/>
+								<input type="hidden" id="endTime" value="{$my_comment['ext2']}"/>
+								<input type="hidden" id="startHour" value="{$my_comment['ext4']}"/>
+								<input type="hidden" id="endHour" value="{$my_comment['ext5']}"/>
+								<input type="hidden" id="isTian" value="{$my_comment['isTian']}"/>
+							</li>
+							<li {if !$my_comment['ext3']} style="display:none;"{/if}>
+								<span class="leftIco price">费用</span>
+								<div class="cont"><p id="price">{$my_comment['ext3']}</p></div>
+							</li>
+							<li {if !$my_comment['weakpoint']} style="display:none;"{/if}>
+								<span class="leftIco bad">注意</span>
+								<div class="cont"><p id="weakpoint">{$my_comment['weakpoint']}</p></div>
+							</li>
+							<li>
+								<span class="leftIco all">综合</span>
+								<div class="cont"><p id="message">{$my_comment['message']}</p></div>
+							</li>
+							<li>
+								<span class="leftIco recommend">推荐</span>
+								<div class="cont">
+									<span class="starBox"{if !$my_comment['starnum']} style="display: none;"{/if}>
+										{eval for ($i = 0; $i < 5; $i++):}
+										<span class="{if $i < $my_comment['starnum']}redstar{else}graystar{/if}"></span>
+										{eval endfor;}
+										<i class="diff">{$arrStar[$my_comment['starnum']]}</i>
+									</span>
+								</div>
+							</li>
+						</ul>
+					</dd>
+					<dd class="bottomCont">
+						<!--赞-->
+						<span class="useful{if $my_comment['supports']>0} active{/if}" title="你不能评价自己的点评"><i></i>{if !$my_comment['supports']}0{else}{$my_comment['supports']}{/if}</span>
+						<!--赞 end-->
+						<!--修改-->
+						<span class="ans" id="editBtn_{$my_comment['pid']}"><a href="javascript:;">修改</a></span>
+						<!--修改 end-->
+						{if $my_comment && $_G['adminid'] == 1 && !$my_comment['first']}
+						<span class="normal">
+							<!--管理-->
+							<label for="manage{$my_comment[pid]}">
+							<input type="checkbox" id="manage{$my_comment['pid']}" class="pc" {if !empty($modclick)}checked="checked" {/if}onclick="pidchecked(this);modclick(this, {$my_comment['pid']})" value="{$my_comment['pid']}" autocomplete="off" />
+							{lang manage}
+							</label>&nbsp;
+							<!--管理 end-->
+							<!--评分-->
+							<a id="k_rate" style="color: #666;" href="javascript:;" onclick="showWindow('rate', 'forum.php?mod=misc&action=rate&tid=$_G[tid]&pid=$my_comment[pid]', 'get', -1);return false;" title="加8264币">{lang rate}&nbsp;</a>
+							<!--评分end-->
+							<!--撤销评分-->
+							{if $my_comment['rate'] && $_G['forum']['ismoderator']}
+							<a href="forum.php?mod=misc&action=removerate&tid=$_G[tid]&pid=$my_comment[pid]&page=$page" onclick="showWindow('rate', this.href, 'get', -1)">{lang removerate}</a>
+							{/if}
+							<!--撤销评分end-->
+						</span>
+						{/if}
+					</dd>
+				</dl>
+			</div>
+			<!--我的点评 end-->
+			<!--点评列表-->
+			{if $replylist}
+			<div class="commentBox" id="commentsList">
+                <h2 class="h2Tit">{$viewdata['subject']}的点评</h2>
+				{loop $replylist $v}
+				<dl class="cmtDl">
+					<dd class="avatar"><a href="home.php?mod=space&uid={$v['authorid']}" target="_blank" rel="nofollow" >{avatar($v[authorid], small)}</a></dd>
+					<dd class="cmtCont">
+						<div class="tit">
+							<span class="usrName"><a href="home.php?mod=space&uid={$v['authorid']}" target="_blank" rel="nofollow"  class="usrName">{$v['author']}</a></span>
+                            <span style="color:#A8A8A8;float: left">点评了<a href="forum.php?ctl=line&act=showview&tid={$viewdata[tid]}" style="color:#A8A8A8;" title="{$viewdata['subject']}">{$viewdata['subject']}</a>,</span>
+							<span class="date">发表于 {$v['dateline']}</span>
+							{if $v['rate']}
+							<span class="bi"><a href="http://bbs.8264.com/forum-483-1.html" target="blank"><img align="absmiddle" title="奖励8264币" alt="奖励8264币" src="static/image/common/8264b.gif"></a></span>
+							{/if}
+						</div>
+						<ul class="goodBad">
+							<li {if !$v['ext1']} style="display:none;"{/if}>
+								<span class="leftIco good">时间</span>
+								<div class="cont"><p id="goodpoint">
+								{if $v['isTian']}
+								{$v['ext1_show']}&nbsp;&nbsp;-&nbsp;&nbsp;{$v['ext2_show']}&nbsp;&nbsp;&nbsp;&nbsp;共计{$v['timeTotal']}
+								{else}
+								{$v['ext1_show']}&nbsp;&nbsp;{$v['ext4']}时&nbsp;&nbsp;-&nbsp;&nbsp;{$v['ext5']}时&nbsp;&nbsp;&nbsp;&nbsp;共计{$v['timeTotal']}
+								{/if}
+								</p></div>
+								<input type="hidden" id="startTime" value="{$v['ext1']}"/>
+								<input type="hidden" id="endTime" value="{$v['ext2']}"/>
+								<input type="hidden" id="startHour" value="{$v['ext4']}"/>
+								<input type="hidden" id="endHour" value="{$v['ext5']}"/>
+								<input type="hidden" id="isTian" value="{$v['isTian']}"/>
+							</li>
+							<li class="priceli" {if !$v['ext3']} style="display:none;"{/if}>
+								<span class="leftIco price">费用</span>
+								<div class="cont"><p id="price">{$v['ext3']}</p></div>
+							</li>
+							<li>
+								<span class="leftIco bad">明细</span>
+								<div class="cont">
+									<p id="weakpoint">{$v['weakpoint']}</p>
+								</div>
+							</li>
+							<li>
+								<span class="leftIco all">综合</span>
+								<div class="cont">
+									<p id="message">{$v['message']}</p>
+								</div>
+							</li>
+							<li>
+								<span class="leftIco recommend">推荐</span>
+								<div class="cont">
+									<span class="starBox">
+										{eval for ($i = 0; $i < 5; $i++):}
+										<span class="{if $i < $v['starnum']}redstar{else}graystar{/if}"></span>
+										{eval endfor;}
+										<i class="diff">{$arrStar[$v['starnum']]}</i>
+									</span>
+									<input type="hidden" name="" id="starnum" value="{$v['starnum']}" />
+								</div>
+							</li>
+						</ul>
+					</dd>
+					<dd class="bottomCont">
+						<!--赞-->
+						<span class="useful{if $v['supports']>0} active{/if}"
+						{if $_G['uid'] && !$supportlist[$v['pid']]} id="supportBtn_{$v['pid']}"{/if}
+						{if !$_G['uid']} onclick="javascript:window.location.href = '{$_G[siteurl]}member.php?mod=logging&action=login';return false;"{/if}
+						{if $_G['uid']}
+							{if $supportlist[$v['pid']]}
+							title="你已经评价过了"
+							{else}
+							title="有用"
+							{/if}
+						{else}
+						title="登录后才能进行评价"
+						{/if}><i></i>有用<em>{if !$v['supports']}{else}({$v['supports']}){/if}</em></span>
+						<!--赞 end-->
+						<!--修改-->
+						{if $_G['adminid'] == 1}
+						<span class="ans" id="editBtn_{$v['pid']}"><a href="javascript:;">修改</a></span>
+						{/if}
+						<!--修改 end-->
+						{if $_G['adminid'] == 1 && !$v['first']}
+						<span class="normal">
+							<!--管理-->
+							<label for="manage{$v[pid]}">
+							<input type="checkbox" id="manage{$v[pid]}" class="pc" {if !empty($modclick)}checked="checked" {/if}onclick="pidchecked(this);modclick(this, $v[pid])" value="$v[pid]" autocomplete="off" />
+							{lang manage}
+							</label>&nbsp;
+							<!--管理 end-->
+							<!--评分-->
+							<a id="k_rate" style="color: #666;" href="javascript:;" onclick="showWindow('rate', 'forum.php?mod=misc&action=rate&tid=$_G[tid]&pid=$v[pid]', 'get', -1);return false;" title="加8264币">{lang rate}&nbsp;</a>
+							<!--评分end-->
+							<!--撤销评分-->
+							{if $v['rate'] && $_G['forum']['ismoderator']}
+								<a href="forum.php?mod=misc&action=removerate&tid=$_G[tid]&pid=$v[pid]&page=$page" onclick="showWindow('rate', this.href, 'get', -1)">{lang removerate}</a>
+							{/if}
+							<!--撤销评分end-->
+						</span>
+						{/if}
+					</dd>
+				</dl>
+				{/loop}
+				<!--分页-->
+				<div class="pageBox mb25">{$multipage}</div>
+				<!--分页end-->
+			</div>
+			{/if}
+			<!--点评列表end-->
+			<!--写点评-->
+			<div id="writecommon"></div>
+			{if !$my_comment && $viewdata['enable']==1}
+            {eval $coment_ele_arr = array(
+                        'f_price_focus_des' => $modsetting[initdianping],
+                        'f_price_blur_error' => '您的费用描述不够详细，请列举出行的各项费用',
+                        'f_weakpoint_focus_des' => '提醒他人需要注意的关键事项，如露营点、水源地、岔路口等',
+                        'f_weakpoint_blur_error' => '请详细填写 注意事项 不少于50字',
+                        'f_message_focus_des' => $modsetting[initpost],
+                        'f_message_blur_error' => '请填写综合信息，文字200字以上',
+
+            );}
+			<div class="writeCmt" id="writeCmt_dw">
+                <h2 class="h2Tit">我要点评{$viewdata['subject']}</h2>
+                <span id="fastpostreturn" style="margin-left: 10px;"></span>
+				<form method="post" id="from_post" autocomplete="off" action="">
+					<ul class="writeGoodBad">
+						<li class="mb30">
+							<span class="leftIco good">时间</span>
+							<div class="cont post">
+								<input name="datapicker[]" readonly class="timeText datapicker startPicker" onclick="showcalendar(event, this, '', '', '', 28);" onchange="changeDate()"/> --- <input name="datapicker[]" readonly class="timeText datapicker endPicker" onclick="showcalendar(event, this, '', '', '', 28);"/>&nbsp;&nbsp;&nbsp;&nbsp;
+								<input name="datapicker[]" class="timeText timeHour dataHour startHour" maxlength="2"/><span class="timeHour">时 --- </span><input name="datapicker[]" class="timeText timeHour dataHour endHour" maxlength="2"/><span class="timeHour">时</span>
+                                <div id="date_error" style="padding-top:7px;"></div>
+							</div>
+						</li>
+						<li class="mb30">
+							<span class="leftIco price">费用</span>
+							<div class="cont">
+								<label class="fs14">{$coment_ele_arr['f_price_focus_des']}</label>
+								<textarea name="price" id="f_price" rows="2" class="line5Area"></textarea>
+                                <div id="f_priceTip"></div>
+							</div>
+						</li>
+						<li class="mb30">
+							<span class="leftIco bad">注意</span>
+							<div class="cont">
+								<label class="fs14">{$coment_ele_arr['f_weakpoint_focus_des']}</label>
+								<textarea name="weakpoint" id="f_weakpoint" rows="2" class="line5Area"></textarea>
+                                <div id="f_weakpointTip"></div>
+							</div>
+						</li>
+						<li class="mb18">
+							<span class="leftIco all">综合</span>
+							<div class="cont">
+								<label class="fs14">{$coment_ele_arr['f_message_focus_des']}</label>
+								<textarea name="message" id="f_message" rows="6" class="line5Area "></textarea>
+                                <div id="f_messageTip"></div>
+							</div>
+						</li>
+						<li class="mb30">
+							<span class="leftIco recommend">推荐</span>
+							<div class="cont">
+								<span class="starBox starBoxEdit addComment">
+									<span class="graystar" title="千万别去"></span>
+									<span class="graystar" title="最好别去"></span>
+									<span class="graystar" title="一般推荐"></span>
+									<span class="graystar" title="重点推荐"></span>
+									<span class="graystar" title="吐血推荐"></span>
+								</span>
+								<input type="hidden" name="starnum" id="starnum" value="0" />
+                                <div id="star_error"></div>
+							</div>
+						</li>
+						<li class="sub">
+							<input {if !$_G['uid']} type="button" onclick="showWindow('login', 'member.php?mod=logging&action=login&guestmessage=yes')" {else} type="submit" id="postBtn" {/if} value="" class="publish182x43" />
+						</li>
+					</ul>
+				</form>
+                <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                       $.formValidator.initConfig({
+                           formID: "from_post",
+                           debug: false,
+                           submitOnce: false,
+                           onError:function(msg,obj,errorlist){
+                                },
+                           submitAfterAjaxPrompt: '有数据正在异步验证，请稍等...'
+                       });
+
+                    //费用
+                    $('#f_price')
+                    .formValidator(
+                            {
+                            onShow: "",
+                            onFocus: "<div class=information><div class=lft></div><div class=rht>{$coment_ele_arr['f_price_focus_des']}</div></div>",
+                            onCorrect: "<div class=correct></div>",
+                            defaultValue: ""})
+                    .inputValidator(
+                                {
+                                min: 20,
+                                onError: "<div class=wrong><div class=lft></div><div class=rht>{$coment_ele_arr['f_price_blur_error']}</div></div>"
+                            });
+                    //注意
+                    $('#f_weakpoint')
+                    .formValidator(
+                            {
+                            onShow: "",
+                            onFocus: "<div class=information><div class=lft></div><div class=rht>{$coment_ele_arr['f_weakpoint_focus_des']}</div></div>",
+                            onCorrect: "<div class=correct></div>",
+                            defaultValue: ""})
+                    .inputValidator(
+                                {
+                                min: 100,
+                                onError: "<div class=wrong><div class=lft></div><div class=rht>{$coment_ele_arr['f_weakpoint_blur_error']}</div></div>"
+                            });
+                    //综合
+                    $('#f_message')
+                    .formValidator(
+                            {
+                            onShow: "",
+                            onFocus: "<div class=information><div class=lft></div><div class=rht>{$coment_ele_arr['f_message_focus_des']}</div></div>",
+                            onCorrect: "<div class=correct></div>",
+                            defaultValue: ""})
+                    .inputValidator(
+                                {
+                                min: 400,
+                                onError: "<div class=wrong><div class=lft></div><div class=rht>{$coment_ele_arr['f_message_blur_error']}</div></div>"
+                            });
+                });
+                </script>
+			</div>
+			{/if}
+			<!--写点评end-->
+		</div>
+		<!--左边 end-->
+		<!--右边-->
+		<div class="layoutRight">
+			<div style="margin-bottom:30px;"><!--{ad/custom_268}--></div>
+			<h4 class="r_title_h4">线路评分</h4>
+			<!--评分-->
+			<div class="picShowR">
+			<div class="pingf">
+				<div class="interest_sectl" id="interest_sectl">
+					<div class="star_show">
+						{eval for ($i = 0; $i < 5; $i++):}
+						<span class="{if $i < $star_data['price']/2}{if $star_data['price']/2-$i<1}halfstar{else}redstar{/if}{else}graystar{/if} colorstar"></span>{if $i < $star_data['price']/2}{if $star_data['price']/2-$i<1}&nbsp;{/if}{/if}
+						{eval endfor;}
+						<span class="num">{$star_data['price']}</span>
+						<span class="text"></span>
+					</div>
+					<div class="peoples">(<span class="num">{$star_data['count']}</span>人评分)</div>
+					<div class="star_list">
+						{loop $arrStar $k $v}
+						<div class="star" title="{$v}">
+							{eval for ($i = 0; $i < $k; $i++):}
+							<span class="redstar2"></span>&nbsp;
+							{eval endfor;}
+							{eval for ($i = 0; $i < 5 - $k; $i++):}
+							<span class="graystar2"></span>&nbsp;
+							{eval endfor;}
+							<span class="percent" style="width:{eval echo $star_data['percent'.$k]*0.8}px;"></span>
+							<span class="num">{$star_data['percent'.$k]}%</span>
+						</div>
+						{/loop}
+					</div>
+				</div>
+			</div>
+			</div>
+			<!--评分 end-->
+			
+			
+			
+			
+			<!--下载按钮-->
+			{if $viewdata["map"]}
+			<div class="view_line_fb mb15" style="">
+				{if $gpsShow["filetype"] == 'kml'}
+				<a href="{$url}&act=downloadGps&aid={$gpsShow['aidencode']}" target="_blank" class="btn_downgps"></a>
+				{else}
+				<a href="javascript:void(0);" class="btn_downgps btn_gps"></a>
+				<div class="crly">
+					<a href="{$url}&act=downloadGps&aid={$gpsShow['aidencode']}" target="_blank">gpx格式</a>
+					<a href="{$url}&act=downloadGps&aid={$gpsShow['aidencode']}&iskml=1" target="_blank">kml格式</a>
+				</div>
+				<div class="mncr"></div>
+				<script type="text/javascript">
+				jQuery(document).ready(function($) {
+					$('.btn_gps, .mncr, .crly').hover(function(){
+						clearTimeout(window.gpsBoxCtrl);
+						$(".mncr").show();$(".crly").show();
+					},function(){
+						window.gpsBoxCtrl=setTimeout(function(){$(".mncr").hide();$(".crly").hide();},300);
+					});
+				});
+				</script>
+				{/if}
+			</div>
+			{/if}
+			<!--下载按钮 end-->
+			<!--详细右侧list2开始-->
+			{if $listheats}
+			<div class="r_list">
+				<h4 class="r_title_h4">热门线路</h4>
+				<ul>
+					{loop $listheats $v}
+					<li>
+						<p>
+							<a href="{$url}&act=showview&tid={$v[tid]}" title="{$v['name']}" target="_blank" class="t_c_s">{$v['subject']}</a>
+							<span class="star_s">
+								{eval for ($i = 0; $i < 5; $i++):}
+								<span class="{if $i < $v['score']/2}{if $v['score']/2-$i<1}halfstar{else}redstar{/if}{else}graystar{/if}"></span>
+								{eval endfor;}
+								{if $v['score']!='0.0'}<b style="color:#F98361;">{$v['score']}</b>{else}<b style="color:#a8a8a8;">0.0</b>{/if}
+							</span>
+						</p>
+					</li>
+					{/loop}
+				</ul>
+			</div>
+			{/if}
+			<!--详细右侧list2结束-->
+			<!--详细右侧list1开始-->
+			{if $listprovince}
+			<div class="r_list mb15">
+				<h4 class="r_title_h4">同地区{$modname}</h4>
+				<ul id="tdqli">
+					{loop $listprovince $v}
+					<li style="display:none;">
+						<p>
+							<a href="{$url}&act=showview&tid={$v[tid]}" title="{$v['name']}" target="_blank" class="t_c_s">{$v['subject']}</a>
+							<span class="star_s">
+								{eval for ($i = 0; $i < 5; $i++):}
+								<span class="{if $i < $v['score']/2}{if $v['score']/2-$i<1}halfstar{else}redstar{/if}{else}graystar{/if}"></span>
+								{eval endfor;}
+								{if $v['score']!='0.0'}<b style="color:#F98361;">{$v['score']}</b>{else}<b style="color:#a8a8a8;">0.0</b>{/if}
+							</span>
+						</p>
+					</li>
+					{/loop}
+				</ul>
+				<div class="addmore">加载更多</div>
+			</div>
+			{/if}
+			<!--详细右侧list1结束-->
+		</div>
+		<!--右边end-->
+	</div>
+</div>
+
+<!--点评修改框-->
+<div class="popBox" id="box_view">
+	<div class="bd">
+		<div class="popWriteCmt">
+			<h2><span class="tit">修改点评</span>	</h2>
+			<div style="color: red; display: none;" id="bv_error"></div>
+			<form method="post" autocomplete="off" id="postform">
+			<ul class="writeGoodBad">
+				<li class="mb30">
+					<span class="leftIco good">时间</span>
+					<div class="cont">
+						<input name="datapicker[]" readonly class="timeText datapicker startPicker"  onclick="showcalendar(event, this, '', '', '', 28);"/> ---
+                        <input name="datapicker[]" readonly class="timeText datapicker endPicker"  onclick="showcalendar(event, this, '', '', '', 28);"/>&nbsp;&nbsp;&nbsp;&nbsp;
+						<input name="datapicker[]" class="timeText timeHour dataHour" maxlength="2"/>
+                        <span class="timeHour">时 --- </span>
+                        <input name="datapicker[]" class="timeText timeHour dataHour" maxlength="2"/>
+                        <span class="timeHour">时</span>
+					</div>
+				</li>
+				<li class="mb30">
+					<span class="leftIco price">费用</span>
+					<div class="cont"><textarea name="price" id="price" rows="2" class="line5Area"></textarea></div>
+                    <div id="priceTip"> </div>
+				</li>
+				<li class="mb30">
+					<span class="leftIco bad">注意</span>
+					<div class="cont"><textarea name="weakpoint" id="weakpoint" rows="2" class="line5Area"></textarea></div>
+				</li>
+				<li class="mb18">
+					<span class="leftIco all">综合</span>
+					<div class="cont"><textarea name="message" id="message" rows="6" class="line5Area "></textarea></div>
+				</li>
+				<li class="mb18">
+					<span class="leftIco recommend">推荐</span>
+					<div class="cont">
+						<span class="starBox starBoxEdit">
+							<span class="graystar" title="千万别去"></span>
+							<span class="graystar" title="最好别去"></span>
+							<span class="graystar" title="一般推荐"></span>
+							<span class="graystar" title="重点推荐"></span>
+							<span class="graystar" title="吐血推荐"></span>
+						</span>
+						<span class="starTextTips"></span>
+						<input type="hidden" name="" id="starnum" value="0" />
+					</div>
+				</li>
+
+				<li class="sub"><input type="button" value="" id="boxSubmit" class="modifi182x43"></li>
+			</ul>
+			<input type="hidden" name="pid" id="pid" value="0" />
+			</form>
+		</div>
+		<span class="closeBtn" id="bv_closeBtn">关闭</span>
+	</div>
+</div>
+<!--点评修改框end-->
+<!--管理框-->
+<form method="post" autocomplete="off" name="modactions" id="modactions">
+<input type="hidden" name="formhash" value="{FORMHASH}" />
+<input type="hidden" name="optgroup" />
+<input type="hidden" name="operation" />
+<input type="hidden" name="listextra" value="{$_G[gp_extra]}" />
+</form>
+<div id="mdly" class="fwinmask" style="display:none;">
+	<table cellspacing="0" cellpadding="0" class="fwin">
+		<tr>
+			<td class="t_l"></td>
+			<td class="t_c"></td>
+			<td class="t_r"></td>
+		</tr>
+		<tr>
+			<td class="m_l">&nbsp;&nbsp;</td>
+			<td class="m_c">
+				<div class="f_c">
+					<div class="c">
+						<h3>{lang admin_select}&nbsp;<strong id="mdct" class="xi1"></strong>&nbsp;{lang piece}: </h3>
+						<!--{if $_G['forum']['ismoderator']}-->
+							<!--{if $_G['group']['allowdelpost']}--><a href="javascript:;" onclick="modaction('delpost', '', '', 'forum.php?ctl={$modstr}&act=moderator')">{lang modmenu_deletepost}</a><span class="pipe">|</span><!--{/if}-->
+							<!--{if $_G['group']['allowstickreply']}--><a href="javascript:;" onclick="modaction('stickreply', '', '', 'forum.php?ctl={$modstr}&act=moderator')">{lang modmenu_stickpost}</a><!--{/if}-->
+						<!--{/if}-->
+						<!--{if $_G['forum_thread']['pushedaid'] && $allowpostarticle}--><a href="javascript:;" onclick="modaction('pushplus', '', 'aid=$_G[forum_thread][pushedaid]', 'portal.php?mod=portalcp&ac=article&op=pushplus')">{lang modmenu_pushplus}</a><span class="pipe">|</span><!--{/if}-->
+					</div>
+				</div>
+			</td>
+			<td class="m_r"></td>
+		</tr>
+		<tr>
+			<td class="b_l"></td>
+			<td class="b_c"></td>
+			<td class="b_r"></td>
+		</tr>
+	</table>
+</div>
+<!--管理框end-->
+
+<div class="share_bd_warpten">
+	<ul class="bbs_share_sc">
+		<li class="ps_re" id="share">
+			<a href="javascript:;" class="share"></a>
+			<div class="bdsharebuttonbox share_bd" data-tag="share_1">
+				<a href="javascript:;" class="sina" data-cmd="tsina"></a>
+				<a href="javascript:;" class="qq" data-cmd="qzone"></a>
+				<a href="javascript:;" class="wb" data-cmd="tqq"></a>
+				<a href="javascript:;" class="wx" data-cmd="weixin"></a>
+			</div>
+		</li>
+		<li><a href="home.php?mod=spacecp&ac=favorite&type=thread&id=$_G[tid]" id="m_k_favorite" onclick="showWindow(<!--{if $_G['uid']}-->this.id, this.href, 'get', 0<!--{else}-->'login','member.php?mod=logging&action=login'<!--{/if}-->);" class="sc"><b style="display: none;" id="favoritenumber"></b></a></li>
+		<li><a href="forum.php?mod=forumdisplay&fid=$_G[fid]" class="bbsli" title="返回线路首页"></a></li>
+		<li id="gotop_50"><a style="display: none;" href="javascript:;" class="gotop_50"></a></li>
+	</ul>
+</div>
+<script>
+window._bd_share_config = {
+	common : {
+		//此处放置通用设置
+	},
+	share : [
+		//此处放置分享按钮设置
+		{"tag" : "share_1", "bdSize" : 32}
+	]
+}
+with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+(function($){
+	var ww=$(window).width();
+	var s_bd_r=Math.max((ww-980)/2-60,0);
+	$(".share_bd_warpten").css("right",s_bd_r);
+})(jQuery);
+</script>
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+
+
+
+	//查看更多简介
+	getMoreMessage();
+
+	//ajax分页
+	$("#commentsList").on('click',".pg>a",function(e){
+		e.preventDefault();
+		var tempArr = this.href.split('-');
+		$.get('{$url}',{act:'ajaxreply',tid:parseInt(tempArr[1]),page:parseInt(tempArr[2])},function(data){
+			$("#commentsList>.h2Tit").nextAll().remove();
+			data && $("#commentsList>.h2Tit").after(data);
+		});
+		$("#commentsList>.h2Tit").after('<div style="padding: 0 0 10px 6px;"><img src="{$_G[siteurl]}{STATICURL}image/common/loading.gif" style="vertical-align: top;"> 数据读取中...</div>');
+		$("#commentsList dl").remove();
+		$(document).scrollTop($('#commentsList').offset().top-60);
+	});
+
+	//我要点评
+	$('.wydp_orangelink').click(function() {
+		$('.wydp_warpten').hide();
+		window.location.href = '/forum.php?ctl={$modstr}&act=showview&tid={$viewdata['tid']}#writecommon';
+	});
+
+	$('.wydp_orangelink, .wydp_warpten').hover(function(){
+		clearTimeout(window.wydpCtrl);
+		$(".wydp_warpten").show();
+	},function(){
+		window.wydpCtrl=setTimeout(function(){$(".wydp_warpten").hide();},300);
+	});
+
+	//点评提交-新
+	$('#f_price').focus(function(){
+		!$(this).val() && $(this).prev().hide();
+	}).blur(function(){
+		!$(this).val() && $(this).prev().show();
+	}).click(function(){
+		!$(this).val() && $(this).prev().hide();
+	});
+	$('#f_weakpoint').focus(function(){
+		!$(this).val() && $(this).prev().hide();
+	}).blur(function(){
+		!$(this).val() && $(this).prev().show();
+	}).click(function(){
+		!$(this).val() && $(this).prev().hide();
+	});
+	$('#f_message').focus(function(){
+		!$(this).val() && $(this).prev().hide();
+	}).blur(function(){
+		!$(this).val() && $(this).prev().show();
+	}).click(function(){
+		!$(this).val() && $(this).prev().hide();
+	});
+	$(".starBoxEdit>span").click(function(){
+		var topParent = $(this).parent().parent();
+		$(this).removeClass("graystar").addClass("redstar");
+		$(this).prevAll().removeClass("graystar").addClass("redstar");
+		$(this).nextAll().removeClass("redstar").addClass("graystar");
+		topParent.find(".starTextTips").html($(this).attr('title'));
+		topParent.find("#starnum").val($(this).index()+1);
+		if($(this).parent().hasClass('addComment')) {
+		    $('#star_error').html('');
+		}
+	});
+	//选择小时
+	$(".dataHour").change(function(){
+		if (!$(this).hasClass("startHour") && !$(this).hasClass("endHour")) {
+			return false;
+		}
+
+		var obj  = $(this).parent();
+		if (obj.attr("class").indexOf("post") == -1) {
+			return false;
+		}
+		var hour = $(this).val();
+		hour	 = getFormatHour(hour);
+		$(this).val(hour);
+		if ($(this).hasClass("startHour")) {
+			var startHour = hour;
+			var endHour   = obj.find(".endHour").val();
+			endHour	 	  = getFormatHour(endHour);
+			var sign  	  = "开始";
+			if(!startHour && startHour!=0){
+				show_errors("date_error", "请填写{$modname}的开始时间");
+				return false;
+			} else {
+				jQuery('#date_error').html('');
+			}
+		} else {
+			var startHour = obj.find(".startHour").val();
+			startHour	  = getFormatHour(startHour);
+			var endHour   = hour;
+			var sign  	  = "结束";
+			if(!endHour){
+				show_errors("date_error", "请填写{$modname}的结束时间");
+				return false;
+			}else {
+			    jQuery('#date_error').html('');
+			}
+		}
+
+		var date 	      = new Date();
+		var curTime    	  = Math.floor(date.getTime()/1000);
+		var startTime 	  = obj.find(".startPicker").val();
+		var intStartTime  = getNumberTime(startTime);
+		var tempJiange    = curTime - intStartTime;
+		//当天才需要判断
+		if (tempJiange < 86400) {
+			var curHour = date.getHours();
+			if (hour > curHour) {
+				$(this).val("");
+				show_errors("date_error", "{$modname}的"+sign+"时间需小于当前时间");
+				return false;
+			}
+		}else {
+		    jQuery('#date_error').html('');
+		}
+
+		if ((startHour || startHour==0) && endHour && startHour >= endHour) {
+			$(this).val("");
+			show_errors("date_error", "{$modname}的结束时间需大于开始时间");
+			return false;
+		}else {
+		    endHour > startHour ? jQuery('#date_error').html('<div class="correct"></div>') : '';
+		}
+
+	});
+	$("#from_post").submit(function(){
+		var starnum   = $("#from_post").find("#starnum").val();
+		var startTime = $("#from_post input[name='datapicker[]']").eq(0).val();
+		var endTime   = $("#from_post input[name='datapicker[]']").eq(1).val();
+		var starHour  = $("#from_post input[name='datapicker[]']").eq(2).val();
+		var endHour   = $("#from_post input[name='datapicker[]']").eq(3).val();
+		var weakpoint = $("#f_weakpoint").val();
+		var message   = $("#f_message").val();
+		var price 	  = $("#f_price").val();
+
+		//关闭时间选择框
+		closecalendar();
+
+		//把时间转为时间戳
+		var intStartTime 	= getNumberTime(startTime);
+		var intEndTime 		= getNumberTime(endTime);
+		var intStartHour	= getFormatHour(starHour);
+		var intEndHour		= getFormatHour(endHour);
+
+		if(!checkText(intStartTime, intEndTime, intStartHour, intEndHour, weakpoint, message, price, 'show_errors') || !parseInt(starnum)){
+			if(!parseInt(starnum))  show_errors('star_error', '请点击星星图标进行点评');
+			focus_on_date($('#from_post'), intStartTime, intEndTime, intStartHour, intEndHour);
+			return false;
+		}
+
+		showDialog('', 'info', '<img src="' + IMGDIR + '/loading.gif"> 请稍候...');
+		$('#from_post').parent('.writeCmt').hide();
+
+		$.post('forum.php?ctl={$modstr}&act=dopost&do=reply&tid={$_G['tid']}&inajax=1',
+			{starnum:starnum,ext1:startTime,ext2:endTime,ext4:starHour,ext5:endHour,weakpoint:weakpoint,message:message,price:price,formhash:'{FORMHASH}',replypostsubmit:'yes'},function(data){
+			hideMenu('fwin_dialog', 'dialog');
+			if(data.msg=='ok'){
+				$('#myComment, #myComment li, #myComment .starBox').show();
+				$('#myComment .bottomCont>.ans').hide();
+				$('#myComment #starnum').val(starnum);
+				var starHtml = '';
+				for(var i=0;i<5;i++){
+					if(i<starnum){
+						starHtml += '<span class="redstar"></span>';
+					} else {
+						starHtml += '<span class="graystar"></span>';
+					}
+				}
+				$('#myComment .starBox').html(starHtml);
+
+				startTime 	   = startTime.substr(0,10);
+				endTime   	   = endTime.substr(0,10);
+				$('#myComment #startTime').val(startTime);
+				$('#myComment #endTime').val(endTime);
+				$('#myComment #startHour').val(intStartHour);
+				$('#myComment #endHour').val(intEndHour);
+
+				var tempJiange = intEndTime - intStartTime;
+				var tempTime   = "";
+				if (tempJiange >= 86400) {
+					tempTime += Math.ceil(tempJiange/86400)+"天";
+					$('#myComment #isTian').val("1");
+					$('#myComment #goodpoint').html(startTime+"&nbsp;&nbsp;-&nbsp;&nbsp;"+endTime+"&nbsp;&nbsp;&nbsp;&nbsp;共计"+tempTime);
+				} else {
+					tempTime += (intEndHour - intStartHour)+"小时";
+					$('#myComment #isTian').val("0");
+					$('#myComment #goodpoint').html(startTime+"&nbsp;&nbsp;"+intStartHour+"时&nbsp;&nbsp;-&nbsp;&nbsp;"+intEndHour+"时&nbsp;&nbsp;&nbsp;&nbsp;共计"+tempTime);
+				}
+
+				$('#myComment #price').html(price.replace(/(\r\n)|(\n)/gi,"<br/>"));
+				$('#myComment #weakpoint').html(weakpoint.replace(/(\r\n)|(\n)/gi,"<br/>"));
+				$('#myComment #message').html(message.replace(/(\r\n)|(\n)/gi,"<br/>"));
+
+				var d=new Date();
+				$('#myComment .date').html('发表于 '+d.getFullYear()+'-'+(parseInt(d.getMonth())+1)+'-'+d.getDate()+' '+d.getHours()+':'+d.getMinutes());
+				$('#from_post').parent('.writeCmt').remove();
+
+				$('#myComment').find(".ans").attr("id","editBtn_"+data.pid).show();
+
+				_showmsg('点评成功');
+			} else if($($(data).find('root'))) {
+				$('#from_post').parent('.writeCmt').show();
+				_showmsg($(data).children('root').text().replace(/<script.*>.*<\/script>/i, ''));
+			} else {
+				$('#from_post').parent('.writeCmt').show();
+				_showmsg('发生错误请重试！');
+			}
+		},"json");
+		return false;
+	});
+	//点评提交-修改
+	$(document).on('click',"span[id^=editBtn_]",function(){
+		//小分辨率修改按钮样式
+		var nH = $(window).height();
+		var aH = $("#box_view").height();
+		if (aH >= nH) {
+			$("#box_view .popWriteCmt").css({
+				"overflow-y": 'scroll',
+				"overflow-x": 'hidden',
+				"height": (nH-145)+"px"
+			});
+		}else if(aH < nH) {
+			$("#box_view .popWriteCmt").removeAttr("style");
+		}
+
+		$('#bv_error').html('').hide();
+		var p = $(this).parents('dl');
+		$("#box_view #pid").val(this.id.replace('editBtn_',''));
+		var star = p.find('#starnum').val() || 1;
+		var starDom = $("#box_view .starBox>span").eq(star-1);
+		starDom.removeClass("graystar").addClass("redstar");
+		starDom.prevAll().removeClass("graystar").addClass("redstar");
+		starDom.nextAll().removeClass("redstar").addClass("graystar");
+		$("#box_view .starTextTips").html(starDom.attr('title'));
+		$("#box_view #starnum").val(star);
+		$("#box_view input[name='datapicker[]']").eq(0).val(p.find('#startTime').val());
+		$("#box_view input[name='datapicker[]']").eq(1).val(p.find('#endTime').val());
+		$("#box_view input[name='datapicker[]']").eq(2).val(p.find('#startHour').val());
+		$("#box_view input[name='datapicker[]']").eq(3).val(p.find('#endHour').val());
+		if (p.find('#isTian').val() == 0) {
+			$("#box_view .timeHour").show();
+		}else {
+			$("#box_view .timeHour").hide();
+		}
+
+		$("#box_view #price").val(p.find('#price').html().replace(/<br[^>]*>/gi,"\r\n"));
+		$("#box_view #weakpoint").val(p.find('#weakpoint').html().replace(/<br[^>]*>/gi,"\r\n"));
+		$("#box_view #message").val(p.find('#message').html().replace(/<br[^>]*>/gi,"\r\n"));
+		$("#div_black, #box_view").fadeIn(200);
+	});
+
+	$("#boxSubmit").click(function(){
+		$('#bv_error').html('').hide();
+		var weakpoint = $("#box_view #weakpoint").val();
+		var message   = $("#box_view #message").val();
+		var starnum   = $("#box_view #starnum").val();
+		var pid 	  = $("#box_view #pid").val();
+		var price 	  = $("#box_view #price").val();
+		var startTime = $("#box_view input[name='datapicker[]']").eq(0).val();
+		var endTime   = $("#box_view input[name='datapicker[]']").eq(1).val();
+		var starHour  = $("#box_view input[name='datapicker[]']").eq(2).val();
+		var endHour   = $("#box_view input[name='datapicker[]']").eq(3).val();
+
+		//把时间转为时间戳
+		var intStartTime 	= getNumberTime(startTime);
+		var intEndTime 		= getNumberTime(endTime);
+		var intStartHour	= getFormatHour(starHour);
+		var intEndHour		= getFormatHour(endHour);
+
+		//关闭时间选择框
+		closecalendar();
+
+		if(!checkText(intStartTime, intEndTime, intStartHour, intEndHour, weakpoint, message, price, 'bv_error')){
+			return false;
+		}
+
+		$("#div_black, #box_view").fadeOut(200);
+		showDialog('', 'info', '<img src="' + IMGDIR + '/loading.gif"> 请稍候...');
+
+		$.post('forum.php?ctl={$modstr}&act=dopost&do=reply&ext=edit&tid={$_G['tid']}&inajax=1',
+			{pid:pid,starnum:starnum,ext1:startTime,ext2:endTime,ext4:starHour,ext5:endHour,weakpoint:weakpoint,message:message,price:price,formhash:'{FORMHASH}',replypostsubmit:'yes'},function(data){
+			hideMenu('fwin_dialog', 'dialog');
+			$("#div_black").fadeIn(200);
+			if(data.msg=='ok'){
+				var comment = $("#editBtn_"+pid).parents('dl');
+				comment.find('#starnum').val(starnum);
+				var starHtml = '';
+				for(var i=0;i<5;i++){
+					if(i<starnum){
+						starHtml += '<span class="redstar"></span>';
+					} else {
+						starHtml += '<span class="graystar"></span>';
+					}
+				}
+				comment.find(".starBox").html("").html(starHtml);
+
+				startTime 	   = startTime.substr(0,10);
+				endTime   	   = endTime.substr(0,10);
+
+				comment.find('#startTime').val(startTime);
+				comment.find('#endTime').val(endTime);
+				comment.find('#startHour').val(intStartHour);
+				comment.find('#endHour').val(intEndHour);
+
+				var tempJiange = intEndTime - intStartTime;
+				var tempTime   = "";
+				if (tempJiange >= 86400) {
+					tempTime += Math.ceil(tempJiange/86400)+"天";
+					comment.find('#isTian').val("1");
+					comment.find('#goodpoint').html(startTime+"&nbsp;&nbsp;-&nbsp;&nbsp;"+endTime+"&nbsp;&nbsp;&nbsp;&nbsp;共计"+tempTime);
+				} else {
+					tempTime += (intEndHour - intStartHour)+"小时";
+					comment.find('#isTian').val("0");
+					comment.find('#goodpoint').html(startTime+"&nbsp;&nbsp;"+intStartHour+"时&nbsp;&nbsp;-&nbsp;&nbsp;"+intEndHour+"时&nbsp;&nbsp;&nbsp;&nbsp;共计"+tempTime);
+				}
+
+				comment.find('#price').html(price.replace(/(\r\n)|(\n)/gi,"<br/>"));
+				comment.find('#weakpoint').html(weakpoint.replace(/(\r\n)|(\n)/gi,"<br/>"));
+				comment.find('#message').html(message.replace(/(\r\n)|(\n)/gi,"<br/>"));
+				comment.find('li').show();
+				_showmsg('修改成功');
+			} else if($($(data).find('root'))) {
+				_showmsg($(data).children('root').text().replace(/<script.*>.*<\/script>/i, ''));
+			} else {
+				_showmsg('发生错误请重试！');
+			}
+		},"json");
+	});
+
+	$("#bv_closeBtn").click(function(){
+		$("#div_black, #box_view").fadeOut(200);
+	});
+
+	//管理员操作
+	{if ( $_G['forum']['ismoderator'] && $_G['group']['alloweditpost'] && (!in_array($post['adminid'], array(1, 2, 3)) || $_G['adminid'] <= $post['adminid']) )}
+	$('#glistBox').hover(function(){
+		$('#glist').show();
+	},function(){
+		$('#glist').hide();
+	});
+	{/if}
+	{if ($_G['forum']['ismoderator'] && $_G['group']['alloweditpost'] && (!in_array($post['adminid'], array(1, 2, 3)) || $_G['adminid'] <= $post['adminid']) || ($_G['groupid'] == 1 ||$_G['groupid']== 45))}
+	//取消审核操作
+	$('.guanli .setcancel').click(function(){
+		jQuery.ajax({
+		type: 'get',
+		url: 'forum.php?ctl={$modstr}&act=checkit&type=0&tid='+tid,
+		success: function(html) {
+			if(checkreturn(html)){
+				jQuery('.guanli .setcancel').hide();
+				jQuery('.guanli .setpass').show();
+				jQuery('.skiName .tit').append('(未审核)');
+			}
+		}});
+		return false;
+	});
+	//审核通过操作
+	$('.guanli .setpass').click(function(){
+		jQuery.ajax({
+		type: 'get',
+		url: 'forum.php?ctl={$modstr}&act=checkit&type=1&tid='+tid,
+		success: function(html) {
+			if(checkreturn(html)){
+				jQuery('.guanli .setcancel').show();
+				jQuery('.guanli .setpass').hide();
+				jQuery('.skiName .tit').text(jQuery('.skiName .tit').text().replace('(未审核)',''));
+			}
+		}});
+		return false;
+	});
+	var checkreturn = function (status) {
+		var msg 	= '操作失败！';
+		var success = false;
+		var mode 	= "right";
+		switch(status){
+			case '1':
+				msg='操作成功！';success=true;break;
+			case '-1':
+				msg='您没有权限操作！';var mode = "alert";break;
+		}
+		showDialog(msg, mode);return success;
+	}
+	{/if}
+
+	//赞
+	$(document).on('click', "span[id^=supportBtn_]", function(){
+		var sid = this.id;
+		var pid = sid.replace('supportBtn_','');
+		var s_c = $(this).find('em').text() ? parseInt($(this).find('em').text().replace(/[^0-9]/ig, "")) : 0;
+		if(s_c == 0) $(this).addClass('active');
+		$(this).find('em').text('('+parseInt(s_c+1)+')');
+		$(this).attr('id', '');
+		$.get('forum.php?ctl={$modstr}&act=support',{tid:'{$_G['tid']}',pid:pid},function(data){});
+	});
+
+		//鼠标移入分享后向左边弹出分享按钮
+	$("#share").hover(
+		function () {
+		$(".share_bd",this).show();
+		},
+		function () {
+		$(".share_bd",this).hide();
+		}
+	);
+	//返回顶部按钮
+	if($(window).scrollTop() > 10){$("#gotop_50 a").show();}
+	$(window).scroll( function(){
+		if($(window).scrollTop()>10){
+			$("#gotop_50 a").show();
+		}else{
+			$("#gotop_50 a").hide();
+		}
+	});
+	$("#gotop_50").click(function(){
+		$("html,body").animate({ scrollTop: 0 },500);
+	});
+	$(".tishi").hover(function(event){
+		$(this).find('[class$=_ts]').show();
+	},
+	function(event){
+		$(this).find('[class$=_ts]').hide();
+	});
+});
+
+function bv_error(msg){
+	jQuery('#bv_error').html(msg).show();
+}
+
+//表单验证前的检验
+function checkText(startTime,endTime,startHour,endHour,weak,msg,price,fun){
+	weak 		= jQuery.trim(weak);
+	price 		= jQuery.trim(price);
+	msg  		= jQuery.trim(msg);
+	if(!fun){
+		fun = '_showmsg'
+	}
+
+	var date 	      = new Date();
+	var curTime    	  = Math.floor(date.getTime()/1000);
+
+	if(!startTime){
+	    fun == 'show_errors' ?  eval(fun+'("date_error", "请选择{$modname}的开始时间")') : eval(fun+'("请选择{$modname}的开始时间")');
+		return false
+	}
+	if (startTime > curTime) {
+		fun == 'show_errors' ?  eval(fun+'("date_error", "{$modname}的开始时间需小于当前时间")') : eval(fun+'("{$modname}的开始时间需小于当前时间")');
+		return false;
+	}
+	if(!endTime){
+	    fun == 'show_errors' ?  eval(fun+'("date_error", "请选择{$modname}的结束时间")') : eval(fun+'("请选择{$modname}的结束时间")');
+		return false;
+	}
+	if (endTime > curTime) {
+	    fun == 'show_errors' ?  eval(fun+'("date_error", "{$modname}的结束时间需小于当前时间")') : eval(fun+'("{$modname}的结束时间需小于当前时间")');
+		return false;
+	}
+	if(startTime > endTime){
+	    fun == 'show_errors' ?  eval(fun+'("date_error", "{$modname}的结束时间需大于开始时间")') : eval(fun+'("{$modname}的结束时间需大于开始时间")');
+		return false;
+	}
+
+	if(startTime == endTime){
+		var curHour 	= date.getHours();
+		var tempJiange  = curTime - startTime;
+		if(!startHour && startHour!=0){
+		fun == 'show_errors' ?  eval(fun+'("date_error", "请填写{$modname}的开始时间")') : eval(fun+'("请填写{$modname}的开始时间")');
+			return false;
+		}
+		//当天才需要判断
+		if (tempJiange < 86400) {
+			if (startHour > curHour) {
+                fun == 'show_errors' ?  eval(fun+'("date_error", "{$modname}的开始时间需小于当前时间")') : eval(fun+'({$modname}的开始时间需小于当前时间")');
+				return false;
+			}
+		}
+		if(!endHour){
+            fun == 'show_errors' ? eval(fun+'("date_error", "请填写{$modname}的结束时间")') : eval(fun+'("请填写{$modname}的结束时间")');
+			return false;
+		}
+		//当天才需要判断
+		if (tempJiange < 86400) {
+			if (endHour > curHour) {
+                fun == 'show_errors' ?  eval(fun+'("date_error", "{$modname}的结束时间需小于当前时间")') : eval(fun+'("{$modname}的结束时间需小于当前时间")');
+				return false;
+			}
+		}
+		if (startHour >= endHour) {
+            fun == 'show_errors' ?  eval(fun+'("date_error", "{$modname}的结束时间需大于开始时间")') : eval(fun+'("{$modname}的结束时间需大于开始时间")');
+			return false;
+		}
+	}
+	if(!price){
+		eval(fun+'("请填写{$modname}的费用")');
+		return false;
+	}
+	if(!weak){
+		eval(fun+'("请填写{$modname}的注意事项")');
+		return false;
+	}
+	if(weak.length<10){
+		eval(fun+'("请认真填写{$modname}的注意事项，不能少于10个字符")');
+		return false;
+	}
+	if(!msg){
+		eval(fun+'("请填写对{$modname}的综合评价")');
+		return false;
+	}
+	{if $myrate!=1 && $viewdata['enable']==1}
+	if(initmsg && msg == initmsg){
+		eval(fun+'("请填写对{$modname}的综合评价")');
+		return false;
+	}
+	{/if}
+//	if(msg.length<200){
+//		eval(fun+'("请认真填写对{$modname}的综合评价，不能少于200个字符")');
+//		return false;
+//	}
+	return true;
+}
+
+//查看更多简介
+function getMoreMessage(){
+	var p_height = jQuery("#info_p").height();
+	if (jQuery("#slidemore").css("display") != "none") {
+		return false;
+	}
+	if(p_height > 160){
+		jQuery("#info_p").height(160);
+		jQuery("#slidemore").click(function() {
+			if (jQuery("#info_p").height() > 160) {
+				jQuery("#info_p").animate({
+					height: 160
+				}, 300);
+				jQuery("#slidemore").text("查看更多").removeClass("p_more_1");
+			} else {
+				jQuery("#info_p").animate({
+					height: p_height
+				}, 300);
+				jQuery("#slidemore").text("收起").addClass("p_more_1");
+			}
+		});
+		jQuery("#slidemore").show();
+	} else {
+		jQuery("#slidemore").hide();
+	}
+}
+
+//使小时数在0-24
+function getFormatHour(hour){
+	hour = parseInt(hour, 10);
+	hour = isNaN(hour) ? 0 : hour;
+	hour = hour < 0 ? 0 : hour;
+	hour = hour > 24 ? 24 : hour;
+	return hour;
+}
+
+</script>
+<script type="text/javascript">
+function calendarCallback(obj){
+	var parentObj  = obj.parentNode;
+	var childNodes = parentObj.childNodes;
+//	var datapicker = parentObj.getElementsByClassName("timeText");
+//	var timeHour   = parentObj.getElementsByClassName("timeHour");
+	var isStart    = obj.className.indexOf("startPicker") != -1 ? true : false;
+	var datapicker = new Array();
+	var timeHour   = new Array();
+	var dIndex = 0;
+	var tIndex = 0;
+	for(var i = 0; i < childNodes.length; i++){
+		var temp = childNodes[i].className;
+		if (temp) {
+			if(temp.indexOf("timeText") != -1){
+				datapicker[dIndex] = childNodes[i];
+				dIndex++;
+			}
+			if(temp.indexOf("timeHour") != -1){
+				timeHour[tIndex] = childNodes[i];
+				tIndex++;
+			}
+		}
+	}
+
+	var startTime  = datapicker[0].value;
+	var endTime	   = datapicker[1].value;
+
+	datapicker[2].value = "";
+	datapicker[3].value = "";
+
+	var date 	      = new Date();
+	var curTime    	  = Math.floor(date.getTime()/1000);
+	var selectTime 	  = obj.value;
+	var intSelectTime = getNumberTime(selectTime);
+	if (intSelectTime > curTime && parentObj.className.indexOf("post") != -1 ) {
+		obj.value = "";
+		var sign  = isStart ? "开始" : "结束";
+		show_errors("date_error", "{$modname}的"+sign+"时间需小于当前时间");
+		var tttt = setInterval(function(){
+			var div_black = document.getElementById("div_black");
+			if (div_black.style.display == "none") {
+				clearInterval(tttt);
+				obj.click();
+			}
+		},200);
+		return false;
+	}else{
+		if(parentObj.className.indexOf("post") != -1) {
+		    jQuery('#date_error').html('');
+		}
+	}
+
+	if (startTime) {
+		if(isStart){
+			datapicker[1].click();
+		}
+	}
+	if (!startTime || !endTime) {
+		return false;
+	}
+	//把时间转为时间戳
+	var intStartTime 	= getNumberTime(startTime);
+	var intEndTime 		= getNumberTime(endTime);
+
+	if (intStartTime == intEndTime) {
+		for(var i = 0; i < timeHour.length; i++){
+			timeHour[i].style.display = "inline";
+		}
+	} else {
+		for(var i = 0; i < timeHour.length; i++){
+			timeHour[i].style.display = "none";
+		}
+	}
+
+	if (intStartTime > intEndTime && parentObj.className.indexOf("post") != -1) {
+		obj.value = "";
+		show_errors("date_error", "{$modname}的结束时间需大于开始时间");
+		var tttt = setInterval(function(){
+			var div_black = document.getElementById("div_black");
+			if (div_black.style.display == "none") {
+				clearInterval(tttt);
+				obj.click();
+			}
+		},200);
+		return false;
+	}
+    else{
+        if( parentObj.className.indexOf("post") != -1) {
+           intStartTime == intEndTime ? jQuery('#date_error').html('') : jQuery('#date_error').html('<div class="correct"></div>');
+        }
+    }
+}
+</script>
+<script type="text/javascript">
+jQuery(function(){
+	jQuery("#tdqli li:lt(5)").show();
+	var no_i = 1;
+	var shu_no = jQuery("#tdqli li").size();
+	var sl_ddd = 0 ;
+	jQuery(".addmore").click(function(){
+		if( sl_ddd < shu_no){
+			no_i++;
+			sl_ddd = no_i*5;
+			jQuery("#tdqli li:lt("+sl_ddd+")").show();
+
+		}else{
+			jQuery(".addmore").text("别点了，已经都显示了");
+		}
+	});
+
+	jQuery(".r_list li:last-child").addClass("without");
+
+
+
+});
+</script>
+<!--{subtemplate forum/dianping/footer}-->

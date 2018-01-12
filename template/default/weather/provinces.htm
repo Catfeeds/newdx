@@ -1,0 +1,145 @@
+<!--{subtemplate common/header_8264_new}-->
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/weather/style/style.css">
+<style>
+    body{ background:url(http://static.8264.com/static/css/weather/images/forecast_bg.png) fixed top center;}
+</style>
+<script src="http://static.8264.com/static/js/jquery-1.9.1.min.js"></script>
+        <div class="w1170">
+        	<!-- 值得买 -->
+            <!--{eval include(DISCUZ_ROOT.'./source/plugin/skiing/hd_zw.php');}-->
+            <!--{eval $zhidemai_list = ForumOptionHuoDong::pianyi_sidebar(6, 'top', 'jiu', '10027');}-->
+            <!--{if $zhidemai_list}-->
+            <div style="margin: 10px auto 10px auto;">
+            <style>
+                .zhidemaiwidth{ width:1170px;}
+                .zhidemaibox .zhidemailist_new{ width:1170px; margin:0 auto; overflow:hidden;}
+                .zhidemaibox .zhidemailist_new ul{ width:1370px;}
+                .zhidemaibox .zhidemailist_new li{width:176px; overflow:hidden;}
+                .zhidemaibox .zhidemailist_new li img{ width:176px;}
+            </style>
+            <!--{subtemplate common/zhidemai}-->
+            </div>
+            <!--{/if}-->
+            <!-- //值得买 -->
+            <div class="navigation clear_b">
+                <h3>
+                    当前位置：<a href="http://www.8264.com/weather/">全国天气预报</a>><a href="http://www.8264.com/weather/">{$cur_province}</a>
+                </h3>
+                <div class="changecity">
+                    <span>切换城市</span>
+                </div>
+            </div>
+            <div class="btitle clear_b">
+                <h1>省市天气列表</h1>
+            </div>
+            <div class="citylist clear_b">
+                <!--{loop $weather_provinces_list $weather_province}-->
+                <a href="http://www.8264.com/weather/{$weather_province['spell']}/" target="_blank">{$weather_province['name']}</a>
+                <!--{/loop}-->
+            </div>
+
+            <div class="btitle clear_b">
+                <h1>{$cur_province}天气城市列表</h1>
+                <!-- 活动二维码 -->
+                <style>
+                .gzhboxheardbox{float:right; cursor:pointer;position:relative; line-height:1.4; margin-right:15px;}
+                .gzhboxheardbox .gzhspan{color:#585858;font-size:14px;display:inline-block;margin:0px 0 0 10px;background:url(http://static.8264.com/hd/pc/images/tps/v1/gzhdownarrow.png) right center no-repeat;padding:0 14px 0px 10px; line-height:1}
+                .gzhboxheardbox:hover .gzhpopcon{display:block}
+                .gzhpopcon{width:250px;height:120px;position:absolute;top:34px;right:0px;background:rgba(242,242,242,.8);display:none;box-shadow:0 12px 10px rgba(12,4,7,.4)}
+                .gzhpopcon img{width:100px;height:100px;float:left;margin:10px 0 0 10px}
+                .gzhpopcon p{text-align:center;overflow:hidden;padding:22px 0 0 0;color:#666; font-size:14px;}
+                .gzhpopcon b{font-size:18px;font-weight:700;display:block;padding:0 0 8px 0;color:#000}
+                </style>
+                <div class="gzhboxheardbox">
+                    <span class="gzhspan" style="color: #ffc52a;">{$cur_province}精彩活动推荐</span>
+                    <div class="gzhpopcon">
+                        <img src="http://static.8264.com/hd/pc/images/tps/v1/gzh8264.jpg" height="100" width="100">
+                        <p><b>扫一扫</b>关注微信号<br>精彩活动每天看</p>
+                    </div>
+                </div>
+                <!-- //活动二维码 -->
+                <div><a href="http://www.8264.com/weather/" target="_blank">更多城市查询</a></div>
+            </div>
+            <div class="historylist">
+                <div class="historyzs">
+                    <span>平均高温：<i>{$province_avg_max_temp}℃</i></span>
+                    <span>平均低温：<i>{$province_avg_min_temp}℃</i></span>
+                    <span>极端高温：<i>{$province_max_tempure}℃</i></span>
+                    <span>极端低温：<i>{$province_min_tempure}℃</i></span>
+                </div>
+                <div class="historylistcon mt30">
+                    <div class="historytitle">
+                        <span class="w300">城市名称</span>
+                        <span class="w174">最高气温</span>
+                        <span class="w174">最低气温</span>
+                        <span class="w174">天气</span>
+                        <span class="w174">风向</span>
+                        <span class="w174">风力</span>
+                    </div>
+					<!--{subtemplate weather/sub_province}-->
+					<!--{if $_GET['page'] != $page_all && $page_all>1 }-->
+					<div style="margin-top:10px" id="more_info">
+                        <a style="font-size:18px;" href="http://www.8264.com/weather/{$_GET[province]}/?page=2" all_page="{$page_all}" ajaxtarget="more_10" onclick="return false;">查看更多>></a>
+                    </div>
+					<!--{/if}-->
+                </div>
+            </div>
+			<script>
+            $(document).ready(function() {
+	            $(".historylistcon").delegate("a[ajaxtarget=more_10]","click",function(){
+	            	var arr=$(this).attr('href').split('=');
+	                var page =arr[1];
+	                var url = 'weather.php?ctl=more_city&flag=more&province={$_GET[province]}&page='+page;
+	                var all_page = $(this).attr('all_page')
+	                $.get(url, '', function(data){
+	                	if(page==all_page){
+	                		$("#more_info").css("display","none");
+	                	}
+	                	$('#more_info').before(data);
+	                	page = parseInt(page) + 1;
+                        $("a[ajaxtarget=more_10]").attr("href","http://www.8264.com/weather/{$_GET[province]}/?page="+page);
+	                });
+	            });
+            });
+            </script>
+        </div>
+        <!--切换城市列表开始-->
+        <div class="citylistbox">
+            <div class="citytitle">
+                <span>选择城市</span>
+                <i></i>
+            </div>
+            <div class="minicity_content">
+
+             </div>
+        </div>
+        <!--切换城市列表结束-->
+
+        <script>
+            $(function () {
+                var ww = $(window).height();
+                $(".changecity span").click(function () {
+                    $(".minicity_content").load('http://www.8264.com/weather.php?ctl=get_citylist_by_ajax&is_ajax=1&area={$_GET['area']}&pspell={$_GET['pspell']}');
+                    $(".citylistbox").css({
+                        "opacity": "100", "z-index": "1091"
+                    });
+                    $(".citylistbox").height(ww);
+                    $(".minicity_content").height(ww - 70);
+                });
+                $(document).on("click",".citytitle i",function(){
+                    $(".citylistbox").css({
+                        "opacity": "0", "z-index": "-1"
+                    });
+                });
+
+                $(".changecity a").click(function () {
+                    $(".citylistbox").css({
+                        "opacity": "0", "z-index": "-1"
+                    });
+                });
+            });
+        </script>
+
+<!--嵌入公用底部开始-->
+<!--{subtemplate common/footer_8264_new}-->
+

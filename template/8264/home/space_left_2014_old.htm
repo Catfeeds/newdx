@@ -1,0 +1,33 @@
+<div class="pl">
+	<div class="l_196" id="h_left_menu">
+		<ul>
+			<li><a href="home.php?mod=space&do=notice"><span class="tz">通知<!--{if $space[notifications]}-->(<i>$space[notifications]</i>)<!--{/if}--></span></a></li>
+			<li><a href="home.php?mod=space&do=notice&type=invitation">
+				<span class="yq">邀请<!--{if $invite_thread_count}-->(<i id="sidenewinvitecount">$invite_thread_count</i>)<!--{/if}--></span></a>
+			</li>
+			<li>
+				<a href="home.php?mod=space&do=notice&type=smessage"><span class="xx" id="pm_link">短消息<!--{if $_G[member][newpm]}-->(<i id="sidepmcount">{$_G[member][newpm]}</i>)<!--{/if}--></span></a>
+			</li>
+			<li><a href="home.php?mod=task&item=new"><span class="rw">任务<!--{if $taskcount}-->(<i>$taskcount</i>)<!--{/if}--></span></a></li>
+			<li><a href="home.php?mod=space&do=notice&type=friend">
+				<span class="fqq">好友<!--{if $space[pendingfriends]}-->(<i id="sidependingFriendsNum">$space[pendingfriends]</i>)<!--{/if}--></span></a>
+			</li>
+			<li>
+				<a href="home.php?mod=space&do=notice&type=greeting"><span class="zh">招呼<!--{if $space[pokes]}-->(<i id="sidepokesNum">$space[pokes]</i>)<!--{/if}--></span></a>
+			</li>
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function($){
+	var m_t=$("#h_left_menu").position().top;
+	$(window).scroll(function(){
+		if ($(document).scrollTop()-50 >= m_t){
+			$("#h_left_menu").addClass("l_196_fixd");
+		}else{
+			$("#h_left_menu").removeClass("l_196_fixd");
+		}
+	});
+});
+jQuery(".w980").css('min-height',jQuery(window).height()-130);
+</script>

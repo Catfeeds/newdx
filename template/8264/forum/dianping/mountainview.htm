@@ -1,0 +1,1382 @@
+<!--{subtemplate forum/dianping/header}-->
+<script type="text/javascript">var fid = {$_G['fid']}, tid = {$_G['tid']};</script>
+<script type="text/javascript" src="{$_G['setting']['jspath']}forum_moderate.js?{VERHASH}"></script>
+
+<script src="static/js/formValidator-4.0.1.js" type="text/javascript"></script>
+<script type="text/javascript" src="static/js/dianping/line_help.js"></script>
+<style id="diy_style" type="text/css"></style>
+<script src="static/js/calendar.js"></script>
+<style type="text/css">
+#mdly { margin: 20px 0 0 10px; padding: 0; width: 200px; height: auto; background: none; }
+.share_bd_warpten{ width:50px; position:absolute; float:right; position: fixed !important;  position: absolute; z-index: 1; bottom:20px; right: 30px; background:#fff;}
+.bbs_share_sc{ width:50px;}
+.bbs_share_sc li{ width:50px; height:51px;}
+.bbs_share_sc li.ps_re{ position:relative;}
+.bbs_share_sc li a{ background:url('http://www.8264.com/static/images/common/baidushare.jpg') no-repeat; display:block; }
+.bbs_share_sc li .share{ width:50px; height:50px; background-position:0px 0px;}
+.bbs_share_sc li .share:hover{ width:50px; height:50px; background-position:0px -204px;}
+.bbs_share_sc li .sc{ width:50px; height:50px; background-position:0px -51px;}
+.bbs_share_sc li .sc:hover{ width:50px; height:50px; background-position:0px -255px;}
+.bbs_share_sc li .bbsli{ width:50px; height:50px; background-position:0px -102px;}
+.bbs_share_sc li .bbsli:hover{ width:50px; height:50px; background-position:0px -306px;}
+.bbs_share_sc li .gotop_50{ width:50px; height:50px; background-position:0px -153px;}
+.bbs_share_sc li .gotop_50:hover{ width:50px; height:50px; background-position:0px -357px;}
+.share_bd{ width:200px; position:absolute; height:50px; top:0px; right:50px; font-size:0px; display:none;}
+.bbs_share_sc li .share_bd a{ width:50px; height:50px; background:url('http://www.8264.com/static/images/common/baidushare.jpg') no-repeat; display:inline-block; _display:inline; _zoom:1;}
+.bbs_share_sc li .share_bd a.sina{ background-position:0 -408px;}
+.bbs_share_sc li .share_bd a.sina:hover{ background-position:0 -612px;}
+.bbs_share_sc li .share_bd a.qq{ background-position: 0px -459px;}
+.bbs_share_sc li .share_bd a.qq:hover{ background-position: 0px -663px;}
+.bbs_share_sc li .share_bd a.wb{ background-position: 0px -510px;}
+.bbs_share_sc li .share_bd a.wb:hover{ background-position: 0px -714px;}
+.bbs_share_sc li .share_bd a.wx{ background-position: 0px -561px;}
+.bbs_share_sc li .share_bd a.wx:hover{ background-position: 0px -765px;}
+.bdshare-button-style0-32 a{padding:0;margin:0;}
+</style>
+<script type="text/javascript">
+var ie6=false;
+if(/msie/.test(navigator.userAgent.toLowerCase()) && 'undefined' == typeof(document.body.style.maxHeight)){
+	ie6=true;
+}
+
+var initmsg = jQuery('#f_pricedesc').val();
+var initmsg = jQuery('#f_comment').val();
+var initmsg = jQuery('#f_message').val();
+
+
+var postminchars = parseInt(0);
+var postmaxchars = parseInt(0);
+var disablepostctrl = parseInt('{$_G['group']['disablepostctrl']}');
+var tid = {$viewdata['tid']};
+jQuery(document).ready(function($) {
+
+	$('#f_pricedesc').focus(function(){
+		!$(this).val() && $(this).prev().hide();
+	}).blur(function(){
+		!$(this).val() && $(this).prev().show();
+	}).click(function(){
+		!$(this).val() && $(this).prev().hide();
+	});
+
+	$('#f_comment').focus(function(){
+		!$(this).val() && $(this).prev().hide();
+	}).blur(function(){
+		!$(this).val() && $(this).prev().show();
+	}).click(function(){
+		!$(this).val() && $(this).prev().hide();
+	});
+
+	$('#f_message').focus(function(){
+		!$(this).val() && $(this).prev().hide();
+	}).blur(function(){
+		!$(this).val() && $(this).prev().show();
+	}).click(function(){
+		!$(this).val() && $(this).prev().hide();
+	});
+
+
+	/*
+	$("#commentsList").on('click',".pg>a",function(e){
+		e.preventDefault();
+		var tempArr = this.href.split('-');
+		$.get('{$url}',{act:'ajaxreply',tid:parseInt(tempArr[1]),page:parseInt(tempArr[2])},function(data){
+			$("#commentsList>.h2Tit").nextAll().remove();
+			data && $("#commentsList>.h2Tit").after(data);
+		});
+		$("#commentsList>.h2Tit").after('<div style="padding: 0 0 10px 6px;"><img src="{$_G[siteurl]}{STATICURL}image/common/loading.gif" style="vertical-align: top;"> 数据读取中...</div>');
+		$("#commentsList dl").remove();
+		$(document).scrollTop($('#commentsList').offset().top-60);
+	});*/
+
+	$("#bv_closeBtn").click(function(){
+		$("#div_black, #box_view").fadeOut(200);
+	});
+	$("#bm_closeBtn").click(function(){
+		$("#div_black, #box_map").fadeOut(200);
+	});
+
+	$("#lunbosmall li").eq(0).find('.black_48_48').hide();
+	$("#lunbosmall li").hover(function() {
+		$(this).find('.black_48_48').hide();
+		$(this).siblings().find('.black_48_48').show();
+		var index = $(this).index();
+		$('#lunbobig li').eq(index).stop(true).fadeIn(0).siblings().delay(100).fadeOut(0);
+	});
+
+	var p_height = $("#info_p").height();
+	if(p_height > 160){
+		$("#info_p").height(160);
+		$("#slidemore").click(function() {
+			if ($("#info_p").height() > 160) {
+				$("#info_p").animate({
+					height: 160
+				}, 300);
+				$("#slidemore").text("查看更多").removeClass("p_more_1");
+			} else {
+				$("#info_p").animate({
+					height: p_height
+				}, 300);
+				$("#slidemore").text("收起").addClass("p_more_1");
+			}
+		});
+	} else {
+		$("#slidemore").hide();
+	}
+
+	$("#starBox>span").click(function(){
+		$(this).prevAll().addBack().css({"background-position": "0 0"});
+		$(this).nextAll().css({"background-position": "-17px 0"});
+		if (ie6) {
+			$("#form_starNum").val(($(this).index()+1)/3);
+		} else {
+			$("#form_starNum").val($(this).index()+1);
+		}
+
+	});
+	$("#bv_starBox>span").click(function(){
+		$(this).prevAll().addBack().css({"background-position": "0 0"});
+		$(this).nextAll().css({"background-position": "-17px 0"});
+		$("#bv_starBox").next().html($(this).attr('title'));
+		if (ie6) {
+			$("#bv_starNum").val(($(this).index()+1)/3);
+		} else {
+			$("#bv_starNum").val($(this).index()+1);
+		}
+	});
+
+	$(document).on('click',"span[id^=editBtn_]",function(){
+		var p = $(this).parents('dl');
+		$("#box_view #pid").val(this.id.replace('editBtn_',''));
+		var star = p.find('#starnum').val() || 1;
+		var starDom = $("#bv_starBox>span").eq(star-1);
+		starDom.prevAll().addBack().css({"background-position": "0 0"});
+		starDom.nextAll().css({"background-position": "-17px 0"});
+		$("#bv_starBox").next().html(starDom.attr('title'));
+		$("#bv_starNum").val(star);
+		//$("#box_view input[name='datapicker[]']").eq(0).val(p.find('#startTime').val());
+		//$("#box_view input[name='datapicker[]']").eq(1).val(p.find('#endTime').val());
+		//$("#box_view input[name='datapicker[]']").eq(2).val(p.find('#startHour').val());
+		//$("#box_view input[name='datapicker[]']").eq(3).val(p.find('#endHour').val());
+		if(p.find('#startHour').html()&&p.find('#endHour').html()){
+			p.find('#f_starttime').html() && $("#box_view input[name='datapicker[]']").eq(0).val(p.find('#f_starttime').html());
+			p.find('#f_starttime').html() && $("#box_view input[name='datapicker[]']").eq(1).val(p.find('#f_starttime').html());
+			p.find('#startHour').html()&& $("#box_view input[name='datapicker[]']").eq(2).val(p.find('#startHour').html());
+			p.find('#endHour').html() && $("#box_view input[name='datapicker[]']").eq(3).val(p.find('#endHour').html());
+			$("#box_view .timeHour").show();
+		}else{
+			p.find('#f_starttime').html() && $("#box_view input[name='datapicker[]']").eq(0).val(p.find('#f_starttime').html());
+			p.find('#f_endtime').html() && $("#box_view input[name='datapicker[]']").eq(1).val(p.find('#f_endtime').html());
+		}
+
+		p.find('#pricedesc') && $("#box_view #f_pricedesc").val(p.find('#pricedesc').html().replace(/<br[^>]*>/gi,"\r\n"));
+		p.find('#mycomments') && $("#box_view #f_comment").val(p.find('#mycomments').html().replace(/<br[^>]*>/gi,"\r\n"));
+		p.find('#tolmsg') && $("#box_view #f_message").val(p.find('#tolmsg').html().replace(/<br[^>]*>/gi,"\r\n"));
+		$("#div_black, #box_view").fadeIn(200);
+	});
+	$("#boxSubmit").click(function(){
+		$('#bv_error').html('').hide();
+		var startTime = $("#box_view input[name='datapicker[]']").eq(0).val();
+		var endTime   = $("#box_view input[name='datapicker[]']").eq(1).val();
+		var starHour  = $("#box_view input[name='datapicker[]']").eq(2).val();
+		var endHour   = $("#box_view input[name='datapicker[]']").eq(3).val();
+		var pricedesc = $("#box_view #f_pricedesc").val();
+		var mycomment = $("#box_view #f_comment").val();
+		var message = $("#box_view #f_message").val();
+		var starnum = $("#bv_starNum").val();
+		var pid = $("#box_view #pid").val();
+		//把时间转为时间戳
+		var intStartTime 	= getNumberTime(startTime);
+		var intEndTime 		= getNumberTime(endTime);
+		var intStartHour	= getFormatHour(starHour);
+		var intEndHour		= getFormatHour(endHour);
+
+		if(!checkText(intStartTime, intEndTime,intStartHour,intEndHour, pricedesc,mycomment,message,'bv_error')){
+			return false;
+		}
+		$("#div_black, #box_view").fadeOut(200);
+		$.post('forum.php?ctl={$modstr}&act=dopost&do=reply&ext=edit&tid={$_G['tid']}&inajax=1',
+				{pid:pid,starnum:starnum,f_starttime:intStartTime,f_endtime:intEndTime,f_starhour:intStartHour,f_endhour:intEndHour,f_pricedesc:pricedesc,f_comment:mycomment,message:message,formhash:'{FORMHASH}',replypostsubmit:'yes'},function(data){
+					if(data=='ok'){
+						_showmsg('修改成功');
+					} else if($($(data).find('root'))) {
+						_showmsg($(data).children('root').text().replace(/<script.*>.*<\/script>/i, ''));
+					} else {
+						_showmsg('发生错误请重试！');
+					}
+				});
+
+		var comment = $("#editBtn_"+pid).parents('dl');
+		comment.find('#starnum').val(starnum);
+		var starDom = comment.find('.starBox>span').eq(starnum-1);
+		starDom.prevAll().addBack().css({"background-position": "0 0"});
+		starDom.nextAll().css({"background-position": "-17px 0"});
+		comment.find('#tipss').remove();
+		comment.find('#f_starttime').html() && comment.find('#f_starttime').html(startTime.replace(/(\r\n)|(\n)/gi,"<br/>"));
+		comment.find('#f_endtime').html() && comment.find('#f_endtime').html(endTime.replace(/(\r\n)|(\n)/gi,"<br/>"));
+		comment.find('#ddt').html() && comment.find('#ddt').remove();
+		comment.find('#pricedesc').html() && comment.find('#pricedesc').html(pricedesc.replace(/(\r\n)|(\n)/gi,"<br/>"));
+		comment.find('#mycomments').html() && comment.find('#mycomments').html(mycomment.replace(/(\r\n)|(\n)/gi,"<br/>"));
+		comment.find('#tolmsg').html() && comment.find('#tolmsg').html(message.replace(/(\r\n)|(\n)/gi,"<br/>"));
+		$("#bv_closeBtn").click();
+	});
+
+	$(document).on('click', "span[id^=supportBtn_]", function(){
+		var sid = this.id;
+		var pid = sid.replace('supportBtn_','');
+		var s_c = $(this).find('em').text() ? parseInt($(this).find('em').text().replace(/[^0-9]/ig, "")) : 0;
+		if(s_c == 0) $(this).addClass('active');
+		$(this).find('em').text('('+parseInt(s_c+1)+')');
+		$(this).attr('id', '');
+		$.get('forum.php?ctl={$modstr}&act=support',{tid:'{$_G['tid']}',pid:pid},function(data){});
+	});
+
+	//选择小时
+	$(".dataHour").change(function(){
+		var obj  = $(this).parent();
+		var hour = $(this).val();
+		hour	 = getFormatHour(hour);
+		$(this).val(hour);
+
+		if (!$(this).hasClass("startHour") && !$(this).hasClass("endHour")) {
+			return false;
+		}
+		if (obj.attr("class").indexOf("post") == -1) {
+			return false;
+		}
+
+		if ($(this).hasClass("startHour")) {
+			var startHour = hour;
+			var endHour   = obj.find(".endHour").val();
+			endHour	 	  = getFormatHour(endHour);
+			var sign  	  = "开始";
+			if(!startHour && startHour!=0){
+				jQuery('#date_error').html("请填写攀登{$modname}的开始时间");
+				return false;
+			}
+		} else {
+			var startHour = obj.find(".startHour").val();
+			startHour	  = getFormatHour(startHour);
+			var endHour   = hour;
+			var sign  	  = "结束";
+			if(!endHour){
+				jQuery('#date_error').html("请填写攀登{$modname}的结束时间");
+				return false;
+			}
+		}
+
+		var date 	      = new Date();
+		var curTime    	  = Math.floor(date.getTime()/1000);
+		var startTime 	  = obj.find(".startPicker").val();
+		var intStartTime  = getNumberTime(startTime);
+		var tempJiange    = curTime - intStartTime;
+		//当天才需要判断
+		if (tempJiange < 86400) {
+			var curHour = date.getHours();
+			if (hour > curHour) {
+				$(this).val("");
+				jQuery('#date_error').html("{$modname}的"+sign+"时间需小于当前时间");
+				return false;
+			}
+		}
+
+		if ((startHour || startHour==0) && endHour && startHour >= endHour) {
+			$(this).val("");
+			jQuery('#date_error').html("攀登{$modname}的结束时间需大于开始时间");
+			return false;
+		}else if((startHour || startHour==0) && endHour && endHour >= startHour){
+			jQuery('#date_error').html('<div class="correct"></div>');
+		}
+	});
+
+	$("#from_post").submit(function(){
+		var starnum = $("#form_starNum").val();
+		var starttimes = $("#from_post input[name='datapicker[]']").eq(0).val();
+		var endtimes   = $("#from_post input[name='datapicker[]']").eq(1).val();
+		var starHour  = $("#from_post input[name='datapicker[]']").eq(2).val();
+		var endHour   = $("#from_post input[name='datapicker[]']").eq(3).val();
+		var pricedesc = $(".writeCmt #f_pricedesc").val();
+		var mycomment = $(".writeCmt #f_comment").val();
+		var message = $(".writeCmt #f_message").val();
+
+		closecalendar();
+
+		var starttime 	= getNumberTime(starttimes);
+		var endtime     = getNumberTime(endtimes);
+		var starHour	= getFormatHour(starHour);
+		var endHour	= getFormatHour(endHour);
+
+
+		if(!checkText(starttime, endtime,starHour,endHour,pricedesc,mycomment,message,'bv_errors')){
+			if(!parseInt(starnum))
+			show_errors('star_error', '请填写对此山峰的难度评价');
+			focus_on_date($('#from_post'), starttime, endtime, starHour, endHour);
+			return false;
+		}
+
+		showDialog('', 'info', '<img src="' + IMGDIR + '/loading.gif"> 请稍候...');
+		$('#from_post').parent('.writeCmt').hide();
+		$.post('forum.php?ctl={$modstr}&act=dopost&do=reply&tid={$_G['tid']}&inajax=1',
+				{starnum:starnum,f_starttime:starttime,f_endtime:endtime,f_starhour:starHour,f_endhour:endHour,f_pricedesc:pricedesc,f_comment:mycomment,message:message,formhash:'{FORMHASH}',replypostsubmit:'yes'},function(data){
+					hideMenu('fwin_dialog', 'dialog');
+					if(data=='ok'){
+						$('#myComment, #myComment li, #myComment .starBox').show();
+						$('#myComment .bottomCont>.ans').hide();
+						$('#myComment #starnum').val(starnum);
+						var starHtml = '';
+						for(var i=0;i<5;i++){
+							if(i<starnum){
+								starHtml += '<span class="redstar"></span>';
+							} else {
+								starHtml += '<span class="graystar"></span>';
+							}
+						}
+						$('#myComment .starBox').html(starHtml);
+						$('#myComment #time').html(starttimes+"至"+endtimes);
+						$('#myComment #pricedesc').html(pricedesc.replace(/(\r\n)|(\n)/gi,"<br/>"));
+						$('#myComment #mycomments').html(mycomment.replace(/(\r\n)|(\n)/gi,"<br/>"));
+						$('#myComment #tolmsg').html(message.replace(/(\r\n)|(\n)/gi,"<br/>"));
+						var d=new Date();
+						$('#myComment .date').html('发表于 '+d.getFullYear()+'-'+(parseInt(d.getMonth())+1)+'-'+d.getDate()+' '+d.getHours()+':'+d.getMinutes());
+						$('#from_post').parent('.writeCmt').remove();
+						_showmsg('点评成功');
+					} else if($($(data).find('root'))) {
+						$('#from_post').parent('.writeCmt').show();
+						_showmsg($(data).children('root').text().replace(/<script.*>.*<\/script>/i, ''));
+					} else {
+						$('#from_post').parent('.writeCmt').show();
+						_showmsg('发生错误请重试！');
+					}
+		});
+		return false;
+	});
+	function bv_error(msg){
+		$('#bv_error').html(msg).show();
+	}
+	function bv_errors(msg){
+		$('#bv_errors').html(msg).show();
+	}
+	function checkText(start,end,startHour,endHour,price,mymsg,msg,fun){
+		price = $.trim(price);
+		mymsg = $.trim(mymsg);
+		msg = $.trim(msg);
+		if(!fun){
+			fun = '_showmsg'
+		}
+		var date 	  = new Date();
+		var curTime    	  = Math.floor(date.getTime()/1000);
+
+		if(!start){
+			fun == 'bv_errors' ?  show_errors("date_error", "请选择攀登{$modname}的开始时间") : eval(fun+'("请选择攀登{$modname}的开始时间")');
+			//eval(fun+'("请选择攀登{$modname}开始时间")');
+			return false;
+		}
+		if (start > curTime) {
+			fun == 'bv_errors' ?  show_errors("date_error", "攀登{$modname}开始时间需小于当前时间") : eval(fun+'("攀登{$modname}开始时间需小于当前时间")');
+			//eval(fun+'("攀登{$modname}开始时间需小于当前时间")');
+			return false;
+		}
+		if(!end){
+			fun == 'bv_errors' ?  show_errors("date_error", "请选择攀登{$modname}结束时间") : eval(fun+'("请选择攀登{$modname}结束时间")');
+			//eval(fun+'("请选择攀登{$modname}结束时间")');
+			return false;
+		}
+		if (end > curTime) {
+			fun == 'bv_errors' ?  show_errors("date_error", "攀登的结束时间需小于当前时间") : eval(fun+'("攀登的结束时间需小于当前时间")');
+			//eval(fun+'("攀登的结束时间需小于当前时间")');
+			return false;
+		}
+		if(start > end){
+			fun == 'bv_errors' ?  show_errors("date_error", "攀登的结束时间需小于当前时间") : eval(fun+'("攀登的结束时间需小于当前时间")');
+			//eval(fun+'("攀登的结束时间需大于开始时间")');
+			return false;
+		}
+		if(start && end){
+			var temp = Math.ceil((end - start)/ 86400);
+			if(temp>60){
+				fun == 'bv_errors' ?  show_errors("date_error", "攀登周期不得超过60天") : eval(fun+'("攀登周期不得超过60天")');
+				//eval(fun+'("攀登周期不得超过60天")');
+				return false;
+			}
+
+		}
+		if(start == end){
+			var curHour 	= date.getHours();
+			var tempJiange  = curTime - start;
+			if(!startHour && startHour!=0){
+				fun == 'bv_errors' ?  show_errors("date_error", "请填写攀登{$modname}的开始时间") : eval(fun+'("请填写攀登{$modname}的开始时间")');
+				//eval(fun+'("请填写攀登{$modname}的开始时间")');
+				return false;
+			}
+			//当天才需要判断
+			if (tempJiange < 86400) {
+				if (startHour > curHour) {
+					fun == 'bv_errors' ?  show_errors("date_error", "攀登{$modname}的开始时间需小于当前时间") : eval(fun+'("攀登{$modname}的开始时间需小于当前时间")');
+					//eval(fun+'("攀登{$modname}的开始时间需小于当前时间")');
+					return false;
+				}
+			}
+			if(!endHour){
+				fun == 'bv_errors' ?  show_errors("date_error", "请填写攀登{$modname}的结束时间") : eval(fun+'("请填写攀登{$modname}的结束时间")');
+				//eval(fun+'("请填写攀登{$modname}的结束时间")');
+				return false;
+			}
+			//当天才需要判断
+			if (tempJiange < 86400) {
+				if (endHour > curHour) {
+					fun == 'bv_errors' ?  show_errors("date_error", "{攀登$modname}的结束时间需小于当前时间") : eval(fun+'("{攀登$modname}的结束时间需小于当前时间")');
+					//eval(fun+'("{攀登$modname}的结束时间需小于当前时间")');
+					return false;
+				}
+			}
+			if (startHour >= endHour) {
+				fun == 'bv_errors' ?  show_errors("date_error", "攀登{$modname}的结束时间需大于开始时间") : eval(fun+'("攀登{$modname}的结束时间需大于开始时间")');
+				//eval(fun+'("攀登{$modname}的结束时间需大于开始时间")');
+				return false;
+			}
+		}
+		if(price.length<10){
+			eval(fun+'("请准确填写此次攀登所用费及商业队情况")');
+			return false;
+		}
+		if(!mymsg){
+			eval(fun+'("请填写您对未来攀登此山峰的攀登者的建议和经验")');
+			return false;
+		}
+		if(mymsg.length<10){
+			eval(fun+'("请填写您对未来攀登此山峰的攀登者的建议和经验，不能少于10个字符")');
+			return false;
+		}
+		if(msg.length<50){
+			eval(fun+'("请填写综合总结，不少于50字")');
+			return false;
+		}
+		return true;
+	}
+	{if ($_G['forum']['ismoderator'] && $_G['group']['alloweditpost'] && (!in_array($post['adminid'], array(1, 2, 3)) || $_G['adminid'] <= $post['adminid']) || ($_G['groupid'] == 1 ||$_G['groupid']== 45))}
+	//取消审核操作
+	$('.guanli .setcancel').click(function(){
+		jQuery.ajax({
+		type: 'get',
+		url: 'forum.php?ctl={$modstr}&act=checkit&type=0&tid='+tid,
+		success: function(html) {
+			if(checkreturn(html)){
+				jQuery('.guanli .setcancel').hide();
+				jQuery('.guanli .setpass').show();
+				jQuery('.skiName .tit').append('(未审核)');
+			}
+		}});
+		return false;
+	});
+	//审核通过操作
+	$('.guanli .setpass').click(function(){
+		jQuery.ajax({
+		type: 'get',
+		url: 'forum.php?ctl={$modstr}&act=checkit&type=1&tid='+tid,
+		success: function(html) {
+			if(checkreturn(html)){
+				jQuery('.guanli .setcancel').show();
+				jQuery('.guanli .setpass').hide();
+				jQuery('.skiName .tit').text(jQuery('.skiName .tit').text().replace('(未审核)',''));
+			}
+		}});
+		return false;
+	});
+	var checkreturn = function (status) {
+		var msg = '操作失败！';
+		var success = false;
+		switch(status){
+			case '1':
+				msg='操作成功！';success=true;break;
+			case '-1':
+				msg='您没有权限操作！';break;
+		}
+		showDialog(msg);return success;
+	}
+	{/if}
+
+	{if ( $_G['forum']['ismoderator'] && $_G['group']['alloweditpost'] && (!in_array($post['adminid'], array(1, 2, 3)) || $_G['adminid'] <= $post['adminid']) )}
+	$('#glistBox').hover(function(){
+		$('#glist').show();
+	},function(){
+		$('#glist').hide();
+	});
+	{/if}
+	$('.wydp_orangelink, .wydp_warpten').hover(function(){
+		clearTimeout(window.wydpCtrl);
+		$(".wydp_warpten").show();
+	},function(){
+		window.wydpCtrl=setTimeout(function(){$(".wydp_warpten").hide();},300);
+	});
+
+
+	$.formValidator.initConfig({formID:"from_post",debug:false,submitOnce:false,
+		onError:function(msg,obj,errorlist){
+			$("#errorlist").empty();
+			$.map(errorlist,function(msg){
+			//	$("#errorlist").append("<li>" + msg + "</li>")
+			});
+		},
+		submitAfterAjaxPrompt : '有数据正在异步验证，请稍等...'
+	});
+
+	//$("#f_start").formValidator({onShow:"",onFocus:"请选择",onCorrect:"<div class=correct></div>",defaultValue:""}).inputValidator({min:10,onError:"<div class=wrong><div class=lft></div><div class=rht>请选择攀登开始时间</div></div>"});
+	//$("#f_end").formValidator({onShow:"",onFocus:"",onCorrect:"<div class=correct></div>",defaultValue:""}).inputValidator({min:10,onError:"<div class=wrong><div class=lft></div><div class=rht>请选择开始或者结束时间</div></div>"});
+
+	$("#f_pricedesc").formValidator({onShow:"",onFocus:"<div class=information><div class=lft></div><div class=rht>请描述本次攀登参加的哪支商业队，费用多少钱。自主攀登请描述向导、马匹等费用情况</div></div>",onCorrect:"<div class=correct></div>",defaultValue:""}).inputValidator({min:20,onError:"<div class=wrong><div class=lft></div><div class=rht>您的描述还不足够详细，请详细描述</div></div>"});
+	$("#f_comment").formValidator({onShow:"",onFocus:"<div class=information><div class=lft></div><div class=rht>请从装备选用、体能分配、攀登注意事项等方面给出您的建议，不少于50字</div></div>",onCorrect:"<div class=correct></div>",defaultValue:""}).inputValidator({min:100,onError:"<div class=wrong><div class=lft></div><div class=rht>请详细填写 我的建议 不少于50字</div></div>"});
+	$("#f_message").formValidator({onShow:"",onFocus:"<div class=information><div class=lft></div><div class=rht>请从天气情况、日程安排、营地住宿、攀登线路等方面综合描述本次攀登，不少于100字。如已发布相关帖子，请在最后附上帖子链接。抄袭他人点评扣除2个8264币</div></div>",onCorrect:"<div class=correct></div>",defaultValue:""}).inputValidator({min:200,onError:"<div class=wrong><div class=lft></div><div class=rht>请详细填写攀登综述，不少于100字</div></div>"});
+
+	$("#starBox .graystar").hover(
+		function(){
+			$('#showtp').text(this.title);
+		},
+		function(){
+			$('#showtp').text('');
+		}
+	);
+
+	//鼠标移入分享后向左边弹出分享按钮
+	$("#share").hover(
+		function () {
+		$(".share_bd",this).show();
+		},
+		function () {
+		$(".share_bd",this).hide();
+		}
+	);
+	//返回顶部按钮
+	if($(window).scrollTop() > 10){$("#gotop_50 a").show();}
+	$(window).scroll( function(){
+		if($(window).scrollTop()>10){
+			$("#gotop_50 a").show();
+		}else{
+			$("#gotop_50 a").hide();
+		}
+	});
+	$("#gotop_50").click(function(){
+		$("html,body").animate({ scrollTop: 0 },500);
+	});
+	$(".tishi").hover(function(event){
+		$(this).find('[class$=_ts]').show();
+	},
+	function(event){
+		$(this).find('[class$=_ts]').hide();
+	});
+});
+
+function loadUnloginData(name,id){
+	var ld = loadUserdata(name);
+	if(ld != '' && ld != null){
+		$(id).value = ld;
+	}
+}
+</script>
+<div class="layout mt50">
+	<div class="layoutLeft">
+		<h1 class="skiName">
+			<span class="tit"><a href="{$url}&act=showview&tid={$viewdata[tid]}" title="{$viewdata['subject']}">$viewdata['subject']</a></span>
+			{if ( $_G['forum']['ismoderator'] && $_G['group']['alloweditpost'] && (!in_array($post['adminid'], array(1, 2, 3)) || $_G['adminid'] <= $post['adminid']) )}
+			<div class="guanli" id="glistBox">
+            	<a class="gl"></a>
+                <div class="gl_list" id="glist">
+                	<ul>
+						<li>
+							{if ($_G['forum']['ismoderator'] && $_G['group']['alloweditpost'])}
+							<a href="{$url}&act=dopost&do=edit&tid={$_G[tid]}&pid={$viewdata[pid]}&page=1{if !empty($_G[gp_modthreadkey])}&modthreadkey=$_G[gp_modthreadkey]{/if}">{lang edit}</a>
+							{/if}
+						</li>
+						<li><!--{if $_G['group']['allowdelpost']}--><a href="forum.php?ctl={$modstr}&act=deleteit&tid={$_G[tid]}" onclick="return confirm('确认删除这个{$modname}？删除后将不可恢复！');">{lang modmenu_deletethread}</a><!--{/if}--></li>
+						<!--{if ($_G['forum']['ismoderator'] && $_G['group']['alloweditpost'] && (!in_array($post['adminid'], array(1, 2, 3)) || $_G['adminid'] <= $post['adminid']) || ($_G['groupid'] == 1 ||$_G['groupid']== 45))}-->
+						<li class="setpass" {if $viewdata['enable']==1}style="display:none;"{/if}><a class="tgsh" href="javascript:;">通过审核</a></li>
+						<li class="setcancel" {if $viewdata['enable']==0}style="display:none;"{/if}><a class="qxsh" href="javascript:;">取消审核</a></li>
+						<!--{/if}-->
+                    </ul>
+                </div>
+			</div>
+			{/if}
+		</h1>
+		<div class="picShow mb35">
+			<div class="picShowL">
+				<!--轮播开始-->
+				<div class="lunbo">
+					<div class="lunbobig" id="lunbobig">
+						<ul>
+
+							<!--{loop $piclist $pic}-->
+							<li><a title="点击查看原图" target="_blank" href="{$pic['url']}{$pic[attachment]}"><img src="<!--{eval echo getimagethumb(322,244,2,'plugin/'.$pic['attachment'], $pic['aid'], $pic['serverid']);}-->" /></a></li>
+							<!--{/loop}-->
+						</ul>
+					</div>
+					<div class="lunbosmall" id="lunbosmall">
+						<ul>
+							<!--{loop $piclist $pic}-->
+							<li>
+								<a href="javascript:;" target="_blank"><img src="<!--{eval echo getimagethumb(48,48,2,'plugin/'.$pic['attachment'], $pic['aid'], $pic['serverid']);}-->"/></a>
+								<div class="black_48_48"></div>
+							</li>
+							<!--{/loop}-->
+						</ul>
+					</div>
+				</div>
+				<!--轮播结束-->
+			</div>
+			<div class="picShowR">
+				<div class="pingf">
+					<div class="interest_sectl" id="interest_sectl">
+						<div class="star_show">
+							{eval for ($i = 0; $i < 5; $i++):}
+							<span class="{if $i < $star_data['price']/2}{if $star_data['price']/2-$i<1}halfstar{else}redstar{/if}{else}graystar{/if} colorstar"></span>
+							{eval endfor;}
+							<span class="num">{$star_data['price']}</span>
+							<span class="text"></span>
+						</div>
+						<div class="peoples">(<span class="num"><!--{if $star_data['count']}-->{$star_data['count']}<!--{else}-->0<!--{/if}--></span>人评分)</div>
+						<div class="star_list">
+							<div class="star" title="非常困难">
+								<span class="redstar2"></span>
+								<span class="redstar2"></span>
+								<span class="redstar2"></span>
+								<span class="redstar2"></span>
+								<span class="redstar2"></span>
+								<span class="percent" style="width:{eval echo $star_data['percent5']*0.8}px;"></span>
+								<span class="num"><!--{if $star_data['percent5']}-->{$star_data['percent5']}<!--{else}-->0.0<!--{/if}-->%</span>
+								<span>(非常困难)</span>
+							</div>
+							<div class="star" title="困难">
+								<span class="redstar2"></span>
+								<span class="redstar2"></span>
+								<span class="redstar2"></span>
+								<span class="redstar2"></span>
+								<span class="graystar2"></span>
+								<span class="percent" style="width:{eval echo $star_data['percent4']*0.8}px;"></span>
+								<span class="num"><!--{if $star_data['percent4']}-->{$star_data['percent4']}<!--{else}-->0.0<!--{/if}-->%</span>
+								<span>(困难)</span>
+							</div>
+							<div class="star" title="难">
+								<span class="redstar2"></span>
+								<span class="redstar2"></span>
+								<span class="redstar2"></span>
+								<span class="graystar2"></span>
+								<span class="graystar2"></span>
+								<span class="percent" style="width:{eval echo $star_data['percent3']*0.8}px;"></span>
+								<span class="num"><!--{if $star_data['percent3']}-->{$star_data['percent3']}<!--{else}-->0.0<!--{/if}-->%</span>
+								<span>(难)</span>
+							</div>
+							<div class="star" title="简单">
+								<span class="redstar2"></span>
+								<span class="redstar2"></span>
+								<span class="graystar2"></span>
+								<span class="graystar2"></span>
+								<span class="graystar2"></span>
+								<span class="percent" style="width:{eval echo $star_data['percent2']*0.8}px;"></span>
+								<span class="num"><!--{if $star_data['percent2']}-->{$star_data['percent2']}<!--{else}-->0.0<!--{/if}-->%</span>
+								<span>(简单)</span>
+							</div>
+							<div class="star" title="非常简单">
+								<span class="redstar2"></span>
+								<span class="graystar2"></span>
+								<span class="graystar2"></span>
+								<span class="graystar2"></span>
+								<span class="graystar2"></span>
+								<span class="percent" style="width:{eval echo $star_data['percent1']*0.8}px;"></span>
+								<span class="num"><!--{if $star_data['percent1']}-->{$star_data['percent1']}<!--{else}-->0.0<!--{/if}-->%</span>
+								<span>(非常简单)</span>
+							</div>
+						</div>
+					</div>
+                </div>
+
+					<div class="webTel">
+						<div><span class="longitude">经度：$viewdata['lon']</span><span class="latitude">纬度：$viewdata['lat']</span></div>
+						<div><span class="altitude">高度：$viewdata['height']</span></div>
+						<div><span class="season">攀登季节：$viewdata['season']</span></div>
+						<div><span class="address">所在地址：$viewdata['region']</span></div>
+					</div>
+				<div class="addr">{$viewdata['newaddress']}</div>
+			</div>
+		</div>
+		{if $viewdata['message']}
+		<div class="intro mb25">
+			<h2 class="h2Titip">
+				<span>{$viewdata['subject']}简介</span>
+				<a href="/shanfeng-$viewdata['tid']#writecommon" class="wydp_orangelink">我要点评</a>
+				<div class="wydp_warpten" style="display: none;">
+					<div class="wydp_border">
+						<div class="wydp_arrow"></div>
+						<div class="wydp_bluebg">写点评兑换礼品</div>
+						<div class="wydp_info">
+							<ul>
+								<li>
+									<span class="num_blue">1</span>
+									<span class="wydp_info_con">请写下自己的真实感受，严禁抄袭</span>
+									<div class="clboth_0"></div>
+								</li>
+								<li>
+									<span class="num_blue">2</span>
+									<span class="wydp_info_con">点评被奖励8264币后，请到论坛兑换礼品</span>
+									<div class="clboth_0"></div>
+								</li>
+							</ul>
+						</div>
+						<a href="http://bbs.8264.com/forum-483-1.html" target="_blank" class="dh_bule"></a>
+					</div>
+				</div>
+				<div class="clboth_0"></div>
+			</h2>
+			<div class="bd">
+				<div class="info" id="info_p"><p>{$viewdata['message']}</p></div>
+				<div class="p_more" id="slidemore">查看更多</div>
+			</div>
+			<div>
+			<!--{ad/custom_309}-->
+			</div>
+		</div>
+		{/if}
+
+		<!--{subtemplate forum/dianping/dpad}-->
+		<div class="commentBox" id="myComment"{if !$my_comment} style="display:none;"{/if}>
+			<h2 class="h2Tit">我的点评&nbsp;&nbsp;&nbsp;<span>假如您的点评没有奖励8264币，请联系工作人员QQ7171608询问原因</span></h2>
+			<dl class="cmtDl">
+				<dd class="avatar"><a href="home.php?mod=space&uid={$_G['uid']}"><!--{avatar($_G['uid'], small)}--></a></dd>
+				<dd class="cmtCont">
+					<div class="tit">
+						<span class="usrName"><a href="home.php?mod=space&uid={$_G['uid']}" target="_blank" class="usrName">{$_G['username']}</a></span>
+                        <span style="color:#A8A8A8;float: left">点评了<a href="forum.php?ctl=mountain&act=showview&tid={$viewdata[tid]}" style="color:#A8A8A8;" title="{$viewdata['subject']}">{$viewdata['subject']}</a>，</span>
+                        <span class="date">发表于 {$my_comment['dateline']}</span>
+						<!--{if $my_comment['rate']}-->
+						<span class="bi"><a href="http://bbs.8264.com/forum-483-1.html" target="blank"><img align="absmiddle" title="奖励8264币" alt="奖励8264币" src="static/image/common/8264b.gif"></a></span>
+						<!--{/if}-->
+						<input type="hidden" name="" id="starnum" value="{$my_comment['starnum']}" />
+					</div>
+					<ul class="goodBad">
+						<li> <span class="leftIco date2">攀登日期</span>
+							<div class="cont">
+								<!--{if $my_comment['ext1']==$my_comment['ext2']}-->
+								<p id="time"><span id="f_starttime">$my_comment['ext1']</span><span id="f_endtime"></span><span id="ddt">&nbsp;&nbsp;<span id="startHour">$my_comment['starHour']</span>时至<span id="endHour">$my_comment['endHour']</span>时&nbsp; 共用 $my_comment['time']</span></p>
+								<!--{else}-->
+								<p id="time"><span id="f_starttime">$my_comment['ext1']</span> 至 <span id="f_endtime">$my_comment['ext2']</span><span id="ddt">&nbsp;共用 $my_comment['time']</span></p>
+								<!--{/if}-->
+							</div>
+						</li>
+						<li {if !$my_comment['ext3']} style="display:none;"{/if}>
+							<span class="leftIco cost">费用协作</span>
+							<div class="cont">
+								<p id="pricedesc">$my_comment['ext3']</p>
+							</div>
+						</li>
+						<li {if !$my_comment['ext4']} style="display:none;"{/if}>
+							<span class="leftIco suggest">我的建议</span>
+							<div class="cont">
+								<p id="mycomments">$my_comment['ext4']</p>
+							</div>
+						</li>
+						<li> <span class="leftIco summary">综述总结</span>
+							<div class="cont">
+								<p id="tolmsg">{$my_comment['message']}</p>
+							</div>
+						</li>
+						<li> <span class="leftIco hard">难度评价</span>
+							<div class="cont">
+								<span class="starBox" {if !$my_comment['starnum']} style="display: none;"{/if}>
+									{eval for ($i = 0; $i < 5; $i++):}
+									<span class="{if $i < $my_comment['starnum']}redstar{else}graystar{/if}" {if $i==0 }title="非常简单"{elseif $i==1}title="简单"{elseif $i==2}title="难"{elseif $i==3}title="困难"{elseif $i==4}title="非常困难"{/if}></span>
+									{eval endfor;}
+									&nbsp;<span id="tipss"><!--{if $my_comment['starnum']==1}-->(非常简单)<!--{elseif $my_comment['starnum']==2}-->(简单)<!--{elseif $my_comment['starnum']==3}-->(难)<!--{elseif $my_comment['starnum']==4}-->(困难)<!--{elseif $my_comment['starnum']==5}-->(非常困难)<!--{/if}-->
+									</span>
+								</span>
+							</div>
+						</li>
+
+					</ul>
+				</dd>
+				<dd class="bottomCont">
+					<span class="useful{if $my_comment['supports']>0} active{/if}" title="你不能评价自己的点评"><i></i>有用{if !$my_comment['supports']}{else}({$my_comment['supports']}){/if}</span>
+					<span class="ans" id="editBtn_{$my_comment['pid']}"><a href="javascript:;">修改</a></span>
+					{if $_G['adminid'] == 1 && !$my_comment['first']}
+					<span class="normal">
+						<label for="manage$comment[pid]">
+						<input type="checkbox" id="manage{$my_comment['pid']}" class="pc" {if !empty($modclick)}checked="checked" {/if}onclick="pidchecked(this);modclick(this, {$my_comment['pid']})" value="{$my_comment['pid']}" autocomplete="off" />
+						{lang manage}
+						</label>&nbsp;
+						<a id="k_rate" style="color: #666;" href="javascript:;" onclick="showWindow('rate', 'forum.php?mod=misc&action=rate&tid=$_G[tid]&pid=$my_comment[pid]', 'get', -1);return false;" title="加8264币">{lang rate}&nbsp;</a>
+						<!--{if $my_comment['rate'] && $_G['forum']['ismoderator']}-->
+							<a href="forum.php?mod=misc&action=removerate&tid=$_G[tid]&pid=$my_comment[pid]&page=$page" onclick="showWindow('rate', this.href, 'get', -1)">{lang removerate}</a>
+						<!--{/if}-->
+					</span>
+					{/if}
+				</dd>
+			</dl>
+		</div>
+		<div class="commentBox" id="commentsList"><a id="comment"></a>
+		{if $replylist}
+			<h2 class="h2Tit">{$viewdata[subject]}点评</h2>
+			{loop $replylist $comment}
+			<dl class="cmtDl">
+				<dd class="avatar"><a href="home.php?mod=space&uid={$comment['authorid']}" target="_blank" rel="nofollow" ><!--{avatar($comment[authorid], small)}--></a></dd>
+				<dd class="cmtCont">
+					<div class="tit">
+						<span class="usrName"><a href="home.php?mod=space&uid={$comment['authorid']}" rel="nofollow" target="_blank" class="usrName">{$comment['author']}</a></span>
+						<span class="date">发表于 {$comment['dateline']}</span>
+						<!--{if $comment['rate']}-->
+						<span class="bi"><a href="http://bbs.8264.com/forum-483-1.html" target="blank"><img align="absmiddle" title="奖励8264币" alt="奖励8264币" src="static/image/common/8264b.gif"></a></span>
+						<!--{/if}-->
+						<input type="hidden" name="" id="starnum" value="{$comment['starnum']}" />
+
+					</div>
+					<ul class="goodBad">
+						<!--{if $comment['ext1']&&$comment['ext2']}-->
+						<li> <span class="leftIco date2">攀登日期</span>
+							<div class="cont">
+								<!--{if $comment['ext1']==$comment['ext2']}-->
+								<p id="time"><span id="f_starttime">$comment['ext1']</span> &nbsp;&nbsp;<span id="startHour">$comment['starHour']</span>时至<span id="endHour">$comment['endHour']</span>时&nbsp;共用 $comment['time']</p>
+								<!--{else}-->
+								<p id="time"><span id="f_starttime">$comment['ext1']</span> 至 <span id="f_endtime">$comment['ext2']</span> &nbsp;<span id="ddt">共用 $comment['time']</span></p>
+								<!--{/if}-->
+							</div>
+						</li>
+						<!--{/if}-->
+						<!--{if $comment['ext3']}-->
+						<li>
+							<span class="leftIco cost">费用协作</span>
+							<div class="cont">
+								<p id="pricedesc">$comment['ext3']</p>
+							</div>
+						</li>
+						<!--{/if}-->
+						<!--{if $comment['ext4']}-->
+						<li>
+							<span class="leftIco suggest">我的建议</span>
+							<div class="cont">
+								<p id="mycomments">$comment['ext4']</p>
+							</div>
+						</li>
+						<!--{/if}-->
+						<li> <span class="leftIco summary">综述总结</span>
+							<div class="cont">
+								<p id="tolmsg">{$comment['message']}</p>
+							</div>
+						</li>
+						<!--{if $comment['starnum']}-->
+						<li> <span class="leftIco hard">难度评价</span>
+							<div class="cont">
+								<span class="starBox" {if !$comment['starnum']} style="display: none;"{/if}>
+									{eval for ($i = 0; $i < 5; $i++):}
+									<span class="{if $i < $comment['starnum']}redstar{else}graystar{/if}" {if $i==0 }title="非常简单"{elseif $i==1}title="简单"{elseif $i==2}title="难"{elseif $i==3}title="困难"{elseif $i==4}title="非常困难"{/if}></span>
+									{eval endfor;}
+									&nbsp;<span id="tipss"><!--{if $comment['starnum']==1}-->(非常简单)<!--{elseif $comment['starnum']==2}-->(简单)<!--{elseif $comment['starnum']==3}-->(难)<!--{elseif $comment['starnum']==4}-->(困难)<!--{elseif $comment['starnum']==5}-->(非常困难)<!--{/if}-->
+									</span>
+								</span>
+
+							</div>
+						</li>
+						<!--{/if}-->
+					</ul>
+				</dd>
+				<dd class="bottomCont">
+					<span class="useful{if $comment['supports']>0} active{/if}"
+					{if $_G['uid'] && !$supportlist[$comment['pid']]} id="supportBtn_{$comment['pid']}"{/if}
+					{if !$_G['uid']} onclick="javascript:window.location.href = '{$_G[siteurl]}member.php?mod=logging&action=login';return false;"{/if}
+					{if $_G['uid']}
+						{if $supportlist[$comment['pid']]}
+						title="你已经评价过了"
+						{else}
+						title="有用"
+						{/if}
+					{else}
+					title="登录后才能进行评价"
+					{/if}><i></i>有用<em>{if !$comment['supports']}{else}({$comment['supports']}){/if}</em></span>
+					{if $_G['adminid'] == 1}
+					<span class="ans" id="editBtn_{$comment['pid']}"><a href="javascript:;">修改</a></span>
+					{/if}
+					{if $_G['adminid'] == 1 && !$comment['first']}
+					<span class="normal">
+						<label for="manage$comment[pid]">
+						<input type="checkbox" id="manage$comment[pid]" class="pc" {if !empty($modclick)}checked="checked" {/if}onclick="pidchecked(this);modclick(this, $comment[pid])" value="$comment[pid]" autocomplete="off" />
+						{lang manage}
+						</label>&nbsp;
+						<a id="k_rate" style="color: #666;" href="javascript:;" onclick="showWindow('rate', 'forum.php?mod=misc&action=rate&tid=$_G[tid]&pid=$comment[pid]', 'get', -1);return false;" title="加8264币">{lang rate}&nbsp;</a>
+						<!--{if $comment['rate'] && $_G['forum']['ismoderator']}-->
+							<a href="forum.php?mod=misc&action=removerate&tid=$_G[tid]&pid=$comment[pid]&page=$page" onclick="showWindow('rate', this.href, 'get', -1)">{lang removerate}</a>
+						<!--{/if}-->
+					</span>
+					{/if}
+				</dd>
+			</dl>
+			{/loop}
+			<div class="pageBox mb25">{$replymulti}</div>
+		{/if}
+		</div>
+		<div id="writecommon"></div>
+		{if $myrate!=1 && $viewdata['enable']==1}
+		<div class="writeCmt" id="writeCmt_dw">
+            <h2 class="h2Tit">我要点评$viewdata['subject']
+				<span>&nbsp;&nbsp;&nbsp;注：转山线路不再山峰点评范围之内，山峰点评仅针对攀登进行点评</span>
+			</h2>
+			<span id="fastpostreturn" style="margin-left: 10px;"></span>
+			<div style="color: red; display: none;" id="bv_errors"></div>
+			<form method="post" id="from_post" autocomplete="off" action="{$url}&act=dopost&do=reply&tid={$_G['tid']}">
+			<ul class="writeGoodBad">
+				<li class="mb30">
+					<span class="leftIco date2">
+						<img src="static/images/dianping/date.jpg">
+					</span>
+					<div class="cont post">
+						<input name="datapicker[]" readonly class="timeText datapicker startPicker" onclick="showcalendar(event, this, '', '', '', 28);" onchange="changeDate()"/> --- <input name="datapicker[]" readonly class="timeText datapicker endPicker" onclick="showcalendar(event, this, '', '', '', 28);"/>&nbsp;&nbsp;&nbsp;&nbsp;
+						<input name="datapicker[]" class="timeText timeHour dataHour startHour" maxlength="2"/><span class="timeHour">时 --- </span><input name="datapicker[]" class="timeText timeHour dataHour endHour" maxlength="2"/><span class="timeHour">时</span>
+						<span id="f_startTip"></span>
+						<div id="date_error" style="padding-top:7px;"></div>
+					</div>
+				</li>
+				<li class="mb30">
+					<span class="leftIco  cost"></span>
+					<div class="cont">
+						<label class="fs14">请描述本次攀登参加的哪支商业队，费用多少钱。自主攀登请描述向导、马匹等费用情况</label>
+						<textarea name="f_pricedesc" rows="2" class="line3Area" id="f_pricedesc"></textarea>
+						<div id="f_pricedescTip"></div>
+					</div>
+				</li>
+				<li class="mb30">
+					<span class="leftIco suggest"></span>
+					<div class="cont">
+						<label class="fs14">请从装备选用、体能分配、攀登注意事项等方面给出您的建议，不少于50字</label>
+						<textarea name="f_comment" rows="2" class="line3Area" id="f_comment"></textarea>
+					<div id="f_commentTip"></div>
+					</div>
+				</li>
+				<li class="mb18">
+					<span class="leftIco summary"></span>
+					<div class="cont">
+						<label class="fs14">请从天气情况、日程安排、营地住宿、攀登线路等方面综合描述本次攀登，不少于100字。如已发布相关帖子，请在最后附上帖子链接。抄袭他人点评扣除2个8264币</label>
+						<textarea name="message" id="f_message" rows="6" class="line5Area "></textarea>
+						<div id="f_messageTip"></div>
+					</div>
+				</li>
+				<li class="mb30" style="z-index: 50;">
+					<span class="leftIco hard"></span>
+					<div class="cont">
+						<span class="starBox" id="starBox">
+							<span class="graystar" title="非常简单"></span>
+							<span class="graystar" title="简单"></span>
+							<span class="graystar" title="难"></span>
+							<span class="graystar" title="困难"></span>
+							<span class="graystar" title="非常困难"></span>
+						</span>
+						<span id="showtp"></span>
+						<div id="star_error"></div>
+					</div>
+				</li>
+				<!--{if checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
+				<li class="mb25">
+					<span class="leftArea">验证码</span>
+					<div class="cont">
+						<input type="text" name="captcha" id="captcha" class="codeNum" />
+						<a href="#" id="refreshCaptcha" title="点击刷新图片"><img src="/plugin.php?id=dailypicture:captcha" alt="点击刷新图片" /></a>
+						<input type="hidden" value="" id="yzm" name="yzm">
+						<span id="jg"></span>
+						<span class="tips">用户发帖少于3个小时，需要填写验证码</span>
+					</div>
+				</li>
+				<!--{/if}-->
+				<li>
+					<div class="cont"><input {if $_G['uid']}type="submit"{else}type="button" onclick="showWindow('login', 'member.php?mod=logging&action=login&guestmessage=yes')"{/if} value="" class="publish182x43"></div>
+					<input type="hidden" name="formhash" value="{FORMHASH}" />
+					<input type="hidden" name="replypostsubmit" value="yes">
+					<input type="hidden" name="subject" value="" />
+					<input type="hidden" name="starnum" id="form_starNum" value="0" />
+				</li>
+			</ul>
+			</form>
+		</div>
+
+		{/if}
+	</div>
+	<div class="layoutRight">
+
+		<div><!--{ad/custom_269}--></div>
+
+
+		{if $hotmore}
+		<div class="hotArt mt30">
+			<h2 class="h2Tit">热门</h2>
+			<div class="bd">
+				<ul class="hostArtList">
+					<!--{eval $j=1;}-->
+					<!--{loop $hotmore $fj}-->
+					<li>
+						<a href="/forum.php?ctl={$modstr}&act=showview&tid={$fj[tid]}" target="_blank"><img src="<!--{eval echo getimagethumb(60, 60, 2, $fj['picpath'], $fj['aid'], $fj['serverid']);}-->" class="pic" /></a>
+						<div class="text">
+							<h4><a href="/forum.php?ctl={$modstr}&act=showview&tid={$fj[tid]}" title="{$fj['name']}" target="_blank"{eval if($j==1) echo " class=\"cBlue\"";if($j==2||$j==3) echo " class=\"cOrange\""; }>{$fj['shortsubjectmore']}</a></h4>
+							<p class="starBox">
+								{eval for ($i = 0; $i < 6; $i++):}
+								<span class="{if $i < $fj['score']/2}{if $fj['score']/2-$i<1}halfstar{else}redstar{/if}{else}graystar{/if}"></span>
+								{eval endfor;}
+								{if $fj['score']!='0.0'} {$fj['score']}{else} 暂无评分{/if}
+							</p>
+							<p class="cmt">{$fj['replies']}参与点评</p>
+						</div>
+						<div class="icoBox"><span class="{eval if($j==1) echo "blueIco";if($j==2||$j==3) echo "orangeIco";if($j>3) echo "greyIco";}"></span></div>
+					</li>
+					<!--{eval $j++;}-->
+					<!--{/loop}-->
+				</ul>
+			</div>
+		</div>
+		{/if}
+
+
+		{if $listpro}
+		<div class="hotArt">
+            <h2 class="h2Tit">$viewdata['subject']周边山峰</h2>
+			<div class="bd">
+				<ul class="hostArtList">
+					<!--{eval $j=1;}-->
+					<!--{loop $listpro $fj}-->
+					<li>
+						<a href="/forum.php?ctl={$modstr}&act=showview&tid={$fj[tid]}" target="_blank"><img src="<!--{eval echo getimagethumb(60, 60, 2, $fj['picpath']);}-->" class="pic" /></a>
+						<div class="text">
+							<h4><a href="/forum.php?ctl={$modstr}&act=showview&tid={$fj[tid]}" title="{$fj['name']}" target="_blank"{eval if($j==1) echo " class=\"cBlue\"";if($j==2||$j==3) echo " class=\"cOrange\""; }>{$fj['shortsubjectmore']}</a></h4>
+							<p class="starBox">
+								{eval for ($i = 0; $i < 5; $i++):}
+								<span class="{if $i < $fj['score']/2}{if $fj['score']/2-$i<1}halfstar{else}redstar{/if}{else}graystar{/if}"></span>
+								{eval endfor;}
+								{if $fj['score']!='0.0'} {$fj['score']}{else} 暂无评分{/if}
+							</p>
+							<p class="cmt">{$fj['replies']}参与点评</p>
+						</div>
+					</li>
+					<!--{eval $j++;}-->
+					<!--{/loop}-->
+				</ul>
+			</div>
+		</div>
+		{/if}
+
+		{if $listpro}
+		<div class="sameArea" style="display: none;">
+			<h2 class="h2Tit">同地区</h2>
+			<ul class="artLRList">
+				<!--{eval $i=1;}-->
+				<!--{loop $listpro $fj}-->
+				<li>
+					<span class="tit">
+						<a href="/forum.php?ctl={$modstr}&act=showview&tid={$fj[tid]}" target="_blank"{eval if($i==1) echo " class=\"cOrange\"";if($i==2||$i==3) echo " class=\"cBlue\""; }>{$fj['shortsubject']}</a>
+					</span>
+					<span class="right">
+					{eval for ($m = 0; $m < 5; $m++):}
+					<span class="{if $m < $fj['score']/2}{if $fj['score']/2-$m<1}halfstar{else}redstar{/if}{else}graystar{/if}"></span>
+					{eval endfor;}
+					</span>
+				</li>
+				<!--{eval $i++;}-->
+				<!--{/loop}-->
+			</ul>
+		</div>
+		{/if}
+	</div>
+</div>
+
+<div class="popBox" id="box_view">
+	<div class="bd">
+		<div class="popWriteCmt">
+			<h2>
+				<span class="tit">修改点评</span>
+
+			</h2>
+			<div style="color: red; display: none;" id="bv_error"></div>
+			<form method="post" autocomplete="off" id="postform" action="{$url}&act=dopost&do=reply&ext=edit&page={$_G['page']}&tid={$_G['tid']}">
+			<ul class="writeGoodBad">
+				<li class="mb30">
+					<span class="leftIco date2">
+						<img src="static/images/dianping/date.jpg">
+					</span>
+					<div class="cont post">
+						<input name="datapicker[]" readonly class="timeText datapicker startPicker" onclick="showcalendar(event, this, '', '', '', 28);" onchange="changeDate()"/> --- <input name="datapicker[]" readonly class="timeText datapicker endPicker" onclick="showcalendar(event, this, '', '', '', 28);"/>&nbsp;&nbsp;&nbsp;&nbsp;
+						<input name="datapicker[]" class="timeText timeHour dataHour startHour" maxlength="2"/><span class="timeHour">时 --- </span><input name="datapicker[]" class="timeText timeHour dataHour endHour" maxlength="2"/><span class="timeHour">时</span>
+						<span id="f_startTip"></span>
+					</div>
+				</li>
+
+
+				<li class="mb30">
+					<span class="leftIco  cost"></span>
+					<div class="cont">
+						<label class="fs14"></label>
+						<textarea name="f_pricedesc" rows="2" class="line3Area" id="f_pricedesc"></textarea>
+						<div id="f_pricedescTip"></div>
+					</div>
+				</li>
+
+
+				<li class="mb30">
+					<span class="leftIco suggest"></span>
+					<div class="cont">
+						<label class="fs14"></label>
+						<textarea name="f_comment" rows="2" class="line3Area" id="f_comment"></textarea>
+						<div id="f_commentTip"></div>
+					</div>
+				</li>
+
+				<li class="mb18">
+					<span class="leftIco summary"></span>
+					<div class="cont">
+						<label class="fs14"></label>
+						<textarea name="message" id="f_message" rows="6" class="line5Area "></textarea>
+						<div id="f_messageTip"></div>
+					</div>
+				</li>
+
+				<li class="mb30" style="z-index: 50;">
+					<span class="leftIco hard"></span>
+					<div class="cont">
+						<span class="starBox" id="bv_starBox">
+							<span class="graystar" title="非常简单"></span>
+							<span class="graystar" title="简单"></span>
+							<span class="graystar" title="难"></span>
+							<span class="graystar" title="困难"></span>
+							<span class="graystar" title="非常困难"></span>
+						</span>
+						<span class="starTextTips"></span>
+						<input type="hidden" name="" id="bv_starNum" value="0" />
+					</div>
+				</li>
+				<li class="sub"><input type="button" value="" id="boxSubmit" class="modifi182x43"></li>
+			</ul>
+			<input type="hidden" name="pid" id="pid" value="0" />
+			</form>
+		</div>
+		<span class="closeBtn" id="bv_closeBtn">关闭</span>
+	</div>
+</div>
+
+
+<form method="post" autocomplete="off" name="modactions" id="modactions">
+<input type="hidden" name="formhash" value="{FORMHASH}" />
+<input type="hidden" name="optgroup" />
+<input type="hidden" name="operation" />
+<input type="hidden" name="listextra" value="$_G[gp_extra]" />
+</form>
+
+<div id="mdly" class="fwinmask" style="display:none;">
+	<table cellspacing="0" cellpadding="0" class="fwin">
+		<tr>
+			<td class="t_l"></td>
+			<td class="t_c"></td>
+			<td class="t_r"></td>
+		</tr>
+		<tr>
+			<td class="m_l">&nbsp;&nbsp;</td>
+			<td class="m_c">
+				<div class="f_c">
+					<div class="c">
+						<h3>{lang admin_select}&nbsp;<strong id="mdct" class="xi1"></strong>&nbsp;{lang piece}: </h3>
+						<!--{if $_G['forum']['ismoderator']}-->
+							<!--{if $_G['group']['allowdelpost']}--><a href="javascript:;" onclick="modaction('delpost', '', '', 'forum.php?ctl={$modstr}&act=moderator')">{lang modmenu_deletepost}</a><span class="pipe">|</span><!--{/if}-->
+							<!--{if $_G['group']['allowstickreply']}--><a href="javascript:;" onclick="modaction('stickreply', '', '', 'forum.php?ctl={$modstr}&act=moderator')">{lang modmenu_stickpost}</a><!--{/if}-->
+						<!--{/if}-->
+						<!--{if $_G['forum_thread']['pushedaid'] && $allowpostarticle}--><a href="javascript:;" onclick="modaction('pushplus', '', 'aid=$_G[forum_thread][pushedaid]', 'portal.php?mod=portalcp&ac=article&op=pushplus')">{lang modmenu_pushplus}</a><span class="pipe">|</span><!--{/if}-->
+					</div>
+				</div>
+			</td>
+			<td class="m_r"></td>
+		</tr>
+		<tr>
+			<td class="b_l"></td>
+			<td class="b_c"></td>
+			<td class="b_r"></td>
+		</tr>
+	</table>
+</div>
+<script>
+var tta = document.getElementsByTagName('textarea');
+for(var i=0; i<tta.length; i++){
+	if(!isUndefined(tta[i].id)){
+		loadUnloginData(tta[i].id + tid, tta[i].id);
+	}
+}
+</script>
+<div class="share_bd_warpten">
+	<ul class="bbs_share_sc">
+		<li class="ps_re" id="share">
+			<a href="javascript:;" class="share"></a>
+			<div class="bdsharebuttonbox share_bd" data-tag="share_1">
+				<a href="javascript:;" class="sina" data-cmd="tsina"></a>
+				<a href="javascript:;" class="qq" data-cmd="qzone"></a>
+				<a href="javascript:;" class="wb" data-cmd="tqq"></a>
+				<a href="javascript:;" class="wx" data-cmd="weixin"></a>
+			</div>
+		</li>
+		<li><a href="home.php?mod=spacecp&ac=favorite&type=thread&id=$_G[tid]" id="m_k_favorite" onclick="showWindow(<!--{if $_G['uid']}-->this.id, this.href, 'get', 0<!--{else}-->'login','member.php?mod=logging&action=login'<!--{/if}-->);" class="sc"><b style="display: none;" id="favoritenumber"></b></a></li>
+		<li><a href="forum.php?mod=forumdisplay&fid=$_G[fid]" class="bbsli" title="返回山峰首页"></a></li>
+		<li id="gotop_50"><a style="display: none;" href="javascript:;" class="gotop_50"></a></li>
+	</ul>
+</div>
+<script>
+window._bd_share_config = {
+	common : {
+		//此处放置通用设置
+	},
+	share : [
+		//此处放置分享按钮设置
+		{"tag" : "share_1", "bdSize" : 32}
+	]
+}
+with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+(function($){
+	var ww=$(window).width();
+	var s_bd_r=Math.max((ww-980)/2-60,0);
+	$(".share_bd_warpten").css("right",s_bd_r);
+})(jQuery);
+</script>
+
+<script type="text/javascript">
+function calendarCallback(obj){
+	var parentObj  = obj.parentNode;
+	var childNodes = parentObj.childNodes;
+//	var datapicker = parentObj.getElementsByClassName("timeText");
+//	var timeHour   = parentObj.getElementsByClassName("timeHour");
+	var isStart    = obj.className.indexOf("startPicker") != -1 ? true : false;
+	var datapicker = new Array();
+	var timeHour   = new Array();
+	var dIndex = 0;
+	var tIndex = 0;
+	for(var i = 0; i < childNodes.length; i++){
+		var temp = childNodes[i].className;
+		if (temp) {
+			if(temp.indexOf("timeText") != -1){
+				datapicker[dIndex] = childNodes[i];
+				dIndex++;
+			}
+			if(temp.indexOf("timeHour") != -1){
+				timeHour[tIndex] = childNodes[i];
+				tIndex++;
+			}
+		}
+	}
+
+	var startTime  = datapicker[0].value;
+	var endTime	   = datapicker[1].value;
+
+	datapicker[2].value = "";
+	datapicker[3].value = "";
+
+	var date 	      = new Date();
+	var curTime    	  = Math.floor(date.getTime()/1000);
+	var selectTime 	  = obj.value;
+	var intSelectTime = getNumberTime(selectTime);
+
+
+	if (intSelectTime > curTime && parentObj.className.indexOf("post") != -1 ) {
+		obj.value = "";
+		var sign  = isStart ? "开始" : "结束";
+		//_showmsg("攀登的"+sign+"时间需小于当前时间");
+		show_errors("date_error", "攀登的"+sign+"时间需小于当前时间")
+		var tttt = setInterval(function(){
+			var div_black = document.getElementById("div_black");
+			if (div_black.style.display == "none") {
+				clearInterval(tttt);
+				obj.click();
+			}
+		},200);
+		return false;
+	}else{
+		if(parentObj.className.indexOf("post") != -1) {
+		    jQuery('#date_error').html('');
+		}
+	}
+
+	if (startTime) {
+		if(isStart){
+			datapicker[0].blur();
+			datapicker[1].click();
+
+		}
+	}
+	if (!startTime || !endTime) {
+		return false;
+	}
+	//把时间转为时间戳
+	var intStartTime 	= getNumberTime(startTime);
+	var intEndTime 		= getNumberTime(endTime);
+
+
+	if (intStartTime == intEndTime) {
+		for(var i = 0; i < timeHour.length; i++){
+			timeHour[i].style.display = "inline";
+		}
+	} else {
+		for(var i = 0; i < timeHour.length; i++){
+			timeHour[i].style.display = "none";
+		}
+	}
+
+	if (intStartTime > intEndTime && parentObj.className.indexOf("post") != -1) {
+		obj.value = "";
+		//_showmsg("攀登的结束时间需大于开始时间");
+		show_errors("date_error", "攀登的结束时间需大于开始时间")
+		var tttt = setInterval(function(){
+			var div_black = document.getElementById("div_black");
+			if (div_black.style.display == "none") {
+				clearInterval(tttt);
+				obj.click();
+			}
+		},200);
+		return false;
+	}
+	if (intStartTime && intEndTime  && parentObj.className.indexOf("post") != -1){
+		var temp = Math.ceil((intEndTime - intStartTime)/ 86400);
+		//alert(document.getElementById("f_startTip").innerHTML);
+		if(temp>60){
+			obj.value = "";
+			//_showmsg("攀登周期不得超过60天");
+			show_errors("date_error", "攀登周期不得超过60天")
+			var tttt = setInterval(function(){
+			var div_black = document.getElementById("div_black");
+				if (div_black.style.display == "none") {
+					clearInterval(tttt);
+					obj.click();
+				}
+			},200);
+			return false;
+		}else{
+			document.getElementById("f_startTip").innerHTML="";
+			document.getElementById("f_startTip").innerHTML="共用 "+temp+" 天";
+			if( parentObj.className.indexOf("post") != -1) {
+			   intStartTime == intEndTime ? jQuery('#date_error').html('') : jQuery('#date_error').html('<div class="correct"></div>');
+			}
+		}
+	}
+}
+
+//化为时间戳
+function getNumberTime(time){
+	time 		= time.replace(/-/g,"/");
+	var date 	= new Date(time);
+	time 		= Math.floor(date.getTime()/1000);
+	return time;
+}
+//使小时数在0-24
+function getFormatHour(hour){
+	hour = parseInt(hour, 10);
+	hour = isNaN(hour) ? 0 : hour;
+	hour = hour < 0 ? 0 : hour;
+	hour = hour > 24 ? 24 : hour;
+	return hour;
+}
+</script>
+
+<style type="text/css">
+.friendLink { background:#0f1f2b; padding: 15px 0; font: 12px/20px "Microsoft Yahei"; margin-top:20px; margin:0 auto;}
+.friendLinkcon{ width:980px; margin:0 auto;}
+.friendLink span{ display:block; font-size:16px; line-height:18px; padding-bottom: 5px; color:#807f7f;}
+.friendLink a { color: #807f7f; margin-right: 10px; display: inline; white-space: nowrap; text-decoration:none;}
+.friendLink a:hover { color: #FFF; }
+</style>
+<div class="friendLink">
+<!--[diy=linkmore]-->
+<div id="linkmore" class="area"></div>
+<!--[/diy]-->
+</div>
+
+
+
+<!--{subtemplate forum/dianping/footer}-->

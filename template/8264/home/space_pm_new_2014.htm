@@ -1,0 +1,118 @@
+<!--{eval $_G['home_tpl_titles'] = array('{lang remind}');}-->
+<!--{template home/space_notice_new_header}-->
+<!--{if $_GET['subop'] == 'view'}-->
+<!--对话开始-->
+<div class="form-box profile" id="pm_n_p">
+	<div class="info-hd">
+		<!--{if $_G[username] == $vsmeusername}--><span>我发送的消息</span><!--{else}--><span>我与{$vsmeusername}的对话</span><!--{/if}-->
+		<a href="$_G[config][web][home]home.php?mod=space&do=notice&type=smessage" class="bluefs"><<我的短消息</a>
+	</div>
+	<div class="info-bd">
+		<ul class="talkcon" id="pm_ul">
+			<!--{if $nextrage <= 5}--><li style="text-align:center;font-size: 12px;"><a href="{$_G[config][web][home]}home.php?mod=space&do=pm&subop=view&touid={$touid}&daterange={$nextrage}&count={$count}#pm_n_p">查看更多历史信息</a></li><!--{/if}-->
+			<!--{loop $list $key $value}-->
+				<!--{subtemplate home/space_pm_node_new}-->
+			<!--{/loop}-->
+			<div id="pm_append" style="display: none"></div>
+		</ul>
+	</div>
+</div>
+<!--对话结束-->
+<div class="form-box profile">
+	<!--回复主题内容开始-->
+	<div id="f_pst" class="pingluncon">
+		<form id="pmform" class="pmform" name="pmform" method="post" autocomplete="off" action="home.php?mod=spacecp&ac=pm&op=send&touid=$touid&pmid=$pmid&daterange=$daterange&handlekey=pmsend&pmsubmit=yes&news=1" onsubmit="parsepmcode(this);ajaxpost('pmform', 'pmforum_return', 'pmforum_return');return false;">
+			<a target="_blank" href="#" class="pingluntou">
+				<!--{avatar($_G[uid],small)}-->
+			</a>
+			<span id="pmforum_return"></span>
+			<div class="pinglun">
+				<div class="pinglunmid">
+					<div class="edierbar clboth">
+						<!--{eval $seditor = array('reply', array('bold', 'color', 'smilies', 'simpleupload'));}-->
+						<!--{subtemplate common/seditor_new_2014}-->
+					</div>
+					<div class="areatext">
+						<textarea class="pt" tabindex="4" name="message" cols="80" rows="5" id="replymessage" onkeydown="ctrlEnter(event, 'pmsubmit');"></textarea>
+					</div>
+				</div>
+				<button  name="pmsubmit" id="pmsubmit" value="true" class="kshf" type="submit">回复</button>
+				<input type="hidden" name="formhash" value="{FORMHASH}" />
+			</div>
+		</form>
+	</div>
+	<!--回复主题内容结束-->
+<style>
+img.thumbautopic{cursor:pointer}
+</style>
+</div>
+<!--{/if}-->
+<!--封黑色屏div开始-->
+<div class="fpall">
+	<div class="imgbox">
+		<img alt="" class="bigimg" id="showbigimg">
+		<a href="javascript:;" class="close42"></a>
+	</div>
+</div>
+<div id="loadimg" style="over-flow:hidden;height:0px;"></div>
+<script>
+jQuery('#pm_ul').on('click', 'img.thumbautopic', function(){
+	var bigpic = jQuery(this).attr('bigpic');
+	jQuery('#showbigimg').remove();
+	jQuery('#loadimg').html("<img src='"+bigpic+"' onload='showpic();' id='showbigimg'/>");
+});
+function showpic(){
+	var send_img_w = jQuery("#showbigimg").width();
+	var send_img_h = jQuery("#showbigimg").height();
+	jQuery("#showbigimg").attr({_width:send_img_w,_height:send_img_h});
+	jQuery('#showbigimg').appendTo('.imgbox');
+	jQuery('.fpall').show();
+	resizepic();
+}
+var timehandle;
+function resizepic() {
+	clearTimeout(timehandle);
+	var send_img_w = jQuery("#showbigimg").width();
+	var send_img_h = jQuery("#showbigimg").height();
+	var org_img_w = jQuery('#showbigimg').attr('_width');
+	var org_img_h = jQuery('#showbigimg').attr('_height');
+	var pixs = org_img_w/org_img_h;
+	var window_w = jQuery(window).width()-60;
+	var window_h = jQuery(window).height();
+	var pixs_w = window_w/window_h;
+	if(pixs > pixs_w){
+		if(send_img_w >= window_w){
+			send_img_w = window_w > org_img_w ? org_img_w : window_w;
+		}else{
+			send_img_w = org_img_w;
+		}
+		send_img_h = 'auto';
+	}else{
+		window_h = window_h - 60;
+		if(send_img_h >= window_h){
+			send_img_h = window_h > org_img_h ? org_img_h : window_h;
+		}else{
+			send_img_h = org_img_h;
+		}
+		send_img_w = 'auto';
+	}
+	timehandle = setTimeout(function(){doPicSize(send_img_w, send_img_h);}, 100)
+}
+function doPicSize(nw,nh){
+	jQuery('#showbigimg').animate({width:nw,height:nh}, 'fast', 'swing', function(){
+		var window_h = jQuery(window).height() - 60;
+		var top = (window_h - jQuery(".imgbox").height())/2;
+		jQuery(".imgbox").css('marginTop',top);
+	});
+}
+jQuery(window).resize(function(){
+	if(jQuery('.fpall').is(':visible')){
+		resizepic();
+	}
+});
+
+jQuery(".close42").click( function () {
+	jQuery(".fpall").hide();
+});
+</script>
+<!--{template home/space_notice_new_footer}-->

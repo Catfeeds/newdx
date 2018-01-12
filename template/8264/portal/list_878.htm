@@ -1,0 +1,84 @@
+<!--{template common/header2014}-->
+<!--[name]户外美女图片_驴友图片_最健康的户外美女照片[/name]-->
+<meta http-equiv=Content-Type content="text/html; charset=GB2312">
+<meta name="keywords" content="户外美女,美女,美女图片,图片">
+<meta name="description" content="户外美女图片拥有大量原创户外美女图片供大家欣赏，并保持每日上传数十套美女图片，是国内唯一以户外美女图片为主题的图片平台。">
+<link rel="stylesheet" type="text/css" href="http://static.8264.com/static/css/portal/style878.css" />
+<style id="diy_style" type="text/css"></style>
+<div class="warpten clearfix">
+<div class="mmtitle clearfix">
+		<h2 class="clearfix">
+			<a href="http://bbs.8264.com/thread-1353009-1-1.html" target="_blank" style="margin:10px 0px 0px 0px; float:right;">
+				<img src="http://static.8264.com/static/images/moban/kqmg/images/tj.png"/>
+			</a>
+			<div class="baiduShare" style="float:left;margin-top: 4px;">
+				<!-- Baidu Button BEGIN -->
+				<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare" style="float:left; padding-top:1px;">
+					<a class="bds_qzone" style="float:left;"></a>
+					<a class="bds_tsina" style="float:left;"></a>
+					<a class="bds_tqq" style="float:left;"></a>
+					<a class="bds_renren" style="float:left;"></a>
+					<span class="bds_more"></span>
+					<a style="float:left;" class="shareCount"></a>
+				</div>
+				<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=39357" ></script>
+				<script type="text/javascript" id="bdshell_js"></script>
+				<script type="text/javascript">
+                document.getElementById("bdshell_js").src = "http://news.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+                </script>
+				<!-- Baidu Button END -->
+			</div>
+		</h2>
+	</div>
+</div>
+
+
+<div class="warpten9 clearfix" id="pic_list">
+	<div class="warpten9-box">
+		<!--单条开始-->
+		<!--{loop $array $item}-->
+		<div class="mmone">
+			<div class="imgone">
+				<a href="$item['url']" target="_blank">
+					<img src="$item['pic']"/>
+				</a>
+			</div>
+			<div class="imgname">
+				<a href="$item['url']" target="_blank">$item['title']</a>
+			</div>
+			<div class="xh clearfix"> <em>（$item['viewnum']人）</em>
+				<span>（$item['commentnum']人）</span>
+			</div>
+			<!--{loop $item['arr'] $arr}-->
+			<div class="pinglun_w">
+				<div class="pinglun_n">
+					<div class="tou clearfix">
+						<a href="$arr[uid]" target="_blank">$arr[tx]</a>
+						<dd>
+							<a href="$arr[uid]" target="_blank">$arr[uname]</a>
+							：$arr[nr]
+						</dd>
+					</div>
+				</div>
+			</div>
+			<!--{/loop}-->
+		</div>
+		<!--{/loop}-->
+		<!--单条结束-->
+	</div>
+	{eval $count = DB::result_first("SELECT COUNT(*) FROM ".DB::table('portal_article_title')." WHERE catid IN (878) AND pic<>''");}
+	{eval $ppp = 100;}	{eval $multi = multi($count, $ppp, $page, 'portal.php?mod=list&catid=878');}
+	<!--{if $multi}-->
+	<div class="pageBox">{$multi}</div>
+	<!--{/if}-->
+</div>
+<div class="yl">
+	<div class="mmtitle" style="display:none;">
+		<h2>
+			<span>友情链接QQ3133252345</span>
+		</h2>
+	</div>
+</div>
+<!--{subtemplate common/float_guide}-->
+<!--{subtemplate common/ewm_l}-->
+<!--{subtemplate common/footer_8264_new}-->

@@ -1,0 +1,75 @@
+<div class="float-guide" style="display:none;">
+	<ul>
+		<li>
+			<a href="http://www.8264.com/list/842" class="photoDay">每日一图</a>
+			<!--{if $mrytnum>0}-->
+			<span class="new">$mrytnum</span>
+			<!--{/if}-->
+		</li>
+		<li>
+			<a href="http://www.8264.com/pp/" class="steelRose">铿锵玫瑰</a>
+			<!--{if $kqmgnum>0}-->
+			<span class="new">$kqmgnum</span>
+			<!--{/if}-->
+		</li>
+		<li style="display:none;">
+			<a href="http://www.8264.com/list/881" class="lineRec">线路推荐</a>
+			<!--{if $xltjnum>0}-->
+			<span class="new">$xltjnum</span>
+			<!--{/if}-->
+		</li>
+		<li>
+			<a href="http://www.8264.com/list/871" class="bbsRec">论坛精选</a>
+			<!--{if $jctjnum>0}-->
+			<span class="new">$jctjnum</span>
+			<!--{/if}-->
+		</li>
+		<li>
+			<a href="http://hd.8264.com/" class="zwxl" target="_blank">活动平台</a>
+		</li>
+		<li>
+			<a href="http://www.8264.com/list/912/" class="hwsy" target="_blank">户外摄影师</a>
+			<!--{if $hwsysnum>0}-->
+			<span class="new">$hwsysnum</span>
+			<!--{/if}-->
+		</li>
+	</ul>
+<script type="text/javascript">
+;(function($){
+	var width = $(window).width();
+	var csswd = (width-980)/2+990;
+	$('.float-guide').css("right",csswd);
+})(jQuery);
+</script>
+	<style type="text/css">
+/* 右侧固定导航 */
+.float-guide { width: 122px; padding: 5px; float: left; position: fixed; top: 35%; _position: absolute; _bottom: auto; _top:expression(eval(document.documentElement.scrollTop));
+_margin-top: 20%; border: 1px solid #e9e9e9; background-color: #fdfdfd; border-radius: 3px; }
+.float-guide a { display: block; height: 36px; text-indent: 40px; font: 14px/36px "Microsoft YaHei"; color: #637a94; background-color: #FFF; border-radius: 3px; }
+.float-guide a:hover { color: #FFF; background-color: #637a94; text-decoration: none; }
+.float-guide .photoDay { background: url(http://static.8264.com/static/images/moban/glxz/images/ico-guide.png) no-repeat 11px 9px;}
+.float-guide .photoDay:hover { background-position: 11px -181px; }
+.float-guide .steelRose { background: url(http://static.8264.com/static/images/moban/glxz/images/ico-guide.png) no-repeat 11px -31px;}
+.float-guide .steelRose:hover { background-position: 11px -222px; }
+.float-guide .lineRec { background: url(http://static.8264.com/static/images/moban/glxz/images/ico-guide.png) no-repeat 11px -67px;}
+.float-guide .lineRec:hover { background-position: 11px -258px; }
+.float-guide .braveFirst { background: url(http://static.8264.com/static/images/moban/glxz/images/ico-guide.png) no-repeat 11px -103px;}
+.float-guide .braveFirst:hover { background-position: 11px -293px; }
+.float-guide .equipRec { background: url(http://static.8264.com/static/images/moban/glxz/images/ico-guide.png) no-repeat 11px -137px;}
+.float-guide .equipRec:hover { background-position: 11px -327px; }
+.float-guide .bbsRec { background: url(http://static.8264.com/static/images/moban/glxz/images/ico-guide.png) no-repeat 11px -405px;}
+.float-guide .bbsRec:hover { background-position: 11px -443px; }
+
+
+
+.float-guide .zwxl { background: url(http://static.8264.com/static/images/moban/glxz/images/ico-guide.png) no-repeat 11px -481px;}
+.float-guide .zwxl:hover { background-position: 11px -516px; }
+
+.float-guide .hwsy { background: url(http://static.8264.com/static/images/moban/glxz/images/ico-guide.png) no-repeat 10px -554px;}
+.float-guide .hwsy:hover { background-position: 10px -590px; }
+
+/* Add 气泡 2013-07-01 */
+.float-guide ul li { position: relative; }
+.float-guide ul li .new { position: absolute; top: -5px; right: -10px; width: 30px; height: 14px; background: url(http://static.8264.com/static/images/moban/glxz/images/ico-guide.png) no-repeat 0 -380px; font-size: 9px; line-height: 11px; color: #FFF; text-align: center; cursor: pointer; }
+</style>
+</div>

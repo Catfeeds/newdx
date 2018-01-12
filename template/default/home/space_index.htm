@@ -1,0 +1,78 @@
+<!--{template home/space_header}-->
+<link href="http://static.8264.com/static/css/home/home_space.css?{VERHASH}" rel="stylesheet" type="text/css">
+<div id="ct" class="wp w cl">
+	<div id="diypage" class="area">
+		<div id="frame1" class="frame cl" noedit="1">
+			<div id="frame1_left" style="width:{$widths[0]}px" class="z column">
+				<!--{if empty($leftlist)}-->
+				<div id="left_temp" class="move-span temp"></div>
+				<!--{/if}-->
+				<!--{loop $leftlist $key $value}-->
+				<!--{if !empty($key)}-->
+					<div id="$key" class="block move-span">
+						$value
+					</div>
+				<!--{/if}-->
+				<!--{/loop}-->
+			</div>
+
+			<div id="frame1_center" style="width:{$widths[1]}px" class="z column">
+				<!--{if empty($centerlist)}-->
+				<div id="center_temp" class="move-span temp"></div>
+				<!--{/if}-->
+				<!--{loop $centerlist $key $value}-->
+					<!--{if !empty($key)}-->
+						<div id="$key" class="block move-span">
+							$value
+						</div>
+					<!--{/if}-->
+				<!--{/loop}-->            
+                
+              <!--{if !empty($zhlist)}-->  
+              <style type="text/css">
+			  .list{ overflow:hidden; padding:10px 0 0 10px;}
+			  .hr{ border-bottom:1px dashed #CDCDCD; border-style:dashed none none;}
+			  .list li{ border:1px solid #CCCCCC; float:left; padding:4px; width:100px; height:105px; text-align:center; border-bottom:none; margin:0 2px 4px 0; border-color:#cccccc; border-style:solid; border-width:1px;}	
+			  .img img{ vertical-align:middle; border:0;}		  
+			  </style>
+              <div class="block move-span">
+                  <div class="blocktitle title">
+                  <span><a href="http://u.8264.com/home-space-uid-{$uid}-do-produce-view-me-from-space.html">装备分享</a></span>
+                  <span class="y xw0"><a href="http://u.8264.com/home-space-uid-{$uid}-do-produce-view-me-from-space.html">更多分享</a></span>
+                  </div>                  
+                  <ul class="content el list" id="feed_content">                  
+                  <!--{loop $zhlist $key $fx}-->
+                  <li id="feed_$fx['authorid']_li" class="list">
+                  <div class="cl img">
+                  <a href="forum.php?mod=viewthread&tid=$fx['tid']" title="$fx['subject']"><img src="$fx['cptp'].thumb100.jpg"/></a>               
+                  <div class="ec">
+                  </div>                  
+                  </div>
+                  
+                  </li>
+                  <!--{/loop}--> 
+                 
+                  <div class="clear"></div>                                                   
+                  </ul>                               
+              </div>
+             <!--{/if}-->                         
+			</div>
+
+			<!--{if (strlen($userdiy['currentlayout']) > 3) }-->
+			<div id="frame1_right" style="width:{$widths[2]}px" class="z column">
+				<!--{if empty($rightlist)}-->
+				<div id="right_temp" class="move-span temp"></div>
+				<!--{/if}-->
+				<!--{loop $rightlist $key $value}-->
+				<!--{if !empty($key)}-->
+					<div id="$key" class="block move-span">
+						$value
+					</div>
+				<!--{/if}-->
+				<!--{/loop}-->
+			</div>
+			<!--{/if}-->
+		</div>
+	</div>
+</div>
+<!--{template common/footer}-->

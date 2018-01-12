@@ -1,0 +1,45 @@
+<!--{template common/header2014}-->
+<!--[name]勇者先行[/name]-->
+<link href="http://static.8264.com/static/css/portal/list_880.css" rel="stylesheet" type="text/css">
+<style id="diy_style" type="text/css"></style>
+<div class="layout" style="padding-bottom:30px;">
+	<div class="pioneerHead">
+		<p><strong>《勇者先行》</strong>
+			栏目意在为大家介绍在户外探险的各个领域中最专业、最极限的那些先行者，他们是各自领域内走在最前沿的人，引领着自己所在的探险领域的发展。他们的故事，将永远流传，激励着每一个热爱生活、勇于探索的人不断向前。
+		</p>
+	</div>
+	<!--{loop $array $item}-->
+	<div class="pioneerCol">
+		<a href="$item['url']" class="mainPic" target="_blank">
+			<img src="$item['pic']"/>
+		</a>
+		<h3>$item['titles']</h3>
+		<h4>$item['shortname']</h4>
+		<div class="blackLayout"></div>
+		<div class="tips">
+			<span class="attention">关注 （$item['viewnum']）</span>
+			<span class="comment">评论 （$item['commentnum']）</span>
+		</div>
+	</div>
+	<!--{/loop}-->
+	{eval $count = DB::result_first("SELECT COUNT(*) FROM ".DB::table('portal_article_title')." WHERE catid IN (880) AND pic<>''");}
+	{eval $ppp = 100;}	{eval $multi = multi($count, $ppp, $page, 'portal.php?mod=list&catid=880');}
+	<!--{if $multi}-->
+	<div style=" width:100%; height:36px; text-align:center; padding-top:20px;">{$multi}</div>
+	<!--{/if}-->
+</div>
+</div>
+<script type="text/javascript">
+jQuery.noConflict();
+;(function($){	
+   $(".pioneerCol").hover(function(){
+                 $(this).addClass("pioneerColHover");         
+             },function(){
+                 $(this).removeClass("pioneerColHover");         
+             }
+    );
+})(jQuery);
+</script>
+<!--{subtemplate common/float_guide}-->
+<!--{subtemplate common/ewm_l}-->
+<!--{subtemplate common/footer_8264_new}-->

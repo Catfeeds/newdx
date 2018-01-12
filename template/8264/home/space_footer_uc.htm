@@ -1,0 +1,63 @@
+	
+	</div>	
+	<!--content end-->
+</div>
+
+<!--更换封面-->
+{eval require_once libfile('class/simpleupload');}
+{eval $flashstring = simpleUpload::getFlashStr("uploadpic", 72, 28, "/home.php?mod=misc&ac=simpleupload&uc_cover=1", 'flashcallback', '', "$_G[siteroot]static/images/icon/uploadcover.png");}
+{$flashstring}
+<script>
+function flashcallback(type, data){
+	eval("var objbtn = " + data);
+//	window.console.log(type);
+	switch(type){
+		case -1:
+			showDialog_uc('上传失败');
+			break;
+		case 1:			
+			hideWindow('dialog');
+			jQuery('.header-bg').css({'background-image':"url('"+objbtn.picurl+"')"});
+			jQuery('.p-profile').css({'background-image':"url('"+objbtn.picurl+"')"});
+			break;
+		case 2:
+		case 3:
+			showDialog('', 'info', '<img src="' + IMGDIR + '/loading.gif"> 请稍候...');
+			break;
+	}
+}
+</script>
+<script type="text/javascript">
+	jQuery(function(){
+		var ua    = navigator.userAgent.toLowerCase();
+		var isIE6 = ua.indexOf('msie 6.0') > -1;
+		if(!isIE6){
+			var wh = jQuery(window).height();
+			var ch = jQuery('.ic-page').height();
+			var calch = wh - 124 -ch;
+			if(ch < (wh-124)){
+				jQuery('.ic-page').css("margin-bottom", calch);
+			}
+		}
+	});
+</script>
+
+<!--{subtemplate common/ewm_r}-->
+
+
+<style>
+.bbsfoothotlist{ background: #1a2b38; color: #ffffff; padding-bottom:45px;}
+.topHill{  background:url(http://static.8264.com/static/image/common/bg_fourm_sprite.png) no-repeat 0 0; height: 16px;left: 0; position: relative; text-indent: -9999px; top: -16px; width: 175px}
+</style>
+
+<div class="bbsfoothotlist">
+	<div class="layout-page">
+		<div class="topHill">顶部小山</div>
+	</div>
+	<div class="choiceness">
+		<!--{block/6905}-->
+	</div>
+</div>
+
+
+

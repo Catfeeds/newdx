@@ -1,0 +1,120 @@
+<!--{template common/header2014}-->
+<!--[name]户外摄影模板[/name]-->
+<link href="http://static.8264.com/static/css/portal/style_837.css" rel="stylesheet" type="text/css">
+<style id="diy_style" type="text/css"></style>
+<div class="warpper" style="padding-bottom:30px;">
+	<!--//导航条//-->
+	<div class="wap_960">
+		<div class="ltjx_tit">
+			<h2>
+				论坛精选
+				<a href="http://www.8264.com/list/874/" target="_blank">帖子排行榜</a>
+			</h2>
+		</div>
+		<div id="image-list">
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column" style="float:right; margin:0px;"></div>
+			<div id="loadding_ico">
+				<span>正在加载...</span>
+			</div>
+			{eval $count = DB::result_first("SELECT COUNT(*) FROM ".DB::table('portal_article_title')." WHERE catid IN (837, 838, 839, 840, 841) AND pic<>''");}
+			{eval $ppp = 100;}
+			{eval $multi = multi($count, $ppp, $page, 'portal.php?mod=list&catid=837');}
+			<div id="goTop">
+				<a onclick="javascript:void(0)" class="cursor" href="#"></a>
+			</div>
+		</div>
+		<!--{if $multi}-->
+		<div class="listPageBox clearfix page">{$multi}</div>
+		<!--{/if}-->
+	</div>
+</div>
+<script type="text/javascript" src="http://static.8264.com/static/js/jquery.tmpl.min.js"></script>
+<script id="picTemplate" type="text/x-jquery-tmpl">
+<div class="pic">
+	<a href="{{html url}}" class="img" target="_blank">
+		<img src="{{html pic}}" alt="" />
+	</a>
+	<div class="text-box">
+		<div class="head">
+			<a href="{{html url}}" target="_blank">{{html title}}</a>
+		</div>
+		<div class="content">{{html content}}</div>
+	</div>
+</div>
+</script>
+<script type="text/javascript">
+jQuery.noConflict();
+;(function($) {
+	var min_index = 0;
+	function get_min_column() {
+		/*
+		min_index = (min_index + 1) % 4
+		return min_index;
+		*/
+		var columns = $('#image-list .column'),
+			min_index = 0,
+			min_height = columns.eq(0).height();
+
+		columns.each(function(i) {
+			if (i == min_index) return;
+			if (min_height > $(this).height()) {
+				min_height = $(this).height();
+				min_index = i;
+			}
+		});
+		return min_index;
+	}
+	
+	var url = 'http://www.8264.com/plugin.php?id=api:portal_list_837',
+		page = $page,
+		ppp = 100,
+		limit = 20,
+		offset = (page - 1) * ppp,
+		lock = false;
+	
+	function auto_load() {
+		if (lock) {
+			return;
+		}
+		var window_height = $(window).scrollTop() + $(window).height() * 3,
+			loadding_ico_top = $('#loadding_ico').offset().top;
+		if (window_height >= loadding_ico_top) {
+			lock = true;
+			$('#loadding_ico span').css('display', 'inline-block');
+			$.getJSON(url, {offset:offset, limit:limit}, function(data) {
+				if (typeof data !== 'undefine' && data.count > 0) {
+					for (i in data.pics) {
+						var img = new Image();
+						img.src = data.pics[i].pic;
+						;(function() {
+							var _img = img,
+								pic = data.pics[i];
+							_img.onload = function() {
+								$('#picTemplate').tmpl(pic)
+									.appendTo($('#image-list .column').eq(get_min_column()));
+							};
+						})();
+					}
+				}
+				if (data.count == limit && offset + limit < ppp * page) {
+					offset += limit;
+					lock = false;
+				}
+			});
+			$('#loadding_ico span').css('display', 'none');
+		}
+	}
+	$(window).scroll(auto_load).resize(auto_load);
+	auto_load();
+	$('#image-list img').live('mouseover', function() {
+		$(this).stop(1, 1).fadeTo(200, 0.8);
+	}).live('mouseout', function() {
+		$(this).stop(1, 1).fadeTo(200, 1);
+	});
+})(jQuery);
+</script>
+</div>
+<!--{subtemplate common/footer_8264_new}-->

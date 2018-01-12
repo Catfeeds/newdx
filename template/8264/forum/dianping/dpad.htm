@@ -1,0 +1,39 @@
+<style>
+	.clear_b:after{content: ""; display: block; clear: both; visibility: hidden;}
+	.clear_b{ zoom: 1;}
+	.dianpingad{ border:#fde1d9 solid 1px; padding:22px; background:#fffcfa; font-size:14px; line-height:1.5; font-family: "Microsoft Yahei",Tahoma,Helvetica,SimSun,sans-serif; margin-bottom:25px;}
+	.dianpingad .fl_ad{ float:left; width:385px;}
+	.dianpingad .fl_ad b{ display:block; color:#f98260; font-size:16px;}
+	.dianpingad .fl_ad p{ margin:0px; padding:12px 0px;}
+	.dianpingad .fl_ad .link_cz{ margin:0px;}
+	.dianpingad .fl_ad .link_cz a{ color:#43a6df; font-size:12px; float:left; text-decoration:none; margin:16px 25px 0px 0px; display:inline;}
+	.dianpingad .fl_ad .link_cz a:hover{  color:#43a6df; font-size:12px; text-decoration:none;}
+	.dianpingad .fl_ad .link_cz a.button_orange{ font-size:14px; background:#f98260; border-radius:3px; padding:5px 25px 7px 25px; color:#fff; margin-top:0px;} 
+	.dianpingad .fr_image{ float:right; border-left:#fde1d9 solid 1px; padding-left:22px; position:relative;}
+	.dianpingad .fr_image:after{ border-color: transparent transparent transparent #fffcfa; border-style:solid solid solid dashed  ; border-width: 10px;   top:50%; content: ""; left:-2px; margin-top: -10px; position: absolute;}
+	.dianpingad .fr_image:before{ border-color: transparent transparent transparent #fde1d9 ; border-style:solid solid solid dashed ; border-width: 10px;   top:50%; content: ""; left:0px; margin-top: -10px; position: absolute;}
+</style>
+
+<div class="dianpingad clear_b">
+	<div class="fl_ad">
+		<b>参与点评赚8264币</b>
+		<p>点评任意产品，均有可能获得8264币的奖励，可以用来兑换精美奖品的哦。</p>
+		<div class="link_cz clear_b">
+			<a href="javascript:void(0)" class="button_orange">去写点评</a>
+			<a href="http://bbs.8264.com/forum-483-1.html" target="_blank">奖品列表</a>
+			<a href="http://bbs.8264.com/thread-1641700-1-1.html" target="_blank">详细规则</a>
+		</div>
+	</div>
+	<div class="fr_image">
+		<img src="http://www.8264.com/static/css/dianping/images/dpad.png"/>
+	</div>
+</div>
+
+<script>
+jQuery(function(){
+	jQuery(".button_orange").click(function() {
+		var writeCmt_dw = jQuery("#writeCmt_dw").offset().top;
+		jQuery(window).scrollTop( writeCmt_dw );
+	});
+});
+</script>

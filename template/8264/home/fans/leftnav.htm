@@ -1,0 +1,38 @@
+<div class="mt-menu-tree">
+	<ul class="nav nav-tabs nav-stacked">
+		<li {if $view == 'followee'} class="active"{/if}>
+			<a href="home.php?mod=space&do=friend&uid={$uid}">
+				<s class="menu-nav-icon icon-1">关注</s>
+				<span>关注</span>
+			</a>
+		</li>
+		<li {if $view == 'fans'} class="active"{/if}>
+			<a href="home.php?mod=space&do=friend&view=fans&uid={$uid}">
+				<s class="menu-nav-icon icon-2">粉丝</s>
+				<span>粉丝</span>
+			</a>
+		</li>
+		<!--这版没有 开始-->
+		<!--
+		<li>
+			<a href="#">
+				<s class="menu-nav-icon icon-3">推荐关注</s>
+				<span>推荐关注</span>
+			</a>
+		</li>
+		-->
+		<!--这版没有 结束-->
+	</ul>
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	var follow_url = "home.php?mod=spacecp&ac=friend&op=add&uid=%uid";
+	jQuery("a.ajax_follow_me").click(function() {
+		var uid = jQuery(this).attr("uid");
+		if(! uid) return false;
+		var id = "ajax_follow_me_" + uid;
+		var href = follow_url.replace(/%uid/g, uid).replace(/&amp;/g, "&");
+		showWindow(id, href, 'get', 0);
+	});
+});
+</script>

@@ -1,0 +1,34 @@
+/*
+[name]中秋圆月[/name]
+[iconbgcolor]#008585[/iconbgcolor]
+Powered by 瞧瞧影视 www.qiaoqiao.net
+*/
+
+
+body { background: transparent url(bgimg.jpg) no-repeat 50% 0; }
+#nv { background-color: #007A7A; background-image: url(nv.png); }
+	#nv li { background-image: url(nv_a.png) !important; }
+	#nv li.a { background: #840000 url(nv_a.png) no-repeat 50% 100%; }
+	#qmenu { background-image: url(qmenu.png); }
+.fl .bm_h { border-color: #B9D4E2; background: #FFECEC url(titlebg.png) repeat-x 0 0; }
+/*内页*/
+#qiaoqiao_cate1 {}
+#qiaoqiao_cate1 h3 { padding:0 10px; height:26px; line-height:26px; border-left:none; border-right:none;color:#333;}
+#qiaoqiao_cate1 h3{ color: #007A7A;border-bottom:1px solid #B9D4E2;border-top:1px solid #B9D4E2; background: #FFECEC url(titlebg.png)}
+
+#qiaoqiao_cate1 { border-top: none}
+#qiaoqiao_cate1 ul { padding: 5px; width:938px;}
+#qiaoqiao_cate1 li { margin: 0px 1px 0 0; padding-left: 22px; width:164px; overflow:hidden; white-space:nowrap;text-overflow:ellipsis; float: left; height: 30px; line-height: 30px; }
+
+.qiaoqiao_bd1 { border:1px solid  #B9D4E2;background:#FFF}
+
+/*天气预报*/
+#weatherBox {  background-color:#F9FDFD ;border:1px solid #B9D4E2;}
+#weatherBox .head {background:url(images.gif); background-position:0 -245px; border-bottom:1px solid #B9D4E2; }
+#weatherBox .close {background:url(images.gif);  background-position:-1px -182px;}
+/*全局*/
+.qiaoqiao_search-box{background:#fff;border:1px solid #B9D4E2;}
+#skinlist a.blue{background-position:-59px -322px;}#skinlist a.green{background-position:-71px -334px;}#skinlist a.pink{background-position:-83px -322px;}
+#qiaoqiao_bm ul,#qiaoqiao_bm li,.rc-tp,.rc-tp b,.rc-bt,.rc-bt b,#qiaoqiao_ex a,#set li,#qiaoqiao_sm li,#qiaoqiao_q_int,#qiaoqiao_qs b,.tg-ms,#cal .clock,#qiaoqiao_qs-btn,#skinlist a,#qiaoqiao_topsite em,.setting a,#settingBox .h2,#qiaoqiao_cate ul#tool-tab,#tool-tab li,.tsbox .arrow,#qiaoqiao_q_int .button-wrap{background-image:url(images/images.gif);}#qiaoqiao_sb,#header .qiaoqiao_box,#top,#qiaoqiao_q_int{background-image:url(images/repeat.gif);}
+.qiaoqiao_box,#tool-tab,#tool-tab li.active,#top,#qiaoqiao_bm ul,#footer .hr,#qiaoqiao_topsite .tsbox,#settingBox,#tool{border-color:#B9D4E2;}#tool-tab,#fs .qiaoqiao_box{background-color:#F9FDFD;}
+#qiaoqiao_cate h2,#tool-tab,.plane .int_b,.plane .int,#qiaoqiao_bm li,.tool-title a,#qiaoqiao_suggest .close a,#cal .date a,#tool-tab li,#qiaoqiao_hot2 a{color:#007A7A;;}#qiaoqiao_ls dl.alt{background-color:#F9FDFD;}#qiaoqiao_cate{background:#F9FDFD;}#qiaoqiao_fm a:hover,#qiaoqiao_meta a:hover,#qiaoqiao_cate a:hover,#qiaoqiao_cate1 a:hover,#qiaoqiao_ls a:hover,#ms a:hover,#footer .link a:hover,#qiaoqiao_qs-result a:hover,#hot a:hover,#qiaoqiao_suggest li.hover,#qiaoqiao_suggest .close a:hover{background-color:#F9FDFD;color:#007A7A;}

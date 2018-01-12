@@ -1,0 +1,166 @@
+<!--{subtemplate common/header_8264_new}-->
+<!--[name]值得买[/name]-->
+<!--{eval $list = array();}-->
+<!--{eval $wheresql = category_get_wheresql($cat);}-->
+<!--{eval if ($_G['groupid'] != 1) $wheresql .= " AND duestate=0"; }-->
+<!--{eval $list = category_get_list($cat, $wheresql, $page, 50);}-->
+<link href="http://static.8264.com/static/css/portal/list8264_style.css" rel="stylesheet" type="text/css">
+<style id="diy_style" type="text/css"></style>
+<!--{if $_G['groupid']=='1'}-->
+<script type="text/javascript">
+    function change_state(obj){
+        var aid = obj.id;
+        var state = obj.value;
+
+        var url = 'portal.php?mod=portalcp&ac=article&op=duestate&catid={$_GET[catid]}&aid='+aid+'&state='+state;
+
+        jQuery.ajax({
+           type : 'GET',
+           url : url,
+           success:function(flag){
+               if(flag == 1){
+                   if(state == 1){
+                       jQuery("#"+aid).val("0").prev().css('text-decoration','none');
+                   }else{
+                       jQuery("#"+aid).val("1").prev().css('text-decoration','line-through');
+                   }
+               }else{
+                   alert("操作失败！");
+               }
+           }
+        });
+    }
+</script>
+<!--{/if}-->
+
+<div class="header">
+	<div class="layout">
+		<div class="icoHill">&nbsp;</div>
+		<div class="headerL">
+			<h1><span class="country">$cat[catname]</span></h1>
+			<div class="site">
+				<a href="$_G[config][web][portal]">首页</a><!--{$category_nav}-->
+			</div>
+		</div>
+        <!--百度分享开始-->
+        <div class="headerR" style="top:5px;">
+        <div class="bdsharebuttonbox"><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a></div>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":[],"bdPic":"","bdStyle":"0","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+        </div>
+        <!--百度分享结束-->
+	</div>
+</div>
+<div class="wrapper" style="padding:0px 0px 30px 0px;">
+	<!--新增加导航开始-->
+    <style>
+	.bbsnavgray{ width:980px; height:39px; background: url(http://static.8264.com/static/images/moban/1024newslw/images/graybg.png) top left repeat-x; margin:15px auto 15px auto; border-radius:5px; font-family:微软雅黑,Arial,Helvetica,sans-serif;}
+	.bbsnavgray li{ float:left; font-size:0;}
+	.bbsnavgray ul{  display:block;}
+	.bbsnavgray li a{ padding:0px 14px 0px 14px; line-height:38px; color:#fff; font-size:14px; display:inline-block; *display:inline; *zoom:1;  border-radius:3px; }
+	.bbsnavgray li a:hover{ line-height:38px; background:#2c2f37; color:#fff; font-size:14px; border-radius:3px;}
+	.bbsnavzhong{ background:#e75040; border-radius:3px;}
+	</style>
+	<div class="bbsnavgray clearfix">
+        <ul>
+            <li <!--{if $_GET['catid']==867}-->
+                class="bbsnavzhong"
+                <!--{/if}-->
+                >
+                <a href="http://www.8264.com/list/867/">全部</a>
+            </li>
+            <!--{eval $cats = getCatbyupid(867);}-->
+            <!--{if $cats}-->
+            <!--{loop $cats $cat}-->
+            <li <!--{if $_GET['catid']==$cat['catid']}-->
+                class="bbsnavzhong"
+                <!--{/if}-->
+                >
+                <a href="http://www.8264.com/list/{$cat['catid']}/">$cat['catname']</a>
+            </li>
+            <!--{/loop}-->
+            <!--{/if}-->
+        </ul>
+    </div>
+	<!--新增加导航结束-->
+	<div style="width:980px; margin:20px auto 20px auto; line-height:0;"><!--{ad/custom_76}--></div>
+	<div class="listMain clearfix">
+		<div class="l660">
+            <ul class="newlistcon">
+                <!--{loop $list['list'] $value}-->
+                <!--{eval
+                        $datearr1 = explode(" ",$value[dateline]);
+                        $datearr2 = explode("-",$datearr1[0]);
+                        $value['summary'] = str_replace("　　","",$value['summary']);
+                }-->
+                <li>
+                    <a href="portal.php?mod=view&amp;aid=$value[aid]" class="newlistimg" target="_blank"><img src="$value[pic]"><i>{$value[catname]}</i></a>
+                    <div class="newlist_r">
+                        <h3>
+                            <a href="portal.php?mod=view&amp;aid=$value[aid]" title='$value[title]' target='_blank' <!--{if $value[duestate]}--> style="text-decoration:line-through;" <!--{/if}--> >
+                               $value[title]
+                            </a>
+                            &nbsp;&nbsp;
+                            <!--{if $_G['groupid']=='1'}--><input name="checkbox" type="checkbox" id="$value[aid]" value="$value[duestate]" onclick="change_state(this)" <!--{if $value[duestate]}--> checked="checked" <!--{/if}--> /><!--{/if}-->
+                        </h3>
+
+                        <span>$value[summary]</span>
+                        <div style="padding:10px 0px 0px 0px; color:#999; height:40px; line-height:40px;">
+                                <!--{if $value['couponurl']}-->
+                                <a href='$value[couponurl]' target='_blank'><img src='http://static.8264.com/static/images/couponurl.png' /></a>
+                                <!--{/if}-->
+                                <!--{if $value['buyurl']}-->
+                                <a href='$value[buyurl]' target='_blank'><img src='http://static.8264.com/static/images/buyurl.jpg' /></a>
+                                <!--{/if}-->
+                            <em>时间：{echo date('Y-m-d', $value[dateline_ori])}</em>
+                        </div>
+                    </div>
+                </li>
+                <!--{/loop}-->
+            </ul>
+            <!--{if $list['multi']}-->
+            <div class="listPageBox">
+                <div class="pg">{$list['multi']}</div>
+            </div>
+            <!--{/if}-->
+        </div>
+		<div class="listLayoutRight">
+			<div class="rightAd shadowBlack" style="margin-bottom:10px;">
+				<!--{ad/custom_426}-->
+			</div>
+			<div style="margin-bottom:10px;"><!--{ad/custom_414}--></div>
+			<div class="mt10 ewmgraycon">
+                <img src="http://static.8264.com/static/images/moban/1024newslw/images/ewmzb.jpg">
+                <p>
+                    <b>GearPark--装备公园</b>
+                    <span>户外装备发烧友</span>
+                    <span>扫描二维码关注</span>
+                </p>
+            </div>
+            <div style="margin:10px 0px 0px 0px;"><!--{ad/custom_433}--></div>
+		</div>
+	</div>
+	<!-- listMain End -->
+</div>
+
+
+<style>
+.fconend { background: #1a2b38; color: #FFF; margin-top: 45px; }
+.topHill { position: absolute; top: -16px; left: 0; width: 175px; height: 16px; background: url( http://static.8264.com/static/image/common/bg_fourm_sprite.png ) no-repeat 0 0; text-indent: -9999px;}
+.layoutw980{ width:980px; margin:0 auto; position:relative;}
+.choiceness{ padding:20px 0px;}
+</style>
+
+<div class="fconend">
+	<div class="layoutw980">
+		<div class="topHill">顶部小山</div>
+	</div>
+	<div class="choiceness">
+		<!--{block/7060}-->
+	</div>
+</div>
+
+
+<!--{subtemplate common/weixin_share_bottom}-->
+<!--{subtemplate common/footer_8264_new}-->

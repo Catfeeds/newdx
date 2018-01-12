@@ -1,0 +1,51 @@
+<?php foreach($notifications as $nk => $nv): ?>
+<li id="notice_node_<?=$nv['id']?>" class="pr">
+	<?php if($nv['authorid']) :?>
+	<a href="home.php?mod=space&uid=<?=$nv['authorid'] ?>" class="tx">
+		<?=avatar($nv['authorid'], 'small') ?>
+		<?php if($nv['new']) :?><i class="wd"> </i><?php endif;?>
+	</a>
+	<?php elseif($nv['type'] == 'zw') : ?>
+	<a href="javascript:;" class="tx">
+		<img src="http://static.8264.com/static/image/common/zaiwai.jpg" alt="systempm" />
+		<?php if($nv['new']) :?><i class="wd"> </i><?php endif;?>
+	</a>
+	<?php else : ?>
+	<a href="javascript:;" class="tx">
+		<img src="http://static.8264.com/static/image/common/systempm.png" alt="systempm" />
+		<?php if($nv['new']) :?><i class="wd"> </i><?php endif;?>
+	</a>
+	<?php endif; ?>
+	<div<?php if($nv['type'] == 'zw'): ?> class="w377" <?php endif; ?>>
+		<span class="graydb"><?php echo dgmdate($nv['dateline'], 'u'); ?></span>
+		<?php if($nv['type'] == 'zw'): ?>
+			<b class="ft14_333">回馈用户大礼【在外线路平台】赠送<?php echo $nv['infoobj']['couponmoney']; ?>元现金</b>
+			<span class="blue border-b">
+				报名<a target="_blank" href="http://bbs.8264.com/plugin.php?id=interests:go&goid=<?php echo $nv['infoobj']['lineid']; ?>&couponid=<?php echo $nv['infoobj']['couponid']; ?>" class="bluelink"><?php echo $nv['infoobj']['linename']; ?></a>活动可直接使用哦！
+			</span>
+			<span class="xjjh">现金券号：<span id="copycode_<?=$nv['id']?>"><?php echo $nv['infoobj']['couponcode']; ?></span><a href="javascript:void(0);" onclick="setCopy('<?php echo $nv['infoobj']['couponcode']; ?>', '复制成功')">[复制]</a></span>
+			<i class="gzyhj"><img src="http://static.8264.com/static/images/home/gz<?php echo $nv['infoobj']['couponmoney']; ?>.png"></i>
+		<?php else: ?>
+		<span class="fl blueall">
+			<?php echo  preg_replace("/<a[^>]*?class=\"lit\"[^>]*?>.*?<\/a>/i", '', $nv['note']); ?>
+			<?php if($nv['authorid'] && ! $friends_list[$nv['authorid']]) : ?>
+			<br/>
+			<?php endif; ?>
+		</span>
+		<span class="fr">
+			<?php if($nv['authorid'] && ! $friends_list[$nv['authorid']]) : ?>
+			<a href="home.php?mod=spacecp&ac=friend&op=add&uid=<?php echo $nv['authorid'];?>&handlekey=addfriendhk_<?php echo $nv['authorid'];?>"
+				id="add_note_friend_<?php echo $nv['authorid'];?>" onclick="showWindow(this.id, this.href, 'get', 0);" target="_blank">关注</a>
+			<?php endif; ?>
+			<?php if($nv['othertype'] != 'zw_'): ?>
+			<a href="home.php?mod=spacecp&ac=common&op=ignore&authorid=<?php echo $nv['authorid'];?>&type=<?php echo $nv['type'];?>&handlekey=addfriendhk_<?php echo $nv['authorid'];?>"
+				id="a_note_<?php echo $nv['id'];?>" onclick="showWindow(this.id, this.href, 'get', 0);" title="<?php echo lang('home/template', 'shield'); ?>" target="_blank">忽略</a>
+			<?php else: ?>
+			<a href="plugin.php?id=interests:ignored&lineid=<?php echo $nv['lineid'] ?>&linepos=<?php echo $nv['linepos'] ?>&msgid=<?=$nv['id']?>"
+				id="a_note_line_<?php echo $nv['lineid'] ?>" onclick="showWindow(this.id, this.href, 'get', 0);" title="<?php echo lang('home/template', 'shield'); ?>" target="_blank">没兴趣</a>
+			<?php endif; ?>
+		</span>
+		<?php endif;?>
+	</div>
+</li>
+<?php endforeach; ?>

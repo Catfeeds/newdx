@@ -1,0 +1,93 @@
+<!--{template common/header}-->
+<!--{if $comments}-->
+	<h3 class="psth cm">{lang comments}</h3>
+	<!--{if $totalcomment}--><div class="pstl">$totalcomment</div><!--{/if}-->
+	<!--{loop $comments $comment}-->
+		<div class="pstl">
+			<div class="psta">$comment[avatar]</div>
+			<div class="psti">
+				<a href="home.php?mod=space&uid=$comment[authorid]" class="xi2 xw1">$comment[author]</a>
+				&nbsp;$comment[comment]&nbsp;
+                <!--{if $comment['forpid'] <> 0}-->
+                <a href="forum.php?mod=redirect&goto=findpost&pid=$comment['forpid']&ptid=$_G[tid]" style='color:#3366AA;' target='_blank'>查看全文</a>&nbsp;
+                <a style='color:#3366AA;' href="forum.php?mod=post&action=reply&fid=$_G[fid]&tid=$_G[tid]&postid=$comment[pid]&repquote=$comment['forpid']&cid=$comment['id']&extra=$_G[gp_extra]&way=commentreply&page=$page" onclick="showWindow('reply', this.href)">{lang reply}</a>
+				<!--{/if}-->
+<span class="xg1">
+					{lang poston} $comment[dateline]
+					<!--{if $_G['forum']['ismoderator'] && $_G['group']['allowdelpost']}-->&nbsp;<a href="javascript:;" onclick="modaction_comreply('delcomment', $comment[id],'','',<!--{eval echo count($comment['replyComment'])}-->);">{lang delete}</a><!--{/if}-->
+				</span>
+			</div>
+			
+			<style type="text/css">
+					.rpstl{clear:left;margin-bottom:1em;}
+					.rpsta{float:left;width:30px;}
+					.rpsta img{width:20px;height:20px;}
+					.rpsti{margin-left:30px;}
+					#showAll{margin-left:30px;}
+               	</style>
+                <!--{if !empty($comment['replyComment'])}-->
+                <br>
+                    <!--{if $comment[replyCount] > 10}-->
+                   		<div id="showAll"><a style="text-decoration:none;font-size:14px;color:#3366AA;float:right;" id="show$comment['id']">+查看更多</a></div>
+						<script type="text/javascript">
+						jQuery.noConflict();
+						;(function($){
+								$("#show$comment['id']").click(function(){
+									var status = $("#part$comment['id']").css('display');
+									if(status == 'block'){
+										$("#part$comment['id']").css('display',"none");
+										$("#all$comment['id']").css('display',"block");
+										$("#show$comment['id']").html("-收起列表");
+									}
+									if(status == 'none'){
+										$("#part$comment['id']").css('display',"block");
+										$("#all$comment['id']").css('display',"none");
+										$("#show$comment['id']").html("+查看更多");
+									}
+								});
+								
+						})(jQuery);
+						</script>	
+                    <!--{/if}-->
+                    <div id="part$comment['id']" style="display:block;margin-left:40px;">
+                        <!--{loop $comment[partComment] $part}-->
+                            <div class="rpstl xs1">
+                                <div class="rpsta"><a href="home.php?mod=space&uid=$part[authorid]" c="1">$part[avatar]</a></div>
+                                <div class="rpsti">
+                                    <a href="home.php?mod=space&uid=$comment[authorid]" class="xi2 xw1">$part[author]</a>
+                                    &nbsp;$part[comment]&nbsp;
+                                    <a href="forum.php?mod=redirect&goto=findpost&pid=$part['forpid']&ptid=$_G['tid']" style='color:#3366AA;' target='_blank'>查看全文</a>&nbsp;
+                                    <span class="xg1">       
+                                        ($part[dateline])
+                                        <!--{if $_G['forum']['ismoderator'] && $_G['group']['allowdelpost']}-->&nbsp;<a href="javascript:;" onclick="modaction_delcomreply('delcomment', $part[id],'','',$comment[pid])">{lang delete}</a><!--{/if}-->
+                                    </span>
+                                </div>                
+                            </div>
+							<div style="margin-left:-30px;position:absolute;margin-top:-50px;border-left:1px dotted #999;border-bottom:1px dotted #999;width:28px;height:30px;z-index:0"></div>							
+                        <!--{/loop}-->		
+                    </div>
+                    
+                    <div id="all$comment['id']" style="display:none;margin-left:40px;">
+                        <!--{loop $comment[replyComment] $reply}-->
+                            <div class="rpstl xs1">
+                                <div class="rpsta"><a href="home.php?mod=space&uid=$reply[authorid]" c="1">$reply[avatar]</a></div>
+                                <div class="rpsti">
+                                    <a href="home.php?mod=space&uid=$comment[authorid]" class="xi2 xw1">$reply[author]</a>
+                                    &nbsp;$reply[comment]&nbsp;
+                                    <a href="forum.php?mod=redirect&goto=findpost&pid=$reply['forpid']&ptid=$_G['tid']" style='color:#3366AA;' target='_blank'>查看全文</a>&nbsp;
+                                    <span class="xg1">       
+                                        ($reply[dateline])
+                                        <!--{if $_G['forum']['ismoderator'] && $_G['group']['allowdelpost']}-->&nbsp;<a href="javascript:;" onclick="modaction_delcomreply('delcomment', $part[id],'','',$comment[pid])">{lang delete}</a><!--{/if}-->
+                                    </span>
+                                </div>                
+                            </div>   
+							<div style="margin-left:-30px;position:absolute;margin-top:-50px;border-left:1px dotted #999;border-bottom:1px dotted #999;width:28px;height:30px;z-index:0"></div>
+                        <!--{/loop}-->		
+                    </div>
+                <!--{/if}-->
+			
+		</div>
+	<!--{/loop}-->
+<!--{/if}-->
+<div class="pgs mbm cl">$multi</div>
+<!--{template common/footer}-->

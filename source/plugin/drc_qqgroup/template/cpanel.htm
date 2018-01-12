@@ -1,0 +1,34 @@
+{subtemplate common/header}
+<div id="pt" class="bm cl">
+<div class="z"><a href="./" class="nvhm">$_G[setting][bbname]</a><em>&rsaquo;</em><a href="./">$_G[setting][bbname]</a> <em>&rsaquo;</em><a href="plugin.php?id=drc_qqgroup:main">{lang drc_qqgroup:plugin_name}</a> <em>&rsaquo;</em>$plugin_nav</div>
+</div>
+
+<div id="ct" class="ct2 wp cl">
+<div class="mn">
+    	<div class="bm bw0">
+            <div class="bm bw0">
+			<div class="datalist">
+			<table width="100%" border="1" bordercolor="#cccccc">
+					
+					<tr bgcolor="#F2F2F2" align="center">
+						<td height="35" width="120">{lang drc_qqgroup:type_order}</td>
+						<td>{lang drc_qqgroup:type_name}</td>
+						<td width="120">{lang drc_qqgroup:type_operater}</td>
+					</tr>
+					<!--{loop $typelists $typelist}-->
+					<tr align="center">
+						<td height="35">$typelist[displayorder]</td>
+						<td>$typelist[typename]</td>
+						<td><a href="plugin.php?id=drc_qqgroup:main&mod=cpanel&action=typeedit&qtid=$typelist[id]" onclick="showWindow('typeedit', this.href); return false;">{lang drc_qqgroup:qcp_edit}</a> | <a onclick="showDialog('{lang drc_qqgroup:type_delete_notice}', 'confirm', '{lang drc_qqgroup:qcp_notice_title}', function () { window.location.href='plugin.php?id=drc_qqgroup:main&mod=cpanel&action=typedelete&qtid=$typelist[id]'; return false; })" href="javascript:;">{lang drc_qqgroup:qcp_delete}</a></td>
+					</tr>
+					<!--{/loop}-->
+				</table>
+                
+			</div></div>
+		</div>
+	</div>
+
+	{template drc_qqgroup:side}
+</div>
+
+{subtemplate common/footer}

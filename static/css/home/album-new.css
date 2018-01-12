@@ -1,0 +1,52 @@
+.upimgbox{ background:#fff; width:980px; margin:0px auto; box-shadow:0 1px 2px rgba(0, 0, 0, 0.2); border-radius:3px; position:relative;}
+.upimgtitle{ background:#fbfbfb; height:76px; font-size:24px;}
+.upimgfont{ float:left; font-size:14px; padding:23px 20px 0px 30px;}
+.xlprbox{ border:#d6d6d6 solid 1px; width:200px; padding:0px 0px 0px 0px; position:relative; float:left; background:#fff; margin:7px 0px 0px 0px;}
+.popxllist{ position:absolute; top:60px; left:-1px; width:200px;  overflow:hidden; background:#fff; z-index:999; border:#d6d6d6 solid 1px;}
+.albumcon{ padding:5px; border-bottom:#f2f2f2 solid 1px; cursor:pointer;}
+.albumcon:hover{ background:#f2f2f2;}
+.albumcon img{ width:50px; height:50px; float:left; margin:0px 10px 0px 0px;}
+.albumcon span{ overflow:hidden; font-size:12px; height:50px; line-height:50px; display:block; width:110px;}
+.addalbumcon{ height:50px; line-height:50px; background:url(http://static.8264.com/static/images/home/album/addalbumcon.png) 61px 20px no-repeat; color:#43a3e0; font-size:14px; text-indent:80px; cursor:pointer;}
+.upimgbuttonbox{ height:555px; color:#949494;}
+.upimgbuttonbox span{ display:block; text-align:center; padding:0px 0px 10px 0px; cursor:pointer;}
+.upimgbuttonbox span.imgbutton{ padding-top:220px; }
+.albumpopbox{ position: absolute; top:50%; left:50%; border:#d7d7d7 solid 1px; width:570px; margin:-116px 0px 0px -285px;}
+.albumpoptitle{ background:#f4f4f4; height:50px;}
+.albumpoptitle span{ font-size:14px; float:left; height:50px; line-height:50px; padding:0px 0px 0px 20px; color:#949494;}
+.albumpoptitle em{ float:right; height:50px; width:50px; background:url(http://static.8264.com/static/images/home/album/uploadalbumtipclose.png) center center no-repeat; cursor:pointer;}
+.albumpopcon{ background:#fff; padding:27px 0px 50px 0px;}
+.addalbumnumebox{ font-size:12px; color:#5a5a5a; text-align:center;}
+.addalbumnumebox input{ height:35px; width:330px; border:#d7d7d7 solid 1px; font-size:14px; padding:0px 15px;}
+.albumbuttoncon{ text-align:center; padding:28px 0px 0px 0px;}
+.albumbuttoncon input{ height:40px; width:120px; background:#cecece; font-size:14px; line-height:40px; color:#fff; margin:0px 5px; border:0 none; border-radius:3px;}
+.albumbuttoncon input.submitalbumname{ background:#ff7e00;}
+.popnoticebox{ position: absolute; top:50%; left:50%; border:#d7d7d7 solid 1px; width:570px; margin:-116px 0px 0px -285px; text-align:center; background:#fff; padding:0px 0px 30px 0px}
+.popnoticetitle{ height:30px}
+.popnoticetitle em{ float:right; height:30px; width:50px; background:url(http://static.8264.com/static/images/home/album/uploadalbumtipclose.png) center bottom no-repeat; cursor:pointer;}
+.popnoticebox span{ display:block; font-size:12px; padding:15px 0px 0px 0px;}
+
+.input-wrap{ padding:30px 0px 0px 0px;}
+.edit-photo-info-list li{float:left; margin:0px 0px 16px 25px;}
+.photo-wrap{position:relative;border:1px solid #ececec;width:209px;height:209px;text-align:center;vertical-align:middle;display:table-cell}
+.photo-wrap img{max-width:100%;max-height:100%}
+.photo-op-bar{height:32px;color:#fff; background:url(http://static.8264.com/static/images/home/album/alpha_40.png) repeat;right:0;bottom:0;left:0;position:absolute;}
+.photo-op-bar.imgok{background:#72c4f4;}
+.photo-op-bar a{float:left;color:#fff;font-size:12px}
+.photo-op-bar span{ width:100%; display:block; text-align:left; height:32px; line-height:30px; font-size:0px; position:relative;}
+.photo-op-bar em{ text-align:center; width:100%; position:absolute; height:32px; line-height:30px; left:0px; top:0px; right:0px; bottom:0px; font-size:12px;}
+.photo-op-bar .photo-op-cover{margin:8px 0 7px 10px}
+.photo-op-bar .photo-op-rotate{float:right;margin:8px 10px 7px 0}
+.photo-op-bar .photo-op-delete{float:right;margin:8px 10px 7px 0}
+.photo-op-bar .icon-m{display:inline-block;font-size:0;width:12px;height:12px;margin-right:6px;vertical-align:-1px}
+.photo-op-bar .icon-rotate-m{background:url(http://static.8264.com/static/images/home/album/rotate.png) no-repeat}
+.photo-op-bar .icon-move-m{background:url(http://static.8264.com/static/images/home/album/move.png) no-repeat}
+.photo-op-bar .icon-delete-m{background:url(http://static.8264.com/static/images/home/album/delete.png) no-repeat}
+.photo-op-bar .icon-ok-m{background:url(http://static.8264.com/static/images/home/album/uploadalbumprogressok.png) no-repeat}
+.photo-op-bar .icon-error-m{background:url(http://static.8264.com/static/images/home/album/uploadalbumprogresserror.png) no-repeat}
+.photo-op-bar .icon-regoimg-m{background:url(http://static.8264.com/static/images/home/album/uploadalbumprogresscontinue.png) no-repeat}
+.photo-btn-wrap{ padding:30px 0px 30px 25px;}
+.photo-btn-wrap em{ padding:7px 0px 0px 25px; font-size:12px; float:left;}
+.photo-btn-wrap i{ color:#72c4f4; font-style:normal; padding:0px 2px;}
+.imgupbegin{ width:112px; height:32px; background:url(http://static.8264.com/static/images/home/album/albumupload.png) no-repeat; border:0 none; float:left; margin:0px 10px 0px 0px;}
+.goonadd{ width:112px; height:32px; background:url(http://static.8264.com/static/images/home/album/albumcontinue.png) no-repeat; border:0 none; float:left;}

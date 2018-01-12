@@ -1,0 +1,55 @@
+<style type="text/css">
+    .side-float{
+        position: fixed;
+        width: 161px;
+        height: 149px;
+        bottom: 85px;
+        margin-left: 500px;
+        background: url(http://static.8264.com/static/images/tps/v1/scan-161-149.png) no-repeat;
+        display: none;
+    }
+    .side-a{
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    .side-float .side-close{
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        right: 1px;
+        top: 8px;
+        cursor: pointer;
+        z-index: 999999;
+    }
+</style>
+
+<div class="side-float">
+    <a class="side-a" href="http://u.8264.com/home-task-do-view-id-1264.html" target="_blank" id="qr_src"></a>
+    <span class="side-close"></span>
+</div>
+<script>
+    /*jQuery.get("home.php?mod=task", {is_qr_display:1},function(data) {
+        if(data.taskid > 0){
+            jQuery('#qr_src').attr('href','home.php?mod=task&do=view&id='+data.taskid);
+        }
+    },'json');*/
+	
+	//先注释掉
+   // if(!getcookie("qr-dialog")) {
+//        jQuery(".side-float").show();
+//    }
+//    jQuery(".side-close").click(function (){
+//        jQuery(".side-float").hide();
+//        setcookie("qr-dialog", 1, 86400);
+//    });
+//    jQuery(function(){
+//        var width_q = jQuery(window).width();
+//        var r_z = (width_q-980)/2 -170;
+//        if(r_z<0){
+//            jQuery(".side-float").css("right",'0px');
+//        }else{
+//            jQuery(".side-float").css("right",r_z);
+//        };
+//    });
+</script>

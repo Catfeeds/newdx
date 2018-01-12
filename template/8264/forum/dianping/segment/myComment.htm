@@ -1,0 +1,51 @@
+<div class="commentBox" id="myComment" {if ! $my_comment } style="display: none;" {/if}>
+	<h2 class="h2Tit">我的点评&nbsp;&nbsp;&nbsp;<span>假如您的点评没有奖励8264币，请联系工作人员QQ1919501975询问原因</span></h2>
+	<dl class="cmtDl">
+		<dd class="avatar"><a href="home.php?mod=space&uid={$_G['uid']}"><!--{avatar($_G['uid'], small)}--></a></dd>
+		<dd class="cmtCont">
+			<div class="tit">
+				<span class="usrName"><a href="home.php?mod=space&uid={$_G['uid']}" target="_blank" class="usrName">{$_G['username']}</a></span>
+				<span class="date">发表于 {$my_comment['dateline']}</span>
+				<span class="starBox"{if !$my_comment['starnum']} style="display: none;"{/if}>
+					{eval for ($i = 0; $i < 5; $i++):}
+					<span class="{if $i < $my_comment['starnum']}redstar{else}graystar{/if}"></span>
+					{eval endfor;}
+				</span>
+				<input type="hidden" name="" id="starnum" value="{$my_comment['starnum']}" />
+				<!--{if $my_comment['rate']}-->
+				<span class="bi"><a href="http://bbs.8264.com/forum-483-1.html" target="blank"><img align="absmiddle" title="奖励8264币" alt="奖励8264币" src="static/image/common/8264b.gif"></a></span>
+				<!--{/if}-->
+			</div>
+			<ul class="goodBad">
+				<li{if ! $my_comment['weakpoint']} style="display:none;"{/if}>
+					<span class="leftIco bad">缺点</span>
+					<div class="cont"><p id="weakpoint">{$my_comment['weakpoint']}</p></div>
+				</li>
+				<li{if ! $my_comment['goodpoint']} style="display:none;"{/if}>
+					<span class="leftIco good">优点</span>
+					<div class="cont"><p id="goodpoint">{$my_comment['goodpoint']}</p></div>
+				</li>
+				<li>
+					<span class="leftIco all">综合</span>
+					<div class="cont"><p id="message">{$my_comment['message']}</p></div>
+				</li>
+			</ul>
+		</dd>
+		<dd class="bottomCont">
+			<span class="useful{if $my_comment['supports']>0} active{/if}" title="你不能评价自己的点评"><i></i>{if !$my_comment['supports']}0{else}{$my_comment['supports']}{/if}</span>
+			<span class="ans" id="editBtn_{$my_comment['pid']}"><a href="javascript:;">修改</a></span>
+			{if $_G['adminid'] == 1 && !$my_comment['first']}
+			<span class="normal">
+				<label for="manage$comment[pid]">
+				<input type="checkbox" id="manage{$my_comment['pid']}" class="pc" {if !empty($modclick)}checked="checked" {/if}onclick="pidchecked(this);modclick(this, {$my_comment['pid']})" value="{$my_comment['pid']}" autocomplete="off" />
+				{lang manage}
+				</label>&nbsp;
+				<a id="k_rate" style="color: #666;" href="javascript:;" onclick="showWindow('rate', 'forum.php?mod=misc&action=rate&tid=$_G[tid]&pid=$my_comment[pid]', 'get', -1);return false;" title="加8264币">{lang rate}&nbsp;</a>
+				<!--{if $my_comment['rate'] && $_G['forum']['ismoderator']}-->
+					<a href="forum.php?mod=misc&action=removerate&tid=$_G[tid]&pid=$my_comment[pid]&page=$page" onclick="showWindow('rate', this.href, 'get', -1)">{lang removerate}</a>
+				<!--{/if}-->
+			</span>
+			{/if}
+		</dd>
+	</dl>
+</div>

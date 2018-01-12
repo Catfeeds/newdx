@@ -1,0 +1,10 @@
+ <!--{loop $weather_forecast_city_result $weather_province}-->
+<div class="historyone">
+	<span class="w300"><a href="http://www.8264.com/weather/{$weather_province['pspell']}/{$weather_province['spell']}/" target="_blank">{$weather_province['city']}ÌìÆø</a></span>
+	<span class="w174">{$weather_province['maxTemp']}¡æ</span>
+	<span class="w174">{$weather_province['minTemp']}¡æ</span>
+	<span class="w174">{$weather_province['weather']}</span>
+	<span class="w174">{$weather_province['wind_dir']}</span>
+	<span class="w174">{$weather_province['wind_power']}¼¶</span>
+</div>
+<!--{/loop}-->

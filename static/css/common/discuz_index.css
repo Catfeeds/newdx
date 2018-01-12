@@ -1,0 +1,216 @@
+/* Global Start */
+body { background-color: #FFF; color: #585858; font-size: 12px; font-family: "Microsoft Yahei", Tahoma, Helvetica, SimSun, sans-serif; }
+a { text-decoration: none; color: #585858; }
+a:hover { text-decoration: none; color: #162833; }
+em { font-style: normal; }
+input,
+textarea,
+select { font-size: 12px; color: #585858; }
+input { vertical-align: middle; }
+input[type="text"]:focus,
+input[type="password"]:focus { outline: medium none; }
+/* Global  End */
+/* Clear Start */
+.clear { clear: both; display: block; overflow: hidden; visibility: hidden; width: 0; height: 0; }
+.clearfix:before,
+.clearfix:after { content: '.'; display: block; overflow: hidden; visibility: hidden; font-size: 0; line-height: 0; width: 0; height: 0; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+/* Clear End */
+/* ClearFix Start*/
+.layout:after,
+.hd:after,
+.bd:after,
+.ft:after,
+.layoutLeft:after,
+.layoutRight:after,
+.w980:after { content: ""; display: block; clear: both; visibility: hidden; }
+.layout,
+.hd,
+.bd,
+.ft,
+.layoutLeft,
+.layoutRight,
+.w980 { zoom: 1; }
+/* ClearFix End */
+
+
+/* 特别推荐 */
+.spRec { height: 144px; overflow: hidden; }
+.spRec h1 { padding-top: 8px; padding-bottom: 20px; }
+h1.indexH1 { font: 18px/22px "Microsoft Yahei"; color: #1a2b38; overflow: hidden; *zoom: 1; }
+h1.indexH1 .h1Tips { float: left; display: inline; margin-left: 10px; font: 12px/14px "Microsoft Yahei"; color: #8b8b8b; padding-top: 7px; }
+/* */
+.spRecIcon {}
+.spRecIcon a { float: left; display: block; width: 160px; height: 40px; padding: 25px 0 25px 70px; color: #FFF; background-color: #43a6df; margin-right: 20px; }
+.spRecIcon a:hover { color: #FFF; background-color: #1a2b38; }
+.spRecIcon a.last { margin-right: 0; }
+.spRecIcon a i { font: normal 18px/20px "Microsoft Yahei"; margin-bottom: 3px; }
+.spRecIcon a em { display: block; font: normal 12px/14px "Microsoft Yahei"; height: 14px; padding-right: 10px; overflow: hidden; }
+.spRecIcon .door { background: #43a6df url(http://static.8264.com/static/image/common/bg_spe_rec.png) no-repeat 20px 20px; }
+.spRecIcon .outDoor { background: #43a6df url(http://static.8264.com/static/image/common/bg_spe_rec.png) no-repeat 20px -115px; }
+.spRecIcon .drive { background: #43a6df url(http://static.8264.com/static/image/common/bg_spe_rec.png) no-repeat 20px -245px; }
+.spRecIcon .ceo { background: #43a6df url(http://static.8264.com/static/image/common/bg_spe_rec.png) no-repeat 20px -383px; }
+/* 骑行天下 */
+.rideWorld { height:635px; overflow: hidden; } /* 限高 */
+.rideWorld .bd { _width: 980px; _overflow: hidden; }
+.rideWorld h1 { padding-top: 8px; padding-bottom: 20px; }
+/* */
+.row_3_980_list { float: left; width: 110%; }
+.row_3_980_list li { float: left; display: block; width: 290px; margin-right: 55px; margin-bottom: 40px; }
+.row_3_980_list .leftPic { float: left; width: 82px; height: 82px; margin-right: 17px; }
+.row_3_980_list .titText { height: 60px; overflow: hidden; *+padding-top:2px;}
+.row_3_980_list .countNum {}
+.countNum .cmt { display: inline-block; *display: inline; *zoom: 1; width: 60px; padding-left: 20px; font: 12px/16px "Microsoft Yahei"; background: url(http://static.8264.com/static/image/common/bg_fourm_sprite.png) no-repeat -170px -93px; }
+.countNum .read { display: inline-block; *display: inline; *zoom: 1; width: 60px; padding-left: 24px; font: 12px/16px "Microsoft Yahei"; background: url(http://static.8264.com/static/image/common/bg_fourm_sprite.png) no-repeat -165px -117px; }
+.row_3_980_list h2 { margin-bottom: 5px; }
+.row_3_980_list h2 a { font: 16px/18px "Microsoft Yahei"; }
+.row_3_980_list h3 { font: 12px/14px "Microsoft Yahei"; color: #949494; margin-bottom: 5px; }
+.row_3_980_list h4 { font: 12px/14px "Microsoft Yahei"; color: #11567e; }
+/* 人在驴途 */
+.lvRoad { overflow: hidden; } /* 限高 */
+.lvRoad .bd { _width: 980px; _overflow: hidden; }
+.lvRoad h1 { padding-top: 16px; padding-bottom: 20px; border-top: 2px solid #f5f5f5; }
+/* */
+.row_4_980_list { float: left; width: 110%; }
+.row_4_980_list li { float: left; display: block; width:196px; margin-bottom: 40px; }
+.row_4_980_list .leftPic { float: left; width: 62px; height: 62px; margin-right: 17px; }
+.row_4_980_list .titText { height:48px; overflow: hidden; }
+.row_4_980_list h2 { padding-top:7px; margin-bottom: 5px; }
+.row_4_980_list h2 a { font: 16px/18px "Microsoft Yahei"; }
+.row_4_980_list h3 { font: 12px/14px "Microsoft Yahei"; color: #949494; margin-bottom: 5px; }
+/* 户外运动 */
+.outdoorSport { height: 403px; overflow: hidden; } /* 限高 */
+.outdoorSport .bd { _width: 980px; _overflow: hidden; }
+.outdoorSport h1 { padding-top: 20px; padding-bottom: 20px; border-top: 2px solid #f5f5f5; }
+/* 地方论坛 */
+.localForum { height:579px; overflow: hidden; }
+.localForum h1 { padding-top: 20px; padding-bottom: 20px; border-top: 2px solid #f5f5f5; }
+.localForum .localForumList h3 { height: 14px; overflow: hidden; }
+/* */
+.localForumList { float: left; width: 100%; }
+.localForumList li { float: left; display: block; width: 196px; margin-bottom: 25px; }
+.localForumList .leftPic { float: left; display: block; width:54px; height:54px; font:28px/49px "Microsoft Yahei"; text-align: center; margin-right: 12px; color: #FFF; overflow: hidden; background: #43a6df; border-radius: 2px; }
+.localForumList .leftPic:hover { color: #FFF; background: #1a2b38; }
+.localForumList .titText { height: 60px; overflow: hidden; }
+.localForumList h2 { padding-top:7px; margin-bottom: 5px; }
+.localForumList h2 a { font: 16px/18px "Microsoft Yahei"; }
+.localForumList h3 { font: 12px/14px "Microsoft Yahei"; color: #8b8b8b; margin-bottom: 5px; padding-right: 10px; }
+/* 户外装备 */
+.outdoorEquip { height: 286px; overflow: hidden; } /* 限高 */
+.outdoorEquip .bd { _width: 980px; _overflow: hidden; }
+.outdoorEquip h1 { padding-top: 20px; padding-bottom: 20px; border-top: 2px solid #f5f5f5; }
+/* 管理中心 */
+.adminCenter { overflow: hidden; } /* 限高 */
+.adminCenter .bd { _width: 980px; _overflow: hidden; }
+.adminCenter h1 { padding-top: 20px; padding-bottom: 20px; border-top: 2px solid #f5f5f5; }
+.adminCenter .localForumList h2 a { display: block; height: 20px; overflow: hidden; }
+.adminCenter .localForumList h3 { height: 14px; overflow: hidden; color: #949494; }
+/* */
+.adminCenter .row_3_980_list { width: 130%; }
+.adminCenter .row_3_980_list li { width: 323px; margin-bottom: 25px; }
+.adminCenter .row_3_980_list .titText { height: auto; }
+.adminCenter .row_3_980_list h2 { margin-top: 11px; }
+.adminCenter .row_3_980_list .countNum { display: none; }
+/* */
+.row_3_980_62x62 { float: left; width: 100%; }
+.row_3_980_62x62 li { float: left; display: block; width: 325px; margin-bottom: 40px; }
+.row_3_980_62x62 .leftPic { float: left; width: 62px; height: 62px; margin-right: 17px; }
+.row_3_980_62x62 .titText { height: 60px; overflow: hidden; }
+.row_3_980_62x62 h2 { padding-top: 8px; margin-bottom: 5px; }
+.row_3_980_62x62 h2 a { font: 18px/20px "Microsoft Yahei"; }
+.row_3_980_62x62 h3 { font: 12px/14px "Microsoft Yahei"; color: #43a6df; margin-bottom: 5px; }
+/* 彩色广告 */
+.colorAd { float: left; width: 100%; font-size: 0; _height: 119px; _overflow: hidden; margin-bottom: 16px; }
+.colorAd a { color: #FFF; background: red; }
+.colorAd a:hover { color: #43a6df; background: #FFF; }
+.colorAd .row { float: left; display: inline; width: 326px; }
+.colorAd .h50 { float: left; display: block; width: 100%; text-align: center; font: 18px/20px "Microsoft Yahei"; padding: 15px 0; }
+.colorAd .w163 { float: left; display: block; width: 127px; text-align: center; padding: 15px 18px; font: 16px/20px "Microsoft Yahei"; height: 40px; }
+.colorAd .c1 { background: #7caf00; }
+.colorAd .c2 { background: #497cf0; }
+.colorAd .c3 { background: #9876fc; }
+.colorAd .c4 { background: #a8d324; }
+.colorAd .c5 { background: #50c0e9; }
+.colorAd .c6 { background: #f04949; }
+.colorAd .c7 { background: #43a6df; }
+.colorAd .c8 { background: #ff8f45; }
+.colorAd .c9 { background: #f9c436; }
+/* footer */
+.footer:after,
+.friendLink:after,
+.bottomNav:after { content: ""; display: block; clear: both; visibility: hidden; }
+.footer,
+.friendLink,
+.bottomNav { zoom: 1; }
+/* */
+.footer { background: #1a2b38; color: #FFF; margin-top: 45px; }
+.footer a { color: #FFF; }
+.footer a:hover { color: #FFF; }
+.topHill { position: absolute; top: -16px; left: 0; width: 175px; height: 16px; background: url(http://static.8264.com/static/image/common/bg_fourm_sprite.png) no-repeat 0 0; text-indent: -9999px; }
+
+
+/* 友情链接 */
+.friendLink { background: #0f1f2b; padding: 15px 0; font: 12px/20px "Microsoft Yahei"; }
+/*BY JiangHong*/
+.friendLink ul li{float:left;list-style:none; display: inline; white-space: nowrap;}
+/*END*/
+.friendLink a { color: #807f7f; margin-right: 10px; }
+.friendLink a:hover { color: #FFF; }
+/* 需要添加变色背景图标时,在A标签添加此样式 */
+.blueIco_62x62 { float: left; display: block; width:54px; height:54px; background: #43a6df; border-radius: 2px; margin-right:12px; }
+.blueIco_62x62:hover { background: #1a2b38; }
+.blueIco_62x62 .leftPic { float: none; margin: 0; }
+/* Diy 间距 */
+.layout .block { margin: 0; padding: 0; }
+/* public Start */
+.floatL,
+.layout .floatL { float: left; display: inline; }
+.floatR,
+.layout .floatR { float: right; display: inline; }
+.mt10 { margin-top: 10px; }
+/* 全屏相关 */
+.wFull {}
+.wFull .layout { width: 97%; }
+/* */
+.wFull .textAdBox { width: 100%; }
+.wFull .outdoorSport,
+.wFull .outdoorEquip,
+.wFull .lvRoad,
+.wFull .rideWorld,
+.wFull .adminCenter { height: auto; }
+.wFull .choicenessList { width: 100%; }
+/* */
+.wFull .colorAd .row { width: 33%; }
+.wFull .colorAd .h50 { width: 100%; }
+.wFull .colorAd .w163 {width: 50%; }
+/* */
+.wFull .spRecIcon a { margin-right: 10px; margin-bottom: 10px; width: 19%; min-width: 160px; }
+/* */
+.wFull .row_4_980_list li { width: 24%; min-width: 245px; }
+/* */
+.wFull .row_3_980_62x62 li { width: 33%; min-width: 225px; }
+/* */
+.wFull .row_3_980_list li { width: 24%; min-width: 325px; }
+/* */
+.wFull .localForumList li { width: 16%; min-width: 196px; }
+/* */
+.wFull .choicenessList { margin-left: 0; }
+/* public End */
+
+
+
+/* 2013.11.07 */
+.row_3_980_list .titText span { color:#ff7e00; font-size:14px; }
+.jxtj:after { content: ""; display: block; clear: both; visibility: hidden; }
+.jxtj{ zoom: 1; }
+.jxtj li{ width:186px; height:64px; background:#43a6df; color:#fff; font-size:18px; line-height:64px; text-align:center; float:left; position:relative; margin:0px 12px 0px 0px; display:inline;}
+.jxtj li.end{ float:right; margin:0px;}
+.jxtj .number{ width:41px; height:17px; line-height:17px; background:url(http://static.8264.com/static/image/common/bg_fourm_sprite.png) 0px -93px no-repeat; position:absolute; top:25px; right:10px; font-size:12px; color:#fff; text-indent:6px;}
+.jxtj li a{ position:absolute; width:186px; height:64px; left:0px; top:0px; display:none; font-size:0px;}
+.localForumList .titText span { color:#ff7e00; font-size:14px; }
+.hide{display:none;}
+.row_4_980_list .titText span { color:#ff7e00; font-size:14px; }
+
+
+.mb26{ margin-bottom:26px;}

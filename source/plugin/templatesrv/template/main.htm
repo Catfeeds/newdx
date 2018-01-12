@@ -1,0 +1,79 @@
+<div id="containermain">
+	<fieldset>
+		<legend>功能</legend>
+		<p><b id="tips"></b></p>
+		<form id="newtemplate" onsubmit="addnewtemplate(this, true);return false;" action="/admin.php?ctl=templateadmin&act=addnew" method="POST">
+			<p>模板名称：<input name="templatename" value=""/></p>
+			<p>模板配置：
+				<select name="model" onchange="ajaxget('admin.php?ctl=templateadmin&act=gettype&mod=' + this.value, 'mod_type');">
+					<option value="">请选择模块</option>
+					<!--{loop $models $k $md}-->
+					<option value="{$k}">$md[name]</option>
+					<!--{/if}-->
+				</select>
+				&nbsp;&nbsp;<span id="mod_type"></span>
+			</p>
+			<p>模板路径文件：<input name="templatedir" value="" />&nbsp;&nbsp;<input id="addnewbtn" type="submit" name="submit" value="增加" /></p>
+		</form>
+	</fieldset>
+	<fieldset>
+		<legend>搜索</legend>
+		<form action="/admin.php?ctl=templateadmin&act=getlist" method="GET" onsubmit="addnewtemplate(this, false);return false;">
+			模板名称：<input name="findname" type="text" />
+			模板路径文件：<input name="finddir" type="text" />
+			模板配置：<select name="findmodel" onchange="ajaxget('admin.php?ctl=templateadmin&act=gettype&mod=' + this.value, 'mod_type_find');">
+					<option value="">请选择模块</option>
+					<!--{loop $models $k $md}-->
+					<option value="{$k}">$md[name]</option>
+					<!--{/if}-->
+				</select>
+				&nbsp;&nbsp;<span id="mod_type_find"></span>
+			<input type="submit" name="findsubmit" value="查找"/>
+		</form>
+	</fieldset>
+	<fieldset>
+		<legend>显示</legend>
+		<div id="ajaxreturn"></div>
+	</fieldset>
+</div>
+<style>
+#containermain fieldset{padding:10px;margin:10px;}
+#containermain p{margin: 5px 0;}
+#containermain div{text-align:center;margin:5px 0px;}
+#containermain .tmp_100{width:100px;float:left;}
+#containermain .tmp_150{width:150px;float:left;}
+#containermain .tmp_200{width:200px;float:left;}
+#containermain .blue{color:blue;}
+#containermain .red{color:red;}
+#containermain .green{color:green;}
+</style>
+<script>
+var disallowfloat = '';
+function addnewtemplate(myform, sfyz){
+	var url = myform.action;
+	var needyz = !isUndefined(sfyz) ? sfyz : true;
+	for(var i=0; i < myform.length; i++){
+		if(needyz &&  myform[i].value == ''){
+			showDialog('请选择模块和类型并填写模板路径和模板名称', 'error');return false;
+		}else{
+			url += "&" + myform[i].name + "=" + myform[i].value;
+		}
+	}
+	ajaxget(url, 'ajaxreturn');
+	return false;
+}
+function edittemplate(tmpid){
+	return false;
+}
+function cortaltemplate(myobj, returndiv){
+	ajaxget(myobj.href, returndiv);
+	return false;
+}
+function showtips(msg, colorclass){
+	if(!isUndefined(colorclass)) $('tips').className = colorclass;
+	$('tips').innerHTML = msg;
+	var tipsclear = function () {$('tips').innerHTML = '';$('tips').className = '';}
+	setTimeout(tipsclear, 5000);
+}
+ajaxget('admin.php?ctl=templateadmin&act=getlist', 'ajaxreturn');
+</script>

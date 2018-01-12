@@ -1,0 +1,39 @@
+<!--{eval $needhiddenreply = ($hiddenreplies && $_G['uid'] != $post['authorid'] && $_G['uid'] != $_G['forum_thread']['authorid'] && !$post['first'] && !$_G['forum']['ismoderator']);}-->
+<!--{block authorverifys}-->
+<!--{if $_G['setting']['verify']['enabled']}-->
+<!--{loop $_G['setting']['verify'] $vid $verify}-->
+<!--{if $verify['available'] && $post['verify'.$vid] == 1}-->
+<a href="home.php?mod=spacecp&ac=profile&op=verify&vid=$vid" target="_blank"><!--{if $verify[icon]}--><img src="$verify[icon]" class="vm" alt="$verify[title]" title="$verify[title]" /><!--{else}-->$verify[title]<!--{/if}--></a>&nbsp; 
+<!--{/if}--> 
+<!--{/loop}--> 
+<!--{/if}--> 
+<!--{/block}-->
+<dl class="commentListD" id="pid$post[pid]">
+	<!--{if $post[author] && !$post['anonymous']}-->
+	<dd class="face"><a href="home.php?mod=space&uid=$post[authorid]"><!--{avatar($post[authorid], small)}--></a></dd>
+	<!--{else}-->
+	<dd class="face"><img src="{STATICURL}image/magic/hidden.gif" alt="hidden" /></dd>
+	<!--{/if}-->
+	<dt> <span class="name"><a href="home.php?mod=space&uid=$post[authorid]" target="_blank" class="xi2">$post[author]</a></span> {eval $star = $forumOption->getStarByRalateid('forum', $_G['tid'], $post['authorid'], $post['pid']);}
+		{if $star} <span class="star"> {eval for ($i = 0; $i < 5; $i++):}
+		{if $i < $star['starnum']}<span class="redstar"></span>{else}<span class="graystar"></span>{/if}
+		{eval endfor;} </span> {/if} <span class="date">发表于 $post[dateline]</span> </dt>	
+	<dd class="cont"> <!--{eval $post['message']=str_replace('thumbImg(this)','thumbImg(this,null,757)',$post["message"]);}-->$post[message] </dd>
+	<dd class="control"> 
+		<!--{if (($_G['forum']['ismoderator'] && $_G['group']['alloweditpost'] && (!in_array($post['adminid'], array(1, 2, 3)) || $_G['adminid'] <= $post['adminid'])) || ($_G['forum']['alloweditpost'] && $_G['uid'] && $post['authorid'] == $_G['uid']))}--> 
+		<!--{if !$post['first'] && $modmenu['post']}--> 
+		<span>
+		<label for="manage$post[pid]">
+			<input type="checkbox" id="manage$post[pid]" class="pc" {if !empty($modclick)}checked="checked" {/if}onclick="pidchecked(this);modclick(this, $post[pid])" value="$post[pid]" autocomplete="off" />
+			{lang manage} </label>
+		</span> 
+		<!--{/if}--> 
+		<!--{/if}--> 
+		<a id="k_rate" style="color: #666;" href="javascript:;" onclick="showWindow('rate', 'forum.php?mod=misc&action=rate&tid=$_G[tid]&pid=$post[pid]', 'get', -1);return false;" title="加8264币">{lang rate}&nbsp;</a>
+	</dd>
+</dl>
+
+<!--{if !empty($aimgs[$post[pid]])}--> 
+<script type="text/javascript" reload="1">aimgcount[{$post[pid]}] = [<!--{echo implode(',', $aimgs[$post[pid]]);}-->];attachimgshow($post[pid]);</script> 
+<!--{/if}--> 
+<!--{hook/viewthread_endline $postcount}-->

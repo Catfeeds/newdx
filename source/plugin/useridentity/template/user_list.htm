@@ -1,0 +1,357 @@
+<script src="http://www.8264.com/static/js/jquery-1.6.1.min.js" type="text/javascript"></script>
+<script src="http://www.8264.com/static/js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	jQuery.noConflict();
+	var str_url = 'plugin.php?id=useridentity:admincp_ajax';
+	var json_identity = eval('{$json_identity}');
+	var pencil_tag = '<img src="static/image/admincp/editable.gif" alt="" />';
+	jQuery(function () {
+		jQuery("div[id^=div_edit]").click(function () {
+			jQuery(this).hide();
+			jQuery(this).next('input[id^=txt_]').show().focus().select();
+		});
+
+		// 排序修改
+		jQuery("input[id^=txt_sort_]").blur(function () {
+			var arr_id = jQuery(this).attr('id').split('_');
+			var int_sort = jQuery.trim(jQuery(this).val());
+			var str_sort = jQuery.trim(jQuery('#div_edit_sort_' + arr_id[2]).text());
+			if (!/^\d+$/.test(int_sort) || int_sort == str_sort) {
+				jQuery(this).val(str_sort).hide();
+				jQuery('#div_edit_sort_' + arr_id[2]).show();
+				return;
+			}
+			jQuery.ajax({
+				url: str_url + '&op=edit&type=sort&uid=' + arr_id[2] + '&sort=' + int_sort,
+				type: 'get',
+				dataType: 'text',
+				success: function (msg) {
+					jQuery('#txt_sort_' + arr_id[2]).val(int_sort).hide();
+					if (msg != 'success') {
+						jQuery('#div_edit_sort_' + arr_id[2]).show();
+						alert('修改失败！');
+					} else {
+						jQuery('#div_edit_sort_' + arr_id[2]).html(int_sort + pencil_tag).show();
+					}
+				},
+				error: function (msg) {
+					jQuery('#txt_sort_' + arr_id[2]).val(str_sort).hide();
+					jQuery('#div_edit_sort_' + arr_id[2]).show();
+					alert('修改失败！');
+				}
+			});
+		}).keydown(function (e) {
+			if (e.keyCode == 13) {
+				jQuery(this).blur();
+			}
+		});
+
+		// 描述修改
+		jQuery("input[id^=txt_desc_]").blur(function () {
+			var arr_id = jQuery(this).attr('id').split('_');
+			var str_desc = jQuery.trim(jQuery(this).val());
+			var txt_desc = jQuery.trim(jQuery('#div_edit_desc_' + arr_id[2]).text());
+			if (str_desc == txt_desc) {
+				jQuery(this).val(str_desc).hide();
+				jQuery('#div_edit_desc_' + arr_id[2]).show();
+				return;
+			}
+			jQuery.ajax({
+				url: str_url + '&op=edit&type=desc&uid=' + arr_id[2] + '&desc=' + str_desc,
+				type: 'get',
+				dataType: 'text',
+				success: function (msg) {
+					jQuery('#txt_desc_' + arr_id[2]).val(str_desc).hide();
+					if (msg != 'success') {
+						jQuery('#div_edit_desc_' + arr_id[2]).show();
+						alert('修改失败！');
+					} else {
+						var new_desc = str_desc ? str_desc : '点击添加简短描述';
+						if (str_desc) {
+							jQuery('#div_edit_desc_' + arr_id[2]).css('color', '#555');
+						} else {
+							jQuery('#div_edit_desc_' + arr_id[2]).css('color', '#DDD');
+						}
+						jQuery('#div_edit_desc_' + arr_id[2]).html(new_desc + pencil_tag).show();
+					}
+				},
+				error: function (msg) {
+					jQuery('#txt_desc_' + arr_id[2]).hide();
+					jQuery('#div_edit_desc_' + arr_id[2]).show();
+					alert('修改失败！');
+				}
+			});
+		}).keydown(function (e) {
+			if (e.keyCode == 13) {
+				jQuery(this).blur();
+			}
+		});
+
+		// 删除复选框全选/全不选
+		jQuery('#chk_all').click(function () {
+			jQuery(':checkbox[id^=chk_uid_]').attr('checked', this.checked);
+		});
+		jQuery(':checkbox[id^=chk_uid_]').click(function () {
+			jQuery('#chk_all').attr('checked', jQuery(':checkbox[id^=chk_uid_]:not(:checked)').size() <= 0);
+		});
+
+		// 点击取消或关闭按钮时隐藏弹出层
+		jQuery('#a_close, #a_cancel').click(function () {
+			jQuery('#div_identity').hide();
+		});
+
+		// 单击空白处消失
+		jQuery(document).click(function (event) {
+			var str_id = event.target.id;
+			// 当单击点不是触发弹出层弹出事件的td、td中的div和div中的span元素并且不能是弹出层本身时，弹出层隐藏
+			if(str_id.indexOf('div_content_') == -1 && str_id.indexOf('td_identity_') == -1 && !jQuery(event.target).parents('div[id=div_identity]').size() && str_id != 'div_identity' && event.target.tagName != 'SPAN') {
+				jQuery('#div_identity').fadeOut('fast');
+			}
+		});
+
+		// 身份修改提交
+		jQuery('#a_enter').click(function () {
+			var data = jQuery("#frm_identity").formSerialize();
+			var str_uid = jQuery.trim(jQuery('#hid_uid').val());
+			// 如果没有取到uid则不进行任何处理
+			if (!str_uid) {
+				return;
+			}
+			jQuery.ajax({
+				url: str_url + '&op=edit&type=identity&uid=' + str_uid,
+				type: "get",
+				data: data,
+				dataType:"json",
+				success: function(msg){
+					if (msg) {
+						jQuery('#hid_iids_' + str_uid).val(msg.iids);
+						jQuery('#hid_idds_' + str_uid).val(msg.idds);
+						jQuery('#div_content_' + str_uid).css('color', '#555').html(msg.names + pencil_tag);
+					} else {
+						jQuery('#hid_iids_' + str_uid).val('');
+						jQuery('#div_content_' + str_uid).css('color', '#DDD').html('点击编辑身份' + pencil_tag);
+					}
+					jQuery('#div_identity').hide();
+				},
+				error: function(msg) {
+					jQuery('#div_identity').hide();
+					alert('参数错误！');
+				}
+			});
+		});
+		
+		jQuery('#slt_identity').change(function () {
+			jQuery('#slt_detail option:gt(0)').remove();
+			jQuery.each(json_identity, function (i, e) {
+				if (e.sub) {
+					jQuery.each(e.sub, function (j, f) {
+						if (f.identity_id == jQuery('#slt_identity').val()) {
+							jQuery('#slt_detail').append('<option value="' + f.id+ '">' + f.subname +'</option>')
+						}
+					});
+				}
+			});
+		});
+	});
+
+	function modify_b (uid) {
+		if (!uid) {
+			return;
+		}
+		var str_is_b = jQuery('#chk_isb_' + uid).attr('checked') ? 2 : 1;
+		if (jQuery.trim(jQuery('#hid_iids_' + uid).val())) {
+			var str_tip = '请先清除该用户个人身份';
+			str_tip = str_is_b == 2 ? str_tip : '请先清除该用户企业身份';
+			jQuery('#chk_isb_' + uid).attr('checked', !jQuery('#chk_isb_' + uid).attr('checked'));
+			alert(str_tip);
+			return;
+		}
+		jQuery.ajax({
+			url: str_url + '&op=edit&type=is_b&uid=' + uid + '&is_b=' + str_is_b,
+			type: 'get',
+			dataType: 'text',
+			success: function (msg) {
+				if (msg != 'success') {
+					alert('修改失败！');
+				} else {
+					jQuery('#hid_type_' + uid).val(str_is_b);
+				}
+			},
+			error: function (msg) {
+				alert('修改失败！');
+			}
+		});
+	}
+
+	// 如果默认选项取消则其下所有子选项全部取消且不可用
+	function change_sub (iid) {
+		if (!jQuery('#chk_identity_' + iid).attr('checked')) {
+			jQuery(':checkbox[id^=chk_detail_' + iid + ']').attr('checked', false).attr('disabled', true);
+		} else {
+			jQuery(':checkbox[id^=chk_detail_' + iid + ']').removeAttr('disabled');
+		}
+	}
+
+	// 显示身份修改弹出层
+	function identity_change (uid) {
+		if (!uid) {
+			return;
+		}
+		jQuery('#hid_uid').val(uid);
+		jQuery(':checkbox[id^=chk_identity_], :checkbox[id^=chk_detail_]').removeAttr('checked').removeAttr('disabled');
+		jQuery("#div_identity").fadeOut(0);
+		jQuery('#div_identity tr').css('display', 'none');
+		var int_type = jQuery('#hid_type_' + uid).val();
+		jQuery('#div_identity tr[type=' + int_type + ']').css('display', 'table-row');
+		var int_top = jQuery('#div_content_' + uid).offset().top + (jQuery('tr[class=hover]').height() / 2 + jQuery('#div_content_' + uid).outerHeight() / 2);
+		if (jQuery(document).height() - jQuery('#div_content_' + uid).offset().top-jQuery('#div_content_' + uid).height() < jQuery("#div_identity").height() + 50) {
+			int_top = jQuery('#div_content_' + uid).offset().top - jQuery("#div_identity").height() - jQuery('tr[class=hover]').height();
+		}
+		jQuery("#div_identity").css("left", jQuery('#div_content_' + uid).offset().left);
+		jQuery("#div_identity").css("top", int_top);
+		jQuery('#b_username').text('请选择身份给：' + jQuery('#chk_uid_' + uid).next('label').text());
+		jQuery("#div_identity").fadeIn();
+		var iids = jQuery.trim(jQuery('#hid_iids_' + uid).val());
+		var idds = jQuery.trim(jQuery('#hid_idds_' + uid).val());
+		var arr_iids = iids.split(',');
+		var arr_idds = idds.split(',');
+		for(var i = 0; i < arr_iids.length; i++) {
+			jQuery('#chk_identity_' + arr_iids[i]).attr('checked', true);
+		}
+		for(var i = 0; i < arr_idds.length; i++) {
+			jQuery(':checkbox[flg=chk_detail_' + arr_idds[i] + ']').attr('checked', true);
+		}
+		jQuery(':checkbox[id^=chk_identity_]:not(:checked)').parent().nextAll().children(':checkbox').attr('checked', false).attr('disabled', true);
+	}
+</script>
+<style type="text/css">
+	.hover input, #chk_all {border: none;}
+	.fixsel input { vertical-align:middle; margin-right:10px;}
+	.div_content {background: none repeat scroll 0 0 #FEFEFE; border: 1px solid #639BB0; width:630px;}
+	.identity_title {border-bottom: 1px dashed #CCCCCC; padding: 5px 10px}
+	.identity_footer {border-top: 1px dashed #CCCCCC; padding: 2px 5px 5px 0; text-align: right; height:20px; padding-top:6px}
+</style>
+<form action="admin.php?action=plugins&operation=config&do={$pluginid}&identifier=useridentity&pmod=admincp_user" method="POST">
+	<table class="tb tb2">
+		<tr>
+			<th class="partition">搜索</th>
+		</tr>
+		<tr>
+			<td>
+				UID：
+				<input type="text" name="txt_uid" id="txt_uid" size="15" value="{$str_uid}" class="vmiddle" />
+				用户名：
+				<input type="text" name="txt_name" id="txt_name" size="15" value="{$str_name}" class="vmiddle" />
+				<select name="slt_identity" id="slt_identity">
+					<option value="">-- 请选择身份组 --</option>
+					<!--{loop $arr_identity $identity}-->
+						<option value="{$identity['id']}" {if $identity['id'] == $int_identity}selected{/if}>{$identity['identity_name']}</option>
+					<!--{/loop}-->
+				</select>
+				<select name="slt_detail" id="slt_detail" >
+					<option value="">-- 请选择子身份 --</option>
+					<!--{loop $arr_identity $identity}-->
+						<!--{loop $identity['sub'] $detail}-->
+						<!--{if $detail['identity_id'] == $int_identity}-->
+							<option value="{$detail['id']}" {if $detail['id'] == $int_detail}selected{/if}>{$detail['subname']}</option>
+							<!--{/if}-->
+						<!--{/loop}-->
+					<!--{/loop}-->
+				</select>
+				<input type="submit" value="搜索" class="btn" />
+			</td>
+		</tr>
+		<tr><td><a style="float:right;" href="admin.php?action=plugins&operation=config&do={$pluginid}&identifier=useridentity&pmod=admincp_user&op=add">添加用户</a></td></tr>
+	</table>
+</form>
+<form name="frm_users" action="admin.php?action=plugins&operation=config&do={$pluginid}&identifier=useridentity&pmod=admincp_user&op=delete_bat" method="post">
+<table class="tb tb2">
+	<!--{if $arr_users}-->
+		<tr class="header">
+			<th width="15%">用户名</th><th>身份组</th><th width="20%">描述</th><!-- <th width="5%">企业</th> --><th width="5%">排序</th><th width="5%">操作</th>
+		</tr>
+		<!--{loop $arr_users $user}-->
+		<tr class="hover">
+			<td><input type="checkbox" name="chk_uid[{$user['uid']}]" id="chk_uid_{$user['uid']}" style="margin-right:10px; vertical-align:middle;" /><label for="chk_uid_{$user['uid']}">{$user['username']}</label></td>
+			<input type="hidden" value="{$user['iids']}" name="hid_iids[]" id="hid_iids_{$user['uid']}" />
+			<input type="hidden" value="{$user['idds']}" name="hid_idds[]" id="hid_idds_{$user['uid']}" />
+			<input type="hidden" value="{$user['type']}" name="hid_type[]" id="hid_type_{$user['uid']}" />
+			<td id="td_identity_{$user['uid']}" onclick="identity_change('{$user['uid']}');" style="cursor:pointer; {if !$user['identitys']}color:#DDD{/if}">
+				<div id="div_content_{$user['uid']}">
+				<!--{if $user['identitys']}-->
+					<!--{loop $user['identitys'] $identity}-->
+						<span style="color:red">{$identity['identity_name']}:</span>{$identity['identity_entity']}
+						<!--{loop $identity['sub'] $sub}-->
+							 | {$sub['subname']}
+						<!--{/loop}-->
+						&nbsp;&nbsp;
+					<!--{/loop}-->
+				<!--{else}-->
+					单击编辑身份
+				<!--{/if}-->
+				<img src="static/image/admincp/editable.gif" alt="" />
+				</div>
+			</td>
+			<td>
+				<div id="div_edit_desc_{$user['uid']}" style="cursor:pointer;{if !$user['description']}color:#DDD{/if}">
+					{if $user['description']}$user['description']{else}点击添加简短描述{/if}
+					<img src="static/image/admincp/editable.gif" alt="" />
+				</div>
+				<input type="text" value="{$user['description']}" id="txt_desc_{$user['uid']}" style="height:12px; width:200px; display:none; border:1px solid #000;" />
+				
+			</td>
+			<!-- 
+			<td><input type="checkbox" name="chk_isb[{$user['uid']}]" id="chk_isb_{$user['uid']}"{if $user['type'] == 2} checked{/if} onclick="modify_b({$user['uid']})" /></td>
+			 -->
+			<td style="white-space: nowrap;">
+				<div id="div_edit_sort_{$user['uid']}" style="cursor:pointer;">
+					{$user['sort']}
+					<img src="static/image/admincp/editable.gif" alt="" />
+				</div>
+				<input type="text" value="{$user['sort']}" id="txt_sort_{$user['uid']}" style="height:12px; width:28px; display:none; border:1px solid #000;" />
+			</td>
+			<td><a href="admin.php?action=plugins&operation=config&do={$pluginid}&identifier=useridentity&pmod=admincp_user&op=delete&uid={$user['uid']}" onclick="return confirm('本操作不可恢复，要确认执行删除操作吗？');">删除</a></td>
+		</tr>
+		<!--{/loop}-->
+		<tr>
+			<td><div class="fixsel"><input type="checkbox" id="chk_all" /><label for="chk_all">全选</label>&nbsp;&nbsp;<input type="submit" class="btn" id="submit_editsubmit" name="editsubmit" value="删除"></div></td>
+			<td>{$str_page}</td><td></td><td></td><td></td><!-- <td></td> -->
+		</tr>
+	<!--{else}-->
+		<div>
+			<h1>暂无数据</h1>
+		</div>
+	<!--{/if}-->
+</table>
+</form>
+
+<div id="div_identity" class="div_content" style="position:absolute; z-index:999; padding:10px; line-height:1.8; display:none">
+	<div class="identity_title">
+		<a href="javascript:void(0);" id="a_close" style="float:right"><img src="static/image/admincp/x.gif" width="16" height="16" border="0" /></a>
+		<b style="color: #F00" id="b_username">请选择身份</b>
+		<div style="clear:both;"></div>
+	</div>
+	<form id="frm_identity">
+	<input type="hidden" value="" name="hid_uid" id="hid_uid" />
+	<table>
+		<!--{loop $arr_identity $identity}-->
+		<tr class="hover" type="{$identity['type']}" style="display:none">
+			<td style="color:red">
+				<span style="display: inline-block; text-align: right;">
+				{$identity['identity_name']}:
+				</span>
+				<input type="checkbox" value="" name="chk_identity[{$identity['id']}]" id="chk_identity_{$identity['id']}" onclick="change_sub({$identity['id']})" /><label for="chk_identity_{$identity['id']}">{$identity['identity_entity']}</label>
+			</td>
+		<!--{loop $identity['sub'] $sub}-->
+			<td><input type="checkbox" value="" name="chk_detail[{$identity['id']}][{$sub['id']}]" flg="chk_detail_{$sub['id']}" id="chk_detail_{$identity['id']}_{$sub['id']}" /><label for="chk_detail_{$identity['id']}_{$sub['id']}">{$sub['subname']}</label></td>
+		<!--{/loop}-->
+		</tr>
+		<!--{/loop}-->
+	</table>
+	</form>
+	<div class="identity_footer">
+		<a href="javascript:void(0);" id="a_enter">确定</a>
+		&nbsp;&nbsp;
+		<a href="javascript:void(0);" id="a_cancel" style="padding-right:5px">取消</a>
+	</div>
+</div>

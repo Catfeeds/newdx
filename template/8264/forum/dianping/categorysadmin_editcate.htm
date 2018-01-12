@@ -1,0 +1,11 @@
+<div id="editnewcate_windows" class="cate_windows">
+	<span id="tips_addstatus"></span>
+	<form action="admin.php?ctl=categorysadmin&act=editcate&editsubmit=yes" method="post" id="newcateform" onsubmit="return false;">
+		<h3>编辑分类<span style="float:right;"><a title="关闭" onclick="hideWindow('cate', 0, 1);" class="flbc" href="javascript:;">关闭</a></span></h3>
+		<p>分类 I D：<b>{$info[cid]}</b><input type="hidden" name="editid" value="{$info[cid]}" /></p>
+		<p>分类名称：<input name="editname" value="{$info[name]}" type="text" /></p>
+		<p>创建时间：{$info[time]}</p>
+		<p>是否可用：<input type="radio" name="enable" value="1" {if $info[enable]==1}checked="true"{/if} />是&nbsp;&nbsp;<input type="radio" name="enable" value="0" {if $info[enable]==0}checked="true"{/if} />否</p>
+		<input id="editsubmit" name="submit" value="编辑" type="submit" />
+	</form>
+</div>

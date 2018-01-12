@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="gbk">
+    <title>领取装备 - 8264户外运动学校</title>
+    <meta name="viewport" content="minimal-ui,width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="MobileOptimized" content="width">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <link rel="stylesheet" href="http://static.8264.com/static/css/exam/style.css?20170907">
+    <script type="text/javascript" src="http://static.8264.com/static/js/exam/jquery-1.9.1.min.js"></script>
+    <style>
+        html,body{ background: #f8f8f9; }
+    </style>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?49299785f8cc72bacc96c9a5109227da";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+
+<body>
+<!--头部开始-->
+<!--{if $isWechat == 0}-->
+<div class="header-content">
+    <div class="home-icons" style="display: none;">
+        <a href="http://www.8264.com/xuexiao/">首页</a>
+    </div>
+    <div class="goback-icons">
+        <a href="http://www.8264.com/xuexiao/">返回</a>
+    </div>
+    <div class="logo">
+        <a href="#">
+            <img src="http://static.8264.com/static/images/exam/logo.png" alt="">
+        </a>
+    </div>
+</div>
+<!--{else}-->
+<!--{if $phonetype == 'android'}-->
+<a href="{$back_url}" class="chat-back"></a>
+<!--{/if}-->
+<!--{/if}-->
+<div class="zhuangbeibranner">
+    <a href="#" target="_black">
+        <img src="http://static.8264.com/static/images/exam/zhuangbeibranner.jpg">
+        <span>1500元8264户外装备礼包免费领</span>
+    </a>
+</div>
+<div class="page bggray">
+    <div class="zhuangbeiinfo">
+        礼包含登山杖1个、户外背包1个、睡袋1个，颜色随机发配
+    </div>
+    <form id="loginForm" class="mlogin" style="padding-top: 10px;<!--{if $vip_status == 0 || $equipment_order == 1}-->display: none;<!--{/if}-->">
+        <div class="field borderradius20 username">
+            <div class="label username">联系人</div>
+            <div class="field-control">
+                <input type="text" id="username" class="input-required" name="username" placeholder="联系人">
+            </div>
+            <div class="icon-clear"></div>
+        </div>
+        <div class="field borderradius20 phone">
+            <div class="label password">手机号</div>
+            <div class="field-control">
+                <input type="text" id="phone" class="input-required" name="phone" placeholder="请准确填写手机号">
+            </div>
+            <div class="icon-clear"></div>
+        </div>
+        <div class="field borderradius20 address">
+            <div class="label dizhiicon">地址</div>
+            <div class="field-control">
+                <input type="text" id="address" class="input-required" name="address" placeholder="请准确填写收货地址">
+            </div>
+            <div class="icon-clear"></div>
+        </div>
+        <div class="tips" style="display:none;margin-bottom: 5px"><i class="icon-mark"></i>用户名已存在</div>
+    </form>
+    <!--{if $vip_status == 0}-->
+    <br/>
+    <br/>
+    <a href="http://www.8264.com/xuexiao/user.html" class="uerlinkbutton" style="width: 100%;">成为会员</a>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <!--{else}-->
+        <!--{if $equipment_order == 1}-->
+    <br/>
+    <br/>
+    <br/>
+            <a href="javascript:///" class="uerlinkbutton" style="width: 100%;">已经领取</a>
+        <!--{else}-->
+            <a href="javascript:///" class="uerlinkbutton" style="width: 100%;" onclick="validate();">免费领取</a>
+        <!--{/if}-->
+    <!--{/if}-->
+</div>
+
+<!--{template exam/topic/footer}-->
+<!--{template exam/topic/wechat_share}-->
+<script type="text/javascript">
+    function checkMobileState(){
+        var phone = jQuery("#phone").val();
+        phone = jQuery.trim(phone);
+
+        if(phone == ''){
+            r_error("请输入手机号", 'tips', 'phone');
+            return false;
+        }
+
+        if(!(/^1[3|4|5|7|8]\d{9}$/.test(phone))){
+            r_error("请输入正确手机号", 'tips', 'phone');
+            return false;
+        }
+
+        rm_error("tips", "tel");
+        return phone;
+    }
+    function validate() {
+        var username = jQuery("#username").val();
+        username = jQuery.trim(username);
+        if(username.match(/<|"/ig)) {
+            r_error("联系人包含敏感字符", 'tips', 'username');
+            return false;
+        }else if(username.length == 0){
+            r_error("请填写联系人", 'tips', 'username');
+            return false;
+        }
+        rm_error("tips", "username");
+        var phone = checkMobileState();
+        if(!phone){
+            return false;
+        }
+        var address = jQuery("#address").val();
+        address = jQuery.trim(address);
+        if(address.match(/<|"/ig)) {
+            r_error("地址包含敏感字符", 'tips', 'address');
+            return false;
+        }else if(address.length == 0){
+            r_error("请填写地址", 'tips', 'address');
+            return false;
+        }
+        rm_error("tips", "address");
+
+        $.ajax({
+            type: 'POST',
+            url: '/exam.php?ctl=topic&act=equipment_order',
+            async:false,
+            data: {address:address, phone:phone, username:username},
+            dataType: 'json',
+            success:function(data){
+                console.log(data);
+                if(data.code == 0){
+                    alert('提交成功');
+                    setTimeout(function(){
+                        window.location.href = 'http://www.8264.com/xuexiao/user.html';
+                    },1300);
+                }else if(data.code == 1){
+                    alert('缺少参数');
+                }else if(data.code == 2){
+                    alert('您已经提交资料,请耐心等待');
+                }else if(data.code == 3){
+                    alert('提交失败,请稍后再试');
+                }else{
+                    alert('手机号格式错误');
+                }
+            }
+        });
+        return false;
+    }
+
+
+    function r_error(msg, tipclass, errorclass){
+        jQuery("."+tipclass).html("<i class='icon-mark'></i>"+msg).show();
+        jQuery("."+errorclass).addClass("error");
+    }
+    function rm_error(tipclass, errorclass){
+        jQuery("."+tipclass).html("").hide();
+        jQuery("."+errorclass).removeClass("error");
+    }
+</script>
+</body>
+</html>

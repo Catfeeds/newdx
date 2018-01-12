@@ -1,0 +1,94 @@
+<style>
+fieldset{padding:10px 8px;}
+fieldset table td{padding:3px 5px;}
+fieldset table input{margin-right:10px;}
+#keywordshow table{width:100%;}
+#keywordshow table tbody{border-bottom:2px black solid; margin: 20px 10px;}
+#keywordshow table td, table th{text-align: center; border-bottom:1px #CCC dotted; padding: 5px 10px;}
+#keywordshow table td{background:#EEE}
+#keywordshow table th{background: #4DD7F4;}
+</style>
+<fieldset>
+	<legend>功能区</legend>
+	<form action="/admin.php?action=plugins&operation=config&do={$pluginid}&identifier=interests&pmod=wordshow" method="POST">
+		<table>
+			<tr>
+				<td>
+					<span>请输入查询用户UID或用户名：</span>
+				</td>
+				<td>
+					<input name="searchuid" type="text" value="{$searchuid}" />
+				</td>
+				<td rowspan="2">
+					{if $messagetip}<b>{$messagetip}</b>{/if}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span>请输入查询的IP：</span>
+				</td>
+				<td>
+					<input name="searchip" type="text" value="{$searchip}" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span>选择词性：</span>
+				</td>
+				<td>
+					<select name="cixing">
+						<option value="0"{if $cixing === 0} selected="selected"{/if}>全部</option>
+						{loop $allattr $kk $vv}
+						<option value="{$kk}"{if $kk === $cixing} selected="selected"{/if}>{$vv}</option>
+						{/loop}
+					</select>
+				</td>
+				<td>
+					<input name="submit" type="submit" value="查询" />
+					<input type="hidden" name="submitsearch" value="1" />
+				</td>
+			</tr>
+		</table>
+	</form>
+</fieldset>
+{if $_G['gp_submitsearch'] == 1}
+<div id="keywordshow">
+	<table>
+			<tbody>
+				<tr>
+					<th>排名</th>
+					<th>关键词</th>
+					<th>次数</th>
+					<th>词性</th>
+					<th>最后访问时间</th>
+					<th>词权重</th>
+					<th>算法排行权重</th>
+				</tr>
+			</tbody>
+			<tbody>
+			{if $showdata}
+			{loop $showdata $k $val}
+				<tr>
+					<td>{eval $k++;}{$k}</td>
+					<td>{eval echo $val[keywordmodel::_KEYWORD];}</td>
+					<td>{eval echo $val[keywordmodel::_COUNTS];}</td>
+					<td>{eval echo $allattr[$val[keywordmodel::_KEYWORDATTR]];}</td>
+					<td>{eval echo date('Y-m-d H:i:s', $val[keywordmodel::_LASTTIME]);}</td>
+					<td>{eval echo $val[keywordmodel::_KEYWORDWEIGHT];}</td>
+					<td>{eval echo $val[keywordmodel::_MYHEAT];}</td>
+				</tr>
+			{/loop}
+			{if $multi}
+				<tr>
+					<td colspan="7">{$multi}</td>
+				</tr>
+			{/if}
+			{else}
+				<tr>
+					<td colspan="7">当前用户或ip没有任何记录。</td>
+				</tr>
+			{/if}
+			</tbody>
+		</table>
+</div>
+{/if}

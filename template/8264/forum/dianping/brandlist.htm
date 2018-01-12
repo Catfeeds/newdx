@@ -1,0 +1,256 @@
+<!--{subtemplate forum/dianping/header}-->
+<!--{if $modmenu['thread'] || $modmenu['post']}-->
+<script type="text/javascript" src="{$_G['setting']['jspath']}forum_moderate.js?{VERHASH}"></script>
+<!--{/if}-->
+<!--{if $_G['forum']['ismoderator']}-->
+<script type="text/javascript" src="{$_G[setting][jspath]}forum_moderate.js?{VERHASH}"></script>
+<!--{/if}-->
+
+<!--{eval $_GET['let']=$_GET['let']? $_GET['let']: 0;}--> 
+<!--{eval $_GET['nat']=$_GET['nat']? $_GET['nat']: 0;}--> 
+<!--{eval $_GET['cp']=$_GET['cp']? $_GET['cp']: 0;}-->
+<!--{eval $_GET['order']=$_GET['order']? $_GET['order']: 'lastpost';}-->
+<div class="wrapper">
+	<!--{if $_GET['let']==0&&$_GET['nat']==0&&$_GET['cp']==0&&$_GET['page']==1}-->
+	<div style="margin: 10px auto 0px auto;width: 980px;"><!--{ad/custom_234}--></div>
+	<!--{/if}--> 
+	<div class="layout mt20">
+		<div class="brandHeadTit" style="display:none;">
+			<h2><a href="{$oldurl}"></a></h2>			
+		</div>
+		<div class="recruiting">
+			<div class="hd" style="display:none">
+				<h2>品牌招商</h2>
+				<div class="tips"><span class="cOrangetip">招商联系QQ:80636446</span></div>
+			</div>
+			<div class="bd">
+				<ul class="brandBox limits">
+					<!--{if $zs}--> 
+					<!--{loop $zs $val}-->
+					<li style="height: 160px;"> <a href="{$oldurl}&act=showview&tid=$val[tid]" target="_blank" class="pic"><img src="{$val[showimg]}" /></a> <a href="{$oldurl}&act=showview&tid=$val[tid]" target="_blank" class="num">$val[views] / $val[replies]</a>
+						<p><a href="{$oldurl}&act=showview&tid=$val[tid]" target="_blank">$val['ename']<br>$val['cname']</a></p>
+						</li>
+					<!--{/loop}--> 
+					<!--{/if}-->
+					<li style="height: 160px;"> <a href="http://www.8264.com/about-adservice.html" target="_blank" class="pic"><img src="http://bbs.8264.com/source/plugin/brand/css/images/nopic.jpg" /></a> <a href="http://www.8264.com/about-adservice.html" class="num">品牌招商</a>
+						<p><a href="http://www.8264.com/about-adservice.html" target="_blank">期待您的加入</a></p></li>
+					<li style="height: 160px;"> <a href="http://www.8264.com/about-adservice.html" target="_blank" class="pic"><img src="http://bbs.8264.com/source/plugin/brand/css/images/nopic.jpg" /></a> <a href="http://www.8264.com/about-adservice.html" class="num">品牌招商</a>
+						<p><a href="http://www.8264.com/about-adservice.html" target="_blank">期待您的加入</a></p></li>
+					<li style="height: 160px;"> <a href="http://www.8264.com/about-adservice.html" target="_blank" class="pic"><img src="http://bbs.8264.com/source/plugin/brand/css/images/nopic.jpg" /></a> <a href="http://www.8264.com/about-adservice.html" class="num">品牌招商</a>
+						<p><a href="http://www.8264.com/about-adservice.html" target="_blank">期待您的加入</a></p></li>
+					<li style="height: 160px;"> <a href="http://www.8264.com/about-adservice.html" target="_blank" class="pic"><img src="http://bbs.8264.com/source/plugin/brand/css/images/nopic.jpg" /></a> <a href="http://www.8264.com/about-adservice.html" class="num">品牌招商</a>
+						<p><a href="http://www.8264.com/about-adservice.html" target="_blank">期待您的加入</a></p></li>					
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="layout"> 					
+		<div class="brandSift"> 
+			<!-- dl+short 为隐藏; span+select 为选中; more+moreHover 为选中更多; -->
+			<dl class="letter">
+				<dt>按<span class="cOrange">品牌首字母</span>浏览：</dt>
+				<dd> 					
+					<!--{if $letterlist}--> 
+					<span class="all"><a href="{$oldurl}&act=showlist&let=0&nat={$_GET[nat]}&cp={$_GET[cp]}&order={$_GET['order']}&page=1" <!--{if $_GET['let']=='0'}-->class="select"<!--{/if}-->>全部</a></span> 
+					<!--{loop $letterlist $key $letter}--> 
+					<span><a href="{$oldurl}&act=showlist&let={$key}&nat={$_GET[nat]}&cp={$_GET[cp]}&order={$_GET['order']}&page=1" <!--{if $key=={$_GET[let]}}-->class="select"<!--{/if}-->>$letter</a></span> 
+					<!--{/loop}--> 
+					<!--{/if}--> 
+					
+				</dd>
+			</dl>
+			<dl class="area">
+				<dt>按<span class="cOrange">品牌国籍</span>浏览：</dt>
+				<dd> 					
+					<!--{if $nations}--> 
+					<span><a href="{$oldurl}&act=showlist&let={$_GET[let]}&nat=0&cp={$_GET[cp]}&order={$_GET['order']}&page=1" <!--{if $_GET[nat]=='0'}-->class="select"<!--{/if}-->>全部</a></span> 
+					<!--{loop $nations $value}--> 
+					<span><a href="{$oldurl}&act=showlist&let={$_GET[let]}&nat={$value[rid]}&cp={$_GET[cp]}&order={$_GET['order']}&page=1" <!--{if $value[rid]=={$_GET[nat]}}-->class="select"<!--{/if}-->>{$value[area]}</a></span> 
+					<!--{/loop}--> 
+					<!--{/if}-->					
+				</dd>
+				<b class="more" style="display: none">更多</b>
+			</dl>
+			<dl class="type" id="tp">
+				<dt>按<span class="cOrange">排行榜</span>浏览：</dt>
+				<dd id="cnt"> 					
+					<!--{eval $ct = count($prolist);}-->
+					<!--{if $prolist}--> 
+					<span><a href="{$oldurl}&act=showlist&let=0&nat=0&cp=0&order=score&page=1" <!--{if $_GET[cp]=='0'}-->class="select"<!--{/if}-->>全部</a></span> 
+					<!--{loop $prolist $value}--> 
+					<span><a href="{$oldurl}&act=showlist&let=0&nat=0&cp={$value[id]}&order=score&page=1" <!--{if $value[id]=={$_GET[cp]}}-->class="select"<!--{/if}-->>$value['produce']</a></span>
+					<!--{/loop}--> 
+					<!--{/if}--> 
+				</dd>
+				
+				
+			</dl>
+		</div>
+	</div>
+	<div class="layout mt10">
+		<div class="brandIndexList">
+			<div class="hd">
+				<div class="sort floatL" style="width:auto;">	
+					<span class="mrIco"></span>
+					<span><a href="{$oldurl}&act=showlist"  <!--{if $_GET['order']=='lastpost' || $_GET['order']==''}--> class="select" <!--{/if}-->>默认</a></span>					
+					<span class="hotIco"></span>
+					<span><a href="{$oldurl}&act=showlist&let={$_GET[let]}&nat={$_GET[nat]}&cp={$_GET[cp]}&order=heats&page=1"  <!--{if $_GET['order']=='heats'}-->class="select"<!--{/if}-->>热门</a></span>				
+					<span class="newIco"></span>
+					<span><a href="{$oldurl}&act=showlist&let={$_GET[let]}&nat={$_GET[nat]}&cp={$_GET[cp]}&order=dateline&page=1" <!--{if $_GET['order']=='dateline'}-->class="select"<!--{/if}-->>最新</a></span>
+					<span class="scoreIco"></span>
+					<span><a href="{$oldurl}&act=showlist&let={$_GET[let]}&nat={$_GET[nat]}&cp={$_GET[cp]}&order=score&page=1" <!--{if $_GET['order']=='score'}-->class="select"<!--{/if}-->>评分</a></span>					
+				</div>
+				<!--{if $_GET['let']||$_GET['nat']||$_GET['cp']}-->
+				<h2 class="selectItem floatL"><span class="tit">您当前的选择：</span> 
+					<!--{if $_GET['let']}--> 				
+					<span class="select"> $letterlist[$_GET[let]]</span>
+					<!--{/if}--> 					
+					<!--{if $_GET['nat']}--> 					
+					<span class="select"> $nation</span>
+					<!--{/if}--> 					
+					<!--{if $_GET['cp']}--> 					 
+					<span class="select"> $pro[produce]</span>
+					<!--{/if}--> 					
+				 </h2>
+				<!--{/if}-->
+				<a href="{$oldurl}&act=dopost&do=new&action=newthread" class="publishBtn" target="_blank">发布新品牌</a>
+			</div>
+			<div class="bd mt10">
+				{eval $_G['page'] = max(1, intval($_G['gp_page']));}
+				{eval $condition = array();}
+				{if !empty($_GET['let'])}
+					{eval $condition['let'] = $_GET['let'];}
+				{/if}
+				{if !empty($_GET['nat'])}
+					{eval $condition['nat'] = $_GET['nat'];}
+				{/if}
+				{if !empty($_GET['cp'])}
+					{eval $condition['cp'] = $_GET['cp'];}
+				{/if}
+				{if !empty($_GET['key'])}
+					{eval $condition['tj'] = $_GET['key'];}
+				{/if}
+				{if ($_GET['filter'])}				
+					{eval $_G['gp_orderby']='t.'.$_GET['filter'];}				
+				{/if} 				
+				<!--{if $brandlist}-->			
+				<ul class="brandBox">
+					<!--{loop $brandlist $thread}-->
+					<li><a href="{$oldurl}&act=showview&tid={$thread[tid]}" class="pic" target="_blank"><img src="http://image.8264.com/{$thread[dir]}/{$thread[showimg]}" alt="{$thread[subject]}" /></a><a class="num" href="{$oldurl}&act=showview&tid={$thread[tid]}#comment" target="_blank">$thread[replies] / <!--{if $thread['isgroup'] != 1}-->$thread[views]<!--{else}-->{$groupnames[$thread[tid]][views]}<!--{/if}--></a>
+						<span class="starCom">
+							{eval $star = $thread['score'];}
+							{if $star}
+							<span class="star">
+							    {eval for ($i = 0; $i < 5; $i++):}
+							    {if $i < $star/2}<span class="redstar"></span>{else}<span class="graystar"></span>{/if}
+							    {eval endfor;}
+							</span>
+							 {/if}
+							 <span class="cOrange">$thread['score']</span>
+						</span>
+						<h2><a href="{$oldurl}&act=showview&tid={$thread[tid]}" target="_blank">{echo cutstr($thread[ename],20,'')}<br>$thread[cname]</a></h2>
+						<!--{if $thread['displayorder']==1}-->
+						<span class="top">Top</span>
+						 <!--{/if}-->
+					</li>
+					<!--{/loop}-->
+				</ul>
+				<!--{else}-->
+				<p class="emp">本版块或指定的范围内尚无主题。</p>
+				<!--{/if}-->
+				<div class="listPageBox mt15">
+					$multipage
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- wrapper End -->
+
+
+
+<style>
+.share_bd_warpten{ width:50px; position:absolute; float:right; position: fixed !important;  position: absolute; z-index: 1; bottom:20px; right: 30px; background:#fff;}
+.bbs_share_sc{ width:50px;}
+.bbs_share_sc li{ width:50px; height:51px;}
+.bbs_share_sc li.ps_re{ position:relative;}
+.bbs_share_sc li a{ background:url('http://www.8264.com/static/images/common/baidushare.jpg') no-repeat; display:block; }
+.bbs_share_sc li .share{ width:50px; height:50px; background-position:0px 0px;}
+.bbs_share_sc li .share:hover{ width:50px; height:50px; background-position:0px -204px;}
+.bbs_share_sc li .sc{ width:50px; height:50px; background-position:0px -51px;}
+.bbs_share_sc li .sc:hover{ width:50px; height:50px; background-position:0px -255px;}
+.bbs_share_sc li .bbsli{ width:50px; height:50px; background-position:0px -102px;}
+.bbs_share_sc li .bbsli:hover{ width:50px; height:50px; background-position:0px -306px;}
+.bbs_share_sc li .gotop_50{ width:50px; height:50px; background-position:0px -153px;}
+.bbs_share_sc li .gotop_50:hover{ width:50px; height:50px; background-position:0px -357px;}
+.share_bd{ width:200px; position:absolute; height:50px; top:0px; right:50px; font-size:0px; display:none;}
+.bbs_share_sc li .share_bd a{ width:50px; height:50px; background:url('http://www.8264.com/static/images/common/baidushare.jpg') no-repeat; display:inline-block; _display:inline; _zoom:1;}
+.bbs_share_sc li .share_bd a.sina{ background-position:0 -408px;}
+.bbs_share_sc li .share_bd a.sina:hover{ background-position:0 -612px;}
+.bbs_share_sc li .share_bd a.qq{ background-position: 0px -459px;}
+.bbs_share_sc li .share_bd a.qq:hover{ background-position: 0px -663px;}
+.bbs_share_sc li .share_bd a.wb{ background-position: 0px -510px;}
+.bbs_share_sc li .share_bd a.wb:hover{ background-position: 0px -714px;}
+.bbs_share_sc li .share_bd a.wx{ background-position: 0px -561px;}
+.bbs_share_sc li .share_bd a.wx:hover{ background-position: 0px -765px;}
+.bdshare-button-style0-32 a{padding:0;margin:0;}
+.h2Tit span {color: #43A6E1;font-size: small;}
+</style>
+<div class="share_bd_warpten">
+	<ul class="bbs_share_sc">
+		<li class="ps_re" id="share">
+			<a href="javascript:;" class="share"></a>
+			<div class="bdsharebuttonbox share_bd" data-tag="share_1">
+				<a href="javascript:;" class="sina" data-cmd="tsina"></a>
+				<a href="javascript:;" class="qq" data-cmd="qzone"></a>
+				<a href="javascript:;" class="wb" data-cmd="tqq"></a>
+				<a href="javascript:;" class="wx" data-cmd="weixin"></a>
+			</div>
+		</li>
+		<li><a href="http://www.8264.com/pinpai" class="bbsli" title="返回户外品牌点评首页"></a></li>
+		<li id="gotop_50"><a style="display: none;" href="javascript:;" class="gotop_50"></a></li>
+	</ul>
+</div>
+<script>
+window._bd_share_config = {
+	common : {
+		//此处放置通用设置
+	},
+	share : [
+		//此处放置分享按钮设置
+		{"tag" : "share_1", "bdSize" : 32}	
+	]
+}
+with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+(function($){
+	var ww=$(window).width();
+	var s_bd_r=Math.max((ww-980)/2-60,0);
+	$(".share_bd_warpten").css("right",s_bd_r);
+	
+	if($(window).scrollTop() > 10){$("#gotop_50 a").show();}	
+	$(window).scroll( function(){
+		if($(window).scrollTop()>10){
+			$("#gotop_50 a").show();
+		}else{
+			$("#gotop_50 a").hide();	
+		}
+	});
+	$("#gotop_50").click(function(){ 
+		$("html,body").animate({ scrollTop: 0 },500);
+	});	
+	$("#share").hover(
+		function () {
+		$(".share_bd",this).show();
+		},
+		function () {
+		$(".share_bd",this).hide();
+		}
+	);
+})(jQuery);
+</script>
+
+
+
+
+
+<!--{subtemplate forum/dianping/footer}-->

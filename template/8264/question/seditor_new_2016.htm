@@ -1,0 +1,49 @@
+
+<!--{if in_array('bold', $seditor[1])}-->
+<a href="javascript:;" title="{lang e_bold}" class="bold"{if empty($seditor[2])} onclick="seditor_insertunit('$seditor[0]', '[b]', '[/b]')"{/if}></a>
+<!--{/if}-->
+
+<!--{if in_array('color', $seditor[1])}-->
+<div class="colorbox">
+	<a href="javascript:;" class="gray" onclick="seditor_insertunit('$seditor[0]', '[color=#585858]', '[/color]')" title="深灰色"></a>
+	<a href="javascript:;" class="bule" onclick="seditor_insertunit('$seditor[0]', '[color=Blue]', '[/color]')" title="蓝色"></a>
+	<a href="javascript:;" class="red" onclick="seditor_insertunit('$seditor[0]', '[color=Red]', '[/color]')" title="红色"></a>
+</div>
+<!--{/if}-->
+
+<!--{if in_array('img', $seditor[1])}-->
+<a id="{$seditor[0]}img" href="javascript:;" title="{lang e_image}" class="fmg"{if empty($seditor[2])} onclick="seditor_menu('$seditor[0]', 'img')"{/if}>Image</a>
+<!--{/if}-->
+
+<!--{if in_array('smilies', $seditor[1])}-->
+	<a href="javascript:;" class="fsml" id="{$seditor[0]}sml"{if empty($seditor[2])} onclick="showMenu({'ctrlid':this.id,'evt':'click','layer':2});return false;"{/if}>Smilies</a>
+	<!--{if empty($seditor[2])}-->
+	<script type="text/javascript" src="data/cache/common_smilies_var.js?{VERHASH}" reload="1"></script>
+	<script type="text/javascript" reload="1">smilies_show('{$seditor[0]}smiliesdiv', $_G['setting']['smcols'], '$seditor[0]');</script>
+	<!--{/if}-->
+<!--{/if}-->
+
+<!--{if in_array('simpleupload', $seditor[1])}-->
+<div class="bq_fjimg" id="uploadpic">
+	<a href="javascript:;" class="fjimg"></a>
+</div>
+<!--{eval require_once libfile('class/simpleupload');}-->
+<!--{eval $flashstring = simpleUpload::getFlashStr("uploadpic", 24, 23);}-->
+{$flashstring}
+<script>
+function flashcallback(type, data){
+	eval("var objbtn = " + data);
+	switch(type){
+		case -1:
+			//alert(objbtn.text);
+			break;
+		case 1:
+			//alert(objbtn.text);alert(objbtn.picurl);
+			//alert(1111);
+			//jQuery("#{$seditor[0]}message").val(jQuery("#{$seditor[0]}message").val() + "[img]" + objbtn.picurl + "[/img]");
+			seditor_insertunit('$seditor[0]', '[img]'+ objbtn.picurl, '[/img]');
+			break;
+	}
+}
+</script>
+<!--{/if}-->

@@ -1,0 +1,56 @@
+/* CSS Document */
+a:hover{ text-decoration:none;}
+.clear_b:after{content: ""; display: block; clear: both; visibility: hidden;}
+.clear_b{ zoom: 1;}
+/*主体开始*/
+.w980{ width:980px; margin:20px auto 0 auto;}
+.l660{ width:660px; float:left;}
+.newlistcon li{ border-bottom:1px solid #f0f0f0; overflow:hidden; padding:30px 0px;}
+.newlistcon li:first-child{padding:0px 0px 30px 0px;}
+.newlistimg{ width:210px; height:145px; float:left; margin:0px 30px 0px 0px; overflow:hidden; display:block; position:relative;}
+.newlistimg img{ width:210px; height:145px; -webkit-transform:scale(1);	transform:scale(1); transition:all 1s ease;}
+.newlistimg:hover img{  -webkit-transform:scale(1.1); transform:scale(1.1);}
+.newlistimg i{  font-size: 12px;left: 0; line-height: 22px; padding: 0 10px; position: absolute; text-align: center; top: 0; z-index: 31; background:#637a94; color: #ffffff;}
+.newlistcon .newlist_r{ overflow:hidden; margin:0px; padding:0px;}
+.newlistcon h3{ margin:0px; padding:0px; font-weight:normal; }
+.newlistcon a{ font-size:18px; color:#333; overflow:hidden;}
+.newlistcon a:hover{ color:#3ca5f6; }
+.newlistcon span{  color: #999999; font-size: 14px; line-height: 24px; padding:15px 0px 0px 0px; display:block; overflow:hidden; height:70px;}
+.r300{ width:300px; float:right;}
+.rlinkbox{}
+.rlinkbox ul{ width:400px;}
+.rlinkbox li{  width:94px;  float:left; margin:0px 9px 9px 0px; height:40px;}
+.rlinkbox a{ height:40px; background:#637a94; font-size:14px; color:#fff; text-align:center; line-height:38px; display:block;}
+.rlinkbox a:hover{ background:#3b4e64;}
+
+
+
+
+.linklistbox{ background:#f3f3f3; padding:25px 25px 10px 25px; width:250px;}
+.linklistbox ul{ padding:0px 0px 25px 0px;}
+.linklistbox h5{ font-size:14px; color:#526880; border-left:#526880 solid 4px; line-height:1; padding:0px 0px 0px 8px; margin:0px 0px 8px 0px;}
+.linklistbox li { float:left;  margin:12px 0px 0px 12px; padding:0px 14px 0px 0px; border-right:#637a94 solid 1px; line-height:1;}
+.linklistbox li:nth-child(3n){ border-right:0 none;}
+.linklistbox li a{ color:#637a94; font-size:14px;}
+.dianping{ background:#fbfbfb; border:#eeeeee solid 1px; padding:14px 17px 14px 17px; margin:10px 0px 0px 0px;}
+.dianping a{ background:#43a6df; border-radius:5px; text-align:center; display:block; height:47px;}
+.dianping i{ background:url(http://static.8264.com/dianping/images/icon/data/line.png) left center no-repeat; font-size:18px; color:#fff; padding:0px 0px 0px 25px; margin:9px 0px 0px 0px; display:inline-block; *zoom:1; *display:inline; font-style:normal;}
+.listPageBox .pg .pre{display: none;}
+.pg { margin: 5px 0 15px; }
+.pg a,
+.pg strong { float: left; display: block; font-size: 15px; font-weight: 400; color: #999999; height: 24px; padding: 6px 7px 4px; margin-left: 5px; font-family: "Microsoft YaHei"; background: none; border: 0; }
+.pg a:hover,
+.pg strong { border: 0; border-bottom: 2px solid #00A6FC; color: #141414; text-decoration: none; background: none; }
+.pg a.nxt { background: none; padding-right:7px; padding-left:6px; padding-top:6px;}
+
+
+
+
+
+
+
+
+
+
+
+

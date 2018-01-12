@@ -1,0 +1,125 @@
+<script type="text/javascript">
+var postminchars = parseInt('$_G['setting']['minpostsize']');
+var postmaxchars = parseInt('$_G['setting']['maxpostsize']');
+var disablepostctrl = parseInt('{$_G['group']['disablepostctrl']}');
+</script>
+
+<div class=" layout pingluncon" id="f_pst">
+<form method="post" autocomplete="off" id="fastpostform" action="forum.php?mod=post&action=reply&fid=$_G[fid]&tid=$_G[tid]&extra=$_G[gp_extra]&replysubmit=yes{if $_G['gp_ordertype'] != 1}&infloat=yes&handlekey=fastpost{/if}{if $_G[gp_from]}&from=$_G[gp_from]{/if}"{if $_G['gp_ordertype'] != 1} onSubmit="return fastpostvalidate(this)"{/if}>
+
+	<!--{if empty($_G[gp_from])}-->
+	<div class="pingluntou">
+		<!--{if $_G['uid']}-->
+			<a href="home.php?mod=space&uid={$_G['uid']}" target="_blank" rel="nofollow"><!--{echo avatar($_G['uid'],'small')}--></a>
+		<!--{else}-->
+			<!--{echo avatar(0,'small')}-->
+		<!--{/if}-->
+		<!--{hook/viewthread_fastpost_side}-->
+	</div>
+	<!--{/if}-->
+	<!--{hook/viewthread_fastpost_content}-->
+	<div class="pinglun">
+		<span id="fastpostreturn"></span>
+
+		<!--{if $_G[forum_thread][special] == 5 && empty($firststand)}-->
+		<div class="pbt cl">
+			<div class="ftid sslt">
+				<select id="stand" name="stand">
+					<option value="">{lang debate_viewpoint}</option>
+					<option value="0">{lang debate_neutral}</option>
+					<option value="1">{lang debate_square}</option>
+					<option value="2">{lang debate_opponent}</option>
+				</select>
+			</div>
+			<script type="text/javascript">simulateSelect('stand');</script>
+		</div>
+		<!--{/if}-->
+
+		<div class="pinglunmid"  style="width:705px;">
+			<div class="edierbar clboth">
+				<!--{hook/viewthread_fastpost_func_extra}-->
+				<!--{hook/viewthread_fastpost_ctrl_extra}-->
+
+				<!--{eval $seditor = array('fastpost', array('bold', 'color'), $guestreply ? 1 : 0);}-->
+				<!--{subtemplate common/seditor_new_2014}-->
+				<a class="gjms" href="forum.php?mod=post&action=reply&fid=$_G[fid]&tid=$_G[tid]{if $_G[gp_from]}&from=$_G[gp_from]{/if}" onclick="return switchAdvanceMode(this.href)">{lang post_advancemode}</a>
+			</div>
+			<div class="areatext">
+				<!--{if !$guestreply}-->
+					<textarea rows="5" cols="80" name="message" id="fastpostmessage" onKeyDown="seditor_ctlent(event, {if $_G['gp_ordertype'] != 1}'fastpostvalidate($(\'fastpostform\'))'{else}'$(\'fastpostform\').submit()'{/if});" tabindex="4" class="pt"  style="width:675px;"></textarea>
+					<div class="areatext" id="message-hidden" contenteditable="true"></div>
+					<div id="atlist"></div>
+				<!--{else}-->
+					<div class="pt hm" style="border: none;">
+						{lang login_to_reply}
+						<a href="member.php?mod=logging&action=login" onclick="showWindow('login', this.href)" class="xi2">{lang login}</a>
+						| <a href="member.php?mod={$_G[setting][regname]}" onclick="showWindow('register', this.href)" class="xi2">$_G['setting']['reglinkname']</a>
+						<!--{if $_G['setting']['connect']['allow']}-->
+						| <a href="$_G[connect][login_url]&statfrom=viewthread_fastpost" target="_top" rel="nofollow"><img src="{IMGDIR}/qq_login.gif" class="vm" /></a>
+						<!--{/if}-->
+					</div>
+				<!--{/if}-->
+			</div>
+		</div>
+
+
+		<!--{if checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
+			<!--{block sectpl}--><sec> <span id="sec<hash>" class="<classname>"><sec><i id="sec<hash>_menu" class="yzmimg" style="display:none"><sec></i></span><!--{/block}-->
+			<div class="twyzm clboth"><!--{template common/seccheck}--></div>
+		<!--{/if}-->
+		<style type="text/css">.post-button{overflow:hidden;margin-top:12px}.post-button .kshf{float:left;margin-top:0}.tips-binding{float:left;background:url(http://static.8264.com/static/images/tip.png) no-repeat 0 50%;padding-left:20px;margin:8px 0 0 15px;font-size:14px;color:#585858}.tips-binding a{color:#ff7038;font-size:14px}</style>
+		<div class="post-button">
+			<button {if !$guestreply}type="submit" {else}type="button" onclick="showWindow('login', 'member.php?mod=logging&action=login&guestmessage=yes')" {/if}name="replysubmit" id="fastpostsubmit" class="kshf" value="" tabindex="5"></button>
+			<!-- 手机绑定提示 -->
+			<!--{if !$_G['member']['telstatus']}--><span class="tips-binding">注：回帖操作需绑定手机，<a href="http://u.8264.com/home-setting.html#account-security" target="_blank">去绑定>></a></span><!--{/if}-->
+			<!-- //手机绑定提示 -->
+		</div>
+		<input type="hidden" name="formhash" value="{FORMHASH}" />
+		<input type="hidden" name="subject" value="" />
+		<!--{if $_G['gp_ordertype'] != 1 && empty($_G[gp_from])}-->
+		<script type="text/javascript">if(getcookie('fastpostrefresh') == 1) {$('fastpostrefresh').checked=true;}</script>
+		<!--{/if}-->
+
+	</div>
+
+	<div style="float:right;width:160px;height:150px;border:1px solid #e3e3e3;padding:9px;">
+		<!-- 论坛详情_帖子回复右侧_牧高笛 402-->
+		<!--{ad/custom_478}-->
+	</div>
+
+
+
+</div>
+
+</form>
+<!--{if in_array($_G['groupid'], array(1,2,3)) || $_G['groupid'] >= 13}-->
+<!-- @提醒 -->
+<script type="text/javascript" src="http://static.8264.com/static/js/at.js"></script>
+<script type="text/javascript">
+	window.onload = function () {
+		{if $page == 1}
+		var fastreply_textarea = document.getElementById("fastreplymessage");
+		var fastreply_hiddenObj = document.getElementById("fastreply-message-hidden");
+		var fastreply_atList = document.getElementById("fastreply-atlist");
+		at(fastreply_textarea, fastreply_hiddenObj, fastreply_atList);
+		{/if}
+		var textarea = document.getElementById("fastpostmessage");
+		var hiddenObj = document.getElementById("message-hidden");
+		var atList = document.getElementById("atlist");
+		at(textarea, hiddenObj, atList);
+
+		// 操作非文本框区域外时隐藏AT提示列表
+		addListener(document, "click",
+			function(evt) {
+					var evt = window.event ? window.event: evt,
+					target = evt.srcElement || evt.target;
+
+					if (target.id != "fastpostmessage" && target.id != "atlist" && target.id != "fastreplymessage" && target.id != "fastreply-atlist" ) {
+							document.getElementById("atlist").style.display = "none";
+							{if $page == 1}document.getElementById("fastreply-atlist").style.display = "none";{/if}
+					}
+			});
+
+	}
+</script>
+<!--{/if}-->

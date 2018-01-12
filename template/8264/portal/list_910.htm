@@ -1,0 +1,96 @@
+<!--{subtemplate common/header_8264_new}-->
+<!--[name]榜单[/name]-->
+<!--{eval $list = array();}-->
+<!--{eval $isrightlist = $cat['catid']  == 224 ? 1 : 0;}-->
+<!--{eval $cat['subs'] = 1}-->
+<!--{eval $wheresql = category_get_wheresql($cat);}-->
+<!--{eval $list = category_get_list($cat, $wheresql, $page);}-->
+<link href="http://static.8264.com/static/css/portal/list8264_style.css" rel="stylesheet" type="text/css">
+<style id="diy_style" type="text/css"></style>
+
+<div class="header">
+	<div class="layout">
+		<div class="icoHill">&nbsp;</div>
+		<div class="headerL">
+			<h1><span class="country">榜单</span></h1>
+			<div class="site">
+				<a href="$_G[config][web][portal]">首页</a>
+				> <a href="$_G[config][web][portal]list/{$catid}/">榜单</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="warpper" style="padding:10px 0px 30px 0px;">
+	<div class="listMain clearfix">
+		<div class="clearfix">
+			<div class="listLayoutLeft shadowBlack">
+				<div class="list_wz clearfix">
+					<div class="mySite">
+						<div style="float:left;">
+							<!--{loop $cat[ups] $value}-->
+							<a href="{echo getportalcategoryurl($value[catid])}" style="font-size:12px;">$value[catname]</a>
+							<!--{/loop}-->
+							&nbsp;&nbsp;
+							<a href="{echo getportalcategoryurl($cat[catid])}" style="color:#2A85E8; font-weight:bold; font-size:12px">$cat[catname]</a>
+						</div>
+						<div style="float:right;">
+							<a href="http://www.8264.com/" target="_blank">返回首页</a>
+						</div>
+					</div>
+				</div>
+				<div class="list">
+					<!--{loop $list['list'] $value}-->
+					<!--{eval
+							$datearr1 = explode(" ",$value[dateline]);
+							$datearr2 = explode("-",$datearr1[0]);
+							$value['summary'] = str_replace("　　","",$value['summary']);
+						}-->
+					<div class="artListShortExp">
+						<div class="date"> <b>$datearr2[1]月</b>
+							<br>
+							<span>$datearr2[2]</span>
+						</div>
+						<h2>
+							<a href="portal.php?mod=view&amp;aid=$value[aid]" title='$value[title]' target='_blank'>$value[title]</a>
+						</h2>
+						<div class="author"> <em>作者：
+								<!--{if $value[author]}-->
+								$value[author]
+								<!--{else}-->
+								$value[username]
+								<!--{/if}-->
+								&nbsp;|&nbsp;来源于：
+								<!--{if $value[from]}-->
+								$value[from]
+								<!--{else}-->
+								8264
+								<!--{/if}--></em>
+							<!--{if $value['commentnum']}-->|
+							<span class="comment">$value['commentnum']</span>
+							人评论<!--{/if}-->
+						</div>
+						<div class="cont">
+							$value[summary]
+						</div>
+					</div>
+					<!--{/loop}-->
+				</div>
+				<!--左侧文章列表循环结束-->
+				<!--{if $list['multi']}-->
+				<div class="listPageBox">
+					<div class="pg">{$list['multi']}</div>
+				</div>
+				<!--{/if}-->
+			</div>
+			<div class="listLayoutRight">
+				<div class="rightAd shadowBlack">
+					<!--{ad/custom_304}-->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--{subtemplate common/weixin_share_bottom}-->
+<!--{subtemplate common/float_guide}-->
+<!--{subtemplate common/ewm_l}-->
+<!--{subtemplate common/footer_8264_new}-->

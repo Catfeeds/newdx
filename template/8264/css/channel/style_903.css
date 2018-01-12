@@ -1,0 +1,74 @@
+/* Global Start */
+body { background-color: #F1F1F1; color: #555; font-size: 12px; font-family: Tahoma, Helvetica, SimSun, sans-serif; }
+a { text-decoration: none; color: #555; }
+a:hover { text-decoration: none; }
+em { font-style: normal; }
+input,
+textarea,
+select { font-size: 12px; color: #333; }
+/* Global  End */
+/* Clear Start */
+.clear { clear: both; display: block; overflow: hidden; visibility: hidden; width: 0; height: 0; }
+.clearfix:before,
+.clearfix:after { content: '.'; display: block; overflow: hidden; visibility: hidden; font-size: 0; line-height: 0; width: 0; height: 0; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+/* Clear End */
+/* ClearFix Start*/
+.layout:after,
+.hd:after,
+.bd:after,
+.ft:after,
+.layoutLeft:after,
+.layoutRight:after,
+.figureBox:after,
+.figureList .fBottom:after { content: ""; display: block; clear: both; visibility: hidden; }
+.layout,
+.hd,
+.bd,
+.ft,
+.layoutLeft,
+.layoutRight,
+.figureBox,
+.figureList .fBottom { zoom: 1; }
+/* ClearFix End */
+/* public Start */
+.floatL,
+.layout .floatL { float: left; display: inline; }
+.floatR,
+.layout .floatR { float: right; display: inline; }
+/* public End */
+/* 领军人物 Start */
+.layout { width: 960px; margin: 0 auto; }
+.layoutLeft { float: left; display: inline; width: 470px; }
+.layoutRight { float: right; display: inline; width: 470px; }
+/* */
+.topHead { margin-top: 25px; margin-bottom: 30px; }
+.titLeft { float: left; display: inline; width: 400px; height: 55px; padding-left: 70px; background: url(/template/8264/css/moban/channel_903/images/sprite_figure.png) no-repeat -28px -0px; overflow: hidden; }
+.titLeft h2 { font: 700 28px/40px "Microsoft YaHei"; color: #404040; }
+.titLeft h3 { font: 100 12px/14px "Microsoft YaHei"; color: #656565; }
+.editorRight { float: right; padding-top: 20px; font: 14px/20px "Microsoft YaHei"; color: #787878; }
+.editorRight img { vertical-align: middle; margin-right: 10px; }
+/* */
+.figureBox { width: 980px; margin-left: -15px; }
+.figureList { float: left; display: inline; margin-left: 15px; margin-bottom: 15px; }
+.figureList dt img { width: 230px; height: 385px; }
+.figureList dd { width: 210px; background: #00346a; color: #FFF; padding: 10px; }
+.figureList h1 { font: 24px/26px "Microsoft YaHei"; margin-bottom: 5px; }
+.figureList h2 { font: 700 14px/19px "Microsoft YaHei"; text-indent: 3px; margin-bottom: 3px; }
+.figureList h3 { font: 12px/14px "Microsoft YaHei"; text-indent: 3px; padding-bottom: 8px; margin-bottom: 8px; border-bottom: 1px dashed #2e4f71; }
+.figureBox .current dd { background: #005dbe; }
+.figureBox .current dd h3 { border-bottom: 1px dashed #5185bb; }
+.figureList .fBottom { font: 12px/14px "Microsoft YaHei"; }
+.figureList .comment { float: left; display: inline; width: 75px; padding-left: 25px; background: url(/template/8264/css/moban/channel_903/images/sprite_figure.png) no-repeat -70px -68px; margin-left: 8px; }
+.figureList .date { float: right; display: inline; width: 70px; padding-left: 25px; background: url(/template/8264/css/moban/channel_903/images/sprite_figure.png) no-repeat -70px -100px;}
+/* 文章列表分页 Start */
+.listPageBox { float: left; width: 100%; }
+.listPageBox .pg { float: right; margin: 0 15px 20px; }
+.listPageBox .pg a,
+.listPageBox .pg strong { float: left; display: block; font-size: 15px; font-weight: 400; color: #999999; height: 24px; padding: 6px 7px 4px; margin-left: 5px; font-family: "Microsoft YaHei"; background: none; border: 0; }
+.listPageBox .pg a:hover,
+.listPageBox .pg strong { border: 0; border-bottom: 2px solid #00A6FC; color: #141414; text-decoration: none; background: none; }
+/* 文章列表分页 End */
+/* 领军人物 End */
+

@@ -1,0 +1,21 @@
+<!--{if $imglist}-->
+	<!--{eval $i = $j = 0;}-->
+	<!--{loop $imglist $img}-->
+	<!--{eval $i++;}-->
+	<!--{if $i <= $imgselectlimit}-->
+	<!--{eval $j++;}-->
+	<span id="imagelist_id_{$img[aid]}">
+		<img src="{eval echo getimagethumb(60,60,2,$dir . '/'.$img['attachment'], $img['aid'], $img['serverid']);}"/>
+		<!--<img src="{$img[url]}{$img['attachment']}" />--><b class="deleteimg">É¾³ý</b>
+		<input type="hidden" name="imgselect[]" value="{$img[aid]}"/>
+	</span>
+	<!--{else}-->
+	<span class="overlimit" id="imagelist_id_{$img[aid]}">
+		<img src="{eval echo getimagethumb(60,60,2,$dir . '/'.$img['attachment'], $img['aid'], $img['serverid']);}"/>
+		<!--<img src="{$img[url]}{$img['attachment']}" />--><b class="deleteimg">É¾³ý</b>
+		<input type="hidden" disabled = "true" name="imgselect[]" value="{$img[aid]}"/>
+	</span>
+	<!--{/if}-->
+	<!--{/loop}-->
+	<script>$('numimage').value = {$j};</script>
+<!--{/if}-->

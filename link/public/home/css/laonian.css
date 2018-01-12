@@ -1,0 +1,59 @@
+@charset "utf8";
+.clearfix:after,.coolzhan dl:after{content:'\0020';display:block;height:0;clear:both;}
+.clearfix,.coolzhan dl {zoom:1;}
+
+
+.container,#header { width:958px; margin:0 auto; background:#FFF;}
+
+#header { height:72px;}
+#myweather,#calendar,#time { float:left; display:inline; display:inline-block;}
+#myweather { height:60px; width:545px; margin:5px 0 0 5px;}
+#calendar { text-align:center; font-size:14px; margin:3px 5px 0; width:200px;}
+#calendar li{ line-height:22px;}
+#calendar li.other {}
+#calendar a:hover { text-decoration:underline; color:#f00;}
+
+#time { line-height:69px; font-size:28px; width:155px;overflow:hidden; text-align:center; height:69px;font-family:Arial; margin-left:5px;}
+#time .str { font-size:26px; }
+
+#search { width:958px; margin:5px 0;display: inline-block;}
+.search-label { float:left; padding-top:30px; padding-right:5px;}
+.search-form { width:825px; float:left;}
+#hwr_div{position:absolute;}
+.hwr_hidden{left:-1000px;top:0}
+.hwr_visible{left:0;top:38px}
+sup{color:red; font-family:arial; font-size:13px; text-decoration:none; padding:0; margin:0}
+.hda{font-family:"Arial","Helvetica","sans-serif"; font-size:18px; line-height:22px}		
+.hda12{font-family:"Arial","Helvetica","sans-serif"; font-size:14px; line-height:22px}		
+.textf{width:398px; line-height:26px; height:26px; padding:5px; *padding:4px; margin-right:9px; font-size:24px}		
+.buttonf{width:99px; height:38px; font-size:18px}
+.title{padding-bottom:5px; font-size:18px; float:left}		
+.title a, .title strong{margin-right:12px;}		
+.search-form a {
+    color: #0000FF;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.mingzhan { margin-bottom:10px; font-size:22px}
+.mingzhan ul { margin:0 auto; padding-left:55px;}
+.mingzhan li { float:left; line-height:40px; width:19%; display: inline;}
+
+
+.coolzhan dl { font-size:22px; line-height:40px;}
+.coolzhan dl.alt { background:#F7FAFF}
+.coolzhan dt,.coolzhan dd  { float:left}
+.coolzhan dd.c { width:800px;}
+.coolzhan dd.c ul { float:left;}
+.coolzhan dd.c li { float:left; width:160px; display:inline;}
+.coolzhan dt { width:70px; text-align:center; padding-right:10px}
+.coolzhan dd.m { width:66px; margin:0; text-align:center; padding-right:10px;}
+.coolzhan dd.m,.coolzhan dt { font-size:20px;}
+.coolzhan dt a{ color:#015BAB;}
+
+#footer { text-align:center; padding:10px; color:#666;}
+.coolzhan a:hover,.mingzhan a:hover,#footer a:hover { background:#36c; color:#fff;}
+
+
+

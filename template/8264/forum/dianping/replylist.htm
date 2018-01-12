@@ -1,0 +1,81 @@
+<!--{subtemplate forum/dianping/header_ajax}-->
+{if $list}
+	{loop $list $comment}
+	<dl class="cmtDl">
+		<dd class="avatar"><a href="home.php?mod=space&uid={$comment['authorid']}"><!--{avatar($comment[authorid], small)}--></a></dd>
+		<dd class="cmtCont">
+			<div class="tit">
+				<span class="usrName"><a href="home.php?mod=space&uid={$comment['authorid']}" target="_blank" class="usrName">{$comment['author']}</a></span>
+                <span style="color:#A8A8A8;float: left">点评了<a href="forum.php?ctl={$mod}&act=showview&tid={$tid}" style="color:#A8A8A8;" title="{$subject}">{$subject}</a>，</span>
+
+                <span class="date">发表于 {$comment['dateline']}</span>
+				<!--{if $comment['rate']}-->
+				<span class="bi"><a href="http://bbs.8264.com/forum-483-1.html" target="blank"><img align="absmiddle" title="奖励8264币" alt="奖励8264币" src="static/image/common/8264b.gif"></a></span>
+				<!--{/if}-->
+				{if $comment['starnum']}
+				<span class="starBox">
+					{eval for ($i = 0; $i < 5; $i++):}
+					<span class="{if $i < $comment['starnum']}redstar{else}graystar{/if}"></span>
+					{eval endfor;}
+				</span>
+				<input type="hidden" name="" id="starnum" value="{$comment['starnum']}" />
+				{/if}
+			</div>
+			<ul class="goodBad">
+				<!--{if $comment['extdata']['price']}-->
+				<li>
+					<span class="leftIco price">价格</span>
+					<div class="cont"><span id="price">{$comment['extdata']['price']}</span></div>
+				</li>
+				<!--{/if}-->
+				<!--{if $comment['goodpoint']}-->
+				<li>
+					<span class="leftIco good">优点</span>
+					<div class="cont"><p id="goodpoint">{$comment['goodpoint']}</p></div>
+				</li>
+				<!--{/if}-->
+				<!--{if $comment['weakpoint']}-->
+				<li>
+					<span class="leftIco bad">缺点</span>
+					<div class="cont"><p id="weakpoint">{$comment['weakpoint']}</p></div>
+				</li>
+				<!--{/if}-->
+				<li>
+					<span class="leftIco all">综合</span>
+					<div class="cont"><p id="message">{$comment['message']}</p></div>
+				</li>
+			</ul>
+		</dd>
+		<dd class="bottomCont">
+			<span class="useful{if $comment['supports']>0} active{/if}"
+			{if $_G['uid'] && !$supportlist[$comment['pid']]} id="supportBtn_{$comment['pid']}"{/if}
+			{if $_G['uid']}
+				{if $supportlist[$comment['pid']]}
+				title="你已经评价过了"
+				{else}
+				title="有用"
+				{/if}
+			{else}
+			title="登录后才能进行评价"
+			{/if}><i></i>有用{if !$comment['supports']}{else}({$comment['supports']}){/if}</span>
+			{if $_G['adminid'] == 1 && $comment['starnum']}
+			<span class="ans" id="editBtn_{$comment['pid']}"><a href="javascript:;">修改</a></span>
+			{/if}
+			{if $_G['adminid'] == 1 && !$comment['first']}
+			<span class="normal">
+				<label for="manage$comment[pid]">
+				<input type="checkbox" id="manage$comment[pid]" class="pc" {if !empty($modclick)}checked="checked" {/if}onclick="pidchecked(this);modclick(this, $comment[pid])" value="$comment[pid]" autocomplete="off" />
+				{lang manage}
+				</label>&nbsp;
+				<a id="k_rate" style="color: #666;" href="javascript:;" onclick="showWindow('rate', 'forum.php?mod=misc&action=rate&tid=$_G[tid]&pid=$comment[pid]', 'get', -1);return false;" title="加8264币">{lang rate}&nbsp;</a>
+				<!--{if $comment['rate'] && $_G['forum']['ismoderator']}-->
+					<a href="forum.php?mod=misc&action=removerate&tid=$_G[tid]&pid=$comment[pid]&page=$page" onclick="showWindow('rate', this.href, 'get', -1)">{lang removerate}</a>
+				<!--{/if}-->
+			</span>
+			{/if}
+		</dd>
+	</dl>
+	{/loop}
+	<div class="pageBox mb25">{$multipage}</div>
+{/if}
+<!--{subtemplate forum/dianping/footer_ajax}-->

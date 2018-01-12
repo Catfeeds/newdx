@@ -1,0 +1,191 @@
+<!--{subtemplate common/header_8264_new}-->
+<!--{subtemplate home/space_header_uc}-->
+<!--main-content-->	
+<style type="text/css">
+.yzm {top:23px!important;}
+</style>	
+<div class="main-content layout-page">
+	<div class="layout-app">
+		<div class="blog-content-container mod-wrap">
+			<div class="ui-block ui-block-title blog-block-title">
+				<div class="ui-title">
+					<h3>分享</h3>
+					<a href="home.php?mod=space&uid=$space[uid]&do=share&view=me&from=space" class="ui-list-link">返回分享列表 ></a>
+				</div>
+			</div>
+			<div class="ui-block ui-block-content">
+				<div class="blog-info-container">
+					<div class="blog-info-hd">
+						<div class="blog-title">
+							<h3 class="c-tx2">$share[title_template]</h3>
+						</div>
+						<div class="operate-toolbar">
+							<!--文章信息-->							
+							<div class="tit-other-info">
+								<span class="pub-time">
+									<i class="icon-b icon-time"></i>{date($share[dateline])}
+								</span>
+								{if $share[hot]}<span class="view-num">{lang hot}：{$share[hot]}</span>{/if}
+							</div>
+							<!--文章信息 end-->
+							<!--文章操作-->
+							<div class="blog-op-bar">
+								<div class="mod-interactive">
+									<ul>	
+										<!--{if $_G[uid] == $share[uid] || checkperm('manageshare')}-->									
+										<li class="op-list-item" id="share_$share[sid]_li">
+											<a href="home.php?mod=spacecp&ac=share&op=delete&sid=$share[sid]&handlekey=dellshk_{$share[sid]}&from=view" id="s_{$share[sid]}_delete" onclick="showWindow(this.id, this.href, 'get', 0);">{lang delete}</a>
+										</li>	
+										<!--{/if}-->	
+										<!--{if checkperm('manageshare')}-->							
+										<li class="op-list-item">
+											<a href="home.php?mod=spacecp&ac=share&sid=$share[sid]&op=edithot&handlekey=hotsharehk_{$share[sid]}" id="a_hot_$share[sid]" onclick="showWindow(this.id, this.href, 'get', 0);">{lang hot}</a>
+										</li>	
+										<!--{/if}-->													
+									</ul>
+								</div>
+							</div>							
+							<!--文章操作 end-->
+						</div>
+					</div>
+					<div class="blog-info-bd">
+						<!--日志正文-->
+						<div class="blog-detail-content" id="blog_article">
+							<!--{if $share['image']}-->
+							<a href="$share[image_link]"><img src="$share[image]" class="tn" style="margin-top: 0;" alt="" /></a>
+							<!--{/if}-->
+							{$share[body_template]}<br />
+							<!--{if 'video' == $share['type']}-->
+							<div class="tn" id="flash_div_$share[sid]">
+								<script>showFlash('{$share['body_data']['host']}', '{$share['body_data']['flashvar']}', '', '{$share['sid']}');</script>
+							</div>
+							<!--{elseif 'music' == $share['type']}-->
+							<div class="tn" id="flash_div_$share[sid]">
+								<script>showFlash('music', '{$share['body_data']['musicvar']}', '', '{$share['sid']}');</script>
+							</div>
+							<!--{elseif 'flash' == $share['type']}-->
+							<div class="tn" id="flash_div_$share[sid]">
+								<script>showFlash('flash', '{$share['body_data']['flashaddr']}', '', '{$share['sid']}');</script>
+							</div>
+							<!--{/if}-->
+			
+							<!--{if $share[body_general]}-->
+							<div class="quote{if $share['image']} z{/if}"><blockquote>$share[body_general]</blockquote></div>
+							<!--{/if}-->
+						</div>
+						<!--日志正文 end-->	
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="height:0;line-height:0;font-size:0;clear:both;"></div>
+		<!--评论列表-->
+		<div class="comment-list-container mod-wrap" id="comment">
+			<div class="blog-comment">			
+				<span id="comment_blog" style="display:none;"></span>
+				<ul id="comment_ul">
+					{if $list}
+					{loop $list $k $value}
+					<li class="list-comment-item" id="comment_$value[cid]_li">
+						{template home/space_comment_li}
+					</li>	
+					{/loop}				
+					{/if}
+				</ul>			
+			</div>			
+		</div>
+		<!--{if $multi}-->
+		<div style="height:0;line-height:0;font-size:0;clear:both;"></div>
+		<div class="cust-page-list">$multi</div>
+		<!--{/if}-->
+		<!--评论列表 end-->
+		<div style="height:0;line-height:0;font-size:0;clear:both;"></div>
+		<!--发表评论-->
+		{if $_G['uid']}
+		<form id="quickcommentform_{$id}" action="home.php?mod=spacecp&ac=comment&handlekey=qcshare_{$id}&is_uc=1" method="post" autocomplete="off">
+		<div class="post-comment-container">
+			<div class="post-cont">
+				<div class="author">
+					<p class="avatar">
+						<a href="javascript:void(0);">
+							{avatar($_G['uid'],middle)}
+						</a>
+					</p>
+				</div>
+				<div class="post" style="height:240px;">
+					<div class="post-wrap">
+						<div class="textinput">
+							<textarea name="message" id="comment_message" cols="30" rows="5"></textarea>
+						</div>
+						<!--{if checkperm('seccode') && ($secqaacheck || $seccodecheck)}-->
+						<div style="position:relative;">
+							<!--{block sectpl}--><sec> <span id="sec<hash>" onclick="showMenu(this.id);"><sec></span><div id="sec<hash>_menu" class="p_pop p_opt yzm" style="display:none;"><sec></div><!--{/block}-->
+							<div class="mtm mbm sec"><!--{subtemplate common/seccheck}--></div>
+						</div>							
+						<!--{/if}-->
+						<a href="javascript:void(0);" class="btn-inner-reply" onclick="subComment()">回复</a>
+						<span class="num-count"><b class="num-hint" id="num_word">0</b>/500</span>
+					</div>
+				</div>
+			</div>
+		</div>	
+			<input type="hidden" name="refer" value="home.php?mod=space&uid=$share[uid]&do=$do&id=$id" />
+			<input type="hidden" name="id" value="$id" />
+			<input type="hidden" name="idtype" value="sid" />
+			<input type="hidden" name="handlekey" value="qcshare_{$id}" />
+			<input type="hidden" name="commentsubmit" value="true" />
+			<input type="hidden" name="formhash" value="{FORMHASH}" />
+			<span id="return_qcshare_{$id}" style="display:none;"></span>
+		</form>
+		<script type="text/javascript">
+			function succeedhandle_qcshare_$id(url, msg, values) {
+				if(values['cid']) {
+					comment_add(values['cid']);
+					var msg = jQuery('#return_qcshare_{$id}').html();
+					showDialog(msg, 'notice');
+				} else {
+					showDialog(msg);
+				}
+			}
+			function errorhandle_qcshare_$id(str) {
+				showDialog(str);
+			}
+			function subComment() {
+				ajaxpost('quickcommentform_{$id}', 'return_qcshare_$id');doane(event);
+			}
+			jQuery(function(){
+				jQuery("#comment_message").keyup(function(event){
+					var num = jQuery(this).val().length;
+					jQuery("#num_word").html(num);
+				});
+			});
+		</script>
+		{else}
+		<div class="post-comment-container" style="padding-left:0;">
+			<div class="post-cont">					
+				<div class="post" {if !$_G[uid]}style="width:980px;"{/if}>
+					<div class="post-wrap">
+						<div class="textinput" style="height:100px;line-height:100px;text-align:center;">
+							{lang login_to_comment} <a href="member.php?mod=logging&action=login" onclick="showWindow('login', this.href)" class="xi2">{lang login}</a> | <a href="member.php?mod={$_G[setting][regname]}" onclick="showWindow('register', this.href)" class="xi2">$_G['setting']['reglinkname']</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{/if}				
+		<!--发表评论 end-->
+	</div>
+</div>
+<script type="text/javascript">
+jQuery(function(){	    
+    if (jQuery('.yzm').length > 0) {
+		setInterval(function(){
+			jQuery('.yzm').eq(0).css({'left':'0px'});
+			jQuery('.yzm').eq(1).css({'left':'230px'});
+		},10);	
+	}	
+});
+</script>	
+<!--main-content end-->
+<!--{subtemplate home/space_footer_uc}-->
+<!--{subtemplate common/footer_8264_new}-->

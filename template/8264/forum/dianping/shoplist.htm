@@ -1,0 +1,345 @@
+<!--{subtemplate forum/dianping/header}-->
+<div style="width:980px; margin:10px auto 10px auto"><!--{ad/custom_184}--></div>
+<div class="wap">	
+	<div class="std_heqian clearfix">
+    	<div class="std_mian1_qian1"><a>实体店</a></div>  
+        <div class="clear"></div>
+        <div class="std_mian1_qian3"><a href="{$url}&act=dopost&do=new" target="_blank">申请店铺</a></div>
+    </div>
+	<div class="std_mian1 yuanjiao">
+    	<div class="std_shengf">		
+        	<div class="std_shengf_l">省&nbsp;份：</div>
+            <div class="std_shengf_r"><a {if !$pid} class="on"{/if} href="{$url}&act=showlist&pid=0&rid=0&sid=0&cid={$cid}&bid={$bid}&order={$order}&page=1" class="abule">全国</a>
+            <!--{if $arrRegion}-->
+				<!--{loop $arrRegion $region}-->
+					<!--{if $region['upid'] == 0}-->
+						<a href="{$url}&act=showlist&pid={$region['catid']}&rid=0&sid=0&cid={$cid}&bid={$bid}&order={$order}&page=1" {if $pid==$region['catid']} class="on"{/if} >$region['name']</a>  
+					<!--{/if}--> 
+				<!--{/loop}-->  			
+			<!--{/if}--> 
+			<!--{if $pid}-->
+			<!--{if $arrCity}-->
+            	<div class="a_dianj">
+					<!--{loop $arrCity $city}-->			 
+                	<a href="{$url}&act=showlist&pid={$city['upid']}&rid={$city['catid']}&sid=0&cid=0&bid=0&order={$order}&page=1" {if $rid==$city['catid']} class="on"{/if}>$city['name']</a>	
+					<!--{/loop}-->
+                </div>
+             <!--{/if}--> 
+			<!--{/if}--> 
+            </div>
+            <div class="clear"></div>
+        </div>	
+        <!--{if $pid}-->
+        <div class="std_shengf">
+        	<div class="std_shengf_l">分&nbsp;类：</div>
+            <div class="std_shengf_r">
+				
+				<a href="{$url}&act=showlist&pid={$pid}&rid={$rid}&sid=0&cid={$cid}&bid={$bid}&order={$order}&page=1" {if $sid == ''} class="on"{/if} class="abule">不限</a>
+				<!--{if $isJiebian}-->
+				<a href="{$url}&act=showlist&pid={$pid}&rid={$rid}&sid=1&cid=0&bid=0&order={$order}&page=1" {if $sid=='1'} class="on" {/if} class="abule">街边店</a>
+				<!--{/if}-->
+				<!--{if $arrMarket}-->
+					<a href="{$url}&act=showlist&pid={$pid}&rid={$rid}&sid=2&cid=0&bid=0&order={$order}&page=1" {if $sid > 1} class="on" {/if} class="abule">商场店</a>
+					<!--{if $sid >= 2}-->
+						<div class="a_dianj">					
+							<!--{loop $arrMarket $mk}-->		
+		                	<a href="{$url}&act=showlist&pid={$pid}&rid={$rid}&sid={$mk['id']}&cid=0&bid=0&order={$order}&page=1" {if $sid == $mk['id']} class="on" {/if} >$mk['market']</a>
+							<!--{/loop}-->
+		                </div>
+	                <!--{/if}-->
+                <!--{/if}--> 
+            </div>
+            <div class="clear"></div>
+        </div>	
+        <!--{/if}--> 
+		<!--{if $arrChain }-->
+<!--        <div class="std_shengf">
+        	<div class="std_shengf_l">连&nbsp;锁：</div>
+            <div class="std_shengf_r" style="height: 21px;overflow: hidden;" id="ls">				
+				<a href="{$url}&act=showlist&pid={$pid}&rid={$rid}&sid={$sid}&cid=0&bid={$bid}&order={$order}&page=1" {if $cid ==''} class="on"{/if} class="abule">不限</a>
+							
+				{loop $arrChain $cb}			 
+				<a href="{$url}&act=showlist&pid={$pid}&rid={$rid}&sid={$sid}&cid={$cb['id']}&bid=0&order={$order}&page=1" {if $cid == $cb['id']} class="on"{/if}>$cb['chainbrand']</a>
+			
+				{/loop}
+				
+			</div>
+			{if count($arrChain)>=10}
+            <div class="std_shengf_g"><a href="javascript:;" id="lsmore">更多</a></div>
+			{/if}
+            <div class="clear"></div>
+        </div>-->
+		<!--{/if}-->
+		<!--{if $arrBrand }-->
+        <div class="std_shengf std_pinpai">
+        	<div class="std_shengf_l">品&nbsp;牌：</div>            
+			<div class="std_shengf_r" style="height: 21px;overflow: hidden;" id="pp">
+				<a href="{$url}&act=showlist&pid={$pid}&rid={$rid}&sid={$sid}&cid={$cid}&bid=0&order={$order}&page=1" {if $bid ==''} class="on"{/if} class="abule">不限</a>
+				
+				<!--{loop $arrBrand $bd}-->	
+				<a href="{$url}&act=showlist&pid={$pid}&rid={$rid}&sid={$sid}&cid=0&bid={$bd['id']}&order={$order}&page=1" {if $bid == $bd['id']} class="on" {/if} >$bd['brand']</a>
+
+				<!--{/loop}-->
+			</div>
+			<!--{if count($arrBrand)>=8}-->	
+            <div class="std_shengf_g"><a href="javascript:;" id="ppmore">更多</a></div>
+			<!--{/if}-->
+            <div class="clear"></div>
+        </div>
+		<!--{/if}-->
+        <script type="text/javascript">		
+			;(function($){
+				$("#lsmore").click(function(){				
+				  if($("#ls").css("height")!='21px'){
+					$("#ls").css("height",'21px');
+					$("#lsmore").text("更多").removeClass("std_shengf_g1");
+				  }else{
+					$("#ls").css("height","auto");
+					$("#lsmore").text("收起").addClass("std_shengf_g1");
+				  }			 
+				});
+				$("#ppmore").click(function(){				
+				  if($("#pp").css("height")!='21px'){
+					$("#pp").css("height",'21px');
+					$("#ppmore").text("更多").removeClass("std_shengf_g1");
+				  }else{
+					$("#pp").css("height","auto");
+					$("#ppmore").text("收起").addClass("std_shengf_g1");
+				  }			 
+				})		
+			})(jQuery);
+		</script>	
+    </div>
+    <div class="std_mian_tiao">
+    	<div style="float:left">
+			<!--{if $pname}-->
+				<a href="{$url}&act=showlist&pid=0&rid=0&sid={$sid}&cid={$cid}&bid={$bid}&order={$order}&page=1">$pname</a>
+			<!--{/if}-->
+			<!--{if $rname}-->
+				<a href="{$url}&act=showlist&pid={$pid}&rid=0&sid={$sid}&cid={$cid}&bid={$bid}&order={$order}&page=1">$rname</a>
+			<!--{/if}-->
+			<!--{if $sid == 1}-->			
+				<a href="{$url}&act=showlist&pid={$pid}&rid={$rid}&sid=0&cid={$cid}&bid={$bid}&order={$order}&page=1">街边店</a>	
+			<!--{/if}-->			
+			<!--{if $sid && $sid >= 2}-->
+				<a href="{$url}&act=showlist&pid={$pid}&rid={$rid}&sid=0&cid={$cid}&bid={$bid}&order={$order}&page=1">商场店</a>			
+				<!--{if $sid != 1}-->	
+					<!--{if $sname}-->		
+					<a href="{$url}&act=showlist&pid={$pid}&rid={$rid}&sid=2&cid={$cid}&bid={$bid}&order={$order}&page=1">$sname</a>
+					<!--{/if}-->
+				<!--{/if}-->
+			<!--{/if}-->
+			<!--{if $cname}-->		
+				<a href="{$url}&act=showlist&pid={$pid}&rid={$rid}&sid={$sid}&cid=0&bid={$bid}&order={$order}&page=1">$cname</a>
+			<!--{/if}-->
+			<!--{if $bname}-->		
+				<a href="{$url}&act=showlist&pid={$pid}&rid={$rid}&sid={$sid}&cid={$cid}&bid=0&order={$order}&page=1">$bname</a>
+			<!--{/if}-->
+    	</div>
+        <div style="float:right; margin-right:10px;">共有<span><!--{$count_shop}--></span>家店铺</div>
+        <div class="clear"></div>
+    </div>
+    <div class="mian std_mian2">
+    	<div class="mian_left std_mian2_l yuanjiao">
+        	<div class="mian_tit clearfix">
+            	<p style="float:left">店铺列表</p>
+            	<div class="std_paixu">
+                	<a >排序</a>
+                		<a href="{$url}&act=showlist&pid={$pid}&rid={$rid}&sid={$sid}&cid={$cid}&bid={$bid}&order=lastpost&page=1" class="px1<!--{if $order =='lastpost'}--> on<!--{/if}-->">默&nbsp;认</a>
+                		<a href="{$url}&act=showlist&pid={$pid}&rid={$rid}&sid={$sid}&cid={$cid}&bid={$bid}&order=dateline&page=1" class="px1<!--{if $order =='dateline'}--> on<!--{/if}-->">最&nbsp;新</a>
+                		<a href="{$url}&act=showlist&pid={$pid}&rid={$rid}&sid={$sid}&cid={$cid}&bid={$bid}&order=score&page=1" class="px1<!--{if $order=='score'}--> on<!--{/if}-->">评&nbsp;分</a>
+                		<a href="{$url}&act=showlist&pid={$pid}&rid={$rid}&sid={$sid}&cid={$cid}&bid={$bid}&order=heats&page=1" class="px1<!--{if $order=='heats'||$order==''}--> on<!--{/if}-->">热&nbsp;度</a>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="std_dplb">
+            	<div class="std_dplb1">店铺详情</div>
+                <div class="std_dplb2">点评数</div>
+                <div class="std_dplb3">综合评分</div>
+                <div class="clear"></div>
+            </div>
+            <!--  店铺列表循环开始-->			
+			<!--{if $list}-->
+			<!--{loop $list $shop}-->
+            <div class="std_dplb_m">
+            	<div class="std_dplb1">
+					<div class="dplb_L"><a href="{$url}&act=showview&tid={$shop['tid']}" target="_blank"><img src="{eval echo getimagethumb(102,63,1,$shop['picpath'], $shop['aid'], $shop['serverid']);}" /></a></div>
+                    <div class="dplb_R">
+                    	<h2><a href="{$url}&act=showview&tid={$shop['tid']}" target="_blank">$shop[subject]</a></h2>
+                        <p>
+							<!--{if $shop['p_name']}-->							
+								<a style="color:#858585;font-size:14px;" href="{$url}&act=showlist&pid={$shop['provinceid']}&rid=0&sid=0&cid={$cid}&bid={$bid}&order={$order}&page=1">$shop['p_name']</a>&nbsp;&nbsp;
+							<!--{/if}-->
+							<!--{if $shop['r_name']}-->
+								<a style="color:#858585;font-size:14px;" href="{$url}&act=showlist&pid={$shop['provinceid']}&rid={$shop['regionid']}&sid=0&cid=0&bid=0&order={$order}&page=1">$shop['r_name']</a>&nbsp;&nbsp;
+							<!--{/if}-->		
+							<!--{if $shop[marketid]!=0}-->商场店<!--{else}-->街边店<!--{/if}-->
+							<!--{if $shop['s_name']}-->&nbsp;&nbsp;$shop['s_name']<!--{/if}-->							
+						</p>
+                        <p>地址：$shop[addr]</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="std_dplb2" style="padding-top:25px">$shop[replies]</div>
+            	<div class="item" id="item">
+            		<div class="star">
+            			{if $shop[score]!='0.0'}<b style="color:#F98361;">{$shop[score]} 分</b>{else}<b style="color:#a8a8a8;">暂无评分</b>{/if}<br>
+						{eval for ($i = 0; $i < 5; $i++):}
+						<span class="{if $i < $shop[score]/2}{if $shop[score]/2-$i<1}halfstar{else}redstar{/if}{else}graystar{/if}"></span>
+						{eval endfor;}
+						
+					</div>
+				</div>
+                <div class="clear"></div>
+            </div>				
+			<!--{/loop}-->
+			<!--{else}-->
+			<div class="std_dplb_m">
+			没有相应店铺信息
+			</div>	
+			<!--{/if}-->	
+			<div class="listPageBox clearfix">$multipage</div>         
+        </div>		
+        <div class="mian_right std_mian2_r">
+            <div class="mian_rightbox yuanjiao">
+            	<div class="mian_tit1">
+            		<p>最新店铺</p>
+             	</div>
+                <div class="ditu_t1">					
+					<!--{loop $arrNew $shop}-->
+                	<div class="ditu_t1_m">
+						<div class="ditu_t1_mpic">
+							<a href="{$url}&act=showview&tid={$shop['tid']}" target="_blank">
+								<img src="{eval echo getimagethumb(102,63,1,$shop['picpath'], $shop['aid'], $shop['serverid']);}" />
+							</a>
+						</div>
+                        <div class="ditu_t1_mtxt">
+                        	<a href="{$url}&act=showview&tid={$shop['tid']}" target="_blank">$shop['subject']</a>
+                            <div style=" margin-top:5px;">$shop['dateline']</div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+					<!--{/loop}-->                
+                </div>            
+            </div>
+            <div style="margin-bottom:15px;"></div>
+            <div class="mian_rightbox yuanjiao">
+            	<div class="mian_tit">
+            		<p>联系我们</p>
+             	</div>
+                <div class="ditu_t1" style="color:#000;">					
+                	<div style="padding:10px 0 0 15px; line-height:1.8;">
+                    	QQ：1919501975 <br />
+						论坛ID：say哈喽<br />
+						
+                    </div>               
+                </div>            
+            </div>
+		    <!--{if $arrDzcx}-->	
+		    <div class="mian_rightbox yuanjiao">
+				<div class="mian_tit">
+					<p style="float:left;"><a href="http://bbs.8264.com/forum-174-1.html" target="_blank">打折促销信息</a></p>			
+					<a href="http://bbs.8264.com/forum.php?mod=post&action=newthread&fid=174" target="_blank" style="float:right; font-size:13px; padding:3px 10px 0px 0px; color:#ff6600;">发布信息</a>
+	            	<div class="clear"></div>
+	       		</div>
+				<div class="zbjylist">
+	        		<ul>
+		            	<!--{loop $arrDzcx $zb}-->
+		            	<li><a href="http://bbs.8264.com/thread-$zb['tid']-1-1.html" target="_blank">$zb['subject']</a></li>
+		                <!--{/loop}-->
+					</ul>
+				</div>              
+			</div>
+	   		 <!--{/if}-->
+        </div>
+        <div class="clear"></div>
+    </div>	      
+</div>
+
+
+
+<style>
+.share_bd_warpten{ width:50px; position:absolute; float:right; position: fixed !important;  position: absolute; z-index: 1; bottom:20px; right: 30px; background:#fff;}
+.bbs_share_sc{ width:50px;}
+.bbs_share_sc li{ width:50px; height:51px;}
+.bbs_share_sc li.ps_re{ position:relative;}
+.bbs_share_sc li a{ background:url('http://www.8264.com/static/images/common/baidushare.jpg') no-repeat; display:block; }
+.bbs_share_sc li .share{ width:50px; height:50px; background-position:0px 0px;}
+.bbs_share_sc li .share:hover{ width:50px; height:50px; background-position:0px -204px;}
+.bbs_share_sc li .sc{ width:50px; height:50px; background-position:0px -51px;}
+.bbs_share_sc li .sc:hover{ width:50px; height:50px; background-position:0px -255px;}
+.bbs_share_sc li .bbsli{ width:50px; height:50px; background-position:0px -102px;}
+.bbs_share_sc li .bbsli:hover{ width:50px; height:50px; background-position:0px -306px;}
+.bbs_share_sc li .gotop_50{ width:50px; height:50px; background-position:0px -153px;}
+.bbs_share_sc li .gotop_50:hover{ width:50px; height:50px; background-position:0px -357px;}
+.share_bd{ width:200px; position:absolute; height:50px; top:0px; right:50px; font-size:0px; display:none;}
+.bbs_share_sc li .share_bd a{ width:50px; height:50px; background:url('http://www.8264.com/static/images/common/baidushare.jpg') no-repeat; display:inline-block; _display:inline; _zoom:1;}
+.bbs_share_sc li .share_bd a.sina{ background-position:0 -408px;}
+.bbs_share_sc li .share_bd a.sina:hover{ background-position:0 -612px;}
+.bbs_share_sc li .share_bd a.qq{ background-position: 0px -459px;}
+.bbs_share_sc li .share_bd a.qq:hover{ background-position: 0px -663px;}
+.bbs_share_sc li .share_bd a.wb{ background-position: 0px -510px;}
+.bbs_share_sc li .share_bd a.wb:hover{ background-position: 0px -714px;}
+.bbs_share_sc li .share_bd a.wx{ background-position: 0px -561px;}
+.bbs_share_sc li .share_bd a.wx:hover{ background-position: 0px -765px;}
+.bdshare-button-style0-32 a{padding:0;margin:0;}
+.h2Tit span {color: #43A6E1;font-size: small;}
+</style>
+<div class="share_bd_warpten">
+	<ul class="bbs_share_sc">
+		<li class="ps_re" id="share">
+			<a href="javascript:;" class="share"></a>
+			<div class="bdsharebuttonbox share_bd" data-tag="share_1">
+				<a href="javascript:;" class="sina" data-cmd="tsina"></a>
+				<a href="javascript:;" class="qq" data-cmd="qzone"></a>
+				<a href="javascript:;" class="wb" data-cmd="tqq"></a>
+				<a href="javascript:;" class="wx" data-cmd="weixin"></a>
+			</div>
+		</li>
+		<li><a href="http://www.8264.com/dianpu" class="bbsli" title="返回户外店首页"></a></li>
+		<li id="gotop_50"><a style="display: none;" href="javascript:;" class="gotop_50"></a></li>
+	</ul>
+</div>
+<script>
+window._bd_share_config = {
+	common : {
+		//此处放置通用设置
+	},
+	share : [
+		//此处放置分享按钮设置
+		{"tag" : "share_1", "bdSize" : 32}	
+	]
+}
+with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+(function($){
+	var ww=$(window).width();
+	var s_bd_r=Math.max((ww-980)/2-60,0);
+	$(".share_bd_warpten").css("right",s_bd_r);
+	
+	if($(window).scrollTop() > 10){$("#gotop_50 a").show();}	
+	$(window).scroll( function(){
+		if($(window).scrollTop()>10){
+			$("#gotop_50 a").show();
+		}else{
+			$("#gotop_50 a").hide();	
+		}
+	});
+	$("#gotop_50").click(function(){ 
+		$("html,body").animate({ scrollTop: 0 },500);
+	});	
+	$("#share").hover(
+		function () {
+		$(".share_bd",this).show();
+		},
+		function () {
+		$(".share_bd",this).hide();
+		}
+	);
+})(jQuery);
+</script>
+
+
+
+
+
+<!--{subtemplate forum/dianping/footer}-->

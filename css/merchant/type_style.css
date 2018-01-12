@@ -1,0 +1,26 @@
+/* CSS Document */
+body {margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;text-align:center;font-size:12px;}
+ul{ list-style:none; margin:auto 0px;letter-spacing:0;word-spacing:0; padding:0;}
+a{text-decoration:none; color:#000000;}
+a:hover{text-decoration:underline;}
+#warpper{ width:780px; text-align:center; margin:auto;}
+/**********************头部***************************/
+#top{ width:780px; height:50px;}
+#guide{ width:780px; height:41px; margin-top:10px; border-bottom:#000000 1px solid;}
+#logo{ width:190px; height:41px; float:left;}
+#weizhi{ width:588px; height:30px; float:left; text-align:left;background:#ffffff; margin-top:5px; border:#999999 1px solid;}
+#border{ width:579px; height:26px; border:#CCCCCC 2px solid; line-height:26px; overflow:hidden; padding-left:5px;}
+#weizhi a{ font-size:12px; color:#000000; text-decoration:none;}
+#weizhi a:hover{ font-size:12px; color:#9e483e; text-decoration:underline;}
+/**********************中间部分***************************/
+#mid{ width:780px; margin-top:10px;}
+#title{ width:776px; height:30px; background:#EAEAEA; border:#cccccc 1px solid;}
+#hotreport{ width:70px; height:30px; line-height:28px; overflow:hidden; float:left; font-size:14px; font-weight:bold; padding-left:10px; text-align:left;}
+#hotimg{ width:100px; float:right; text-align:left;}
+#hottime{ width:400px; height:30px; line-height:30px; overflow:hidden; float:right; color:#9e483e; text-align:right; padding-right:10px;}
+#content{ width:778px; margin-top:8px;}
+#contenttitle{ width:778px; height:30px; font-size:14px; font-weight:bold; line-height:30px; overflow:hidden; background:#f7f5ef; border-top:#c6cccc 3px solid;}
+#contentframe{ width:776px; background:#eeeeee; padding-top:5px; padding-bottom:5px; border:#CCCCCC 1px solid; }
+#contentframe li{ width:184px; margin:2px 2px 2px 2px; float:left;line-height:25px; overflow:hidden; height:25px; border:#CCCCCC 1px solid; text-align:left; padding-left:3px;}
+/************************底部样式********************************/
+#bottom{ width:780px; height:50px;  margin-top:10px; float:right;}
